@@ -1,0 +1,106 @@
+\section{Agent Fairness Matrix}\label{sec-5-1}
+
+\begin{quote}
+\emph{Following MedAgentBench (NEJM AI 2025) and DeepRare (Nature 2026), we hold the central backbone constant across agent comparisons and document every adapter shim deviation in the Agent Fairness Matrix (\Cref{tbl:fairness}). All adapters are released open-source under \texttt{harness/agents/}.}
+\end{quote}
+
+\subsubsection{Agent Fairness Matrix}\label{agent-fairness-matrix}
+
+\begin{table*}[t]
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{Agent fairness matrix: native inputs, adapter-shim strategy and backbone wiring.}\label{tbl:fairness}
+\begin{tabular}{@{}
+>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Agent
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Native Input
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Adapter Shim Strategy
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+LLM Backbone Wiring
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Per-Case LLM Calls
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Configurable Mode?
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Adapter LOC
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+License
+\end{minipage} \\
+\midrule
+\textbf{MDAgents} & MCQA prompt & Reformulate canonical case as ``rank top-5 rare disease candidates'' prompt; regex-parse moderator output & OpenAI-compatible via OpenRouter \texttt{base\_url}; patched 12 lines to remove hard-coded \texttt{gpt-4o-mini} & 7-47 (intermediate path) & basic / intermediate / advanced & 301 & \textbf{None}(repo) \\
+\textbf{MedAgents} & MCQA prompt & Bypass MCQA-locked \texttt{run.py}; call \texttt{api\_handler.get\_output\_multiagent} with 3 domain experts + Chief MO synthesis & Patched \textasciitilde25 LOC (Azure-pinned openai 0.27 \ensuremath{\rightarrow} OpenRouter) & \textasciitilde10 & n\_experts \ensuremath{\in} \{3,5,7\}, rounds \ensuremath{\in} \{1,2,3\} & 348 & \textbf{None} \\
+\textbf{AgentClinic} & OSCE simulated dialogue & Build synthetic OSCE scenario; doctor / patient / measurement / moderator loop; second LLM call for ranks 2-5 & Per-agent CLI \texttt{-\/-openrouter} flag added (\textasciitilde30 LOC) & \textasciitilde45 (turn-bounded) & language \ensuremath{\in} \{EN, ZH, ES, IT, FR, KR, MR\}, turn cap & 509 & \textbf{MIT} \\
+\textbf{MAI-DxO} & Panel orchestration & LiteLLM router \ensuremath{\rightarrow} OpenRouter; \texttt{MaiDxOrchestrator.create\_variant(mode)}; \texttt{max\_iterations\ensuremath{\geq}2} for diagnosis (1 = degenerate) & LiteLLM native; no source edit & \textasciitilde10 (instant) to \textasciitilde50 (no\_budget \ensuremath{\times} 3 iter) & \textbf{5 modes: instant / question\_only / budgeted / no\_budget / ensemble}; \texttt{budget\_usd} for budgeted & 447 & MIT (community port) \\
+\textbf{DeepRare} & Phenopacket-style JSON + free text & Write per-case unique output dir; defensively purge \texttt{patient\_*.json} before each call; \texttt{DEEPRARE\_NO\_WEB=1} + \texttt{DEEPRARE\_LOCAL\_EMBEDDING=1} env shim & Patched 3 lines in \texttt{api/interface.py} for OpenAI-compat base\_url + env-configurable mini-model & 20-40 (no-web mode) & \texttt{-\/-no-web} (env), web-on disabled in v1 & 417 & \textbf{CC BY-NC 4.0} \\
+\textbf{RDMA} & EHR free-text & Subprocess call to \texttt{LLMEntityExtractor.extract\_entities}; \textbf{Pillar 1 only} & \texttt{OpenRouterLLMClient(model\_type=...)} native & 1-3 per text & n/a (mining-specific) & 364 & \textbf{None} \\
+\textbf{VC-RDAgent} & HPO list & Offline Stage 1 default(IC + Poincar\'e + frequency-LR fusion, \textbf{0 LLM calls}); Stage 2 (LLM refine) opt-in & Stage 2 uses local Qwen3-8B or OpenRouter & 0 (Stage 1) & \texttt{use\_llm\_refine:\ bool} & 310 & \textbf{None} \\
+\textbf{LIRICAL} & GA4GH Phenopacket & Project canonical case to phenopacket JSON; subprocess \texttt{java\ -jar\ lirical.jar\ phenopacket}; parse TSV & \textbf{No LLM} (classical Bayesian) & 0 & n/a & 369 & \textbf{Apache 2.0} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{Constants we hold across all agents}\label{constants-we-hold-across-all-agents}
+
+\begin{table*}[t]
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{Fixed evaluation settings held constant across agents.}\label{tbl:settings}
+\begin{tabular}{@{}
+>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Setting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rationale
+\end{minipage} \\
+\midrule
+Backbone temperature & 0.0 & Deterministic ranking \\
+Backbone seed (where exposed) & 42 & Seed for \texttt{random.Random} and any \texttt{seed} param \\
+Backbone max\_tokens & adapter-default (typically 2,000-6,000) & Avoid premature truncation \\
+Per-call timeout & 600s (adjustable per agent) & DeepRare/MAI-DxO can legitimately exceed 60s \\
+Retry policy & 3 attempts with exponential backoff via tenacity & Mitigate OpenRouter transient errors \\
+Backbone version (dated) & \texttt{google/gemini-3-flash-preview-20251217} etc & Reviewer-defensive --- alias updates blocked \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{Three anticipated objections --- pre-empted}\label{three-anticipated-objections-pre-empted}
+
+\textbf{Objection 1}: ``Adapter quality differences confound results.''
+\textbf{Response}: All 8 adapter shims are released open-source (3,485 LOC total), each accompanied by a run report documenting its exact subprocess calls, parser logic, and known caveats. Independent re-implementation invited.
+
+\textbf{Objection 2}: ``Different agents accept different inputs --- apples to oranges.''
+\textbf{Response}: Dual-pass evaluation (gold-HPO + end-to-end, \Cref{sec-4-4}). The Pass A \ensuremath{-} Pass B delta on the same agent quantifies P1 sensitivity. RareBench Table 6 precedent --- phenotype-input vs EHR-text-input on identical model --- is the same design.
+
+\textbf{Objection 3}: ``Mixing classical (LIRICAL) and LLM agents is unfair.''
+\textbf{Response}: Standard convention --- see DeepRare (Nature 2026) which includes Exomiser / LIRICAL / AI-MARRVEL as classical baselines. We report them as separate ``Classical Baseline'' rows in \Cref{tbl:main} and do not include them in LLM-only ablations (A1/A2/A4/A5/A6/A7).
+
+\subsubsection{Per-agent known caveats (we surface these honestly)}\label{per-agent-known-caveats-we-surface-these-honestly}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{MDAgents/MedAgents/RDMA/VC-RDAgent: no license file in upstream repos}. We comply with academic fair use (run + report numbers); we do not redistribute their code. Our adapter shims are released independently (Apache 2.0). Action item filed with upstream authors as future work.
+\item
+  \textbf{DeepRare CC BY-NC 4.0 prevents commercial deployment} --- academic use OK; we note this in Limitations.
+\item
+  \textbf{MAI-DxO community port} (\texttt{Open-MAI-Dx-Orchestrator}, 58\ensuremath{\star} MIT) is structurally faithful to Nori et al.~(arXiv 2506.22405) but prompt strings and test-cost values are reimplemented from paper text --- minor numerical deviation from Microsoft's reference may exist. Documented in Methods footnote.
+\item
+  \textbf{AgentClinic} in our v1 is tested on HPO-only cases (Phenopacket-Store/RareBench/MIMIC-IV); its OSCE dialogue is shallow when no free-text vignette is available. We report this as Limitation 6.
+\item
+  \textbf{LIRICAL} requires HPO list input. On RareArena (free text), our adapter triggers \texttt{eval\_mode="end\_to\_end"} upstream LLM HPO extraction + phrase\ensuremath{\rightarrow}HP-ID normalization. This explains LIRICAL's PP-Store R@1 0.40 dropping to 0.04 on RareArena --- see analysis \Cref{sec-7-1}.
+\end{itemize}
+

@@ -1,0 +1,71 @@
+% Compiles with the default pdfLaTeX on Overleaf (no compiler change needed).
+% All non-ASCII symbols are converted to LaTeX macros at build time, so no
+% fontspec / XeLaTeX / CJK fonts are required.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[final]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{fvextra}
+\fvset{breaklines=true,breakanywhere=true,fontsize=\scriptsize}
+\usepackage[htt]{hyphenat}  % allow line breaks inside \texttt paths/code
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}          % \cellcolor heat-map for the main results table
+\usepackage{amsmath,amssymb}
+\usepackage{caption}
+\usepackage{url}
+\usepackage[capitalize]{cleveref}   % \Cref{tab:main} -> "Table 1", "Section 3"
+% Blue heat ramp for R@1 (5 buckets) + green ramp for the variant-lift row,
+% matching the reference paper's palette.
+\definecolor{heatE}{HTML}{F6F9FC}
+\definecolor{heatA}{HTML}{E2EAF3}
+\definecolor{heatB}{HTML}{C7D5E4}
+\definecolor{heatC}{HTML}{AABCD3}
+\definecolor{heatD}{HTML}{8AA4C3}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\st}[1]{#1}
+\emergencystretch=3em
+\sloppy
+\title{RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis}
+\author{Anonymous ACL submission}
+\begin{document}
+\maketitle
+\nocite{*}
+% ==== abstract (comment the next line to drop it) ====
+\input{tex/abstract}
+
+% ==== main body ====
+\input{tex/2_introduction}
+\input{tex/3_related_work}
+\input{tex/4_benchmark_design}
+\input{tex/5_2_5_4_setup}
+\input{tex/6_main_results}
+\input{tex/7_5_self_preference_bias}
+\input{tex/9_limitations}
+\input{tex/10_conclusion}
+
+% ==== references (acl.sty already sets \bibliographystyle) ====
+\bibliography{references}
+
+% ==== appendices ====
+\appendix
+\section*{Appendices}
+\input{tex/C_appendix_experimental_setup}
+\input{tex/7_2_7_3_7_4_analysis}
+\input{tex/8_ablations}
+\input{tex/5_1_agent_fairness_matrix}
+\input{tex/7_1_p1_p2_cascade}
+\input{tex/A1_reproducibility_audit}
+\input{tex/B_appendix_baseline_repro}
+\input{tex/J_appendix_cost}
+\input{tex/OSF_preregistration_draft}
+\end{document}

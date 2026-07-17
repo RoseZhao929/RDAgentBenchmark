@@ -1,0 +1,73 @@
+Setting up the arguments...
+Setting up the data...
+[set_up_data] skip: dataset/xinhua_rag_0331.csv missing
+[set_up_data] skip: dataset/mimic_rag.csv missing
+[set_up_data] skip: dataset/rarebench_rag.csv missing
+[set_up_data] skip: dataset/mygene_rag.csv missing
+[set_up_data] skip: dataset/ddd_rag.csv missing
+Loaded 10000 similar cases.
+Loaded embeddings from ./database/embeds_concept.pt
+Begin Extraction.....
+total patient:  1
+patient 0 prompt: Patient's phenotype: Microcephaly, Seizure, Global developmental delay
+Enumerate the top 5 most likely diagnoses. Be precise, and try to cover many unique possibilities. Each diagnosis should be a rare disease. Use ## to tag the disease name. Make sure to reorder the diagnoses from most likely to least likely. The top 5 diagnoses are:
+[LOG] API URL: https://pubcasefinder.dbcls.jp/api/pcf_get_ranked_list?target=orphanet&format=tsv&hpo_id=HP:0000252,HP:0001250,HP:0001263
+[LOG] Sending API request...
+[make_diagnosis] PubCaseFinder failed: 404 Client Error: NOT FOUND for url: https://pubcasefinder.dbcls.jp/api/pcf_get_ranked_list?target=orphanet&format=tsv&hpo_id=HP:0000252,HP:0001250,HP:0001263
+Phenobrain Processing...
+Phenobrain Search Success!
+completed web search
+completed llm search
+Searching for disease: ('ORPHA:2512', 'Autosomal recessive primary microcephaly')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:83473', 'MPPH syndrome')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:182079', 'ARX-related epileptic encephalopathy')
+Searching for disease knowledge
+Not found in ORPHANET
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for pubmed knowledge
+Not found in Pubmed
+Searching for arxiv knowledge
+Searching for disease: ('ORPHA:85332', 'Aldred syndrome')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:561854', 'FOXG1 syndrome')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:544503', 'RNF13-related severe early-onset epileptic encephalopathy')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:544503', 'RNF13-related severe EOEE')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:71859', 'Rare genetic neurological disorder')
+Searching for disease knowledge
+Not found in ORPHANET
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for pubmed knowledge
+Not found in Pubmed
+Searching for arxiv knowledge
+Searching for disease: ('ORPHA:529808', 'KSD')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:86814', 'FAME')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Searching for disease: ('ORPHA:86814', 'FAME')
+Searching for disease knowledge
+Searching for OMIM knowledge
+Not found in OMIM
+Patient 0 diagnosis completed.

@@ -1,0 +1,64 @@
+\section{Self-Preference Bias in LLM-as-Judge}\label{sec-7-5}
+
+\subsubsection{Self-Preference Bias in LLM-as-Judge --- A Cautionary Methodology Finding}\label{self-preference-bias-in-llm-as-judge-a-cautionary-methodology-finding}
+
+\textbf{Bias measurement}. We score Pillar 5 reasoning trace quality on four 1-5 axes (factual / relevance / depth / faithful) using an LLM judge. Our v1 protocol used Gemini 3 Flash Preview as the judge --- the same backbone family used by the agents under evaluation. Replacing the judge with Claude Sonnet 4.5 under identical traces (no other change) shifted scores systematically against Gemini-derived agents, exposing a self-preference bias --- LLM judges systematically favor outputs from their own model family {[}Panickssery, Bowman, and Feng, ``LLM Evaluators Recognize and Favor Their Own Generations'', arXiv:2404.13076, 2024{]} --- that would have inflated the headline ranking by an entire rank position.
+
+\begin{table*}[t]
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{LLM-judge faithfulness scores (four axes) and the self-preference gap, by agent.}\label{tbl:selfpref}
+\begin{tabular}{@{}
+>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Agent
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+factual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+relevance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+depth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+faithful
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+trace\_len
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ensuremath{\Delta} summary
+\end{minipage} \\
+\midrule
+\texttt{llm\_control}(single Gemini Flash) & 4.70 \ensuremath{\rightarrow} \textbf{4.30} (\ensuremath{-}0.40) & 4.50 \ensuremath{\rightarrow} 4.50 & 3.60 \ensuremath{\rightarrow} \textbf{3.10} (\ensuremath{-}0.50) & 4.90 \ensuremath{\rightarrow} \textbf{4.50} (\ensuremath{-}0.40) & 986 chars & All axes shift \textbf{toward} parity \\
+\texttt{mdagents}(multi-expert debate) & 5.00 \ensuremath{\rightarrow} 4.10 & 5.00 \ensuremath{\rightarrow} 4.17 & 4.00 \ensuremath{\rightarrow} \textbf{3.49} & 5.00 \ensuremath{\rightarrow} 4.26 & 337 \ensuremath{\rightarrow} \textbf{20,034} & \textbf{Now beats \texttt{llm\_control} on depth(3.49 \textgreater{} 3.10)} \\
+\texttt{deeprare}(40+ tool, reflection) & 1.70 \ensuremath{\rightarrow} 2.31 (+0.61) & 1.40 \ensuremath{\rightarrow} 1.33 & 1.90 \ensuremath{\rightarrow} 2.58 (+0.68) & 1.70 \ensuremath{\rightarrow} 2.72 (+1.02) & 18,429 \ensuremath{\rightarrow} 21,401 & All axes shift toward parity \\
+\texttt{maidxo}(8-role panel) & NaN \ensuremath{\rightarrow} 2.11 & NaN \ensuremath{\rightarrow} 1.85 & NaN \ensuremath{\rightarrow} 1.64 & NaN \ensuremath{\rightarrow} 1.88 & 0 \ensuremath{\rightarrow} \textbf{26,972} & v1 had 10/10 judge JSON-parse errors;v2 ok \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+(N = 10 stratified Phenopacket-Store cases per agent; seed = 42; judge prompts identical between v1 and v2.)
+
+\textbf{The four-axis margin of \texttt{llm\_control} over the strongest scaffolded agent (\texttt{mdagents}) shrank from \texttt{\{+0.30,\ +1.00,\ +0.40,\ +0.90\}} under the Gemini-family judge to \texttt{\{+0.20,\ +0.33,\ \ensuremath{-}0.39,\ +0.24\}} under the non-family judge} --- depth now favors \texttt{mdagents}, which is the directionally expected signal for a multi-expert debate vs.~a single chain-of-thought. Three of four axes still slightly favor \texttt{llm\_control}, plausibly reflecting genuine differences in trace coherence rather than self-preference; the residual margins are within bootstrap confidence intervals (see Appendix E).
+
+\textbf{Why this matters for the field.} The LLM-as-judge methodology is now standard across medical AI evaluation (MedHELM, AgentBoard, MedR-Bench all use it), and most apply Gemini or GPT-4 as the judge while testing agents that themselves call those backbones. Our finding suggests that the choice of judge backbone is itself a confound that must be explicitly controlled --- using a non-family judge as our v2 does, or reporting multiple-judge consensus (jury-based judging with a panel of small models, e.g.~Verga et al., ``Replacing Judges with Juries'', arXiv:2404.18796, 2024), is now a methodological prerequisite. Ablation A12 in \Cref{sec-8} evaluates the same predictions under (i) exact OMIM/ORPHA match --- the deterministic gold --- (ii) BioLORD synonym fuzzy match, (iii) GPT-5 judge, (iv) physician adjudication on 200 cases; we recommend the latter two for any high-stakes published claim.
+
+\textbf{Failure mode also fixed.} Beyond the bias correction, v2 also resolved two trace-capture bugs: MAI-DxO's panel \texttt{conversation\_history} was not surfaced to the judge (10/10 judge errors \ensuremath{\rightarrow} 0); MDAgents' intermediate-path trace was truncated to the moderator's verdict only (337 chars; 8/10 judge errors \ensuremath{\rightarrow} 0 with full multi-expert debate at 20,034 chars). Both fixes and their patches are documented in Appendix B.
+
+\textbf{Practical recommendation for benchmark builders}:(1) Always use a non-family LLM judge (Claude judging Gemini agents, or vice versa); (2) Report v1\ensuremath{\rightarrow}v2 differential of any judge swap to expose bias magnitude; (3) Cap evaluated traces \textgreater{} 5,000 characters by chunked judging (3,000-char windows with 500-char overlap, per-axis arithmetic mean) --- DeepRare's 21k-char traces would otherwise hit context limits or get truncated.
+
+\textbf{Corollary --- the judge-family choice also flips a downstream hypothesis (H10, \Cref{sec-8-8}/\Cref{sec-8-10}).} On the expanded N=73-trace sample, the Spearman \ensuremath{\rho} between the judge's \emph{faithfulness} score and the agent's \emph{actual top-1 accuracy} is 0.098 under the Gemini (family) judge but 0.616 under the Claude (non-family) judge. That is: a same-family judge scores trace faithfulness almost independently of whether the diagnosis is correct (strong ``decoupling'', supporting pre-registered H10), whereas a cross-family judge sees faithfulness and correctness move together. Because the pre-registered H10 verdict (\ensuremath{\rho} \textless{} 0.5) \emph{changes sign of conclusion} depending on the judge, we report H10 as judge-dependent and exploratory rather than a headline claim --- and take it as the sharpest single illustration of why judge-family is a first-class confound in agent evaluation.
+
+\subsection{Status}\label{status}
+
+binned {[}1--2 / 3 / 4--5{]} on the 4-axis ordinal labels across 40
+trace-axis judgements (10 cases \ensuremath{\times} 4 agents) \ensuremath{\rightarrow} \ensuremath{\kappa} = 0.62.
+We disclose this in the \Cref{sec-7-5} main text rather than the appendix.
+We explicitly disclose N=10 in \Cref{tbl:main} footnote and label this an
+exploratory analysis (per the pre-registration of OSF pre-registration); the
+pre-registered headline claim is the dichotomy (judge-family bias
+exists) rather than any single point estimate.
+

@@ -1,0 +1,1 @@
+{"model_type": "google/gemini-3-flash-preview", "device": "cpu", "cache_dir": null, "max_tokens_per_day": 100000, "max_queries_per_minute": 30, "temperature": 0.1, "api_key": "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"}

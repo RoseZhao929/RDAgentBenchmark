@@ -1,0 +1,96 @@
+<!doctype html><meta charset="utf-8">
+<title>Rare-Disease Agent Benchmark — Leaderboard</title>
+<style>
+    body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:1100px;
+        margin:30px auto;padding:0 18px;color:#1f2937;line-height:1.5}
+    h1{font-size:1.6em;border-bottom:2px solid #1f2937;padding-bottom:.3em}
+    h2{margin-top:1.6em;font-size:1.15em;color:#374151}
+    table.grid{border-collapse:separate;border-spacing:0;width:100%;font-size:.85em;
+        box-shadow:0 1px 3px rgba(0,0,0,.07);margin-bottom:.8em}
+    table.grid th,table.grid td{padding:6px 8px;text-align:center;border-bottom:1px solid #e5e7eb}
+    table.grid th{background:#f9fafb;font-weight:600;color:#374151}
+    table.grid th.ag{text-align:left;background:#fff;color:#111}
+    table.grid td b{font-size:1em}
+    table.grid td .ci{color:#6b7280;font-size:.82em}
+    table.grid td .n{color:#9ca3af;font-size:.75em}
+    table.grid td.na{color:#9ca3af}
+    table.cost{border-collapse:collapse;margin:.6em 0}
+    table.cost td,table.cost th{padding:5px 12px;border:1px solid #d1d5db}
+    table.cost th{background:#f3f4f6}
+    .meta{color:#6b7280;font-size:.9em;margin-bottom:1em}
+    .nav a{margin-right:14px;color:#1d4ed8;text-decoration:none}
+    code{background:#f3f4f6;padding:1px 5px;border-radius:3px;font-size:.9em}
+    </style>
+<h1>Rare-Disease Agent Benchmark — Leaderboard</h1>
+<div class="meta">
+  Generated from <code>phase4a_summary.json</code> +
+  <code>phase4a_with_ci.json</code>. Per cell: <b>R@1 (variants)</b> with 95% bootstrap
+  CI; strict shown in tooltip. Gemini Flash & DS V4-Flash N≈500; DS V4-Pro & GPT-5 min
+  N=100 (reference columns). RareBench cap N=378. See
+  <code>paper_sections/A1_reproducibility_audit.md</code> and
+  <code>docs/baseline_repro/</code>.
+</div>
+<div class="nav">
+  <a href="#phenopacket_store">Phenopacket-Store</a> <a href="#rarearena_rds">RareArena RDS</a> <a href="#rarebench">RareBench HF</a> <a href="#mimic_diverse">MIMIC-IV diverse</a>
+  <a href="#cost">Cost</a>
+  <a href="phase4a_summary.json">summary.json</a>
+</div>
+<h2 id="phenopacket_store">Phenopacket-Store</h2>
+<table class="grid">
+<tr><th></th><th>Gemini Flash</th><th>DS V4-Pro</th><th>DS V4-Flash</th><th>GPT-5 min</th><th>offline</th><th>classical</th></tr>
+<tr><th class="ag">llm_control</th><td class="na">—</td><td title="strict 0.28, N=366" style="background:#ffc66b"><b>0.31</b><br><span class="n">N=366</span></td><td title="strict 0.27, N=643" style="background:#ffca73"><b>0.29</b><br><span class="n">N=643</span></td><td title="strict 0.26, N=99" style="background:#ffc66a"><b>0.31</b><br><span class="n">N=99</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">mdagents</th><td class="na">—</td><td title="strict 0.28, N=185" style="background:#ffc971"><b>0.29</b><br><span class="n">N=185</span></td><td title="strict 0.26, N=668" style="background:#ffcd78"><b>0.27</b><br><span class="n">N=668</span></td><td title="strict 0.23, N=100" style="background:#ffcc76"><b>0.28</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">medagents</th><td class="na">—</td><td title="strict 0.24, N=223" style="background:#ffce7b"><b>0.26</b><br><span class="n">N=223</span></td><td title="strict 0.24, N=517" style="background:#ffce7a"><b>0.27</b><br><span class="n">N=517</span></td><td title="strict 0.32, N=100" style="background:#ffbd59"><b>0.36</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">agentclinic</th><td class="na">—</td><td title="strict 0.15, N=137" style="background:#ffe09e"><b>0.17</b><br><span class="n">N=137</span></td><td title="strict 0.15, N=517" style="background:#ffe1a0"><b>0.16</b><br><span class="n">N=517</span></td><td title="strict 0.10, N=100" style="background:#ffebb4"><b>0.11</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">maidxo</th><td class="na">—</td><td title="strict 0.00, N=10" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=10</span></td><td title="strict 0.00, N=15" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=15</span></td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">deeprare</th><td class="na">—</td><td title="strict 0.22, N=68" style="background:#ffd68b"><b>0.22</b><br><span class="n">N=68</span></td><td title="strict 0.22, N=494" style="background:#ffd68b"><b>0.22</b><br><span class="n">N=494</span></td><td title="strict 0.22, N=96" style="background:#ffd78c"><b>0.22</b><br><span class="n">N=96</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">vc_rdagent</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td title="strict 0.44, N=642" style="background:#ffaf3c"><b>0.44</b><br><span class="n">N=642</span></td><td class="na">—</td></tr>
+<tr><th class="ag">lirical</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td title="strict 0.47, N=2946" style="background:#ffaa32"><b>0.47</b><br><span class="n">N=2946</span></td></tr>
+</table>
+<h2 id="rarearena_rds">RareArena RDS</h2>
+<table class="grid">
+<tr><th></th><th>Gemini Flash</th><th>DS V4-Pro</th><th>DS V4-Flash</th><th>GPT-5 min</th><th>offline</th><th>classical</th></tr>
+<tr><th class="ag">llm_control</th><td class="na">—</td><td title="strict 0.19, N=394" style="background:#ffd88e"><b>0.21</b><br><span class="n">N=394</span></td><td title="strict 0.22, N=695" style="background:#ffd486"><b>0.23</b><br><span class="n">N=695</span></td><td title="strict 0.21, N=98" style="background:#ffd68a"><b>0.22</b><br><span class="n">N=98</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">mdagents</th><td class="na">—</td><td title="strict 0.28, N=233" style="background:#ffc76d"><b>0.30</b><br><span class="n">N=233</span></td><td title="strict 0.24, N=756" style="background:#ffd180"><b>0.25</b><br><span class="n">N=756</span></td><td title="strict 0.22, N=100" style="background:#ffd588"><b>0.23</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">medagents</th><td class="na">—</td><td title="strict 0.25, N=202" style="background:#ffcf7c"><b>0.26</b><br><span class="n">N=202</span></td><td title="strict 0.26, N=527" style="background:#ffcc77"><b>0.28</b><br><span class="n">N=527</span></td><td title="strict 0.27, N=100" style="background:#ffc86e"><b>0.30</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">agentclinic</th><td class="na">—</td><td title="strict 0.13, N=149" style="background:#ffe09e"><b>0.17</b><br><span class="n">N=149</span></td><td title="strict 0.12, N=520" style="background:#ffe4a6"><b>0.15</b><br><span class="n">N=520</span></td><td title="strict 0.08, N=100" style="background:#ffeebb"><b>0.09</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">maidxo</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">deeprare</th><td class="na">—</td><td class="na">—</td><td title="strict 0.00, N=479" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=479</span></td><td title="strict 0.00, N=63" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=63</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">vc_rdagent</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">lirical</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+</table>
+<h2 id="rarebench">RareBench HF</h2>
+<table class="grid">
+<tr><th></th><th>Gemini Flash</th><th>DS V4-Pro</th><th>DS V4-Flash</th><th>GPT-5 min</th><th>offline</th><th>classical</th></tr>
+<tr><th class="ag">llm_control</th><td class="na">—</td><td title="strict 0.03, N=366" style="background:#fff9d0"><b>0.03</b><br><span class="n">N=366</span></td><td title="strict 0.05, N=1021" style="background:#fff5c8"><b>0.05</b><br><span class="n">N=1021</span></td><td title="strict 0.00, N=94" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=94</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">mdagents</th><td class="na">—</td><td title="strict 0.08, N=136" style="background:#ffeebb"><b>0.09</b><br><span class="n">N=136</span></td><td title="strict 0.05, N=1098" style="background:#fff5c9"><b>0.05</b><br><span class="n">N=1098</span></td><td title="strict 0.00, N=100" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">medagents</th><td class="na">—</td><td title="strict 0.00, N=210" style="background:#fffeda"><b>0.00</b><br><span class="n">N=210</span></td><td title="strict 0.05, N=783" style="background:#fff5c9"><b>0.05</b><br><span class="n">N=783</span></td><td title="strict 0.01, N=100" style="background:#fffdd8"><b>0.01</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">agentclinic</th><td class="na">—</td><td title="strict 0.00, N=140" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=140</span></td><td title="strict 0.02, N=860" style="background:#fffbd5"><b>0.02</b><br><span class="n">N=860</span></td><td title="strict 0.00, N=100" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">maidxo</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">deeprare</th><td class="na">—</td><td class="na">—</td><td title="strict 0.29, N=618" style="background:#ffca73"><b>0.29</b><br><span class="n">N=618</span></td><td title="strict 0.21, N=98" style="background:#ffd88e"><b>0.21</b><br><span class="n">N=98</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">vc_rdagent</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td title="strict 0.28, N=1122" style="background:#ffcc77"><b>0.28</b><br><span class="n">N=1122</span></td><td class="na">—</td></tr>
+<tr><th class="ag">lirical</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td title="strict 0.24, N=1122" style="background:#ffd486"><b>0.24</b><br><span class="n">N=1122</span></td></tr>
+</table>
+<h2 id="mimic_diverse">MIMIC-IV diverse</h2>
+<table class="grid">
+<tr><th></th><th>Gemini Flash</th><th>DS V4-Pro</th><th>DS V4-Flash</th><th>GPT-5 min</th><th>offline</th><th>classical</th></tr>
+<tr><th class="ag">llm_control</th><td class="na">—</td><td title="strict 0.25, N=395" style="background:#ffce7a"><b>0.27</b><br><span class="n">N=395</span></td><td title="strict 0.26, N=833" style="background:#ffcd78"><b>0.27</b><br><span class="n">N=833</span></td><td title="strict 0.23, N=94" style="background:#ffd486"><b>0.23</b><br><span class="n">N=94</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">mdagents</th><td class="na">—</td><td title="strict 0.19, N=221" style="background:#ffd88e"><b>0.21</b><br><span class="n">N=221</span></td><td title="strict 0.23, N=942" style="background:#ffd282"><b>0.25</b><br><span class="n">N=942</span></td><td title="strict 0.22, N=100" style="background:#ffd78c"><b>0.22</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">medagents</th><td class="na">—</td><td title="strict 0.14, N=210" style="background:#ffe4a6"><b>0.15</b><br><span class="n">N=210</span></td><td title="strict 0.18, N=783" style="background:#ffdb95"><b>0.19</b><br><span class="n">N=783</span></td><td title="strict 0.26, N=100" style="background:#ffcf7d"><b>0.26</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">agentclinic</th><td class="na">—</td><td title="strict 0.15, N=142" style="background:#ffe1a1"><b>0.16</b><br><span class="n">N=142</span></td><td title="strict 0.22, N=903" style="background:#ffd07f"><b>0.25</b><br><span class="n">N=903</span></td><td title="strict 0.17, N=100" style="background:#ffd78c"><b>0.22</b><br><span class="n">N=100</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">maidxo</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">deeprare</th><td class="na">—</td><td class="na">—</td><td title="strict 0.00, N=218" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=218</span></td><td title="strict 0.00, N=54" style="background:#ffffdc"><b>0.00</b><br><span class="n">N=54</span></td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">vc_rdagent</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+<tr><th class="ag">lirical</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td></tr>
+</table>
+<h2 id="cost">Cost summary</h2>
+<table class="cost">
+  <tr><th>Backbone</th><th>Predictions</th><th>Total $</th><th>$ / pred</th></tr>
+  <tr><td>google_gemini-3-flash-preview-</td><td>23,323</td><td>$74.92</td><td>$0.00321</td></tr><tr><td>GPT-5 min</td><td>1,896</td><td>$25.17</td><td>$0.01327</td></tr><tr><td>DS V4-Flash</td><td>13,890</td><td>$5.37</td><td>$0.00039</td></tr><tr><td>DS V4-Pro</td><td>3,787</td><td>$3.95</td><td>$0.00104</td></tr><tr><td>classical</td><td>4,068</td><td>$0.00</td><td>$0.00000</td></tr><tr><td>offline</td><td>1,764</td><td>$0.00</td><td>$0.00000</td></tr>
+  <tr><th>TOTAL</th><th>48,728</th><th>$109.41</th><th>$0.00225</th></tr>
+</table>
+<p class="meta">
+  Findings (FWE-corrected Holm-Bonferroni, §8.8): H1 (classical &gt; LLM on
+  super-rare) and H8 (phenotype-density inverted-U) survive α=0.05; full
+  hypothesis table in <code>data/round2/ablations/holm_H_family.md</code>.
+</p>

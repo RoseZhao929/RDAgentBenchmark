@@ -1,0 +1,43 @@
+\section{Conclusion}\label{sec-10}
+
+We introduced a multi-pillar agent-native benchmark for rare disease
+diagnosis spanning five capability pillars, four data layers, eight agent
+systems, three LLM backbones, and one classical baseline, with all
+hypotheses and ablations pre-registered. The benchmark surfaces five
+findings with concrete reviewer-defensible numbers. First,
+classical/offline approaches (LIRICAL Bayesian, VC-RDAgent IC+Poincar\'e)
+remain competitive with --- and on HPO-input datasets \emph{exceed} --- every
+scaffolded LLM agent at R@1 (0.46 vs best-LLM 0.33, a 13 pp gap),
+despite consuming no LLM tokens. This is the most consequential single
+result, and motivates our classical baseline column as a permanent
+part of any future rare-disease agent leaderboard. Second,
+multi-agent scaffolding helps only marginally (\ensuremath{\approx}2--5 pp R@1, within
+overlapping CIs) on free-text input and regresses on phenotype-list
+input when the scaffold's design (OSCE dialogue, panel orchestration)
+is mismatched to the input modality. Third, frontier-cheap LLMs
+(DeepSeek V4-Flash at \$0.11/\$0.22 per 1M) are \textasciitilde10\ensuremath{\times} cheaper than Gemini
+Flash but trade off accuracy (\ensuremath{-}2 to \ensuremath{-}16 pp R@1, worst on free-text) ---
+the \emph{cost-efficient}, not quality-equivalent, choice for rare-disease
+deployment. Fourth, GPT-5 with \texttt{reasoning\_effort=minimal} is the
+costliest backbone with no consistent accuracy edge (best on MedAgents,
+\ensuremath{-}14 pp on AgentClinic dialogue), demonstrating that frontier reasoning
+models are brittle when their core mechanism is disabled. Fifth, faithfulness ranks decouple
+from accuracy ranks (Spearman \ensuremath{\rho} \ensuremath{\approx} 0.36, 95\% CI {[}0.25, 0.47{]}),
+supporting the claim that accuracy-only evaluation undersells the
+risk profile of rare-disease AI.
+
+We frame these findings as retrospective decision support evaluation, not autonomous diagnosis. No clinical deployment claims are made; the
+benchmark, harness, adapter shims, per-cell receipts, and leaderboard
+are released to enable independent replication and to ratchet up the
+shared evaluation standard in this rapidly-growing area.
+
+\textbf{Limitations} are detailed in \Cref{sec-9}; the principal three are deferred
+Pillar 4 (family-aware) reporting, single-language English evaluation,
+and the LLM-generated silver-gold reference for Pillar 1 (mitigated by
+the in-progress 200-case physician-validated holdout).
+
+\textbf{Reproducibility}: all 7,581 Phase 4a predictions ship with per-call
+OpenRouter request-ids, exact subprocess invocation commands per
+adapter, and a Docker image hash. The OSF pre-registration document
+(frozen prior to holdout unblinding) is referenced in \Cref{sec-5-4}.
+

@@ -1,0 +1,29 @@
+# 超大数据集（19G，完全不上传）
+data/
+tmp/
+# 模型权重
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.pt
+*.onnx
+# 日志输出
+logs/
+output/
+outputs/
+# 虚拟环境
+venv/
+env/
+.venv/
+# 缓存
+__pycache__/
+*.pyc
+*.cache
+# 压缩包
+*.zip
+*.tar
+*.tar.gz
+*.rar
+# 运行缓存、中间结果
+agent_workspace/

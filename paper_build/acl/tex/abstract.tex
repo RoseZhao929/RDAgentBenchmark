@@ -1,0 +1,30 @@
+\begin{abstract}
+\section{Abstract}\label{sec-1}
+
+Rare disease diagnostic AI agents have proliferated (8+ systems in
+2024-2026), yet no shared benchmark exists; each agent paper evaluates
+on an ad-hoc subset, making cross-system claims unverifiable. We
+introduce RareAgentBench, an agent-native benchmark spanning five capability pillars (phenotype extraction, phenotype-only DDx, genotype-aware DDx,
+family-aware DDx, clinical-communication faithfulness) on a layered
+dataset (Phenopacket-Store \emph{n}=10,051; RareBench HF 1,122; RareArena RDS
+72,661; MIMIC-IV rare-disease slice \emph{n}=956; post-cutoff PMC OA holdout
+\emph{n}=200). We evaluate 8 agent systems (DeepRare, MDAgents, MedAgents,
+AgentClinic, MAI-DxO, RDMA, VC-RDAgent, LIRICAL) against 3 LLM no-scaffolding controls and one classical baseline, with all
+hypotheses (H1--H11) and ablations (A1--A12) pre-registered.
+
+\textbf{Key findings}: (1) classical/offline baselines (LIRICAL 0.46,
+VC-RDAgent 0.44 R@1) exceed every scaffolded LLM agent on HPO-input datasets (best LLM cell 0.33 on Phenopacket-Store, a 13 pp gap); (2)
+multi-agent scaffolding gives only a small, dataset-dependent gain
+(\ensuremath{\approx}2--5 pp R@1 over single-LLM controls), not the uniform boost prior
+work implies; (3) DeepSeek V4-Flash is \textasciitilde10\ensuremath{\times} cheaper than Gemini Flash
+but trades off accuracy (\ensuremath{-}2 to \ensuremath{-}9 pp on structured input, \ensuremath{-}11 to
+\ensuremath{-}16 pp on free-text) --- cost-efficient, not quality-equivalent; (4)
+GPT-5 with \texttt{reasoning\_effort=minimal} carries the highest cost (\textasciitilde34\ensuremath{\times}
+V4-Flash) without a consistent accuracy edge --- competitive on some
+scaffolds yet collapsing on dialogue (\ensuremath{-}14 pp on AgentClinic),
+illustrating frontier-reasoning models' brittleness under reasoning-disabled regimes; (5) an ORPHA-variant evaluation channel
+adds \textasciitilde20 pp R@1 universally --- \emph{not} DeepRare-specific. We release
+the harness, canonical case schema, per-agent adapter shims, full
+per-cell receipts, and a static-site leaderboard.
+
+\end{abstract}

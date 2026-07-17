@@ -1,0 +1,872 @@
+{
+  "mimic_diverse|agentclinic|deepseek_deepseek-v4-flash": {
+    "ok": 903,
+    "err": 48,
+    "h1s": 203,
+    "h1v": 229,
+    "h5s": 335,
+    "h5v": 367,
+    "sum_usd": 0.1953023520000002,
+    "sum_lat_ms": 87069303
+  },
+  "mimic_diverse|agentclinic|deepseek_deepseek-v4-pro": {
+    "ok": 142,
+    "err": 3,
+    "h1s": 21,
+    "h1v": 23,
+    "h5s": 41,
+    "h5v": 46,
+    "sum_usd": 0.11289598500000002,
+    "sum_lat_ms": 14491566
+  },
+  "mimic_diverse|agentclinic|google_gemini-3-flash-preview-": {
+    "ok": 956,
+    "err": 0,
+    "h1s": 159,
+    "h1v": 170,
+    "h5s": 359,
+    "h5v": 377,
+    "sum_usd": 2.363355499999996,
+    "sum_lat_ms": 35915613
+  },
+  "mimic_diverse|agentclinic|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 17,
+    "h1v": 22,
+    "h5s": 37,
+    "h5v": 41,
+    "sum_usd": 0.8115074999999996,
+    "sum_lat_ms": 4888391
+  },
+  "mimic_diverse|deeprare|deepseek_deepseek-v4-flash": {
+    "ok": 218,
+    "err": 6,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 0.15351067200000004,
+    "sum_lat_ms": 64521550
+  },
+  "mimic_diverse|deeprare|google_gemini-3-flash-preview-": {
+    "ok": 495,
+    "err": 5,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 2,
+    "h5v": 2,
+    "sum_usd": 5.9042010000000005,
+    "sum_lat_ms": 64324485
+  },
+  "mimic_diverse|deeprare|openai_gpt-5": {
+    "ok": 54,
+    "err": 46,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 1.824935,
+    "sum_lat_ms": 18298940
+  },
+  "mimic_diverse|llm_control|deepseek_deepseek-v4-flash": {
+    "ok": 833,
+    "err": 123,
+    "h1s": 214,
+    "h1v": 228,
+    "h5s": 276,
+    "h5v": 301,
+    "sum_usd": 0.6150036479999992,
+    "sum_lat_ms": 35131552
+  },
+  "mimic_diverse|llm_control|deepseek_deepseek-v4-pro": {
+    "ok": 395,
+    "err": 7,
+    "h1s": 97,
+    "h1v": 106,
+    "h5s": 132,
+    "h5v": 144,
+    "sum_usd": 0.2754859350000004,
+    "sum_lat_ms": 15567922
+  },
+  "mimic_diverse|llm_control|google_gemini-3-flash-preview-": {
+    "ok": 956,
+    "err": 0,
+    "h1s": 289,
+    "h1v": 307,
+    "h5s": 357,
+    "h5v": 383,
+    "sum_usd": 0.6503375000000005,
+    "sum_lat_ms": 3251540
+  },
+  "mimic_diverse|llm_control|openai_gpt-5": {
+    "ok": 94,
+    "err": 6,
+    "h1s": 22,
+    "h1v": 22,
+    "h5s": 29,
+    "h5v": 31,
+    "sum_usd": 0.23070874999999996,
+    "sum_lat_ms": 542751
+  },
+  "mimic_diverse|maidxo|google_gemini-3-flash-preview-": {
+    "ok": 75,
+    "err": 25,
+    "h1s": 8,
+    "h1v": 8,
+    "h5s": 8,
+    "h5v": 8,
+    "sum_usd": 0.264173,
+    "sum_lat_ms": 16388848
+  },
+  "mimic_diverse|mdagents|deepseek_deepseek-v4-flash": {
+    "ok": 942,
+    "err": 14,
+    "h1s": 219,
+    "h1v": 231,
+    "h5s": 316,
+    "h5v": 338,
+    "sum_usd": 0.058781296,
+    "sum_lat_ms": 51954613
+  },
+  "mimic_diverse|mdagents|deepseek_deepseek-v4-pro": {
+    "ok": 221,
+    "err": 4,
+    "h1s": 43,
+    "h1v": 47,
+    "h5s": 69,
+    "h5v": 75,
+    "sum_usd": 0.07703762999999997,
+    "sum_lat_ms": 15787823
+  },
+  "mimic_diverse|mdagents|google_gemini-3-flash-preview-": {
+    "ok": 956,
+    "err": 0,
+    "h1s": 347,
+    "h1v": 366,
+    "h5s": 401,
+    "h5v": 420,
+    "sum_usd": 0.8291444999999996,
+    "sum_lat_ms": 5505489
+  },
+  "mimic_diverse|mdagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 22,
+    "h1v": 22,
+    "h5s": 32,
+    "h5v": 33,
+    "sum_usd": 0.2518275000000001,
+    "sum_lat_ms": 949111
+  },
+  "mimic_diverse|medagents|deepseek_deepseek-v4-flash": {
+    "ok": 783,
+    "err": 173,
+    "h1s": 142,
+    "h1v": 151,
+    "h5s": 201,
+    "h5v": 217,
+    "sum_usd": 0.2946532959999999,
+    "sum_lat_ms": 83755373
+  },
+  "mimic_diverse|medagents|deepseek_deepseek-v4-pro": {
+    "ok": 210,
+    "err": 10,
+    "h1s": 29,
+    "h1v": 31,
+    "h5s": 51,
+    "h5v": 57,
+    "sum_usd": 0.3198698550000001,
+    "sum_lat_ms": 12835440
+  },
+  "mimic_diverse|medagents|google_gemini-3-flash-preview-": {
+    "ok": 956,
+    "err": 0,
+    "h1s": 310,
+    "h1v": 331,
+    "h5s": 375,
+    "h5v": 404,
+    "sum_usd": 4.071861999999999,
+    "sum_lat_ms": 58716428
+  },
+  "mimic_diverse|medagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 26,
+    "h1v": 26,
+    "h5s": 32,
+    "h5v": 35,
+    "sum_usd": 1.1886337500000002,
+    "sum_lat_ms": 2816619
+  },
+  "phenopacket_store|agentclinic|deepseek_deepseek-v4-flash": {
+    "ok": 517,
+    "err": 17,
+    "h1s": 78,
+    "h1v": 85,
+    "h5s": 163,
+    "h5v": 173,
+    "sum_usd": 0.11550123200000002,
+    "sum_lat_ms": 48709872
+  },
+  "phenopacket_store|agentclinic|deepseek_deepseek-v4-pro": {
+    "ok": 137,
+    "err": 7,
+    "h1s": 21,
+    "h1v": 23,
+    "h5s": 42,
+    "h5v": 46,
+    "sum_usd": 0.15317481000000005,
+    "sum_lat_ms": 16263002
+  },
+  "phenopacket_store|agentclinic|google_gemini-3-flash-preview-": {
+    "ok": 867,
+    "err": 0,
+    "h1s": 188,
+    "h1v": 199,
+    "h5s": 300,
+    "h5v": 318,
+    "sum_usd": 2.105434499999999,
+    "sum_lat_ms": 30374952
+  },
+  "phenopacket_store|agentclinic|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 10,
+    "h1v": 11,
+    "h5s": 33,
+    "h5v": 35,
+    "sum_usd": 0.8522475000000002,
+    "sum_lat_ms": 5281449
+  },
+  "phenopacket_store|deeprare|deepseek_deepseek-v4-flash": {
+    "ok": 494,
+    "err": 6,
+    "h1s": 110,
+    "h1v": 110,
+    "h5s": 147,
+    "h5v": 147,
+    "sum_usd": 0.29282545600000004,
+    "sum_lat_ms": 145846621
+  },
+  "phenopacket_store|deeprare|deepseek_deepseek-v4-pro": {
+    "ok": 68,
+    "err": 9,
+    "h1s": 15,
+    "h1v": 15,
+    "h5s": 19,
+    "h5v": 19,
+    "sum_usd": 0.20912016,
+    "sum_lat_ms": 36055362
+  },
+  "phenopacket_store|deeprare|google_gemini-3-flash-preview-": {
+    "ok": 493,
+    "err": 7,
+    "h1s": 137,
+    "h1v": 137,
+    "h5s": 176,
+    "h5v": 176,
+    "sum_usd": 6.920685999999988,
+    "sum_lat_ms": 87928037
+  },
+  "phenopacket_store|deeprare|openai_gpt-5": {
+    "ok": 96,
+    "err": 4,
+    "h1s": 21,
+    "h1v": 21,
+    "h5s": 23,
+    "h5v": 23,
+    "sum_usd": 4.832099999999999,
+    "sum_lat_ms": 21867762
+  },
+  "phenopacket_store|lirical|lirical-2.4.0": {
+    "ok": 2946,
+    "err": 0,
+    "h1s": 1377,
+    "h1v": 1377,
+    "h5s": 1822,
+    "h5v": 1822,
+    "sum_usd": 0.0,
+    "sum_lat_ms": 15543664
+  },
+  "phenopacket_store|llm_control|deepseek_deepseek-v4-flash": {
+    "ok": 643,
+    "err": 38,
+    "h1s": 174,
+    "h1v": 185,
+    "h5s": 226,
+    "h5v": 243,
+    "sum_usd": 0.2251339999999999,
+    "sum_lat_ms": 15422081
+  },
+  "phenopacket_store|llm_control|deepseek_deepseek-v4-pro": {
+    "ok": 366,
+    "err": 9,
+    "h1s": 104,
+    "h1v": 113,
+    "h5s": 131,
+    "h5v": 142,
+    "sum_usd": 0.27156658499999997,
+    "sum_lat_ms": 13250501
+  },
+  "phenopacket_store|llm_control|google_gemini-3-flash-preview-": {
+    "ok": 4589,
+    "err": 1,
+    "h1s": 1177,
+    "h1v": 1247,
+    "h5s": 1687,
+    "h5v": 1792,
+    "sum_usd": 4.094507000000002,
+    "sum_lat_ms": 14581432
+  },
+  "phenopacket_store|llm_control|openai_gpt-5": {
+    "ok": 99,
+    "err": 1,
+    "h1s": 26,
+    "h1v": 31,
+    "h5s": 32,
+    "h5v": 39,
+    "sum_usd": 0.32317,
+    "sum_lat_ms": 641348
+  },
+  "phenopacket_store|maidxo|deepseek_deepseek-v4-flash": {
+    "ok": 15,
+    "err": 63,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 0.0,
+    "sum_lat_ms": 6575453
+  },
+  "phenopacket_store|maidxo|deepseek_deepseek-v4-pro": {
+    "ok": 10,
+    "err": 61,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 0.009992385,
+    "sum_lat_ms": 4720858
+  },
+  "phenopacket_store|maidxo|google_gemini-3-flash-preview-": {
+    "ok": 81,
+    "err": 19,
+    "h1s": 2,
+    "h1v": 2,
+    "h5s": 2,
+    "h5v": 2,
+    "sum_usd": 0.315066,
+    "sum_lat_ms": 19329813
+  },
+  "phenopacket_store|mdagents|deepseek_deepseek-v4-flash": {
+    "ok": 668,
+    "err": 3,
+    "h1s": 173,
+    "h1v": 183,
+    "h5s": 209,
+    "h5v": 226,
+    "sum_usd": 0.04729110400000008,
+    "sum_lat_ms": 19411192
+  },
+  "phenopacket_store|mdagents|deepseek_deepseek-v4-pro": {
+    "ok": 185,
+    "err": 5,
+    "h1s": 51,
+    "h1v": 54,
+    "h5s": 70,
+    "h5v": 74,
+    "sum_usd": 0.06765033,
+    "sum_lat_ms": 20766827
+  },
+  "phenopacket_store|mdagents|google_gemini-3-flash-preview-": {
+    "ok": 2876,
+    "err": 1,
+    "h1s": 722,
+    "h1v": 762,
+    "h5s": 1067,
+    "h5v": 1130,
+    "sum_usd": 2.794538999999998,
+    "sum_lat_ms": 16032487
+  },
+  "phenopacket_store|mdagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 23,
+    "h1v": 28,
+    "h5s": 34,
+    "h5v": 41,
+    "sum_usd": 0.32224249999999993,
+    "sum_lat_ms": 923565
+  },
+  "phenopacket_store|medagents|deepseek_deepseek-v4-flash": {
+    "ok": 517,
+    "err": 69,
+    "h1s": 126,
+    "h1v": 138,
+    "h5s": 177,
+    "h5v": 195,
+    "sum_usd": 0.29018976000000024,
+    "sum_lat_ms": 29926242
+  },
+  "phenopacket_store|medagents|deepseek_deepseek-v4-pro": {
+    "ok": 223,
+    "err": 5,
+    "h1s": 53,
+    "h1v": 59,
+    "h5s": 70,
+    "h5v": 79,
+    "sum_usd": 0.4669964249999999,
+    "sum_lat_ms": 13311268
+  },
+  "phenopacket_store|medagents|google_gemini-3-flash-preview-": {
+    "ok": 1421,
+    "err": 0,
+    "h1s": 422,
+    "h1v": 442,
+    "h5s": 559,
+    "h5v": 589,
+    "sum_usd": 7.014328000000002,
+    "sum_lat_ms": 21101184
+  },
+  "phenopacket_store|medagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 32,
+    "h1v": 36,
+    "h5s": 37,
+    "h5v": 43,
+    "sum_usd": 1.4577524999999998,
+    "sum_lat_ms": 2921522
+  },
+  "phenopacket_store|vc_rdagent|vc_rdagent-offline-v1": {
+    "ok": 642,
+    "err": 0,
+    "h1s": 281,
+    "h1v": 281,
+    "h5s": 368,
+    "h5v": 368,
+    "sum_usd": 0.0,
+    "sum_lat_ms": 50930706
+  },
+  "rarearena_rds|agentclinic|deepseek_deepseek-v4-flash": {
+    "ok": 520,
+    "err": 17,
+    "h1s": 64,
+    "h1v": 76,
+    "h5s": 162,
+    "h5v": 173,
+    "sum_usd": 0.13364108800000005,
+    "sum_lat_ms": 40569442
+  },
+  "rarearena_rds|agentclinic|deepseek_deepseek-v4-pro": {
+    "ok": 149,
+    "err": 6,
+    "h1s": 20,
+    "h1v": 25,
+    "h5s": 46,
+    "h5v": 53,
+    "sum_usd": 0.19383295500000003,
+    "sum_lat_ms": 18909210
+  },
+  "rarearena_rds|agentclinic|google_gemini-3-flash-preview-": {
+    "ok": 491,
+    "err": 8,
+    "h1s": 61,
+    "h1v": 67,
+    "h5s": 129,
+    "h5v": 139,
+    "sum_usd": 1.3352999999999997,
+    "sum_lat_ms": 33880224
+  },
+  "rarearena_rds|agentclinic|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 8,
+    "h1v": 9,
+    "h5s": 38,
+    "h5v": 41,
+    "sum_usd": 0.8565075000000001,
+    "sum_lat_ms": 5516367
+  },
+  "rarearena_rds|deeprare|deepseek_deepseek-v4-flash": {
+    "ok": 479,
+    "err": 21,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 0.36319684800000035,
+    "sum_lat_ms": 148190015
+  },
+  "rarearena_rds|deeprare|google_gemini-3-flash-preview-": {
+    "ok": 500,
+    "err": 0,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 1,
+    "h5v": 1,
+    "sum_usd": 6.255268500000005,
+    "sum_lat_ms": 54330773
+  },
+  "rarearena_rds|deeprare|openai_gpt-5": {
+    "ok": 63,
+    "err": 37,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 0,
+    "h5v": 0,
+    "sum_usd": 2.1244337499999997,
+    "sum_lat_ms": 11853688
+  },
+  "rarearena_rds|llm_control|deepseek_deepseek-v4-flash": {
+    "ok": 695,
+    "err": 36,
+    "h1s": 152,
+    "h1v": 163,
+    "h5s": 233,
+    "h5v": 255,
+    "sum_usd": 0.2973244960000002,
+    "sum_lat_ms": 18177175
+  },
+  "rarearena_rds|llm_control|deepseek_deepseek-v4-pro": {
+    "ok": 394,
+    "err": 8,
+    "h1s": 76,
+    "h1v": 84,
+    "h5s": 123,
+    "h5v": 133,
+    "sum_usd": 0.37763002500000015,
+    "sum_lat_ms": 16113243
+  },
+  "rarearena_rds|llm_control|google_gemini-3-flash-preview-": {
+    "ok": 500,
+    "err": 0,
+    "h1s": 142,
+    "h1v": 149,
+    "h5s": 193,
+    "h5v": 207,
+    "sum_usd": 0.44534250000000036,
+    "sum_lat_ms": 1832596
+  },
+  "rarearena_rds|llm_control|openai_gpt-5": {
+    "ok": 98,
+    "err": 2,
+    "h1s": 21,
+    "h1v": 22,
+    "h5s": 33,
+    "h5v": 35,
+    "sum_usd": 0.29160875,
+    "sum_lat_ms": 683135
+  },
+  "rarearena_rds|maidxo|google_gemini-3-flash-preview-": {
+    "ok": 88,
+    "err": 12,
+    "h1s": 4,
+    "h1v": 6,
+    "h5s": 4,
+    "h5v": 6,
+    "sum_usd": 0.3329160000000001,
+    "sum_lat_ms": 22512087
+  },
+  "rarearena_rds|mdagents|deepseek_deepseek-v4-flash": {
+    "ok": 756,
+    "err": 5,
+    "h1s": 179,
+    "h1v": 191,
+    "h5s": 262,
+    "h5v": 287,
+    "sum_usd": 0.07410345599999998,
+    "sum_lat_ms": 22635454
+  },
+  "rarearena_rds|mdagents|deepseek_deepseek-v4-pro": {
+    "ok": 233,
+    "err": 3,
+    "h1s": 65,
+    "h1v": 71,
+    "h5s": 97,
+    "h5v": 105,
+    "sum_usd": 0.09281160000000001,
+    "sum_lat_ms": 18946160
+  },
+  "rarearena_rds|mdagents|google_gemini-3-flash-preview-": {
+    "ok": 500,
+    "err": 0,
+    "h1s": 132,
+    "h1v": 138,
+    "h5s": 199,
+    "h5v": 215,
+    "sum_usd": 0.5400045,
+    "sum_lat_ms": 3127453
+  },
+  "rarearena_rds|mdagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 22,
+    "h1v": 23,
+    "h5s": 37,
+    "h5v": 39,
+    "sum_usd": 0.32580375000000006,
+    "sum_lat_ms": 1049896
+  },
+  "rarearena_rds|medagents|deepseek_deepseek-v4-flash": {
+    "ok": 527,
+    "err": 72,
+    "h1s": 138,
+    "h1v": 145,
+    "h5s": 203,
+    "h5v": 219,
+    "sum_usd": 0.332993024,
+    "sum_lat_ms": 60306535
+  },
+  "rarearena_rds|medagents|deepseek_deepseek-v4-pro": {
+    "ok": 202,
+    "err": 11,
+    "h1s": 51,
+    "h1v": 53,
+    "h5s": 77,
+    "h5v": 81,
+    "sum_usd": 0.49243609499999996,
+    "sum_lat_ms": 13184047
+  },
+  "rarearena_rds|medagents|google_gemini-3-flash-preview-": {
+    "ok": 500,
+    "err": 0,
+    "h1s": 154,
+    "h1v": 160,
+    "h5s": 213,
+    "h5v": 228,
+    "sum_usd": 2.723168500000002,
+    "sum_lat_ms": 8050623
+  },
+  "rarearena_rds|medagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 27,
+    "h1v": 30,
+    "h5s": 38,
+    "h5v": 42,
+    "sum_usd": 1.55777125,
+    "sum_lat_ms": 3156980
+  },
+  "rarebench|agentclinic|deepseek_deepseek-v4-flash": {
+    "ok": 860,
+    "err": 60,
+    "h1s": 14,
+    "h1v": 15,
+    "h5s": 31,
+    "h5v": 35,
+    "sum_usd": 0.19135871999999965,
+    "sum_lat_ms": 84411109
+  },
+  "rarebench|agentclinic|deepseek_deepseek-v4-pro": {
+    "ok": 140,
+    "err": 10,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 2,
+    "h5v": 2,
+    "sum_usd": 0.12372008999999999,
+    "sum_lat_ms": 14529788
+  },
+  "rarebench|agentclinic|google_gemini-3-flash-preview-": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 14,
+    "h1v": 15,
+    "h5s": 42,
+    "h5v": 45,
+    "sum_usd": 2.5228289999999998,
+    "sum_lat_ms": 37320315
+  },
+  "rarebench|agentclinic|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 1,
+    "h5v": 1,
+    "sum_usd": 0.9173025,
+    "sum_lat_ms": 5707860
+  },
+  "rarebench|deeprare|deepseek_deepseek-v4-flash": {
+    "ok": 618,
+    "err": 12,
+    "h1s": 178,
+    "h1v": 178,
+    "h5s": 312,
+    "h5v": 312,
+    "sum_usd": 0.5059458880000002,
+    "sum_lat_ms": 217241615
+  },
+  "rarebench|deeprare|google_gemini-3-flash-preview-": {
+    "ok": 953,
+    "err": 1,
+    "h1s": 283,
+    "h1v": 283,
+    "h5s": 473,
+    "h5v": 473,
+    "sum_usd": 14.411560999999999,
+    "sum_lat_ms": 274719737
+  },
+  "rarebench|deeprare|openai_gpt-5": {
+    "ok": 98,
+    "err": 2,
+    "h1s": 21,
+    "h1v": 21,
+    "h5s": 31,
+    "h5v": 31,
+    "sum_usd": 5.019141249999999,
+    "sum_lat_ms": 30971522
+  },
+  "rarebench|lirical|lirical-2.4.0": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 264,
+    "h1v": 264,
+    "h5s": 529,
+    "h5v": 529,
+    "sum_usd": 0.0,
+    "sum_lat_ms": 4272281
+  },
+  "rarebench|llm_control|deepseek_deepseek-v4-flash": {
+    "ok": 1021,
+    "err": 101,
+    "h1s": 55,
+    "h1v": 55,
+    "h5s": 115,
+    "h5v": 126,
+    "sum_usd": 0.7775384960000001,
+    "sum_lat_ms": 55572411
+  },
+  "rarebench|llm_control|deepseek_deepseek-v4-pro": {
+    "ok": 366,
+    "err": 12,
+    "h1s": 12,
+    "h1v": 12,
+    "h5s": 18,
+    "h5v": 18,
+    "sum_usd": 0.32735403000000063,
+    "sum_lat_ms": 13504770
+  },
+  "rarebench|llm_control|google_gemini-3-flash-preview-": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 20,
+    "h1v": 26,
+    "h5s": 49,
+    "h5v": 63,
+    "sum_usd": 0.9135830000000003,
+    "sum_lat_ms": 3716239
+  },
+  "rarebench|llm_control|openai_gpt-5": {
+    "ok": 94,
+    "err": 6,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 1,
+    "h5v": 1,
+    "sum_usd": 0.29393249999999993,
+    "sum_lat_ms": 682923
+  },
+  "rarebench|maidxo|google_gemini-3-flash-preview-": {
+    "ok": 582,
+    "err": 116,
+    "h1s": 1,
+    "h1v": 1,
+    "h5s": 1,
+    "h5v": 1,
+    "sum_usd": 1.3547495000000012,
+    "sum_lat_ms": 107934206
+  },
+  "rarebench|mdagents|deepseek_deepseek-v4-flash": {
+    "ok": 1098,
+    "err": 24,
+    "h1s": 52,
+    "h1v": 55,
+    "h5s": 104,
+    "h5v": 121,
+    "sum_usd": 0.06700030400000007,
+    "sum_lat_ms": 64391408
+  },
+  "rarebench|mdagents|deepseek_deepseek-v4-pro": {
+    "ok": 136,
+    "err": 23,
+    "h1s": 11,
+    "h1v": 12,
+    "h5s": 25,
+    "h5v": 26,
+    "sum_usd": 0.032080815,
+    "sum_lat_ms": 16543587
+  },
+  "rarebench|mdagents|google_gemini-3-flash-preview-": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 109,
+    "h1v": 115,
+    "h5s": 227,
+    "h5v": 240,
+    "sum_usd": 1.5195590000000005,
+    "sum_lat_ms": 7778629
+  },
+  "rarebench|mdagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 0,
+    "h1v": 0,
+    "h5s": 1,
+    "h5v": 1,
+    "sum_usd": 0.29725250000000003,
+    "sum_lat_ms": 1042409
+  },
+  "rarebench|medagents|deepseek_deepseek-v4-flash": {
+    "ok": 783,
+    "err": 339,
+    "h1s": 38,
+    "h1v": 39,
+    "h5s": 88,
+    "h5v": 96,
+    "sum_usd": 0.33655999999999964,
+    "sum_lat_ms": 111610158
+  },
+  "rarebench|medagents|deepseek_deepseek-v4-pro": {
+    "ok": 210,
+    "err": 12,
+    "h1s": 1,
+    "h1v": 1,
+    "h5s": 9,
+    "h5v": 9,
+    "sum_usd": 0.3499862100000002,
+    "sum_lat_ms": 12394618
+  },
+  "rarebench|medagents|google_gemini-3-flash-preview-": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 51,
+    "h1v": 59,
+    "h5s": 117,
+    "h5v": 137,
+    "sum_usd": 5.2366170000000105,
+    "sum_lat_ms": 17045163
+  },
+  "rarebench|medagents|openai_gpt-5": {
+    "ok": 100,
+    "err": 0,
+    "h1s": 1,
+    "h1v": 1,
+    "h5s": 1,
+    "h5v": 2,
+    "sum_usd": 1.3872987500000002,
+    "sum_lat_ms": 3527874
+  },
+  "rarebench|vc_rdagent|vc_rdagent-offline-v1": {
+    "ok": 1122,
+    "err": 0,
+    "h1s": 309,
+    "h1v": 309,
+    "h5s": 507,
+    "h5v": 507,
+    "sum_usd": 0.0,
+    "sum_lat_ms": 84637321
+  }
+}

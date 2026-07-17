@@ -1,0 +1,19 @@
+# Minimal RDMA smoke-test requirements (Python 3.13 friendly).
+# Heavy deps (sent2vec, scispacy, spacy==3.8.5, stanza, pyhealth, bitsandbytes)
+# are skipped because they fail to build on Py3.13 / Apple Silicon and are not
+# needed by the simple LLM-extractor path used by the smoke test.
+python-dotenv>=1.0.0
+fuzzywuzzy==0.18.0
+openai>=1.0.0
+joblib==1.4.2
+nltk==3.9.1
+rapidfuzz==3.13.0
+ratelimit==2.2.1
+scipy
+tqdm
+transformers
+accelerate
+numpy
+pandas
+torch
+sentence_transformers

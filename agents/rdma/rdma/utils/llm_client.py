@@ -1,0 +1,1090 @@
+import time
+from abc import ABC, abstractmethod
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
+from rdma.utils.llm import ModelLoader
+from rdma.utils.qwen_pipeline import QwenPipeline
+import sys
+from typing import List
+import torch
+
+NO_REASONING_INSTRUCTION = (
+    "Return only the final answer with no chain-of-thought, no internal reasoning, "
+    "and no deliberation text. Be concise and direct."
+)
+
+
+def _suppress_reasoning(system_message: str) -> str:
+    """Inject a concise instruction to avoid reasoning-style outputs."""
+    if not system_message:
+        return NO_REASONING_INSTRUCTION
+    return f"{NO_REASONING_INSTRUCTION}\n\n{system_message}"
+
+
+class LLMClient(ABC):
+    """Abstract base class for all LLM clients."""
+
+    @abstractmethod
+    def query(self, user_input: str, system_message: str) -> str:
+        """Send a query to the LLM and return the response text."""
+
+
+class LocalLLMClient(LLMClient):
+    def __init__(
+        self,
+        model_type="llama3_8b",
+        device="cuda",
+        cache_dir="/shared/rsaas/jw3/rare_disease/model_cache",
+        temperature=0.6,
+    ):
+        """
+        Initialize the LLM client.
+
+        Args:
+            model_type (str): Type of model to use
+            device: Device to use, can be a string like "cuda:0" or a list of device strings
+            cache_dir (str): Directory to cache models
+            temperature (float): Temperature for sampling
+        """
+        import torch
+
+        self.model_loader = ModelLoader(cache_dir=cache_dir)
+        self.temperature = temperature
+
+        # Handle device parameter which could be a string or a list
+        if isinstance(device, list):
+            # For multiple GPUs, we need to use device_map='auto' rather than a comma-separated string
+            print(f"Using multiple devices: {device}")
+            # Just pass 'auto' as the device_map for multiple devices
+            self.pipeline = self.model_loader.get_llm_pipeline("auto", model_type)
+
+            # For tensor operations, use the first device in the list
+            if len(device) > 0:
+                self.actual_device = torch.device(device[0])
+            else:
+                self.actual_device = torch.device(
+                    "cuda:0" if torch.cuda.is_available() else "cpu"
+                )
+        else:
+            # For single device or "auto"
+            self.pipeline = self.model_loader.get_llm_pipeline(device, model_type)
+
+            # Determine the actual device for tensor operations
+            if (
+                hasattr(self.pipeline.model, "device_map")
+                and self.pipeline.model.device_map == "auto"
+            ):
+                # With auto device mapping, use the first module's device
+                for name, module in self.pipeline.model.named_modules():
+                    if hasattr(module, "device") and module.device is not None:
+                        self.actual_device = module.device
+                        break
+                else:
+                    # Fallback if no module has a device attribute
+                    self.actual_device = torch.device(
+                        "cuda:0" if torch.cuda.is_available() else "cpu"
+                    )
+            else:
+                # Use the specified device
+                self.actual_device = torch.device(device)
+
+    def query(self, user_input, system_message):
+        """Send a query to the LLM."""
+        import re
+        import torch
+
+        messages = [
+            {"role": "system", "content": _suppress_reasoning(system_message)},
+            {"role": "user", "content": user_input},
+        ]
+
+        is_qwen = isinstance(self.pipeline, QwenPipeline)
+
+        if is_qwen:
+            # Disable thinking mode — direct answer only for extraction tasks
+            full_prompt = self.pipeline.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+            max_new_tokens = 1000
+        else:
+            full_prompt = self.pipeline.tokenizer.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=True
+            )
+            max_new_tokens = 1000
+
+        terminators = [
+            self.pipeline.tokenizer.eos_token_id,
+            self.pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>"),
+        ]
+
+        with torch.no_grad():
+            outputs = self.pipeline(
+                full_prompt,
+                max_new_tokens=max_new_tokens,
+                eos_token_id=terminators,
+                do_sample=True,
+                temperature=self.temperature,
+                top_p=1.0,
+            )
+
+        if is_qwen:
+            text = outputs[0]["generated_text"]
+            # Strip <think>...</think> block generated by Qwen3 thinking mode
+            text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+            return text
+
+        return outputs[0]["generated_text"][len(full_prompt) :]
+
+    def batched_query(self, user_inputs, system_messages, max_batch_size=None):
+        """Process multiple queries in a single GPU batch."""
+        import torch
+
+        # Ensure inputs and messages have the same length
+        if len(user_inputs) != len(system_messages):
+            raise ValueError(
+                "Length of user_inputs and system_messages must be the same"
+            )
+
+        # If only one input, just use the regular query method
+        if len(user_inputs) == 1:
+            return [self.query(user_inputs[0], system_messages[0])]
+
+        # Determine batch size and number of batches
+        total_samples = len(user_inputs)
+        if max_batch_size is None:
+            batch_size = total_samples
+        else:
+            batch_size = min(max_batch_size, total_samples)
+
+        num_batches = (total_samples + batch_size - 1) // batch_size  # Ceiling division
+        all_results = []
+
+        for i in range(num_batches):
+            start_idx = i * batch_size
+            end_idx = min(start_idx + batch_size, total_samples)
+
+            batch_user_inputs = user_inputs[start_idx:end_idx]
+            batch_system_messages = system_messages[start_idx:end_idx]
+
+            # Create formatted prompts for each input in the batch
+            batch_prompts = []
+            for j in range(len(batch_user_inputs)):
+                messages = [
+                    {"role": "system", "content": batch_system_messages[j]},
+                    {"role": "user", "content": batch_user_inputs[j]},
+                ]
+
+                full_prompt = self.pipeline.tokenizer.apply_chat_template(
+                    messages, tokenize=False, add_generation_prompt=True
+                )
+                batch_prompts.append(full_prompt)
+
+            # Tokenize all prompts in the batch and pad them
+            tokenizer = self.pipeline.tokenizer
+
+            # Ensure the padding token is set properly
+            if tokenizer.pad_token is None:
+                tokenizer.pad_token = tokenizer.eos_token
+
+            # Tokenize the batch
+            tokenized_inputs = tokenizer(
+                batch_prompts,
+                padding=True,
+                return_tensors="pt",
+                truncation=True,
+                max_length=2048,  # Limit input length to avoid out-of-memory errors
+                return_length=True,
+            )
+
+            # Move inputs to the appropriate device determined during initialization
+            for key in tokenized_inputs:
+                if isinstance(tokenized_inputs[key], torch.Tensor):
+                    tokenized_inputs[key] = tokenized_inputs[key].to(self.actual_device)
+
+            # Store the original lengths to extract responses correctly later
+            prompt_lengths = tokenized_inputs.pop("length").tolist()
+
+            # Setup termination tokens
+            terminators = [
+                tokenizer.eos_token_id,
+                tokenizer.convert_tokens_to_ids("<|eot_id|>"),
+            ]
+
+            # Generate text
+            with torch.no_grad():
+                generated_ids = self.pipeline.model.generate(
+                    **tokenized_inputs,
+                    max_new_tokens=1000,
+                    do_sample=True,
+                    temperature=self.temperature,
+                    top_p=1.0,
+                    eos_token_id=terminators,
+                    pad_token_id=tokenizer.pad_token_id,
+                )
+
+            # Decode the generated text and extract only the new part (excluding the prompt)
+            batch_results = []
+            for j, (gen_ids, prompt_len) in enumerate(
+                zip(generated_ids, prompt_lengths)
+            ):
+                # Extract only the newly generated tokens (excluding the prompt)
+                new_tokens = gen_ids[prompt_len:]
+                # Decode the tokens
+                generated_text = tokenizer.decode(new_tokens, skip_special_tokens=True)
+                batch_results.append(generated_text)
+
+            all_results.extend(batch_results)
+
+        return all_results
+
+    def _calculate_entropy(self, probs):
+        """Calculate entropy as a measure of uncertainty"""
+        import math
+
+        entropy = 0
+        for p in probs:
+            if p > 0:  # Avoid log(0)
+                entropy -= p * math.log2(p)
+        return entropy
+
+    def query_with_full_entropy(self, user_input, system_message):
+        messages = [
+            {"role": "system", "content": _suppress_reasoning(system_message)},
+            {"role": "user", "content": user_input},
+        ]
+
+        full_prompt = self.pipeline.tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+
+        # Tokenize the prompt
+        input_ids = self.pipeline.tokenizer.encode(full_prompt, return_tensors="pt").to(
+            self.pipeline.model.device
+        )
+        prompt_length = input_ids.shape[1]
+
+        terminators = [
+            self.pipeline.tokenizer.eos_token_id,
+            self.pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>"),
+        ]
+
+        with torch.no_grad():
+            outputs = self.pipeline.model.generate(
+                input_ids,
+                max_new_tokens=1000,
+                do_sample=True,
+                temperature=self.temperature,
+                top_p=1.0,
+                eos_token_id=terminators,
+                output_scores=True,
+                return_dict_in_generate=True,
+            )
+
+        # Extract generated tokens (excluding prompt)
+        generated_sequence = outputs.sequences[0, prompt_length:]
+        generated_text = self.pipeline.tokenizer.decode(
+            generated_sequence, skip_special_tokens=True
+        )
+
+        # Calculate token probabilities and distribution entropy
+        token_probs = []
+        distribution_entropies = []
+
+        for i, token_scores in enumerate(outputs.scores):
+            # Get the next token ID that was actually generated
+            next_token_id = generated_sequence[i].item()
+
+            # Apply softmax to get full probability distribution
+            logits = token_scores[0]
+            full_distribution = torch.nn.functional.softmax(logits, dim=-1)
+            # CORRECTED: Instead of directly using the token ID as an index,
+            # find the probability of the chosen token properly
+            selected_token_prob = full_distribution[next_token_id].item()
+
+            # Verify our selection matches what was generated
+            max_prob_token_id = torch.argmax(logits).item()
+            if (
+                max_prob_token_id != next_token_id and i < 5
+            ):  # Only log first few tokens for debugging
+                # This is expected sometimes with temperature > 0, as we sample from the distribution
+                print(
+                    f"Note: Generated token '{self.pipeline.tokenizer.decode([next_token_id])}' (p={selected_token_prob:.4f}) "
+                    f"differs from highest probability token '{self.pipeline.tokenizer.decode([max_prob_token_id])}' "
+                    f"(p={full_distribution[max_prob_token_id].item():.4f})"
+                )
+
+            token_probs.append(selected_token_prob)
+
+            # Calculate entropy of the entire distribution
+            distribution_entropy = 0
+            # Only consider tokens with non-negligible probability for efficiency
+            significant_probs = full_distribution[full_distribution > 1e-5]
+            for prob in significant_probs:
+                p = prob.item()
+                distribution_entropy -= p * torch.log2(torch.tensor(p)).item()
+
+            distribution_entropies.append(distribution_entropy)
+
+        # Get top alternative tokens for the first few positions
+        top_alternatives = []
+        for i in range(min(5, len(outputs.scores))):
+            token_scores = outputs.scores[i][0]
+            selected_id = generated_sequence[i].item()
+
+            # Get top 5 tokens
+            values, indices = torch.topk(token_scores, 5)
+            # Apply softmax to these top values to get probabilities
+            probs = torch.nn.functional.softmax(values, dim=-1)
+
+            alternatives = []
+            for j in range(5):
+                token_id = indices[j].item()
+                token_text = self.pipeline.tokenizer.decode([token_id])
+                # Use the correct probability from the full distribution
+                token_prob = full_distribution[token_id].item()
+                alternatives.append(
+                    {
+                        "token": token_text,
+                        "probability": token_prob,
+                        "is_selected": token_id == selected_id,
+                    }
+                )
+
+            top_alternatives.append(alternatives)
+
+        return {
+            "generated_text": generated_text,
+            "token_probs": token_probs,
+            "mean_confidence": (
+                sum(token_probs) / len(token_probs) if token_probs else 0
+            ),
+            "min_confidence": min(token_probs) if token_probs else 0,
+            "token_distribution_entropies": distribution_entropies,
+            "mean_distribution_entropy": (
+                sum(distribution_entropies) / len(distribution_entropies)
+                if distribution_entropies
+                else 0
+            ),
+            "max_distribution_entropy": (
+                max(distribution_entropies) if distribution_entropies else 0
+            ),
+            "top_alternatives": top_alternatives,
+        }
+
+
+# API LLM Client
+from typing import Dict, Any, Optional, List
+import time
+import json
+import os
+from urllib.parse import urlparse, parse_qs
+from datetime import datetime
+from functools import wraps
+from ratelimit import limits, sleep_and_retry
+from groq import Groq
+from groq.types.chat import ChatCompletion
+from groq.types.chat.chat_completion_message import ChatCompletionMessage
+
+# Rate limits for API calls
+API_CALLS_LIMIT = 30
+API_PERIOD = 60  # 30 calls per minute
+API_MAX_TOKENS = 100000
+
+# OpenRouter free tier: 16 req/min — use 14 to stay safely under
+OPENROUTER_CALLS_LIMIT = 14
+
+
+def rate_limited_api(func):
+    """Decorator for API rate limiting."""
+
+    @sleep_and_retry
+    @limits(calls=API_CALLS_LIMIT, period=API_PERIOD)
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def rate_limited_openrouter(func):
+    """Decorator for OpenRouter free-tier rate limiting (16 req/min hard limit)."""
+
+    @sleep_and_retry
+    @limits(calls=OPENROUTER_CALLS_LIMIT, period=API_PERIOD)
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+class APILLMClient(LLMClient):
+    """API-based LLM client implementation using official Groq client."""
+
+    # Updated model mapping for Llama 3.3
+    MODEL_MAPPING = {
+        "llama3-groq-70b": "llama-3.3-70b-versatile",  # Latest Llama 3.3
+        "llama3-groq-70b-chat": "llama-3.3-70b-chat",  # Chat-optimized variant
+        "llama3-groq-32b": "llama-3.3-32b-versatile",  # 32B parameter version
+        "mixtral-8x7b": "mixtral-8x7b-v0.1",  # Mixtral model
+    }
+
+    def __init__(
+        self,
+        model_type: str = "llama3-groq-70b",
+        device: str = "cpu",  # Kept for interface compatibility
+        cache_dir: str = None,  # Kept for interface compatibility
+        max_tokens_per_day: int = API_MAX_TOKENS,
+        max_queries_per_minute: int = API_CALLS_LIMIT,
+        temperature: float = 0.7,
+        api_key: Optional[str] = None,
+    ):
+        """
+        Initialize the API LLM client using Groq's official client.
+
+        Args:
+            model_type: Type of model to use (will be mapped to Groq model names)
+            device: Device to use (kept for interface compatibility)
+            cache_dir: Cache directory (kept for interface compatibility)
+            max_tokens_per_day: Maximum tokens allowed per day
+            max_queries_per_minute: Maximum queries allowed per minute
+            temperature: Temperature for model responses
+            api_key: API key for authentication
+        """
+        self.model_type = model_type
+        self.device = device
+        self.cache_dir = cache_dir
+        self.max_tokens_per_day = max_tokens_per_day
+        self.max_queries_per_minute = max_queries_per_minute
+        self.total_tokens_used = 0
+        self.temperature = temperature
+
+        # Initialize Groq client
+        self.api_key = api_key or os.getenv("GROQ_API_KEY")
+        if not self.api_key:
+            raise ValueError(
+                "API key must be provided either through constructor or GROQ_API_KEY environment variable"
+            )
+
+        self.client = Groq(api_key=self.api_key)
+
+        # Save configuration
+        self._save_config()
+
+    def _save_config(self) -> None:
+        """Save current configuration to file."""
+        config = {
+            "model_type": self.model_type,
+            "device": self.device,
+            "cache_dir": self.cache_dir,
+            "max_tokens_per_day": self.max_tokens_per_day,
+            "max_queries_per_minute": self.max_queries_per_minute,
+            "temperature": self.temperature,
+            "api_key": self.api_key,
+        }
+
+        config_file = (
+            os.path.join(self.cache_dir, "api_config.json")
+            if self.cache_dir
+            else "api_config.json"
+        )
+        os.makedirs(os.path.dirname(config_file), exist_ok=True)
+
+        with open(config_file, "w") as f:
+            json.dump(config, f)
+
+    @classmethod
+    def from_config(cls, config_file: str) -> "APILLMClient":
+        """Create an APILLMClient instance from a configuration file."""
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Configuration file {config_file} not found")
+
+        with open(config_file, "r") as f:
+            config = json.load(f)
+
+        return cls(**config)
+
+    @rate_limited_api
+    def query(self, user_input: str, system_message: str) -> str:
+        """
+        Send a query to the Groq API using the official client.
+
+        Args:
+            user_input: User's input text
+            system_message: System message for context
+
+        Returns:
+            Model's response text
+        """
+        print(f"TOTAL_TOKENS_USED before query: {self.total_tokens_used}")
+
+        # Prepare messages
+        messages = [
+            {"role": "system", "content": _suppress_reasoning(system_message)},
+            {"role": "user", "content": user_input},
+        ]
+
+        # Get appropriate model name
+        model_name = self.MODEL_MAPPING.get(self.model_type, self.model_type)
+
+        try:
+            # Create chat completion
+            chat_completion = self.client.chat.completions.create(
+                messages=messages,
+                model=model_name,
+                temperature=self.temperature,
+            )
+
+            # Update token usage if available
+            if hasattr(chat_completion, "usage"):
+                self.total_tokens_used += chat_completion.usage.total_tokens
+
+            # Extract and return the response
+            return chat_completion.choices[0].message.content
+
+        except Exception as e:
+            print(f"Groq API request failed: {str(e)}")
+            raise
+
+    @staticmethod
+    def initialize_from_input() -> "APILLMClient":
+        """Initialize client by gathering input from user."""
+        print("\nInitializing Groq API Client")
+        print("-" * 30)
+        print("\nAvailable models:")
+        for key, value in APILLMClient.MODEL_MAPPING.items():
+            print(f"  {key}: {value}")
+        print()
+
+        # Gather required inputs
+        api_key = input("Enter your API key (or set GROQ_API_KEY env var): ").strip()
+        if not api_key and not os.getenv("GROQ_API_KEY"):
+            raise ValueError("API key is required")
+
+        # Gather optional inputs with defaults
+        model_type = (
+            input("Enter model type (default 'llama3-groq-70b'): ").strip()
+            or "llama3-groq-70b"
+        )
+        cache_dir = input("Enter cache directory (optional): ").strip() or None
+
+        # Use API-specific defaults
+        max_tokens = input(
+            f"Enter max tokens per day (default {API_MAX_TOKENS}): "
+        ).strip()
+        max_tokens = int(max_tokens) if max_tokens else API_MAX_TOKENS
+        max_queries = input(
+            f"Enter max queries per minute (default {API_CALLS_LIMIT}): "
+        ).strip()
+        max_queries = int(max_queries) if max_queries else API_CALLS_LIMIT
+
+        temperature = input("Enter temperature (default 0.7, range 0.0-1.0): ").strip()
+        try:
+            temperature = float(temperature) if temperature else 0.7
+            if not 0.0 <= temperature <= 1.0:
+                raise ValueError
+        except ValueError:
+            print("Invalid temperature. Using default (0.7)")
+            temperature = 0.7
+
+        return APILLMClient(
+            api_key=api_key,
+            model_type=model_type,
+            cache_dir=cache_dir,
+            max_tokens_per_day=max_tokens,
+            max_queries_per_minute=max_queries,
+            temperature=temperature,
+        )
+
+
+class OpenRouterLLMClient(LLMClient):
+    """OpenRouter API client — provides access to a wide range of hosted LLMs
+    via an OpenAI-compatible endpoint."""
+
+    OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+    # Friendly name → OpenRouter model ID.
+    # Any raw OpenRouter model string (e.g. "nvidia/nemotron-3-super-120b-a12b:free")
+    # is also accepted directly as model_type thanks to the .get(key, key) fallback.
+    MODEL_MAPPING = {
+        "nemotron-120b": "nvidia/nemotron-3-super-120b-a12b:free",
+        "llama3-70b": "meta-llama/llama-3.3-70b-instruct:free",
+        "qwen3-235b": "qwen/qwen3-235b-a22b:free",
+        "deepseek-r1": "deepseek/deepseek-r1:free",
+    }
+
+    def __init__(
+        self,
+        model_type: str = "nemotron-120b",
+        device: str = "cpu",  # kept for interface compatibility
+        cache_dir: Optional[str] = None,  # kept for interface compatibility
+        max_tokens_per_day: int = API_MAX_TOKENS,
+        max_queries_per_minute: int = API_CALLS_LIMIT,
+        temperature: float = 0.7,
+        api_key: Optional[str] = None,
+    ):
+        self.model_type = model_type
+        self.device = device
+        self.cache_dir = cache_dir
+        self.max_tokens_per_day = max_tokens_per_day
+        self.max_queries_per_minute = max_queries_per_minute
+        self.temperature = temperature
+        self.total_tokens_used = 0
+
+        self.api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+        if not self.api_key:
+            raise ValueError(
+                "API key must be provided either through constructor or "
+                "OPENROUTER_API_KEY environment variable"
+            )
+
+        from openai import OpenAI
+
+        self.client = OpenAI(
+            base_url=self.OPENROUTER_BASE_URL,
+            api_key=self.api_key,
+        )
+
+        self._save_config()
+
+    def _save_config(self) -> None:
+        """Save current configuration to file."""
+        config = {
+            "model_type": self.model_type,
+            "device": self.device,
+            "cache_dir": self.cache_dir,
+            "max_tokens_per_day": self.max_tokens_per_day,
+            "max_queries_per_minute": self.max_queries_per_minute,
+            "temperature": self.temperature,
+            "api_key": self.api_key,
+        }
+
+        config_file = (
+            os.path.join(self.cache_dir, "openrouter_config.json")
+            if self.cache_dir
+            else "openrouter_config.json"
+        )
+        os.makedirs(os.path.dirname(os.path.abspath(config_file)), exist_ok=True)
+
+        with open(config_file, "w") as f:
+            json.dump(config, f)
+
+    @classmethod
+    def from_config(cls, config_file: str) -> "OpenRouterLLMClient":
+        """Create an OpenRouterLLMClient instance from a configuration file."""
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Configuration file {config_file} not found")
+
+        with open(config_file, "r") as f:
+            config = json.load(f)
+
+        return cls(**config)
+
+    @rate_limited_openrouter
+    def query(self, user_input: str, system_message: str) -> str:
+        """Send a query to the OpenRouter API.
+
+        Args:
+            user_input: User's input text
+            system_message: System message for context
+
+        Returns:
+            Model's response text
+        """
+        messages = [
+            {"role": "system", "content": _suppress_reasoning(system_message)},
+            {"role": "user", "content": user_input},
+        ]
+
+        model_name = self.MODEL_MAPPING.get(self.model_type, self.model_type)
+
+        try:
+            completion = self.client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                temperature=self.temperature,
+            )
+
+            if hasattr(completion, "usage") and completion.usage:
+                self.total_tokens_used += completion.usage.total_tokens
+
+            response = completion.choices[0].message.content
+            print(f"[OpenRouter] RESPONSE: {response}")
+            return response
+
+        except Exception as e:
+            print(f"OpenRouter API request failed: {str(e)}")
+            raise
+
+    @staticmethod
+    def initialize_from_input() -> "OpenRouterLLMClient":
+        """Initialize client by gathering input from user."""
+        print("\nInitializing OpenRouter Client")
+        print("-" * 30)
+        print("\nAvailable model shortcuts (raw OpenRouter model IDs also accepted):")
+        for key, value in OpenRouterLLMClient.MODEL_MAPPING.items():
+            print(f"  {key}: {value}")
+        print()
+
+        api_key = input(
+            "Enter your API key (or set OPENROUTER_API_KEY env var): "
+        ).strip()
+        if not api_key and not os.getenv("OPENROUTER_API_KEY"):
+            raise ValueError("API key is required")
+
+        model_type = (
+            input("Enter model type (default 'nemotron-120b'): ").strip()
+            or "nemotron-120b"
+        )
+        cache_dir = input("Enter cache directory (optional): ").strip() or None
+
+        max_tokens = input(
+            f"Enter max tokens per day (default {API_MAX_TOKENS}): "
+        ).strip()
+        max_tokens = int(max_tokens) if max_tokens else API_MAX_TOKENS
+        max_queries = input(
+            f"Enter max queries per minute (default {API_CALLS_LIMIT}): "
+        ).strip()
+        max_queries = int(max_queries) if max_queries else API_CALLS_LIMIT
+
+        temperature = input("Enter temperature (default 0.7, range 0.0-1.0): ").strip()
+        try:
+            temperature = float(temperature) if temperature else 0.7
+            if not 0.0 <= temperature <= 1.0:
+                raise ValueError
+        except ValueError:
+            print("Invalid temperature. Using default (0.7)")
+            temperature = 0.7
+
+        return OpenRouterLLMClient(
+            api_key=api_key,
+            model_type=model_type,
+            cache_dir=cache_dir,
+            max_tokens_per_day=max_tokens,
+            max_queries_per_minute=max_queries,
+            temperature=temperature,
+        )
+
+
+class AzureOpenAILLMClient(LLMClient):
+    """Azure OpenAI chat client.
+
+    Reads credentials/config from a dotenv file and environment variables.
+    Expected environment variables:
+    - AZURE_OPENAI_ENDPOINT (can include ?api-version=...)
+    - AZURE_OPENAI_API_KEY
+    - AZURE_OPENAI_DEPLOYMENT (optional if deployment provided in constructor)
+    """
+
+    DEFAULT_API_VERSION = "2025-01-01-preview"
+
+    def __init__(
+        self,
+        model_type: str = "gpt-5-john",
+        device: str = "cpu",  # kept for interface compatibility
+        cache_dir: Optional[str] = None,  # kept for interface compatibility
+        temperature: float = 1.0,
+        api_key: Optional[str] = None,
+        azure_endpoint: Optional[str] = None,
+        api_version: Optional[str] = None,
+        azure_deployment: Optional[str] = None,
+        dotenv_path: Optional[str] = None,
+        max_retries: int = 0,
+        request_timeout: int = 120,
+    ):
+        # Load dotenv explicitly for this client if provided by caller.
+        if dotenv_path:
+            load_dotenv(dotenv_path)
+
+        self.model_type = model_type
+        self.device = device
+        self.cache_dir = cache_dir
+        self.temperature = temperature
+        self.max_retries = max_retries
+        self.last_usage_metadata = None
+        self.request_delay = float(os.environ.get("AZURE_REQUEST_DELAY", 0))
+        self.request_timeout = int(os.environ.get("AZURE_REQUEST_TIMEOUT", request_timeout))
+
+        endpoint_full = azure_endpoint or os.getenv("AZURE_OPENAI_ENDPOINT")
+        self.api_key = api_key or os.getenv("AZURE_OPENAI_API_KEY")
+        self.azure_deployment = (
+            azure_deployment or os.getenv("AZURE_OPENAI_DEPLOYMENT") or self.model_type
+        )
+
+        if not endpoint_full:
+            raise ValueError(
+                "AZURE_OPENAI_ENDPOINT is required (argument or environment variable)"
+            )
+        if not self.api_key:
+            raise ValueError(
+                "AZURE_OPENAI_API_KEY is required (argument or environment variable)"
+            )
+
+        parsed = urlparse(endpoint_full)
+        parsed_api_version = parse_qs(parsed.query).get(
+            "api-version", [self.DEFAULT_API_VERSION]
+        )[0]
+
+        self.api_version = api_version or parsed_api_version
+        self.azure_endpoint = f"{parsed.scheme}://{parsed.netloc}"
+
+        try:
+            from langchain_openai import AzureChatOpenAI
+        except ImportError:
+            raise ImportError(
+                "langchain-openai is required for AzureOpenAILLMClient. "
+                "Install with: pip install langchain-openai"
+            )
+
+        self._azure_chat_cls = AzureChatOpenAI
+        self.client = self._build_client(include_temperature=True)
+
+        self._save_config()
+
+    def _save_config(self) -> None:
+        """Save current configuration to file."""
+        config = {
+            "model_type": self.model_type,
+            "device": self.device,
+            "cache_dir": self.cache_dir,
+            "temperature": self.temperature,
+            "api_version": self.api_version,
+            "azure_endpoint": self.azure_endpoint,
+            "azure_deployment": self.azure_deployment,
+            "max_retries": self.max_retries,
+            "request_timeout": self.request_timeout,
+        }
+
+        config_file = (
+            os.path.join(self.cache_dir, "azure_openai_config.json")
+            if self.cache_dir
+            else "azure_openai_config.json"
+        )
+        os.makedirs(os.path.dirname(os.path.abspath(config_file)), exist_ok=True)
+
+        with open(config_file, "w") as f:
+            json.dump(config, f)
+
+    def _build_client(self, include_temperature: bool = True):
+        """Create AzureChatOpenAI client, optionally omitting temperature."""
+        kwargs = {
+            "azure_endpoint": self.azure_endpoint,
+            "azure_deployment": self.azure_deployment,
+            "api_key": self.api_key,
+            "api_version": self.api_version,
+            "max_retries": self.max_retries,
+            "timeout": self.request_timeout,
+        }
+        if include_temperature and self.temperature is not None:
+            kwargs["temperature"] = self.temperature
+        return self._azure_chat_cls(**kwargs)
+
+    @staticmethod
+    def _is_unsupported_temperature_error(err: Exception) -> bool:
+        msg = str(err).lower()
+        return (
+            "temperature" in msg
+            and "unsupported" in msg
+            and ("default" in msg or "does not support" in msg)
+        )
+
+    @classmethod
+    def from_config(cls, config_file: str) -> "AzureOpenAILLMClient":
+        """Create an AzureOpenAILLMClient instance from a configuration file."""
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Configuration file {config_file} not found")
+
+        with open(config_file, "r") as f:
+            config = json.load(f)
+
+        return cls(**config)
+
+    @rate_limited_api
+    def query(self, user_input: str, system_message: str) -> str:
+        """Send a query to Azure OpenAI via LangChain AzureChatOpenAI."""
+        import concurrent.futures
+
+        if self.request_delay > 0:
+            time.sleep(self.request_delay)
+        messages = [
+            ("system", _suppress_reasoning(system_message)),
+            ("human", user_input),
+        ]
+
+        def _invoke():
+            try:
+                response = self.client.invoke(messages)
+                self.last_usage_metadata = getattr(response, "usage_metadata", None)
+                return response.content
+            except Exception as e:
+                if self.temperature is not None and self._is_unsupported_temperature_error(e):
+                    print(
+                        "[Azure OpenAI] Custom temperature unsupported by this "
+                        "deployment; retrying with default temperature."
+                    )
+                    self.temperature = None
+                    self.client = self._build_client(include_temperature=False)
+                    response = self.client.invoke(messages)
+                    self.last_usage_metadata = getattr(response, "usage_metadata", None)
+                    return response.content
+                print(f"Azure OpenAI request failed: {str(e)}")
+                raise
+
+        deadline = self.request_timeout + 10
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(_invoke)
+            try:
+                return future.result(timeout=deadline)
+            except concurrent.futures.TimeoutError:
+                raise TimeoutError(
+                    f"Azure OpenAI call timed out after {deadline}s"
+                )
+
+    @staticmethod
+    def initialize_from_input() -> "AzureOpenAILLMClient":
+        """Initialize client by gathering input from user."""
+        print("\nInitializing Azure OpenAI Client")
+        print("-" * 34)
+
+        dotenv_path = (
+            input("Enter dotenv path (optional, e.g. PyHealthAgent/.env): ").strip()
+            or None
+        )
+
+        deployment = (
+            input("Enter deployment name (default 'gpt-5-john'): ").strip()
+            or "gpt-5-john"
+        )
+
+        cache_dir = input("Enter cache directory (optional): ").strip() or None
+
+        temperature = input("Enter temperature (default 1.0, range 0.0-1.0): ").strip()
+        try:
+            temperature = float(temperature) if temperature else 1.0
+            if not 0.0 <= temperature <= 1.0:
+                raise ValueError
+        except ValueError:
+            print("Invalid temperature. Using default (1.0)")
+            temperature = 1.0
+
+        return AzureOpenAILLMClient(
+            model_type=deployment,
+            azure_deployment=deployment,
+            cache_dir=cache_dir,
+            temperature=temperature,
+            dotenv_path=dotenv_path,
+        )
+
+
+class LlamaCppLLMClient(LLMClient):
+    """LLM client using llama-cpp-python for GGUF quantized local inference.
+
+    Requires: pip install llama-cpp-python
+    Models are downloaded from HuggingFace and cached in ~/.cache/huggingface/.
+    """
+
+    GGUF_MAPPING = {
+        # UD = unsloth dynamic quant; files are sharded — pass first shard,
+        # llama-cpp loads the rest automatically
+        "nemotron-120b-q4": (
+            "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
+            "UD-Q4_K_M/NVIDIA-Nemotron-3-Super-120B-A12B-UD-Q4_K_M-00001-of-00003.gguf",
+        ),
+        "nemotron-120b-iq4xs": (
+            "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
+            "UD-IQ4_XS/NVIDIA-Nemotron-3-Super-120B-A12B-UD-IQ4_XS-00001-of-00003.gguf",
+        ),
+        "nemotron-120b-q5": (
+            "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
+            "UD-Q5_K_M/NVIDIA-Nemotron-3-Super-120B-A12B-UD-Q5_K_M-00001-of-00004.gguf",
+        ),
+        "nemotron-120b-q3": (
+            "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
+            "UD-Q3_K_M/NVIDIA-Nemotron-3-Super-120B-A12B-UD-Q3_K_M-00001-of-00003.gguf",
+        ),
+        "qwen3-122b-q4ks": (
+            "unsloth/Qwen3.5-122B-A10B-GGUF",
+            "Q4_K_S/Qwen3.5-122B-A10B-Q4_K_S-00001-of-00003.gguf",
+        ),
+        "qwen3-122b-q4km": (
+            "unsloth/Qwen3.5-122B-A10B-GGUF",
+            "Q4_K_M/Qwen3.5-122B-A10B-Q4_K_M-00001-of-00003.gguf",
+        ),
+    }
+    DEFAULT_MODEL = "nemotron-120b-q4"
+
+    def __init__(
+        self,
+        model_type: str = DEFAULT_MODEL,
+        gguf_file: str = None,
+        n_gpu_layers: int = -1,
+        n_ctx: int = 8192,
+        main_gpu: int = 0,
+        temperature: float = 0.01,
+        cache_dir: str = "/shared/rsaas/jw3/rare_disease/model_cache",
+    ):
+        try:
+            from llama_cpp import Llama
+        except ImportError:
+            raise ImportError(
+                "llama-cpp-python is required. Install with: pip install llama-cpp-python"
+            )
+
+        if model_type not in self.GGUF_MAPPING:
+            raise ValueError(
+                f"Unknown model_type '{model_type}'. "
+                f"Available: {list(self.GGUF_MAPPING.keys())}"
+            )
+
+        from huggingface_hub import snapshot_download
+
+        repo_id, default_filename = self.GGUF_MAPPING[model_type]
+        filename = gguf_file or default_filename
+
+        self.model_type = model_type
+        self.temperature = temperature
+
+        # Split GGUFs need all shards in the same dir — download the whole subdir
+        # then load via model_path (from_pretrained only fetches a single file).
+        subdir = filename.split("/")[0]  # e.g. "UD-Q4_K_M"
+        print(f"Loading GGUF model: {repo_id} / {filename}")
+        print(f"  n_gpu_layers={n_gpu_layers}, n_ctx={n_ctx}, main_gpu={main_gpu}")
+        print(f"  Downloading all shards for {subdir} ...")
+        local_dir = snapshot_download(
+            repo_id=repo_id,
+            allow_patterns=[f"{subdir}/*.gguf"],
+            cache_dir=cache_dir,
+        )
+        first_shard_path = os.path.join(local_dir, filename)
+        self.llm = Llama(
+            model_path=first_shard_path,
+            n_gpu_layers=n_gpu_layers,
+            n_ctx=n_ctx,
+            main_gpu=main_gpu,
+            verbose=False,
+        )
+
+    def query(self, user_input: str, system_message: str) -> str:
+        """Send a query using llama-cpp chat completion."""
+        import re
+
+        messages = [
+            {"role": "system", "content": _suppress_reasoning(system_message)},
+            {"role": "user", "content": user_input},
+        ]
+        response = self.llm.create_chat_completion(
+            messages=messages,
+            temperature=self.temperature,
+            max_tokens=1000,
+        )
+        content = response["choices"][0]["message"]["content"]
+        if self.model_type.startswith("qwen3"):
+            content = re.sub(
+                r"<think>.*?</think>", "", content, flags=re.DOTALL
+            ).strip()
+        return content

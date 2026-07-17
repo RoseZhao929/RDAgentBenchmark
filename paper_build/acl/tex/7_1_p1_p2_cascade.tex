@@ -1,0 +1,49 @@
+\section{P1 \ensuremath{\rightarrow} P2 Cascade: HPO Extraction Quality Decides Downstream}\label{sec-7-1}
+
+\subsubsection{The P1 \ensuremath{\rightarrow} P2 Cascade}\label{the-p1-p2-cascade}
+
+A central architectural decision in our benchmark --- separating Pillar 1 (phenotype extraction) from Pillar 2 (phenotype-only differential diagnosis) and reporting both via the dual-pass evaluation (\Cref{sec-4-4}) --- is grounded in an empirical finding we did not anticipate at design time: HPO extraction quality is not a free preprocessing step. Errors propagate, in some cases catastrophically.
+
+\textbf{The headline number.} On the same 50-case stratified sample (25 Phenopacket-Store + 25 RareArena RDS, seed=42), LIRICAL's Recall@1 is 0.40 when fed gold HPO (the 25 Phenopacket-Store cases with structured \texttt{gold\_hpo\_terms}) but collapses to 0.04 when fed LLM-extracted HPO (the 25 RareArena cases where our adapter shim runs Gemini Flash + phrase-to-HP-ID normalization to project free-text vignettes to the HPO-list input LIRICAL requires). The mean across all 50 cases is 0.22, masking a 10\ensuremath{\times} gap between the two halves. VC-RDAgent shows the same pattern (0.32 \ensuremath{\rightarrow} \textasciitilde0.04, mean 0.18).
+
+Three observations follow:
+
+\textbf{(1) ``Mean R@1'' is not a sufficient summary statistic for HPO-list-only agents.} The 0.22 / 0.18 averages tempt a reading like ``LIRICAL underperforms multi-agent LLM scaffolds (MedAgents 0.36, MDAgents 0.34) by 14 pp'' --- yet LIRICAL on its native input format (gold HPO) is the top-performing classical baseline at 0.40. The right comparison is same-input apples-to-apples, which only the dual-pass design exposes.
+
+\textbf{(2) The cascade is asymmetric across agent types.} Free-text-native agents (MedAgents, AgentClinic, DeepRare) do not show this cliff because they ingest free text directly; they encapsulate their own P1 module and gracefully degrade. HPO-list-only agents (LIRICAL, VC-RDAgent, classical Bayesian / classical ensemble systems generally) are downstream-of-pipeline brittle. We hypothesize --- to be tested in Phase 4a --- that this asymmetry generalizes: classical agents have higher ceiling on clean inputs but lower floor on noisy ones; LLM-based agents trade ceiling for robustness.
+
+\textbf{(3) HPO extraction quality is itself measurable and improvable.} RDMA, our Pillar 1 specialist (extracts HPO phrases from EHR free text via specialized mining subagents, then phrase-to-HP-ID via fuzzy match), reaches phrase-level recall \textasciitilde0.95 against Gemini-Flash-extracted ``gold'' --- though this number is contaminated by methodology leak (Phenopacket-Store cases lack free-text vignettes; our P1 pilot synthesized vignettes from the HPO labels themselves, then asked LLMs to re-extract; see Limitations 5). Our Phase 1 pilot via Claude Opus 4.7 produced a 99-case silver-gold dataset (Jaccard 0.41 with Gemini Flash's extractions; systematic disagreement confirms non-redundancy) for Phase 3 P1 evaluation against an independent backbone family.
+
+\textbf{Implications for deployment.} A practitioner choosing a rare-disease agent for clinical decision support should not pick by accuracy alone; the \emph{input pipeline} must be co-evaluated. If the deployment context provides curated HPO terms (e.g., a clinician using a phenotype standardization tool before invoking the diagnostic agent), LIRICAL or VC-RDAgent are competitive. If the deployment context is end-to-end free-text \ensuremath{\rightarrow} diagnosis (e.g., automated triage from EHR), LLM-based scaffolded agents with their own P1 modules dominate. The dual-pass evaluation lets each agent's deployment-relevant performance be read off directly.
+
+\textbf{Implications for benchmark methodology.} Two takeaways for the field: (i) prior rare-disease LLM benchmarks that compare LIRICAL/Exomiser (Bayesian, HPO-list-only) to LLMs (free-text-native) on a free-text-only dataset will systematically penalize the classical tools, conflating capability with input mismatch. (ii) The Pass A \ensuremath{-} Pass B delta is itself a reportable metric --- a small delta on the same agent signals strong end-to-end robustness, a large delta signals input-pipeline sensitivity.
+
+\subsection{H8 --- Phenotype density predicts performance (inverted-U)}\label{sec-7-1-2}
+
+Pre-registered H8: R@1 follows an inverted-U in the number of input HPO terms ---
+too few (under-specified) and too many (noise / distractors) both hurt. Tested
+on the HPO-input layers (PP-Store + RareBench), pooled over Gemini-Flash LLM
+cells + offline/classical baselines (N=4,754 case-predictions, dedup by case):
+
+\begin{table*}[t]
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\caption{R@1 by HPO-count bin (P1\(\rightarrow\)P2 cascade).}\label{tbl:cascade}
+\begin{tabular}{@{}
+lll@{}}
+\toprule
+Bin (\#HPO terms) & n & R@1 \\
+\midrule
+\ensuremath{\leq}5 (under-specified) & 528 & 0.218 \\
+6--15 & 2,352 & 0.276 \\
+16--30 (sweet spot) & 1,361 & \textbf{0.323} \\
+\textgreater30 (noise/distractors) & 513 & 0.253 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\textbf{H8 supported}: interior peak at 16--30 HPO terms; both tails decline
+(\ensuremath{-}10 pp at \ensuremath{\leq}5, \ensuremath{-}7 pp at \textgreater30 vs peak). The under-specified tail is the larger
+drop, consistent with rare-disease diagnosis needing a minimum phenotypic
+fingerprint. The shape holds across individual agents, not just the pool.
+Visualised in Figure 6.
+
