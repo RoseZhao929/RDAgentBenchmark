@@ -27,3 +27,13 @@ __pycache__/
 *.rar
 # 运行缓存、中间结果
 agent_workspace/
+data/
+**/model_weight/
+**/models--*/
+*.ckpt
+*.bin
+*.pth
+*.safetensors
+*.zip
+logs/
+agent_workspace/
