@@ -2,7 +2,7 @@
 
 \subsubsection{Self-Preference Bias in LLM-as-Judge --- A Cautionary Methodology Finding}\label{self-preference-bias-in-llm-as-judge-a-cautionary-methodology-finding}
 
-\textbf{Bias measurement}. We score Pillar 5 reasoning trace quality on four 1-5 axes (factual / relevance / depth / faithful) using an LLM judge. Our v1 protocol used Gemini 3 Flash Preview as the judge --- the same backbone family used by the agents under evaluation. Replacing the judge with Claude Sonnet 4.5 under identical traces (no other change) shifted scores systematically against Gemini-derived agents, exposing a self-preference bias --- LLM judges systematically favor outputs from their own model family {[}Panickssery, Bowman, and Feng, ``LLM Evaluators Recognize and Favor Their Own Generations'', arXiv:2404.13076, 2024{]} --- that would have inflated the headline ranking by an entire rank position.
+\textbf{Bias measurement}. We score Pillar 5 reasoning trace quality on four 1-5 axes (factual / relevance / depth / faithful) using an LLM judge. Our v1 protocol used Gemini 3 Flash Preview as the judge --- the same backbone family used by the agents under evaluation. Replacing the judge with Claude Sonnet 4.5 under identical traces (no other change) shifted scores systematically against Gemini-derived agents, exposing a self-preference bias --- LLM judges systematically favor outputs from their own model family {[}Panickssery, Bowman, and Feng, ``LLM Evaluators Recognize and Favor Their Own Generations'', arXiv:2404.13076, 2024{]} --- that would have inflated the headline ranking by an entire rank position (\Cref{fig:fig_selfpref}).
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
@@ -41,6 +41,12 @@ trace\_len
 \end{table*}
 
 (N = 10 stratified Phenopacket-Store cases per agent; seed = 42; judge prompts identical between v1 and v2.)
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_selfpref.png}
+\caption{\textbf{Self-preference bias in LLM-as-judge.} Faithfulness scores on four axes shift when the judge is swapped from Gemini~3~Flash (v1, same family as the agents' backbone) to Claude Sonnet~4.5 (v2, non-family) on identical traces. The single-LLM \texttt{llm\_control}'s lead over the scaffolded \texttt{mdagents} shrinks on every axis and reverses on \emph{depth} (3.10 vs.\ 3.49) --- the directionally expected signal for multi-expert debate. Judge-family is thus a first-class confound, not a free methodological choice.}\label{fig:fig_selfpref}
+\end{figure}
 
 \textbf{The four-axis margin of \texttt{llm\_control} over the strongest scaffolded agent (\texttt{mdagents}) shrank from \texttt{\{+0.30,\ +1.00,\ +0.40,\ +0.90\}} under the Gemini-family judge to \texttt{\{+0.20,\ +0.33,\ \ensuremath{-}0.39,\ +0.24\}} under the non-family judge} --- depth now favors \texttt{mdagents}, which is the directionally expected signal for a multi-expert debate vs.~a single chain-of-thought. Three of four axes still slightly favor \texttt{llm\_control}, plausibly reflecting genuine differences in trace coherence rather than self-preference; the residual margins are within bootstrap confidence intervals (see Appendix E).
 

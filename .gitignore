@@ -16,6 +16,7 @@ outputs/
 venv/
 env/
 .venv/
+.figvenv/
 # 缓存
 __pycache__/
 *.pyc

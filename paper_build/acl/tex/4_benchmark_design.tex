@@ -5,7 +5,7 @@
 We decompose rare-disease diagnosis into five orthogonal capability pillars, each individually testable, jointly forming the evaluation surface. The pillar choice is grounded in three considerations: (i) clinical workflow steps (phenotype recognition \ensuremath{\rightarrow} DDx generation \ensuremath{\rightarrow} genetic confirmation \ensuremath{\rightarrow} family interpretation \ensuremath{\rightarrow} communication), (ii) the dimensions on which existing rare-disease agents claim differentiation (DeepRare's reference accuracy, MAI-DxO's budgeted reasoning), and (iii) reviewer-anticipated criticism that accuracy alone is insufficient (Pfohl et al., Nature Medicine 2024; Pillar 5 directly addresses this).
 
 The five pillars, and which data layer carries each, are summarised in the
-benchmark-surface figure. Briefly: P1 Phenotype Extraction (free-text EHR
+benchmark overview (\Cref{fig:fig1_overview}; per-layer coverage detail in \Cref{fig:fig_design_matrix}). Briefly: P1 Phenotype Extraction (free-text EHR
 \ensuremath{\rightarrow} ranked HPO list; P/R/F1); P2 Phenotype-only DDx (HPO list \ensuremath{\rightarrow} ranked
 diseases; Recall@1/3/5/10, median rank, MRR); P3 Genotype-aware DDx (HPO +
 structured variants \ensuremath{\rightarrow} disease + causative gene; Gene Top-k, cross-mapped R@1);
@@ -21,7 +21,7 @@ depth / faithfulness score, LLM-judge with 200-case physician-\ensuremath{\kappa
 \subsubsection{Datasets --- Four-Layer Stack}\label{sec-4-2}
 
 We assemble four dataset layers, each addressing a specific concern; their
-sources and sizes appear as the columns of the benchmark-surface figure, and
+sources and sizes appear as the leftmost column of the benchmark overview (\Cref{fig:fig1_overview}), and
 the full per-layer breakdown (disease counts, ID anchors, free-text / gold-HPO
 / variant availability) is detailed in Appendix A. The four layers are L1
 Phenotype Backbone (Phenopacket-Store + RareBench HF; 11,173 cases; HPO-only,
@@ -70,7 +70,7 @@ prevalence band and HPO-organ-system distribution within \ensuremath{\pm}2 pp.
 \subsubsection{Canonical Case Representation}\label{sec-4-3}
 
 Every dataset ingests into a single Pydantic v2 schema, \texttt{CanonicalCase}
-(illustrated in the canonical-case figure), and every agent adapter projects
+(the funnel in \Cref{fig:fig1_overview}; full record in \Cref{fig:fig_schema}), and every agent adapter projects
 from this representation to the agent's native input. The record groups an
 identity block (\texttt{case\_id}, \texttt{source\_dataset}, \texttt{source\_split}, \texttt{language}), an
 input block (demographics; \texttt{free\_text\_vignette} / \texttt{synthetic\_vignette};
@@ -109,13 +109,7 @@ is released for reproducibility (Appendix N).
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig_design_matrix.png}
-\caption{The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable.}\label{fig:fig_design_matrix}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/fig_schema.png}
-\caption{The \texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it.}\label{fig:fig_schema}
+\includegraphics[width=\textwidth]{figures/fig1_overview.png}
+\caption{\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO, isolating downstream capability; Pass~B end-to-end, measuring deployment performance), and the Pass~A$-$Pass~B delta is itself a reported metric of phenotype-extraction sensitivity. The full protocol (hypotheses H1--H11, ablations A1--A12) is pre-registered at OSF. Per-layer coverage of the five pillars and the full \texttt{CanonicalCase} record are detailed in \Cref{fig:fig_design_matrix,fig:fig_schema} (Appendix).}\label{fig:fig1_overview}
 \end{figure*}
 

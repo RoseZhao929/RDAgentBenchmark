@@ -174,7 +174,7 @@ advantage.
 disease'' is a conservative choice when a disorder has multiple prevalence
 estimates; point-prevalence entries are preferred over cases/families.
 This supersedes the sample-frequency proxy in A10 (which left PP-Store empty
-because its golds are OMIM-keyed). Visualised in Figure 5 --- the LLM-classical
+because its golds are OMIM-keyed). Visualised in \Cref{fig:fig5_prevalence_h1} --- the LLM-classical
 crossover at super-rare is the headline F1 evidence.
 
 \subsection{H4 --- Scaffolding \ensuremath{\times} case complexity (organ-system count)}\label{sec-7-8}
@@ -310,7 +310,7 @@ prevalence spectrum. This is the same direction as F1 (classical \textgreater{}
 LLM on the rarest tier, \Cref{sec-7-7} H1, +28 pp on super-rare) viewed from a
 different axis.
 
-Visualised in Figure 4.
+Visualised in \Cref{fig:fig4_a6_contamination_scatter}.
 
 \subsection{H7 --- Failures cluster by specialty (shared blind spots)}\label{sec-7-9}
 
@@ -342,8 +342,20 @@ p=0.0016. Universally weak specialties: nervous system
 ordering points to ontology/data-level difficulty, not scaffold-specific gaps.
 Notably the classical baselines invert the nervous-system weakness (LIRICAL
 0.35, VC-RDAgent 0.43 vs LLM \textasciitilde0.12) and lead on head/neck (0.52--0.54) --- another
-facet of F1's classical advantage. Visualised in Figure 7.
+facet of F1's classical advantage. Visualised in \Cref{fig:fig7_specialty_h7}.
 
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig1_heatmaps.png}
+\caption{Diagnostic accuracy (R@1, variants) across every agent $\times$ backbone cell, one panel per dataset. Classical/offline baselines (lirical, vc\_rdagent) run only on their own engine column. This is the full per-cell matrix behind the capability profiles in \Cref{fig:fig_radar}.}\label{fig:fig1_heatmaps}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig3_ranking.png}
+\caption{Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent).}\label{fig:fig3_ranking}
+\end{figure*}
 
 \begin{figure*}[t]
 \centering

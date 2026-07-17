@@ -18,28 +18,47 @@ from build_paper_pdf import clean, MAIN_ORDER, APPENDIX_ORDER, SEC, ROOT, TITLE 
 
 ACL = ROOT / "paper_build" / "acl"
 ACL.mkdir(parents=True, exist_ok=True)
-FIGDIR = ROOT / "data/round2/figures"
+FIGDIR = ROOT / "paper_build/acl/figures"   # committed, git-tracked figures
 TEXBIN = str(Path.home() / "Library/TinyTeX/bin/universal-darwin")
 
 # ---- figures, grouped by the section they belong under -----------------
+# Figure order (2026-07 revision): the main body carries four load-bearing
+# figures -- (1) benchmark-method overview, (2) agent-capability radar,
+# (3) cost-vs-accuracy Pareto, (4) self-preference slopegraph -- and the
+# reference/detail figures (canonical-case schema, coverage matrix, full
+# per-cell heatmap, ranking lollipop, cost bar) move to the appendix so no
+# two figures carry overlapping information.
 FIG_BY_SECTION = {
-    # main body: benchmark design (schematics)
+    # main body: benchmark design -> THE overview (Figure 1)
     "4_benchmark_design.md": [
+        ("fig1_overview.png", "\\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \\texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO; Pass~B end-to-end), and the Pass~A$-$Pass~B delta is itself a reported metric. Protocol (H1--H11, A1--A12) pre-registered at OSF."),
+    ],
+    # main body: results -> capability radar (Figure 2) + cost-accuracy Pareto (Figure 3)
+    "6_main_results.md": [
+        ("fig_radar.png", "\\textbf{Agent capability profiles.} Best-backbone Recall@1 for representative systems across the four data layers; LLM-scaffolded agents dominate free-text layers while classical baselines peak on curated-HPO layers."),
+        ("fig2_cost_accuracy.png", "Cost vs.\\ accuracy for each agent $\\times$ backbone cell (log cost axis); dashed line is the Pareto frontier."),
+    ],
+    # main body: self-preference methodology finding (Figure 4)
+    "7_5_self_preference_bias.md": [
+        ("fig_selfpref.png", "\\textbf{Self-preference bias in LLM-as-judge.} Swapping the judge from a same-family (Gemini) to a non-family (Claude) model on identical traces shrinks the single-LLM lead and reverses it on depth."),
+    ],
+    # appendix: reference detail figures (schema + coverage matrix)
+    "C_appendix_experimental_setup.md": [
         ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable."),
         ("fig_schema.png", "The \\texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it."),
     ],
-    # main body: results
-    "6_main_results.md": [
-        ("fig1_heatmaps.png", "Diagnostic accuracy (R@1, variants) across every agent $\\times$ backbone cell, one panel per dataset. Classical/offline baselines (lirical, vc\\_rdagent) run only on their own engine column."),
-        ("fig3_ranking.png", "Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent)."),
-        ("fig2_cost_accuracy.png", "Cost vs.\\ accuracy for each agent $\\times$ backbone cell (log cost axis); dashed line is the Pareto frontier."),
-    ],
-    # appendix: hypothesis analysis
+    # appendix: hypothesis analysis (full per-cell matrix + ranking + hypothesis plots)
     "7_2_7_3_7_4_analysis.md": [
+        ("fig1_heatmaps.png", "Diagnostic accuracy (R@1, variants) across every agent $\\times$ backbone cell, one panel per dataset. Full per-cell matrix behind the capability radar."),
+        ("fig3_ranking.png", "Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent)."),
         ("fig4_a6_contamination_scatter.png", "A6 TS-Guessing contamination scatter (LLM vs.\\ classical)."),
         ("fig5_prevalence_h1.png", "H1 prevalence-stratified R@1."),
         ("fig6_hpo_density_h8.png", "H8 phenotype-density inverted-U."),
         ("fig7_specialty_h7.png", "H7 cross-agent specialty blind spots."),
+    ],
+    # appendix: cost bar chart
+    "J_appendix_cost.md": [
+        ("fig_costbar.png", "Cost per prediction by backbone (log axis); $>$20$\\times$ spread, classical baselines at \\$0."),
     ],
 }
 

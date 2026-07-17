@@ -41,3 +41,15 @@ seed \texttt{42} (where the SDK exposes one), per-call timeout \texttt{600--1200
 policy \texttt{tenacity} exponential backoff capped at 3 attempts, and \texttt{max\_tokens}
 left at each adapter's published default (2K--6K).
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig_design_matrix.png}
+\caption{The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable. This expands the pillar$\times$layer coverage summarised in \Cref{fig:fig1_overview}.}\label{fig:fig_design_matrix}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig_schema.png}
+\caption{The \texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it.}\label{fig:fig_schema}
+\end{figure*}
+

@@ -65,6 +65,8 @@ panel degrades on HPO-list input, \Cref{sec-7-2}) and maidxo\ensuremath{\times}G
 RareBench scores 0.44 {[}n=36{]} via the HPO+variant channel, but n is too small
 (P3-only) to enter the main ranking (see \Cref{sec-7-3}). (4) The DS V4-Pro column is reasoning-off (\Cref{sec-5-2} Methods note 2); the thinking-mode contrast is in \Cref{sec-8} H6.
 
+\Cref{fig:fig_radar} profiles this table as per-agent capability shapes over the four layers, making the classical-vs-LLM specialist/generalist split visually explicit.
+
 \textbf{Key cells} (all PP-Store/RareArena cells now on the common N=2000 sample):
 - Classical/offline baselines lead on PP-Store (lirical 0.47, vc\_rdagent
 \textbf{0.44}), above any LLM row (best: medagents Gemini 0.30 / llm\_control
@@ -202,17 +204,11 @@ match, bypassing this mismatch. A real evaluator-vs-data interaction, not a pure
 doesn't close the gap.
 
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig1_heatmaps.png}
-\caption{Diagnostic accuracy (R@1, variants) across every agent $\times$ backbone cell, one panel per dataset. Classical/offline baselines (lirical, vc\_rdagent) run only on their own engine column.}\label{fig:fig1_heatmaps}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/fig3_ranking.png}
-\caption{Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent).}\label{fig:fig3_ranking}
-\end{figure*}
+\includegraphics[width=\columnwidth]{figures/fig_radar.png}
+\caption{\textbf{Agent capability profiles.} Best-backbone Recall@1 for representative systems across the four data layers. LLM-scaffolded agents (solid) dominate the free-text layers (RareArena, MIMIC) where classical/offline baselines (dashed) collapse to 0 for lack of an HPO input, while the classical baselines peak on the curated HPO layers (PP-Store, RareBench) --- a specialist/generalist split that a single leaderboard number would hide. Numbers are the best cell per (agent, layer) from the released per-cell receipts.}\label{fig:fig_radar}
+\end{figure}
 
 \begin{figure*}[t]
 \centering
