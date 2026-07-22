@@ -38,3 +38,7 @@ data/
 *.zip
 logs/
 agent_workspace/
+
+# macOS
+.DS_Store
+**/.DS_Store
