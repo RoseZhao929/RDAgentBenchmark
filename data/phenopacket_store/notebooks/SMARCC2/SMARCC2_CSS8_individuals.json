@@ -1,0 +1,6696 @@
+{
+  "cohortType": "mendelian",
+  "diseaseList": [
+    {
+      "diseaseId": "OMIM:618362",
+      "diseaseLabel": "Coffin-Siris syndrome 8",
+      "modeOfInheritanceList": [
+        {
+          "hpoId": "HP:0000006",
+          "hpoLabel": "Autosomal dominant inheritance",
+          "citation": "PMID:30580808"
+        }
+      ],
+      "geneTranscriptList": [
+        {
+          "hgncId": "HGNC:11105",
+          "geneSymbol": "SMARCC2",
+          "transcript": "NM_001330288.2"
+        }
+      ]
+    }
+  ],
+  "hpoHeaders": [
+    {
+      "hpoLabel": "Blue sclerae",
+      "hpoId": "HP:0000592"
+    },
+    {
+      "hpoLabel": "Astigmatism",
+      "hpoId": "HP:0000483"
+    },
+    {
+      "hpoLabel": "Deeply set eye",
+      "hpoId": "HP:0000490"
+    },
+    {
+      "hpoLabel": "Hypertelorism",
+      "hpoId": "HP:0000316"
+    },
+    {
+      "hpoLabel": "Strabismus",
+      "hpoId": "HP:0000486"
+    },
+    {
+      "hpoLabel": "Esotropia",
+      "hpoId": "HP:0000565"
+    },
+    {
+      "hpoLabel": "Exotropia",
+      "hpoId": "HP:0000577"
+    },
+    {
+      "hpoLabel": "Ptosis",
+      "hpoId": "HP:0000508"
+    },
+    {
+      "hpoLabel": "Myopia",
+      "hpoId": "HP:0000545"
+    },
+    {
+      "hpoLabel": "High myopia",
+      "hpoId": "HP:0011003"
+    },
+    {
+      "hpoLabel": "Recurrent upper respiratory tract infections",
+      "hpoId": "HP:0002788"
+    },
+    {
+      "hpoLabel": "Laryngomalacia",
+      "hpoId": "HP:0001601"
+    },
+    {
+      "hpoLabel": "Tracheobronchomalacia",
+      "hpoId": "HP:0002786"
+    },
+    {
+      "hpoLabel": "Neonatal respiratory distress",
+      "hpoId": "HP:0002643"
+    },
+    {
+      "hpoLabel": "Macrotia",
+      "hpoId": "HP:0000400"
+    },
+    {
+      "hpoLabel": "Protruding ear",
+      "hpoId": "HP:0000411"
+    },
+    {
+      "hpoLabel": "Conductive hearing impairment",
+      "hpoId": "HP:0000405"
+    },
+    {
+      "hpoLabel": "Recurrent otitis media",
+      "hpoId": "HP:0000403"
+    },
+    {
+      "hpoLabel": "Sensorineural hearing impairment",
+      "hpoId": "HP:0000407"
+    },
+    {
+      "hpoLabel": "Unilateral cryptorchidism",
+      "hpoId": "HP:0012741"
+    },
+    {
+      "hpoLabel": "Bilateral cryptorchidism",
+      "hpoId": "HP:0008689"
+    },
+    {
+      "hpoLabel": "Delayed speech and language development",
+      "hpoId": "HP:0000750"
+    },
+    {
+      "hpoLabel": "Absent speech",
+      "hpoId": "HP:0001344"
+    },
+    {
+      "hpoLabel": "Mild global developmental delay",
+      "hpoId": "HP:0011342"
+    },
+    {
+      "hpoLabel": "Severe global developmental delay",
+      "hpoId": "HP:0011344"
+    },
+    {
+      "hpoLabel": "Motor delay",
+      "hpoId": "HP:0001270"
+    },
+    {
+      "hpoLabel": "Intellectual disability",
+      "hpoId": "HP:0001249"
+    },
+    {
+      "hpoLabel": "Profound intellectual disability",
+      "hpoId": "HP:0002187"
+    },
+    {
+      "hpoLabel": "Mild intellectual disability",
+      "hpoId": "HP:0001256"
+    },
+    {
+      "hpoLabel": "Moderate intellectual disability",
+      "hpoId": "HP:0002342"
+    },
+    {
+      "hpoLabel": "Torticollis",
+      "hpoId": "HP:0000473"
+    },
+    {
+      "hpoLabel": "Extrapyramidal dyskinesia",
+      "hpoId": "HP:0007308"
+    },
+    {
+      "hpoLabel": "Appendicular spasticity",
+      "hpoId": "HP:0034353"
+    },
+    {
+      "hpoLabel": "Abnormal pyramidal sign",
+      "hpoId": "HP:0007256"
+    },
+    {
+      "hpoLabel": "Autistic behavior",
+      "hpoId": "HP:0000729"
+    },
+    {
+      "hpoLabel": "Motor stereotypy",
+      "hpoId": "HP:0000733"
+    },
+    {
+      "hpoLabel": "Obsessive-compulsive trait",
+      "hpoId": "HP:0008770"
+    },
+    {
+      "hpoLabel": "Aggressive behavior",
+      "hpoId": "HP:0000718"
+    },
+    {
+      "hpoLabel": "Hyperactivity",
+      "hpoId": "HP:0000752"
+    },
+    {
+      "hpoLabel": "Attention deficit hyperactivity disorder",
+      "hpoId": "HP:0007018"
+    },
+    {
+      "hpoLabel": "Frequent temper tantrums",
+      "hpoId": "HP:0025161"
+    },
+    {
+      "hpoLabel": "Polyphagia",
+      "hpoId": "HP:0002591"
+    },
+    {
+      "hpoLabel": "Inflexible adherence to routines",
+      "hpoId": "HP:0000732"
+    },
+    {
+      "hpoLabel": "Self-injurious behavior",
+      "hpoId": "HP:0100716"
+    },
+    {
+      "hpoLabel": "Sleep disturbance",
+      "hpoId": "HP:0002360"
+    },
+    {
+      "hpoLabel": "Mania",
+      "hpoId": "HP:0100754"
+    },
+    {
+      "hpoLabel": "Anxiety",
+      "hpoId": "HP:0000739"
+    },
+    {
+      "hpoLabel": "Seizure",
+      "hpoId": "HP:0001250"
+    },
+    {
+      "hpoLabel": "Bilateral tonic-clonic seizure",
+      "hpoId": "HP:0002069"
+    },
+    {
+      "hpoLabel": "Generalized tonic seizure",
+      "hpoId": "HP:0010818"
+    },
+    {
+      "hpoLabel": "Atonic seizure",
+      "hpoId": "HP:0010819"
+    },
+    {
+      "hpoLabel": "Dystonia",
+      "hpoId": "HP:0001332"
+    },
+    {
+      "hpoLabel": "Hyperkinetic movements",
+      "hpoId": "HP:0002487"
+    },
+    {
+      "hpoLabel": "CNS hypomyelination",
+      "hpoId": "HP:0003429"
+    },
+    {
+      "hpoLabel": "Global brain atrophy",
+      "hpoId": "HP:0002283"
+    },
+    {
+      "hpoLabel": "Hydrocephalus",
+      "hpoId": "HP:0000238"
+    },
+    {
+      "hpoLabel": "Abnormal corpus callosum morphology",
+      "hpoId": "HP:0001273"
+    },
+    {
+      "hpoLabel": "Thin corpus callosum",
+      "hpoId": "HP:0033725"
+    },
+    {
+      "hpoLabel": "Deep cerebral white matter hyperintensities",
+      "hpoId": "HP:0030892"
+    },
+    {
+      "hpoLabel": "Micrognathia",
+      "hpoId": "HP:0000347"
+    },
+    {
+      "hpoLabel": "Plagiocephaly",
+      "hpoId": "HP:0001357"
+    },
+    {
+      "hpoLabel": "Dolichocephaly",
+      "hpoId": "HP:0000268"
+    },
+    {
+      "hpoLabel": "Macrocephaly",
+      "hpoId": "HP:0000256"
+    },
+    {
+      "hpoLabel": "Sparse scalp hair",
+      "hpoId": "HP:0002209"
+    },
+    {
+      "hpoLabel": "Drooling",
+      "hpoId": "HP:0002307"
+    },
+    {
+      "hpoLabel": "Thin upper lip vermilion",
+      "hpoId": "HP:0000219"
+    },
+    {
+      "hpoLabel": "Deep philtrum",
+      "hpoId": "HP:0002002"
+    },
+    {
+      "hpoLabel": "Long philtrum",
+      "hpoId": "HP:0000343"
+    },
+    {
+      "hpoLabel": "Thick lower lip vermilion",
+      "hpoId": "HP:0000179"
+    },
+    {
+      "hpoLabel": "Abnormality of the dentition",
+      "hpoId": "HP:0000164"
+    },
+    {
+      "hpoLabel": "Increased overbite",
+      "hpoId": "HP:0011094"
+    },
+    {
+      "hpoLabel": "Delayed eruption of teeth",
+      "hpoId": "HP:0000684"
+    },
+    {
+      "hpoLabel": "High, narrow palate",
+      "hpoId": "HP:0002705"
+    },
+    {
+      "hpoLabel": "High palate",
+      "hpoId": "HP:0000218"
+    },
+    {
+      "hpoLabel": "Midface retrusion",
+      "hpoId": "HP:0011800"
+    },
+    {
+      "hpoLabel": "Full cheeks",
+      "hpoId": "HP:0000293"
+    },
+    {
+      "hpoLabel": "Long eyelashes",
+      "hpoId": "HP:0000527"
+    },
+    {
+      "hpoLabel": "Downslanted palpebral fissures",
+      "hpoId": "HP:0000494"
+    },
+    {
+      "hpoLabel": "Hooded eyelid",
+      "hpoId": "HP:0030820"
+    },
+    {
+      "hpoLabel": "Thick eyebrow",
+      "hpoId": "HP:0000574"
+    },
+    {
+      "hpoLabel": "Wide nose",
+      "hpoId": "HP:0000445"
+    },
+    {
+      "hpoLabel": "Anteverted nares",
+      "hpoId": "HP:0000463"
+    },
+    {
+      "hpoLabel": "Bulbous nose",
+      "hpoId": "HP:0000414"
+    },
+    {
+      "hpoLabel": "Eczematoid dermatitis",
+      "hpoId": "HP:0000964"
+    },
+    {
+      "hpoLabel": "Atopic dermatitis",
+      "hpoId": "HP:0001047"
+    },
+    {
+      "hpoLabel": "Recurrent infections",
+      "hpoId": "HP:0002719"
+    },
+    {
+      "hpoLabel": "Inguinal hernia",
+      "hpoId": "HP:0000023"
+    },
+    {
+      "hpoLabel": "Feeding difficulties",
+      "hpoId": "HP:0011968"
+    },
+    {
+      "hpoLabel": "Tube feeding",
+      "hpoId": "HP:0033454"
+    },
+    {
+      "hpoLabel": "Constipation",
+      "hpoId": "HP:0002019"
+    },
+    {
+      "hpoLabel": "Pyloric stenosis",
+      "hpoId": "HP:0002021"
+    },
+    {
+      "hpoLabel": "Short stature",
+      "hpoId": "HP:0004322"
+    },
+    {
+      "hpoLabel": "Failure to thrive",
+      "hpoId": "HP:0001508"
+    },
+    {
+      "hpoLabel": "Intrauterine growth retardation",
+      "hpoId": "HP:0001511"
+    },
+    {
+      "hpoLabel": "Dry skin",
+      "hpoId": "HP:0000958"
+    },
+    {
+      "hpoLabel": "Cafe-au-lait spot",
+      "hpoId": "HP:0000957"
+    },
+    {
+      "hpoLabel": "Vitiligo",
+      "hpoId": "HP:0001045"
+    },
+    {
+      "hpoLabel": "Ichthyosis",
+      "hpoId": "HP:0008064"
+    },
+    {
+      "hpoLabel": "Scleroderma",
+      "hpoId": "HP:0100324"
+    },
+    {
+      "hpoLabel": "Hypertrichosis",
+      "hpoId": "HP:0000998"
+    },
+    {
+      "hpoLabel": "Thin nail",
+      "hpoId": "HP:0001816"
+    },
+    {
+      "hpoLabel": "Hyperconvex fingernails",
+      "hpoId": "HP:0001812"
+    },
+    {
+      "hpoLabel": "Hypoplastic fifth toenail",
+      "hpoId": "HP:0011937"
+    },
+    {
+      "hpoLabel": "Aortic root aneurysm",
+      "hpoId": "HP:0002616"
+    },
+    {
+      "hpoLabel": "Camptodactyly of finger",
+      "hpoId": "HP:0100490"
+    },
+    {
+      "hpoLabel": "Hernia",
+      "hpoId": "HP:0100790"
+    },
+    {
+      "hpoLabel": "Hip dysplasia",
+      "hpoId": "HP:0001385"
+    },
+    {
+      "hpoLabel": "Toe syndactyly",
+      "hpoId": "HP:0001770"
+    },
+    {
+      "hpoLabel": "Overlapping toe",
+      "hpoId": "HP:0001845"
+    },
+    {
+      "hpoLabel": "Clinodactyly of the 5th finger",
+      "hpoId": "HP:0004209"
+    },
+    {
+      "hpoLabel": "Prominent interphalangeal joints",
+      "hpoId": "HP:0006237"
+    },
+    {
+      "hpoLabel": "Clinodactyly",
+      "hpoId": "HP:0030084"
+    },
+    {
+      "hpoLabel": "Abnormal vertebral morphology",
+      "hpoId": "HP:0003468"
+    },
+    {
+      "hpoLabel": "Butterfly vertebrae",
+      "hpoId": "HP:0003316"
+    },
+    {
+      "hpoLabel": "Scoliosis",
+      "hpoId": "HP:0002650"
+    },
+    {
+      "hpoLabel": "Thoracic scoliosis",
+      "hpoId": "HP:0002943"
+    },
+    {
+      "hpoLabel": "Kyphosis",
+      "hpoId": "HP:0002808"
+    },
+    {
+      "hpoLabel": "Thoracolumbar kyphosis",
+      "hpoId": "HP:0005619"
+    },
+    {
+      "hpoLabel": "Thoracic lordosis",
+      "hpoId": "HP:0430043"
+    },
+    {
+      "hpoLabel": "Joint hypermobility",
+      "hpoId": "HP:0001382"
+    },
+    {
+      "hpoLabel": "Hypotonia",
+      "hpoId": "HP:0001252"
+    },
+    {
+      "hpoLabel": "Neonatal hypotonia",
+      "hpoId": "HP:0001319"
+    },
+    {
+      "hpoLabel": "Axial hypotonia",
+      "hpoId": "HP:0008936"
+    },
+    {
+      "hpoLabel": "Hypertonia",
+      "hpoId": "HP:0001276"
+    },
+    {
+      "hpoLabel": "Limb hypertonia",
+      "hpoId": "HP:0002509"
+    },
+    {
+      "hpoLabel": "Pes planus",
+      "hpoId": "HP:0001763"
+    }
+  ],
+  "rows": [
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 1",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P5Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c400AtoG_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 2",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P3Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c723GtoA_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 3",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P2Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c999dup_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 4 (Martinez et. al)",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P17Y",
+        "deceased": "na",
+        "sex": "F"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1311_3CtoG_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 5",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P4Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1919TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 6",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P18Y",
+        "deceased": "na",
+        "sex": "F"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1922TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 7",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P11Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1922TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 8",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P11Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1926_1GtoT_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 9",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P2Y6M",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1926_2TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 10 (Zhu et. al)",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P10Y6M",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1926_2TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 11",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P19Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1931TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 12",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P7Y",
+        "deceased": "na",
+        "sex": "F"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c1996TtoC_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 13",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P8Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c2779AtoG_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "patient 14",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P5Y",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c2792AtoG_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    },
+    {
+      "individualData": {
+        "pmid": "PMID:30580808",
+        "title": "Expanding the Spectrum of BAF-Related Disorders: De Novo Variants in SMARCC2 Cause a Syndrome with Intellectual Disability and Developmental Delay.",
+        "individualId": "Patient 15",
+        "comment": "",
+        "ageOfOnset": "na",
+        "ageAtLastEncounter": "P27M",
+        "deceased": "na",
+        "sex": "M"
+      },
+      "diseaseIdList": [
+        "OMIM:618362"
+      ],
+      "alleleCountMap": {
+        "c3549_3551del_SMARCC2_NM_001330288v2": 1
+      },
+      "hpoData": [
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Observed"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Excluded"
+        },
+        {
+          "type": "Na"
+        },
+        {
+          "type": "Na"
+        }
+      ]
+    }
+  ],
+  "hgvsVariants": {
+    "c2779AtoG_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56168131,
+      "refAllele": "T",
+      "altAllele": "C",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.2779A>G",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56168131T>C",
+      "pHgvs": "NP_001317217.1:p.(Met927Val)",
+      "variantKey": "c2779AtoG_SMARCC2_NM_001330288v2"
+    },
+    "c400AtoG_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56184936,
+      "refAllele": "T",
+      "altAllele": "C",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.400A>G",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56184936T>C",
+      "pHgvs": "NP_001317217.1:p.(Asn134Asp)",
+      "variantKey": "c400AtoG_SMARCC2_NM_001330288v2"
+    },
+    "c1996TtoC_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56171868,
+      "refAllele": "A",
+      "altAllele": "G",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1996T>C",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56171868A>G",
+      "pHgvs": "NP_001317217.1:p.(Cys666Arg)",
+      "variantKey": "c1996TtoC_SMARCC2_NM_001330288v2"
+    },
+    "c1926_1GtoT_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56172427,
+      "refAllele": "C",
+      "altAllele": "A",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1926+1G>T",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56172427C>A",
+      "pHgvs": "NP_001317217.1:p.?",
+      "variantKey": "c1926_1GtoT_SMARCC2_NM_001330288v2"
+    },
+    "c3549_3551del_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56164412,
+      "refAllele": "CATG",
+      "altAllele": "C",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.3549_3551del",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56164413_56164415del",
+      "pHgvs": "NP_001317217.1:p.(Met1184del)",
+      "variantKey": "c3549_3551del_SMARCC2_NM_001330288v2"
+    },
+    "c1919TtoC_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56172435,
+      "refAllele": "A",
+      "altAllele": "G",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1919T>C",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56172435A>G",
+      "pHgvs": "NP_001317217.1:p.(Leu640Pro)",
+      "variantKey": "c1919TtoC_SMARCC2_NM_001330288v2"
+    },
+    "c1311_3CtoG_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56178096,
+      "refAllele": "G",
+      "altAllele": "C",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1311-3C>G",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56178096G>C",
+      "pHgvs": "NP_001317217.1:p.?",
+      "variantKey": "c1311_3CtoG_SMARCC2_NM_001330288v2"
+    },
+    "c1931TtoC_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56171933,
+      "refAllele": "A",
+      "altAllele": "G",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1931T>C",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56171933A>G",
+      "pHgvs": "NP_001317217.1:p.(Leu644Pro)",
+      "variantKey": "c1931TtoC_SMARCC2_NM_001330288v2"
+    },
+    "c999dup_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56181058,
+      "refAllele": "C",
+      "altAllele": "CT",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.999dup",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56181060dup",
+      "pHgvs": "NP_001317217.1:p.(Glu334ArgfsTer49)",
+      "variantKey": "c999dup_SMARCC2_NM_001330288v2"
+    },
+    "c1922TtoC_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56172432,
+      "refAllele": "A",
+      "altAllele": "G",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1922T>C",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56172432A>G",
+      "pHgvs": "NP_001317217.1:p.(Leu641Pro)",
+      "variantKey": "c1922TtoC_SMARCC2_NM_001330288v2"
+    },
+    "c723GtoA_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56181821,
+      "refAllele": "C",
+      "altAllele": "T",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.723G>A",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56181821C>T",
+      "pHgvs": "NP_001317217.1:p.(Trp241Ter)",
+      "variantKey": "c723GtoA_SMARCC2_NM_001330288v2"
+    },
+    "c1926_2TtoC_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56172426,
+      "refAllele": "A",
+      "altAllele": "G",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.1926+2T>C",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56172426A>G",
+      "pHgvs": "NP_001317217.1:p.?",
+      "variantKey": "c1926_2TtoC_SMARCC2_NM_001330288v2"
+    },
+    "c2792AtoG_SMARCC2_NM_001330288v2": {
+      "assembly": "hg38",
+      "chr": "chr12",
+      "position": 56168118,
+      "refAllele": "T",
+      "altAllele": "C",
+      "symbol": "SMARCC2",
+      "hgncId": "HGNC:11105",
+      "hgvs": "c.2792A>G",
+      "transcript": "NM_001330288.2",
+      "gHgvs": "NC_000012.12:g.56168118T>C",
+      "pHgvs": "NP_001317217.1:p.(Glu931Gly)",
+      "variantKey": "c2792AtoG_SMARCC2_NM_001330288v2"
+    }
+  },
+  "structuralVariants": {},
+  "intergenicVariants": {},
+  "phetoolsSchemaVersion": "0.3",
+  "hpoVersion": "2025-11-24",
+  "cohortAcronym": "CSS8",
+  "curationHistory": [
+    {
+      "orcid": "0000-0002-0736-9199",
+      "date": "2026-01-05"
+    }
+  ]
+}

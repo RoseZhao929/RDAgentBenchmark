@@ -1,0 +1,4 @@
+{"pmc_id": "12116868", "error": "HTTPSConnectionPool(host='eutils.ncbi.nlm.nih.gov', port=443): Max retries exceeded with url: /entrez/eutils/efetch.fcgi?db=pmc&id=12116868&retmode=xml (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)')))"}
+{"pmc_id": "11842526", "error": "HTTPSConnectionPool(host='eutils.ncbi.nlm.nih.gov', port=443): Read timed out. (read timeout=60)"}
+{"pmc_id": "11499829", "error": "400 Client Error: Bad Request for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=11499829&retmode=xml"}
+{"pmc_id": "10843346", "error": "HTTPSConnectionPool(host='eutils.ncbi.nlm.nih.gov', port=443): Read timed out."}

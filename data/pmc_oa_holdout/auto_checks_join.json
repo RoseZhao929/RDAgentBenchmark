@@ -1,0 +1,3067 @@
+{
+  "13074162": {
+    "orpha_id": "ORPHA:902",
+    "disease_name": "Werner syndrome",
+    "pub_pmc_date": "2026-03-31",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article presents a new case report of Werner syndrome with specific genetic findings (Mut4 and Mut25) and ocular features, published in 2026, with no indication of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "13076136": {
+    "orpha_id": "ORPHA:47",
+    "disease_name": "X-linked agammaglobulinemia",
+    "pub_pmc_date": "2026-03-31",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of an 18-year-old male with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "10766305": {
+    "orpha_id": "ORPHA:65285",
+    "disease_name": "Lhermitte-Duclos disease",
+    "pub_pmc_date": "2024-01-05",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or a retrospective cohort design.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10767403": {
+    "orpha_id": "ORPHA:2616",
+    "disease_name": "3M syndrome",
+    "pub_pmc_date": "2023-10-25",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is October 25, 2023, which is before the 2024-01-01 cutoff for new case reports.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10767433": {
+    "orpha_id": "ORPHA:69723",
+    "disease_name": "Tyrosinemia type 3",
+    "pub_pmc_date": "2023-10-10",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2023-10-10, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10767578": {
+    "orpha_id": "ORPHA:2614",
+    "disease_name": "Nail-patella syndrome",
+    "pub_pmc_date": "2023-11-06",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2023-11-06, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10767673": {
+    "orpha_id": "ORPHA:2929",
+    "disease_name": "Juvenile polyposis syndrome",
+    "pub_pmc_date": "2023-12-25",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 25, 2023, which is before the January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "10767684": {
+    "orpha_id": "ORPHA:348",
+    "disease_name": "Fructose-1,6-bisphosphatase deficiency",
+    "pub_pmc_date": "2023-12-19",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 19, 2023, which is before the 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "10768362": {
+    "orpha_id": "ORPHA:309025",
+    "disease_name": "Mevalonate kinase deficiency",
+    "pub_pmc_date": "2024-01-05",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication presenting new clinical cases of MKD and TRAPS treated with tocilizumab, with no evidence of prior publication or retrospective dating before 2022.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10783329": {
+    "orpha_id": "ORPHA:139399",
+    "disease_name": "Adrenomyeloneuropathy",
+    "pub_pmc_date": "2024-01-12",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 35-year-old male with a 2-year history of symptoms, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10784498": {
+    "orpha_id": "ORPHA:90342",
+    "disease_name": "Xeroderma pigmentosum variant",
+    "pub_pmc_date": "2024-01-11",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article reports a new functional characterization of a specific variant in a 60-year-old patient with a 2024 publication date, and the flagged '1970' date refers to the historical discovery of the disease, not this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10784729": {
+    "orpha_id": "ORPHA:526",
+    "disease_name": "Liddle syndrome",
+    "pub_pmc_date": "2023-12-08",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 8, 2023, which is before the January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10785502": {
+    "orpha_id": "ORPHA:370",
+    "disease_name": "Glycogen storage disease due to phosphorylase kinase deficiency",
+    "pub_pmc_date": "2024-01-12",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report of a patient with a novel mutation, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10787472": {
+    "orpha_id": "ORPHA:636",
+    "disease_name": "Neurofibromatosis type 1",
+    "pub_pmc_date": "2024-01-13",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10788076": {
+    "orpha_id": "ORPHA:805",
+    "disease_name": "Tuberous sclerosis complex",
+    "pub_pmc_date": "2024-01-13",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a new case report of a single patient with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10788978": {
+    "orpha_id": "ORPHA:570762",
+    "disease_name": "Infective endocarditis",
+    "pub_pmc_date": "2024-01-15",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024 with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "10797712": {
+    "orpha_id": "ORPHA:524",
+    "disease_name": "Li-Fraumeni syndrome",
+    "pub_pmc_date": "2024-01-19",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of hepatic EAML in a patient with Li-Fraumeni syndrome, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "10798782": {
+    "orpha_id": "ORPHA:642",
+    "disease_name": "Hereditary sensory and autonomic neuropathy type 4",
+    "pub_pmc_date": "2024-01-19",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report of a toddler with HSAN IV, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "10799342": {
+    "orpha_id": "ORPHA:1451",
+    "disease_name": "CINCA syndrome",
+    "pub_pmc_date": "2024-01-05",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of NOMID in a 15-day-old neonate with a novel mutation (p.V404L) not previously reported, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10799942": {
+    "orpha_id": "ORPHA:52",
+    "disease_name": "Alagille syndrome",
+    "pub_pmc_date": "2024-01-20",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two novel JAG1 variants in patients with Alagille syndrome and was published in 2024 without any indication of being a retrospective cohort or a republication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10802946": {
+    "orpha_id": "ORPHA:181",
+    "disease_name": "X-linked hypohidrotic ectodermal dysplasia",
+    "pub_pmc_date": "2024-01-22",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of XLHED in a Limousin calf with a specific missense variant, published in 2024, and does not indicate that this specific case was previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "10802993": {
+    "orpha_id": "ORPHA:905",
+    "disease_name": "Wilson disease",
+    "pub_pmc_date": "2023-01-16",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is January 16, 2023, which is before the required 2024-01-01 cutoff for new case reports.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "10806374": {
+    "orpha_id": "ORPHA:53035",
+    "disease_name": "Caroli disease",
+    "pub_pmc_date": "2024-01-12",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case of Caroli disease in a 14-year-old patient with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "10815279": {
+    "orpha_id": "ORPHA:38874",
+    "disease_name": "Dihydropyrimidinuria",
+    "pub_pmc_date": "2023-12",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 2023, which is before the 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10817086": {
+    "orpha_id": "ORPHA:739",
+    "disease_name": "Prader-Willi syndrome",
+    "pub_pmc_date": "2024-01-26",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 25-year-old patient with no indication of prior publication or retrospective cohort framing, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10821070": {
+    "orpha_id": "ORPHA:34587",
+    "disease_name": "Danon disease",
+    "pub_pmc_date": "2024-01-05",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel splice-affecting variant in a multigenerational family with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10826013": {
+    "orpha_id": "ORPHA:646",
+    "disease_name": "Niemann-Pick disease type C",
+    "pub_pmc_date": "2024-01-30",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of Niemann-Pick Disease type C with a novel mutation (c.3452 C > T) not previously reported, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10826480": {
+    "orpha_id": "ORPHA:478",
+    "disease_name": "Kallmann syndrome",
+    "pub_pmc_date": "2024-01-25",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new genetic investigation of a familial case with no indication of prior publication or retrospective cohort framing before 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10834581": {
+    "orpha_id": "ORPHA:275752",
+    "disease_name": "Sickle cell disease",
+    "pub_pmc_date": "2023-06-04",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is June 4, 2023, which is before the 2024-01-01 cutoff.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10836127": {
+    "orpha_id": "ORPHA:130",
+    "disease_name": "Brugada syndrome",
+    "pub_pmc_date": "2024-02-01",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10836931": {
+    "orpha_id": "ORPHA:2348",
+    "disease_name": "Familial partial lipodystrophy, Dunnigan type",
+    "pub_pmc_date": "2023-11-12",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is November 12, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10850194": {
+    "orpha_id": "ORPHA:43",
+    "disease_name": "X-linked adrenoleukodystrophy",
+    "pub_pmc_date": "2023-10-16",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2023-10-16, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "10850384": {
+    "orpha_id": "ORPHA:596753",
+    "disease_name": "VEXAS syndrome",
+    "pub_pmc_date": "2024-01-25",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective case series of 7 patients, which typically indicates a review of existing clinical data rather than a new case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10850558": {
+    "orpha_id": "ORPHA:358",
+    "disease_name": "Gitelman syndrome",
+    "pub_pmc_date": "2024-01-25",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of Gitelman syndrome with a unique genetic profile (SLC12A3 and PDX1 mutations) published in 2024, with no evidence of prior publication of this specific patient.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10851445": {
+    "orpha_id": "ORPHA:558",
+    "disease_name": "Marfan syndrome",
+    "pub_pmc_date": "2022-05-19",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2022-05-19, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10851626": {
+    "orpha_id": "ORPHA:144",
+    "disease_name": "Lynch syndrome",
+    "pub_pmc_date": "2023-09-11",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2023-09-11, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10855567": {
+    "orpha_id": "ORPHA:2882",
+    "disease_name": "Sitosterolemia",
+    "pub_pmc_date": "2024-01-26",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 24-year-old patient with no evidence of prior publication or retrospective cohort framing, published in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10856706": {
+    "orpha_id": "ORPHA:963",
+    "disease_name": "Acromegaly",
+    "pub_pmc_date": "2024-02-05",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article reports a novel clinical phenotype for a RET variant in a specific patient and their family, with no indication that this specific case was previously published or part of an old retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "10859398": {
+    "orpha_id": "ORPHA:50816",
+    "disease_name": "Spondylometaphyseal dysplasia with combined immunodeficiency",
+    "pub_pmc_date": "2024-01-29",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing two cases of SPENCDI with no indication that these specific patients were previously published or part of a pre-2024 retrospective cohort.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10860924": {
+    "orpha_id": "ORPHA:805",
+    "disease_name": "Tuberous sclerosis complex",
+    "pub_pmc_date": "2024-02-09",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article was published in 2024 and describes two new clinical cases without any indication of prior publication or retrospective cohort framing from an earlier period.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10860963": {
+    "orpha_id": "ORPHA:892",
+    "disease_name": "Von Hippel-Lindau disease",
+    "pub_pmc_date": "2024-02-09",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10864091": {
+    "orpha_id": "ORPHA:101081",
+    "disease_name": "Charcot-Marie-Tooth disease type 1A",
+    "pub_pmc_date": "2023-05-24",
+    "prevalence_bands": [
+      "6-9 / 10 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is May 24, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 6-9 / 10 000, 1-5 / 10 000."
+  },
+  "10865650": {
+    "orpha_id": "ORPHA:2614",
+    "disease_name": "Nail-patella syndrome",
+    "pub_pmc_date": "2024-02-14",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 74-year-old man with no indication of prior publication or retrospective cohort framing, and the PMC publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10865686": {
+    "orpha_id": "ORPHA:157215",
+    "disease_name": "Hereditary hypophosphatemic rickets with hypercalciuria",
+    "pub_pmc_date": "2024-02-14",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of HHRH in an 11-year-old female with no indication of prior publication or retrospective cohort framing; the 2024 publication date is consistent with a new case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10870593": {
+    "orpha_id": "ORPHA:45448",
+    "disease_name": "Miyoshi myopathy",
+    "pub_pmc_date": "2024-02-16",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 23-year-old patient published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "10875816": {
+    "orpha_id": "ORPHA:169105",
+    "disease_name": "Thymoma-hypogammaglobulinemia syndrome",
+    "pub_pmc_date": "2024-02-19",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a patient admitted in July 2022, which is within the acceptable window for a 2024 publication and is not a republication of a pre-2024 case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10876619": {
+    "orpha_id": "ORPHA:98909",
+    "disease_name": "Desminopathy",
+    "pub_pmc_date": "2024-02-02",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a patient with biallelic DES variants and focuses on novel therapeutic testing using patient-derived cells, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10877881": {
+    "orpha_id": "ORPHA:305",
+    "disease_name": "Junctional epidermolysis bullosa",
+    "pub_pmc_date": "2024-02-20",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The abstract states there was a three-year follow-up period after the operation, indicating the surgery and initial case occurred well before the 2024 publication date.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "10882756": {
+    "orpha_id": "ORPHA:324",
+    "disease_name": "Fabry disease",
+    "pub_pmc_date": "2024-02-21",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report of a 37-year-old male with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "10882785": {
+    "orpha_id": "ORPHA:60",
+    "disease_name": "Alpha-1-antitrypsin deficiency",
+    "pub_pmc_date": "2024-02-21",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      "6-9 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel genetic variant in a patient admitted in September 2022, which is within the acceptable window for a 2024 publication and shows no signs of being a republication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000, 6-9 / 10 000."
+  },
+  "10888313": {
+    "orpha_id": "ORPHA:15",
+    "disease_name": "Achondroplasia",
+    "pub_pmc_date": "2024-02-10",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "6-9 / 10 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new clinical report of an adult patient with a specific intronic variant, published in 2024, and distinguishes this case from previous descriptions in children.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 6-9 / 10 000, 1-5 / 10 000, Unknown."
+  },
+  "10888672": {
+    "orpha_id": "ORPHA:586",
+    "disease_name": "Cystic fibrosis",
+    "pub_pmc_date": "2024-02-17",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a recent clinical event in a patient with a 2011 transplant history, published in 2024 without indications of being a retrospective cohort or a previously reported case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000, Unknown."
+  },
+  "10893725": {
+    "orpha_id": "ORPHA:544",
+    "disease_name": "Diffuse large B-cell lymphoma",
+    "pub_pmc_date": "2024-02-24",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective case series of five patients diagnosed and treated between January 2005 and September 2019, well before the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10686274": {
+    "orpha_id": "ORPHA:137596",
+    "disease_name": "Neurotrophic keratopathy",
+    "pub_pmc_date": "2023-08-22",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is August 22, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000, Unknown."
+  },
+  "10897489": {
+    "orpha_id": "ORPHA:908",
+    "disease_name": "Fragile X syndrome",
+    "pub_pmc_date": "2024-01-02",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "This is a basic science research article about viral protein interactions, not a clinical case report of a new patient.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10898537": {
+    "orpha_id": "ORPHA:52",
+    "disease_name": "Alagille syndrome",
+    "pub_pmc_date": "2022-11-03",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2022-11-03, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10759324": {
+    "orpha_id": "ORPHA:85110",
+    "disease_name": "Familial encephalopathy with neuroserpin inclusion bodies",
+    "pub_pmc_date": "2024-01-02",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10759414": {
+    "orpha_id": "ORPHA:778",
+    "disease_name": "Rett syndrome",
+    "pub_pmc_date": "2024-01-02",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10900260": {
+    "orpha_id": "ORPHA:137596",
+    "disease_name": "Neurotrophic keratopathy",
+    "pub_pmc_date": "2024-02-22",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 47-year-old patient with Marfan syndrome, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000, Unknown."
+  },
+  "10901699": {
+    "orpha_id": "ORPHA:98301",
+    "disease_name": "Laminopathy",
+    "pub_pmc_date": "2023-06-14",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is June 14, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10824639": {
+    "orpha_id": "ORPHA:905",
+    "disease_name": "Wilson disease",
+    "pub_pmc_date": "2023-04-28",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is April 28, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "10906587": {
+    "orpha_id": "ORPHA:218",
+    "disease_name": "Darier disease",
+    "pub_pmc_date": "2024-03-01",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of Darier disease flare following a COVID-19 infection, which places the clinical event within the pandemic era (post-2019), and the publication date is in 2024 with no evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10906754": {
+    "orpha_id": "ORPHA:805",
+    "disease_name": "Tuberous sclerosis complex",
+    "pub_pmc_date": "2024-02-28",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a patient who first presented in 2020 and was followed through pregnancy, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10912791": {
+    "orpha_id": "ORPHA:805",
+    "disease_name": "Tuberous sclerosis complex",
+    "pub_pmc_date": "2024-03-04",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single patient with a novel TSC1 variant published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10912837": {
+    "orpha_id": "ORPHA:64",
+    "disease_name": "Alstr\u00f6m syndrome",
+    "pub_pmc_date": "2024-02-22",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a case series of four patients with newly identified genetic variants, with no indication that these specific cases were previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "10919518": {
+    "orpha_id": "ORPHA:2613",
+    "disease_name": "Nail-patella-like renal disease",
+    "pub_pmc_date": "2024-03-08",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel LMX1B mutation in a Chinese family with a 9-year follow-up ending in a 2024 publication, and there is no evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10921566": {
+    "orpha_id": "ORPHA:821",
+    "disease_name": "Sotos syndrome",
+    "pub_pmc_date": "2024-03-08",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The patient's hospital admission occurred on April 24, 2021, which is significantly before the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "10921798": {
+    "orpha_id": "ORPHA:2088",
+    "disease_name": "Fanconi-Bickel syndrome",
+    "pub_pmc_date": "2024-03-07",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report of a 2-year-old patient with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "10921960": {
+    "orpha_id": "ORPHA:79314",
+    "disease_name": "L-2-hydroxyglutaric aciduria",
+    "pub_pmc_date": "2024-03-07",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report of a 17-year-old patient with no indication of prior publication or retrospective cohort framing, and the PMC publication date is within the 2024 window.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10924519": {
+    "orpha_id": "ORPHA:912",
+    "disease_name": "Zellweger syndrome",
+    "pub_pmc_date": "2024-02-29",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "10924697": {
+    "orpha_id": "ORPHA:716",
+    "disease_name": "Phenylketonuria",
+    "pub_pmc_date": "2023-06-26",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is June 26, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10931735": {
+    "orpha_id": "ORPHA:79397",
+    "disease_name": "Epidermolysis bullosa simplex with mottled pigmentation",
+    "pub_pmc_date": "2024-03-04",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes three new cases in young children with a 2024 publication date and no indication that these specific patients were previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10932951": {
+    "orpha_id": "ORPHA:300373",
+    "disease_name": "X-linked acrogigantism",
+    "pub_pmc_date": "2024-02-28",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing the diagnostic and therapeutic pathway of a specific female patient; the mention of 'retrospective diagnosis' in the text refers to the general history of the disease's discovery, not this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10937141": {
+    "orpha_id": "ORPHA:101075",
+    "disease_name": "X-linked Charcot-Marie-Tooth disease type 1",
+    "pub_pmc_date": "2023-07-05",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is July 5, 2023, which is before the January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10938514": {
+    "orpha_id": "ORPHA:59",
+    "disease_name": "Allan-Herndon-Dudley syndrome",
+    "pub_pmc_date": "2024-03-11",
+    "prevalence_bands": [
+      "Unknown",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report of a boy with MCT8 deficiency treated with Triac, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown, <1 / 1 000 000."
+  },
+  "10938529": {
+    "orpha_id": "ORPHA:3463",
+    "disease_name": "Wolfram syndrome",
+    "pub_pmc_date": "2024-03-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case of a 7-year-old patient with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10943286": {
+    "orpha_id": "ORPHA:2841",
+    "disease_name": "Hailey-Hailey disease",
+    "pub_pmc_date": "2023-11-24",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is November 24, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "10945221": {
+    "orpha_id": "ORPHA:567",
+    "disease_name": "22q11.2 deletion syndrome",
+    "pub_pmc_date": "2024-02",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no evidence of prior publication or retrospective cohort framing; the patient's clinical course is described chronologically from birth.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10948032": {
+    "orpha_id": "ORPHA:116",
+    "disease_name": "Beckwith-Wiedemann syndrome",
+    "pub_pmc_date": "2024-02-29",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes new cases of BWS mimicking CAH and was published in 2024 without any indication of being a retrospective study of an old cohort or a republication of previous cases.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10948039": {
+    "orpha_id": "ORPHA:130",
+    "disease_name": "Brugada syndrome",
+    "pub_pmc_date": "2024-02-08",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication of a new case report involving a 33-year-old male, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10951126": {
+    "orpha_id": "ORPHA:2882",
+    "disease_name": "Sitosterolemia",
+    "pub_pmc_date": "2024-01",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case with a key diagnostic admission in January 2023 and subsequent genetic confirmation, published in early 2024, which meets the criteria for a new case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10958957": {
+    "orpha_id": "ORPHA:716",
+    "disease_name": "Phenylketonuria",
+    "pub_pmc_date": "2024-03-21",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 12-year-old patient with a one-year follow-up published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10962175": {
+    "orpha_id": "ORPHA:1675",
+    "disease_name": "Dihydropyrimidine dehydrogenase deficiency",
+    "pub_pmc_date": "2024-03-25",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel intragenic deletion in a male infant and was published in March 2024, with no evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10963921": {
+    "orpha_id": "ORPHA:98861",
+    "disease_name": "Primary ciliary dyskinesia, Kartagener type",
+    "pub_pmc_date": "2023-10-22",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is October 22, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10964954": {
+    "orpha_id": "ORPHA:355",
+    "disease_name": "Gaucher disease",
+    "pub_pmc_date": "2024-03-21",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 4-month-old infant with no indication of prior publication or retrospective cohort framing, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10965776": {
+    "orpha_id": "ORPHA:647667",
+    "disease_name": "Mandibuloacral dysplasia associated to MTX2",
+    "pub_pmc_date": "2024-03-13",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel mutation in the MTX2 gene as the first report of this specific syndrome (MADaM) in the Chinese population, and the 2024 publication date aligns with a new case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10967001": {
+    "orpha_id": "ORPHA:90797",
+    "disease_name": "Partial androgen insensitivity syndrome",
+    "pub_pmc_date": "2024-03-26",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 13-year-old male with a novel mutation, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "10970303": {
+    "orpha_id": "ORPHA:58",
+    "disease_name": "Alexander disease",
+    "pub_pmc_date": "2024-03-11",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a new case report of neonatal Alexander disease with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10970670": {
+    "orpha_id": "ORPHA:96068",
+    "disease_name": "Mosaic trisomy 22 syndrome",
+    "pub_pmc_date": "2024-03-08",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article presents three novel cases (two with developmental outcomes) alongside a systematic review, and there is no indication that these specific cases were previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10973061": {
+    "orpha_id": "ORPHA:596753",
+    "disease_name": "VEXAS syndrome",
+    "pub_pmc_date": "2023-02-03",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is February 3, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10976829": {
+    "orpha_id": "ORPHA:712",
+    "disease_name": "Hemolytic anemia due to glucophosphate isomerase deficiency",
+    "pub_pmc_date": "2024-03-28",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new diagnosis of a 27-year-old patient using whole-genome sequencing, and while she was referred in 2018, this is the first formal report of her specific case and genetic findings.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "10983683": {
+    "orpha_id": "ORPHA:217607",
+    "disease_name": "Familial dilated cardiomyopathy",
+    "pub_pmc_date": "2024-04-01",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10984288": {
+    "orpha_id": "ORPHA:102009",
+    "disease_name": "Classic lissencephaly",
+    "pub_pmc_date": "2024-01-05",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel case from a research cohort published in 2024, and while the cohort was previously analyzed for exonic variants, this specific deep intronic finding is new.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "10994426": {
+    "orpha_id": "ORPHA:881",
+    "disease_name": "Turner syndrome",
+    "pub_pmc_date": "2024-04-05",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of an 18-year-old patient with no indication of pre-2024 publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "10996216": {
+    "orpha_id": "ORPHA:324",
+    "disease_name": "Fabry disease",
+    "pub_pmc_date": "2024-04-05",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a father and daughter published in 2024; the 'first described' phrase in the text refers to the mutation's history in literature, not this specific patient.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "10996244": {
+    "orpha_id": "ORPHA:304",
+    "disease_name": "Epidermolysis bullosa simplex",
+    "pub_pmc_date": "2024-04-05",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new case reports published in 2024 with no evidence of prior publication or retrospective cohort framing that would disqualify them.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "10997844": {
+    "orpha_id": "ORPHA:642",
+    "disease_name": "Hereditary sensory and autonomic neuropathy type 4",
+    "pub_pmc_date": "2024-04-05",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing three new cases with no indication of prior publication or retrospective cohort dating that would violate the criteria.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "11000129": {
+    "orpha_id": "ORPHA:324",
+    "disease_name": "Fabry disease",
+    "pub_pmc_date": "2024-04-08",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case with a significant clinical event and referral for treatment in April 2023, which is close to the 2024 publication cutoff and not a retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11002242": {
+    "orpha_id": "ORPHA:813",
+    "disease_name": "Silver-Russell syndrome",
+    "pub_pmc_date": "2024-03-26",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel IGF2 variant in a single patient with no indication of prior publication or retrospective cohort framing that would disqualify it.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11002998": {
+    "orpha_id": "ORPHA:348",
+    "disease_name": "Fructose-1,6-bisphosphatase deficiency",
+    "pub_pmc_date": "2024-04-09",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 2.5-year-old child with a mutation previously undocumented in the Syrian Arabian population, published in 2024 without evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11005255": {
+    "orpha_id": "ORPHA:893",
+    "disease_name": "WAGR syndrome",
+    "pub_pmc_date": "2024-04-09",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report with a 1-year follow-up published in 2024, and there is no evidence that this specific case was previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "11006754": {
+    "orpha_id": "ORPHA:39041",
+    "disease_name": "Omenn syndrome",
+    "pub_pmc_date": "2024-04-10",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two patients, one with a novel variant (R431P) and one with a previously described variant (R775H), but both are presented as new clinical cases in this report with no indication of prior publication of these specific individuals.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11007090": {
+    "orpha_id": "ORPHA:389",
+    "disease_name": "Langerhans cell histiocytosis",
+    "pub_pmc_date": "2024-03-28",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a patient admitted in August 2023, which is consistent with a new 2024 publication and not a retrospective cohort or republication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11007553": {
+    "orpha_id": "ORPHA:98974",
+    "disease_name": "Fuchs endothelial corneal dystrophy",
+    "pub_pmc_date": "2024",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case managed between 2021 and 2023, which is consistent with a new report published in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11008993": {
+    "orpha_id": "ORPHA:77261",
+    "disease_name": "Gaucher disease type 3",
+    "pub_pmc_date": "2023-08-09",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is 2023, which is before the 2024-01-01 cutoff, and the case was previously reported in a prior publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11011354": {
+    "orpha_id": "ORPHA:827",
+    "disease_name": "Stargardt disease",
+    "pub_pmc_date": "2024-03-29",
+    "prevalence_bands": [
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes the preclinical development of a personalized therapy for a 10-year-old patient with a unique variant, published in 2024, with no indication of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000."
+  },
+  "11015556": {
+    "orpha_id": "ORPHA:96169",
+    "disease_name": "Koolen-De Vries syndrome",
+    "pub_pmc_date": "2024-04-13",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case of a 21-month-old boy treated in 2022, which is within the acceptable timeframe for a new case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11017581": {
+    "orpha_id": "ORPHA:444490",
+    "disease_name": "Familial chylomicronemia syndrome",
+    "pub_pmc_date": "2024-04-15",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of two siblings published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11017661": {
+    "orpha_id": "ORPHA:157",
+    "disease_name": "Carnitine palmitoyltransferase II deficiency",
+    "pub_pmc_date": "2024-04-14",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11018201": {
+    "orpha_id": "ORPHA:358",
+    "disease_name": "Gitelman syndrome",
+    "pub_pmc_date": "2024-04-12",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a patient admitted in late 2020, which is close to the cutoff and acceptable for a 2024 publication; there is no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11019143": {
+    "orpha_id": "ORPHA:695110",
+    "disease_name": "MAN2B2-CDG",
+    "pub_pmc_date": "2024-04-15",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case (the third reported worldwide) with distinct variants and phenotypes, published in 2024, and does not indicate the case was previously published.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11021622": {
+    "orpha_id": "ORPHA:685",
+    "disease_name": "Hereditary spastic paraplegia",
+    "pub_pmc_date": "2024-03-04",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 34-year-old female with a novel COQ7 variant, published in 2024, with no indication of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11027967": {
+    "orpha_id": "ORPHA:139455",
+    "disease_name": "Autosomal recessive bestrophinopathy",
+    "pub_pmc_date": "2023-12-07",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 7, 2023, which is before the required cutoff of January 1, 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11032079": {
+    "orpha_id": "ORPHA:636",
+    "disease_name": "Neurofibromatosis type 1",
+    "pub_pmc_date": "2024-02-08",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new clinical case published in 2024 with no indications of retrospective cohort framing or prior publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11036728": {
+    "orpha_id": "ORPHA:10",
+    "disease_name": "48,XXYY syndrome",
+    "pub_pmc_date": "2024-04-23",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 6-year-old boy with 48, XXYY syndrome and macular hypoplasia, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11040501": {
+    "orpha_id": "ORPHA:500062",
+    "disease_name": "Infantile-onset periodic fever-panniculitis-dermatosis syndrome",
+    "pub_pmc_date": "2024-04-23",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of OTULIN-related autoinflammatory syndrome with a specific de novo variant, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11044326": {
+    "orpha_id": "ORPHA:79443",
+    "disease_name": "Pseudohypoparathyroidism type 1A",
+    "pub_pmc_date": "2024-04-25",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel GNAS mutation in three sisters that has not been previously reported, and there are no indications of a retrospective cohort or prior publication of these specific cases.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11045220": {
+    "orpha_id": "ORPHA:791",
+    "disease_name": "Retinitis pigmentosa",
+    "pub_pmc_date": "2024-04-25",
+    "prevalence_bands": [
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The case was previously reported by the authors in a 2019 conference proceeding, making this a follow-up/mechanistic study of a known case rather than a new 2024 case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000."
+  },
+  "11049394": {
+    "orpha_id": "ORPHA:536532",
+    "disease_name": "Classical-like Ehlers-Danlos syndrome type 2",
+    "pub_pmc_date": "2024-04-06",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case (the 15th patient/13th family) published in 2024, and distinguishes this patient from the 14 previously reported cases in the literature.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11049754": {
+    "orpha_id": "ORPHA:909",
+    "disease_name": "Cerebrotendinous xanthomatosis",
+    "pub_pmc_date": "2024-04-26",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication of a new case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, <1 / 1 000 000."
+  },
+  "11049871": {
+    "orpha_id": "ORPHA:567",
+    "disease_name": "22q11.2 deletion syndrome",
+    "pub_pmc_date": "2024-04-19",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11055791": {
+    "orpha_id": "ORPHA:297",
+    "disease_name": "Tick-borne encephalitis",
+    "pub_pmc_date": "2024-04-27",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no evidence of prior publication or a retrospective cohort design that would disqualify it.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11056325": {
+    "orpha_id": "ORPHA:98896",
+    "disease_name": "Duchenne muscular dystrophy",
+    "pub_pmc_date": "2024-03-19",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11059674": {
+    "orpha_id": "ORPHA:821",
+    "disease_name": "Sotos syndrome",
+    "pub_pmc_date": "2024-04-29",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes four pediatric cases with novel, previously unreported NSD1 variants and was published in 2024 without any indication of being a retrospective cohort or a republication of old cases.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11064951": {
+    "orpha_id": "ORPHA:581",
+    "disease_name": "Mucopolysaccharidosis type 3",
+    "pub_pmc_date": "2024-03-16",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective case series of eight patients with ages ranging up to 20 years at the time of the study, indicating the cases were managed and diagnosed years prior to the 2024 publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11069050": {
+    "orpha_id": "ORPHA:79394",
+    "disease_name": "Congenital ichthyosiform erythroderma",
+    "pub_pmc_date": "2024-05-04",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 27-year-old male with CIE, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11070630": {
+    "orpha_id": "ORPHA:590",
+    "disease_name": "Congenital myasthenic syndrome",
+    "pub_pmc_date": "2024-04-01",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of neonatal-onset MUSK-related CMS with specific compound heterozygous deletions and uses the case to perform a genotype-phenotype correlation analysis.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11074605": {
+    "orpha_id": "ORPHA:218",
+    "disease_name": "Darier disease",
+    "pub_pmc_date": "2024-03-04",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new clinical application of Tocilizumab for Darier disease with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11075229": {
+    "orpha_id": "ORPHA:93256",
+    "disease_name": "Fragile X-associated tremor/ataxia syndrome",
+    "pub_pmc_date": "2024-05-07",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 63-year-old patient with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11075503": {
+    "orpha_id": "ORPHA:275813",
+    "disease_name": "Pulmonary arterial hypertension associated with portal hypertension",
+    "pub_pmc_date": "2024-03-14",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11077747": {
+    "orpha_id": "ORPHA:254516",
+    "disease_name": "Temple syndrome",
+    "pub_pmc_date": "2024-05-07",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel 69 Kb microdeletion in a patient and their family, published in 2024, with no indication that this specific case was previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11077790": {
+    "orpha_id": "ORPHA:558",
+    "disease_name": "Marfan syndrome",
+    "pub_pmc_date": "2024-05-07",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 5-year-old boy with a novel FBN1 mutation, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11081469": {
+    "orpha_id": "ORPHA:104",
+    "disease_name": "Leber hereditary optic neuropathy",
+    "pub_pmc_date": "2023-04-19",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is April 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11081592": {
+    "orpha_id": "ORPHA:217604",
+    "disease_name": "Dilated cardiomyopathy",
+    "pub_pmc_date": "2024-05-10",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication of a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11081609": {
+    "orpha_id": "ORPHA:558",
+    "disease_name": "Marfan syndrome",
+    "pub_pmc_date": "2024-05-10",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article presents three new case reports published in 2024; the 'retrospective' mention in the text refers to a separate cited study of 513 individuals, not the current cases.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11081883": {
+    "orpha_id": "ORPHA:652",
+    "disease_name": "Multiple endocrine neoplasia type 1",
+    "pub_pmc_date": "2023-09-01",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is September 1, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11081906": {
+    "orpha_id": "ORPHA:733",
+    "disease_name": "Familial adenomatous polyposis",
+    "pub_pmc_date": "2023-08-09",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is August 9, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11082537": {
+    "orpha_id": "ORPHA:60025",
+    "disease_name": "Pulmonary alveolar microlithiasis",
+    "pub_pmc_date": "2024-05-09",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or a retrospective cohort design that would disqualify it.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11083902": {
+    "orpha_id": "ORPHA:610",
+    "disease_name": "Bethlem muscular dystrophy",
+    "pub_pmc_date": "2024-05-10",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 33-year-old male published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11088039": {
+    "orpha_id": "ORPHA:15",
+    "disease_name": "Achondroplasia",
+    "pub_pmc_date": "2024-05-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "6-9 / 10 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 26-year-old male with no indication of prior publication or retrospective cohort framing, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 6-9 / 10 000, 1-5 / 10 000, Unknown."
+  },
+  "11088205": {
+    "orpha_id": "ORPHA:654",
+    "disease_name": "Nephroblastoma",
+    "pub_pmc_date": "2023-12-14",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 14, 2023, which is before the January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000, <1 / 1 000 000."
+  },
+  "11088769": {
+    "orpha_id": "ORPHA:34587",
+    "disease_name": "Danon disease",
+    "pub_pmc_date": "2024-05-12",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11089783": {
+    "orpha_id": "ORPHA:846",
+    "disease_name": "Alpha-thalassemia",
+    "pub_pmc_date": "2024-05-13",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel case of an 18-year-old female with a newly identified complex variant, published in 2024 with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000, Unknown."
+  },
+  "11097304": {
+    "orpha_id": "ORPHA:478664",
+    "disease_name": "Hereditary sensory and autonomic neuropathy type 8",
+    "pub_pmc_date": "2024-04-01",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024, and although the patient was initially evaluated in 2020, it is not a retrospective cohort or a republication of a previously reported case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11099762": {
+    "orpha_id": "ORPHA:442",
+    "disease_name": "Congenital hypothyroidism",
+    "pub_pmc_date": "2024-03-26",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      ">1 / 1000",
+      "6-9 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case of a 7-month-old French bulldog with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "fail",
+    "auto_check4_reason": "Orphadata classifies as NOT rare in Europe (>1 / 1000)."
+  },
+  "11106848": {
+    "orpha_id": "ORPHA:171723",
+    "disease_name": "White sponge nevus",
+    "pub_pmc_date": "2024-05-21",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report with a one-year follow-up published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11110268": {
+    "orpha_id": "ORPHA:79239",
+    "disease_name": "Classic galactosemia",
+    "pub_pmc_date": "2024-05-22",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of classic galactosemia with a novel GALT gene variant (c.377 + 2dup) and was published in 2024, with no evidence of the case being previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "11110280": {
+    "orpha_id": "ORPHA:508",
+    "disease_name": "Donohue syndrome",
+    "pub_pmc_date": "2024-05-11",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing; the mention of a COVID-19 infection during pregnancy suggests the case occurred recently.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11112606": {
+    "orpha_id": "ORPHA:2882",
+    "disease_name": "Sitosterolemia",
+    "pub_pmc_date": "2024-03-26",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two pedigrees with sitosterolemia and provides new proteomic profiling data; there is no evidence of prior publication or a retrospective cohort from before 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11119407": {
+    "orpha_id": "ORPHA:765",
+    "disease_name": "Pyruvate dehydrogenase deficiency",
+    "pub_pmc_date": "2024-05-24",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The patient was admitted on December 23, 2020, and the ethics approval date (2018) further confirms this is a retrospective report of a case from several years prior to the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11121103": {
+    "orpha_id": "ORPHA:130",
+    "disease_name": "Brugada syndrome",
+    "pub_pmc_date": "2024-05-17",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 4-year-old boy with a specific genetic variant and phenotype, published in 2024, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11121183": {
+    "orpha_id": "ORPHA:22",
+    "disease_name": "Succinic semialdehyde dehydrogenase deficiency",
+    "pub_pmc_date": "2024-05-11",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new functional characterization of genetic variants in a family, published in May 2024, with no indication that this specific case or family study was previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11121323": {
+    "orpha_id": "ORPHA:1872",
+    "disease_name": "Cone rod dystrophy",
+    "pub_pmc_date": "2024-05-15",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel, previously unreported CRB1 variant in a case series published in 2024, and although it is a retrospective study, it includes a newly identified variant and current in silico analysis.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11121527": {
+    "orpha_id": "ORPHA:63",
+    "disease_name": "Alport syndrome",
+    "pub_pmc_date": "2024-05-08",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel familial variant in a proband and mother, and the 'previously reported' phrases in the text refer to general literature or other unrelated patients, not this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "11122089": {
+    "orpha_id": "ORPHA:284979",
+    "disease_name": "Neonatal Marfan syndrome",
+    "pub_pmc_date": "2024-05-17",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two newborn infants with novel variants, published in 2024, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11122195": {
+    "orpha_id": "ORPHA:99796",
+    "disease_name": "Subcortical band heterotopia",
+    "pub_pmc_date": "2024-05-18",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes novel DCX gene variants in three unrelated cases with no indication of prior publication or retrospective cohort dating that would disqualify it.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11123195": {
+    "orpha_id": "ORPHA:791",
+    "disease_name": "Retinitis pigmentosa",
+    "pub_pmc_date": "2024-05-11",
+    "prevalence_bands": [
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new cases of late-onset retinitis pigmentosa; while the specific mutation was previously reported in other patients with different phenotypes, these specific Italian patients are new reports.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000."
+  },
+  "11125292": {
+    "orpha_id": "ORPHA:730",
+    "disease_name": "Autosomal dominant polycystic kidney disease",
+    "pub_pmc_date": "2024-02-27",
+    "prevalence_bands": [
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case presentation from November 2022, which is close to the 2024 publication date and does not indicate a retrospective cohort or prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000."
+  },
+  "11126373": {
+    "orpha_id": "ORPHA:232",
+    "disease_name": "Sickle cell anemia",
+    "pub_pmc_date": "2023-12-09",
+    "prevalence_bands": [
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is December 9, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-5 / 10 000."
+  },
+  "11129476": {
+    "orpha_id": "ORPHA:805",
+    "disease_name": "Tuberous sclerosis complex",
+    "pub_pmc_date": "2024-05-27",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a new case report of a 31-year-old female with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11130347": {
+    "orpha_id": "ORPHA:79665",
+    "disease_name": "Gardner syndrome",
+    "pub_pmc_date": "2024-05-14",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a family with Gardner syndrome, and while the patient was first seen years ago, the definitive diagnosis and genetic analysis appear to be contemporary with the 2024 publication.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11131292": {
+    "orpha_id": "ORPHA:377",
+    "disease_name": "Gorlin syndrome",
+    "pub_pmc_date": "2024-05-28",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article presents a new case report of a 71-year-old woman alongside a systematic review, with no evidence that this specific case was previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11134137": {
+    "orpha_id": "ORPHA:580",
+    "disease_name": "Mucopolysaccharidosis type 2",
+    "pub_pmc_date": "2024-04-15",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 4-year-old male with Hunter syndrome published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11135902": {
+    "orpha_id": "ORPHA:93573",
+    "disease_name": "Thrombotic microangiopathy",
+    "pub_pmc_date": "2024-05-27",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new pediatric case reports without any indication of retrospective cohort framing or prior publication of these specific cases.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11149197": {
+    "orpha_id": "ORPHA:470",
+    "disease_name": "Lysinuric protein intolerance",
+    "pub_pmc_date": "2024-06-03",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of an 8-month-old infant with LPI-associated PAP published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11149238": {
+    "orpha_id": "ORPHA:324",
+    "disease_name": "Fabry disease",
+    "pub_pmc_date": "2024-06-03",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no indication that this specific patient's clinical course was previously published or part of a retrospective cohort study.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11153699": {
+    "orpha_id": "ORPHA:599480",
+    "disease_name": "Acquired hemophilia A",
+    "pub_pmc_date": "2024-05-23",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "Unknown",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication of a single case report; the 'retrospective' label refers to the analysis of this specific patient's records for the report, not a pre-2024 cohort study.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, Unknown, <1 / 1 000 000."
+  },
+  "11155060": {
+    "orpha_id": "ORPHA:238468",
+    "disease_name": "Hypohidrotic ectodermal dysplasia",
+    "pub_pmc_date": "2024-06-05",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel frameshift variant in two siblings and was published in 2024. There is no evidence that this specific case was previously published or part of a retrospective cohort from years prior to the cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11156175": {
+    "orpha_id": "ORPHA:892",
+    "disease_name": "Von Hippel-Lindau disease",
+    "pub_pmc_date": "2024-05-17",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 51-year-old man with VHL disease, published in 2024, with no evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11156176": {
+    "orpha_id": "ORPHA:2348",
+    "disease_name": "Familial partial lipodystrophy, Dunnigan type",
+    "pub_pmc_date": "2024-05-10",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new case reports published in 2024 with no indication that these specific cases were previously published or part of an old retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11157330": {
+    "orpha_id": "ORPHA:244",
+    "disease_name": "Primary ciliary dyskinesia",
+    "pub_pmc_date": "2023-10-06",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is October 6, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11160389": {
+    "orpha_id": "ORPHA:98762",
+    "disease_name": "Spinocerebellar ataxia type 12",
+    "pub_pmc_date": "2024-06-05",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report of a 37-year-old patient with SCA12 without any indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11161236": {
+    "orpha_id": "ORPHA:247709",
+    "disease_name": "Multiple endocrine neoplasia type 2B",
+    "pub_pmc_date": "2024-05-06",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The case is a retrospective long-term follow-up of a patient whose initial diagnosis and treatment began in 2006, with the 17-year disease course largely occurring before 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11163733": {
+    "orpha_id": "ORPHA:79432",
+    "disease_name": "Oculocutaneous albinism type 2",
+    "pub_pmc_date": "2024-06-10",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "6-9 / 10 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing; the patient's treatment and 2-month follow-up are consistent with a recent clinical event.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 6-9 / 10 000, 1-5 / 10 000."
+  },
+  "11164125": {
+    "orpha_id": "ORPHA:324",
+    "disease_name": "Fabry disease",
+    "pub_pmc_date": "2024-06-07",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a 27-year-old male proband with a novel mutation (c.777_778del) not previously reported, and there are no indications of retrospective cohort framing or prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11165897": {
+    "orpha_id": "ORPHA:636",
+    "disease_name": "Neurofibromatosis type 1",
+    "pub_pmc_date": "2024-06-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no evidence of prior publication or a retrospective cohort design; the mention of 'retrospectively' refers to a clinical review of the patient's own imaging.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11171958": {
+    "orpha_id": "ORPHA:157973",
+    "disease_name": "Congenital muscular dystrophy due to LMNA mutation",
+    "pub_pmc_date": "2024-05-27",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a follow-up report of a case previously published by the same group in 2018 and 2019, as explicitly stated in the text.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11172263": {
+    "orpha_id": "ORPHA:171848",
+    "disease_name": "Polyneuropathy-hearing loss-ataxia-retinitis pigmentosa-cataract syndrome",
+    "pub_pmc_date": "2024-05-25",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes three unrelated probands with ultra-rare syndromes and identifies four novel genetic variants, with no indication that these specific cases were previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11178600": {
+    "orpha_id": "ORPHA:284388",
+    "disease_name": "Reversible cerebral vasoconstriction syndrome",
+    "pub_pmc_date": "2024-06-06",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 educational review that includes a case example to illustrate the condition, with no evidence that the case is a republication or from a pre-2024 cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11179463": {
+    "orpha_id": "ORPHA:216812",
+    "disease_name": "Osteogenesis imperfecta type 3",
+    "pub_pmc_date": "2024-06-11",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no indications of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11181541": {
+    "orpha_id": "ORPHA:590",
+    "disease_name": "Congenital myasthenic syndrome",
+    "pub_pmc_date": "2024-06-17",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 41-year-old male admitted in March 2023, which is close to the 2024 cutoff and does not represent a republication of a previously reported case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11181628": {
+    "orpha_id": "ORPHA:647834",
+    "disease_name": "SLC40A1-related hemochromatosis",
+    "pub_pmc_date": "2024-06-17",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new pedigree report published in 2024, and while it references previous studies of the same mutation, the specific proband and family described appear to be a new case presentation.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11181917": {
+    "orpha_id": "ORPHA:464",
+    "disease_name": "Incontinentia pigmenti",
+    "pub_pmc_date": "2024-06-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 5-year-old girl published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11182986": {
+    "orpha_id": "ORPHA:586",
+    "disease_name": "Cystic fibrosis",
+    "pub_pmc_date": "2024-06-04",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a longitudinal study of a single patient's isolates over 63 months, with no indication of prior publication of this specific case data.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000, Unknown."
+  },
+  "11184573": {
+    "orpha_id": "ORPHA:2770",
+    "disease_name": "Nasu-Hakola disease",
+    "pub_pmc_date": "2024-06-18",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel homozygous TREM2 variant in three siblings from an Iraqi family, published in 2024, and the 'previously reported' flag refers to a different family/variant in the literature review.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11186240": {
+    "orpha_id": "ORPHA:79239",
+    "disease_name": "Classic galactosemia",
+    "pub_pmc_date": "2024-06-19",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "11186878": {
+    "orpha_id": "ORPHA:1600",
+    "disease_name": "Monosomy 18q syndrome",
+    "pub_pmc_date": "2024-06-19",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two cases of 18q deletion syndrome with a novel presentation (LOCID) and contains no evidence of prior publication or retrospective cohort framing that violates the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11186889": {
+    "orpha_id": "ORPHA:183660",
+    "disease_name": "Severe combined immunodeficiency",
+    "pub_pmc_date": "2024-06-19",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new homozygous LIG1 mutation (p.A624T) in a patient, and while it references historical cases from 1992 and 'recently', it presents this specific case as a new report in a 2024 publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11188498": {
+    "orpha_id": "ORPHA:184",
+    "disease_name": "Cherubism",
+    "pub_pmc_date": "2024-06-20",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case of a 6-month-old infant with no indication of prior publication or retrospective cohort framing, published in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11189705": {
+    "orpha_id": "ORPHA:199",
+    "disease_name": "Cornelia de Lange syndrome",
+    "pub_pmc_date": "2023-10-20",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is October 20, 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11191977": {
+    "orpha_id": "ORPHA:242",
+    "disease_name": "46,XY complete gonadal dysgenesis",
+    "pub_pmc_date": "2024-06-21",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication presenting two new case reports of 46, XY DSD without any indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11193346": {
+    "orpha_id": "ORPHA:586",
+    "disease_name": "Cystic fibrosis",
+    "pub_pmc_date": "2024-06-21",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 3-year-old male with a de novo CFTR mutation, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000, Unknown."
+  },
+  "11194961": {
+    "orpha_id": "ORPHA:53739",
+    "disease_name": "Distal hereditary motor neuropathy",
+    "pub_pmc_date": "2024-06-24",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel homozygous mutation in a 26-year-old patient with no indication of prior publication or retrospective cohort framing; the PMC date is June 2024.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11196359": {
+    "orpha_id": "ORPHA:652",
+    "disease_name": "Multiple endocrine neoplasia type 1",
+    "pub_pmc_date": "2024-01-31",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a newly diagnosed case with a novel genetic variant that has not been previously reported in full papers, and the publication date is in 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11197252": {
+    "orpha_id": "ORPHA:56",
+    "disease_name": "Alkaptonuria",
+    "pub_pmc_date": "2024-06-25",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11197267": {
+    "orpha_id": "ORPHA:857",
+    "disease_name": "Townes-Brocks syndrome",
+    "pub_pmc_date": "2024-06-24",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel mutation identified in a Chinese family, published in 2024, with no indication that this specific case or family was previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11197935": {
+    "orpha_id": "ORPHA:79259",
+    "disease_name": "Glycogen storage disease due to glucose-6-phosphatase deficiency type Ib",
+    "pub_pmc_date": "2024-06-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective analysis of a cohort with a three-year follow-up period ending before or at the time of publication in 2024, meaning the treatment initiation and the bulk of the clinical data are from several years prior to 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "11202368": {
+    "orpha_id": "ORPHA:565",
+    "disease_name": "Menkes disease",
+    "pub_pmc_date": "2024-06-26",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of Menkes disease in a 4-month-old male with no indication of prior publication or retrospective cohort framing; the 1962 date refers to the disease's discovery.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11202505": {
+    "orpha_id": "ORPHA:89936",
+    "disease_name": "X-linked hypophosphatemia",
+    "pub_pmc_date": "2024-05-24",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel case of a three-generation family with a newly identified PHEX variant, published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11202757": {
+    "orpha_id": "ORPHA:528105",
+    "disease_name": "Hypohidrosis-electrolyte imbalance-lacrimal gland dysfunction-ichthyosis-xerostomia syndrome",
+    "pub_pmc_date": "2024-05-26",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new cases from the first Spanish family identified with HELIX syndrome, and there is no indication that these specific patients were previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11203072": {
+    "orpha_id": "ORPHA:586",
+    "disease_name": "Cystic fibrosis",
+    "pub_pmc_date": "2024-05-23",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case series of prenatal diagnoses using a new sampling tool (celocentesis) published in May 2024, with no indication that these specific cases were previously published or occurred in a retrospective cohort from years prior.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000, Unknown."
+  },
+  "11203140": {
+    "orpha_id": "ORPHA:216",
+    "disease_name": "Neuronal ceroid lipofuscinosis",
+    "pub_pmc_date": "2024-05-23",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report of a dog with a novel CLN6 variant, published in 2024, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, Unknown."
+  },
+  "11203189": {
+    "orpha_id": "ORPHA:90340",
+    "disease_name": "Blau syndrome",
+    "pub_pmc_date": "2024-06-18",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing clinical and molecular findings in seven individuals from three families, and there is no evidence that these specific cases were previously published or part of a pre-2024 retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11204232": {
+    "orpha_id": "ORPHA:98896",
+    "disease_name": "Duchenne muscular dystrophy",
+    "pub_pmc_date": "2024-06-14",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a case study of a young adult with DMD using smart speakers, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11205281": {
+    "orpha_id": "ORPHA:273",
+    "disease_name": "Steinert myotonic dystrophy",
+    "pub_pmc_date": "2024-06-12",
+    "prevalence_bands": [
+      "1-5 / 10 000",
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "6-9 / 10 000",
+      ">1 / 1000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "fail",
+    "auto_check4_reason": "Orphadata classifies as NOT rare in Europe (>1 / 1000)."
+  },
+  "11205385": {
+    "orpha_id": "ORPHA:742",
+    "disease_name": "Prolidase deficiency",
+    "pub_pmc_date": "2024-06-20",
+    "prevalence_bands": [
+      "Unknown",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 26-year-old woman with prolidase deficiency published in 2024; although it uses the term 'retrospective', this refers to the study design of the single case after the patient's death, not a pre-2024 cohort study.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown, <1 / 1 000 000."
+  },
+  "11208167": {
+    "orpha_id": "ORPHA:79432",
+    "disease_name": "Oculocutaneous albinism type 2",
+    "pub_pmc_date": "2024-06-26",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "6-9 / 10 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new clinical case of an 8-year-old child with OCA2 mutations, published in 2024, and the 'previously reported' flag in the text refers to one of the specific mutations in literature, not this specific patient.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 6-9 / 10 000, 1-5 / 10 000."
+  },
+  "11208178": {
+    "orpha_id": "ORPHA:201",
+    "disease_name": "Cowden syndrome",
+    "pub_pmc_date": "2024-02-14",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case of Cowden syndrome with multifocal pulmonary carcinoids, explicitly stating it is the first published case of this association and providing a timeline (referred in 2021) consistent with a new report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "11212407": {
+    "orpha_id": "ORPHA:2029",
+    "disease_name": "Multiple non-ossifying fibromatosis",
+    "pub_pmc_date": "2024-06-27",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication presenting a case series of two patients with no indication of prior publication or retrospective cohort dating that would disqualify it.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11218101": {
+    "orpha_id": "ORPHA:43",
+    "disease_name": "X-linked adrenoleukodystrophy",
+    "pub_pmc_date": "2024-07-02",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two specific cases of X-ALD with genetic details (ABCD1 variations) published in 2024. While it uses the phrase 'retrospectively analyzed', there is no evidence that these cases were previously published or that the admission dates were significantly pre-cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "11221131": {
+    "orpha_id": "ORPHA:171723",
+    "disease_name": "White sponge nevus",
+    "pub_pmc_date": "2024-04-08",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new cases (a mother and son) published in 2024 without any indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11221149": {
+    "orpha_id": "ORPHA:2841",
+    "disease_name": "Hailey-Hailey disease",
+    "pub_pmc_date": "2024-04-17",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024, and although the patient first presented in 2021, it is a primary report of a novel mutation and not a retrospective cohort or republication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11221244": {
+    "orpha_id": "ORPHA:2833",
+    "disease_name": "Stiff skin syndrome",
+    "pub_pmc_date": "2024-04-24",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective follow-up of a case series where all patients have been followed for an average of seven years and are currently aged 11 to 19, indicating their cases originated well before 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11204092": {
+    "orpha_id": "ORPHA:55",
+    "disease_name": "Oculocutaneous albinism",
+    "pub_pmc_date": "2024-06-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of an 11-year-old boy with no indication of prior publication or retrospective cohort framing, published in June 2024.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11224691": {
+    "orpha_id": "ORPHA:444490",
+    "disease_name": "Familial chylomicronemia syndrome",
+    "pub_pmc_date": "2024-03-09",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of a 35-year-old patient with LMF1 variants published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11233850": {
+    "orpha_id": "ORPHA:504476",
+    "disease_name": "Cerebellar ataxia with neuropathy and bilateral vestibular areflexia syndrome",
+    "pub_pmc_date": "2024-04-04",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective case series of patients diagnosed and imaged between 2010 and 2022, combined with a literature review of previously reported cases.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11234637": {
+    "orpha_id": "ORPHA:3342",
+    "disease_name": "Arterial tortuosity syndrome",
+    "pub_pmc_date": "2024-07-10",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case of a 2-year-old patient with no evidence of prior publication or retrospective cohort framing that would pre-date the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11235722": {
+    "orpha_id": "ORPHA:101081",
+    "disease_name": "Charcot-Marie-Tooth disease type 1A",
+    "pub_pmc_date": "2024-02-26",
+    "prevalence_bands": [
+      "6-9 / 10 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new cases from unrelated families with a publication date in 2024 and no evidence of prior publication or retrospective cohort framing that would violate the criteria.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 6-9 / 10 000, 1-5 / 10 000."
+  },
+  "11213808": {
+    "orpha_id": "ORPHA:1775",
+    "disease_name": "Dyskeratosis congenita",
+    "pub_pmc_date": "2024-06-28",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article reports a novel TERT variant in an 11-year-old patient and was published in June 2024, with no evidence of prior publication of this specific case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11235873": {
+    "orpha_id": "ORPHA:309192",
+    "disease_name": "Tay-Sachs disease, adult form",
+    "pub_pmc_date": "2023-09-27",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is September 27, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11237271": {
+    "orpha_id": "ORPHA:79314",
+    "disease_name": "L-2-hydroxyglutaric aciduria",
+    "pub_pmc_date": "2024-07",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 27-year-old female who presented in June 2023, which is consistent with a 2024 publication date and no prior reporting is mentioned.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11238493": {
+    "orpha_id": "ORPHA:909",
+    "disease_name": "Cerebrotendinous xanthomatosis",
+    "pub_pmc_date": "2024-07-11",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, <1 / 1 000 000."
+  },
+  "11238859": {
+    "orpha_id": "ORPHA:558",
+    "disease_name": "Marfan syndrome",
+    "pub_pmc_date": "2024",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a new case of Marfan syndrome with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11239262": {
+    "orpha_id": "ORPHA:228349",
+    "disease_name": "CLN2 disease",
+    "pub_pmc_date": "2023-11-06",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is November 2023, which is before the required January 1, 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11240142": {
+    "orpha_id": "ORPHA:79434",
+    "disease_name": "Oculocutaneous albinism type 1B",
+    "pub_pmc_date": "2024-07-12",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The case is a retrospective report of siblings clinically diagnosed in 1993, with the molecular investigation and IRB approvals occurring years before the 2024 publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11251026": {
+    "orpha_id": "ORPHA:90797",
+    "disease_name": "Partial androgen insensitivity syndrome",
+    "pub_pmc_date": "2024-07-15",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of PAIS with a specific LINE1 insertion, published in 2024, with no indication that this specific patient was previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11252829": {
+    "orpha_id": "ORPHA:2884",
+    "disease_name": "Piebaldism",
+    "pub_pmc_date": "2024-06-17",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a case series of four patients with novel and known KIT variants, published in June 2024, with no indication that these specific cases were previously published or part of an old retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11253478": {
+    "orpha_id": "ORPHA:905",
+    "disease_name": "Wilson disease",
+    "pub_pmc_date": "2024-07-17",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024; although the patient first presented in 2021, the diagnosis and follow-up continued through 2023, making it a contemporary case report.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "11256122": {
+    "orpha_id": "ORPHA:444916",
+    "disease_name": "Pseudohypoaldosteronism",
+    "pub_pmc_date": "2024-05-02",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new clinical cases with no indication of prior publication or retrospective cohort framing from years significantly before the 2024 publication date.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11264945": {
+    "orpha_id": "ORPHA:251618",
+    "disease_name": "Subependymal giant cell astrocytoma",
+    "pub_pmc_date": "2024-07-20",
+    "prevalence_bands": [],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The case report describes a patient who was treated with radiotherapy 13 years prior to the current report, making it a long-term retrospective follow-up rather than a new case.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11265161": {
+    "orpha_id": "ORPHA:664",
+    "disease_name": "Ornithine transcarbamylase deficiency",
+    "pub_pmc_date": "2024-07-22",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new application of PGT-M and the birth of a healthy baby following a history of neonatal deaths in 2014 and 2015; the current clinical intervention and follow-up are contemporary with the 2024 publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11265170": {
+    "orpha_id": "ORPHA:2882",
+    "disease_name": "Sitosterolemia",
+    "pub_pmc_date": "2024-07-22",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of sitosterolemia with previously unreported cerebral involvement, published in 2024, with no evidence of prior publication or retrospective cohort dating.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11265456": {
+    "orpha_id": "ORPHA:98895",
+    "disease_name": "Becker muscular dystrophy",
+    "pub_pmc_date": "2024-07-23",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000",
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single case report of a 16-year-old boy admitted in July 2022, which is close to the 2024 cutoff and does not represent a retrospective cohort or a previously published case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000, <1 / 1 000 000."
+  },
+  "11269488": {
+    "orpha_id": "ORPHA:2332",
+    "disease_name": "KBG syndrome",
+    "pub_pmc_date": "2024-02-09",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel neuroradiological finding in a single patient with KBG syndrome and was published in 2024 without any indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11270050": {
+    "orpha_id": "ORPHA:43",
+    "disease_name": "X-linked adrenoleukodystrophy",
+    "pub_pmc_date": "2024-07-25",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The case report describes a patient whose initial admission was in 2018 and whose 7-year follow-up (the 'current' state of the case) would have occurred around 2023, making this a retrospective report of a long-standing case rather than a new 2024 clinical event.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-5 / 10 000."
+  },
+  "11272491": {
+    "orpha_id": "ORPHA:201",
+    "disease_name": "Cowden syndrome",
+    "pub_pmc_date": "2023-11-20",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The PMC publication date is November 20, 2023, which is before the required 2024-01-01 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, Unknown."
+  },
+  "11275647": {
+    "orpha_id": "ORPHA:130",
+    "disease_name": "Brugada syndrome",
+    "pub_pmc_date": "2024-06-21",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new genetic investigation of a 52-year-old proband and his family, published in 2024, with no indication that this specific case or pedigree was previously reported.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11276485": {
+    "orpha_id": "ORPHA:181",
+    "disease_name": "X-linked hypohidrotic ectodermal dysplasia",
+    "pub_pmc_date": "2024-06-28",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of hypohidrotic ectodermal dysplasia in a cat, published in 2024, with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11276803": {
+    "orpha_id": "ORPHA:98896",
+    "disease_name": "Duchenne muscular dystrophy",
+    "pub_pmc_date": "2024-07-16",
+    "prevalence_bands": [
+      "1-9 / 1 000 000",
+      "1-9 / 100 000",
+      "1-5 / 10 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report published in 2024. While the patient had been undiagnosed for two decades, the genomic characterization (RNAseq and WGS) and the specific findings are presented as new results in this 2024 publication.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000, 1-9 / 100 000, 1-5 / 10 000."
+  },
+  "11276957": {
+    "orpha_id": "ORPHA:2929",
+    "disease_name": "Juvenile polyposis syndrome",
+    "pub_pmc_date": "2024-07-20",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new cases from unrelated Italian families with a publication date in 2024, and there is no evidence that these specific patients were previously published.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, Unknown."
+  },
+  "11281985": {
+    "orpha_id": "ORPHA:2788",
+    "disease_name": "Osteoporosis-pseudoglioma syndrome",
+    "pub_pmc_date": "2024-04-16",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a small cohort including a newly reported mutation (c.1455G > T), and there is no evidence that these specific cases were previously published or belong to a pre-2024 retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphanet-registered rare disease (disorder_type='Disease'); no validated prevalence \u2014 defaults to rare per Orphanet inclusion criterion."
+  },
+  "11284186": {
+    "orpha_id": "ORPHA:247709",
+    "disease_name": "Multiple endocrine neoplasia type 2B",
+    "pub_pmc_date": "2024-05-16",
+    "prevalence_bands": [
+      "Unknown"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of a 14-year-old boy published in 2024, with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): Unknown."
+  },
+  "11286406": {
+    "orpha_id": "ORPHA:99842",
+    "disease_name": "Leukocyte adhesion deficiency type I",
+    "pub_pmc_date": "2024-07-16",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a new case of a 16-month-old patient with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11287402": {
+    "orpha_id": "ORPHA:652",
+    "disease_name": "Multiple endocrine neoplasia type 1",
+    "pub_pmc_date": "2024-07-14",
+    "prevalence_bands": [
+      "1-9 / 100 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a single new case report with an admission date of June 2022, which is close to the 2024 cutoff and does not represent a retrospective cohort or a previously published case.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000."
+  },
+  "11288117": {
+    "orpha_id": "ORPHA:480",
+    "disease_name": "Kearns-Sayre syndrome",
+    "pub_pmc_date": "2024-07-29",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article is a 2024 publication describing a single case report with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11290577": {
+    "orpha_id": "ORPHA:79230",
+    "disease_name": "HJV or HAMP-related hemochromatosis",
+    "pub_pmc_date": "2024-03-07",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case report of fraternal twins published in 2024 with no indication of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  },
+  "11291331": {
+    "orpha_id": "ORPHA:110",
+    "disease_name": "Bardet-Biedl syndrome",
+    "pub_pmc_date": "2024-07-18",
+    "prevalence_bands": [
+      "1-9 / 100 000",
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "fail",
+    "auto_check3_reason": "The article is a retrospective case series of eight patients where all genetic diagnoses and initial clinical assessments were completed between 2017 and 2021, well before the 2024 cutoff.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 100 000, 1-9 / 1 000 000."
+  },
+  "11291644": {
+    "orpha_id": "ORPHA:140997",
+    "disease_name": "Orofaciodigital syndrome",
+    "pub_pmc_date": "2024-05-03",
+    "prevalence_bands": [],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes two new Indian patients with novel biallelic variants in FUZ, distinguishing them from the two previously reported cases in the literature.",
+    "auto_check4_decision": "uncertain",
+    "auto_check4_reason": "ORPHA code not found in Orphadata."
+  },
+  "11295688": {
+    "orpha_id": "ORPHA:64",
+    "disease_name": "Alstr\u00f6m syndrome",
+    "pub_pmc_date": "2024-08-02",
+    "prevalence_bands": [
+      "1-9 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a new case of Alstr\u00f6m syndrome in a 13-year-old boy with a novel ALMS1 mutation, published in 2024 with no evidence of prior publication or retrospective cohort framing.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): 1-9 / 1 000 000."
+  },
+  "11296240": {
+    "orpha_id": "ORPHA:51636",
+    "disease_name": "WHIM syndrome",
+    "pub_pmc_date": "2024-05-22",
+    "prevalence_bands": [
+      "<1 / 1 000 000"
+    ],
+    "auto_check3_decision": "pass",
+    "auto_check3_reason": "The article describes a novel CXCR4 variant in four patients and was published in 2024; there is no evidence that these specific cases were previously published or part of a pre-2024 retrospective cohort.",
+    "auto_check4_decision": "pass",
+    "auto_check4_reason": "Orphadata prevalence band(s): <1 / 1 000 000."
+  }
+}

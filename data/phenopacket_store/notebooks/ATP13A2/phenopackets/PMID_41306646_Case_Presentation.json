@@ -1,0 +1,273 @@
+{
+  "id": "PMID_41306646_Case_Presentation",
+  "subject": {
+    "id": "Case Presentation",
+    "timeAtLastEncounter": {
+      "age": {
+        "iso8601duration": "P21Y"
+      }
+    },
+    "sex": "FEMALE"
+  },
+  "phenotypicFeatures": [
+    {
+      "type": {
+        "id": "HP:0000613",
+        "label": "Photophobia"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000508",
+        "label": "Ptosis"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P11Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001344",
+        "label": "Absent speech"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0000737",
+        "label": "Irritability"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0031473",
+        "label": "Anger"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0033838",
+        "label": "Dysphoria"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002300",
+        "label": "Mutism"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:5200038",
+        "label": "Bradylalia"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P10Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001260",
+        "label": "Dysarthria"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P10Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0001268",
+        "label": "Mental deterioration"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002015",
+        "label": "Dysphagia"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P10Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002172",
+        "label": "Postural instability"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002180",
+        "label": "Neurodegeneration"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0004395",
+        "label": "Malnutrition"
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0002063",
+        "label": "Rigidity"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    },
+    {
+      "type": {
+        "id": "HP:0003202",
+        "label": "Skeletal muscle atrophy"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P21Y"
+        }
+      }
+    }
+  ],
+  "interpretations": [
+    {
+      "id": "kiAHG0L2OAY4cHnDEwrYAUZj",
+      "progressStatus": "SOLVED",
+      "diagnosis": {
+        "disease": {
+          "id": "OMIM:606693",
+          "label": "Kufor-Rakeb syndrome"
+        },
+        "genomicInterpretations": [
+          {
+            "subjectOrBiosampleId": "Case Presentation",
+            "interpretationStatus": "CAUSATIVE",
+            "variantInterpretation": {
+              "acmgPathogenicityClassification": "PATHOGENIC",
+              "therapeuticActionability": "UNKNOWN_ACTIONABILITY",
+              "variationDescriptor": {
+                "id": "c2629GtoA_ATP13A2_NM_022089v4",
+                "geneContext": {
+                  "valueId": "HGNC:30213",
+                  "symbol": "ATP13A2"
+                },
+                "expressions": [
+                  {
+                    "syntax": "hgvs.c",
+                    "value": "NM_022089.4:c.2629G>A"
+                  },
+                  {
+                    "syntax": "hgvs.g",
+                    "value": "NC_000001.11:g.16988455C>T"
+                  },
+                  {
+                    "syntax": "hgvs.p",
+                    "value": "NP_071372.1:p.(Gly877Arg)"
+                  }
+                ],
+                "vcfRecord": {
+                  "genomeAssembly": "hg38",
+                  "chrom": "chr1",
+                  "pos": 16988455,
+                  "ref": "C",
+                  "alt": "T"
+                },
+                "moleculeContext": "genomic",
+                "allelicState": {
+                  "id": "GENO:0000136",
+                  "label": "homozygous"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "diseases": [
+    {
+      "term": {
+        "id": "OMIM:606693",
+        "label": "Kufor-Rakeb syndrome"
+      },
+      "onset": {
+        "age": {
+          "iso8601duration": "P10Y"
+        }
+      }
+    }
+  ],
+  "metaData": {
+    "created": "2026-02-22T19:10:47.661863Z",
+    "createdBy": "0000-0002-0736-9199",
+    "resources": [
+      {
+        "id": "hp",
+        "name": "human phenotype ontology",
+        "url": "http://purl.obolibrary.org/obo/hp.owl",
+        "version": "2026-02-16",
+        "namespacePrefix": "HP",
+        "iriPrefix": "http://purl.obolibrary.org/obo/HP_"
+      },
+      {
+        "id": "geno",
+        "name": "Genotype Ontology",
+        "url": "http://purl.obolibrary.org/obo/geno.owl",
+        "version": "2025-07-25",
+        "namespacePrefix": "GENO",
+        "iriPrefix": "http://purl.obolibrary.org/obo/GENO_"
+      },
+      {
+        "id": "omim",
+        "name": "An Online Catalog of Human Genes and Genetic Disorders",
+        "url": "https://www.omim.org",
+        "version": "06/01/25",
+        "namespacePrefix": "OMIM",
+        "iriPrefix": "https://www.omim.org/entry/"
+      },
+      {
+        "id": "hgnc",
+        "name": "HUGO Gene Nomenclature Committee",
+        "url": "https://www.genenames.org",
+        "version": "06/01/25",
+        "namespacePrefix": "HGNC",
+        "iriPrefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      }
+    ],
+    "phenopacketSchemaVersion": "2.0.2",
+    "externalReferences": [
+      {
+        "id": "PMID:41306646",
+        "description": "Kufor-Rakeb Syndrome in a Guatemalan Patient With an ATP13A2 Gene Pathogenic Variant: A Case Report."
+      }
+    ]
+  }
+}
