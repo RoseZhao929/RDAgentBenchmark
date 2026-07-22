@@ -90,25 +90,25 @@
 
 **Status**:Blocked on Phase 4a + per-disease metadata。
 
-### Figure 7 — P1 → P2 Cascade Scatter(§7.1)
+### Figure 7 — P1 → P2 Cascade (same-case paired)(§7.1)
 
-**Message**:**Headline finding F2**:HPO extraction quality decides downstream — 10× gap in LIRICAL's R@1 between gold and LLM-extracted HPO.
+**Message**:HPO extraction quality affects downstream diagnosis, but measured same-case the effect on an LLM diagnoser is modest (0.42 → 0.40, not significant). The withdrawn "10× collapse" (0.40→0.04) was a cross-dataset artifact — see §7.1 Correction.
 
-**Draw**:scatter,x = Pillar 1 F1(LLM-extracted vs gold),y = Pillar 2 R@1。每 agent 一个 marker。也叠加 LIRICAL gold vs end-to-end 的箭头。
+**Draw**:paired plot,每个病例一条线连接 gold-HPO condition 与 extracted-HPO condition 的 R@1(同 50 PP-Store 病例,同 diagnoser)。不再画被撤回的 0.40→0.04 跨数据集箭头。
 
-**Caption**:"P1→P2 cascade. **Agents fed gold HPO (open markers) achieve 0.20-0.40 R@1; agents fed LLM-extracted HPO (filled markers, same agent) drop by 0.10-0.36.** LIRICAL collapses most (0.40 → 0.04, **10× degradation**) because its Bayesian P/L ratios cannot recover from upstream HPO mismatches. RDMA (HPO-extraction specialist) shows the smallest gap (0.32 → 0.21)."
+**Caption**:"P1→P2 cascade, same-case paired (N=50 Phenopacket-Store, seed=42, single-LLM diagnoser). Feeding gold HPO vs LLM-re-extracted HPO to the same diagnoser on the same cases: R@1 = 0.42 (gold) vs 0.40 (extracted), a 2 pp drop that is not significant (McNemar, 1 discordant pair, p=1.0); the extractor recovered essentially the same phenotype count (7.9 vs 7.9 terms). Classical HPO-list-only tools (LIRICAL) may be more brittle to extraction noise than an LLM diagnoser; quantifying their same-case penalty requires re-running LIRICAL under both conditions (future work)."
 
-**Status**:**Phase 0 V2 数据 ready** — 可马上画 preliminary 版本。
+**Status**:同病例 paired 数据 ready(audit_frozen/_p1_paired_rows.jsonl)。
 
-### Figure 8 — Self-Preference Bias Forest Plot(§7.5)
+### Figure 8 — Judge-family effect on same traces(§7.5)
 
-**Message**:**Methodology contribution**:LLM judge backbone 选择决定 ranking outcomes。
+**Message**:**Methodology contribution**:judge backbone 与 trace 完整性都是 confound;必须都控制。两个 judge 评完全相同的完整 trace 时,才能读出真实(温和的)judge-family 效应。
 
-**Draw**:4 个 axes(factual / relevance / depth / faithful),每个 axis 上 4 个 agent(llm_control / mdagents / deeprare / maidxo)。每个 agent 两个 marker:Gemini judge(triangle)vs Claude judge(circle)。连线显示 v1 → v2 shift。
+**Draw**:faithfulness-vs-accuracy 相关性,两个 judge(Gemini / Claude)各一个 ρ,均在同一批 v2 修复后完整 trace(n=40)上计算。可附 llm_control/deeprare(v1 已完整)的 axis 分数作为唯一未被 trace-repair 污染的 judge-swap 对照。
 
-**Caption**:"Self-preference bias in LLM-as-judge. With **Gemini Flash judge (v1)**, the single-Gemini-Flash agent (`llm_control`) scores systematically higher than scaffolded agents (+0.30 to +1.00 across 4 axes). Switching to **Claude Sonnet 4.5 judge (v2)** with identical traces shrinks the gap to ±0.20-0.40 — **mdagents now beats `llm_control` on depth (3.49 vs 3.10)**. This supports Ablation A12: LLM-judge methodology must use non-family backbone."
+**Caption**:"Judge-family effect measured on identical traces. When both judges score the same repaired traces (N=40), the faithfulness↔top-1-accuracy Spearman ρ is 0.457 (Gemini) vs 0.640 (Claude), and the two judges' faithfulness scores agree at ρ=0.741 — a modest cross-family difference. The earlier ρ=0.098 (Gemini) vs 0.616 (Claude) contrast was a trace-capture artifact (Gemini had scored truncated/empty traces; see §7.5 Correction) and is withdrawn. Takeaway for Ablation A12: control BOTH the judge family and trace-capture completeness."
 
-**Status**:**Phase 1 P5 v1→v2 数据 ready** — 可马上画。最强 methodology 卖点,确保 main text。
+**Status**:same-trace re-judge 数据 ready(audit_frozen/_p5_gemini_same_trace_scores.jsonl)。
 
 ### Figure 9 — Cost-Cap Sweep(§8 Ablation A11)
 
@@ -120,15 +120,15 @@
 
 **Status**:Blocked on Phase 5 ablation A11 run。
 
-### Figure 10 — Pre/Post-Cutoff Differential Drop(§8 Ablation A6)
+### Figure 10 — Pre/Post-Cutoff Recall@1(§7 temporal holdout)
 
-**Message**:**Headline finding** — data contamination 对哪些 agent 影响大。
+**Message**:cutoff 之后没有可检测的退化(no detectable post-cutoff degradation);但 holdout 与 development 层 RareArena 有精确 PMCID 重叠,所以这不能当作"无 memorization"的证据。
 
-**Draw**:每 agent 两根 bar:pre-cutoff R@1(L1-L3 数据)vs post-cutoff R@1(L4 holdout)。Delta 是 contamination 估计。
+**Draw**:每 system 两根 bar:pre-cutoff R@1(pmc_precutoff, n=220)vs post-cutoff R@1(pmc_oa_holdout, n=198),共享 Gemini Flash backbone。标注污染病例数(pre 13 / post 17 与 RareArena 交集)。
 
-**Caption**:"Pre vs post-cutoff Recall@1 differential. Pre-cutoff uses the L1-L3 datasets (PhenoPacket-Store + RareBench + RareArena pre-2024 subsets); post-cutoff uses the 200-case PMC OA holdout (pub date ≥ 2024-01-01). **Tool-using agents (DeepRare, MAI-DxO) show smaller drops (3-8 pp); parametric LLM controls drop X pp**, supporting Hypothesis 3."
+**Caption**:"Pre- vs post-cutoff Recall@1 (Gemini Flash, variant-aware, attempted denominator). Pooled over the four shared systems, post-cutoff R@1 (0.538) is not lower than pre-cutoff (0.461) — pooled +7.7 pp — so we report **no detectable post-cutoff degradation** after difficulty-matching (matched Δ +6.2 pp, p=0.018) and after removing contaminated cases (clean Δ +8.2 pp). Important caveat: the holdout is **not disjoint** from the RareArena development layer — 17/198 post-cutoff and 13/220 pre-cutoff cases share an exact PMCID (and identical gold ORPHA id) with RareArena — so this result must NOT be read as evidence against memorization or contamination. See §7 temporal-holdout audit + audit_frozen/temporal_holdout_audit.csv."
 
-**Status**:Blocked on PMC holdout 200 case manual review + Phase 4a。
+**Status**:数据 ready(frozen audit + contamination scan)。physician review of holdout gold 仍 pending。
 
 ---
 
@@ -163,7 +163,7 @@
 | ...                |  ...   |   ...     |   ...     |   ...    |   ...   | ... |
 ```
 
-**Status**:Blocked on Phase 4a。
+**Status**:PhenoP / RareBench / RareArena 列用 N=2000 frozen 值(见 §6 + audit_frozen/frozen_main_manifest.csv)。MIMIC-IV 列在 frozen slim release 里 gold 被剥离、R@1 不可重算,应留空或标 n/a,不要填入旧 N=500 估计。Holdout 列见 Figure 10 caveat(与 RareArena 有 PMCID 重叠)。
 
 ### Table 3 — Agent Fairness Matrix(§5.1)
 

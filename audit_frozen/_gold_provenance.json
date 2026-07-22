@@ -1,0 +1,27 @@
+{
+  "phenopacket_store": {
+    "n_gold_cases": 10051,
+    "n_source_rows": null
+  },
+  "rarearena_rds": {
+    "n_gold_cases": 8562,
+    "n_source_rows": 8562
+  },
+  "rarebench": {
+    "n_gold_cases": 1122,
+    "n_source_rows": 1122
+  },
+  "pmc_oa_holdout": {
+    "n_gold_cases": 198,
+    "n_source_rows": 198
+  },
+  "pmc_precutoff": {
+    "n_gold_cases": 220,
+    "n_source_rows": 220
+  },
+  "mimic_diverse": {
+    "n_gold_cases": 0,
+    "n_source_rows": null,
+    "note": "gold stripped from slim recompute commit; not recomputable"
+  }
+}

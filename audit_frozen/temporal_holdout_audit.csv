@@ -1,0 +1,21 @@
+split,system,backbone,n_gold_cases,n_attempted,n_successful,top1_correct_variant,R@1_variant_aware,bootstrap_95CI
+pre_cutoff,agentclinic,google_gemini-3-flash-preview-,220,220,220,56,0.2545,"[0.1955, 0.3136]"
+pre_cutoff,llm_control,google_gemini-3-flash-preview-,220,220,220,116,0.5273,"[0.4636, 0.5909]"
+pre_cutoff,mdagents,google_gemini-3-flash-preview-,220,220,219,118,0.5364,"[0.4727, 0.6]"
+pre_cutoff,medagents,google_gemini-3-flash-preview-,220,220,220,116,0.5273,"[0.4636, 0.5909]"
+post_cutoff,agentclinic,deepseek_deepseek-v4-flash,198,182,153,45,0.2473,"[0.1868, 0.3132]"
+post_cutoff,agentclinic,google_gemini-3-flash-preview-,198,198,198,56,0.2828,"[0.2172, 0.3485]"
+post_cutoff,llm_control,deepseek_deepseek-v4-flash,198,198,184,96,0.4848,"[0.4141, 0.5556]"
+post_cutoff,llm_control,google_gemini-3-flash-preview-,198,198,198,122,0.6162,"[0.5455, 0.6818]"
+post_cutoff,mdagents,deepseek_deepseek-v4-flash,198,198,198,104,0.5253,"[0.4545, 0.596]"
+post_cutoff,mdagents,google_gemini-3-flash-preview-,198,198,198,123,0.6212,"[0.5505, 0.6869]"
+post_cutoff,medagents,deepseek_deepseek-v4-flash,198,198,137,71,0.3586,"[0.2929, 0.4244]"
+post_cutoff,medagents,google_gemini-3-flash-preview-,198,198,198,125,0.6313,"[0.5657, 0.697]"
+
+"# pre/post difference (Gemini Flash, per system, two-prop z on attempted denom)"
+system,pre_R@1,post_R@1,delta_pp,z,p_raw,note
+agentclinic,0.2545,0.2828,2.8,0.652,0.5145,different case sets; difficulty NOT matched
+llm_control,0.5273,0.6162,8.9,1.833,0.06687,different case sets; difficulty NOT matched
+mdagents,0.5364,0.6212,8.5,1.753,0.0796,different case sets; difficulty NOT matched
+medagents,0.5273,0.6313,10.4,2.15,0.03159,different case sets; difficulty NOT matched
+POOLED,0.4614,0.5379,7.7,3.124,0.001782,conclusion: no detectable post-cutoff degradation

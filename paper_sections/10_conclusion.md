@@ -12,7 +12,7 @@ hypotheses and ablations pre-registered. The benchmark surfaces five
 findings with concrete reviewer-defensible numbers. **First**,
 classical/offline approaches (LIRICAL Bayesian, VC-RDAgent IC+Poincaré)
 remain competitive with — and on HPO-input datasets *exceed* — every
-scaffolded LLM agent at R@1 (0.46 vs best-LLM 0.33, a 13 pp gap),
+scaffolded LLM agent at R@1 (0.47 vs best-LLM 0.30, a 17 pp gap),
 despite consuming no LLM tokens. This is the most consequential single
 result, and motivates our **classical baseline column** as a permanent
 part of any future rare-disease agent leaderboard. **Second**,
@@ -26,10 +26,13 @@ the *cost-efficient*, not quality-equivalent, choice for rare-disease
 deployment. **Fourth**, GPT-5 with `reasoning_effort=minimal` is the
 costliest backbone with no consistent accuracy edge (best on MedAgents,
 −14 pp on AgentClinic dialogue), demonstrating that frontier reasoning
-models are brittle when their core mechanism is disabled. **Fifth**, faithfulness ranks decouple
-from accuracy ranks (Spearman ρ ≈ 0.36, 95% CI [0.25, 0.47]),
-supporting the claim that accuracy-only evaluation undersells the
-risk profile of rare-disease AI.
+models are brittle when their core mechanism is disabled. **Fifth**, whether
+faithfulness ranks decouple from accuracy ranks is **judge-dependent and we
+report it as exploratory** (same-trace Spearman ρ = 0.457 under a Gemini judge,
+0.640 under a Claude judge; the pre-registered ρ < 0.5 threshold is met under one
+judge but not the other) — the durable, direction-independent point is that
+accuracy-only evaluation can undersell the risk profile of rare-disease AI, since
+a correct diagnosis can still rest on an unfaithful reasoning trace.
 
 We frame these findings as **retrospective decision support evaluation,
 not autonomous diagnosis**. No clinical deployment claims are made; the

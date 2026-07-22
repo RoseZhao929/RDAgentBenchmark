@@ -70,9 +70,9 @@ Detailed in §6.2 main results. Highlights:
 - **No-scaffold control** (llm_control) is backbone-insensitive on
   PP-Store (R@1 = 0.27-0.30 across 4 backbones, full-N; V4-Pro reasoning-off)
 - **Single-pass multi-agent** (mdagents) has a narrow 4-pp backbone spread
-  (DS V4-Pro-off 0.30, Gemini/V4-Flash 0.27, GPT-5 0.26)
-- **Multi-round debate** (medagents) tops on Gemini (0.31) ≈ V4-Pro-off /
-  GPT-5 (0.30), weakest on V4-Flash (0.27)
+  (Gemini 0.28, DS V4-Pro-off 0.27, V4-Flash 0.25, GPT-5 0.24)
+- **Multi-round debate** (medagents) tops on Gemini (0.30), then V4-Pro-off /
+  GPT-5 (0.28), weakest on V4-Flash (0.25)
 - **OSCE simulation** (agentclinic) collapses on GPT-5 minimal (0.13)
 - **Panel orchestration** (MAI-DxO) collapses universally on HPO input
 
@@ -181,17 +181,17 @@ scaffold-benefit-on-complexity difference-of-differences (H4), and the
 cross-agent specialty blind-spot correlation (H7: ρ=0.92 across 18 specialties)
 are all now FWE-robust, alongside the two headline claims H1 (classical dominate
 super-rare) and H8 (interior phenotype-density optimum). **H10**
-(faithfulness–accuracy decoupling) *nominally* passes at the expanded N=73-trace
-dual-judge sample (pooled ρ=0.352, Holm-adj p=0.037) but we flag it as
-**fragile and judge-dependent, not a clean rejection**: the pooled value averages
-a family-judge (Gemini) ρ=0.098 (strong decoupling) and a non-family-judge
-(Claude) ρ=0.616 (coupling), so per-judge the verdict is *split*. This
-judge-dependence is itself the §7.5 self-preference message — a same-family
-judge rates faithfulness more independently of correctness than a cross-family
-judge does — so we report H10 as exploratory rather than a headline claim. (The
-scaffolded agents' 18–22k-char reasoning traces at ~200 s/case made the full
-N=50×4-agent dual-judge expansion infeasible; H10 rests on llm_control + mdagents,
-maidxo/deeprare excluded, disclosed.)
+(faithfulness–accuracy decoupling) we report as **exploratory, not a clean
+rejection**. An earlier version rested on a family-judge (Gemini) ρ=0.098 vs
+non-family (Claude) ρ=0.616 split, but a 2026-07-22 frozen-audit re-run showed
+that split was a **trace-capture artifact**: the Gemini scores had been computed
+on truncated/empty traces while the Claude scores used repaired traces. Re-running
+the Gemini judge on the *same* repaired traces (n=40) raises its ρ from 0.098 to
+**0.457**, against Claude's **0.640** (judge agreement ρ=0.741) — a modest residual
+judge-family difference, not the near-zero "strong decoupling" originally claimed.
+The pre-registered H10 verdict (ρ<0.5) is therefore genuinely borderline and
+judge-sensitive, so we keep H10 exploratory and withdraw the ρ=0.098 figure. See
+§7.5 for the de-confounded analysis.
 
 ## §8.9 Ablation A6 — TS-Guessing data-contamination audit (P6.2)
 

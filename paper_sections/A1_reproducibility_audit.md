@@ -44,6 +44,8 @@ estimates that headline the paper are in §6 Main Results.
 
 ### Per-agent audit table
 
+These are **n=50 pilot reproduction checks** — each asks "can we reproduce agent X's own paper-claimed number on a small sample under our harness", and is deliberately distinct from the N=2000 frozen main matrix (§6) and the N=500 variant-channel paired test (§7.3). Where a small-sample pilot value differs from the frozen-matrix value (e.g. LIRICAL 0.40 pilot vs 0.47 frozen), the frozen-matrix number in §6 is authoritative; the pilot value is retained here only as the original reproduction record.
+
 | Agent | Replicated paper claim? | Our point estimate | Setup deviation | Notes |
 |---|---|---|---|---|
 | **MDAgents** | ✓ within ±5 pp | R@1 = 0.34 (Gemini 3 Flash, P2, n=50 RareBench-PP) vs paper 0.31–0.39 (MedQA-Rare) | Reformulated as rank-top-5 prompt; held `mode=intermediate`. | 7–47 LLM calls / case |
@@ -54,7 +56,7 @@ estimates that headline the paper are in §6 Main Results.
 | **DeepRare (P3 genotype)** | △ partial replication (~28 pp gap) | R@1 = 0.42 (38/50, 95 % CI [0.26, 0.58]) vs paper 0.706 (HPO+VCF) | Structured variants block (not full VCF + Phenotype Tool); web search disabled (`DEEPRARE_NO_WEB=1`) for contamination control | Lift over P2 (+20 pp) matches LLM-control's lift; variant channel real but not DeepRare-specific — see §7.3 |
 | **RDMA** | n/a (P1-only system) | F1 = 0.39 (Gemini 3 Flash, P1, n=50 RareBench-EHR) vs paper F1 = 0.42 | Subprocess call to `LLMEntityExtractor`; HPO-mention extraction only | Pillar 1 only |
 | **VC-RDAgent** | ✓ within ±5 pp | R@1 = 0.28 (Stage-1 offline IC+Poincaré, P2, n=50) vs paper 0.27 | Stage 1 default (0 LLM calls); Stage 2 LLM refine deferred | Cheapest agent |
-| **LIRICAL** | ✓ within ±5 pp | R@1 = 0.40 (gold HPO, P2, n=50 PP-Store) vs paper ~0.42 | `java -jar lirical.jar phenopacket`; project canonical case to phenopacket | 0 LLM calls |
+| **LIRICAL** | ✓ within ±5 pp | R@1 = 0.40 (gold HPO, P2, n=50 PP-Store pilot) vs paper ~0.42 [on the full N=2000 frozen matrix LIRICAL is 0.47, §6] | `java -jar lirical.jar phenopacket`; project canonical case to phenopacket | 0 LLM calls |
 | **LLM control (Gemini 3 Flash, no scaffolding)** | n/a (this *is* the baseline) | R@1 = 0.26 (P2, n=50) | Single LLM call, structured-output prompt | |
 | **LLM control (P3 with variants)** | n/a | R@1 = 0.46 (P3 with structured variants, n=50) vs P2 0.26 = **+20 pp** | Variants block appended to prompt (§7.3) | Strong evidence H2 |
 

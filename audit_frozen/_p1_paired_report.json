@@ -1,0 +1,19 @@
+{
+  "design": "SAME-CASE paired: gold-HPO vs LLM-re-extracted-HPO -> same diagnoser",
+  "model": "google/gemini-3-flash-preview",
+  "n_cases": 50,
+  "seed": 42,
+  "gold_hpo_R@1": 0.42,
+  "extracted_hpo_R@1": 0.4,
+  "delta_pp": 2.0,
+  "mcnemar": {
+    "gold_win": 1,
+    "extracted_win": 0,
+    "discordant": 1,
+    "chi2_cc": 0.0,
+    "p": 1.0
+  },
+  "mean_n_gold_hpo": 7.9,
+  "mean_n_extracted_hpo": 7.9,
+  "contrast_with_paper": "paper 0.40(gold, 25 PP cases) vs 0.04(extracted, 25 RareArena cases) was cross-dataset; this is the same-case control the paper lacked. Interpretation: the true extraction penalty is (gold_R@1 - extracted_R@1) measured on identical cases and diagnoser."
+}

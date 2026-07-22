@@ -32,7 +32,7 @@ baseline, listed in the Doc column below.
 | **DeepRare (P3)** | same | + structured variants | 0.71 | 0.38 (P3 pilot) | ❌ -33 pp | `deeprare.md` |
 | **RDMA** | None upstream | LLMEntityExtractor | F1 0.42 (P1) | F1 0.39 (P1 silver gold) | ✅ | `rdma.md` |
 | **VC-RDAgent** | None upstream | Stage 1 offline | 0.27 (PP-Store) | 0.44 (PP-Store) | ✅ +17 pp ★ | `vc_rdagent.md` |
-| **LIRICAL** | Apache 2.0 | classical Bayesian, HPO-only | ~0.42 (PP-Store) | 0.46 (PP-Store) | ✅ | `lirical.md` |
+| **LIRICAL** | Apache 2.0 | classical Bayesian, HPO-only | ~0.42 (PP-Store) | 0.47 (PP-Store, N=2000) | ✅ | `lirical.md` |
 | **LLM control** | n/a (ours) | naked single LLM call | n/a baseline | 0.32 (PP-Store, V4-Pro) | n/a | `llm_control.md` |
 
 ## B.3 Setup-mismatch documentation (the gap stories)

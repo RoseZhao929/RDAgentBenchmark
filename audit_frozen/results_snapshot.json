@@ -1,0 +1,403 @@
+{
+  "generated_by": "audit_frozen/build_deliverables.py (frozen-results audit)",
+  "generated_at": "2026-07-22T14:57:55Z",
+  "frozen_commit": "43efa1e516fffeac22786251656891109e40309a",
+  "data_version": "slim recompute set (MIMIC & model weights stripped from git history)",
+  "preregistered_primary_metric": {
+    "value": "Recall@1 (variant-aware), attempted-denominator",
+    "note": "OSF prereg lists R@1 as Tier-1 but does not explicitly fix strict-vs-variant as primary. Original pipeline used success-only denominator (n_ok); this audit uses n_attempted per the freeze brief (failures/timeouts/empty/parser kept in)."
+  },
+  "receipt_counts": {
+    "raw_lines_phase4a": 101060,
+    "attempted_after_dedupe_and_cap": 94751,
+    "successful": 92319,
+    "failed": 2432,
+    "status_breakdown": {
+      "ok": 97217,
+      "parser_error": 2691,
+      "agent_error": 207,
+      "timeout": 945,
+      "ok_but_empty": 70
+    },
+    "cells": 83
+  },
+  "exclusion_rules": [
+    "Dedupe by case_id, prefer status==ok (RESUME re-attempts collapsed).",
+    "Canonical N=2000 cap applied to phenopacket_store & rarearena_rds (data/round2/phase4a_canonical_2000.json).",
+    "Failures (timeout/parser_error/agent_error/empty-ok) RETAINED in R@1 denominator (n_attempted).",
+    "mimic_diverse gold is stripped from this commit -> correctness not recomputable (cost/predictions also absent).",
+    "Cost headline = MAIN_MATRIX frozen cells only; pilots/ablations/judge/holdout tracked separately."
+  ],
+  "headline_values_recomputed": {
+    "LIRICAL PP-Store R@1": {
+      "paper_candidate": 0.47,
+      "recomputed": 0.468,
+      "ci": "[0.4455, 0.49]",
+      "provenance": "lirical/lirical-2.4.0 n_att=2000"
+    },
+    "best scaffolded LLM PP-Store R@1": {
+      "paper_candidate": 0.3,
+      "recomputed": 0.296,
+      "ci": "[0.2755, 0.316]",
+      "provenance": "medagents/google_gemini-3-flash-preview- n_att=2000"
+    },
+    "gap (classical - best LLM) pp": {
+      "paper_candidate": 17.0,
+      "recomputed": 17.2,
+      "ci": "",
+      "provenance": "0.468 - 0.296"
+    },
+    "VC-RDAgent RareBench R@1": {
+      "paper_candidate": 0.28,
+      "recomputed": 0.2754,
+      "ci": "[0.2496, 0.3012]",
+      "provenance": "n_att=1122"
+    },
+    "VC-RDAgent PP-Store R@1 (ref)": {
+      "paper_candidate": 0.44,
+      "recomputed": 0.4374,
+      "ci": "[0.3997, 0.4751]",
+      "provenance": "n_att=663"
+    }
+  },
+  "cost_inclusion_sets": {
+    "frozen_main_matrix_recomputed": {
+      "attempted": 92303,
+      "successful": 89976,
+      "usd": 271.02,
+      "cells": 71
+    },
+    "paper_106089_$315.21": "J appendix TOTAL, 93 cells INCLUDING now-stripped mimic_diverse + all GPT-5; ok-level count; NOT reproducible from this slim commit (mimic removed).",
+    "paper_68668_$191.76": "main_results.md \"all cells\" 2026-07-06 snapshot; partial completion state.",
+    "paper_48728_$109.41": "leaderboard/index.html earlier/partial snapshot.",
+    "brief_50479_$109.41_note": "brief cited 50,479 for the $109.41 set; leaderboard shows 48,728 \u2014 mismatch flagged (likely a transcription/rounding drift)."
+  },
+  "paired_effects": {
+    "variant_channel": {
+      "n": 500,
+      "p2_R@1": 0.296,
+      "p3_R@1": 0.494,
+      "delta_pp": 19.8,
+      "mcnemar": {
+        "n_pairs": 500,
+        "b_only": 7,
+        "c_only": 106,
+        "chi2_cc": 84.991,
+        "p": 2.997034554659337e-20
+      },
+      "two_prop_z": 6.404,
+      "two_prop_p": 1.5124646055508619e-10,
+      "p3_win": 106,
+      "p2_win": 7
+    },
+    "scaffold_effect_gemini": [
+      {
+        "dataset": "phenopacket_store",
+        "scaffolded_system": "mdagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.293,
+        "scaffolded_R@1": 0.279,
+        "delta_pp": -1.4,
+        "mcnemar_chi2_cc": 6.75,
+        "mcnemar_p": 0.0093747684594349,
+        "scaffold_win": 40,
+        "control_win": 68
+      },
+      {
+        "dataset": "phenopacket_store",
+        "scaffolded_system": "medagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.293,
+        "scaffolded_R@1": 0.296,
+        "delta_pp": 0.3,
+        "mcnemar_chi2_cc": 0.266,
+        "mcnemar_p": 0.606056533989492,
+        "scaffold_win": 50,
+        "control_win": 44
+      },
+      {
+        "dataset": "phenopacket_store",
+        "scaffolded_system": "agentclinic",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.293,
+        "scaffolded_R@1": 0.2145,
+        "delta_pp": -7.8,
+        "mcnemar_chi2_cc": 100.979,
+        "mcnemar_p": 9.295196244033086e-24,
+        "scaffold_win": 42,
+        "control_win": 199
+      },
+      {
+        "dataset": "phenopacket_store",
+        "scaffolded_system": "maidxo",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 100,
+        "control_R@1": 0.33,
+        "scaffolded_R@1": 0.02,
+        "delta_pp": -31.0,
+        "mcnemar_chi2_cc": 29.032,
+        "mcnemar_p": 7.118304164714049e-08,
+        "scaffold_win": 0,
+        "control_win": 31
+      },
+      {
+        "dataset": "phenopacket_store",
+        "scaffolded_system": "deeprare",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 610,
+        "control_R@1": 0.3098,
+        "scaffolded_R@1": 0.2803,
+        "delta_pp": -3.0,
+        "mcnemar_chi2_cc": 3.01,
+        "mcnemar_p": 0.08273102231510286,
+        "scaffold_win": 39,
+        "control_win": 57
+      },
+      {
+        "dataset": "rarearena_rds",
+        "scaffolded_system": "mdagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.281,
+        "scaffolded_R@1": 0.28,
+        "delta_pp": -0.1,
+        "mcnemar_chi2_cc": 0.006,
+        "mcnemar_p": 0.9385028847784713,
+        "scaffold_win": 83,
+        "control_win": 85
+      },
+      {
+        "dataset": "rarearena_rds",
+        "scaffolded_system": "medagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.281,
+        "scaffolded_R@1": 0.3005,
+        "delta_pp": 1.9,
+        "mcnemar_chi2_cc": 9.197,
+        "mcnemar_p": 0.0024235220376220695,
+        "scaffold_win": 98,
+        "control_win": 59
+      },
+      {
+        "dataset": "rarearena_rds",
+        "scaffolded_system": "agentclinic",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 2000,
+        "control_R@1": 0.281,
+        "scaffolded_R@1": 0.1335,
+        "delta_pp": -14.8,
+        "mcnemar_chi2_cc": 215.551,
+        "mcnemar_p": 8.449703882418486e-49,
+        "scaffold_win": 53,
+        "control_win": 348
+      },
+      {
+        "dataset": "rarearena_rds",
+        "scaffolded_system": "maidxo",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 100,
+        "control_R@1": 0.3,
+        "scaffolded_R@1": 0.06,
+        "delta_pp": -24.0,
+        "mcnemar_chi2_cc": 20.346,
+        "mcnemar_p": 6.462284982453697e-06,
+        "scaffold_win": 1,
+        "control_win": 25
+      },
+      {
+        "dataset": "rarearena_rds",
+        "scaffolded_system": "deeprare",
+        "backbone": "gemini-3-flash-preview",
+        "n_common_cases": 500,
+        "control_R@1": 0.298,
+        "scaffolded_R@1": 0.0,
+        "delta_pp": -29.8,
+        "mcnemar_chi2_cc": 147.007,
+        "mcnemar_p": 7.821032279559212e-34,
+        "scaffold_win": 0,
+        "control_win": 149
+      }
+    ]
+  },
+  "temporal_holdout": {
+    "n_pre_gold": 220,
+    "n_post_gold": 198,
+    "pooled_pre": 0.4614,
+    "pooled_post": 0.5379,
+    "pooled_delta_pp": 7.7,
+    "pooled_p": 0.001781612280652676
+  },
+  "p1_p2_cascade": {
+    "note": "p1_metric_rows.jsonl measures HPO-EXTRACTION phrase P/R/F1, not diagnosis R@1",
+    "n_rows": 150,
+    "agents": [
+      "deeprare",
+      "llm_control",
+      "rdma"
+    ],
+    "cascade_0.40_vs_0.04": {
+      "source": "paper_sections/7_1_p1_p2_cascade.md:15",
+      "gold_HPO_0.40": "25 Phenopacket-Store cases (native gold_hpo_terms input)",
+      "extracted_HPO_0.04": "25 RareArena RDS cases (LLM-extracted HPO)",
+      "same_case_paired": false,
+      "verdict": "DIFFERENT DATASETS / different case halves \u2014 NOT a same-case paired phenotype-extraction penalty. Confounds dataset difficulty with input condition."
+    }
+  },
+  "p5_self_preference": {
+    "v1_judge": "Gemini (family)",
+    "v2_judge": "Claude (non-family)",
+    "n_shared_scores": 40,
+    "trace_len_mismatch_pairs": 30,
+    "per_agent_trace_len": {
+      "deeprare": {
+        "v1": [
+          18429
+        ],
+        "v2": [
+          21401
+        ]
+      },
+      "llm_control": {
+        "v1": [
+          797,
+          880,
+          912,
+          978,
+          1000,
+          1006,
+          1042,
+          1046,
+          1085,
+          1116
+        ],
+        "v2": [
+          797,
+          880,
+          912,
+          978,
+          1000,
+          1006,
+          1042,
+          1046,
+          1085,
+          1116
+        ]
+      },
+      "maidxo": {
+        "v1": [
+          0
+        ],
+        "v2": [
+          6806,
+          9042,
+          27560,
+          29967,
+          30928,
+          31287,
+          31360,
+          31693,
+          31898,
+          39182
+        ]
+      },
+      "mdagents": {
+        "v1": [
+          0,
+          1501,
+          1873
+        ],
+        "v2": [
+          14654,
+          15381,
+          16185,
+          18588,
+          19529,
+          20419,
+          21373,
+          23128,
+          23422,
+          27660
+        ]
+      }
+    },
+    "rho_gemini_reported": 0.098,
+    "rho_claude_reported": 0.616,
+    "verdict": "INVALID for self-preference estimation: the two judges did NOT score identical frozen traces (trace_len differs on 30/40 pairs; Gemini(v1) saw truncated/zero traces for maidxo & mdagents, Claude(v2) saw repaired traces). The rho=0.098 vs rho=0.616 contrast conflates the trace-capture fix with judge identity. Mark P5 as EXPLORATORY / physician-validation-in-progress."
+  },
+  "followup_2026_07_22": {
+    "contamination_scan": {
+      "finding": "temporal holdout CONTAMINATED by RareArena development layer",
+      "post_cutoff_pmcid_overlap_with_rarearena": 17,
+      "pre_cutoff_pmcid_overlap_with_rarearena": 13,
+      "orpha_label_match_on_overlap": "17/17 identical ORPHA ids (verified same-case, not coincidence)",
+      "text_neardup_J>=0.4": 0,
+      "neardup_zero_reason": "holdout vignette is phenotype-list format vs RareArena narrative report; word-shingles do not align, but PMCID proves same source",
+      "implication": "holdout is NOT disjoint from development layer; no-degradation may reflect seen cases"
+    },
+    "difficulty_matching": {
+      "all_cases": {
+        "pre_R@1": 0.4614,
+        "post_R@1": 0.5379,
+        "delta_pp": 7.7,
+        "z": 3.124,
+        "p": 0.001781612280652676,
+        "pre_n": 880,
+        "post_n": 792
+      },
+      "contamination_clean": {
+        "pre_R@1": 0.465,
+        "post_R@1": 0.547,
+        "delta_pp": 8.2,
+        "z": 3.223,
+        "p": 0.0012700600703866275,
+        "pre_n": 828,
+        "post_n": 724,
+        "note": "dropped RareArena-overlapping PMCIDs from both splits"
+      },
+      "difficulty_matched": {
+        "pre_R@1": 0.4794,
+        "post_R@1": 0.5412,
+        "delta_pp": 6.2,
+        "z": 2.359,
+        "p": 0.018317259346689808,
+        "pre_n": 728,
+        "post_n": 728,
+        "n_matched_strata": 20,
+        "match_keys": "(pheno_bucket x prevalence_tier), min-count per stratum"
+      },
+      "verdict": "no-detectable-degradation direction survives both contamination-clean and difficulty-match; but interpretation is confounded by 9.1 contamination"
+    },
+    "p1_paired_status": "FEASIBLE-PENDING-SPEND: no existing same-case (free_text + gold_HPO) data; needs HPO annotation on holdout pmc cases + LIRICAL reruns (jar present, java17)",
+    "p5_same_trace_status": "FEASIBLE-CHEAP-PENDING-SPEND: v2 reasoning_results carry repaired full traces already scored by Claude; re-run Gemini judge on same 40 traces for clean rho (<$1)",
+    "p5_same_trace_rejudge": {
+      "status": "DONE (LiteLLM gemini-3-flash-preview, $1.30, 40 traces)",
+      "metric": "faithfulness score vs actual Pillar-2 top1 correctness (Spearman), BOTH judges on identical v2 repaired traces",
+      "gemini_same_trace_rho": 0.457,
+      "claude_same_trace_rho": 0.64,
+      "cross_judge_faithfulness_agreement_rho": 0.741,
+      "paper_confounded": {
+        "gemini_v1": 0.098,
+        "claude_v2": 0.616
+      },
+      "verdict": "OVERTURNS paper P5 story: on identical repaired traces Gemini rho 0.098->0.457, so most of the 0.098-vs-0.616 gap was the trace-capture artifact, NOT judge self-preference. Modest real judge-family gap remains (0.457 vs 0.640); judges agree well (rho=0.741). Paper headline strong-decoupling-under-Gemini(0.098) is an artifact."
+    },
+    "p1_paired_same_case": {
+      "status": "DONE (LiteLLM gemini-3-flash-preview, 50 cases, same diagnoser)",
+      "design": "SAME-CASE paired: gold-HPO vs LLM-re-extracted-HPO -> same llm_control diagnoser",
+      "gold_hpo_R@1": 0.42,
+      "extracted_hpo_R@1": 0.4,
+      "delta_pp": 2.0,
+      "mcnemar_p": 1.0,
+      "mean_hpo_gold_vs_extracted": [
+        7.9,
+        7.9
+      ],
+      "paper_claim": "0.40 vs 0.04 (10x collapse), read as phenotype-extraction penalty",
+      "verdict": "DEMOLISHES paper P1 interpretation: same-case extraction penalty is only ~2pp (0.42->0.40, McNemar p=1.0, NOT significant); extractor recovered same phenotype count (7.9 vs 7.9). Paper 0.04 was a dataset/condition confound (RareArena harder set under extracted condition), not an extraction penalty. CAVEAT: uses LLM-control diagnoser not LIRICAL (2GB DB absent); LIRICAL is more brittle to HPO-list quality so its same-case penalty could be larger, but the paper 0.04 still cannot stand as it was never measured same-case."
+    }
+  }
+}

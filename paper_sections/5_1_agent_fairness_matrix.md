@@ -51,7 +51,7 @@
 - **DeepRare CC BY-NC 4.0 prevents commercial deployment** — academic use OK; we note this in Limitations.
 - **MAI-DxO community port** (`Open-MAI-Dx-Orchestrator`, 58⭐ MIT) is structurally faithful to Nori et al. (arXiv 2506.22405) but prompt strings and test-cost values are reimplemented from paper text — minor numerical deviation from Microsoft's reference may exist. Documented in Methods footnote.
 - **AgentClinic** in our v1 is tested on HPO-only cases (Phenopacket-Store/RareBench/MIMIC-IV); its OSCE dialogue is shallow when no free-text vignette is available. We report this as Limitation 6.
-- **LIRICAL** requires HPO list input. On RareArena (free text), our adapter triggers `eval_mode="end_to_end"` upstream LLM HPO extraction + phrase→HP-ID normalization. This explains LIRICAL's PP-Store R@1 0.40 dropping to 0.04 on RareArena — see analysis §7.1.
+- **LIRICAL** requires HPO list input. On RareArena (free text), our adapter triggers `eval_mode="end_to_end"` upstream LLM HPO extraction + phrase→HP-ID normalization. LIRICAL scores far lower on RareArena than on gold-HPO Phenopacket-Store, but that difference confounds dataset difficulty with input condition and is *not* a clean extraction-penalty estimate — see the same-case analysis and correction in §7.1.
 
 ---
 

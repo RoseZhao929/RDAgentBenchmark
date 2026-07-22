@@ -1,0 +1,78 @@
+{
+  "exact_id_overlap": {
+    "post_cutoff": {
+      "n_holdout_pmcids": 198,
+      "n_holdout_pmids_resolved": 198,
+      "pmcid_overlap_with_rarearena": [
+        "10759324",
+        "10783329",
+        "10799342",
+        "10859398",
+        "10860924",
+        "10865686",
+        "10921960",
+        "10965776",
+        "10976829",
+        "11018201",
+        "11036728",
+        "11049754",
+        "11075229",
+        "11097304",
+        "11110280",
+        "11149197",
+        "11160389"
+      ],
+      "n_pmcid_overlap": 17,
+      "pmid_overlap_with_phenopacket": [
+        "38411716"
+      ],
+      "n_pmid_overlap": 1
+    },
+    "pre_cutoff": {
+      "n_holdout_pmcids": 220,
+      "n_holdout_pmids_resolved": 220,
+      "pmcid_overlap_with_rarearena": [
+        "7458886",
+        "7460740",
+        "7497286",
+        "7507264",
+        "7509919",
+        "7516301",
+        "7530177",
+        "7552884",
+        "7579785",
+        "7581024",
+        "7598809",
+        "7644386",
+        "7662532"
+      ],
+      "n_pmcid_overlap": 13,
+      "pmid_overlap_with_phenopacket": [
+        "32325141"
+      ],
+      "n_pmid_overlap": 1
+    }
+  },
+  "near_duplicate": {
+    "post_cutoff": {
+      "threshold_jaccard": 0.4,
+      "shingle_k": 5,
+      "n_holdout_cases": 198,
+      "n_near_dup_vs_rarearena": 0,
+      "pairs": []
+    },
+    "pre_cutoff": {
+      "threshold_jaccard": 0.4,
+      "shingle_k": 5,
+      "n_holdout_cases": 220,
+      "n_near_dup_vs_rarearena": 0,
+      "pairs": []
+    }
+  },
+  "summary": {
+    "rarearena_indexed": 8562,
+    "phenopacket_pmids": 1671,
+    "method": "exact PMCID/PMID set intersection + word-5-shingle Jaccard (inverted index)",
+    "caveat": "RareBench/Phenopacket lack free-text vignettes so text near-dup only run vs RareArena (the only free-text dev layer). Exact ID intersection covers all layers where an ID is available. Absence of overlap here does NOT by itself prove no contamination \u2014 LLM pretraining exposure is out of scope."
+  }
+}

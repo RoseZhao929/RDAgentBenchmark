@@ -1,0 +1,29 @@
+{
+  "setup": "SAME v2 repaired traces scored by BOTH judges (fixes the paper confound)",
+  "gemini_judge": "google/gemini-3-flash-preview",
+  "claude_judge": "anthropic/claude-sonnet-4.5 (v2, pre-existing)",
+  "n_traces": 40,
+  "faithfulness_vs_accuracy_spearman": {
+    "gemini_same_trace": {
+      "rho": 0.457,
+      "p": 0.003052671410995281,
+      "n": 40
+    },
+    "claude_same_trace": {
+      "rho": 0.64,
+      "p": 8.689586959995852e-06,
+      "n": 40
+    }
+  },
+  "paper_confounded_values": {
+    "gemini_v1": 0.098,
+    "claude_v2": 0.616,
+    "note": "v1 Gemini scored truncated/zero traces; not comparable"
+  },
+  "cross_judge_faithfulness_agreement_same_trace": {
+    "rho": 0.741,
+    "p": 4.642766058278211e-08,
+    "n_pairs": 40
+  },
+  "verdict": "With both judges on identical repaired traces, the Gemini-vs-Claude faithfulness/accuracy decoupling can now be compared apples-to-apples; any remaining gap is a true judge-family effect, not the trace-capture artifact."
+}

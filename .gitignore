@@ -42,3 +42,13 @@ agent_workspace/
 # macOS
 .DS_Store
 **/.DS_Store
+
+# secrets — never commit
+.env
+.env.local
+*.key
+
+# audit venv + caches
+.venv_audit/
+audit_frozen/__pycache__/
+audit_frozen/_fuzzy_name_map.json

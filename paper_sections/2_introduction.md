@@ -57,8 +57,10 @@ We introduce **RareAgentBench**, a benchmark with three structural commitments:
 DDx (P2), genotype-aware DDx (P3), family-aware DDx (P4, deferred to
 v2), and clinical-communication faithfulness (P5). Each pillar surfaces
 different agent capabilities; collapsing all into a single accuracy
-number erases >30% of variance, as our §7.4 Spearman ρ ≈ 0.36
-between R@1 and faithfulness demonstrates.
+number can hide faithfulness failures — a correct diagnosis can rest on an
+unfaithful reasoning trace — though we report the strength of that
+faithfulness/accuracy decoupling (§7.4) as judge-dependent and exploratory
+rather than a firm quantitative claim.
 
 **Layered dataset**: Phenopacket-Store (10,051 cases) → RareBench HF
 (1,122) → RareArena RDS (72,661) → MIMIC-IV rare-disease slice (956)
@@ -82,13 +84,14 @@ $54 cumulative cost — code, data, and per-cell receipts open-sourced).
 Five findings:
 
 1. **Classical/offline baselines exceed every scaffolded LLM agent
-   on HPO-input datasets**: LIRICAL (Bayesian) R@1 = 0.46 [0.42–0.51];
+   on HPO-input datasets**: LIRICAL (Bayesian) R@1 = 0.47 [0.45–0.49];
    VC-RDAgent (offline IC+Poincaré) 0.44 [0.40–0.48]; best LLM cell
-   0.33 (MedAgents × Gemini, N=500) on Phenopacket-Store — a 13 pp gap.
+   0.30 (MedAgents × Gemini, N=2000) on Phenopacket-Store — a 17 pp gap.
 2. **Multi-agent scaffolding gives only a small, dataset-dependent
-   gain (≈2–5 pp R@1)** over single-LLM controls, not the uniform
-   boost prior work implies (medagents 0.33 vs llm_control 0.31,
-   Phenopacket-Store / Gemini, N=500; within overlapping CIs).
+   gain (≈0–2 pp R@1)** over single-LLM controls, not the uniform
+   boost prior work implies (medagents 0.30 vs llm_control 0.29,
+   Phenopacket-Store / Gemini, N=2000; within overlapping CIs — and
+   several scaffolds fall *below* the control, see §7.2).
 3. **DeepSeek V4-Flash is ~10× cheaper than Gemini Flash but trades
    off accuracy** ($0.11/$0.22 vs higher Gemini pricing; R@1 −2 to −9 pp
    on structured input, −11 to −16 pp on free-text) — cost-efficient,

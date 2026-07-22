@@ -1,8 +1,9 @@
 # §1 Abstract (paper draft v0)
 
-> 数据源:`phase4a_summary.json`(2026-05-29 finalized)。Gemini/V4-Flash N=500,
->   V4-Pro/GPT-5 N=100 参考列,RareBench N=378。
-> 状态:数字 pinned 到 N=500 + 修复重跑后的最终值;findings (1)-(4) 已按全 N 修订。
+> 数据源:frozen main manifest(N=2000 harmonized;audit_frozen/frozen_main_manifest.csv,
+>   commit 43efa1e5)。R@1 = variant-aware,attempted 分母。
+> 状态:2026-07-22 冻结审计对齐——headline 数字改用 N=2000 最终值(LIRICAL 0.47 /
+>   best LLM 0.30 / 17 pp gap),替换早期 N=500 pilot 值(0.46 / 0.33 / 13 pp)。
 
 ---
 
@@ -25,9 +26,9 @@ AgentClinic, MAI-DxO, RDMA, VC-RDAgent, LIRICAL) against **3 LLM
 no-scaffolding controls and one classical baseline**, with all
 hypotheses (H1–H11) and ablations (A1–A12) pre-registered.
 
-**Key findings**: (1) classical/offline baselines (LIRICAL 0.46,
+**Key findings**: (1) classical/offline baselines (LIRICAL 0.47,
 VC-RDAgent 0.44 R@1) **exceed every scaffolded LLM agent on HPO-input
-datasets** (best LLM cell 0.33 on Phenopacket-Store, a 13 pp gap); (2)
+datasets** (best LLM cell 0.30 on Phenopacket-Store, a 17 pp gap); (2)
 multi-agent scaffolding gives only a small, dataset-dependent gain
 (≈2–5 pp R@1 over single-LLM controls), not the uniform boost prior
 work implies; (3) DeepSeek V4-Flash is ~10× cheaper than Gemini Flash

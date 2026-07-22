@@ -1,0 +1,6 @@
+metric,paper_candidate,recomputed_frozen,reproduces,abs_diff,bootstrap_95CI,provenance
+LIRICAL PP-Store R@1,0.47,0.468,YES,0.002,"[0.4455, 0.49]",lirical/lirical-2.4.0 n_att=2000
+best scaffolded LLM PP-Store R@1,0.3,0.296,YES,0.004,"[0.2755, 0.316]",medagents/google_gemini-3-flash-preview- n_att=2000
+gap (classical - best LLM) pp,17.0,17.2,YES,0.2,,0.468 - 0.296
+VC-RDAgent RareBench R@1,0.28,0.2754,YES,0.0046,"[0.2496, 0.3012]",n_att=1122
+VC-RDAgent PP-Store R@1 (ref),0.44,0.4374,YES,0.0026,"[0.3997, 0.4751]",n_att=663

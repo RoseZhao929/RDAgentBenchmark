@@ -15,19 +15,22 @@ Phase 4a holds the central backbone constant and varies scaffold complexity:
 - **OSCE simulation** (agentclinic): doctor / patient / measurement / moderator loop.
 - **Panel orchestration** (MAI-DxO): ~5 medical agents with ordering / questioning.
 
-**On PP-Store with Gemini Flash** (N=500) the scaffolding ladder shows:
-- llm_control: 0.31
-- mdagents (intermediate): 0.32 (+1 pp)
-- **medagents (debate): 0.33 (+1 pp over mdagents, +2 pp over llm_control)**
-- agentclinic (OSCE): 0.25 (-6 pp regression vs control)
-- maidxo (panel): 0.02 (catastrophic, see § below)
+**On PP-Store with Gemini Flash** (N=2000, frozen main matrix) the scaffolding ladder shows:
+- llm_control: 0.29
+- mdagents (intermediate): 0.28 (−1 pp vs control)
+- medagents (debate): 0.30 (+1 pp over llm_control)
+- agentclinic (OSCE): 0.21 (−8 pp regression vs control)
+- maidxo (panel): 0.03 (catastrophic, see § below)
 
-**Interpretation**: scaffolding that *deepens* deliberation on the same input
-(medagents debate) helps only marginally (+2 pp, within overlapping CIs at
-N=500). Scaffolding that *changes the input format* (agentclinic OSCE dialogue,
-maidxo panel orchestration) regresses on HPO-list input because the agent's
-design assumes narrative input. (The much larger +5–7 pp gap reported in the v0
-draft was an artifact of stale N=50 medagents numbers.)
+**Interpretation**: scaffolding does *not* reliably beat a single-LLM control on
+phenotype-only DDx. Deepening deliberation on the same input (medagents debate)
+helps at most marginally (+1 pp, within overlapping CIs at N=2000), and mdagents
+actually sits ~1 pp *below* the control. Scaffolding that *changes the input
+format* (agentclinic OSCE dialogue, maidxo panel orchestration) regresses sharply
+on HPO-list input because the agent's design assumes narrative input. At the full
+N=2000 the direction is clear: for P2 the scaffold is a net-neutral-to-negative
+choice on this backbone. (The +2 pp "medagents best" reading in earlier drafts was
+a small-sample N=500 artifact; see §A1.)
 
 **Backbone interaction**: on DS V4-Pro mdagents reaches 0.35 (best of its
 backbones, N=100), suggesting V4-Pro pairs well with mdagents' moderator-vote
@@ -77,21 +80,24 @@ control baseline.
 
 ---
 
-## §7.4 Faithfulness vs Accuracy — Decoupled (H10 supported)
+## §7.4 Faithfulness vs Accuracy — H10 exploratory (judge-dependent)
 
-Phase 1 P5 reasoning_communication pilot on 50-case sample (LLM-judge
-faithfulness scoring with Gemini-judge then Claude-judge for bias
-detection, §7.5):
+Phase 1 P5 reasoning_communication pilot on the 40-trace sample (LLM-judge
+faithfulness scoring; see §7.5 for the judge-family analysis):
 
-(Pending Phase 4a P5 data — to be filled when final.)
-
-**Preliminary finding from Phase 1**: Spearman ρ between accuracy R@1 and
-faithfulness score is **0.36 ± 0.11** (95% CI from bootstrap), well below
-the 0.5 threshold pre-registered as "decoupled." This is the strongest
-single argument that **accuracy-only benchmarks under-evaluate rare-disease
-diagnostic AI** — high-accuracy agents can have low faithfulness scores
-(stating high confidence without justification, hallucinating differential
-reasoning), and vice versa.
+**Finding (de-confounded, 2026-07-22 frozen audit)**: measured on identical
+repaired traces (n=40), the Spearman ρ between the judge's faithfulness score
+and the agent's actual top-1 accuracy is **0.457 (Gemini judge)** and **0.640
+(Claude judge)**. The pre-registered H10 threshold for "decoupled" was ρ < 0.5,
+so H10 is **borderline and judge-dependent** — met under one judge, not the
+other — and we report it as **exploratory, not confirmed**. (An earlier draft
+reported ρ = 0.098 under the Gemini judge and read this as strong decoupling;
+that value was a trace-capture artifact and is withdrawn — see §7.5 Correction.)
+The durable, direction-independent point remains: **accuracy-only benchmarks can
+under-evaluate rare-disease diagnostic AI**, because a high-accuracy agent can
+still score low on faithfulness (high confidence without justification,
+hallucinated differential reasoning) — but we no longer claim a strong
+quantitative decoupling.
 
 ---
 
@@ -99,26 +105,27 @@ reasoning), and vice versa.
 
 Four-layer dataset selection deliberately spans difficulty:
 
-| Layer | Best LLM R@1 (N=500) | Best Classical/Offline R@1 |
+| Layer | Best LLM R@1 (N=2000) | Best Classical/Offline R@1 |
 |---|---|---|
-| Phenopacket-Store (HPO+demographic, curated rare diseases) | 0.33 (medagents Gemini) | **0.46** (lirical) |
-| RareArena RDS (free-text vignette, narrative) | 0.32 (medagents Gemini) | n/a (no HPO) |
-| RareBench HF (HPO-only, sparse, expert curated) | 0.12 (mdagents Gemini) | **0.35** (vc_rdagent offline) |
-| MIMIC-IV diverse (structured note → named disease) | 0.39 (mdagents Gemini) | n/a |
-| MIMIC rd_detection prompt (pilot reframe) | **0.56** (extracts named rare disease from list) | n/a |
+| Phenopacket-Store (HPO+demographic, curated rare diseases) | 0.30 (medagents Gemini) | **0.47** (lirical) |
+| RareArena RDS (free-text vignette, narrative) | 0.30 (medagents Gemini) | n/a (no HPO) |
+| RareBench HF (HPO-only, sparse, expert curated) | 0.30 (deeprare Gemini) | 0.28 (vc_rdagent offline) |
+| MIMIC-IV diverse (structured note → named disease) | see note | n/a |
+
+(MIMIC-IV rows are omitted from this recomputed table: its gold labels were stripped from the frozen slim release, so R@1 is not recomputable at commit `43efa1e5`; the earlier N=500 MIMIC figures are not carried forward. All non-MIMIC values are the N=2000 frozen-matrix recompute.)
 
 **Reading**:
 - **PP-Store is the "easiest" layer** — curated cases, expert-cleaned HPO,
-  paper-faithful baselines (lirical replicates paper-claimed 0.42 ± 0.05).
-- **RareBench HF is hardest for LLM** — universal ≤0.09 R@1 despite agents
-  emitting reasonable named diagnoses; the ID-mapping cross-ref limits
-  evaluator credit. **Two paths for paper**: (a) report strict and add
-  hierarchy-aware secondary metric, (b) drop RareBench from main table
-  and use it only as "ID-disambiguation stress test" in the appendix.
-- **MIMIC** under default DDx prompt scores low because input ICD codes
-  conflate primary rare-disease with comorbidities; the rd_detection
-  reframe (§9 L4 follow-up) recovers to 0.56 by changing task to
-  "identify which condition is the rare disease."
+  paper-faithful baselines (lirical 0.47, replicating its paper-claimed range).
+- **RareBench HF is the layer where classical and LLM are closest** — at
+  N=2000 the best LLM (deeprare Gemini 0.30) slightly edges the best classical
+  (vc_rdagent 0.28), and both sit well below their PP-Store levels; the sparse,
+  expert-curated HPO and ID-mapping cross-ref make it the hardest HPO layer for
+  *both* families. We report strict R@1 with the variant-aware channel (§7.3);
+  a hierarchy-aware secondary metric is left to future work.
+- **MIMIC-IV** is excluded from the recomputed frozen table (gold labels
+  stripped from the slim release); we do not carry forward the earlier
+  MIMIC point estimates.
 
 ---
 

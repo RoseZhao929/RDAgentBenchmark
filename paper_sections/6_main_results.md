@@ -19,6 +19,12 @@
 
 Sorted by PP-Store R@1 (descending); classical/offline baselines listed first.
 
+> Note on the MIMIC-IV column: its gold labels were stripped from the frozen slim
+> release, so MIMIC R@1 is **not recomputable** at commit `43efa1e5`. The MIMIC
+> figures shown in this section are the pre-freeze estimates, retained only as
+> indicative context and excluded from the recomputed frozen headline claims;
+> PP-Store, RareArena, and RareBench columns are the authoritative N=2000 recompute.
+
 | Agent | Backbone | PP-Store | RareArena | RareBench | MIMIC | Avg |
 |---|---|---|---|---|---|---|
 | **lirical** (classical) | — | **0.47** [2000] | n/a HPO | **0.23** [1122] | n/a HPO | n/a (2-ds) |
@@ -55,8 +61,9 @@ reasoning-off** (§5.2 Methods note 2); the thinking-mode contrast is in §8 H6.
 **Key cells** (all PP-Store/RareArena cells now on the common N=2000 sample):
 - Classical/offline baselines lead on PP-Store (lirical **0.47**, vc\_rdagent
   **0.44**), above any LLM row (best: medagents Gemini 0.30 / llm\_control
-  Gemini 0.29) by **17-18 pp** — headline finding F1 is further strengthened on
-  the unified large sample.
+  Gemini 0.29) by **17 pp** (LIRICAL 0.47 − medagents 0.30; the gap is 18 pp
+  against the single-LLM control at 0.29) — headline finding F1 is further
+  strengthened on the unified large sample.
 - On RareBench, deeprare (0.29-0.30) and the classical baselines (lirical 0.23 /
   vc\_rdagent 0.28) lead, while every other LLM scores ≤0.10 — see the F5
   ORPHA-sibling explanation.
@@ -77,7 +84,7 @@ Per-agent backbone winners (R@1 PP-Store):
 |---|---|---|
 | llm_control | DS V4-Pro-off (0.30) ≈ tied | Gemini (0.27) — backbone-insensitive (0.27–0.30) |
 | mdagents | DS V4-Pro-off (0.30) | GPT-5 min (0.26) — narrow (0.26–0.30) |
-| medagents | Gemini Flash (0.31) ≈ tied | DS V4-Flash (0.27) — V4-Pro-off/GPT-5 tie at 0.30 |
+| medagents | Gemini Flash (0.30) ≈ tied | DS V4-Flash (0.26) — V4-Pro-off/GPT-5 tie at 0.28 |
 | agentclinic | Gemini Flash (0.23) | GPT-5 min (0.13) |
 | deeprare | Gemini Flash (0.28) | DS V4-Flash / GPT-5 (0.22) |
 
@@ -138,18 +145,21 @@ On RareBench HF the pattern holds: classical/offline (lirical 0.23, vc_rdagent
 scaffolds sit ≤0.10. The RareBench gap is partly ORPHA-sibling mismatch in the
 cross-map (Appendix A1 / F5).
 
-**F2: Multi-agent scaffolding gives a small, dataset-dependent gain (≈1–4 pp),
-not a uniform boost.** On Gemini Flash (common N=2000), medagents (PP 0.30,
-RareArena 0.30, MIMIC 0.35) edges llm_control (0.29, 0.28, 0.32) by only ~1–3 pp;
-mdagents is actually best on MIMIC (0.38). The benefit does not consistently
-exceed the no-scaffold control's CI, and it does not hold on every backbone. **(Revised
-down from the v0 "+5–7 pp" claim, which rested on a stale medagents 0.40.)**
+**F2: Multi-agent scaffolding gives at most a small, dataset-dependent gain and
+often none, not a uniform boost.** On Gemini Flash (common N=2000), medagents
+(PP-Store 0.30, RareArena 0.30) edges llm_control (0.29, 0.28) by only ~1–2 pp,
+within the control's CI; mdagents (PP-Store 0.28) actually sits ~1 pp *below* the
+control, and agentclinic/maidxo regress sharply (§7.2). The benefit does not
+consistently exceed the no-scaffold control's CI and does not hold on every
+backbone. (MIMIC-IV is not recomputable in the frozen release — gold labels
+stripped — so we do not carry forward its point estimates here.) **(Revised down
+from the v0 "+5–7 pp" claim, which rested on a stale small-sample medagents 0.40.)**
 
 **F3: DeepSeek V4-Flash is ~10× cheaper than Gemini Flash but trades off
 accuracy, especially on free text.** Per-prediction cost $0.00041 (V4-Flash) vs
-$0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store −2 to −4 pp
-(e.g. medagents 0.27 vs 0.31), and **−11 to −16 pp on MIMIC free-text**
-(mdagents 0.24 vs 0.38; medagents 0.19 vs 0.35). V4-Flash also showed a higher
+$0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store −2 to −5 pp
+(e.g. medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). On the (non-recomputable in
+the frozen release) MIMIC free-text slice earlier runs showed a larger drop. V4-Flash also showed a higher
 transient empty-content rate on free-text/HPO-list inputs (mitigated by a
 wrapper-level retry; see Appendix B). **Conclusion: V4-Flash is the
 cost-efficient choice when ~10× cost reduction outweighs a ~5–15 pp accuracy
@@ -158,7 +168,7 @@ drop, but it does NOT match Gemini quality.** (Reversed from v0.)
 **F4: GPT-5 minimal-reasoning is not worth its cost, and at full-N has no
 scaffold where it is the sole winner.** GPT-5 (`reasoning_effort=minimal`,
 forced because default reasoning consumes all max_tokens) ties the field on
-medagents PP-Store (0.30, level with V4-Pro-off and just below Gemini 0.31) and
+medagents PP-Store (0.28, where the medagents winner is Gemini at 0.30, V4-Pro-off at 0.28, GPT-5 at 0.28) and
 is strong on MIMIC (llm_control 0.34, medagents 0.32) yet **collapses** on
 AgentClinic OSCE dialogue (0.13, −10 pp vs Gemini). As the most expensive
 backbone (~20× V4-Flash per prediction) with no consistent accuracy edge, it is
