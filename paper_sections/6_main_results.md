@@ -99,28 +99,14 @@ thinking-mode variant adds ≈0 R@1 at 40% no-answer cost (§8 H6).
 
 ## 6.3 Cost-vs-Accuracy(per-prediction USD)
 
-> Headline summary table below; **full per-cell cost analysis is in Appendix J**.
-
-Total cost across all cells: **$191.76 / 68,668 predictions** = **$0.0028/pred avg**
-(2026-07-06 final; per-cell breakdown in
-Appendix J Table J.1).
-
-Per-backbone cost-per-prediction (2026-07-06 final):
-| Backbone | Predictions | Cost ($) | $/pred |
-|---|---|---|---|
-| **DS V4-Flash** | 14,264 | 5.67 | **$0.00040** |
-| DS V4-Pro (reasoning-off) | 12,557 | 11.02 | $0.00088 |
-| Gemini Flash | 23,444 | 75.35 | $0.00321 |
-| **GPT-5 min** | 12,571 | 99.72 | **$0.00793** |
-| LIRICAL classical / vc_rdagent offline | 4,068 / 1,764 | $0 | $0 |
-
-**GPT-5 minimal is ~9× more expensive than V4-Pro-off and ~20× more expensive than
-V4-Flash, with no consistent R@1 advantage** (ties medagents; worst on
-agentclinic — see F4). DS V4-Flash is the cheapest hosted backbone by more than an
-order of magnitude; DS V4-Pro reasoning-off is the cost-efficiency sweet spot among
-frontier-tier backbones ($0.00088/pred, ~9× cheaper than GPT-5 at comparable R@1).
-The V1 evaluation total (**$191.76 / $360 cap; 53% of pre-registered budget**) is
-documented in Appendix J.6.
+Cost per prediction spans more than an order of magnitude across backbones:
+DS V4-Flash is the cheapest hosted backbone ($0.00040/pred), DS V4-Pro
+reasoning-off is the frontier-tier cost-efficiency sweet spot ($0.00088/pred),
+and **GPT-5 minimal is ~20× more expensive than V4-Flash with no consistent R@1
+advantage** (it ties medagents and is worst on agentclinic — see F4). The
+cost-vs-accuracy trade-off across every agent × backbone cell is shown in the
+cost-vs-accuracy figure, and the full per-backbone and per-cell cost breakdown
+(V1 total $191.76, 53% of the pre-registered $360 cap) is in Appendix J.
 
 ## 6.4 Headline Findings
 

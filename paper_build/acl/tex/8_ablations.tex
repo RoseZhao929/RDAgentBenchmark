@@ -1,4 +1,5 @@
-\section{Ablations}\label{sec-8}
+\hypertarget{sec-8}{%
+\section{Ablations}\label{sec-8}}
 
 \textbf{Pre-registered ablations}:
 
@@ -6,9 +7,9 @@
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Pre-registered ablations A1--A12 and their status.}\label{tbl:ablations}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -31,10 +32,12 @@ A10 & Prevalence-stratified R@1 & done (\texttt{A10\_prevalence\_stratified.md})
 A11 & Cross-dataset agent ranking stability & done (\Cref{sec-7-6} / \texttt{A11\_ranking\_stability.md}) \\
 A12 & LLM-judge swap (P5 with Claude vs Gemini judge) & done (\Cref{sec-7-5}) \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
-\subsection{Ablation A4 --- Strict vs ORPHA-Fuzzy Variants Cross-Map}\label{sec-8-1}
+\hypertarget{sec-8-1}{%
+\subsection{Ablation A4 --- Strict vs ORPHA-Fuzzy Variants Cross-Map}\label{sec-8-1}}
 
 \textbf{Question}: When an LLM emits a generic disease name (e.g.~``Methylmalonic
 Acidemia'') that fuzzy-matches multiple ORPHA codes at tied scores
@@ -66,6 +69,7 @@ RareBench HF & +0.00 & +0.00 \\
 MIMIC diverse & +0.01 & +0.02 \\
 \textbf{All combined} & \textbf{+0.013} & \textbf{+0.024} \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -82,7 +86,8 @@ MIMIC diverse & +0.01 & +0.02 \\
 \textbf{Decision}: variants-aware metric is on by default in main \Cref{tbl:main};
 strict variant reported in parentheses for reviewer reference.
 
-\subsection{Ablation A3 --- Backbone \ensuremath{\times} Scaffolding Cross-Product}\label{sec-8-2}
+\hypertarget{sec-8-2}{%
+\subsection{Ablation A3 --- Backbone \ensuremath{\times} Scaffolding Cross-Product}\label{sec-8-2}}
 
 Detailed in \Cref{sec-6-2} main results. Highlights:
 
@@ -93,10 +98,10 @@ Detailed in \Cref{sec-6-2} main results. Highlights:
   PP-Store (R@1 = 0.27-0.30 across 4 backbones, full-N; V4-Pro reasoning-off)
 \item
   \textbf{Single-pass multi-agent} (mdagents) has a narrow 4-pp backbone spread
-  (DS V4-Pro-off 0.30, Gemini/V4-Flash 0.27, GPT-5 0.26)
+  (Gemini 0.28, DS V4-Pro-off 0.27, V4-Flash 0.25, GPT-5 0.24)
 \item
-  \textbf{Multi-round debate} (medagents) tops on Gemini (0.31) \ensuremath{\approx} V4-Pro-off /
-  GPT-5 (0.30), weakest on V4-Flash (0.27)
+  \textbf{Multi-round debate} (medagents) tops on Gemini (0.30), then V4-Pro-off /
+  GPT-5 (0.28), weakest on V4-Flash (0.25)
 \item
   \textbf{OSCE simulation} (agentclinic) collapses on GPT-5 minimal (0.13)
 \item
@@ -107,7 +112,8 @@ The cross-product matrix shows no universally-best backbone: each
 scaffolding architecture has its own preferred backbone. This refutes
 the ``just use the best backbone'' simplifying assumption.
 
-\subsection{Ablation A9 --- Subprocess Timeout Cap (300s vs 600s vs 1200s)}\label{sec-8-6}
+\hypertarget{sec-8-6}{%
+\subsection{Ablation A9 --- Subprocess Timeout Cap (300s vs 600s vs 1200s)}\label{sec-8-6}}
 
 The subprocess wall-clock cap interacts with two distinct failure modes,
 which A9 disentangles:
@@ -135,7 +141,8 @@ slow-but-valid cells (600s is the right default for hosted DeepSeek/Gemini
 on long free-text), but it cannot rescue genuinely degenerate
 agent\ensuremath{\times}backbone pairings. Cap choices are logged per-cell.
 
-\subsection{Ablations deferred / data-gated}\label{sec-8-7}
+\hypertarget{sec-8-7}{%
+\subsection{Ablations deferred / data-gated}\label{sec-8-7}}
 
 \begin{itemize}
 \tightlist
@@ -152,14 +159,16 @@ agent\ensuremath{\times}backbone pairings. Cap choices are logged per-cell.
   \textbf{A11} (cross-dataset ranking stability) --- computed (see \Cref{sec-7-6}).
 \end{itemize}
 
-\subsection{Pre-registration check}\label{sec-8-5}
+\hypertarget{sec-8-5}{%
+\subsection{Pre-registration check}\label{sec-8-5}}
 
 Under our research-integrity protocol, all hypotheses (H1-H11) and
 ablations (A1-A12) were frozen at OSF prior to Phase 4a launch. The
 above results are the first pre-registered evaluation report.
 \textbf{No post-hoc hypothesis selection.}
 
-\subsection{Holm-Bonferroni family-wise correction over H1-H11}\label{sec-8-8}
+\hypertarget{sec-8-8}{%
+\subsection{Holm-Bonferroni family-wise correction over H1-H11}\label{sec-8-8}}
 
 Per pre-registration we apply Holm-Bonferroni at \ensuremath{\alpha}=0.05 (one-sided in the
 predicted direction) over the testable subset of H1-H11. Family size m=6
@@ -171,12 +180,12 @@ pilot to an n=500 paired design.
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Holm--Bonferroni family-wise correction over H1--H11.}\label{tbl:holm}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -199,6 +208,7 @@ Survives \ensuremath{\alpha}=0.05?
 \textbf{H4} & Scaffold benefit larger on multi-system than single (DoD) & z=2.61 & 4.5e-03 & 9.0e-03 & \textbf{yes} \\
 H10 & Spearman \ensuremath{\rho}(faithfulness, accuracy) \textless{} 0.5 & \ensuremath{\rho}=0.35 & 3.7e-02 & 3.7e-02 & nominal but judge-dependent (see below) \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -210,19 +220,19 @@ scaffold-benefit-on-complexity difference-of-differences (H4), and the
 cross-agent specialty blind-spot correlation (H7: \ensuremath{\rho}=0.92 across 18 specialties)
 are all now FWE-robust, alongside the two headline claims H1 (classical dominate
 super-rare) and H8 (interior phenotype-density optimum). H10
-(faithfulness--accuracy decoupling) \emph{nominally} passes at the expanded N=73-trace
-dual-judge sample (pooled \ensuremath{\rho}=0.352, Holm-adj p=0.037) but we flag it as
-\textbf{fragile and judge-dependent, not a clean rejection}: the pooled value averages
-a family-judge (Gemini) \ensuremath{\rho}=0.098 (strong decoupling) and a non-family-judge
-(Claude) \ensuremath{\rho}=0.616 (coupling), so per-judge the verdict is \emph{split}. This
-judge-dependence is itself the \Cref{sec-7-5} self-preference message --- a same-family
-judge rates faithfulness more independently of correctness than a cross-family
-judge does --- so we report H10 as exploratory rather than a headline claim. (The
-scaffolded agents' 18--22k-char reasoning traces at \textasciitilde200 s/case made the full
-N=50\ensuremath{\times}4-agent dual-judge expansion infeasible; H10 rests on llm\_control + mdagents,
-maidxo/deeprare excluded, disclosed.)
+(faithfulness--accuracy decoupling) we report as exploratory, not a clean rejection. An earlier version rested on a family-judge (Gemini) \ensuremath{\rho}=0.098 vs
+non-family (Claude) \ensuremath{\rho}=0.616 split, but a 2026-07-22 frozen-audit re-run showed
+that split was a trace-capture artifact: the Gemini scores had been computed
+on truncated/empty traces while the Claude scores used repaired traces. Re-running
+the Gemini judge on the \emph{same} repaired traces (n=40) raises its \ensuremath{\rho} from 0.098 to
+\textbf{0.457}, against Claude's 0.640 (judge agreement \ensuremath{\rho}=0.741) --- a modest residual
+judge-family difference, not the near-zero ``strong decoupling'' originally claimed.
+The pre-registered H10 verdict (\ensuremath{\rho}\textless0.5) is therefore genuinely borderline and
+judge-sensitive, so we keep H10 exploratory and withdraw the \ensuremath{\rho}=0.098 figure. See
+\Cref{sec-7-5} for the de-confounded analysis.
 
-\subsection{Ablation A6 --- TS-Guessing data-contamination audit}\label{sec-8-9}
+\hypertarget{sec-8-9}{%
+\subsection{Ablation A6 --- TS-Guessing data-contamination audit}\label{sec-8-9}}
 
 We probe anticipated objection \#1 (``LLMs answer well only on diseases they were
 trained on'') by correlating, for each gold ORPHA in our phase4a predictions,
@@ -236,10 +246,10 @@ Spearman \ensuremath{\rho} over log(mention + 1) vs R@1; per-disease aggregate r
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{A6 TS-Guessing contamination, by backbone.}\label{tbl:a6}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Backbone
@@ -258,6 +268,7 @@ DeepSeek V4-Pro & 179 & \textbf{0.294} & weak positive \\
 LIRICAL (classical Bayesian) & 26 & \ensuremath{-}0.155 & null (methodological control) \\
 VC-RDAgent (offline IC) & 26 & \ensuremath{-}0.059 & null (methodological control) \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -273,11 +284,12 @@ the L4 post-cutoff PMC OA holdout (\textasciitilde200 cases, doctor-annotated in
 remains the bias-free reference for the residual 9 \%.
 
 Visualised in \Cref{fig:fig4_a6_contamination_scatter}:
-2 \ensuremath{\times} 3 grid, one panel per backbone. The clean dichotomy is visually obvious --- the
-top row (LLM backbones) shows positive slope; the bottom row classical baselines
-(LIRICAL, VC-RDAgent) shows a flat cloud.
+one panel per backbone. The clean dichotomy is visually obvious --- the
+LLM backbones show a positive slope; the classical baselines
+(LIRICAL, VC-RDAgent) show a flat cloud.
 
-\subsection{Ablation A8 / H6 --- Thinking-mode (reasoning on vs off)}\label{sec-8-10}
+\hypertarget{sec-8-10}{%
+\subsection{Ablation A8 / H6 --- Thinking-mode (reasoning on vs off)}\label{sec-8-10}}
 
 \textbf{Question (anticipated objection: ``you crippled the models by disabling reasoning'')}:
 Our main matrix runs all reasoning backbones in their minimal/off configuration
@@ -292,10 +304,10 @@ backbone whose reasoning can be cleanly toggled via \texttt{reasoning=\{"enabled
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{H6 reasoning on/off ablation (paired, PP-Store).}\label{tbl:h6}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Config
@@ -310,6 +322,7 @@ Latency/case
 reasoning \textbf{OFF} (main matrix) & \textbf{0.352} & 100 \% & \textasciitilde2.5 s \\
 reasoning \textbf{ON} (thinking) & \textbf{0.360} & \textbf{60 \%} (40 \% no-answer) & \textasciitilde90--117 s (median), up to 571 s \\
 \ensuremath{\Delta} (on \ensuremath{-} off) & \textbf{+0.008} & --- & 10--40\ensuremath{\times} slower \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}

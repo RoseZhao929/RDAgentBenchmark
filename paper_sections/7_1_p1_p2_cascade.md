@@ -92,4 +92,4 @@ cells + offline/classical baselines (N=4,754 case-predictions, dedup by case):
 (−10 pp at ≤5, −7 pp at >30 vs peak). The under-specified tail is the larger
 drop, consistent with rare-disease diagnosis needing a minimum phenotypic
 fingerprint. The shape holds across individual agents, not just the pool.
-Shown in the phenotype-density table above (no dedicated figure; the P1→P2 same-case cascade is Figure 7).
+The inverted-U is plotted in \Cref{fig:figM4_hpo_density}.

@@ -1,6 +1,8 @@
-\section{Appendix B --- Per-Baseline Reproduction Summary}\label{appendix-b-per-baseline-reproduction-summary}
+\hypertarget{appendix-b-per-baseline-reproduction-summary}{%
+\section{Appendix B --- Per-Baseline Reproduction Summary}\label{appendix-b-per-baseline-reproduction-summary}}
 
-\subsection{B.1 Overview}\label{b.1-overview}
+\hypertarget{b.1-overview}{%
+\subsection{B.1 Overview}\label{b.1-overview}}
 
 Every baseline in our lineup is replicated using one of two protocols:
 
@@ -21,19 +23,20 @@ reproduction details --- paper-claim comparison, observed results, known
 incompatibilities, and run receipts --- are documented one file per
 baseline, listed in the Doc column below.
 
-\subsection{B.2 Per-baseline summary}\label{b.2-per-baseline-summary}
+\hypertarget{b.2-per-baseline-summary}{%
+\subsection{B.2 Per-baseline summary}\label{b.2-per-baseline-summary}}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Baseline reproduction: license, mode, paper vs.~our point estimate.}\label{tbl:baseline}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Baseline
@@ -59,13 +62,15 @@ Doc
 \textbf{DeepRare (P3)} & same & + structured variants & 0.71 & 0.38 (P3 pilot) & -33 pp & \texttt{deeprare.md} \\
 \textbf{RDMA} & None upstream & LLMEntityExtractor & F1 0.42 (P1) & F1 0.39 (P1 silver gold) & & \texttt{rdma.md} \\
 \textbf{VC-RDAgent} & None upstream & Stage 1 offline & 0.27 (PP-Store) & 0.44 (PP-Store) & +17 pp \ensuremath{\star} & \texttt{vc\_rdagent.md} \\
-\textbf{LIRICAL} & Apache 2.0 & classical Bayesian, HPO-only & \textasciitilde0.42 (PP-Store) & 0.46 (PP-Store) & & \texttt{lirical.md} \\
+\textbf{LIRICAL} & Apache 2.0 & classical Bayesian, HPO-only & \textasciitilde0.42 (PP-Store) & 0.47 (PP-Store, N=2000) & & \texttt{lirical.md} \\
 \textbf{LLM control} & n/a (ours) & naked single LLM call & n/a baseline & 0.32 (PP-Store, V4-Pro) & n/a & \texttt{llm\_control.md} \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\subsection{B.3 Setup-mismatch documentation (the gap stories)}\label{b.3-setup-mismatch-documentation-the-gap-stories}
+\hypertarget{b.3-setup-mismatch-documentation-the-gap-stories}{%
+\subsection{B.3 Setup-mismatch documentation (the gap stories)}\label{b.3-setup-mismatch-documentation-the-gap-stories}}
 
 \textbf{MAI-DxO -38 pp}: Paper input = narrative-rich NEJM clinicopath
 case (\textasciitilde2,000 words). Our input = HPO-list + 1--2 sentence vignette.
@@ -90,7 +95,8 @@ Poincar\'e, no LLM), which the paper reports as 0.27 on Phenopacket-
 Store. We observe 0.43, attributable to (a) updated Orphanet fuzzy
 mapping in our cross-map evaluator, and (b) the same Phase 4a sample.
 
-\subsection{B.4 Behavior-changing patches surface}\label{b.4-behavior-changing-patches-surface}
+\hypertarget{b.4-behavior-changing-patches-surface}{%
+\subsection{B.4 Behavior-changing patches surface}\label{b.4-behavior-changing-patches-surface}}
 
 \begin{quote}
 The following changes affect baseline behavior. All other patches
@@ -119,7 +125,8 @@ logic untouched.
 per LLM-named disease (fuzzy score within 5 pts of top); evaluator
 \texttt{gold\_hit\_with\_variants} accepts any of the tied IDs. Documented as ablation A4.
 
-\subsection{B.5 Independent re-replication invitation}\label{b.5-independent-re-replication-invitation}
+\hypertarget{b.5-independent-re-replication-invitation}{%
+\subsection{B.5 Independent re-replication invitation}\label{b.5-independent-re-replication-invitation}}
 
 Any reader can reproduce a single Phase 4a cell via:
 

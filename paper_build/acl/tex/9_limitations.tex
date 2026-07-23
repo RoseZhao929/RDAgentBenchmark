@@ -1,4 +1,5 @@
-\section{Limitations and Future Work}\label{sec-9}
+\hypertarget{sec-9}{%
+\section{Limitations and Future Work}\label{sec-9}}
 
 We surface six concrete limitations and three deliberate scope exclusions
 of v1. Each is paired with the section that pre-empts the related
@@ -82,7 +83,7 @@ through our OpenRouter wrapper and report exact USD per call. Three adapters (RD
 VC-RDAgent) call backbones outside the wrapper; we estimate their cost
 from logged token counts and the OpenRouter price table. The
 estimation introduces a \ensuremath{\leq}5 \% error band on the cost-vs-accuracy
-scatter (\Cref{fig:fig2_cost_accuracy}) and we annotate estimated cells with \texttt{\dag{}} in
+scatter (\Cref{fig:figM2_cost_accuracy}) and we annotate estimated cells with \texttt{\dag{}} in
 Appendix J. Full per-cell cost analysis is in Appendix J.
 
 \textbf{(L7) Bounded data-contamination signal on LLM backbones.} Our A6
@@ -104,7 +105,8 @@ how much memorisation could explain (b) F1 (classical \textgreater{} LLM on the
 rarest tier) is in the \emph{opposite} direction of training exposure and
 therefore not driven by it.
 
-\subsubsection{\texorpdfstring{Deliberate scope exclusions (these are \emph{not} defects --- they are scope choices)}{Deliberate scope exclusions (these are not defects --- they are scope choices)}}\label{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}
+\hypertarget{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}{%
+\subsubsection{\texorpdfstring{Deliberate scope exclusions (these are \emph{not} defects --- they are scope choices)}{Deliberate scope exclusions (these are not defects --- they are scope choices)}}\label{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}}
 
 \textbf{(S1) Retrospective, not prospective.} We frame the benchmark as
 \textbf{retrospective decision support} evaluation, not autonomous
@@ -122,7 +124,8 @@ phenotyping increasingly involves facial photograph, MRI, or
 electron-microscopy signal. v1 is text-only. v2 adds a multimodal
 pillar (Future Work item 4).
 
-\subsubsection{Future work (in order of expected impact)}\label{future-work-in-order-of-expected-impact}
+\hypertarget{future-work-in-order-of-expected-impact}{%
+\subsubsection{Future work (in order of expected impact)}\label{future-work-in-order-of-expected-impact}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -146,14 +149,15 @@ pillar (Future Work item 4).
   benchmark is designed to \emph{enable}, not \emph{substitute}.
 \end{enumerate}
 
-\subsubsection{Cross-references to pre-empted anticipated objections}\label{cross-references-to-pre-empted-anticipated-objections}
+\hypertarget{cross-references-to-pre-empted-anticipated-objections}{%
+\subsubsection{Cross-references to pre-empted anticipated objections}\label{cross-references-to-pre-empted-anticipated-objections}}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Anticipated objections and the section that pre-empts each.}\label{tbl:objections}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Attack
@@ -171,6 +175,7 @@ Where addressed
 \#10 LLM-judge unreliable & \Cref{sec-7-5} + Ablation A12 \\
 \#11 Model version changes silently & \Cref{sec-5-2} dated aliases + Appendix N Docker hash \\
 \#3, \#6, \#12 & \Cref{sec-9} above (L2, L3, S1) \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}

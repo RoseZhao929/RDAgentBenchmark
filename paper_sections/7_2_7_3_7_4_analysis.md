@@ -170,8 +170,8 @@ mid-spike breaks monotonicity). But the **tail contrast is the real story**:
 disease" is a conservative choice when a disorder has multiple prevalence
 estimates; point-prevalence entries are preferred over cases/families.
 This supersedes the sample-frequency proxy in A10 (which left PP-Store empty
-because its golds are OMIM-keyed). Visualised in **Figure 5** — the LLM-classical
-crossover at super-rare is the headline F1 evidence.
+because its golds are OMIM-keyed). Visualised in \Cref{fig:figM3_prevalence} — the
+LLM-classical crossover at super-rare is the headline F1 evidence.
 
 ---
 
@@ -273,7 +273,7 @@ prevalence spectrum. This is the same direction as F1 (classical >
 LLM on the rarest tier, §7.7 H1, +28 pp on super-rare) viewed from a
 different axis.
 
-Visualised in **Figure 4**.
+Visualised in \Cref{fig:fig4_a6_contamination_scatter}.
 
 ---
 
@@ -299,4 +299,4 @@ p=0.0016. Universally **weak** specialties: nervous system
 ordering points to ontology/data-level difficulty, not scaffold-specific gaps.
 Notably the **classical baselines invert the nervous-system weakness** (LIRICAL
 0.35, VC-RDAgent 0.43 vs LLM ~0.12) and lead on head/neck (0.52–0.54) — another
-facet of F1's classical advantage. Visualised in **Figure 7**.
+facet of F1's classical advantage. Visualised in \Cref{fig:fig7_specialty_h7}.

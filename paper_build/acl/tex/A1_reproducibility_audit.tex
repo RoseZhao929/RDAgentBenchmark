@@ -1,4 +1,5 @@
-\section{Appendix A1 --- Reproducibility Audit (per-agent)}\label{appendix-a1-reproducibility-audit-per-agent}
+\hypertarget{appendix-a1-reproducibility-audit-per-agent}{%
+\section{Appendix A1 --- Reproducibility Audit (per-agent)}\label{appendix-a1-reproducibility-audit-per-agent}}
 
 For each of the eight evaluated systems we replicated, with the agent's
 published evaluation setup, at least one point estimate from the
@@ -46,17 +47,20 @@ The pilot numbers in the audit table below are from the N=50 scouting
 pass that originally locked our agent lineup; the full-N point
 estimates that headline the paper are in \Cref{sec-6} Main Results.
 
-\subsubsection{Per-agent audit table}\label{per-agent-audit-table}
+\hypertarget{per-agent-audit-table}{%
+\subsubsection{Per-agent audit table}\label{per-agent-audit-table}}
+
+These are n=50 pilot reproduction checks --- each asks ``can we reproduce agent X's own paper-claimed number on a small sample under our harness'', and is deliberately distinct from the N=2000 frozen main matrix (\Cref{sec-6}) and the N=500 variant-channel paired test (\Cref{sec-7-3}). Where a small-sample pilot value differs from the frozen-matrix value (e.g.~LIRICAL 0.40 pilot vs 0.47 frozen), the frozen-matrix number in \Cref{sec-6} is authoritative; the pilot value is retained here only as the original reproduction record.
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Reproduction audit against published paper claims.}\label{tbl:repro}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -78,14 +82,16 @@ Notes
 \textbf{DeepRare (P3 genotype)} & \ensuremath{\triangle} partial replication (\textasciitilde28 pp gap) & R@1 = 0.42 (38/50, 95 \% CI {[}0.26, 0.58{]}) vs paper 0.706 (HPO+VCF) & Structured variants block (not full VCF + Phenotype Tool); web search disabled (\texttt{DEEPRARE\_NO\_WEB=1}) for contamination control & Lift over P2 (+20 pp) matches LLM-control's lift; variant channel real but not DeepRare-specific --- see \Cref{sec-7-3} \\
 \textbf{RDMA} & n/a (P1-only system) & F1 = 0.39 (Gemini 3 Flash, P1, n=50 RareBench-EHR) vs paper F1 = 0.42 & Subprocess call to \texttt{LLMEntityExtractor}; HPO-mention extraction only & Pillar 1 only \\
 \textbf{VC-RDAgent} & \ensuremath{\checkmark} within \ensuremath{\pm}5 pp & R@1 = 0.28 (Stage-1 offline IC+Poincar\'e, P2, n=50) vs paper 0.27 & Stage 1 default (0 LLM calls); Stage 2 LLM refine deferred & Cheapest agent \\
-\textbf{LIRICAL} & \ensuremath{\checkmark} within \ensuremath{\pm}5 pp & R@1 = 0.40 (gold HPO, P2, n=50 PP-Store) vs paper \textasciitilde0.42 & \texttt{java\ -jar\ lirical.jar\ phenopacket}; project canonical case to phenopacket & 0 LLM calls \\
+\textbf{LIRICAL} & \ensuremath{\checkmark} within \ensuremath{\pm}5 pp & R@1 = 0.40 (gold HPO, P2, n=50 PP-Store pilot) vs paper \textasciitilde0.42 {[}on the full N=2000 frozen matrix LIRICAL is 0.47, \Cref{sec-6}{]} & \texttt{java\ -jar\ lirical.jar\ phenopacket}; project canonical case to phenopacket & 0 LLM calls \\
 \textbf{LLM control (Gemini 3 Flash, no scaffolding)} & n/a (this \emph{is} the baseline) & R@1 = 0.26 (P2, n=50) & Single LLM call, structured-output prompt & \\
 \textbf{LLM control (P3 with variants)} & n/a & R@1 = 0.46 (P3 with structured variants, n=50) vs P2 0.26 = \textbf{+20 pp} & Variants block appended to prompt (\Cref{sec-7-3}) & Strong evidence H2 \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\subsubsection{Two agents underperform their paper claim --- both explained as input-distribution mismatch}\label{two-agents-underperform-their-paper-claim-both-explained-as-input-distribution-mismatch}
+\hypertarget{two-agents-underperform-their-paper-claim-both-explained-as-input-distribution-mismatch}{%
+\subsubsection{Two agents underperform their paper claim --- both explained as input-distribution mismatch}\label{two-agents-underperform-their-paper-claim-both-explained-as-input-distribution-mismatch}}
 
 \textbf{MAI-DxO} is designed for narrative-rich NEJM-style case reports. Our
 input is the CanonicalCase HPO-list + brief vignette. The panel's ``ask
@@ -112,7 +118,8 @@ genotype-aware reasoning'' --- collapsing both into ``DDx accuracy''
 would still miss the +20 pp lift, but the agent-specificity claim
 does not survive contact with the LLM-control baseline.
 
-\subsubsection{Bugs caught during audit (and the fix)}\label{bugs-caught-during-audit-and-the-fix}
+\hypertarget{bugs-caught-during-audit-and-the-fix}{%
+\subsubsection{Bugs caught during audit (and the fix)}\label{bugs-caught-during-audit-and-the-fix}}
 
 We list four representative bugs we caught and fixed during the
 reproducibility audit; our worklog retrospectives record the full set.
@@ -150,7 +157,8 @@ reproducibility audit; our worklog retrospectives record the full set.
   \texttt{@lru\_cache(maxsize=1)} on \texttt{\_orphadata\_tables()}.
 \end{enumerate}
 
-\subsubsection{How a reader can independently re-run any cell}\label{how-a-reader-can-independently-re-run-any-cell}
+\hypertarget{how-a-reader-can-independently-re-run-any-cell}{%
+\subsubsection{How a reader can independently re-run any cell}\label{how-a-reader-can-independently-re-run-any-cell}}
 
 For any \Cref{tbl:main} / \Cref{sec-6} cell \texttt{(agent,\ backbone,\ dataset)}, start from the
 per-baseline reproduction doc, which sets expectations for the rerun,
@@ -168,13 +176,15 @@ python3 scripts/phase4a_runner.py \
 \texttt{scripts/sanity\_check\_evaluator.py} must pass (\texttt{exit\ 0}) before any
 number in the paper is trusted; this is enforced in our run harness.
 
-\subsubsection{Cost transparency}\label{cost-transparency}
+\hypertarget{cost-transparency}{%
+\subsubsection{Cost transparency}\label{cost-transparency}}
 
 \texttt{scripts/cost\_tracker.py\ -\/-budget\ \textless{}USD\textgreater{}} prints the running per-backbone
 cost from the prediction logs. The submission-time snapshot is in
-Appendix J and \Cref{fig:fig_costbar,fig:fig2_cost_accuracy}.
+Appendix J and \Cref{fig:figM2_cost_accuracy}.
 
-\subsubsection{Per-cell coverage matrix}\label{per-cell-coverage-matrix}
+\hypertarget{per-cell-coverage-matrix}{%
+\subsubsection{Per-cell coverage matrix}\label{per-cell-coverage-matrix}}
 
 Not every (agent \ensuremath{\times} backbone \ensuremath{\times} dataset) cell exists. Known gaps and
 their cause:

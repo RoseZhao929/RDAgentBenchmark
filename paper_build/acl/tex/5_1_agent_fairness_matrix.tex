@@ -1,23 +1,25 @@
-\section{Agent Fairness Matrix}\label{sec-5-1}
+\hypertarget{sec-5-1}{%
+\section{Agent Fairness Matrix}\label{sec-5-1}}
 
 \begin{quote}
 \emph{Following MedAgentBench (NEJM AI 2025) and DeepRare (Nature 2026), we hold the central backbone constant across agent comparisons and document every adapter shim deviation in the Agent Fairness Matrix (\Cref{tbl:fairness}). All adapters are released open-source under \texttt{harness/agents/}.}
 \end{quote}
 
-\subsubsection{Agent Fairness Matrix}\label{agent-fairness-matrix}
+\hypertarget{agent-fairness-matrix}{%
+\subsubsection{Agent Fairness Matrix}\label{agent-fairness-matrix}}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Agent fairness matrix: native inputs, adapter-shim strategy and backbone wiring.}\label{tbl:fairness}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -46,18 +48,20 @@ License
 \textbf{VC-RDAgent} & HPO list & Offline Stage 1 default(IC + Poincar\'e + frequency-LR fusion, \textbf{0 LLM calls}); Stage 2 (LLM refine) opt-in & Stage 2 uses local Qwen3-8B or OpenRouter & 0 (Stage 1) & \texttt{use\_llm\_refine:\ bool} & 310 & \textbf{None} \\
 \textbf{LIRICAL} & GA4GH Phenopacket & Project canonical case to phenopacket JSON; subprocess \texttt{java\ -jar\ lirical.jar\ phenopacket}; parse TSV & \textbf{No LLM} (classical Bayesian) & 0 & n/a & 369 & \textbf{Apache 2.0} \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
-\subsubsection{Constants we hold across all agents}\label{constants-we-hold-across-all-agents}
+\hypertarget{constants-we-hold-across-all-agents}{%
+\subsubsection{Constants we hold across all agents}\label{constants-we-hold-across-all-agents}}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Fixed evaluation settings held constant across agents.}\label{tbl:settings}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Setting
@@ -74,10 +78,12 @@ Per-call timeout & 600s (adjustable per agent) & DeepRare/MAI-DxO can legitimate
 Retry policy & 3 attempts with exponential backoff via tenacity & Mitigate OpenRouter transient errors \\
 Backbone version (dated) & \texttt{google/gemini-3-flash-preview-20251217} etc & Reviewer-defensive --- alias updates blocked \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
-\subsubsection{Three anticipated objections --- pre-empted}\label{three-anticipated-objections-pre-empted}
+\hypertarget{three-anticipated-objections-pre-empted}{%
+\subsubsection{Three anticipated objections --- pre-empted}\label{three-anticipated-objections-pre-empted}}
 
 \textbf{Objection 1}: ``Adapter quality differences confound results.''
 \textbf{Response}: All 8 adapter shims are released open-source (3,485 LOC total), each accompanied by a run report documenting its exact subprocess calls, parser logic, and known caveats. Independent re-implementation invited.
@@ -88,7 +94,8 @@ Backbone version (dated) & \texttt{google/gemini-3-flash-preview-20251217} etc &
 \textbf{Objection 3}: ``Mixing classical (LIRICAL) and LLM agents is unfair.''
 \textbf{Response}: Standard convention --- see DeepRare (Nature 2026) which includes Exomiser / LIRICAL / AI-MARRVEL as classical baselines. We report them as separate ``Classical Baseline'' rows in \Cref{tbl:main} and do not include them in LLM-only ablations (A1/A2/A4/A5/A6/A7).
 
-\subsubsection{Per-agent known caveats (we surface these honestly)}\label{per-agent-known-caveats-we-surface-these-honestly}
+\hypertarget{per-agent-known-caveats-we-surface-these-honestly}{%
+\subsubsection{Per-agent known caveats (we surface these honestly)}\label{per-agent-known-caveats-we-surface-these-honestly}}
 
 \begin{itemize}
 \tightlist
@@ -101,6 +108,6 @@ Backbone version (dated) & \texttt{google/gemini-3-flash-preview-20251217} etc &
 \item
   \textbf{AgentClinic} in our v1 is tested on HPO-only cases (Phenopacket-Store/RareBench/MIMIC-IV); its OSCE dialogue is shallow when no free-text vignette is available. We report this as Limitation 6.
 \item
-  \textbf{LIRICAL} requires HPO list input. On RareArena (free text), our adapter triggers \texttt{eval\_mode="end\_to\_end"} upstream LLM HPO extraction + phrase\ensuremath{\rightarrow}HP-ID normalization. This explains LIRICAL's PP-Store R@1 0.40 dropping to 0.04 on RareArena --- see analysis \Cref{sec-7-1}.
+  \textbf{LIRICAL} requires HPO list input. On RareArena (free text), our adapter triggers \texttt{eval\_mode="end\_to\_end"} upstream LLM HPO extraction + phrase\ensuremath{\rightarrow}HP-ID normalization. LIRICAL scores far lower on RareArena than on gold-HPO Phenopacket-Store, but that difference confounds dataset difficulty with input condition and is \emph{not} a clean extraction-penalty estimate --- see the same-case analysis and correction in \Cref{sec-7-1}.
 \end{itemize}
 

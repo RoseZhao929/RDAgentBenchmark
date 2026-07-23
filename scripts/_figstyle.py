@@ -29,9 +29,15 @@ def apply_nature_style():
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    # Serif to match the paper body (pdfLaTeX `times.sty`). "Times New Roman" is
+    # named first for portability (macOS/Overleaf), but the URW clone "Nimbus
+    # Roman" is what actually ships with the Linux TeX stack and is metric-
+    # identical to Times, so figures render in the same face as the typeset text.
     plt.rcParams.update({
-        "font.family": "sans-serif",
-        "font.sans-serif": ["Arial", "Helvetica", "Helvetica Neue", "DejaVu Sans"],
+        "font.family": "serif",
+        "font.serif": ["Times New Roman", "Nimbus Roman", "Liberation Serif",
+                       "Tinos", "DejaVu Serif"],
+        "mathtext.fontset": "stix",
         "font.size": 8,
         "axes.titlesize": 9,
         "axes.titleweight": "bold",

@@ -18,43 +18,55 @@ from build_paper_pdf import clean, MAIN_ORDER, APPENDIX_ORDER, SEC, ROOT, TITLE 
 
 ACL = ROOT / "paper_build" / "acl"
 ACL.mkdir(parents=True, exist_ok=True)
-FIGDIR = ROOT / "paper_build/acl/figures"   # committed, git-tracked figures
-TEXBIN = str(Path.home() / "Library/TinyTeX/bin/universal-darwin")
+# Source of truth for figure PNGs (produced by scripts/paper_*figures.py +
+# paper_schematics.py). copy_figures() mirrors the referenced subset into
+# acl/figures/ so the upload package is self-contained. MUST differ from that
+# destination, or the copy wipes its own source.
+FIGDIR = ROOT / "data/round2/figures"
+# pdflatex/bibtex resolve from PATH on this Linux host; the macOS TinyTeX path
+# is kept as a fallback for local builds on the author's machine.
+_MAC_TEXBIN = Path.home() / "Library/TinyTeX/bin/universal-darwin"
+TEXBIN = str(_MAC_TEXBIN) if _MAC_TEXBIN.exists() else "/usr/bin"
 
 # ---- figures, grouped by the section they belong under -----------------
-# Figure order (2026-07 revision): the main body carries four load-bearing
-# figures -- (1) benchmark-method overview, (2) agent-capability radar,
-# (3) cost-vs-accuracy Pareto, (4) self-preference slopegraph -- and the
-# reference/detail figures (canonical-case schema, coverage matrix, full
-# per-cell heatmap, ranking lollipop, cost bar) move to the appendix so no
-# two figures carry overlapping information.
+# Figure layout (2026-07 six-panel revision): the main body carries exactly
+# ONE architecture overview plus SIX small load-bearing result panels, each
+# a distinct finding and none duplicating Table 1:
+#   figM1  F1  classical vs best LLM, per layer      (6_main_results)
+#   figM2  F3/F4 cost-vs-accuracy Pareto             (6_main_results)
+#   figM3  H1  prevalence crossover                  (6_main_results)
+#   figM4  H8  phenotype-density inverted-U          (6_main_results)
+#   figM6  Holm hypothesis-test forest               (6_main_results)
+#   figM5  P5  self-preference / judge-family        (7_5_self_preference)
+# The old R@1 heatmap (duplicated Table 1), the best-backbone radar and the
+# ranking lollipop are DROPPED; the contamination scatter and specialty
+# heatmap keep only their appendix (detail) placement.
 FIG_BY_SECTION = {
-    # main body: benchmark design -> THE overview (Figure 1)
+    # main body: benchmark design -> THE overview (traditional-benchmark contrast)
     "4_benchmark_design.md": [
         ("fig1_overview.png", "\\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \\texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO; Pass~B end-to-end), and the Pass~A$-$Pass~B delta is itself a reported metric. Protocol (H1--H11, A1--A12) pre-registered at OSF."),
     ],
-    # main body: results -> capability radar (Figure 2) + cost-accuracy Pareto (Figure 3)
+    # main body: the six result panels (five here + self-preference below)
     "6_main_results.md": [
-        ("fig_radar.png", "\\textbf{Agent capability profiles.} Best-backbone Recall@1 for representative systems across the four data layers; LLM-scaffolded agents dominate free-text layers while classical baselines peak on curated-HPO layers."),
-        ("fig2_cost_accuracy.png", "Cost vs.\\ accuracy for each agent $\\times$ backbone cell (log cost axis); dashed line is the Pareto frontier."),
+        ("figM1_llm_vs_classical.png", "\\textbf{Classical/offline baselines beat the best scaffolded LLM on HPO input (F1).} Best variant-aware R@1 per data layer, LLM agents vs.\\ classical/offline baselines (attempted denominator, common N=2000 on PP-Store/RareArena). On curated HPO (Phenopacket-Store) LIRICAL leads the best LLM by 17~pp; on free-text RareArena no classical baseline runs (no HPO input)."),
+        ("figM2_cost_accuracy.png", "\\textbf{Cost vs.\\ accuracy (F3/F4).} Each marker is one agent~$\\times$~backbone cell on Phenopacket-Store (log cost-per-attempt axis, attempted denominator); dashed line is the Pareto frontier. GPT-5 minimal (diamonds) sits far right at $\\sim$25$\\times$ the cost of DeepSeek V4-Flash with no R@1 gain."),
+        ("figM3_prevalence.png", "\\textbf{Prevalence crossover (H1).} Pooled R@1 by Orphanet prevalence tier. LLM agents decline toward the rarest tier while classical/offline baselines rise, inverting the ranking on super-rare disease (+28~pp for classical)."),
+        ("figM4_hpo_density.png", "\\textbf{Phenotype-density inverted-U (H8).} Pooled R@1 on the HPO-input layers peaks at 16--30 HPO terms per case; both under- and over-specified inputs degrade accuracy."),
+        ("figM6_hypotheses.png", "\\textbf{Pre-registered hypothesis tests.} Forest plot of $-\\log_{10}$(Holm-adjusted $p$) for the six testable hypotheses; five survive family-wise correction at $\\alpha$=0.05. H10 (faithfulness--accuracy decoupling) is reported as exploratory and judge-dependent."),
     ],
-    # main body: self-preference methodology finding (Figure 4)
+    # main body: self-preference methodology finding (sixth panel)
     "7_5_self_preference_bias.md": [
-        ("fig_selfpref.png", "\\textbf{Self-preference bias in LLM-as-judge.} Swapping the judge from a same-family (Gemini) to a non-family (Claude) model on identical traces shrinks the single-LLM lead and reverses it on depth."),
+        ("figM5_selfpref.png", "\\textbf{Self-preference bias in LLM-as-judge (P5).} Swapping the judge from a same-family (Gemini) to a non-family (Claude) model on identical traces shrinks the single-LLM lead across all four axes and reverses it on depth, where the multi-expert \\texttt{mdagents} overtakes."),
     ],
     # appendix: reference detail figures (schema + coverage matrix)
     "C_appendix_experimental_setup.md": [
         ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable."),
         ("fig_schema.png", "The \\texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it."),
     ],
-    # appendix: hypothesis analysis (full per-cell matrix + ranking + hypothesis plots)
+    # appendix: hypothesis-analysis detail figures (contamination + specialty)
     "7_2_7_3_7_4_analysis.md": [
-        ("fig1_heatmaps.png", "Diagnostic accuracy (R@1, variants) across every agent $\\times$ backbone cell, one panel per dataset. Full per-cell matrix behind the capability radar."),
-        ("fig3_ranking.png", "Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent)."),
-        ("fig4_a6_contamination_scatter.png", "A6 TS-Guessing contamination scatter (LLM vs.\\ classical)."),
-        ("fig5_prevalence_h1.png", "H1 prevalence-stratified R@1."),
-        ("fig6_hpo_density_h8.png", "H8 phenotype-density inverted-U."),
-        ("fig7_specialty_h7.png", "H7 cross-agent specialty blind spots."),
+        ("fig4_a6_contamination_scatter.png", "A6 TS-Guessing contamination audit. Spearman $\\rho$ between log pre-cutoff PubMed mentions and per-disease R@1, per backbone. Every LLM backbone clusters at $\\rho\\approx0.3$ (weak positive); both classical/offline baselines sit at $\\rho\\approx0$ (null control), confirming the pipeline adds no spurious frequency correlation."),
+        ("fig7_specialty_h7.png", "H7 cross-agent per-specialty R@1 (modal HPO organ-system axis). Bars span the R@1 range across LLM scaffolds; the shared weak specialties (digestive, metabolic, nervous) indicate ontology/data-level difficulty rather than agent-specific blind spots. Diamonds mark where the classical baselines invert the LLM weakness (nervous, head/neck)."),
     ],
     # appendix: cost bar chart
     "J_appendix_cost.md": [
@@ -166,7 +178,6 @@ CAPTIONS = {
     "6_main_results.md": [
         ("Agent|Backbone|PP-Store", "Headline Recall@1 (variant-aware) for every agent $\\times$ backbone cell across the four data layers; bracketed values are per-cell $N$. Classical/offline baselines are listed first.", "tbl:main"),
         ("Agent|Bestbackbone", "Per-agent backbone sensitivity: best vs.\\ worst backbone R@1.", "tbl:bbsens"),
-        ("Backbone|Predictions|Cost", "Total spend and cost per prediction, by backbone.", "tbl:costbb0"),
     ],
     "7_5_self_preference_bias.md": [
         ("Agent|factual|relevance", "LLM-judge faithfulness scores (four axes) and the self-preference gap, by agent.", "tbl:selfpref"),
@@ -236,7 +247,10 @@ def fix_figure_refs(md: str) -> str:
         r"\*{0,2}Figure\s+\d+[a-d]?\*{0,2}\s*\(?\s*`[^`]*?figures/(?P<name>fig[a-z0-9_]+?)"
         r"(?:\.png)?`\s*\)?:?",
         lambda m: f"\\Cref{{fig:{m.group('name')}}}", md, flags=re.S)
-    md = md.replace("(Figure 2)", "(\\Cref{fig:fig2_cost_accuracy})")
+    # the cost-vs-accuracy scatter is now figM2 (six-panel main-body revision)
+    md = md.replace("scatter (Figure 2)", "scatter (\\Cref{fig:figM2_cost_accuracy})")
+    md = md.replace("Appendix J and Figure 2", "Appendix J and \\Cref{fig:figM2_cost_accuracy}")
+    md = md.replace("(Figure 2)", "(\\Cref{fig:figM2_cost_accuracy})")
     return md
 
 
@@ -406,8 +420,28 @@ def color_main_table(tex: str) -> str:
     return tex.replace(block, newblock)
 
 
+def promote_caption_ids(tex: str) -> str:
+    r"""Older pandoc (2.17) does not consume a table's `{#tbl:x}` caption
+    attribute into a \label — it escapes it to literal `\{\#tbl:x\}` text inside
+    \caption{}. Convert any such trailing marker into a real \label{} placed
+    right after the \caption{} group, so \Cref resolves and no `{#...}` shows in
+    the PDF. Handles both table and figure ids, escaped or bare."""
+    # escaped form: \caption{ ... \{\#tbl:foo\}}  ->  \caption{...}\label{tbl:foo}
+    tex = re.sub(
+        r"(\\caption\{)(.*?)\s*\\\{\\#(tbl|fig):([a-zA-Z0-9_]+)\\\}(\})",
+        lambda m: f"{m.group(1)}{m.group(2)}{m.group(5)}\\label{{{m.group(3)}:{m.group(4)}}}",
+        tex, flags=re.S)
+    # bare form (newer pandoc that still leaks): {#tbl:foo}
+    tex = re.sub(
+        r"(\\caption\{)(.*?)\s*\{\#(tbl|fig):([a-zA-Z0-9_]+)\}(\})",
+        lambda m: f"{m.group(1)}{m.group(2)}{m.group(5)}\\label{{{m.group(3)}:{m.group(4)}}}",
+        tex, flags=re.S)
+    return tex
+
+
 def postprocess(tex: str) -> str:
     tex = sanitize_unicode(tex)
+    tex = promote_caption_ids(tex)
     tex = longtable_to_tablestar(tex)
     tex = color_main_table(tex)
     # breakable code blocks (fvextra) so long lines don't overflow the column

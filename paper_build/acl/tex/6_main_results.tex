@@ -1,20 +1,30 @@
-\section{Main Results}\label{sec-6}
+\hypertarget{sec-6}{%
+\section{Main Results}\label{sec-6}}
 
-\subsection{Headline R@1 Matrix(per-dataset, N in brackets)}\label{sec-6-1}
+\hypertarget{sec-6-1}{%
+\subsection{Headline R@1 Matrix(per-dataset, N in brackets)}\label{sec-6-1}}
 
 Sorted by PP-Store R@1 (descending); classical/offline baselines listed first.
+
+\begin{quote}
+Note on the MIMIC-IV column: its gold labels were stripped from the frozen slim
+release, so MIMIC R@1 is \textbf{not recomputable} at commit \texttt{43efa1e5}. The MIMIC
+figures shown in this section are the pre-freeze estimates, retained only as
+indicative context and excluded from the recomputed frozen headline claims;
+PP-Store, RareArena, and RareBench columns are the authoritative N=2000 recompute.
+\end{quote}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Headline Recall@1 (variant-aware) for every agent \(\times\) backbone cell across the four data layers; bracketed values are per-cell \(N\). Classical/offline baselines are listed first. Cell shading encodes R@1: \colorbox{heatE}{$<$.10}~\colorbox{heatA}{.10--.20}~\colorbox{heatB}{.20--.30}~\colorbox{heatC}{.30--.40}~\colorbox{heatD}{$\geq$.40}.}\label{tbl:main}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -54,6 +64,7 @@ agentclinic & DS V4-Flash & \cellcolor{heatA}0.14 {[}1925{]} & \cellcolor{heatA}
 agentclinic & GPT-5 min & \cellcolor{heatA}0.13 {[}2000{]} & \cellcolor{heatA}0.10 {[}2000{]} & \cellcolor{heatE}0.00 {[}1122{]} & \cellcolor{heatB}0.22 {[}956{]} & \cellcolor{heatA}0.12 \\
 maidxo & Gemini Flash & \cellcolor{heatE}0.03 {[}81{]} & \cellcolor{heatE}0.07 {[}88{]} & \cellcolor{heatE}0.01 {[}703{]} & \cellcolor{heatA}0.11 {[}75{]} & \cellcolor{heatE}0.05 \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -65,13 +76,12 @@ panel degrades on HPO-list input, \Cref{sec-7-2}) and maidxo\ensuremath{\times}G
 RareBench scores 0.44 {[}n=36{]} via the HPO+variant channel, but n is too small
 (P3-only) to enter the main ranking (see \Cref{sec-7-3}). (4) The DS V4-Pro column is reasoning-off (\Cref{sec-5-2} Methods note 2); the thinking-mode contrast is in \Cref{sec-8} H6.
 
-\Cref{fig:fig_radar} profiles this table as per-agent capability shapes over the four layers, making the classical-vs-LLM specialist/generalist split visually explicit.
-
 \textbf{Key cells} (all PP-Store/RareArena cells now on the common N=2000 sample):
 - Classical/offline baselines lead on PP-Store (lirical 0.47, vc\_rdagent
 \textbf{0.44}), above any LLM row (best: medagents Gemini 0.30 / llm\_control
-Gemini 0.29) by 17-18 pp --- headline finding F1 is further strengthened on
-the unified large sample.
+Gemini 0.29) by 17 pp (LIRICAL 0.47 \ensuremath{-} medagents 0.30; the gap is 18 pp
+against the single-LLM control at 0.29) --- headline finding F1 is further
+strengthened on the unified large sample.
 - On RareBench, deeprare (0.29-0.30) and the classical baselines (lirical 0.23 /
 vc\_rdagent 0.28) lead, while every other LLM scores \ensuremath{\leq}0.10 --- see the F5
 ORPHA-sibling explanation.
@@ -82,7 +92,8 @@ three scaffolds + llm\_control), on par with Gemini/V4-Flash/GPT-5
 (0.27-0.31), and only slightly lower on MIMIC (0.18-0.25). This corroborates
 the \Cref{sec-8} H6 conclusion that thinking mode is not cost-effective on this task.
 
-\subsection{Backbone \ensuremath{\times} scaffolding interaction}\label{sec-6-2}
+\hypertarget{sec-6-2}{%
+\subsection{Backbone \ensuremath{\times} scaffolding interaction}\label{sec-6-2}}
 
 We hold the central backbone constant per agent and vary across \{Gemini Flash,
 DS V4-Pro (reasoning-off), DS V4-Flash, GPT-5 minimal\}, all at full-N.
@@ -92,9 +103,9 @@ Per-agent backbone winners (R@1 PP-Store):
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Per-agent backbone sensitivity: best vs.~worst backbone R@1.}\label{tbl:bbsens}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -106,9 +117,10 @@ Worst backbone
 \midrule
 llm\_control & DS V4-Pro-off (0.30) \ensuremath{\approx} tied & Gemini (0.27) --- backbone-insensitive (0.27--0.30) \\
 mdagents & DS V4-Pro-off (0.30) & GPT-5 min (0.26) --- narrow (0.26--0.30) \\
-medagents & Gemini Flash (0.31) \ensuremath{\approx} tied & DS V4-Flash (0.27) --- V4-Pro-off/GPT-5 tie at 0.30 \\
+medagents & Gemini Flash (0.30) \ensuremath{\approx} tied & DS V4-Flash (0.26) --- V4-Pro-off/GPT-5 tie at 0.28 \\
 agentclinic & Gemini Flash (0.23) & GPT-5 min (0.13) \\
 deeprare & Gemini Flash (0.28) & DS V4-Flash / GPT-5 (0.22) \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -122,35 +134,19 @@ within overlapping CIs, so we frame the backbone axis as ``no dominant backbone'
 rather than ranking them. DS V4-Pro is evaluated reasoning-off (\Cref{sec-5-2}); its
 thinking-mode variant adds \ensuremath{\approx}0 R@1 at 40\% no-answer cost (\Cref{sec-8} H6).
 
-\subsection{Cost-vs-Accuracy(per-prediction USD)}\label{sec-6-3}
+\hypertarget{sec-6-3}{%
+\subsection{Cost-vs-Accuracy(per-prediction USD)}\label{sec-6-3}}
 
-\begin{quote}
-Headline summary table below; \textbf{full per-cell cost analysis is in Appendix J}.
-\end{quote}
+Cost per prediction spans more than an order of magnitude across backbones:
+DS V4-Flash is the cheapest hosted backbone (\$0.00040/pred), DS V4-Pro
+reasoning-off is the frontier-tier cost-efficiency sweet spot (\$0.00088/pred),
+and GPT-5 minimal is \textasciitilde20\ensuremath{\times} more expensive than V4-Flash with no consistent R@1 advantage (it ties medagents and is worst on agentclinic --- see F4). The
+cost-vs-accuracy trade-off across every agent \ensuremath{\times} backbone cell is shown in the
+cost-vs-accuracy figure, and the full per-backbone and per-cell cost breakdown
+(V1 total \$191.76, 53\% of the pre-registered \$360 cap) is in Appendix J.
 
-Total cost across all cells: \$191.76 / 68,668 predictions = \$0.0028/pred avg
-(2026-07-06 final; per-cell breakdown in
-Appendix J Table J.1).
-
-Per-backbone cost-per-prediction (2026-07-06 final):
-\textbar{} Backbone \textbar{} Predictions \textbar{} Cost (\$) \textbar{} \$/pred \textbar{}
-\textbar---\textbar---\textbar---\textbar---\textbar{}
-\textbar{} \textbf{DS V4-Flash} \textbar{} 14,264 \textbar{} 5.67 \textbar{} \textbf{\$0.00040} \textbar{}
-\textbar{} DS V4-Pro (reasoning-off) \textbar{} 12,557 \textbar{} 11.02 \textbar{} \$0.00088 \textbar{}
-\textbar{} Gemini Flash \textbar{} 23,444 \textbar{} 75.35 \textbar{} \$0.00321 \textbar{}
-\textbar{} \textbf{GPT-5 min} \textbar{} 12,571 \textbar{} 99.72 \textbar{} \textbf{\$0.00793} \textbar{}
-\textbar{} LIRICAL classical / vc\_rdagent offline \textbar{} 4,068 / 1,764 \textbar{} \$0 \textbar{} \$0 \textbar{}
-
-: Total spend and cost per prediction, by backbone. \{\#tbl:costbb0\}
-
-\textbf{GPT-5 minimal is \textasciitilde9\ensuremath{\times} more expensive than V4-Pro-off and \textasciitilde20\ensuremath{\times} more expensive than V4-Flash, with no consistent R@1 advantage} (ties medagents; worst on
-agentclinic --- see F4). DS V4-Flash is the cheapest hosted backbone by more than an
-order of magnitude; DS V4-Pro reasoning-off is the cost-efficiency sweet spot among
-frontier-tier backbones (\$0.00088/pred, \textasciitilde9\ensuremath{\times} cheaper than GPT-5 at comparable R@1).
-The V1 evaluation total (\$191.76 / \$360 cap; 53\% of pre-registered budget) is
-documented in Appendix J.6.
-
-\subsection{Headline Findings}\label{sec-6-4}
+\hypertarget{sec-6-4}{%
+\subsection{Headline Findings}\label{sec-6-4}}
 
 \begin{quote}
 V4-Pro re-run \textbf{reasoning-off} after root-causing an unbounded-reasoning
@@ -173,21 +169,24 @@ On RareBench HF the pattern holds: classical/offline (lirical 0.23, vc\_rdagent
 scaffolds sit \ensuremath{\leq}0.10. The RareBench gap is partly ORPHA-sibling mismatch in the
 cross-map (Appendix A1 / F5).
 
-\textbf{F2: Multi-agent scaffolding gives a small, dataset-dependent gain (\ensuremath{\approx}1--4 pp), not a uniform boost.} On Gemini Flash (common N=2000), medagents (PP 0.30,
-RareArena 0.30, MIMIC 0.35) edges llm\_control (0.29, 0.28, 0.32) by only \textasciitilde1--3 pp;
-mdagents is actually best on MIMIC (0.38). The benefit does not consistently
-exceed the no-scaffold control's CI, and it does not hold on every backbone. (Revised down from the v0 ``+5--7 pp'' claim, which rested on a stale medagents 0.40.)
+\textbf{F2: Multi-agent scaffolding gives at most a small, dataset-dependent gain and often none, not a uniform boost.} On Gemini Flash (common N=2000), medagents
+(PP-Store 0.30, RareArena 0.30) edges llm\_control (0.29, 0.28) by only \textasciitilde1--2 pp,
+within the control's CI; mdagents (PP-Store 0.28) actually sits \textasciitilde1 pp \emph{below} the
+control, and agentclinic/maidxo regress sharply (\Cref{sec-7-2}). The benefit does not
+consistently exceed the no-scaffold control's CI and does not hold on every
+backbone. (MIMIC-IV is not recomputable in the frozen release --- gold labels
+stripped --- so we do not carry forward its point estimates here.) (Revised down from the v0 ``+5--7 pp'' claim, which rested on a stale small-sample medagents 0.40.)
 
 \textbf{F3: DeepSeek V4-Flash is \textasciitilde10\ensuremath{\times} cheaper than Gemini Flash but trades off accuracy, especially on free text.} Per-prediction cost \$0.00041 (V4-Flash) vs
-\$0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store \ensuremath{-}2 to \ensuremath{-}4 pp
-(e.g.~medagents 0.27 vs 0.31), and \ensuremath{-}11 to \ensuremath{-}16 pp on MIMIC free-text
-(mdagents 0.24 vs 0.38; medagents 0.19 vs 0.35). V4-Flash also showed a higher
+\$0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store \ensuremath{-}2 to \ensuremath{-}5 pp
+(e.g.~medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). On the (non-recomputable in
+the frozen release) MIMIC free-text slice earlier runs showed a larger drop. V4-Flash also showed a higher
 transient empty-content rate on free-text/HPO-list inputs (mitigated by a
 wrapper-level retry; see Appendix B). Conclusion: V4-Flash is the cost-efficient choice when \textasciitilde10\ensuremath{\times} cost reduction outweighs a \textasciitilde5--15 pp accuracy drop, but it does NOT match Gemini quality. (Reversed from v0.)
 
 \textbf{F4: GPT-5 minimal-reasoning is not worth its cost, and at full-N has no scaffold where it is the sole winner.} GPT-5 (\texttt{reasoning\_effort=minimal},
 forced because default reasoning consumes all max\_tokens) ties the field on
-medagents PP-Store (0.30, level with V4-Pro-off and just below Gemini 0.31) and
+medagents PP-Store (0.28, where the medagents winner is Gemini at 0.30, V4-Pro-off at 0.28, GPT-5 at 0.28) and
 is strong on MIMIC (llm\_control 0.34, medagents 0.32) yet collapses on
 AgentClinic OSCE dialogue (0.13, \ensuremath{-}10 pp vs Gemini). As the most expensive
 backbone (\textasciitilde20\ensuremath{\times} V4-Flash per prediction) with no consistent accuracy edge, it is
@@ -204,15 +203,33 @@ match, bypassing this mismatch. A real evaluator-vs-data interaction, not a pure
 doesn't close the gap.
 
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_radar.png}
-\caption{\textbf{Agent capability profiles.} Best-backbone Recall@1 for representative systems across the four data layers. LLM-scaffolded agents (solid) dominate the free-text layers (RareArena, MIMIC) where classical/offline baselines (dashed) collapse to 0 for lack of an HPO input, while the classical baselines peak on the curated HPO layers (PP-Store, RareBench) --- a specialist/generalist split that a single leaderboard number would hide. Numbers are the best cell per (agent, layer) from the released per-cell receipts.}\label{fig:fig_radar}
-\end{figure}
+\includegraphics[width=0.82\textwidth]{figures/figM1_llm_vs_classical.png}
+\caption{\textbf{Classical/offline baselines beat the best scaffolded LLM on HPO input (F1).} Best variant-aware R@1 per data layer, LLM agents vs.\ classical/offline baselines (attempted denominator, common N=2000 on PP-Store/RareArena). On curated HPO (Phenopacket-Store) LIRICAL leads the best LLM by 17~pp; on free-text RareArena no classical baseline runs (no HPO input).}\label{fig:figM1_llm_vs_classical}
+\end{figure*}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig2_cost_accuracy.png}
-\caption{Cost vs.\ accuracy for each agent $\times$ backbone cell (log cost axis); dashed line is the Pareto frontier.}\label{fig:fig2_cost_accuracy}
+\includegraphics[width=0.82\textwidth]{figures/figM2_cost_accuracy.png}
+\caption{\textbf{Cost vs.\ accuracy (F3/F4).} Each marker is one agent~$\times$~backbone cell on Phenopacket-Store (log cost-per-attempt axis, attempted denominator); dashed line is the Pareto frontier. GPT-5 minimal (diamonds) sits far right at $\sim$25$\times$ the cost of DeepSeek V4-Flash with no R@1 gain.}\label{fig:figM2_cost_accuracy}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/figM3_prevalence.png}
+\caption{\textbf{Prevalence crossover (H1).} Pooled R@1 by Orphanet prevalence tier. LLM agents decline toward the rarest tier while classical/offline baselines rise, inverting the ranking on super-rare disease (+28~pp for classical).}\label{fig:figM3_prevalence}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/figM4_hpo_density.png}
+\caption{\textbf{Phenotype-density inverted-U (H8).} Pooled R@1 on the HPO-input layers peaks at 16--30 HPO terms per case; both under- and over-specified inputs degrade accuracy.}\label{fig:figM4_hpo_density}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/figM6_hypotheses.png}
+\caption{\textbf{Pre-registered hypothesis tests.} Forest plot of $-\log_{10}$(Holm-adjusted $p$) for the six testable hypotheses; five survive family-wise correction at $\alpha$=0.05. H10 (faithfulness--accuracy decoupling) is reported as exploratory and judge-dependent.}\label{fig:figM6_hypotheses}
 \end{figure*}
 

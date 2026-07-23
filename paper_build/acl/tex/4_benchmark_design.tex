@@ -1,11 +1,13 @@
-\section{Benchmark Design}\label{sec-4}
+\hypertarget{sec-4}{%
+\section{Benchmark Design}\label{sec-4}}
 
-\subsubsection{Five Capability Pillars}\label{sec-4-1}
+\hypertarget{sec-4-1}{%
+\subsubsection{Five Capability Pillars}\label{sec-4-1}}
 
 We decompose rare-disease diagnosis into five orthogonal capability pillars, each individually testable, jointly forming the evaluation surface. The pillar choice is grounded in three considerations: (i) clinical workflow steps (phenotype recognition \ensuremath{\rightarrow} DDx generation \ensuremath{\rightarrow} genetic confirmation \ensuremath{\rightarrow} family interpretation \ensuremath{\rightarrow} communication), (ii) the dimensions on which existing rare-disease agents claim differentiation (DeepRare's reference accuracy, MAI-DxO's budgeted reasoning), and (iii) reviewer-anticipated criticism that accuracy alone is insufficient (Pfohl et al., Nature Medicine 2024; Pillar 5 directly addresses this).
 
 The five pillars, and which data layer carries each, are summarised in the
-benchmark overview (\Cref{fig:fig1_overview}; per-layer coverage detail in \Cref{fig:fig_design_matrix}). Briefly: P1 Phenotype Extraction (free-text EHR
+benchmark-surface figure. Briefly: P1 Phenotype Extraction (free-text EHR
 \ensuremath{\rightarrow} ranked HPO list; P/R/F1); P2 Phenotype-only DDx (HPO list \ensuremath{\rightarrow} ranked
 diseases; Recall@1/3/5/10, median rank, MRR); P3 Genotype-aware DDx (HPO +
 structured variants \ensuremath{\rightarrow} disease + causative gene; Gene Top-k, cross-mapped R@1);
@@ -14,14 +16,15 @@ deferred to v2 pending pedigree-bearing data); and P5 Reasoning
 Faithfulness (agent trace + prediction \ensuremath{\rightarrow} a four-axis factual / relevance /
 depth / faithfulness score, LLM-judge with 200-case physician-\ensuremath{\kappa} validation).
 
-\textbf{Why five and not three.} P1 and P5 in particular face the objection ``isn't this just preprocessing or just a stylistic axis?''. Both are load-bearing for our central claim. P1 is independent because we will show in \Cref{sec-7-1} a 10\ensuremath{\times} gap in downstream P2 R@1 between gold HPO and LLM-extracted HPO inputs on the same case --- extraction quality is not a free preprocessing step. P5 is independent because we will show in \Cref{sec-7-4} that faithfulness ranking decouples from accuracy ranking (Spearman \ensuremath{\rho} \textless{} 0.5), confirming Hypothesis 10 (pre-registered) that accuracy-only evaluation hides hallucinated citations and unfaithful reasoning chains --- DeepRare authors flagged this as a Type-1 error category in their own work.
+\textbf{Why five and not three.} P1 and P5 in particular face the objection ``isn't this just preprocessing or just a stylistic axis?''. Both are load-bearing for our central claim. P1 is independent because \Cref{sec-7-1} shows, in a same-case paired test, that downstream P2 R@1 is measurably sensitive to HPO-extraction quality --- extraction is not a free preprocessing step (and the dual-pass design is what lets this be measured without confounding it with dataset difficulty). P5 is independent because \Cref{sec-7-4}/\Cref{sec-7-5} examine whether faithfulness ranking decouples from accuracy ranking (pre-registered Hypothesis 10); we report H10 as exploratory (the judge-family effect is real but modest once trace-capture is controlled), and the durable point is that accuracy-only evaluation can miss hallucinated citations and unfaithful reasoning chains --- a Type-1 error category the DeepRare authors flagged in their own work.
 
 \textbf{Bias as cross-cutting lens, not pillar.} Following HELM and MedHELM precedent, we apply bias evaluation (genetic ancestry, prevalence tier, sex / X-linked, pediatric/adult, language, HPO density) as a stratification of every pillar's metric, not as a separate axis. This was an explicit design revision; an earlier sketch listed Bias as a sixth pillar, which we abandoned because (a) no general-purpose AI benchmark elevates bias to a pillar --- those that do (EquityMedQA, HEAL, Omiye et al., Zack et al.) are dedicated fairness probes, not holistic benchmarks; (b) treating bias as a pillar reduces its measurement coverage by isolating it from accuracy evaluation.
 
-\subsubsection{Datasets --- Four-Layer Stack}\label{sec-4-2}
+\hypertarget{sec-4-2}{%
+\subsubsection{Datasets --- Four-Layer Stack}\label{sec-4-2}}
 
 We assemble four dataset layers, each addressing a specific concern; their
-sources and sizes appear as the leftmost column of the benchmark overview (\Cref{fig:fig1_overview}), and
+sources and sizes appear as the columns of the benchmark-surface figure, and
 the full per-layer breakdown (disease counts, ID anchors, free-text / gold-HPO
 / variant availability) is detailed in Appendix A. The four layers are L1
 Phenotype Backbone (Phenopacket-Store + RareBench HF; 11,173 cases; HPO-only,
@@ -67,10 +70,11 @@ This is a prevalence-stratified evaluation, not a power-stratified extrapolation
 We confirmed via our sampling-validation check that the N=500 stratified sample reproduces the full-N
 prevalence band and HPO-organ-system distribution within \ensuremath{\pm}2 pp.
 
-\subsubsection{Canonical Case Representation}\label{sec-4-3}
+\hypertarget{sec-4-3}{%
+\subsubsection{Canonical Case Representation}\label{sec-4-3}}
 
 Every dataset ingests into a single Pydantic v2 schema, \texttt{CanonicalCase}
-(the funnel in \Cref{fig:fig1_overview}; full record in \Cref{fig:fig_schema}), and every agent adapter projects
+(illustrated in the canonical-case figure), and every agent adapter projects
 from this representation to the agent's native input. The record groups an
 identity block (\texttt{case\_id}, \texttt{source\_dataset}, \texttt{source\_split}, \texttt{language}), an
 input block (demographics; \texttt{free\_text\_vignette} / \texttt{synthetic\_vignette};
@@ -79,7 +83,8 @@ label, and free-form metadata.
 
 Three design decisions deserve note: (a) gold labels are parallel IDs (OMIM/ORPHA/CCRD), reflecting genuine ontology disagreement across datasets --- Phenopacket-Store uses OMIM, RareArena uses ORPHA, CCRD anchors the Chinese-listed 207 diseases. Evaluator must accept cross-mapped matches via Orphadata (\Cref{sec-4-5}). (b) \texttt{synthetic\_vignette} is distinguished from \texttt{free\_text\_vignette} so we can audit any evaluation that relies on LLM-synthesized prose (\Cref{sec-7-2} disclosure). (c) \texttt{vcf\_path} carries a local-only file pointer; PhysioNet DUA prohibits transmission of identifiable EHR data to external LLM APIs, so adapter shims projecting Pillar 3 inputs convert structured variant info to abstracted strings before any cloud-LLM call.
 
-\subsubsection{Dual-pass evaluation}\label{sec-4-4}
+\hypertarget{sec-4-4}{%
+\subsubsection{Dual-pass evaluation}\label{sec-4-4}}
 
 Every pillar is evaluated in two modes. In Pass A (gold-HPO, primary) the
 case's curated HPO terms are fed directly to the agent's downstream pillar,
@@ -92,7 +97,8 @@ comparison {[}Chen et al., 2024{]}); we show it is non-uniform across agents
 (\Cref{sec-7-1}), which turns the input heterogeneity of a mixed-agent lineup into a
 measured axis rather than a confound (\Cref{sec-5-1}).
 
-\subsubsection{Metrics and matching}\label{sec-4-5}
+\hypertarget{sec-4-5}{%
+\subsubsection{Metrics and matching}\label{sec-4-5}}
 
 We report Recall@1/3/5/10, median rank and MRR for the DDx pillars, P/R/F1 for
 phenotype extraction, and task-success rate; a recommended tier (pass\^{}k,
@@ -109,7 +115,7 @@ is released for reproducibility (Appendix N).
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig1_overview.png}
-\caption{\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO, isolating downstream capability; Pass~B end-to-end, measuring deployment performance), and the Pass~A$-$Pass~B delta is itself a reported metric of phenotype-extraction sensitivity. The full protocol (hypotheses H1--H11, ablations A1--A12) is pre-registered at OSF. Per-layer coverage of the five pillars and the full \texttt{CanonicalCase} record are detailed in \Cref{fig:fig_design_matrix,fig:fig_schema} (Appendix).}\label{fig:fig1_overview}
+\includegraphics[width=0.82\textwidth]{figures/fig1_overview.png}
+\caption{\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO; Pass~B end-to-end), and the Pass~A$-$Pass~B delta is itself a reported metric. Protocol (H1--H11, A1--A12) pre-registered at OSF.}\label{fig:fig1_overview}
 \end{figure*}
 

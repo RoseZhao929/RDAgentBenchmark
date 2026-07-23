@@ -223,10 +223,10 @@ Reading is treated in §7.10 (a finer-grained interpretation paired with F1);
 the L4 post-cutoff PMC OA holdout (~200 cases, doctor-annotated in progress)
 remains the bias-free reference for the residual 9 %.
 
-Visualised in **Figure 4**:
-2 × 3 grid, one panel per backbone. The clean dichotomy is visually obvious — the
-top row (LLM backbones) shows positive slope; the bottom row classical baselines
-(LIRICAL, VC-RDAgent) shows a flat cloud.
+Visualised in \Cref{fig:fig4_a6_contamination_scatter}:
+one panel per backbone. The clean dichotomy is visually obvious — the
+LLM backbones show a positive slope; the classical baselines
+(LIRICAL, VC-RDAgent) show a flat cloud.
 
 ---
 

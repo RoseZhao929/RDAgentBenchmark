@@ -1,6 +1,8 @@
-\section{/ 7.3 / 7.4 / 7.6 Analysis}\label{sec-7-2}
+\hypertarget{sec-7-2}{%
+\section{/ 7.3 / 7.4 / 7.6 Analysis}\label{sec-7-2}}
 
-\subsection{Scaffolding Pays --- but only on free-text + non-reasoning backbones}\label{scaffolding-pays-but-only-on-free-text-non-reasoning-backbones}
+\hypertarget{scaffolding-pays-but-only-on-free-text-non-reasoning-backbones}{%
+\subsection{Scaffolding Pays --- but only on free-text + non-reasoning backbones}\label{scaffolding-pays-but-only-on-free-text-non-reasoning-backbones}}
 
 Phase 4a holds the central backbone constant and varies scaffold complexity:
 - \textbf{No scaffold} (llm\_control): single LLM call, structured output.
@@ -9,19 +11,22 @@ Phase 4a holds the central backbone constant and varies scaffold complexity:
 - \textbf{OSCE simulation} (agentclinic): doctor / patient / measurement / moderator loop.
 - \textbf{Panel orchestration} (MAI-DxO): \textasciitilde5 medical agents with ordering / questioning.
 
-\textbf{On PP-Store with Gemini Flash} (N=500) the scaffolding ladder shows:
-- llm\_control: 0.31
-- mdagents (intermediate): 0.32 (+1 pp)
-- \textbf{medagents (debate): 0.33 (+1 pp over mdagents, +2 pp over llm\_control)}
-- agentclinic (OSCE): 0.25 (-6 pp regression vs control)
-- maidxo (panel): 0.02 (catastrophic, see \S{} below)
+\textbf{On PP-Store with Gemini Flash} (N=2000, frozen main matrix) the scaffolding ladder shows:
+- llm\_control: 0.29
+- mdagents (intermediate): 0.28 (\ensuremath{-}1 pp vs control)
+- medagents (debate): 0.30 (+1 pp over llm\_control)
+- agentclinic (OSCE): 0.21 (\ensuremath{-}8 pp regression vs control)
+- maidxo (panel): 0.03 (catastrophic, see \S{} below)
 
-\textbf{Interpretation}: scaffolding that \emph{deepens} deliberation on the same input
-(medagents debate) helps only marginally (+2 pp, within overlapping CIs at
-N=500). Scaffolding that \emph{changes the input format} (agentclinic OSCE dialogue,
-maidxo panel orchestration) regresses on HPO-list input because the agent's
-design assumes narrative input. (The much larger +5--7 pp gap reported in the v0
-draft was an artifact of stale N=50 medagents numbers.)
+\textbf{Interpretation}: scaffolding does \emph{not} reliably beat a single-LLM control on
+phenotype-only DDx. Deepening deliberation on the same input (medagents debate)
+helps at most marginally (+1 pp, within overlapping CIs at N=2000), and mdagents
+actually sits \textasciitilde1 pp \emph{below} the control. Scaffolding that \emph{changes the input
+format} (agentclinic OSCE dialogue, maidxo panel orchestration) regresses sharply
+on HPO-list input because the agent's design assumes narrative input. At the full
+N=2000 the direction is clear: for P2 the scaffold is a net-neutral-to-negative
+choice on this backbone. (The +2 pp ``medagents best'' reading in earlier drafts was
+a small-sample N=500 artifact; see \S{}A1.)
 
 \textbf{Backbone interaction}: on DS V4-Pro mdagents reaches 0.35 (best of its
 backbones, N=100), suggesting V4-Pro pairs well with mdagents' moderator-vote
@@ -36,7 +41,8 @@ emits vitals / lab values (DLCO, LVEF, blood pressure) as ranked
 candidates, and we apply a 13-pattern noise filter that catches them but
 can't compensate. Documented in \Cref{sec-5-1}.
 
-\subsection{Genotype Channel Helps Any Agent that Ingests It (+20 pp)}\label{sec-7-3}
+\hypertarget{sec-7-3}{%
+\subsection{Genotype Channel Helps Any Agent that Ingests It (+20 pp)}\label{sec-7-3}}
 
 Phase 3.2 P3 (HPO + structured variants), full-N paired on 500 PP-Store
 cases with \ensuremath{\geq}1 structured variant (2026-07-06; llm\_control, Gemini Flash, same
@@ -52,6 +58,7 @@ Agent & P2 (HPO-only) R@1 & P3 (HPO + variants) R@1 & Lift \\
 \midrule
 llm\_control (n=500 paired) & 0.296 & \textbf{0.494} & \textbf{+19.8 pp} \\
 deeprare (n=50 pilot) & 0.22 & \textbf{0.38} & +16 pp \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -76,22 +83,26 @@ ingests it, \emph{not} ``DeepRare specifically exploits genotype-aware
 reasoning'' --- the latter claim does not survive contact with the LLM
 control baseline.
 
-\subsection{Faithfulness vs Accuracy --- Decoupled (H10 supported)}\label{sec-7-4}
+\hypertarget{sec-7-4}{%
+\subsection{Faithfulness vs Accuracy --- H10 exploratory (judge-dependent)}\label{sec-7-4}}
 
-Phase 1 P5 reasoning\_communication pilot on 50-case sample (LLM-judge
-faithfulness scoring with Gemini-judge then Claude-judge for bias
-detection, \Cref{sec-7-5}):
+Phase 1 P5 reasoning\_communication pilot on the 40-trace sample (LLM-judge
+faithfulness scoring; see \Cref{sec-7-5} for the judge-family analysis):
 
-(Pending Phase 4a P5 data --- to be filled when final.)
+\textbf{Finding (de-confounded, 2026-07-22 frozen audit)}: measured on identical
+repaired traces (n=40), the Spearman \ensuremath{\rho} between the judge's faithfulness score
+and the agent's actual top-1 accuracy is 0.457 (Gemini judge) and 0.640 (Claude judge). The pre-registered H10 threshold for ``decoupled'' was \ensuremath{\rho} \textless{} 0.5,
+so H10 is borderline and judge-dependent --- met under one judge, not the
+other --- and we report it as exploratory, not confirmed. (An earlier draft
+reported \ensuremath{\rho} = 0.098 under the Gemini judge and read this as strong decoupling;
+that value was a trace-capture artifact and is withdrawn --- see \Cref{sec-7-5} Correction.)
+The durable, direction-independent point remains: accuracy-only benchmarks can under-evaluate rare-disease diagnostic AI, because a high-accuracy agent can
+still score low on faithfulness (high confidence without justification,
+hallucinated differential reasoning) --- but we no longer claim a strong
+quantitative decoupling.
 
-\textbf{Preliminary finding from Phase 1}: Spearman \ensuremath{\rho} between accuracy R@1 and
-faithfulness score is 0.36 \ensuremath{\pm} 0.11 (95\% CI from bootstrap), well below
-the 0.5 threshold pre-registered as ``decoupled.'' This is the strongest
-single argument that accuracy-only benchmarks under-evaluate rare-disease diagnostic AI --- high-accuracy agents can have low faithfulness scores
-(stating high confidence without justification, hallucinating differential
-reasoning), and vice versa.
-
-\subsection{Dataset Difficulty Stratification}\label{sec-7-6}
+\hypertarget{sec-7-6}{%
+\subsection{Dataset Difficulty Stratification}\label{sec-7-6}}
 
 Four-layer dataset selection deliberately spans difficulty:
 
@@ -99,41 +110,44 @@ Four-layer dataset selection deliberately spans difficulty:
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Best LLM vs.~best classical/offline R@1, per layer (H1).}\label{tbl:h1layer}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Layer
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Best LLM R@1 (N=500)
+Best LLM R@1 (N=2000)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Best Classical/Offline R@1
 \end{minipage} \\
 \midrule
-Phenopacket-Store (HPO+demographic, curated rare diseases) & 0.33 (medagents Gemini) & \textbf{0.46} (lirical) \\
-RareArena RDS (free-text vignette, narrative) & 0.32 (medagents Gemini) & n/a (no HPO) \\
-RareBench HF (HPO-only, sparse, expert curated) & 0.12 (mdagents Gemini) & \textbf{0.35} (vc\_rdagent offline) \\
-MIMIC-IV diverse (structured note \ensuremath{\rightarrow} named disease) & 0.39 (mdagents Gemini) & n/a \\
-MIMIC rd\_detection prompt (pilot reframe) & \textbf{0.56} (extracts named rare disease from list) & n/a \\
+Phenopacket-Store (HPO+demographic, curated rare diseases) & 0.30 (medagents Gemini) & \textbf{0.47} (lirical) \\
+RareArena RDS (free-text vignette, narrative) & 0.30 (medagents Gemini) & n/a (no HPO) \\
+RareBench HF (HPO-only, sparse, expert curated) & 0.30 (deeprare Gemini) & 0.28 (vc\_rdagent offline) \\
+MIMIC-IV diverse (structured note \ensuremath{\rightarrow} named disease) & see note & n/a \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
 
+(MIMIC-IV rows are omitted from this recomputed table: its gold labels were stripped from the frozen slim release, so R@1 is not recomputable at commit \texttt{43efa1e5}; the earlier N=500 MIMIC figures are not carried forward. All non-MIMIC values are the N=2000 frozen-matrix recompute.)
+
 \textbf{Reading}:
 - \textbf{PP-Store is the ``easiest'' layer} --- curated cases, expert-cleaned HPO,
-paper-faithful baselines (lirical replicates paper-claimed 0.42 \ensuremath{\pm} 0.05).
-- \textbf{RareBench HF is hardest for LLM} --- universal \ensuremath{\leq}0.09 R@1 despite agents
-emitting reasonable named diagnoses; the ID-mapping cross-ref limits
-evaluator credit. Two paths for paper: (a) report strict and add
-hierarchy-aware secondary metric, (b) drop RareBench from main table
-and use it only as ``ID-disambiguation stress test'' in the appendix.
-- \textbf{MIMIC} under default DDx prompt scores low because input ICD codes
-conflate primary rare-disease with comorbidities; the rd\_detection
-reframe (\Cref{sec-9} L4 follow-up) recovers to 0.56 by changing task to
-``identify which condition is the rare disease.''
+paper-faithful baselines (lirical 0.47, replicating its paper-claimed range).
+- \textbf{RareBench HF is the layer where classical and LLM are closest} --- at
+N=2000 the best LLM (deeprare Gemini 0.30) slightly edges the best classical
+(vc\_rdagent 0.28), and both sit well below their PP-Store levels; the sparse,
+expert-curated HPO and ID-mapping cross-ref make it the hardest HPO layer for
+\emph{both} families. We report strict R@1 with the variant-aware channel (\Cref{sec-7-3});
+a hierarchy-aware secondary metric is left to future work.
+- \textbf{MIMIC-IV} is excluded from the recomputed frozen table (gold labels
+stripped from the slim release); we do not carry forward the earlier
+MIMIC point estimates.
 
-\subsection{H1 --- Prevalence stratification (real Orphanet prevalence)}\label{sec-7-7}
+\hypertarget{sec-7-7}{%
+\subsection{H1 --- Prevalence stratification (real Orphanet prevalence)}\label{sec-7-7}}
 
 Pre-registered H1: R@1 declines monotonically from common-rare to super-rare.
 Tested with real Orphadata prevalence (5,108 ORPHA
@@ -153,6 +167,7 @@ common-rare (\ensuremath{\geq}1/10,000) & 0.37 (n=156) & 0.30 (n=64) \\
 moderate (1-9/100,000) & 0.26 (n=690) & 0.23 (n=347) \\
 ultra-rare (1-9/1,000,000) & 0.39 (n=693) & 0.33 (n=322) \\
 \textbf{super-rare (\textless1/1,000,000)} & \textbf{0.22} (n=1167) & \textbf{0.50} (n=529) \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -174,10 +189,11 @@ advantage.
 disease'' is a conservative choice when a disorder has multiple prevalence
 estimates; point-prevalence entries are preferred over cases/families.
 This supersedes the sample-frequency proxy in A10 (which left PP-Store empty
-because its golds are OMIM-keyed). Visualised in \Cref{fig:fig5_prevalence_h1} --- the LLM-classical
-crossover at super-rare is the headline F1 evidence.
+because its golds are OMIM-keyed). Visualised in \Cref{fig:figM3_prevalence} --- the
+LLM-classical crossover at super-rare is the headline F1 evidence.
 
-\subsection{H4 --- Scaffolding \ensuremath{\times} case complexity (organ-system count)}\label{sec-7-8}
+\hypertarget{sec-7-8}{%
+\subsection{H4 --- Scaffolding \ensuremath{\times} case complexity (organ-system count)}\label{sec-7-8}}
 
 Pre-registered H4: multi-agent scaffolding \emph{helps on complex cases but hurts on
 simple ones} (overthinking). Complexity = \# distinct HPO organ systems the gold
@@ -196,6 +212,7 @@ single-system (n\ensuremath{\approx}221--321) & \textbf{\ensuremath{-}0.08} & \t
 oligo (2--3, n\ensuremath{\approx}765--1061) & \ensuremath{-}0.01 & \ensuremath{-}0.05 \\
 multi-system (4+, n\ensuremath{\approx}3012--4329) & \textbf{+0.00} & \ensuremath{-}0.02 \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -211,7 +228,8 @@ on simple cases that dissolves on complex ones} --- the scaffolding's benefit is
 avoiding its own overthinking cost when the case genuinely warrants deliberation,
 not adding accuracy above the control.
 
-\subsection{A6 --- Data-Contamination Audit (TS-Guessing approximation)}\label{sec-7-10}
+\hypertarget{sec-7-10}{%
+\subsection{A6 --- Data-Contamination Audit (TS-Guessing approximation)}\label{sec-7-10}}
 
 Anticipated objection \#1 is that LLM agents may perform well only because
 pre-cutoff PubMed corpora \emph{contain} the diseases we test on; the agents
@@ -238,6 +256,7 @@ Backbone & n diseases & Spearman \ensuremath{\rho} & Interpretation \\
 \texttt{lirical} (classical Bayesian) & 26 & \ensuremath{-}0.155 & null (control) \\
 \texttt{vc\_rdagent} (offline IC) & 26 & \ensuremath{-}0.059 & null (control) \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -258,7 +277,8 @@ training cutoff) provides the bias-free reference. We now report the difficulty-
 \emph{not} drop across the training cutoff, bounding contamination from a
 second, independent angle.
 
-\subsubsection{H3 --- Difficulty-matched pre- vs post-cutoff (contamination, controlled)}\label{sec-7-10-1}
+\hypertarget{sec-7-10-1}{%
+\subsubsection{H3 --- Difficulty-matched pre- vs post-cutoff (contamination, controlled)}\label{sec-7-10-1}}
 
 A naive ``post-cutoff R@1'' is confounded by dataset difficulty. We remove that
 confound by building a pre-cutoff PMC set with the identical pipeline ---
@@ -271,10 +291,10 @@ Opus-diagnosis-agreed clean-gold subset (pre 195/220, post 198/198), Gemini-Flas
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Difficulty-matched pre- vs.~post-cutoff R@1 (H3).}\label{tbl:h3}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -290,6 +310,7 @@ llm\_control & 0.559 & 0.616 & +0.057 \\
 mdagents & 0.582 & 0.611 & +0.029 \\
 medagents & 0.564 & 0.626 & +0.062 \\
 \textbf{pooled (single-pass)} & \textbf{0.568} & \textbf{0.618} & \textbf{+0.049} (z=1.72) \\
+\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -312,7 +333,8 @@ different axis.
 
 Visualised in \Cref{fig:fig4_a6_contamination_scatter}.
 
-\subsection{H7 --- Failures cluster by specialty (shared blind spots)}\label{sec-7-9}
+\hypertarget{sec-7-9}{%
+\subsection{H7 --- Failures cluster by specialty (shared blind spots)}\label{sec-7-9}}
 
 Pre-registered H7: agents' weakest specialties \emph{correlate across agents}
 (Spearman \ensuremath{\rho}\ensuremath{\geq}0.6), implying dataset/ontology gaps rather than agent-specific
@@ -331,6 +353,7 @@ llm\_control vs mdagents & \textbf{0.93} \\
 llm\_control vs medagents & \textbf{0.96} \\
 mdagents vs medagents & \textbf{0.92} \\
 \bottomrule
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -347,37 +370,13 @@ facet of F1's classical advantage. Visualised in \Cref{fig:fig7_specialty_h7}.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig1_heatmaps.png}
-\caption{Diagnostic accuracy (R@1, variants) across every agent $\times$ backbone cell, one panel per dataset. Classical/offline baselines (lirical, vc\_rdagent) run only on their own engine column. This is the full per-cell matrix behind the capability profiles in \Cref{fig:fig_radar}.}\label{fig:fig1_heatmaps}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/fig3_ranking.png}
-\caption{Best-backbone R@1 per agent, per dataset (lollipop = best cell for that agent).}\label{fig:fig3_ranking}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
 \includegraphics[width=0.82\textwidth]{figures/fig4_a6_contamination_scatter.png}
-\caption{A6 TS-Guessing contamination scatter (LLM vs.\ classical).}\label{fig:fig4_a6_contamination_scatter}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/fig5_prevalence_h1.png}
-\caption{H1 prevalence-stratified R@1.}\label{fig:fig5_prevalence_h1}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/fig6_hpo_density_h8.png}
-\caption{H8 phenotype-density inverted-U.}\label{fig:fig6_hpo_density_h8}
+\caption{A6 TS-Guessing contamination audit. Spearman $\rho$ between log pre-cutoff PubMed mentions and per-disease R@1, per backbone. Every LLM backbone clusters at $\rho\approx0.3$ (weak positive); both classical/offline baselines sit at $\rho\approx0$ (null control), confirming the pipeline adds no spurious frequency correlation.}\label{fig:fig4_a6_contamination_scatter}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig7_specialty_h7.png}
-\caption{H7 cross-agent specialty blind spots.}\label{fig:fig7_specialty_h7}
+\caption{H7 cross-agent per-specialty R@1 (modal HPO organ-system axis). Bars span the R@1 range across LLM scaffolds; the shared weak specialties (digestive, metabolic, nervous) indicate ontology/data-level difficulty rather than agent-specific blind spots. Diamonds mark where the classical baselines invert the LLM weakness (nervous, head/neck).}\label{fig:fig7_specialty_h7}
 \end{figure*}
 
