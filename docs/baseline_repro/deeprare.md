@@ -106,9 +106,9 @@ behavior identical to upstream.
 |---|---|---|
 | GPT-5 (minimal) **strict mode** | Empty `diseases` list → `IndexError` in `transformers.tokenization_utils_fast._batch_encode_plus` | **Strict-mode**: documented incompat in §9 L1 + this doc. **Adapter-relaxed mode**: in-baseline fallback regex accepts `## Disease (Rank #N/5)` header (see §Behavior-changing patches) |
 | MAI-DxO interaction | N/A — DeepRare runs alone |
-| **MIMIC free-text (all backbones)** | **R@1 = 0.000** (V4-Flash 0/214, Gemini 0/495) | **Not a bug — verified structural failure.** See below. |
+| **Legacy MIMIC ICD-title task (all backbones)** | **R@1 = 0.000** (V4-Flash 0/214, Gemini 0/495) | Archived construct-mismatched result; not part of the replacement structured-EHR task. |
 
-### DeepRare × MIMIC: R@1 = 0.000 root-cause (2026-05-28)
+### DeepRare × legacy MIMIC ICD-title task: R@1 = 0.000 root-cause (2026-05-28)
 
 A near-zero score looked suspicious, so we audited it (no-skip principle). It is
 **genuine, not an eval bug**:

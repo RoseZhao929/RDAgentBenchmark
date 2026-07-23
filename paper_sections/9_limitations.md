@@ -118,6 +118,23 @@ how much memorisation could explain (b) F1 (classical > LLM on the
 rarest tier) is in the *opposite* direction of training exposure and
 therefore not driven by it.
 
+**(L8) MIMIC-IV is structured and code-supervised, not a clinical-note
+diagnosis benchmark.** Our local MIMIC-IV 3.1 installation contains the
+`hosp` and `icu` modules but not MIMIC-IV-Note. The 956-admission cohort was
+selected and labelled by exact ICD-10→Orphanet mapping; its earlier synthetic
+vignettes deterministically rendered ICD long titles and sometimes exposed the
+target disease lexically. We therefore remove those legacy point estimates from
+the diagnostic matrix and its cross-dataset averages. The replacement
+experiment is reported separately: its primary input is a timestamped 24-hour
+structured snapshot (labs, medications, procedures and services) with
+target-bearing codes/titles and post-window events excluded; a paired
+title/code/context audit quantifies leakage. Because gold remains code-derived,
+this evaluates retrospective code-supervised prediction and ontology
+normalisation, not independently adjudicated diagnosis, free-text reasoning or
+HPO extraction. Row-level inputs remain access-controlled under the PhysioNet
+DUA; public reproducibility consists of code, hashes, aggregate receipts and
+credentialed regeneration instructions.
+
 ---
 
 ### Deliberate scope exclusions (these are *not* defects — they are scope choices)
@@ -164,7 +181,7 @@ pillar (Future Work item 4).
 | #1 Data contamination | §7.10 + §8.9 (A6) + §9 L7 + Appendix D |
 | #2 Heterogeneous-agent fairness | §5.1 Agent Fairness Matrix |
 | #4 Statistical rigor | §6 footnote (Holm–Bonferroni + bootstrap CI) |
-| #5 MIMIC ICU bias | §4.2 four-layer stack |
+| #5 MIMIC construct validity / ICU bias | §4.2 structured-EHR probe + §9 L8 |
 | #7 Arbitrary agent selection | §5.4 pre-registration of inclusion criteria |
 | #8 Multi-agent doesn't always help | §7.2 + headline finding F2 |
 | #9 Cost not clinically meaningful | §6.3 three-axis cost reporting |

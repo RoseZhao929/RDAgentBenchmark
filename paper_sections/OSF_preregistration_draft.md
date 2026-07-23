@@ -5,8 +5,8 @@
 > `<TODO-OSF-ID>` in §5.4 of the paper with the real ID.
 >
 > **Important**: this document must be **frozen and submitted to OSF BEFORE
-> running any post-cutoff PMC OA holdout evaluation cell**. The four
-> pre-cutoff layers (L1 Phenopacket-Store, L2 MIMIC-IV, L3 RareArena,
+> running any post-cutoff PMC OA holdout evaluation cell**. The three
+> pre-cutoff diagnostic layers (L1 Phenopacket-Store, L2 RareArena,
 > RareBench HF) are *development* data and may be re-run as bugs are
 > found; the L4 holdout is *evaluation* data and is touched only once
 > after this pre-registration is locked.
@@ -76,7 +76,7 @@ unavailable at submission (documented as Limitations).
 | Layer | Source | Cases | Disease IDs | Allowed for development? | Allowed for evaluation? |
 |---|---|---|---|---|---|
 | L1 phenotype | Phenopacket-Store + RareBench HF | 11,173 | OMIM + ORPHA + CCRD | ✓ | ✓ |
-| L2 EHR | MIMIC-IV rd slice | 956 | ORPHA | ✓ | ✓ |
+| S-EHR (amended exploratory probe) | MIMIC-IV structured admissions | 956 | ORPHA (code-derived) | no notes | separate |
 | L3 scale | RareArena RDS | 72,661 | ORPHA | ✓ | ✓ (stratified N=500) |
 | **L4 holdout** | PMC OA pub ≥ 2024-01-01 | 200 (target) | ORPHA + OMIM | ❌ (UNTOUCHED) | ✓ once, only after this OSF lock |
 
@@ -89,7 +89,7 @@ performance.
 
 ## E. Sample sizes & power
 
-- **Pre-cutoff layers**: small (MIMIC, RareBench) at full N; large
+- **Pre-cutoff diagnostic layers**: RareBench at full N; large
   (PP-Store, RareArena) at N=500 stratified sample (seed=42, proportional
   allocation across prevalence tiers).
 - **Holdout**: target N=200 physician-annotated. Realistic floor N=150
@@ -132,7 +132,8 @@ performance.
 These analyses are reported for context but are *not* part of the
 pre-registered claims and will not be used to make headline statements:
 
-- MIMIC `rd_detection` prompt reframe (§7.6).
+- MIMIC structured-EHR protocol is an explicitly amended exploratory analysis,
+  not represented as part of the original preregistration.
 - Backbone × cost-per-call analysis (§6.3) beyond the cells in the H/A
   table above.
 - the contamination audit LLM ρ band (the *value* of ρ ≈ 0.3 is observational; only the

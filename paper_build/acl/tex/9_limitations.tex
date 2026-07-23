@@ -1,5 +1,4 @@
-\hypertarget{sec-9}{%
-\section{Limitations and Future Work}\label{sec-9}}
+\section{Limitations and Future Work}\label{sec-9}
 
 We surface six concrete limitations and three deliberate scope exclusions
 of v1. Each is paired with the section that pre-empts the related
@@ -105,8 +104,23 @@ how much memorisation could explain (b) F1 (classical \textgreater{} LLM on the
 rarest tier) is in the \emph{opposite} direction of training exposure and
 therefore not driven by it.
 
-\hypertarget{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}{%
-\subsubsection{\texorpdfstring{Deliberate scope exclusions (these are \emph{not} defects --- they are scope choices)}{Deliberate scope exclusions (these are not defects --- they are scope choices)}}\label{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}}
+\textbf{(L8) MIMIC-IV is structured and code-supervised, not a clinical-note diagnosis benchmark.} Our local MIMIC-IV 3.1 installation contains the
+\texttt{hosp} and \texttt{icu} modules but not MIMIC-IV-Note. The 956-admission cohort was
+selected and labelled by exact ICD-10\ensuremath{\rightarrow}Orphanet mapping; its earlier synthetic
+vignettes deterministically rendered ICD long titles and sometimes exposed the
+target disease lexically. We therefore remove those legacy point estimates from
+the diagnostic matrix and its cross-dataset averages. The replacement
+experiment is reported separately: its primary input is a timestamped 24-hour
+structured snapshot (labs, medications, procedures and services) with
+target-bearing codes/titles and post-window events excluded; a paired
+title/code/context audit quantifies leakage. Because gold remains code-derived,
+this evaluates retrospective code-supervised prediction and ontology
+normalisation, not independently adjudicated diagnosis, free-text reasoning or
+HPO extraction. Row-level inputs remain access-controlled under the PhysioNet
+DUA; public reproducibility consists of code, hashes, aggregate receipts and
+credentialed regeneration instructions.
+
+\subsubsection{\texorpdfstring{Deliberate scope exclusions (these are \emph{not} defects --- they are scope choices)}{Deliberate scope exclusions (these are not defects --- they are scope choices)}}\label{deliberate-scope-exclusions-these-are-not-defects-they-are-scope-choices}
 
 \textbf{(S1) Retrospective, not prospective.} We frame the benchmark as
 \textbf{retrospective decision support} evaluation, not autonomous
@@ -124,8 +138,7 @@ phenotyping increasingly involves facial photograph, MRI, or
 electron-microscopy signal. v1 is text-only. v2 adds a multimodal
 pillar (Future Work item 4).
 
-\hypertarget{future-work-in-order-of-expected-impact}{%
-\subsubsection{Future work (in order of expected impact)}\label{future-work-in-order-of-expected-impact}}
+\subsubsection{Future work (in order of expected impact)}\label{future-work-in-order-of-expected-impact}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -149,15 +162,14 @@ pillar (Future Work item 4).
   benchmark is designed to \emph{enable}, not \emph{substitute}.
 \end{enumerate}
 
-\hypertarget{cross-references-to-pre-empted-anticipated-objections}{%
-\subsubsection{Cross-references to pre-empted anticipated objections}\label{cross-references-to-pre-empted-anticipated-objections}}
+\subsubsection{Cross-references to pre-empted anticipated objections}\label{cross-references-to-pre-empted-anticipated-objections}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Anticipated objections and the section that pre-empts each.}\label{tbl:objections}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Attack
@@ -168,14 +180,13 @@ Where addressed
 \#1 Data contamination & \Cref{sec-7-10} + \Cref{sec-8-9} (A6) + \Cref{sec-9} L7 + Appendix D \\
 \#2 Heterogeneous-agent fairness & \Cref{sec-5-1} Agent Fairness Matrix \\
 \#4 Statistical rigor & \Cref{sec-6} footnote (Holm--Bonferroni + bootstrap CI) \\
-\#5 MIMIC ICU bias & \Cref{sec-4-2} four-layer stack \\
+\#5 MIMIC construct validity / ICU bias & \Cref{sec-4-2} structured-EHR probe + \Cref{sec-9} L8 \\
 \#7 Arbitrary agent selection & \Cref{sec-5-4} pre-registration of inclusion criteria \\
 \#8 Multi-agent doesn't always help & \Cref{sec-7-2} + headline finding F2 \\
 \#9 Cost not clinically meaningful & \Cref{sec-6-3} three-axis cost reporting \\
 \#10 LLM-judge unreliable & \Cref{sec-7-5} + Ablation A12 \\
 \#11 Model version changes silently & \Cref{sec-5-2} dated aliases + Appendix N Docker hash \\
 \#3, \#6, \#12 & \Cref{sec-9} above (L2, L3, S1) \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}

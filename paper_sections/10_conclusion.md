@@ -6,7 +6,7 @@
 ---
 
 We introduced a multi-pillar agent-native benchmark for rare disease
-diagnosis spanning five capability pillars, four data layers, eight agent
+diagnosis spanning five capability pillars, three diagnostic data layers, eight agent
 systems, three LLM backbones, and one classical baseline, with all
 hypotheses and ablations pre-registered. The benchmark surfaces five
 findings with concrete reviewer-defensible numbers. **First**,

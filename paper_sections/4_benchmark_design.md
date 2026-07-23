@@ -26,23 +26,25 @@ depth / faithfulness score, LLM-judge with 200-case physician-κ validation).
 
 **Bias as cross-cutting lens, not pillar.** Following HELM and MedHELM precedent, we apply bias evaluation (genetic ancestry, prevalence tier, sex / X-linked, pediatric/adult, language, HPO density) as a **stratification of every pillar's metric**, not as a separate axis. This was an explicit design revision; an earlier sketch listed Bias as a sixth pillar, which we abandoned because (a) no general-purpose AI benchmark elevates bias to a pillar — those that do (EquityMedQA, HEAL, Omiye et al., Zack et al.) are dedicated fairness probes, not holistic benchmarks; (b) treating bias as a pillar reduces its measurement coverage by isolating it from accuracy evaluation.
 
-### 4.2 Datasets — Four-Layer Stack
+### 4.2 Datasets — Three Diagnostic Layers + One Structured-EHR Probe
 
-We assemble four dataset layers, each addressing a specific concern; their
+We assemble three diagnostic layers and one secondary structured-EHR probe; their
 sources and sizes appear as the columns of the benchmark-surface figure, and
 the full per-layer breakdown (disease counts, ID anchors, free-text / gold-HPO
-/ variant availability) is detailed in Appendix A. The four layers are **L1**
+/ variant availability) is detailed in Appendix A. The diagnostic layers are **L1**
 Phenotype Backbone (Phenopacket-Store + RareBench HF; 11,173 cases; HPO-only,
-gold HPO, variants on PP-Store), **L2** Real EHR Noise (self-built MIMIC-IV-3.1
-rare-disease slice; 956 cases), **L3** Scale + Free Text (RareArena RDS/RDC;
+gold HPO, variants on PP-Store), **L2** Scale + Free Text (RareArena RDS/RDC;
 72,661 verbatim case reports), and **L4** Cutoff-After Holdout (self-built PMC
-OA, publication date ≥ 2024-01-01; 200 manually-verified cases).
+OA, publication date ≥ 2024-01-01; 200 manually-verified cases). Separately,
+**S-EHR** is a credentialed MIMIC-IV-3.1 probe (956 admissions, 239 exact-mapped
+ORPHA labels) for early structured-event prediction and ICD leakage auditing.
+It is not pooled with differential-diagnosis results.
 
 **Rationale per layer.**
 
 * **L1** establishes apples-to-apples comparison with RareBench's KDD'24 numbers — required by reviewers ("why not just compare to RareBench").
-* **L2** addresses "case reports are too clean / not real-world" criticism (Wu et al.'s MIMIC-RD precedent). We extend their pipeline by adding Orphanet ICD-10 cross-references for 2,173 codes and filtering out 88,664 entries flagged "NON RARE IN EUROPE" by Orphadata — important pipeline detail because raw ICD-tail rare disease counting yields ~150k admissions, mostly non-rare in Europe (Parkinson's, primary hypertension as Orphadata umbrella codes).
-* **L3** addresses scale; RareArena's 72,661 cases span 45.6% of Orphanet. Released CC-BY-NC-SA, so we use it for academic evaluation only and acknowledge license bounds.
+* **S-EHR** addresses whether agents can use real structured hospital events rather than curated case reports. The 24-hour primary snapshot uses timestamped labs, medications, procedures and services; it excludes target-bearing diagnosis codes/titles, post-window events and free text. Gold is derived from exact ICD-10→Orphanet mapping, so this is code-supervised retrospective prediction, not independently adjudicated diagnosis. A paired audit compares ICD titles, ICD codes only, and context after removing target-bearing entries.
+* **L2** addresses scale; RareArena's 72,661 cases span 45.6% of Orphanet. Released CC-BY-NC-SA, so we use it for academic evaluation only and acknowledge license bounds.
 * **L4** directly answers the data-contamination criticism from the 2026 systematic review. We extract 2,401 PMC OA case reports published after 2024-01-01 via E-utilities filtering on `"Rare Diseases"[MeSH] ∪ "Genetic Diseases, Inborn"[MeSH]` plus `"case reports"[Publication Type]` plus `"pubmed pmc open access"[sb]`, then LLM-extract diagnosis + HPO with Gemini 3 Flash, fuzzy-map to Orphanet, and **manually verify** ~200 cases against four checks (definitive diagnosis, accurate phenotypes, post-cutoff verified, truly rare). Verification protocol and reviewer agreement (Cohen's κ) are detailed in §5 and Appendix D.
 
 **Total v1 evaluation pool: ~85,000 cases / >12,000 diseases**, with stratification on prevalence tier (super-rare < 1/1M, rare 1/2K-1/1M, common-rare ≥ 1/2K), specialty (14 body systems, DeepRare taxonomy), and language (English / Chinese where applicable).
@@ -50,9 +52,8 @@ OA, publication date ≥ 2024-01-01; 200 manually-verified cases).
 **Evaluation N per dataset — honest disclosure.** We deliberately separate
 "pool size" (the released benchmark) from "evaluation N" (what we run for the
 v1 paper).
-- **Small layers** (MIMIC-IV-rd 956; RareBench-HF 1,122): evaluated at **full N**
-  for the principal backbones Gemini 3 Flash and DeepSeek V4-Flash; classical
-  baselines (LIRICAL, VC-RDAgent) likewise.
+- **RareBench-HF** (1,122 cases) is evaluated at full N. The MIMIC structured
+  probe has its own attempted-admission denominator and is reported separately.
 - **Large layers** (Phenopacket-Store 10,051; RareArena RDS 72,661): evaluated on
   a **prevalence-stratified random sample of N=500 per agent × backbone cell**
   for primary backbones (seed=42, proportional allocation across prevalence tiers;

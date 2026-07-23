@@ -1,19 +1,16 @@
-\hypertarget{experimental-setup-details}{%
-\section{Experimental Setup Details}\label{experimental-setup-details}}
+\section{Experimental Setup Details}\label{experimental-setup-details}
 
-The four backbones evaluated in this work, with their dated OpenRouter aliases,
-pricing, context windows, reasoning channel and role, are given below.
+The four backbones evaluated in this work, with dated OpenRouter aliases,
+pricing and reasoning configuration, are given below.
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Backbone LLMs evaluated: dated OpenRouter aliases, pricing, context window and reasoning mode.}\label{tbl:backbones}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Alias
@@ -22,18 +19,13 @@ OpenRouter ID
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Price (\$/M tok in/out)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Context
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Reasoning channel
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Role
+Evaluation mode
 \end{minipage} \\
 \midrule
-\textbf{Open-cheap} & \texttt{deepseek/deepseek-v4-flash} & 0.28 / 0.42 & 128K & light reasoning (fits default budget) & Open-weight low-cost ceiling \\
-\textbf{Open-frontier} & \texttt{deepseek/deepseek-v4-pro} (reasoning \textbf{disabled}) & 0.55 / 2.19 & 128K & heavy reasoning (forced \textbf{off}) & Open-weight frontier \\
-\textbf{Mid} & \texttt{google/gemini-3-flash-preview-20251217} & 0.50 / 3.00 & 1M & thinking (default off) & Primary baseline and LLM-judge candidate (later swapped, \Cref{sec-7-5}) \\
-\textbf{Frontier} & \texttt{openai/gpt-5} (\texttt{reasoning\_effort=minimal}) & 1.25 / 10.00 & 256K & reasoning tokens (forced minimal) & Frontier ceiling \\
-\bottomrule
+\textbf{Open-cheap} & \texttt{deepseek/v4-flash} & 0.28 / 0.42 & default light reasoning \\
+\textbf{Open-frontier} & \texttt{deepseek/deepseek-v4-pro} & 0.55 / 2.19 & reasoning disabled \\
+\textbf{Mid} & \texttt{gemini-3-flash-20251217} & 0.50 / 3.00 & thinking off \\
+\textbf{Frontier} & \texttt{openai/gpt-5} & 1.25 / 10.00 & \texttt{reasoning\_effort=minimal} \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -47,7 +39,7 @@ left at each adapter's published default (2K--6K).
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig_design_matrix.png}
-\caption{The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable.}\label{fig:fig_design_matrix}
+\caption{The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Filled = evaluated in v1; grey = deferred to v2; light = not applicable.}\label{fig:fig_design_matrix}
 \end{figure*}
 
 \begin{figure*}[t]

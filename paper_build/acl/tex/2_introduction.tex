@@ -1,8 +1,6 @@
-\hypertarget{sec-2}{%
-\section{Introduction}\label{sec-2}}
+\section{Introduction}\label{sec-2}
 
-\hypertarget{sec-2-1}{%
-\subsection{The phenomenon --- agent proliferation in rare disease}\label{sec-2-1}}
+\subsection{The phenomenon --- agent proliferation in rare disease}\label{sec-2-1}
 
 Rare disease diagnosis is undergoing a diagnostic-agent renaissance.
 In 2024--2026 alone, eight distinct agent systems were proposed that
@@ -13,8 +11,7 @@ reasoning (DeepRare {[}5{]}), HPO-conditional fusion (VC-RDAgent {[}6{]}),
 phrase-mining (RDMA {[}7{]}), and classical Bayesian likelihood (LIRICAL {[}8{]}).
 Each system reports R@1 in the 0.3--0.7 range on its own evaluation set.
 
-\hypertarget{sec-2-2}{%
-\subsection{The gap --- no shared benchmark}\label{sec-2-2}}
+\subsection{The gap --- no shared benchmark}\label{sec-2-2}
 
 But no shared benchmark exists. Each paper evaluates on an ad-hoc
 subset: MDAgents on MedQA-Rare, MAI-DxO on NEJM clinicopathologic
@@ -27,8 +24,7 @@ reported R@1 --- a strong signal that selection bias dominates published
 numbers. Without a shared evaluation infrastructure, ``agent X beats
 agent Y'' is unverifiable.
 
-\hypertarget{sec-2-3}{%
-\subsection{Why agent-native, not LLM++}\label{sec-2-3}}
+\subsection{Why agent-native, not LLM++}\label{sec-2-3}
 
 One could argue an LLM-only benchmark suffices. We disagree on three
 grounds. First, the diagnostic agent designs we audit differ on
@@ -42,8 +38,7 @@ with LLM agents on HPO-input datasets --- a result that \emph{no} prior
 benchmark would have surfaced because none of them run classical
 baselines side-by-side with the LLM lineup.
 
-\hypertarget{sec-2-4}{%
-\subsection{Our approach}\label{sec-2-4}}
+\subsection{Our approach}\label{sec-2-4}
 
 We introduce RareAgentBench, a benchmark with three structural commitments:
 
@@ -57,9 +52,11 @@ faithfulness/accuracy decoupling (\Cref{sec-7-4}) as judge-dependent and explora
 rather than a firm quantitative claim.
 
 \textbf{Layered dataset}: Phenopacket-Store (10,051 cases) \ensuremath{\rightarrow} RareBench HF
-(1,122) \ensuremath{\rightarrow} RareArena RDS (72,661) \ensuremath{\rightarrow} MIMIC-IV rare-disease slice (956)
-\ensuremath{\rightarrow} PMC OA post-cutoff holdout (200). The layering spans difficulty,
-contamination risk, input modality (HPO vs free-text), and prevalence
+(1,122) \ensuremath{\rightarrow} RareArena RDS (72,661) \ensuremath{\rightarrow} PMC OA post-cutoff holdout (200).
+A separate MIMIC-IV probe contains 956 code-supervised admissions and tests
+early structured-event prediction plus ICD leakage; it is not pooled with the
+diagnostic layers. The layering spans difficulty, contamination risk, input
+modality (HPO vs free-text), and prevalence
 distribution. Holdout case excerpts are post-LLM-training-cutoff (after
 2026-02), eliminating the contamination concern that plagues prior
 work.
@@ -67,8 +64,7 @@ work.
 \textbf{Pre-registered hypotheses + ablations}: H1--H11 + A1--A12 frozen at
 OSF prior to holdout unblinding. To our knowledge this is the first pre-registered rare-disease diagnostic-AI evaluation.
 
-\hypertarget{sec-2-5}{%
-\subsection{Key findings preview}\label{sec-2-5}}
+\subsection{Key findings preview}\label{sec-2-5}
 
 We evaluate 8 agent systems against 3 LLM controls (Gemini 3 Flash,
 DeepSeek V4-Flash, GPT-5 \emph{reasoning\_effort=minimal}) and 1 classical
@@ -103,8 +99,7 @@ Five findings:
   deeprare 0.22 \ensuremath{\rightarrow} 0.38) --- \emph{not} DeepRare-specific.
 \end{enumerate}
 
-\hypertarget{sec-2-6}{%
-\subsection{Contributions}\label{sec-2-6}}
+\subsection{Contributions}\label{sec-2-6}
 
 \begin{itemize}
 \tightlist

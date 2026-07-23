@@ -51,7 +51,7 @@
 ## Known incompatibilities
 
 - **VC-RDAgent Stage 1 requires structured HPO input** (`CanonicalCase.gold_hpo_terms`).
-  Datasets that supply only free-text vignettes (RareArena RDS, MIMIC-IV
+  Datasets that supply no gold HPO input (RareArena RDS, legacy MIMIC-IV
   diverse) all return `agent_error: no usable gold_hpo_terms; VC-RDAgent
   Stage 1 requires HPO`. We skip vc_rdagent on these datasets via
   `phase4a_runner.NO_HPO_DATASETS = {"rarearena_rds", "mimic_diverse"}`

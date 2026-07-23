@@ -1,30 +1,23 @@
-\hypertarget{sec-6}{%
-\section{Main Results}\label{sec-6}}
+\section{Main Results}\label{sec-6}
 
-\hypertarget{sec-6-1}{%
-\subsection{Headline R@1 Matrix(per-dataset, N in brackets)}\label{sec-6-1}}
+\subsection{Headline R@1 Matrix(per-dataset, N in brackets)}\label{sec-6-1}
 
 Sorted by PP-Store R@1 (descending); classical/offline baselines listed first.
 
-\begin{quote}
-Note on the MIMIC-IV column: its gold labels were stripped from the frozen slim
-release, so MIMIC R@1 is \textbf{not recomputable} at commit \texttt{43efa1e5}. The MIMIC
-figures shown in this section are the pre-freeze estimates, retained only as
-indicative context and excluded from the recomputed frozen headline claims;
-PP-Store, RareArena, and RareBench columns are the authoritative N=2000 recompute.
-\end{quote}
+MIMIC-IV is not a column in this diagnostic matrix: its current input and
+code-derived outcome define a different structured-EHR task (\Cref{sec-4-2}), reported
+separately after the replacement protocol is locked.
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
-\caption{Headline Recall@1 (variant-aware) for every agent \(\times\) backbone cell across the four data layers; bracketed values are per-cell \(N\). Classical/offline baselines are listed first. Cell shading encodes R@1: \colorbox{heatE}{$<$.10}~\colorbox{heatA}{.10--.20}~\colorbox{heatB}{.20--.30}~\colorbox{heatC}{.30--.40}~\colorbox{heatD}{$\geq$.40}.}\label{tbl:main}
+\caption{Headline Recall@1 (variant-aware) for every agent \(\times\) backbone cell across the three diagnostic datasets; bracketed values are per-cell \(N\). The distinct MIMIC structured-EHR task is reported separately. Cell shading encodes R@1: \colorbox{heatE}{$<$.10}~\colorbox{heatA}{.10--.20}~\colorbox{heatB}{.20--.30}~\colorbox{heatC}{.30--.40}~\colorbox{heatD}{$\geq$.40}.}\label{tbl:main}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -37,39 +30,36 @@ RareArena
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 RareBench
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MIMIC
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Avg
 \end{minipage} \\
 \midrule
-\textbf{lirical} (classical) & --- & \cellcolor{heatD}\textbf{0.47} {[}2000{]} & n/a HPO & \cellcolor{heatB}\textbf{0.23} {[}1122{]} & n/a HPO & n/a (2-ds) \\
-\textbf{vc\_rdagent} (offline) & --- & \cellcolor{heatD}\textbf{0.44} {[}663{]} & n/a HPO & \cellcolor{heatB}\textbf{0.28} {[}1122{]} & n/a HPO & n/a (2-ds) \\
-medagents & Gemini Flash & \cellcolor{heatC}0.30 {[}1998{]} & \cellcolor{heatC}0.30 {[}2000{]} & \cellcolor{heatE}0.05 {[}1122{]} & \cellcolor{heatC}0.35 {[}956{]} & \cellcolor{heatB}0.25 \\
-llm\_control & Gemini Flash & \cellcolor{heatB}0.29 {[}2000{]} & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatE}0.02 {[}1122{]} & \cellcolor{heatC}0.32 {[}956{]} & \cellcolor{heatB}0.23 \\
-deeprare & Gemini Flash & \cellcolor{heatB}0.28 {[}609{]} & \cellcolor{heatE}0.00 {[}500{]} & \cellcolor{heatC}\textbf{0.30} {[}953{]} & \cellcolor{heatE}0.00 {[}495{]} & \cellcolor{heatA}0.14 \\
-medagents & DS V4-Pro & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.23 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.18 {[}956{]} & \cellcolor{heatA}0.18 \\
-mdagents & Gemini Flash & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatA}\textbf{0.10} {[}1122{]} & \cellcolor{heatC}0.38 {[}956{]} & \cellcolor{heatB}0.26 \\
-medagents & GPT-5 min & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.26 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatC}0.32 {[}956{]} & \cellcolor{heatB}0.22 \\
-llm\_control & DS V4-Pro & \cellcolor{heatB}0.27 {[}1999{]} & \cellcolor{heatA}0.19 {[}2000{]} & \cellcolor{heatE}0.02 {[}1121{]} & \cellcolor{heatB}0.25 {[}956{]} & \cellcolor{heatA}0.18 \\
-mdagents & DS V4-Pro & \cellcolor{heatB}0.27 {[}2000{]} & \cellcolor{heatB}0.22 {[}2000{]} & \cellcolor{heatE}0.04 {[}1122{]} & \cellcolor{heatB}0.22 {[}956{]} & \cellcolor{heatA}0.19 \\
-llm\_control & DS V4-Flash & \cellcolor{heatB}0.26 {[}1998{]} & \cellcolor{heatB}0.21 {[}1976{]} & \cellcolor{heatE}0.05 {[}1021{]} & \cellcolor{heatB}0.27 {[}833{]} & \cellcolor{heatB}0.20 \\
-llm\_control & GPT-5 min & \cellcolor{heatB}0.26 {[}1988{]} & \cellcolor{heatB}0.22 {[}1974{]} & \cellcolor{heatE}0.01 {[}1098{]} & \cellcolor{heatC}0.34 {[}944{]} & \cellcolor{heatB}0.20 \\
-medagents & DS V4-Flash & \cellcolor{heatB}0.26 {[}1942{]} & \cellcolor{heatB}0.24 {[}1292{]} & \cellcolor{heatE}0.05 {[}783{]} & \cellcolor{heatA}0.19 {[}783{]} & \cellcolor{heatA}0.19 \\
-mdagents & DS V4-Flash & \cellcolor{heatB}0.25 {[}1983{]} & \cellcolor{heatB}0.23 {[}1993{]} & \cellcolor{heatE}0.05 {[}1098{]} & \cellcolor{heatB}0.24 {[}942{]} & \cellcolor{heatA}0.19 \\
-mdagents & GPT-5 min & \cellcolor{heatB}0.24 {[}2000{]} & \cellcolor{heatB}0.23 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatC}0.31 {[}956{]} & \cellcolor{heatB}0.20 \\
-deeprare & DS V4-Flash & \cellcolor{heatB}0.22 {[}494{]} & \cellcolor{heatE}0.00 {[}479{]} & \cellcolor{heatB}\textbf{0.29} {[}778{]} & \cellcolor{heatE}0.00 {[}432{]} & \cellcolor{heatA}0.13 \\
-agentclinic & Gemini Flash & \cellcolor{heatB}0.21 {[}1995{]} & \cellcolor{heatA}0.14 {[}1974{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.18 {[}956{]} & \cellcolor{heatA}0.14 \\
-agentclinic & DS V4-Pro & \cellcolor{heatA}0.18 {[}2000{]} & \cellcolor{heatA}0.12 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.19 {[}956{]} & \cellcolor{heatA}0.13 \\
-agentclinic & DS V4-Flash & \cellcolor{heatA}0.14 {[}1925{]} & \cellcolor{heatA}0.11 {[}1764{]} & \cellcolor{heatE}0.02 {[}860{]} & \cellcolor{heatB}0.25 {[}903{]} & \cellcolor{heatA}0.13 \\
-agentclinic & GPT-5 min & \cellcolor{heatA}0.13 {[}2000{]} & \cellcolor{heatA}0.10 {[}2000{]} & \cellcolor{heatE}0.00 {[}1122{]} & \cellcolor{heatB}0.22 {[}956{]} & \cellcolor{heatA}0.12 \\
-maidxo & Gemini Flash & \cellcolor{heatE}0.03 {[}81{]} & \cellcolor{heatE}0.07 {[}88{]} & \cellcolor{heatE}0.01 {[}703{]} & \cellcolor{heatA}0.11 {[}75{]} & \cellcolor{heatE}0.05 \\
-\bottomrule
+\textbf{lirical} (classical) & --- & \cellcolor{heatD}\textbf{0.47} {[}2000{]} & n/a HPO & \cellcolor{heatB}\textbf{0.23} {[}1122{]} & n/a (2-ds) \\
+\textbf{vc\_rdagent} (offline) & --- & \cellcolor{heatD}\textbf{0.44} {[}663{]} & n/a HPO & \cellcolor{heatB}\textbf{0.28} {[}1122{]} & n/a (2-ds) \\
+medagents & Gemini Flash & \cellcolor{heatC}0.30 {[}1998{]} & \cellcolor{heatC}0.30 {[}2000{]} & \cellcolor{heatE}0.05 {[}1122{]} & \cellcolor{heatB}0.22 \\
+llm\_control & Gemini Flash & \cellcolor{heatB}0.29 {[}2000{]} & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatE}0.02 {[}1122{]} & \cellcolor{heatB}0.20 \\
+deeprare & Gemini Flash & \cellcolor{heatB}0.28 {[}609{]} & \cellcolor{heatE}0.00 {[}500{]} & \cellcolor{heatC}\textbf{0.30} {[}953{]} & \cellcolor{heatA}0.19 \\
+medagents & DS V4-Pro & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.23 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.17 \\
+mdagents & Gemini Flash & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatA}\textbf{0.10} {[}1122{]} & \cellcolor{heatB}0.22 \\
+medagents & GPT-5 min & \cellcolor{heatB}0.28 {[}2000{]} & \cellcolor{heatB}0.26 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.18 \\
+llm\_control & DS V4-Pro & \cellcolor{heatB}0.27 {[}1999{]} & \cellcolor{heatA}0.19 {[}2000{]} & \cellcolor{heatE}0.02 {[}1121{]} & \cellcolor{heatA}0.16 \\
+mdagents & DS V4-Pro & \cellcolor{heatB}0.27 {[}2000{]} & \cellcolor{heatB}0.22 {[}2000{]} & \cellcolor{heatE}0.04 {[}1122{]} & \cellcolor{heatA}0.18 \\
+llm\_control & DS V4-Flash & \cellcolor{heatB}0.26 {[}1998{]} & \cellcolor{heatB}0.21 {[}1976{]} & \cellcolor{heatE}0.05 {[}1021{]} & \cellcolor{heatA}0.17 \\
+llm\_control & GPT-5 min & \cellcolor{heatB}0.26 {[}1988{]} & \cellcolor{heatB}0.22 {[}1974{]} & \cellcolor{heatE}0.01 {[}1098{]} & \cellcolor{heatA}0.16 \\
+medagents & DS V4-Flash & \cellcolor{heatB}0.26 {[}1942{]} & \cellcolor{heatB}0.24 {[}1292{]} & \cellcolor{heatE}0.05 {[}783{]} & \cellcolor{heatA}0.18 \\
+mdagents & DS V4-Flash & \cellcolor{heatB}0.25 {[}1983{]} & \cellcolor{heatB}0.23 {[}1993{]} & \cellcolor{heatE}0.05 {[}1098{]} & \cellcolor{heatA}0.18 \\
+mdagents & GPT-5 min & \cellcolor{heatB}0.24 {[}2000{]} & \cellcolor{heatB}0.23 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.16 \\
+deeprare & DS V4-Flash & \cellcolor{heatB}0.22 {[}494{]} & \cellcolor{heatE}0.00 {[}479{]} & \cellcolor{heatB}\textbf{0.29} {[}778{]} & \cellcolor{heatA}0.17 \\
+agentclinic & Gemini Flash & \cellcolor{heatB}0.21 {[}1995{]} & \cellcolor{heatA}0.14 {[}1974{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.12 \\
+agentclinic & DS V4-Pro & \cellcolor{heatA}0.18 {[}2000{]} & \cellcolor{heatA}0.12 {[}2000{]} & \cellcolor{heatE}0.01 {[}1122{]} & \cellcolor{heatA}0.10 \\
+agentclinic & DS V4-Flash & \cellcolor{heatA}0.14 {[}1925{]} & \cellcolor{heatA}0.11 {[}1764{]} & \cellcolor{heatE}0.02 {[}860{]} & \cellcolor{heatE}0.09 \\
+agentclinic & GPT-5 min & \cellcolor{heatA}0.13 {[}2000{]} & \cellcolor{heatA}0.10 {[}2000{]} & \cellcolor{heatE}0.00 {[}1122{]} & \cellcolor{heatE}0.08 \\
+maidxo & Gemini Flash & \cellcolor{heatE}0.03 {[}81{]} & \cellcolor{heatE}0.07 {[}88{]} & \cellcolor{heatE}0.01 {[}703{]} & \cellcolor{heatE}0.04 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 Notes: (1) lirical/vc\_rdagent run only on HPO-input datasets (PP-Store /
-RareBench), so their Avg is not comparable to the 4-dataset LLM rows and is
+RareBench), so their Avg is not comparable to the 3-dataset LLM rows and is
 marked n/a (2-ds). (2) maidxo is systematically weak across all backbones (its
 panel degrades on HPO-list input, \Cref{sec-7-2}) and maidxo\ensuremath{\times}GPT-5 is incompatible
 (\Cref{sec-9} L1); we list the Gemini row as representative. (3) deeprare DS V4-Pro on
@@ -77,23 +67,30 @@ RareBench scores 0.44 {[}n=36{]} via the HPO+variant channel, but n is too small
 (P3-only) to enter the main ranking (see \Cref{sec-7-3}). (4) The DS V4-Pro column is reasoning-off (\Cref{sec-5-2} Methods note 2); the thinking-mode contrast is in \Cref{sec-8} H6.
 
 \textbf{Key cells} (all PP-Store/RareArena cells now on the common N=2000 sample):
-- Classical/offline baselines lead on PP-Store (lirical 0.47, vc\_rdagent
-\textbf{0.44}), above any LLM row (best: medagents Gemini 0.30 / llm\_control
-Gemini 0.29) by 17 pp (LIRICAL 0.47 \ensuremath{-} medagents 0.30; the gap is 18 pp
-against the single-LLM control at 0.29) --- headline finding F1 is further
-strengthened on the unified large sample.
-- On RareBench, deeprare (0.29-0.30) and the classical baselines (lirical 0.23 /
-vc\_rdagent 0.28) lead, while every other LLM scores \ensuremath{\leq}0.10 --- see the F5
-ORPHA-sibling explanation.
-- deeprare scores 0.00 on the RareArena/MIMIC free-text layers (a structural
-limitation, see the DeepRare reproduction note in Appendix B).
-- \textbf{V4-Pro reasoning-off is competitive, not crippled}: 0.30 on PP-Store (the
-three scaffolds + llm\_control), on par with Gemini/V4-Flash/GPT-5
-(0.27-0.31), and only slightly lower on MIMIC (0.18-0.25). This corroborates
-the \Cref{sec-8} H6 conclusion that thinking mode is not cost-effective on this task.
 
-\hypertarget{sec-6-2}{%
-\subsection{Backbone \ensuremath{\times} scaffolding interaction}\label{sec-6-2}}
+\begin{itemize}
+\tightlist
+\item
+  Classical/offline baselines lead on PP-Store (lirical 0.47, vc\_rdagent
+  \textbf{0.44}), above any LLM row (best: medagents Gemini 0.30 / llm\_control
+  Gemini 0.29) by 17 pp (LIRICAL 0.47 \ensuremath{-} medagents 0.30; the gap is 18 pp
+  against the single-LLM control at 0.29) --- headline finding F1 is further
+  strengthened on the unified large sample.
+\item
+  On RareBench, deeprare (0.29-0.30) and the classical baselines (lirical 0.23 /
+  vc\_rdagent 0.28) lead, while every other LLM scores \ensuremath{\leq}0.10 --- see the F5
+  ORPHA-sibling explanation.
+\item
+  deeprare scores 0.00 on RareArena free text (a structural limitation; see
+  the DeepRare reproduction note in Appendix B).
+\item
+  \textbf{V4-Pro reasoning-off is competitive, not crippled}: 0.30 on PP-Store (the
+  three scaffolds + llm\_control), on par with Gemini/V4-Flash/GPT-5
+  (0.27-0.31). This corroborates the \Cref{sec-8} H6 conclusion that thinking mode is not
+  cost-effective on this task.
+\end{itemize}
+
+\subsection{Backbone \ensuremath{\times} scaffolding interaction}\label{sec-6-2}
 
 We hold the central backbone constant per agent and vary across \{Gemini Flash,
 DS V4-Pro (reasoning-off), DS V4-Flash, GPT-5 minimal\}, all at full-N.
@@ -103,9 +100,9 @@ Per-agent backbone winners (R@1 PP-Store):
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Per-agent backbone sensitivity: best vs.~worst backbone R@1.}\label{tbl:bbsens}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -121,7 +118,6 @@ medagents & Gemini Flash (0.30) \ensuremath{\approx} tied & DS V4-Flash (0.26) -
 agentclinic & Gemini Flash (0.23) & GPT-5 min (0.13) \\
 deeprare & Gemini Flash (0.28) & DS V4-Flash / GPT-5 (0.22) \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -134,8 +130,7 @@ within overlapping CIs, so we frame the backbone axis as ``no dominant backbone'
 rather than ranking them. DS V4-Pro is evaluated reasoning-off (\Cref{sec-5-2}); its
 thinking-mode variant adds \ensuremath{\approx}0 R@1 at 40\% no-answer cost (\Cref{sec-8} H6).
 
-\hypertarget{sec-6-3}{%
-\subsection{Cost-vs-Accuracy(per-prediction USD)}\label{sec-6-3}}
+\subsection{Cost-vs-Accuracy(per-prediction USD)}\label{sec-6-3}
 
 Cost per prediction spans more than an order of magnitude across backbones:
 DS V4-Flash is the cheapest hosted backbone (\$0.00040/pred), DS V4-Pro
@@ -145,8 +140,7 @@ cost-vs-accuracy trade-off across every agent \ensuremath{\times} backbone cell 
 cost-vs-accuracy figure, and the full per-backbone and per-cell cost breakdown
 (V1 total \$191.76, 53\% of the pre-registered \$360 cap) is in Appendix J.
 
-\hypertarget{sec-6-4}{%
-\subsection{Headline Findings}\label{sec-6-4}}
+\subsection{Headline Findings}\label{sec-6-4}
 
 \begin{quote}
 V4-Pro re-run \textbf{reasoning-off} after root-causing an unbounded-reasoning
@@ -174,21 +168,18 @@ cross-map (Appendix A1 / F5).
 within the control's CI; mdagents (PP-Store 0.28) actually sits \textasciitilde1 pp \emph{below} the
 control, and agentclinic/maidxo regress sharply (\Cref{sec-7-2}). The benefit does not
 consistently exceed the no-scaffold control's CI and does not hold on every
-backbone. (MIMIC-IV is not recomputable in the frozen release --- gold labels
-stripped --- so we do not carry forward its point estimates here.) (Revised down from the v0 ``+5--7 pp'' claim, which rested on a stale small-sample medagents 0.40.)
+backbone. (Revised down from the v0 ``+5--7 pp'' claim, which rested on a stale small-sample medagents 0.40.)
 
-\textbf{F3: DeepSeek V4-Flash is \textasciitilde10\ensuremath{\times} cheaper than Gemini Flash but trades off accuracy, especially on free text.} Per-prediction cost \$0.00041 (V4-Flash) vs
+\textbf{F3: DeepSeek V4-Flash is \textasciitilde10\ensuremath{\times} cheaper than Gemini Flash but trades off accuracy.} Per-prediction cost \$0.00041 (V4-Flash) vs
 \$0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store \ensuremath{-}2 to \ensuremath{-}5 pp
-(e.g.~medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). On the (non-recomputable in
-the frozen release) MIMIC free-text slice earlier runs showed a larger drop. V4-Flash also showed a higher
+(e.g.~medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). V4-Flash also showed a higher
 transient empty-content rate on free-text/HPO-list inputs (mitigated by a
-wrapper-level retry; see Appendix B). Conclusion: V4-Flash is the cost-efficient choice when \textasciitilde10\ensuremath{\times} cost reduction outweighs a \textasciitilde5--15 pp accuracy drop, but it does NOT match Gemini quality. (Reversed from v0.)
+wrapper-level retry; see Appendix B). Conclusion: V4-Flash is the cost-efficient choice when \textasciitilde10\ensuremath{\times} cost reduction outweighs a \textasciitilde2--6 pp accuracy drop, but it does NOT match Gemini quality. (Reversed from v0.)
 
 \textbf{F4: GPT-5 minimal-reasoning is not worth its cost, and at full-N has no scaffold where it is the sole winner.} GPT-5 (\texttt{reasoning\_effort=minimal},
 forced because default reasoning consumes all max\_tokens) ties the field on
 medagents PP-Store (0.28, where the medagents winner is Gemini at 0.30, V4-Pro-off at 0.28, GPT-5 at 0.28) and
-is strong on MIMIC (llm\_control 0.34, medagents 0.32) yet collapses on
-AgentClinic OSCE dialogue (0.13, \ensuremath{-}10 pp vs Gemini). As the most expensive
+yet collapses on AgentClinic OSCE dialogue (0.13, \ensuremath{-}10 pp vs Gemini). As the most expensive
 backbone (\textasciitilde20\ensuremath{\times} V4-Flash per prediction) with no consistent accuracy edge, it is
 hard to justify. The reasoning-channel question is answered directly by our H6
 ablation (\Cref{sec-8}): on the single-call LLM control, turning reasoning on (V4-Pro)

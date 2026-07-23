@@ -1,6 +1,6 @@
 # §7.2 / 7.3 / 7.4 / 7.6 Analysis (paper draft v0)
 
-> 数据源:Phase 4a N=100 × 4 dataset, dual-report (strict + variants),
+> 数据源:Phase 4a diagnostic subset, dual-report (strict + variants),
 > + Phase 3.2 P3 genotype 50-case pilot
 > 状态:文字 ready,等 Phase 4a final 后 pin 终 number
 
@@ -103,16 +103,13 @@ quantitative decoupling.
 
 ## §7.6 Dataset Difficulty Stratification
 
-Four-layer dataset selection deliberately spans difficulty:
+The three diagnostic datasets deliberately span difficulty:
 
 | Layer | Best LLM R@1 (N=2000) | Best Classical/Offline R@1 |
 |---|---|---|
 | Phenopacket-Store (HPO+demographic, curated rare diseases) | 0.30 (medagents Gemini) | **0.47** (lirical) |
 | RareArena RDS (free-text vignette, narrative) | 0.30 (medagents Gemini) | n/a (no HPO) |
 | RareBench HF (HPO-only, sparse, expert curated) | 0.30 (deeprare Gemini) | 0.28 (vc_rdagent offline) |
-| MIMIC-IV diverse (structured note → named disease) | see note | n/a |
-
-(MIMIC-IV rows are omitted from this recomputed table: its gold labels were stripped from the frozen slim release, so R@1 is not recomputable at commit `43efa1e5`; the earlier N=500 MIMIC figures are not carried forward. All non-MIMIC values are the N=2000 frozen-matrix recompute.)
 
 **Reading**:
 - **PP-Store is the "easiest" layer** — curated cases, expert-cleaned HPO,
@@ -123,9 +120,9 @@ Four-layer dataset selection deliberately spans difficulty:
   expert-curated HPO and ID-mapping cross-ref make it the hardest HPO layer for
   *both* families. We report strict R@1 with the variant-aware channel (§7.3);
   a hierarchy-aware secondary metric is left to future work.
-- **MIMIC-IV** is excluded from the recomputed frozen table (gold labels
-  stripped from the slim release); we do not carry forward the earlier
-  MIMIC point estimates.
+- **MIMIC-IV** is a separate structured-EHR task (§4.2), not a fourth
+  differential-diagnosis row. Its ICD-title legacy estimates are not carried
+  forward.
 
 ---
 
@@ -134,7 +131,7 @@ Four-layer dataset selection deliberately spans difficulty:
 - §6 Main Results — full matrix
 - §7.5 Self-Preference Bias — judge model methodology
 - the reproducibility audit Reproducibility — per-baseline replication audit
-- §9 Limitations — MAI-DxO×GPT-5 incompat, MIMIC framing
+- §9 Limitations — MAI-DxO×GPT-5 incompatibility and MIMIC construct validity
 
 ---
 

@@ -1,5 +1,4 @@
-\hypertarget{sec-8}{%
-\section{Ablations}\label{sec-8}}
+\section{Ablations}\label{sec-8}
 
 \textbf{Pre-registered ablations}:
 
@@ -7,9 +6,9 @@
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Pre-registered ablations A1--A12 and their status.}\label{tbl:ablations}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -32,12 +31,10 @@ A10 & Prevalence-stratified R@1 & done (\texttt{A10\_prevalence\_stratified.md})
 A11 & Cross-dataset agent ranking stability & done (\Cref{sec-7-6} / \texttt{A11\_ranking\_stability.md}) \\
 A12 & LLM-judge swap (P5 with Claude vs Gemini judge) & done (\Cref{sec-7-5}) \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
-\hypertarget{sec-8-1}{%
-\subsection{Ablation A4 --- Strict vs ORPHA-Fuzzy Variants Cross-Map}\label{sec-8-1}}
+\subsection{Ablation A4 --- Strict vs ORPHA-Fuzzy Variants Cross-Map}\label{sec-8-1}
 
 \textbf{Question}: When an LLM emits a generic disease name (e.g.~``Methylmalonic
 Acidemia'') that fuzzy-matches multiple ORPHA codes at tied scores
@@ -53,7 +50,8 @@ CCRD ID or cross-map to one via Orphadata.
 ORPHA candidates in \texttt{extra{[}"ranked\_predictions\_variants"{]}}; evaluator
 returns True if any tied variant hits gold.
 
-\textbf{Result} (Phase 4a, N=100 \ensuremath{\times} 4 datasets \ensuremath{\times} 5 backbones):
+\textbf{Legacy result audit} (Phase 4a originally ran N=100 \ensuremath{\times} 4 datasets \ensuremath{\times} 5
+backbones; the table below reports only the three diagnostic datasets):
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
@@ -66,9 +64,7 @@ Dataset & Aggregate \ensuremath{\Delta} R@1 & Aggregate \ensuremath{\Delta} R@5 
 Phenopacket-Store & \textbf{+0.03} & \textbf{+0.06} \\
 RareArena RDS & \textbf{+0.02} & \textbf{+0.04} \\
 RareBench HF & +0.00 & +0.00 \\
-MIMIC diverse & +0.01 & +0.02 \\
-\textbf{All combined} & \textbf{+0.013} & \textbf{+0.024} \\
-\bottomrule
+\textbf{All diagnostic datasets combined} & \textbf{+0.010} & \textbf{+0.020} \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -86,8 +82,7 @@ MIMIC diverse & +0.01 & +0.02 \\
 \textbf{Decision}: variants-aware metric is on by default in main \Cref{tbl:main};
 strict variant reported in parentheses for reviewer reference.
 
-\hypertarget{sec-8-2}{%
-\subsection{Ablation A3 --- Backbone \ensuremath{\times} Scaffolding Cross-Product}\label{sec-8-2}}
+\subsection{Ablation A3 --- Backbone \ensuremath{\times} Scaffolding Cross-Product}\label{sec-8-2}
 
 Detailed in \Cref{sec-6-2} main results. Highlights:
 
@@ -112,21 +107,20 @@ The cross-product matrix shows no universally-best backbone: each
 scaffolding architecture has its own preferred backbone. This refutes
 the ``just use the best backbone'' simplifying assumption.
 
-\hypertarget{sec-8-6}{%
-\subsection{Ablation A9 --- Subprocess Timeout Cap (300s vs 600s vs 1200s)}\label{sec-8-6}}
+\subsection{Ablation A9 --- Subprocess Timeout Cap (300s vs 600s vs 1200s)}\label{sec-8-6}
 
 The subprocess wall-clock cap interacts with two distinct failure modes,
 which A9 disentangles:
 
 \textbf{(a) Borderline-slow but legitimate cells --- cap matters.} During the
 N=500 rerun, \texttt{medagents\ \ensuremath{\times}\ DS\ V4-Flash} and \texttt{agentclinic\ \ensuremath{\times}\ DS\ V4-Flash}
-on RareBench/MIMIC showed many \texttt{timeout} records at the default 300s
+on RareBench and the legacy MIMIC ICD-title task showed many \texttt{timeout} records at the default 300s
 cap. A probe re-ran a representative medagents timeout case at a 900s
 cap and it completed successfully in 309s --- i.e.~the case was not
 hung, the 300s cap was simply slightly too tight (compounded by the
 empty-content retry adding extra subprocess invocations). Raising the cap to 600s and
 re-running recovered these cells essentially completely (agentclinic
-RareBench 60/60 ok, MIMIC 37/37 ok; medagents MIMIC 267/268 ok). DS
+RareBench 60/60 ok; legacy MIMIC agentclinic 37/37 and medagents 267/268). DS
 V4-Pro remained slow enough that 600s still left a small timeout tail
 (mdagents V4-Pro RareBench 21/36 recovered) --- genuine backbone latency,
 reported honestly.
@@ -141,8 +135,7 @@ slow-but-valid cells (600s is the right default for hosted DeepSeek/Gemini
 on long free-text), but it cannot rescue genuinely degenerate
 agent\ensuremath{\times}backbone pairings. Cap choices are logged per-cell.
 
-\hypertarget{sec-8-7}{%
-\subsection{Ablations deferred / data-gated}\label{sec-8-7}}
+\subsection{Ablations deferred / data-gated}\label{sec-8-7}
 
 \begin{itemize}
 \tightlist
@@ -159,16 +152,14 @@ agent\ensuremath{\times}backbone pairings. Cap choices are logged per-cell.
   \textbf{A11} (cross-dataset ranking stability) --- computed (see \Cref{sec-7-6}).
 \end{itemize}
 
-\hypertarget{sec-8-5}{%
-\subsection{Pre-registration check}\label{sec-8-5}}
+\subsection{Pre-registration check}\label{sec-8-5}
 
 Under our research-integrity protocol, all hypotheses (H1-H11) and
 ablations (A1-A12) were frozen at OSF prior to Phase 4a launch. The
 above results are the first pre-registered evaluation report.
 \textbf{No post-hoc hypothesis selection.}
 
-\hypertarget{sec-8-8}{%
-\subsection{Holm-Bonferroni family-wise correction over H1-H11}\label{sec-8-8}}
+\subsection{Holm-Bonferroni family-wise correction over H1-H11}\label{sec-8-8}
 
 Per pre-registration we apply Holm-Bonferroni at \ensuremath{\alpha}=0.05 (one-sided in the
 predicted direction) over the testable subset of H1-H11. Family size m=6
@@ -180,12 +171,12 @@ pilot to an n=500 paired design.
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Holm--Bonferroni family-wise correction over H1--H11.}\label{tbl:holm}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -207,7 +198,6 @@ Survives \ensuremath{\alpha}=0.05?
 \textbf{H7} & Cross-agent specialty rank \ensuremath{\rho} \textgreater{} 0.6 & \ensuremath{\rho}=0.92 & 5.5e-04 & 1.6e-03 & \textbf{yes} \\
 \textbf{H4} & Scaffold benefit larger on multi-system than single (DoD) & z=2.61 & 4.5e-03 & 9.0e-03 & \textbf{yes} \\
 H10 & Spearman \ensuremath{\rho}(faithfulness, accuracy) \textless{} 0.5 & \ensuremath{\rho}=0.35 & 3.7e-02 & 3.7e-02 & nominal but judge-dependent (see below) \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -231,8 +221,7 @@ The pre-registered H10 verdict (\ensuremath{\rho}\textless0.5) is therefore genu
 judge-sensitive, so we keep H10 exploratory and withdraw the \ensuremath{\rho}=0.098 figure. See
 \Cref{sec-7-5} for the de-confounded analysis.
 
-\hypertarget{sec-8-9}{%
-\subsection{Ablation A6 --- TS-Guessing data-contamination audit}\label{sec-8-9}}
+\subsection{Ablation A6 --- TS-Guessing data-contamination audit}\label{sec-8-9}
 
 We probe anticipated objection \#1 (``LLMs answer well only on diseases they were
 trained on'') by correlating, for each gold ORPHA in our phase4a predictions,
@@ -246,10 +235,10 @@ Spearman \ensuremath{\rho} over log(mention + 1) vs R@1; per-disease aggregate r
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{A6 TS-Guessing contamination, by backbone.}\label{tbl:a6}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Backbone
@@ -267,7 +256,6 @@ DeepSeek V4-Flash & 244 & \textbf{0.348} & weak positive \\
 DeepSeek V4-Pro & 179 & \textbf{0.294} & weak positive \\
 LIRICAL (classical Bayesian) & 26 & \ensuremath{-}0.155 & null (methodological control) \\
 VC-RDAgent (offline IC) & 26 & \ensuremath{-}0.059 & null (methodological control) \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -288,8 +276,7 @@ one panel per backbone. The clean dichotomy is visually obvious --- the
 LLM backbones show a positive slope; the classical baselines
 (LIRICAL, VC-RDAgent) show a flat cloud.
 
-\hypertarget{sec-8-10}{%
-\subsection{Ablation A8 / H6 --- Thinking-mode (reasoning on vs off)}\label{sec-8-10}}
+\subsection{Ablation A8 / H6 --- Thinking-mode (reasoning on vs off)}\label{sec-8-10}
 
 \textbf{Question (anticipated objection: ``you crippled the models by disabling reasoning'')}:
 Our main matrix runs all reasoning backbones in their minimal/off configuration
@@ -304,10 +291,10 @@ backbone whose reasoning can be cleanly toggled via \texttt{reasoning=\{"enabled
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{H6 reasoning on/off ablation (paired, PP-Store).}\label{tbl:h6}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Config
@@ -322,7 +309,6 @@ Latency/case
 reasoning \textbf{OFF} (main matrix) & \textbf{0.352} & 100 \% & \textasciitilde2.5 s \\
 reasoning \textbf{ON} (thinking) & \textbf{0.360} & \textbf{60 \%} (40 \% no-answer) & \textasciitilde90--117 s (median), up to 571 s \\
 \ensuremath{\Delta} (on \ensuremath{-} off) & \textbf{+0.008} & --- & 10--40\ensuremath{\times} slower \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}

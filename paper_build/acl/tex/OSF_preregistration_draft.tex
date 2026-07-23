@@ -1,19 +1,17 @@
-\hypertarget{osf-pre-registration-draft-rareagentbench}{%
-\section{\texorpdfstring{OSF Pre-Registration Draft --- \texttt{RareAgentBench}}{OSF Pre-Registration Draft --- RareAgentBench}}\label{osf-pre-registration-draft-rareagentbench}}
+\section{\texorpdfstring{OSF Pre-Registration Draft --- \texttt{RareAgentBench}}{OSF Pre-Registration Draft --- RareAgentBench}}\label{osf-pre-registration-draft-rareagentbench}
 
 \begin{quote}
 \textbf{Draft for OSF.io submission.} Copy this verbatim into the OSF
 registration form. After OSF assigns the ID, replace the placeholder
 
-\textbf{Important}: this document must be \textbf{frozen and submitted to OSF BEFORE \textgreater{} running any post-cutoff PMC OA holdout evaluation cell}. The four
-pre-cutoff layers (L1 Phenopacket-Store, L2 MIMIC-IV, L3 RareArena,
+\textbf{Important}: this document must be \textbf{frozen and submitted to OSF BEFORE \textgreater{} running any post-cutoff PMC OA holdout evaluation cell}. The three
+pre-cutoff diagnostic layers (L1 Phenopacket-Store, L2 RareArena,
 RareBench HF) are \emph{development} data and may be re-run as bugs are
 found; the L4 holdout is \emph{evaluation} data and is touched only once
 after this pre-registration is locked.
 \end{quote}
 
-\hypertarget{a.-project-metadata}{%
-\subsection{A. Project metadata}\label{a.-project-metadata}}
+\subsection{A. Project metadata}\label{a.-project-metadata}
 
 \begin{itemize}
 \tightlist
@@ -34,8 +32,7 @@ after this pre-registration is locked.
   evaluation has NOT begun)
 \end{itemize}
 
-\hypertarget{b.-hypotheses-h1h11}{%
-\subsection{B. Hypotheses (H1--H11)}\label{b.-hypotheses-h1h11}}
+\subsection{B. Hypotheses (H1--H11)}\label{b.-hypotheses-h1h11}
 
 All hypotheses are pre-registered with directional prediction and effect-size
 threshold where applicable.
@@ -44,11 +41,11 @@ threshold where applicable.
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Pre-registered hypotheses H1--H11.}\label{tbl:osfh}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -74,7 +71,6 @@ H9 & On AR/XL cases, family-aware agents gain \ensuremath{\geq} +10 pp R@1 vs pr
 H10 & Faithfulness-rank and accuracy-rank decouple: Spearman \ensuremath{\rho} \textless{} 0.5 & Spearman \ensuremath{\rho} & \ensuremath{\rho} \textless{} 0.5 & upper-bound test \\
 H11 & (retired before pre-registration; not in paper) & n/a & n/a & n/a \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -82,16 +78,15 @@ H11 & (retired before pre-registration; not in paper) & n/a & n/a & n/a \\
 subset of H1--H11; H3/H5/H6/H9 are deferred if their data sources are
 unavailable at submission (documented as Limitations).
 
-\hypertarget{c.-ablations-a1a12}{%
-\subsection{C. Ablations (A1--A12)}\label{c.-ablations-a1a12}}
+\subsection{C. Ablations (A1--A12)}\label{c.-ablations-a1a12}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Pre-registered ablations at registration time.}\label{tbl:osfa}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 \#
@@ -114,23 +109,21 @@ A10 & Prevalence-stratified R@1 & required for H1 \\
 A11 & Cross-dataset agent ranking stability & required for \Cref{sec-7-6} \\
 A12 & LLM-judge swap & required for \Cref{sec-7-5} \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
-\hypertarget{d.-datasets}{%
-\subsection{D. Datasets}\label{d.-datasets}}
+\subsection{D. Datasets}\label{d.-datasets}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Data layers and development/test split.}\label{tbl:osfdata}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Layer
@@ -147,10 +140,9 @@ Allowed for evaluation?
 \end{minipage} \\
 \midrule
 L1 phenotype & Phenopacket-Store + RareBench HF & 11,173 & OMIM + ORPHA + CCRD & \ensuremath{\checkmark} & \ensuremath{\checkmark} \\
-L2 EHR & MIMIC-IV rd slice & 956 & ORPHA & \ensuremath{\checkmark} & \ensuremath{\checkmark} \\
+S-EHR (amended exploratory probe) & MIMIC-IV structured admissions & 956 & ORPHA (code-derived) & no notes & separate \\
 L3 scale & RareArena RDS & 72,661 & ORPHA & \ensuremath{\checkmark} & \ensuremath{\checkmark} (stratified N=500) \\
 \textbf{L4 holdout} & PMC OA pub \ensuremath{\geq} 2024-01-01 & 200 (target) & ORPHA + OMIM & (UNTOUCHED) & \ensuremath{\checkmark} once, only after this OSF lock \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -160,13 +152,12 @@ Pre-registration freezes the L4 evaluation protocol: one run per
 tuning, no agent prompt modification, no scaffold swap based on L4
 performance.
 
-\hypertarget{e.-sample-sizes-power}{%
-\subsection{E. Sample sizes \& power}\label{e.-sample-sizes-power}}
+\subsection{E. Sample sizes \& power}\label{e.-sample-sizes-power}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Pre-cutoff layers}: small (MIMIC, RareBench) at full N; large
+  \textbf{Pre-cutoff diagnostic layers}: RareBench at full N; large
   (PP-Store, RareArena) at N=500 stratified sample (seed=42, proportional
   allocation across prevalence tiers).
 \item
@@ -176,8 +167,7 @@ performance.
   with 2-prop z-test assuming p\textsubscript{1}=0.30).
 \end{itemize}
 
-\hypertarget{f.-stopping-rules}{%
-\subsection{F. Stopping rules}\label{f.-stopping-rules}}
+\subsection{F. Stopping rules}\label{f.-stopping-rules}
 
 \begin{itemize}
 \tightlist
@@ -193,8 +183,7 @@ performance.
   hit their pre-registered N just because the result is borderline.
 \end{itemize}
 
-\hypertarget{g.-analysis-pipeline}{%
-\subsection{G. Analysis pipeline}\label{g.-analysis-pipeline}}
+\subsection{G. Analysis pipeline}\label{g.-analysis-pipeline}
 
 \begin{itemize}
 \tightlist
@@ -215,8 +204,7 @@ performance.
   publish judge-derived numbers.
 \end{itemize}
 
-\hypertarget{h.-what-is-exploratory-not-pre-registered}{%
-\subsection{H. What is exploratory (not pre-registered)}\label{h.-what-is-exploratory-not-pre-registered}}
+\subsection{H. What is exploratory (not pre-registered)}\label{h.-what-is-exploratory-not-pre-registered}
 
 These analyses are reported for context but are \emph{not} part of the
 pre-registered claims and will not be used to make headline statements:
@@ -224,7 +212,8 @@ pre-registered claims and will not be used to make headline statements:
 \begin{itemize}
 \tightlist
 \item
-  MIMIC \texttt{rd\_detection} prompt reframe (\Cref{sec-7-6}).
+  MIMIC structured-EHR protocol is an explicitly amended exploratory analysis,
+  not represented as part of the original preregistration.
 \item
   Backbone \ensuremath{\times} cost-per-call analysis (\Cref{sec-6-3}) beyond the cells in the H/A
   table above.
@@ -236,15 +225,13 @@ pre-registered claims and will not be used to make headline statements:
   Any post-hoc subgroup analysis not in the pre-registered DoD/H7 axes.
 \end{itemize}
 
-\hypertarget{i.-deviations-from-pre-registration}{%
-\subsection{I. Deviations from pre-registration}\label{i.-deviations-from-pre-registration}}
+\subsection{I. Deviations from pre-registration}\label{i.-deviations-from-pre-registration}
 
 We commit to disclosing any deviation in a ``Pre-registration deviations''
 table in Appendix D of the camera-ready paper, with: (a) what changed,
 (b) why, (c) what direction the change biased results.
 
-\hypertarget{j.-re-use-of-this-pre-registration}{%
-\subsection{J. Re-use of this pre-registration}\label{j.-re-use-of-this-pre-registration}}
+\subsection{J. Re-use of this pre-registration}\label{j.-re-use-of-this-pre-registration}
 
 Anyone running an additional rare-disease agent system on the L4 holdout
 can use the same protocol (their results would be reported in the
@@ -252,8 +239,7 @@ external-replication appendix of subsequent papers). Required:
 (i) the same evaluator binary (Apache 2.0), (ii) the same disease-ID
 cross-map (Orphadata), (iii) the same prevalence-tier strata.
 
-\hypertarget{k.-references}{%
-\subsection{K. References}\label{k.-references}}
+\subsection{K. References}\label{k.-references}
 
 \begin{itemize}
 \tightlist

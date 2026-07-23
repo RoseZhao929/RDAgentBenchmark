@@ -17,7 +17,7 @@ from _figstyle import (apply_nature_style, AGENT_COLOR, heatmap_cmap,
 
 FIG = Path("data/round2/figures")
 DS_TITLE = {'phenopacket_store': 'Phenopacket-Store', 'rarearena_rds': 'RareArena RDS',
-            'rarebench': 'RareBench HF', 'mimic_diverse': 'MIMIC diverse'}
+            'rarebench': 'RareBench HF'}
 
 
 def main():
@@ -44,7 +44,7 @@ def main():
                 'deepseek_deepseek-v4-flash': 'DS\nV4-Flash',
                 'openai_gpt-5': 'GPT-5\nmin', 'vc_rdagent-offline-v1': 'offline',
                 'lirical-2.4.0': 'classical'}
-    datasets = ['phenopacket_store', 'rarearena_rds', 'rarebench', 'mimic_diverse']
+    datasets = ['phenopacket_store', 'rarearena_rds', 'rarebench']
 
     def r1(ds, ag, bb):
         s = stats.get(f"{ds}|{ag}|{bb[:30]}")

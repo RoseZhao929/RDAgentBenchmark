@@ -63,9 +63,11 @@ faithfulness/accuracy decoupling (§7.4) as judge-dependent and exploratory
 rather than a firm quantitative claim.
 
 **Layered dataset**: Phenopacket-Store (10,051 cases) → RareBench HF
-(1,122) → RareArena RDS (72,661) → MIMIC-IV rare-disease slice (956)
-→ PMC OA post-cutoff holdout (200). The layering spans difficulty,
-contamination risk, input modality (HPO vs free-text), and prevalence
+(1,122) → RareArena RDS (72,661) → PMC OA post-cutoff holdout (200).
+A separate MIMIC-IV probe contains 956 code-supervised admissions and tests
+early structured-event prediction plus ICD leakage; it is not pooled with the
+diagnostic layers. The layering spans difficulty, contamination risk, input
+modality (HPO vs free-text), and prevalence
 distribution. Holdout case excerpts are post-LLM-training-cutoff (after
 2026-02), eliminating the contamination concern that plagues prior
 work.

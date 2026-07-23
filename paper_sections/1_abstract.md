@@ -20,8 +20,9 @@ introduce **RareAgentBench**, an agent-native benchmark spanning **five capabili
 pillars** (phenotype extraction, phenotype-only DDx, genotype-aware DDx,
 family-aware DDx, clinical-communication faithfulness) on a layered
 dataset (Phenopacket-Store *n*=10,051; RareBench HF 1,122; RareArena RDS
-72,661; MIMIC-IV rare-disease slice *n*=956; post-cutoff PMC OA holdout
-*n*=200). We evaluate **8 agent systems** (DeepRare, MDAgents, MedAgents,
+72,661; post-cutoff PMC OA holdout *n*=200), plus a separately reported
+MIMIC-IV structured-EHR probe (956 code-supervised admissions; no clinical
+notes). We evaluate **8 agent systems** (DeepRare, MDAgents, MedAgents,
 AgentClinic, MAI-DxO, RDMA, VC-RDAgent, LIRICAL) against **3 LLM
 no-scaffolding controls and one classical baseline**, with all
 hypotheses (H1–H11) and ablations (A1–A12) pre-registered.

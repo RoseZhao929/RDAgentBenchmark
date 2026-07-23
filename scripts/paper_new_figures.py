@@ -1,9 +1,9 @@
 """New paper figures (2026-07 round), Nature-grade style (shared _figstyle):
 
   fig1_overview  : THE benchmark-method overview — the core pipeline chain
-                   (4 data layers -> CanonicalCase -> 11 adapters -> dual-pass
+                   (3 diagnostic layers + structured probe -> CanonicalCase
                    A/B -> 5 capability pillars -> metrics). Hand-drawn schematic.
-  fig_radar      : agent capability radar over the 4 data layers (best-backbone
+  fig_radar      : legacy agent capability radar over diagnostic layers
                    R@1), overlaying representative LLM agents + classical
                    baselines. Real data from leaderboard/phase4a_summary.json.
   fig_selfpref   : self-preference slopegraph — v1 (Gemini/family judge) ->
@@ -24,16 +24,15 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from _figstyle import apply_nature_style, PALETTE  # noqa: E402
 
-FIG = ROOT / "paper_build" / "acl" / "figures"
+FIG = ROOT / "data" / "round2" / "figures"
 SUMMARY = ROOT / "leaderboard" / "phase4a_summary.json"
 
 # ---------------------------------------------------------------- shared data
-DS_ORDER = ["phenopacket_store", "rarebench", "rarearena_rds", "mimic_diverse"]
+DS_ORDER = ["phenopacket_store", "rarebench", "rarearena_rds"]
 DS_LABEL = {
     "phenopacket_store": "PP-Store\n(HPO, curated)",
     "rarebench": "RareBench\n(HPO, sparse)",
     "rarearena_rds": "RareArena\n(free-text)",
-    "mimic_diverse": "MIMIC-IV\n(EHR noise)",
 }
 
 
@@ -81,10 +80,10 @@ def fig1_overview():
         ax.text(x + w / 2, 44.2, txt, ha="center", va="center",
                 fontsize=9.5, fontweight="bold", color=color)
 
-    # ---- column 1: four data layers ------------------------------------
+    # ---- column 1: diagnostic layers + separate structured probe -------
     layers = [
         ("L1", "Phenopacket-Store + RareBench", "11,173 · HPO, gold, variants"),
-        ("L2", "MIMIC-IV rare-disease slice", "956 · real EHR noise"),
+        ("S-EHR", "MIMIC-IV structured probe", "956 · separate code-supervised task"),
         ("L3", "RareArena RDS", "72,661 · free-text vignette"),
         ("L4", "PMC-OA holdout ≥ 2024", "200 · post-cutoff, verified"),
     ]

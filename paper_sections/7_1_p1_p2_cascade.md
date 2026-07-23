@@ -48,7 +48,7 @@ This section drives **Figure 7 — P1 → P2 Cascade (same-case paired)**:x = go
 
 ### Needs once Phase 4a 数据来:
 
-- Test on all 4 dataset layers,not just 50 PP-Store + 50 RareArena
+- Test on all three diagnostic dataset layers, not the separate MIMIC probe
 - 是否 generalize:LLM-based agents 平均小 delta vs classical 平均大 delta
 - Confirm RDMA 在 OPus silver gold(non-leaky)上 P1 F1 数字 — 我们期望降到 ~0.5-0.7
 
@@ -68,7 +68,7 @@ This section drives **Figure 7 — P1 → P2 Cascade (same-case paired)**:x = go
 ## Phase 4a 验证点
 
 once 100 case / dataset × 8 agent × 3 backbone done,update with:
-- LIRICAL / VC-RDAgent / DeepRare / RDMA P1 → P2 delta 数字 across **all 4 dataset layers**
+- LIRICAL / VC-RDAgent / DeepRare / RDMA P1 → P2 delta across the diagnostic layers
 - 验证 asymmetry hypothesis(classical 大 delta,LLM-scaffold 小 delta)
 - Maybe a new sub-finding:"Pass A − Pass B delta within 5 pp identifies robust agents"
 

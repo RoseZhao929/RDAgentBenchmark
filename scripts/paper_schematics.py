@@ -1,6 +1,6 @@
 """Schematic (non-data) paper figures, Nature-grade style:
 
-  fig_design_matrix : the 5 capability pillars x 4 data layers coverage grid
+  fig_design_matrix : capability pillars x diagnostic/probe coverage grid
                       (replaces the pillar table + layer table)
   fig_schema        : the CanonicalCase record diagram (replaces the code block)
 
@@ -24,7 +24,7 @@ PILLARS = [
 ]
 LAYERS = [
     ("L1", "Phenotype\nBackbone", "PP-Store + RareBench", "11,173"),
-    ("L2", "Real EHR\nNoise", "MIMIC-IV rd slice", "956"),
+    ("S-EHR", "Structured EHR\nProbe", "MIMIC-IV admissions", "956"),
     ("L3", "Scale +\nFree text", "RareArena RDS", "72,661"),
     ("L4", "Post-cutoff\nHoldout", "PMC-OA ≥2024", "200"),
 ]
@@ -91,7 +91,7 @@ def design_matrix():
                mp.Patch(facecolor=emptyc, edgecolor="white", label="not applicable")]
     ax.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, -0.06),
               ncol=3, fontsize=7, frameon=False)
-    fig.suptitle("Benchmark surface: five capability pillars × four data layers",
+    fig.suptitle("Benchmark surface: three diagnostic layers + one structured-EHR probe",
                  fontsize=10, fontweight="bold", y=0.98)
     fig.savefig(FIG / "fig_design_matrix.png")
     plt.close(fig)

@@ -1,8 +1,6 @@
-\hypertarget{experimental-setup-backbones-adapter-methodology-pre-registration}{%
-\section{5.2-5.4 Experimental Setup --- Backbones / Adapter Methodology / Pre-registration}\label{experimental-setup-backbones-adapter-methodology-pre-registration}}
+\section{5.2-5.4 Experimental Setup --- Backbones / Adapter Methodology / Pre-registration}\label{experimental-setup-backbones-adapter-methodology-pre-registration}
 
-\hypertarget{sec-5-2}{%
-\subsection{Backbones}\label{sec-5-2}}
+\subsection{Backbones}\label{sec-5-2}
 
 We evaluate every LLM-driven agent against four backbones spanning the
 cost--capability frontier: DeepSeek V4-Flash (open-weight, low-cost), DeepSeek
@@ -56,8 +54,7 @@ cross-backbone consistency; it also cut AgentClinic wall-clock from \textgreater
 \textasciitilde27 s/case (33\ensuremath{\times}). Full root-cause receipts are recorded in our run worklog
 and the per-baseline reproduction notes (Appendix B).
 
-\hypertarget{sec-5-3}{%
-\subsection{Per-Agent Adapter Shim Methodology}\label{sec-5-3}}
+\subsection{Per-Agent Adapter Shim Methodology}\label{sec-5-3}
 
 Each of the eight agents ships its own Python environment, often pinned to
 an \texttt{openai\ \textless{}\ 1.0} SDK and incompatible with one another in the same process.
@@ -94,8 +91,7 @@ upstream code bypasses the wrapper (rdma, lirical, vc\_rdagent). (c) Three adapt
 defensive output-dir purging to prevent first-case state leak --- DeepRare's
 deterministic output filename was the most severe. All such patches are documented per-agent.
 
-\hypertarget{sec-5-4}{%
-\subsection{Pre-registration}\label{sec-5-4}}
+\subsection{Pre-registration}\label{sec-5-4}
 
 All hypotheses (H1--H11), ablations (A1--A12), the staged-sampling
 budget guard, the Holm--Bonferroni multiple-testing correction, the
@@ -114,8 +110,8 @@ absence of pre-registration as a primary contamination risk across the
 \textbf{Why this matters operationally.} Pre-registration means the 200-case
 PMC OA post-cutoff holdout is evaluated once, with the metric and
 agent set declared in advance --- there is no opportunity to retry on a
-better-looking subset. The four pre-cutoff training-style layers
-(Phenopacket-Store, RareBench, RareArena, MIMIC-IV rare-disease slice)
+better-looking subset. The three pre-cutoff diagnostic layers
+(Phenopacket-Store, RareBench, RareArena)
 remain open for development, but every cell published in \Cref{tbl:main} / \Cref{sec-6}
 is locked to the pre-registered protocol and ships with a per-cell
 reproducibility receipt (run-id, OpenRouter request-id, cost).

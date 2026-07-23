@@ -3,15 +3,13 @@
 
 \bibitem[{Anonymous(2025{\natexlab{a}})}]{clear2025}
 Anonymous. 2025{\natexlab{a}}.
-\newblock \href {https://arxiv.org/abs/2511.14136} {{CLEAR}: A cost- and
-  latency-aware evaluation framework for agents}.
+\newblock \href {https://arxiv.org/abs/2511.14136} {{CLEAR}: A cost- and latency-aware evaluation framework for agents}.
 \newblock \emph{arXiv preprint}.
 
 \bibitem[{Anonymous(2025{\natexlab{b}})}]{medagentboard2025}
 Anonymous. 2025{\natexlab{b}}.
 \newblock {MedAgentBoard}: Benchmarking multi-agent collaboration in medicine.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
 
 \bibitem[{Anonymous(2026)}]{sysreview2026}
 Anonymous. 2026.
@@ -20,14 +18,12 @@ Anonymous. 2026.
 
 \bibitem[{Chen et~al.(2026)}]{rareagents2026}
 Chen et~al. 2026.
-\newblock \href {https://arxiv.org/abs/2412.12475} {{RareAgents}: A multi-agent
-  framework for rare disease diagnosis}.
+\newblock \href {https://arxiv.org/abs/2412.12475} {{RareAgents}: A multi-agent framework for rare disease diagnosis}.
 \newblock In \emph{Proceedings of AAAI}.
 
 \bibitem[{Chen et~al.(2024)}]{rarebench2024}
 Xuanzhong Chen et~al. 2024.
-\newblock \href {https://arxiv.org/abs/2402.06341} {{RareBench}: Benchmarking
-  the capability of {LLMs} as rare disease specialists}.
+\newblock \href {https://arxiv.org/abs/2402.06341} {{RareBench}: Benchmarking the capability of {LLMs} as rare disease specialists}.
 \newblock In \emph{Proceedings of KDD}.
 
 \bibitem[{Chimirri et~al.(2025)}]{chimirri2025}
@@ -53,15 +49,12 @@ Jiang et~al. 2025.
 \bibitem[{Jimenez et~al.(2024)}]{swebench2024}
 Carlos~E. Jimenez et~al. 2024.
 \newblock {SWE-bench}: Can language models resolve real-world {GitHub} issues?
-\newblock In \emph{International Conference on Learning Representations
-  (ICLR)}.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}.
 
 \bibitem[{Kim et~al.(2024)}]{mdagents2024}
 Yubin Kim et~al. 2024.
-\newblock {MDAgents}: An adaptive collaboration of {LLMs} for medical
-  decision-making.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}.
+\newblock {MDAgents}: An adaptive collaboration of {LLMs} for medical decision-making.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
 
 \bibitem[{Liang et~al.(2022)}]{helm2022}
 Percy Liang et~al. 2022.
@@ -70,15 +63,12 @@ Percy Liang et~al. 2022.
 
 \bibitem[{Ma et~al.(2024)}]{agentboard2024}
 Chang Ma et~al. 2024.
-\newblock {AgentBoard}: An analytical evaluation board of multi-turn {LLM}
-  agents.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}.
+\newblock {AgentBoard}: An analytical evaluation board of multi-turn {LLM} agents.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
 
 \bibitem[{Nori et~al.(2025)}]{maidxo2025}
 Harsha Nori et~al. 2025.
-\newblock \href {https://arxiv.org/abs/2506.22405} {Sequential diagnosis with
-  language models ({MAI-DxO})}.
+\newblock \href {https://arxiv.org/abs/2506.22405} {Sequential diagnosis with language models ({MAI-DxO})}.
 \newblock \emph{arXiv preprint}.
 
 \bibitem[{Omiye et~al.(2023)}]{omiye2023}
@@ -93,8 +83,7 @@ Patel et~al. 2025.
 
 \bibitem[{Pfohl et~al.(2024)}]{equitymedqa2024}
 Stephen~R. Pfohl et~al. 2024.
-\newblock {EquityMedQA}: Evaluating health equity in medical question
-  answering.
+\newblock {EquityMedQA}: Evaluating health equity in medical question answering.
 \newblock \emph{Nature Medicine}.
 
 \bibitem[{Reese et~al.(2026)}]{reese2026}
@@ -105,38 +94,31 @@ Justin Reese et~al. 2026.
 \bibitem[{Rivera et~al.(2025)}]{rivera2025}
 Rivera et~al. 2025.
 \newblock Faithfulness of clinical reasoning in language models.
-\newblock \emph{Journal of the American Medical Informatics Association},
-  32(1).
+\newblock \emph{Journal of the American Medical Informatics Association}, 32(1).
 
 \bibitem[{Robinson et~al.(2020)}]{lirical2020}
 Peter~N. Robinson et~al. 2020.
-\newblock {LIRICAL}: An interpretable and robust algorithm for clinical
-  diagnostics.
+\newblock {LIRICAL}: An interpretable and robust algorithm for clinical diagnostics.
 \newblock \emph{American Journal of Human Genetics}.
 
 \bibitem[{Schaekermann et~al.(2024)}]{heal2024}
 Mike Schaekermann et~al. 2024.
-\newblock A framework for health equity assessment of machine learning
-  ({HEAL}).
+\newblock A framework for health equity assessment of machine learning ({HEAL}).
 \newblock \emph{eClinicalMedicine}.
 
 \bibitem[{Schmidgall et~al.(2024)}]{agentclinic2024}
 Samuel Schmidgall et~al. 2024.
-\newblock {AgentClinic}: A multimodal agent benchmark to evaluate {AI} in
-  simulated clinical environments.
+\newblock {AgentClinic}: A multimodal agent benchmark to evaluate {AI} in simulated clinical environments.
 \newblock \emph{arXiv preprint}.
 
 \bibitem[{Tang et~al.(2024)}]{medagents2024}
 Xiangru Tang et~al. 2024.
-\newblock {MedAgents}: Large language models as collaborators for zero-shot
-  medical reasoning.
-\newblock In \emph{Findings of the Association for Computational Linguistics
-  (ACL)}.
+\newblock {MedAgents}: Large language models as collaborators for zero-shot medical reasoning.
+\newblock In \emph{Findings of the Association for Computational Linguistics (ACL)}.
 
 \bibitem[{Wu et~al.(2025)}]{rdma2025}
 Wu et~al. 2025.
-\newblock \href {https://arxiv.org/abs/2507.15867} {{RDMA}: Rare disease {LLM}
-  agent with phenotype extraction}.
+\newblock \href {https://arxiv.org/abs/2507.15867} {{RDMA}: Rare disease {LLM} agent with phenotype extraction}.
 \newblock \emph{arXiv preprint}.
 
 \bibitem[{Wu et~al.(2026)}]{mimicrd2026}
@@ -151,14 +133,12 @@ Yao et~al. 2026.
 
 \bibitem[{Yao et~al.(2024)}]{taubench2024}
 Shunyu Yao et~al. 2024.
-\newblock {$\tau$-bench}: A benchmark for tool-agent-user interaction in
-  real-world domains.
+\newblock {$\tau$-bench}: A benchmark for tool-agent-user interaction in real-world domains.
 \newblock In \emph{arXiv preprint}.
 
 \bibitem[{Zack et~al.(2024)}]{zack2024}
 Travis Zack et~al. 2024.
-\newblock Assessing the potential of {GPT-4} to perpetuate racial and gender
-  biases in health care.
+\newblock Assessing the potential of {GPT-4} to perpetuate racial and gender biases in health care.
 \newblock \emph{Lancet Digital Health}.
 
 \bibitem[{Zhao et~al.(2025)}]{rarearena2025}
@@ -168,8 +148,7 @@ Zhao et~al. 2025.
 
 \bibitem[{Zhao et~al.(2020)}]{phen2gene2020}
 Mengge Zhao et~al. 2020.
-\newblock {Phen2Gene}: Rapid phenotype-driven gene prioritization for rare
-  diseases.
+\newblock {Phen2Gene}: Rapid phenotype-driven gene prioritization for rare diseases.
 \newblock \emph{Nucleic Acids Research}.
 
 \end{thebibliography}

@@ -29,7 +29,7 @@
 │ Phenopacket-Store      │ ─→ │ adapters  │ ─→ │ CanonicalCase│ ─→ │ 8 agent    │ ─→ │ R@k       │
 │ RareBench (4 splits)   │ ─→ │ per       │    │ (Pydantic v2)│    │ shims      │    │ MRR       │
 │ RareArena (RDS+RDC)    │ ─→ │ dataset   │    │              │    │ subprocess │    │ Brier     │
-│ MIMIC-IV slice (956)   │ ─→ │           │    │              │    │ isolation  │    │ pass^k    │
+│ MIMIC structured probe│ ─→ │           │    │ separate task │    │ leakage    │    │ paired Δ  │
 │ PMC OA holdout (200)   │ ─→ │           │    │              │    │            │    │ cost      │
 └────────────────────────┘    └──────────┘    └──────────────┘    └────────────┘    └───────────┘
 ```
@@ -158,12 +158,15 @@
 
 **Schema**:
 ```
-| Agent (backbone)   | PhenoP | RareBench | RareArena | MIMIC-IV | Holdout | Avg |
+| Agent (backbone)   | PhenoP | RareBench | RareArena | Holdout | Avg |
 |--------------------|--------|-----------|-----------|----------|---------|-----|
 | ...                |  ...   |   ...     |   ...     |   ...    |   ...   | ... |
 ```
 
-**Status**:PhenoP / RareBench / RareArena 列用 N=2000 frozen 值(见 §6 + audit_frozen/frozen_main_manifest.csv)。MIMIC-IV 列在 frozen slim release 里 gold 被剥离、R@1 不可重算,应留空或标 n/a,不要填入旧 N=500 估计。Holdout 列见 Figure 10 caveat(与 RareArena 有 PMCID 重叠)。
+**Status**:PhenoP / RareBench / RareArena 列用 frozen 值(见 §6 +
+`audit_frozen/frozen_main_manifest.csv`)。MIMIC-IV 不进入该诊断表或 Avg；
+其 24h structured-EHR 和三臂 leakage audit 使用单独表与 receipt。Holdout
+列见 Figure 10 caveat(与 RareArena 有 PMCID 重叠)。
 
 ### Table 3 — Agent Fairness Matrix(§5.1)
 

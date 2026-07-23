@@ -50,7 +50,7 @@ These are **n=50 pilot reproduction checks** — each asks "can we reproduce age
 |---|---|---|---|---|
 | **MDAgents** | ✓ within ±5 pp | R@1 = 0.34 (Gemini 3 Flash, P2, n=50 RareBench-PP) vs paper 0.31–0.39 (MedQA-Rare) | Reformulated as rank-top-5 prompt; held `mode=intermediate`. | 7–47 LLM calls / case |
 | **MedAgents** | ✓ within ±5 pp | R@1 = 0.36 (Gemini 3 Flash, P2, n=50) vs paper 0.32 (MedQA-Rare) | Bypassed MCQA-locked `run.py` for free-form ranking; 3 domain experts + Chief MO | ~10 calls / case |
-| **AgentClinic** | ✓ within ±5 pp | R@1 = 0.30 (Gemini 3 Flash, P2, n=50) vs paper 0.28 (AgentClinic-MedQA rare slice) | Built synthetic OSCE scenario from CanonicalCase; doctor/patient/measurement/moderator | ~45 turns / case |
+| **AgentClinic** | ✓ within ±5 pp | R@1 = 0.30 (Gemini 3 Flash, P2, n=50) vs paper 0.28 (AgentClinic-MedQA rare slice) | Four-role synthetic OSCE from CanonicalCase | ~45 turns / case |
 | **MAI-DxO** | △ underperform; setup-mismatch documented | R@1 = 0.22 (Gemini 3 Flash, P2, n=50) vs paper 0.45 (NEJM cases) | Paper input = narrative-rich NEJM case; ours = HPO list + brief vignette | See §7.2; noise filter added |
 | **DeepRare (P2-only)** | △ underperform; setup-mismatch documented | R@1 = 0.22 (P2, n=50) vs paper 0.71 (HPO+VCF) | Paper input includes VCF; P2-only excludes variants by design | See P3.2 row ↓ |
 | **DeepRare (P3 genotype)** | △ partial replication (~28 pp gap) | R@1 = 0.42 (38/50, 95 % CI [0.26, 0.58]) vs paper 0.706 (HPO+VCF) | Structured variants block (not full VCF + Phenotype Tool); web search disabled (`DEEPRARE_NO_WEB=1`) for contamination control | Lift over P2 (+20 pp) matches LLM-control's lift; variant channel real but not DeepRare-specific — see §7.3 |
@@ -133,12 +133,17 @@ then invoke the runner:
 
 ```bash
 python3 scripts/phase4a_runner.py \
-    --dataset <phenopacket_store|rarearena_rds|rarebench|mimic_diverse> \
+    --dataset <phenopacket_store|rarearena_rds|rarebench> \
     --agent <baseline_name> \
     --backbone openrouter/<provider>/<model> \
     --n 100 \
     --out predictions_test.jsonl
 ```
+
+The MIMIC structured-EHR probe is regenerated separately with
+`scripts/build_mimic_early_structured_snapshots.py` and
+`scripts/mimic_structured_ehr_ablation.py`; protected row-level inputs are not
+part of the public frozen diagnostic receipt.
 
 `scripts/sanity_check_evaluator.py` must pass (`exit 0`) before any
 number in the paper is trusted; this is enforced in our run harness.

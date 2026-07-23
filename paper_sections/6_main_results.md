@@ -7,7 +7,7 @@
 > 跨 backbone 一致 + tractability;thinking-mode 见 §8 H6 ablation)。
 > **N 统一化(comparability fix)**:PP-Store / RareArena 每 cell 聚合到**共同
 > N=2000 分层样本**(seed=42 前 2000 case-id,`phase4a_canonical_2000.json`),
-> 所有 backbone 报告在**同一批 case** 上;MIMIC 全量(956),RareBench 全量(1122)。
+> 所有 backbone 报告在**同一批 case** 上;RareBench 全量(1122)。
 > V4-Flash 少数 cell n<2000(其固有 empty-content/timeout 率,见 F3),按实际
 > 覆盖 case 报告,N 透明标注。R@1 = variants 指标。
 > 状态:V4-Pro reasoning bug 修复 + N=2000 统一样本重跑(concurrency 加速)+
@@ -19,38 +19,36 @@
 
 Sorted by PP-Store R@1 (descending); classical/offline baselines listed first.
 
-> Note on the MIMIC-IV column: its gold labels were stripped from the frozen slim
-> release, so MIMIC R@1 is **not recomputable** at commit `43efa1e5`. The MIMIC
-> figures shown in this section are the pre-freeze estimates, retained only as
-> indicative context and excluded from the recomputed frozen headline claims;
-> PP-Store, RareArena, and RareBench columns are the authoritative N=2000 recompute.
+MIMIC-IV is not a column in this diagnostic matrix: its current input and
+code-derived outcome define a different structured-EHR task (§4.2), reported
+separately after the replacement protocol is locked.
 
-| Agent | Backbone | PP-Store | RareArena | RareBench | MIMIC | Avg |
-|---|---|---|---|---|---|---|
-| **lirical** (classical) | — | **0.47** [2000] | n/a HPO | **0.23** [1122] | n/a HPO | n/a (2-ds) |
-| **vc_rdagent** (offline) | — | **0.44** [663] | n/a HPO | **0.28** [1122] | n/a HPO | n/a (2-ds) |
-| medagents | Gemini Flash | 0.30 [1998] | 0.30 [2000] | 0.05 [1122] | 0.35 [956] | 0.25 |
-| llm_control | Gemini Flash | 0.29 [2000] | 0.28 [2000] | 0.02 [1122] | 0.32 [956] | 0.23 |
-| deeprare | Gemini Flash | 0.28 [609] | 0.00 [500] | **0.30** [953] | 0.00 [495] | 0.14 |
-| medagents | DS V4-Pro | 0.28 [2000] | 0.23 [2000] | 0.01 [1122] | 0.18 [956] | 0.18 |
-| mdagents | Gemini Flash | 0.28 [2000] | 0.28 [2000] | **0.10** [1122] | 0.38 [956] | 0.26 |
-| medagents | GPT-5 min | 0.28 [2000] | 0.26 [2000] | 0.01 [1122] | 0.32 [956] | 0.22 |
-| llm_control | DS V4-Pro | 0.27 [1999] | 0.19 [2000] | 0.02 [1121] | 0.25 [956] | 0.18 |
-| mdagents | DS V4-Pro | 0.27 [2000] | 0.22 [2000] | 0.04 [1122] | 0.22 [956] | 0.19 |
-| llm_control | DS V4-Flash | 0.26 [1998] | 0.21 [1976] | 0.05 [1021] | 0.27 [833] | 0.20 |
-| llm_control | GPT-5 min | 0.26 [1988] | 0.22 [1974] | 0.01 [1098] | 0.34 [944] | 0.20 |
-| medagents | DS V4-Flash | 0.26 [1942] | 0.24 [1292] | 0.05 [783] | 0.19 [783] | 0.19 |
-| mdagents | DS V4-Flash | 0.25 [1983] | 0.23 [1993] | 0.05 [1098] | 0.24 [942] | 0.19 |
-| mdagents | GPT-5 min | 0.24 [2000] | 0.23 [2000] | 0.01 [1122] | 0.31 [956] | 0.20 |
-| deeprare | DS V4-Flash | 0.22 [494] | 0.00 [479] | **0.29** [778] | 0.00 [432] | 0.13 |
-| agentclinic | Gemini Flash | 0.21 [1995] | 0.14 [1974] | 0.01 [1122] | 0.18 [956] | 0.14 |
-| agentclinic | DS V4-Pro | 0.18 [2000] | 0.12 [2000] | 0.01 [1122] | 0.19 [956] | 0.13 |
-| agentclinic | DS V4-Flash | 0.14 [1925] | 0.11 [1764] | 0.02 [860] | 0.25 [903] | 0.13 |
-| agentclinic | GPT-5 min | 0.13 [2000] | 0.10 [2000] | 0.00 [1122] | 0.22 [956] | 0.12 |
-| maidxo | Gemini Flash | 0.03 [81] | 0.07 [88] | 0.01 [703] | 0.11 [75] | 0.05 |
+| Agent | Backbone | PP-Store | RareArena | RareBench | Avg |
+|---|---|---|---|---|---|
+| **lirical** (classical) | — | **0.47** [2000] | n/a HPO | **0.23** [1122] | n/a (2-ds) |
+| **vc_rdagent** (offline) | — | **0.44** [663] | n/a HPO | **0.28** [1122] | n/a (2-ds) |
+| medagents | Gemini Flash | 0.30 [1998] | 0.30 [2000] | 0.05 [1122] | 0.22 |
+| llm_control | Gemini Flash | 0.29 [2000] | 0.28 [2000] | 0.02 [1122] | 0.20 |
+| deeprare | Gemini Flash | 0.28 [609] | 0.00 [500] | **0.30** [953] | 0.19 |
+| medagents | DS V4-Pro | 0.28 [2000] | 0.23 [2000] | 0.01 [1122] | 0.17 |
+| mdagents | Gemini Flash | 0.28 [2000] | 0.28 [2000] | **0.10** [1122] | 0.22 |
+| medagents | GPT-5 min | 0.28 [2000] | 0.26 [2000] | 0.01 [1122] | 0.18 |
+| llm_control | DS V4-Pro | 0.27 [1999] | 0.19 [2000] | 0.02 [1121] | 0.16 |
+| mdagents | DS V4-Pro | 0.27 [2000] | 0.22 [2000] | 0.04 [1122] | 0.18 |
+| llm_control | DS V4-Flash | 0.26 [1998] | 0.21 [1976] | 0.05 [1021] | 0.17 |
+| llm_control | GPT-5 min | 0.26 [1988] | 0.22 [1974] | 0.01 [1098] | 0.16 |
+| medagents | DS V4-Flash | 0.26 [1942] | 0.24 [1292] | 0.05 [783] | 0.18 |
+| mdagents | DS V4-Flash | 0.25 [1983] | 0.23 [1993] | 0.05 [1098] | 0.18 |
+| mdagents | GPT-5 min | 0.24 [2000] | 0.23 [2000] | 0.01 [1122] | 0.16 |
+| deeprare | DS V4-Flash | 0.22 [494] | 0.00 [479] | **0.29** [778] | 0.17 |
+| agentclinic | Gemini Flash | 0.21 [1995] | 0.14 [1974] | 0.01 [1122] | 0.12 |
+| agentclinic | DS V4-Pro | 0.18 [2000] | 0.12 [2000] | 0.01 [1122] | 0.10 |
+| agentclinic | DS V4-Flash | 0.14 [1925] | 0.11 [1764] | 0.02 [860] | 0.09 |
+| agentclinic | GPT-5 min | 0.13 [2000] | 0.10 [2000] | 0.00 [1122] | 0.08 |
+| maidxo | Gemini Flash | 0.03 [81] | 0.07 [88] | 0.01 [703] | 0.04 |
 
 Notes: (1) lirical/vc\_rdagent run only on HPO-input datasets (PP-Store /
-RareBench), so their Avg is not comparable to the 4-dataset LLM rows and is
+RareBench), so their Avg is not comparable to the 3-dataset LLM rows and is
 marked n/a (2-ds). (2) maidxo is systematically weak across all backbones (its
 panel degrades on HPO-list input, §7.2) and maidxo×GPT-5 is incompatible
 (§9 L1); we list the Gemini row as representative. (3) deeprare DS V4-Pro on
@@ -59,6 +57,7 @@ RareBench scores 0.44 [n=36] via the HPO+variant channel, but n is too small
 reasoning-off** (§5.2 Methods note 2); the thinking-mode contrast is in §8 H6.
 
 **Key cells** (all PP-Store/RareArena cells now on the common N=2000 sample):
+
 - Classical/offline baselines lead on PP-Store (lirical **0.47**, vc\_rdagent
   **0.44**), above any LLM row (best: medagents Gemini 0.30 / llm\_control
   Gemini 0.29) by **17 pp** (LIRICAL 0.47 − medagents 0.30; the gap is 18 pp
@@ -67,12 +66,12 @@ reasoning-off** (§5.2 Methods note 2); the thinking-mode contrast is in §8 H6.
 - On RareBench, deeprare (0.29-0.30) and the classical baselines (lirical 0.23 /
   vc\_rdagent 0.28) lead, while every other LLM scores ≤0.10 — see the F5
   ORPHA-sibling explanation.
-- deeprare scores 0.00 on the RareArena/MIMIC free-text layers (a structural
-  limitation, see the DeepRare reproduction note in Appendix B).
+- deeprare scores 0.00 on RareArena free text (a structural limitation; see
+  the DeepRare reproduction note in Appendix B).
 - **V4-Pro reasoning-off is competitive, not crippled**: 0.30 on PP-Store (the
   three scaffolds + llm\_control), on par with Gemini/V4-Flash/GPT-5
-  (0.27-0.31), and only slightly lower on MIMIC (0.18-0.25). This corroborates
-  the §8 H6 conclusion that thinking mode is not cost-effective on this task.
+  (0.27-0.31). This corroborates the §8 H6 conclusion that thinking mode is not
+  cost-effective on this task.
 
 ## 6.2 Backbone × scaffolding interaction
 
@@ -137,26 +136,23 @@ often none, not a uniform boost.** On Gemini Flash (common N=2000), medagents
 within the control's CI; mdagents (PP-Store 0.28) actually sits ~1 pp *below* the
 control, and agentclinic/maidxo regress sharply (§7.2). The benefit does not
 consistently exceed the no-scaffold control's CI and does not hold on every
-backbone. (MIMIC-IV is not recomputable in the frozen release — gold labels
-stripped — so we do not carry forward its point estimates here.) **(Revised down
+backbone. **(Revised down
 from the v0 "+5–7 pp" claim, which rested on a stale small-sample medagents 0.40.)**
 
 **F3: DeepSeek V4-Flash is ~10× cheaper than Gemini Flash but trades off
-accuracy, especially on free text.** Per-prediction cost $0.00041 (V4-Flash) vs
+accuracy.** Per-prediction cost $0.00041 (V4-Flash) vs
 $0.00321 (Gemini), but V4-Flash R@1 is consistently lower: PP-Store −2 to −5 pp
-(e.g. medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). On the (non-recomputable in
-the frozen release) MIMIC free-text slice earlier runs showed a larger drop. V4-Flash also showed a higher
+(e.g. medagents 0.25 vs 0.30; mdagents 0.25 vs 0.28). V4-Flash also showed a higher
 transient empty-content rate on free-text/HPO-list inputs (mitigated by a
 wrapper-level retry; see Appendix B). **Conclusion: V4-Flash is the
-cost-efficient choice when ~10× cost reduction outweighs a ~5–15 pp accuracy
+cost-efficient choice when ~10× cost reduction outweighs a ~2–6 pp accuracy
 drop, but it does NOT match Gemini quality.** (Reversed from v0.)
 
 **F4: GPT-5 minimal-reasoning is not worth its cost, and at full-N has no
 scaffold where it is the sole winner.** GPT-5 (`reasoning_effort=minimal`,
 forced because default reasoning consumes all max_tokens) ties the field on
 medagents PP-Store (0.28, where the medagents winner is Gemini at 0.30, V4-Pro-off at 0.28, GPT-5 at 0.28) and
-is strong on MIMIC (llm_control 0.34, medagents 0.32) yet **collapses** on
-AgentClinic OSCE dialogue (0.13, −10 pp vs Gemini). As the most expensive
+yet **collapses** on AgentClinic OSCE dialogue (0.13, −10 pp vs Gemini). As the most expensive
 backbone (~20× V4-Flash per prediction) with no consistent accuracy edge, it is
 hard to justify. The reasoning-channel question is answered directly by our H6
 ablation (§8): on the single-call LLM control, turning reasoning **on** (V4-Pro)
@@ -181,8 +177,7 @@ doesn't close the gap.
 > Notation note: §6 uses **F1–F5** for Findings (text). The figures below
 > use **Figure N**. The two namespaces do not overlap.
 
-- **Figure 1 a–d**: Per-dataset R@1 heatmap (agent × backbone, 4 datasets) —
-  `fig1_heatmap_{phenopacket_store,rarearena_rds,rarebench,mimic_diverse}.png`
+- Per-dataset R@1 analyses use only the three diagnostic datasets.
 - **Figure 2**: Cost-vs-accuracy scatter (each cell as one point) —
   `fig2_cost_vs_accuracy.png`
 - **Figure 3**: Per-dataset agent ranking bar chart —

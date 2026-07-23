@@ -1,25 +1,25 @@
-\hypertarget{appendix-j-cost-analysis-cost-vs-accuracy}{%
-\section{Appendix J --- Cost Analysis \& Cost-vs-Accuracy}\label{appendix-j-cost-analysis-cost-vs-accuracy}}
+\section{Appendix J --- Cost Analysis \& Cost-vs-Accuracy}\label{appendix-j-cost-analysis-cost-vs-accuracy}
 
 \begin{quote}
-Source: \texttt{data/round2/phase4a\_receipts.csv} (93 cells, refreshed at
-every report-regen). All USD figures are exact for the six OpenRouter-
+Source: diagnostic-task rows in \texttt{data/round2/phase4a\_receipts.csv};
+legacy MIMIC ICD-title rows are excluded and the replacement
+structured-EHR task will receive a separate cost receipt.
+All USD figures are exact for the six OpenRouter-
 wrapped adapters; estimated within \ensuremath{\leq}5\% error band for the three off-
 wrapper adapters (LIRICAL, VC-RDAgent, RDMA --- marked \texttt{\dag{}} below).
 \end{quote}
 
-\hypertarget{j.1-cumulative-cost-by-backbone}{%
-\subsection{J.1 Cumulative cost by backbone}\label{j.1-cumulative-cost-by-backbone}}
+\subsection{J.1 Cumulative cost by backbone}\label{j.1-cumulative-cost-by-backbone}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Cumulative cost by backbone.}\label{tbl:jcostbb}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Backbone
@@ -33,22 +33,20 @@ Total cost USD
 Cost per 1k cases USD
 \end{minipage} \\
 \midrule
-GPT-5 min & 20 & 24,549 & \$189.38 & \$7.71 \\
-Gemini Flash & 24 & 27,783 & \$94.57 & \$3.40 \\
-DS V4-Pro & 24 & 24,556 & \$22.99 & \$0.94 \\
-DS V4-Flash & 21 & 24,294 & \$8.27 & \$0.34 \\
+GPT-5 min & 15 & 20,683 & \$163.50 & \$7.91 \\
+Gemini Flash & 18 & 23,389 & \$80.48 & \$3.44 \\
+DS V4-Pro & 18 & 20,666 & \$19.95 & \$0.97 \\
+DS V4-Flash & 16 & 20,401 & \$6.80 & \$0.33 \\
 LIRICAL\dag{} & 2 & 3,122 & \$0.00 & \$0.00 \\
 VC-RDAgent\dag{} & 2 & 1,785 & \$0.00 & \$0.00 \\
-\textbf{TOTAL} & 93 & 106,089 & \textbf{\$315.21} & --- \\
-\bottomrule
+\textbf{TOTAL} & 71 & 90,046 & \textbf{\$270.74} & --- \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 \texttt{\dag{}} = cost estimated from token counts; \ensuremath{\leq}5\% band.
 
-\hypertarget{j.2-cost-per-case-ranking-cells-with-n_ok-50}{%
-\subsection{J.2 Cost-per-case ranking (cells with n\_ok \ensuremath{\geq} 50)}\label{j.2-cost-per-case-ranking-cells-with-n_ok-50}}
+\subsection{J.2 Cost-per-case ranking (cells with n\_ok \ensuremath{\geq} 50)}\label{j.2-cost-per-case-ranking-cells-with-n_ok-50}
 
 Lower = more cost-efficient. Useful when deciding which (agent \ensuremath{\times} backbone) cell to use at deployment scale.
 
@@ -56,15 +54,15 @@ Lower = more cost-efficient. Useful when deciding which (agent \ensuremath{\time
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Most cost-efficient (agent, backbone, dataset) cells.}\label{tbl:jcosteff}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Rank
@@ -91,25 +89,23 @@ Lat/case
 3 & rarebench & \texttt{lirical} & LIRICAL & 1122 & 0.23 & \$0.000/k & \$0.00 & 3.8s \\
 4 & rarebench & \texttt{vc\_rdagent} & VC-RDAgent & 1122 & 0.28 & \$0.000/k & \$0.00 & 75.4s \\
 5 & rarebench & \texttt{mdagents} & DS V4-Flash & 1098 & 0.05 & \$0.061/k & \$0.07 & 58.6s \\
-6 & mimic\_diverse & \texttt{mdagents} & DS V4-Flash & 942 & 0.24 & \$0.062/k & \$0.06 & 55.2s \\
-7 & phenopacket\_store & \texttt{mdagents} & DS V4-Flash & 1983 & 0.25 & \$0.067/k & \$0.13 & 30.5s \\
-8 & rarearena\_rds & \texttt{mdagents} & DS V4-Flash & 1993 & 0.23 & \$0.096/k & \$0.19 & 32.0s \\
-9 & mimic\_diverse & \texttt{llm\_control} & DS V4-Pro & 956 & 0.25 & \$0.171/k & \$0.16 & 3.0s \\
-10 & phenopacket\_store & \texttt{agentclinic} & DS V4-Flash & 1925 & 0.14 & \$0.216/k & \$0.42 & 111.3s \\
-11 & mimic\_diverse & \texttt{agentclinic} & DS V4-Flash & 903 & 0.25 & \$0.216/k & \$0.20 & 96.4s \\
-12 & rarebench & \texttt{agentclinic} & DS V4-Flash & 860 & 0.02 & \$0.223/k & \$0.19 & 98.2s \\
-13 & rarearena\_rds & \texttt{agentclinic} & DS V4-Flash & 1764 & 0.11 & \$0.238/k & \$0.42 & 87.0s \\
-14 & rarebench & \texttt{llm\_control} & DS V4-Pro & 1121 & 0.02 & \$0.244/k & \$0.27 & 4.2s \\
-15 & phenopacket\_store & \texttt{llm\_control} & DS V4-Flash & 1998 & 0.26 & \$0.247/k & \$0.49 & 19.3s \\
-\bottomrule
+6 & phenopacket\_store & \texttt{mdagents} & DS V4-Flash & 1983 & 0.25 & \$0.067/k & \$0.13 & 30.5s \\
+7 & rarearena\_rds & \texttt{mdagents} & DS V4-Flash & 1993 & 0.23 & \$0.096/k & \$0.19 & 32.0s \\
+8 & phenopacket\_store & \texttt{agentclinic} & DS V4-Flash & 1925 & 0.14 & \$0.216/k & \$0.42 & 111.3s \\
+9 & rarebench & \texttt{agentclinic} & DS V4-Flash & 860 & 0.02 & \$0.223/k & \$0.19 & 98.2s \\
+10 & rarearena\_rds & \texttt{agentclinic} & DS V4-Flash & 1764 & 0.11 & \$0.238/k & \$0.42 & 87.0s \\
+11 & rarebench & \texttt{llm\_control} & DS V4-Pro & 1121 & 0.02 & \$0.244/k & \$0.27 & 4.2s \\
+12 & phenopacket\_store & \texttt{llm\_control} & DS V4-Flash & 1998 & 0.26 & \$0.247/k & \$0.49 & 19.3s \\
+13 & rarebench & \texttt{mdagents} & DS V4-Pro & 1122 & 0.04 & \$0.264/k & \$0.30 & 11.3s \\
+14 & rarearena\_rds & \texttt{llm\_control} & DS V4-Flash & 1976 & 0.21 & \$0.281/k & \$0.56 & 32.5s \\
+15 & phenopacket\_store & \texttt{llm\_control} & DS V4-Pro & 1999 & 0.27 & \$0.292/k & \$0.58 & 5.6s \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 (Lirical / VC-RDAgent / RDMA = \$0 --- no LLM calls.)
 
-\hypertarget{j.3-top-spend-cells-cells-with-cost-1}{%
-\subsection{J.3 Top-spend cells (cells with cost \textgreater{} \$1)}\label{j.3-top-spend-cells-cells-with-cost-1}}
+\subsection{J.3 Top-spend cells (cells with cost \textgreater{} \$1)}\label{j.3-top-spend-cells-cells-with-cost-1}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
@@ -125,28 +121,26 @@ phenopacket\_store & \texttt{agentclinic} & GPT-5 min & 2000 & 0.13 & \$17.28 \\
 rarearena\_rds & \texttt{agentclinic} & GPT-5 min & 2000 & 0.10 & \$16.86 \\
 rarebench & \texttt{medagents} & GPT-5 min & 1122 & 0.01 & \$15.38 \\
 rarebench & \texttt{deeprare} & Gemini Flash & 953 & 0.30 & \$14.41 \\
-mimic\_diverse & \texttt{medagents} & GPT-5 min & 956 & 0.32 & \$11.41 \\
 rarearena\_rds & \texttt{medagents} & Gemini Flash & 2000 & 0.30 & \$10.91 \\
 rarebench & \texttt{agentclinic} & GPT-5 min & 1122 & 0.00 & \$9.92 \\
 phenopacket\_store & \texttt{medagents} & Gemini Flash & 1998 & 0.30 & \$9.87 \\
 phenopacket\_store & \texttt{deeprare} & Gemini Flash & 609 & 0.28 & \$8.51 \\
-mimic\_diverse & \texttt{agentclinic} & GPT-5 min & 956 & 0.22 & \$7.81 \\
-\bottomrule
+rarearena\_rds & \texttt{mdagents} & GPT-5 min & 2000 & 0.23 & \$6.58 \\
+phenopacket\_store & \texttt{llm\_control} & GPT-5 min & 1988 & 0.26 & \$6.52 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\hypertarget{j.4-best-r1-per-cost-band-cheapest-agent-that-hits-r1-threshold}{%
-\subsection{J.4 Best R@1 per cost band (cheapest agent that hits R@1 \ensuremath{\geq} threshold)}\label{j.4-best-r1-per-cost-band-cheapest-agent-that-hits-r1-threshold}}
+\subsection{J.4 Best R@1 per cost band (cheapest agent that hits R@1 \ensuremath{\geq} threshold)}\label{j.4-best-r1-per-cost-band-cheapest-agent-that-hits-r1-threshold}
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{Cheapest cell exceeding each R@1 band.}\label{tbl:jcostband}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Dataset
@@ -158,17 +152,14 @@ R@1 \ensuremath{\geq} 0.30 cheapest
 R@1 \ensuremath{\geq} 0.35 cheapest
 \end{minipage} \\
 \midrule
-mimic\_diverse & \texttt{agentclinic} (DS V4-Flash) \$0.22/k & \texttt{llm\_control} (Gemini Flash) \$0.68/k & \texttt{mdagents} (Gemini Flash) \$0.87/k \\
 phenopacket\_store & \texttt{lirical} (LIRICAL) \$0.00/k & \texttt{lirical} (LIRICAL) \$0.00/k & \texttt{lirical} (LIRICAL) \$0.00/k \\
 rarearena\_rds & \texttt{llm\_control} (Gemini Flash) \$0.89/k & \texttt{medagents} (Gemini Flash) \$5.46/k & --- \\
 rarebench & \texttt{vc\_rdagent} (VC-RDAgent) \$0.00/k & --- & --- \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
-\hypertarget{j.5-cost-efficiency-dichotomy}{%
-\subsection{J.5 Cost-efficiency dichotomy}\label{j.5-cost-efficiency-dichotomy}}
+\subsection{J.5 Cost-efficiency dichotomy}\label{j.5-cost-efficiency-dichotomy}
 
 \begin{itemize}
 \tightlist
@@ -179,17 +170,16 @@ rarebench & \texttt{vc\_rdagent} (VC-RDAgent) \$0.00/k & --- & --- \\
   cost-efficiency story.
 \item
   \textbf{DeepSeek V4-Flash} is the cheapest LLM at \$5--10 per cell, but trades
-  off accuracy (\ensuremath{-}2 to \ensuremath{-}16 pp R@1 vs Gemini Flash). For deployment at scale
-  on free-text datasets the \ensuremath{-}16 pp is large enough to recommend Gemini over
-  V4-Flash; on HPO-list inputs the \ensuremath{-}5 pp gap may be acceptable.
+  off accuracy (typically \ensuremath{-}2 to \ensuremath{-}6 pp R@1 vs Gemini Flash on the three
+  diagnostic datasets). The gap is largest on RareArena free text; on
+  HPO-list inputs the smaller gap may be acceptable.
 \item
   \textbf{GPT-5 minimal} is the most expensive per-case (\$0.012--0.05) without a
   consistent accuracy edge (F4 in \Cref{sec-6}). Cost-per-correct-prediction on GPT-5
   is therefore the worst of the four backbones at any N.
 \end{itemize}
 
-\hypertarget{j.6-reproducibility-note}{%
-\subsection{J.6 Reproducibility note}\label{j.6-reproducibility-note}}
+\subsection{J.6 Reproducibility note}\label{j.6-reproducibility-note}
 
 The receipts CSV is regenerated by \texttt{scripts/regen\_receipts\_and\_figures.py}
 and the per-backbone running total by \texttt{scripts/cost\_tracker.py\ -\/-budget\ X}.

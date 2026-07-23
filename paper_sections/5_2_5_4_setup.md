@@ -128,8 +128,8 @@ acceptance.
 **Why this matters operationally.** Pre-registration means the 200-case
 PMC OA post-cutoff holdout is evaluated **once**, with the metric and
 agent set declared in advance — there is no opportunity to retry on a
-better-looking subset. The four pre-cutoff training-style layers
-(Phenopacket-Store, RareBench, RareArena, MIMIC-IV rare-disease slice)
+better-looking subset. The three pre-cutoff diagnostic layers
+(Phenopacket-Store, RareBench, RareArena)
 remain open for development, but every cell published in Table 1 / §6
 is locked to the pre-registered protocol and ships with a per-cell
 reproducibility receipt (run-id, OpenRouter request-id, cost).

@@ -40,15 +40,15 @@ CCRD ID or cross-map to one via Orphadata.
 ORPHA candidates in `extra["ranked_predictions_variants"]`; evaluator
 returns True if **any** tied variant hits gold.
 
-**Result** (Phase 4a, N=100 × 4 datasets × 5 backbones):
+**Legacy result audit** (Phase 4a originally ran N=100 × 4 datasets × 5
+backbones; the table below reports only the three diagnostic datasets):
 
 | Dataset | Aggregate Δ R@1 | Aggregate Δ R@5 |
 |---|---|---|
 | Phenopacket-Store | **+0.03** | **+0.06** |
 | RareArena RDS | **+0.02** | **+0.04** |
 | RareBench HF | +0.00 | +0.00 |
-| MIMIC diverse | +0.01 | +0.02 |
-| **All combined** | **+0.013** | **+0.024** |
+| **All diagnostic datasets combined** | **+0.010** | **+0.020** |
 
 **Top-impacted cells**:
 - PP-Store mdagents: +3 pp R@1, +6 pp R@5
@@ -117,13 +117,13 @@ which A9 disentangles:
 
 **(a) Borderline-slow but legitimate cells — cap matters.** During the
 N=500 rerun, `medagents × DS V4-Flash` and `agentclinic × DS V4-Flash`
-on RareBench/MIMIC showed many `timeout` records at the default **300s**
+on RareBench and the legacy MIMIC ICD-title task showed many `timeout` records at the default **300s**
 cap. A probe re-ran a representative medagents timeout case at a **900s**
 cap and it completed successfully in **309s** — i.e. the case was not
 hung, the 300s cap was simply slightly too tight (compounded by the
 empty-content retry adding extra subprocess invocations). Raising the cap to **600s** and
 re-running recovered these cells essentially completely (agentclinic
-RareBench 60/60 ok, MIMIC 37/37 ok; medagents MIMIC 267/268 ok). DS
+RareBench 60/60 ok; legacy MIMIC agentclinic 37/37 and medagents 267/268). DS
 V4-Pro remained slow enough that 600s still left a small timeout tail
 (mdagents V4-Pro RareBench 21/36 recovered) — genuine backbone latency,
 reported honestly.

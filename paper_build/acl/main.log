@@ -1,406 +1,336 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2026.7.17)  23 JUL 2026 09:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.9)  24 JUL 2026 00:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-01-16>
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@section=\count186
-\c@subsection=\count187
-\c@subsubsection=\count188
-\c@paragraph=\count189
-\c@subparagraph=\count190
-\c@figure=\count191
-\c@table=\count192
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks16
-\inpenc@posthook=\toks17
+\c@part=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
 ) (./acl.sty
 Conference Style for ACL
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 227.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
-Package xcolor Info: Model `RGB' extended on input line 1369.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
-)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count193
-\Gm@cntv=\count194
-\c@Gm@tempcnt=\count195
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
-\Gm@dimlist=\toks19
+\Gm@cnth=\count284
+\Gm@cntv=\count285
+\c@Gm@tempcnt=\count286
+\Gm@bindingoffset=\dimen151
+\Gm@wd@mp=\dimen152
+\Gm@odd@mp=\dimen153
+\Gm@even@mp=\dimen154
+\Gm@layoutwidth=\dimen155
+\Gm@layoutheight=\dimen156
+\Gm@layouthoffset=\dimen157
+\Gm@layoutvoffset=\dimen158
+\Gm@dimlist=\toks20
 )
-\titlebox=\skip50
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2022/03/01 v3.6b Customizing captions (AR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen149
-\captionmargin=\dimen150
-\caption@leftmargin=\dimen151
-\caption@rightmargin=\dimen152
-\caption@width=\dimen153
-\caption@indent=\dimen154
-\caption@parindent=\dimen155
-\caption@hangindent=\dimen156
+\titlebox=\skip51
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen159
+\captionmargin=\dimen160
+\caption@leftmargin=\dimen161
+\caption@rightmargin=\dimen162
+\caption@width=\dimen163
+\caption@indent=\dimen164
+\caption@parindent=\dimen165
+\caption@hangindent=\dimen166
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count196
-\c@continuedfloat=\count197
-)
-(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+\c@caption@flags=\count287
+\c@continuedfloat=\count288
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip51
-\bibsep=\skip52
+\bibhang=\skip52
+\bibsep=\skip53
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count198
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+\c@NAT@ctr=\count289
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+)) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
-Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
-
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count199
+\c@section@level=\count290
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count291
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen157
-\Hy@linkcounter=\count266
-\Hy@pagecounter=\count267
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
+\@linkdim=\dimen167
+\Hy@linkcounter=\count292
+\Hy@pagecounter=\count293
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
-Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-)
-\Hy@SavedSpaceFactor=\count268
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count294
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 4045.
-Package hyperref Info: Hyper figures OFF on input line 4162.
-Package hyperref Info: Link nesting OFF on input line 4167.
-Package hyperref Info: Hyper index ON on input line 4170.
-Package hyperref Info: Plain pages OFF on input line 4177.
-Package hyperref Info: Backreferencing OFF on input line 4182.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4070.
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4410.
-\c@Hy@tempcnt=\count269
-
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip16
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count295
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4748.
-\XeTeXLinkMargin=\dimen158
-
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen168
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count270
-\Field@Width=\dimen159
-\Fld@charsize=\dimen160
-Package hyperref Info: Hyper figures OFF on input line 6027.
-Package hyperref Info: Link nesting OFF on input line 6032.
-Package hyperref Info: Hyper index ON on input line 6035.
-Package hyperref Info: backreferencing OFF on input line 6042.
-Package hyperref Info: Link coloring OFF on input line 6047.
-Package hyperref Info: Link coloring with OCG OFF on input line 6052.
-Package hyperref Info: PDF/A mode OFF on input line 6057.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
-)
-\Hy@abspage=\count271
-\c@Item=\count272
-\c@Hfootnote=\count273
+\Fld@menulength=\count296
+\Field@Width=\dimen169
+\Fld@charsize=\dimen170
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count297
+\c@Item=\count298
+\c@Hfootnote=\count299
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2022-11-13 v7.00u Hyperref driver for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
-kage
-with kernel methods
-)
-\Fld@listcount=\count274
-\c@bookmark@seq@number=\count275
-
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-06-17 v7.01r Hyperref driver for pdfTeX
+\Fld@listcount=\count300
+\c@bookmark@seq@number=\count301
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-85.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip53
+\Hy@SectionHShift=\skip54
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 305.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 106.
 )
-\Gin@req@height=\dimen161
-\Gin@req@width=\dimen162
-)
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+\Gin@req@height=\dimen171
+\Gin@req@width=\dimen172
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen163
-\lightrulewidth=\dimen164
-\cmidrulewidth=\dimen165
-\belowrulesep=\dimen166
-\belowbottomsep=\dimen167
-\aboverulesep=\dimen168
-\abovetopsep=\dimen169
-\cmidrulesep=\dimen170
-\cmidrulekern=\dimen171
-\defaultaddspace=\dimen172
-\@cmidla=\count276
-\@cmidlb=\count277
-\@aboverulesep=\dimen173
-\@belowrulesep=\dimen174
-\@thisruleclass=\count278
-\@lastruleclass=\count279
-\@thisrulewidth=\dimen175
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count280
-\LTcapwidth=\dimen176
-\LT@head=\box51
-\LT@firsthead=\box52
-\LT@foot=\box53
-\LT@lastfoot=\box54
-\LT@gbox=\box55
-\LT@cols=\count281
-\LT@rows=\count282
-\c@LT@tables=\count283
-\c@LT@chunks=\count284
-\LT@p@ftn=\toks20
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
-Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen177
-\ar@mcellbox=\box56
-\extrarowheight=\dimen178
-\NC@list=\toks21
-\extratabsurround=\skip58
-\backup@length=\skip59
-\ar@cellbox=\box57
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count285
-\calc@Bcount=\count286
-\calc@Adimen=\dimen179
-\calc@Bdimen=\dimen180
-\calc@Askip=\skip60
-\calc@Bskip=\skip61
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count287
-\calc@Cskip=\skip62
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
-Package: fvextra 2022/11/30 v1.5 fvextra - extensions and patches for fancyvrb
-
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count288
-)
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
-\FV@CodeLineNo=\count289
+\heavyrulewidth=\dimen173
+\lightrulewidth=\dimen174
+\cmidrulewidth=\dimen175
+\belowrulesep=\dimen176
+\belowbottomsep=\dimen177
+\aboverulesep=\dimen178
+\abovetopsep=\dimen179
+\cmidrulesep=\dimen180
+\cmidrulekern=\dimen181
+\defaultaddspace=\dimen182
+\@cmidla=\count302
+\@cmidlb=\count303
+\@aboverulesep=\dimen183
+\@belowrulesep=\dimen184
+\@thisruleclass=\count304
+\@lastruleclass=\count305
+\@thisrulewidth=\dimen185
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count306
+\LTcapwidth=\dimen186
+\LT@head=\box53
+\LT@firsthead=\box54
+\LT@foot=\box55
+\LT@lastfoot=\box56
+\LT@gbox=\box57
+\LT@cols=\count307
+\LT@rows=\count308
+\c@LT@tables=\count309
+\c@LT@chunks=\count310
+\LT@p@ftn=\toks21
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
+\col@sep=\dimen187
+\ar@mcellbox=\box58
+\extrarowheight=\dimen188
+\NC@list=\toks22
+\extratabsurround=\skip59
+\backup@length=\skip60
+\ar@cellbox=\box59
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count311
+\calc@Bcount=\count312
+\calc@Adimen=\dimen189
+\calc@Bdimen=\dimen190
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count313
+\calc@Cskip=\skip63
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyvrb
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
+\FV@CodeLineNo=\count314
 \FV@InFile=\read2
-\FV@TabBox=\box58
-\c@FancyVerbLine=\count290
-\FV@StepNumber=\count291
+\FV@TabBox=\box60
+\c@FancyVerbLine=\count315
+\FV@StepNumber=\count316
 \FV@OutFile=\write3
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2026/03/08 line numbers on paragraphs v5.9
+\linenopenalty=\count317
+\output=\toks23
+\linenoprevgraf=\count318
+\linenumbersep=\dimen191
+\linenumberwidth=\dimen192
+\c@linenumber=\count319
+\c@pagewiselinenumber=\count320
+\c@LN@truepage=\count321
+\c@internallinenumber=\count322
+\c@internallinenumbers=\count323
+\quotelinenumbersep=\dimen193
+\bframerule=\dimen194
+\bframesep=\dimen195
+\bframebox=\box61
 )
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-)
-(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
-Package: lineno 2023/01/19 line numbers on paragraphs v5.1
-\linenopenalty=\count292
-\output=\toks22
-\linenoprevgraf=\count293
-\linenumbersep=\dimen181
-\linenumberwidth=\dimen182
-\c@linenumber=\count294
-\c@pagewiselinenumber=\count295
-\c@LN@truepage=\count296
-\c@internallinenumber=\count297
-\c@internallinenumbers=\count298
-\quotelinenumbersep=\dimen183
-\bframerule=\dimen184
-\bframesep=\dimen185
-\bframebox=\box59
-LaTeX Info: Redefining \\ on input line 3131.
-)
-\c@FV@TrueTabGroupLevel=\count299
-\c@FV@TrueTabCounter=\count300
-\FV@TabBox@Group=\box60
-\FV@TmpLength=\skip63
-\c@FV@HighlightLinesStart=\count301
-\c@FV@HighlightLinesStop=\count302
-\FV@LoopCount=\count303
-\FV@NCharsBox=\box61
-\FV@BreakIndent=\dimen186
-\FV@BreakIndentNChars=\count304
-\FV@BreakSymbolSepLeft=\dimen187
-\FV@BreakSymbolSepLeftNChars=\count305
-\FV@BreakSymbolSepRight=\dimen188
-\FV@BreakSymbolSepRightNChars=\count306
-\FV@BreakSymbolIndentLeft=\dimen189
-\FV@BreakSymbolIndentLeftNChars=\count307
-\FV@BreakSymbolIndentRight=\dimen190
-\FV@BreakSymbolIndentRightNChars=\count308
-\c@FancyVerbLineBreakLast=\count309
-\FV@LineBox=\box62
-\FV@LineIndentBox=\box63
-\c@FV@BreakBufferDepth=\count310
-\FV@LineWidth=\dimen191
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+\c@FancyVerbWriteLine=\count324
+\c@FancyVerbBufferLine=\count325
+\c@FV@TrueTabGroupLevel=\count326
+\c@FV@TrueTabCounter=\count327
+\FV@TabBox@Group=\box62
+\FV@bgcolorstructbox=\box63
+\FV@TmpLength=\skip64
+\c@FV@HighlightLinesStart=\count328
+\c@FV@HighlightLinesStop=\count329
+\FV@LoopCount=\count330
+\FV@NCharsBox=\box64
+\FV@BreakIndent=\dimen196
+\FV@BreakIndentNChars=\count331
+\FV@BreakSymbolSepLeft=\dimen197
+\FV@BreakSymbolSepLeftNChars=\count332
+\FV@BreakSymbolSepRight=\dimen198
+\FV@BreakSymbolSepRightNChars=\count333
+\FV@BreakSymbolIndentLeft=\dimen199
+\FV@BreakSymbolIndentLeftNChars=\count334
+\FV@BreakSymbolIndentRight=\dimen256
+\FV@BreakSymbolIndentRightNChars=\count335
+\c@FancyVerbLineBreakLast=\count336
+\FV@LineBox=\box65
+\FV@LineIndentBox=\box66
+\c@FV@BreakBufferDepth=\count337
+\FV@LineWidth=\dimen257
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/hyphenat/hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
 
 
@@ -412,107 +342,99 @@ Package hyphenat Warning: *******************************
 
 \langwohyphens=\language3
 LaTeX Info: Redefining \_ on input line 43.
-) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip64
-\multirow@cntb=\count311
-\multirow@dima=\skip65
-\bigstrutjot=\dimen192
-)
-(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip65
+\multirow@cntb=\count338
+\multirow@dima=\skip66
+\bigstrutjot=\dimen258
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen193
-\c@nlinenum=\count312
-\TeXr@lab=\toks23
-)
-(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
-\everycr=\toks24
-\minrowclearance=\skip66
-\rownum=\count313
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2022/04/08 v2.17n AMS math features
-\@mathmargin=\skip67
+\rotheadsize=\dimen259
+\c@nlinenum=\count339
+\TeXr@lab=\toks24
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
+
+new hooks used!!
+\minrowclearance=\skip67
+\rownum=\count340
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
+\@mathmargin=\skip68
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks25
-\ex@=\dimen194
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\ex@=\dimen260
+)) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen195
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+\pmbraise@=\dimen261
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count314
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count315
-\leftroot@=\count316
-LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count317
-\DOTSCASE@=\count318
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box64
-\strutbox@=\box65
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen196
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count319
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count320
-\dotsspace@=\muskip17
-\c@parentequation=\count321
-\dspbrk@lvl=\count322
+\inf@bad=\count341
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count342
+\leftroot@=\count343
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count344
+\DOTSCASE@=\count345
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box67
+\strutbox@=\box68
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen262
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count346
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count347
+\dotsspace@=\muskip18
+\c@parentequation=\count348
+\dspbrk@lvl=\count349
 \tag@help=\toks26
-\row@=\count323
-\column@=\count324
-\maxfields@=\count325
+\row@=\count350
+\column@=\count351
+\maxfields@=\count352
 \andhelp@=\toks27
-\eqnshift@=\dimen197
-\alignsep@=\dimen198
-\tagshift@=\dimen199
-\tagwidth@=\dimen256
-\totwidth@=\dimen257
-\lineht@=\dimen258
+\eqnshift@=\dimen263
+\alignsep@=\dimen264
+\tagshift@=\dimen265
+\tagwidth@=\dimen266
+\totwidth@=\dimen267
+\lineht@=\dimen268
 \@envbody=\toks28
-\multlinegap=\skip68
-\multlinetaggap=\skip69
+\multlinegap=\skip69
+\multlinetaggap=\skip70
 \mathdisplay@stack=\toks29
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
 )
-\linenoamsmath@ams@eqpen=\count326
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+\@LN@amsmath@ams@eqpen=\count353
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+)) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
 LaTeX Info: Redefining \cref on input line 2370.
@@ -525,23 +447,17 @@ LaTeX Info: Redefining \cpagerefrange on input line 2370.
 LaTeX Info: Redefining \Cpagerefrange on input line 2370.
 LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
-Package cleveref Info: always capitalise cross-reference names on input line 78
-30.
-Package cleveref Info: always capitalise cross-reference names on input line 78
-52.
+Package cleveref Info: always capitalise cross-reference names on input line 7830.
+Package cleveref Info: always capitalise cross-reference names on input line 7852.
 )
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 40
-.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+==> First Aid for cleveref.sty applied!
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 40.
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count327
-\l__pdf_internal_box=\box66
-)
-(./main.aux)
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count354
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
@@ -562,35 +478,30 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
 LaTeX Font Info:    ... okay on input line 40.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
 LaTeX Font Info:    ... okay on input line 40.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count328
-\scratchdimen=\dimen259
-\scratchbox=\box67
-\nofMPsegments=\count329
-\nofMParguments=\count330
+\scratchcounter=\count355
+\scratchdimen=\dimen269
+\scratchbox=\box69
+\nofMPsegments=\count356
+\nofMParguments=\count357
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count331
-\MPscratchDim=\dimen260
-\MPnumerator=\count332
-\makeMPintoPDFobject=\count333
+\MPscratchCnt=\count358
+\MPscratchDim=\dimen270
+\MPnumerator=\count359
+\makeMPintoPDFobject=\count360
 \everyMPtoPDFconversion=\toks31
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+) (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/grfext/grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -629,19 +540,17 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 40.
- (./main.out)
-(./main.out)
+ (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 40
-.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 40.
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
@@ -673,30 +582,26 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/sc' in size <10.95> not available
 (Font)              Font shape `T1/pcr/b/sc' tried instead on input line 40.
 
 LaTeX Font Warning: Font shape `T1/pcr/sbx/sc' undefined
-(Font)              using `T1/pcr/sb/sc' instead on input line 40.
+(Font)              using `T1/pcr/bx/sc' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/sb/n' undefined
-(Font)              using `T1/pcr/m/n' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/sbx/n' undefined
+(Font)              using `T1/pcr/bx/n' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/sb/it' undefined
-(Font)              using `T1/pcr/sb/n' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/sbx/it' undefined
+(Font)              using `T1/pcr/bx/it' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/sb/sl' undefined
-(Font)              using `T1/pcr/sb/it' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/sbx/sl' undefined
+(Font)              using `T1/pcr/bx/sl' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/sb/scit' undefined
-(Font)              using `T1/pcr/sb/sc' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/bx/scsl' undefined
+(Font)              using `T1/pcr/bx/sc' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/sb/sc' undefined
-(Font)              using `T1/pcr/sb/n' instead on input line 40.
-
-
-LaTeX Font Warning: Font shape `T1/pcr/sbc/sc' undefined
+LaTeX Font Warning: Font shape `T1/pcr/bc/sc' undefined
 (Font)              using `T1/pcr/c/sc' instead on input line 40.
 
 
@@ -721,27 +626,27 @@ LaTeX Font Warning: Font shape `T1/pcr/c/sc' undefined
 
 
 LaTeX Font Warning: Font shape `T1/pcr/lc/sc' undefined
-(Font)              using `T1/pcr/l/sc' instead on input line 40.
+(Font)              using `T1/pcr/c/sc' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/l/n' undefined
-(Font)              using `T1/pcr/m/n' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/lc/n' undefined
+(Font)              using `T1/pcr/c/n' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/l/it' undefined
-(Font)              using `T1/pcr/l/n' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/lc/it' undefined
+(Font)              using `T1/pcr/c/it' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/l/sl' undefined
-(Font)              using `T1/pcr/l/it' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/c/sl' undefined
+(Font)              using `T1/pcr/c/it' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/l/scit' undefined
-(Font)              using `T1/pcr/l/sc' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/lc/it' undefined
+(Font)              using `T1/pcr/c/it' instead on input line 40.
 
 
-LaTeX Font Warning: Font shape `T1/pcr/l/sc' undefined
-(Font)              using `T1/pcr/l/n' instead on input line 40.
+LaTeX Font Warning: Font shape `T1/pcr/c/scit' undefined
+(Font)              using `T1/pcr/c/sc' instead on input line 40.
 
 
 LaTeX Font Warning: Font shape `T1/pcr/m/ui' undefined
@@ -755,58 +660,73 @@ LaTeX Font Warning: Font shape `T1/pcr/bx/ui' undefined
 LaTeX Font Warning: Font shape `T1/pcr/m/In' undefined
 (Font)              using `T1/pcr/m/n' instead on input line 40.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 41
-.
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./tex/abstract.tex
-Underfull \hbox (badness 5741) in paragraph at lines 5--15
+(./tex/abstract.tex
+Underfull \hbox (badness 5741) in paragraph at lines 4--15
 \T1/ptm/m/n/10 Rare dis-ease di-ag-nos-tic AI agents have
  []
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 5--15
+Underfull \hbox (badness 3312) in paragraph at lines 4--15
 \T1/ptm/m/n/10 no shared bench-mark ex-ists; each agent
  []
 
 
-Underfull \hbox (badness 1264) in paragraph at lines 5--15
+Underfull \hbox (badness 1264) in paragraph at lines 4--15
 \T1/ptm/m/n/10 ing cross-system claims un-ver-i-fi-able. We
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 5--15
-\T1/ptm/m/n/10 bench-mark span-ning five ca-pa-bil-ity pil-lars
+Underfull \hbox (badness 10000) in paragraph at lines 4--15
+\T1/ptm/m/n/10 bench-mark span-ning five ca-pa-bil-ity pil-
  []
 
 
-Underfull \hbox (badness 4229) in paragraph at lines 5--15
-\T1/ptm/m/n/10 genotype-aware DDx, family-aware DDx,
+Underfull \hbox (badness 1852) in paragraph at lines 4--15
+\T1/ptm/m/n/10 lars (phe-no-type ex-trac-tion, phenotype-only
  []
 
 
-Underfull \hbox (badness 6526) in paragraph at lines 5--15
-\T1/ptm/m/n/10 clinical-communication faith-ful-ness) on a
+Underfull \hbox (badness 3386) in paragraph at lines 4--15
+\T1/ptm/m/n/10 DDx, genotype-aware DDx, family-aware
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--15
-\T1/ptm/m/n/10 RareBench HF 1,122; RareArena RDS
+Underfull \hbox (badness 5862) in paragraph at lines 4--15
+\T1/ptm/m/n/10 DDx, clinical-communication faith-ful-ness)
  []
 
 
+Underfull \hbox (badness 6825) in paragraph at lines 4--15
+\T1/ptm/m/n/10 on a lay-ered dataset (Phenopacket-Store
+ []
+
+
+Underfull \hbox (badness 5504) in paragraph at lines 4--15
+\T1/ptm/m/n/10 8 agent sys-tems (Deep-Rare, MDA-gents,
+ []
+
+
+Underfull \hbox (badness 3148) in paragraph at lines 4--15
+\T1/ptm/m/n/10 VC-RDAgent, LIR-I-CAL) against 3 LLM
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 4--15
+\T1/ptm/m/n/10 no-scaffolding con-trols and one clas-si-cal
+ []
+
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 19.
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 Underfull \hbox (badness 3884) in paragraph at lines 16--30
 []\T1/ptm/b/n/10 Key find-ings\T1/ptm/m/n/10 : (1) clas-si-cal/offline base-
  []
@@ -822,2656 +742,1728 @@ Underfull \hbox (badness 1577) in paragraph at lines 16--30
  []
 
 ) (./tex/2_introduction.tex
-Underfull \hbox (badness 1205) in paragraph at lines 7--15
+Underfull \hbox (badness 1205) in paragraph at lines 5--13
 \T1/ptm/m/n/10.95 dis-tinct agent sys-tems were pro-posed that at-
  []
 
 
-Underfull \hbox (badness 3635) in paragraph at lines 7--15
+Underfull \hbox (badness 3635) in paragraph at lines 5--13
 \T1/ptm/m/n/10.95 re-trieval + rea-son-ing (Deep-Rare [5]), HPO-
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 7--15
+Underfull \hbox (badness 1215) in paragraph at lines 5--13
 \T1/ptm/m/n/10.95 conditional fu-sion (VC-RDAgent [6]), phrase-
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+Underfull \vbox (badness 2111) has occurred while \output is active []
+
+
+Underfull \vbox (badness 2111) has occurred while \output is active []
+
+ [1{/Users/yutianzhao/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 93--97
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
 \T1/ptm/m/n/10.95 Gem-ini Flash but trades off ac-cu-racy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--102
-[]\T1/ptm/m/n/10.95 GPT-5 with \T1/pcr/l/it/10.95 rea-son-ing_-ef-
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
+[]\T1/ptm/m/n/10.95 GPT-5 with \T1/pcr/c/sc/10.95 rea-son-ing_-ef-
  []
 
 
-Underfull \hbox (badness 3930) in paragraph at lines 97--102
-\T1/pcr/l/it/10.95 fort=minimal \T1/ptm/m/n/10.95 is the most ex-pen-sive
+Underfull \hbox (badness 3930) in paragraph at lines 93--98
+\T1/pcr/c/sc/10.95 fort=minimal \T1/ptm/m/n/10.95 is the most ex-pen-sive
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 97--102
+Underfull \hbox (badness 5726) in paragraph at lines 93--98
 \T1/ptm/m/n/10.95 --- ex-pos-ing fron-tier rea-son-ing mod-els'
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-12.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 107.
+(/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \hbox (badness 4193) in paragraph at lines 127--131
+) [2]
+Underfull \hbox (badness 4193) in paragraph at lines 122--126
 \T1/ptm/m/n/10.95 Bonferroni for H1--H11, boot-strap 95%
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 127--131
+Underfull \hbox (badness 1902) in paragraph at lines 122--126
 \T1/ptm/m/n/10.95 CIs, LLM-judge self-preference de-tec-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 []\T1/ptm/b/n/10.95 Static-site leader-board \T1/ptm/m/n/10.95 for com-mu-nity
  []
 
 ) (./tex/3_related_work.tex
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 5.
+(hyperref)                than one, level fixed on input line 3.
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 7--8
+Underfull \hbox (badness 1783) in paragraph at lines 5--6
 \T1/ptm/b/n/10.95 Existing bench-marks are LLM-centric, not
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 7--8
-\T1/ptm/b/n/10.95 agent-native. \T1/ptm/m/n/10.95 Among nine spe-cial-ized rare
--
+Underfull \hbox (badness 1867) in paragraph at lines 5--6
+\T1/ptm/b/n/10.95 agent-native. \T1/ptm/m/n/10.95 Among nine spe-cial-ized rare-
  []
 
 
-Underfull \hbox (badness 2080) in paragraph at lines 7--8
+Underfull \hbox (badness 2080) in paragraph at lines 5--6
 \T1/ptm/m/n/10.95 ing / few-shot / RAG, and one is hy-brid .
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 7--8
+Underfull \hbox (badness 1558) in paragraph at lines 5--6
 \T1/ptm/m/n/10.95 case re-ports across 4,597 Or-phanet dis-or-ders.
  []
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 7--8
+Underfull \hbox (badness 1028) in paragraph at lines 5--6
 \T1/ptm/m/n/10.95 mis-sions mined from MIMIC-IV. All eval-u-ate
  []
 
-[2]
-Underfull \hbox (badness 1308) in paragraph at lines 12--13
+
+Underfull \hbox (badness 1308) in paragraph at lines 9--10
 \T1/ptm/b/n/10.95 Agent bench-marks else-where have ma-tured
  []
 
 
-Underfull \hbox (badness 2229) in paragraph at lines 17--18
+Underfull \hbox (badness 2229) in paragraph at lines 13--14
 \T1/ptm/m/n/10.95 agent bench-mark ex-ists, leav-ing cross-system
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 17--18
+Underfull \hbox (badness 1199) in paragraph at lines 13--14
 \T1/ptm/m/n/10.95 claims (Deep-Rare's 95.4% ref-er-ence ac-cu-racy,
  []
 
-) (./tex/4_benchmark_design.tex
+[3]) (./tex/4_benchmark_design.tex
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 5.
+(hyperref)                than one, level fixed on input line 3.
 
-[3]
-Underfull \hbox (badness 1087) in paragraph at lines 9--18
+
+Underfull \hbox (badness 1087) in paragraph at lines 7--16
 []\T1/ptm/m/n/10.95 The five pil-lars, and which data layer car-
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 9--18
+Underfull \hbox (badness 1205) in paragraph at lines 7--16
 \T1/ptm/m/n/10.95 ries each, are sum-marised in the benchmark-
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 43--45
-\T1/ptm/m/n/10.95 raw ICD-tail rare dis-ease count-ing yields
+Underfull \hbox (badness 1226) in paragraph at lines 23--34
+\T1/ptm/m/n/10.95 (dis-ease counts, ID an-chors, free-text / gold-
  []
 
 
-Underfull \hbox (badness 2573) in paragraph at lines 45--47
-[]\T1/ptm/b/n/10.95 L3 \T1/ptm/m/n/10.95 ad-dresses scale; RareArena's 72,661
+Underfull \hbox (badness 1014) in paragraph at lines 23--34
+\T1/ptm/m/n/10.95 HPO / vari-ant avail-abil-ity) is de-tailed in Ap-
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 47--48
+Underfull \hbox (badness 1281) in paragraph at lines 23--34
+\T1/ptm/m/n/10.95 cases). Sep-a-rately, \T1/ptm/b/n/10.95 S-EHR \T1/ptm/m/n/10.95 is a cre-den-tialed
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 42--44
+\T1/ptm/m/n/10.95 snap-shot uses times-tamped labs, med-i-ca-
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 42--44
+\T1/ptm/m/n/10.95 target-bearing di-ag-no-sis codes/titles, post-
+ []
+
+[4]
+Underfull \hbox (badness 2573) in paragraph at lines 44--46
+[]\T1/ptm/b/n/10.95 L2 \T1/ptm/m/n/10.95 ad-dresses scale; RareArena's 72,661
+ []
+
+
+Underfull \hbox (badness 5036) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 crit-i-cism from the 2026 sys-tem-atic re-
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 47--48
+Underfull \hbox (badness 1337) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 view. We ex-tract 2,401 PMC OA case
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 re-ports pub-lished af-ter 2024-01-01 via
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
-\T1/ptm/m/n/10.95 E-utilities fil-ter-ing on \T1/pcr/l/it/10.95 "Rare Dis-
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/ptm/m/n/10.95 E-utilities fil-ter-ing on \T1/pcr/c/sc/10.95 "Rare Dis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
-\T1/pcr/l/it/10.95 eases"[MeSH] $\OMS/cmsy/m/n/10.95 [$ \T1/pcr/l/it/10.95 "Ge-
-netic Dis-
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/pcr/c/sc/10.95 eases"[MeSH] $\OMS/cmsy/m/n/10.95 [$ \T1/pcr/c/sc/10.95 "Ge-netic Dis-
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 47--48
-\T1/pcr/l/it/10.95 eases, In-born"[MeSH] \T1/ptm/m/n/10.95 plus \T1/pcr/l/it/10
-.95 "case
+Underfull \hbox (badness 2293) in paragraph at lines 46--47
+\T1/pcr/c/sc/10.95 eases, In-born"[MeSH] \T1/ptm/m/n/10.95 plus \T1/pcr/c/sc/10.95 "case
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 47--48
-\T1/pcr/l/it/10.95 re-ports"[Publication Type] \T1/ptm/m/n/10.95 plus
+Underfull \hbox (badness 3746) in paragraph at lines 46--47
+\T1/pcr/c/sc/10.95 re-ports"[Publication Type] \T1/ptm/m/n/10.95 plus
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
-\T1/pcr/l/it/10.95 "pubmed pmc open ac-cess"[sb]\T1/ptm/m/n/10.95 ,
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+\T1/pcr/c/sc/10.95 "pubmed pmc open ac-cess"[sb]\T1/ptm/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 47--48
+Underfull \hbox (badness 1325) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 then LLM-extract di-ag-no-sis + HPO with
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 47--48
+Underfull \hbox (badness 1248) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 Gem-ini 3 Flash, fuzzy-map to Or-phanet,
  []
 
 
-Underfull \hbox (badness 2698) in paragraph at lines 47--48
+Underfull \hbox (badness 2698) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 and man-u-ally ver-ify ~200 cases against
  []
 
-[4]
-Underfull \hbox (badness 1655) in paragraph at lines 76--83
-\T1/ptm/m/n/10.95 schema, \T1/pcr/l/it/10.95 Canon-i-cal-Case \T1/ptm/m/n/10.95
- (il-lus-trated in the
+
+Underfull \hbox (badness 1655) in paragraph at lines 73--80
+\T1/ptm/m/n/10.95 schema, \T1/pcr/c/sc/10.95 Canon-i-cal-Case \T1/ptm/m/n/10.95 (il-lus-trated in the
  []
 
 
-Underfull \hbox (badness 3919) in paragraph at lines 76--83
-\T1/ptm/m/n/10.95 (\T1/pcr/l/it/10.95 case_-id\T1/ptm/m/n/10.95 , \T1/pcr/l/it/
-10.95 source_-dataset\T1/ptm/m/n/10.95 , \T1/pcr/l/it/10.95 source_-
+Underfull \hbox (badness 3919) in paragraph at lines 73--80
+\T1/ptm/m/n/10.95 (\T1/pcr/c/sc/10.95 case_-id\T1/ptm/m/n/10.95 , \T1/pcr/c/sc/10.95 source_-dataset\T1/ptm/m/n/10.95 , \T1/pcr/c/sc/10.95 source_-
  []
 
 
-Underfull \hbox (badness 7168) in paragraph at lines 84--85
+Underfull \hbox (badness 7168) in paragraph at lines 81--82
 \T1/ptm/m/n/10.95 datasets --- Phenopacket-Store uses OMIM,
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 84--85
+Underfull \hbox (badness 1924) in paragraph at lines 81--82
 \T1/ptm/m/n/10.95 RareArena uses OR-PHA, CCRD an-chors the
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 89--99
+Underfull \hbox (badness 1048) in paragraph at lines 85--95
 \T1/ptm/m/n/10.95 down-stream ca-pa-bil-ity and en-abling apples-to-
  []
 
-
-Underfull \hbox (badness 1264) in paragraph at lines 103--114
+[5]
+Underfull \hbox (badness 1264) in paragraph at lines 98--109
 \T1/ptm/m/n/10.95 We re-port Re-call@1/3/5/10, me-dian rank and
  []
 
-[5]
-<figures/fig1_overview.png, id=451, 732.336pt x 304.7385pt>
+<figures/fig1_overview.png, id=433, 732.336pt x 304.7385pt>
 File: figures/fig1_overview.png Graphic file (type png)
 <use figures/fig1_overview.png>
-Package pdftex.def Info: figures/fig1_overview.png  used on input line 118.
+Package pdftex.def Info: figures/fig1_overview.png  used on input line 113.
 (pdftex.def)             Requested size: 373.3035pt x 155.34016pt.
 ) (./tex/5_2_5_4_setup.tex
-Underfull \hbox (badness 1990) in paragraph at lines 7--15
+Underfull \hbox (badness 1990) in paragraph at lines 5--13
 \T1/ptm/m/n/10.95 We eval-u-ate ev-ery LLM-driven agent against
  []
 
 
-Underfull \hbox (badness 6141) in paragraph at lines 16--26
-\T1/ptm/b/n/10.95 min-i-mal/off rea-son-ing con-fig-u-ra-tion \T1/ptm/m/n/10.95
- (Gem-
+Underfull \hbox (badness 6141) in paragraph at lines 14--24
+\T1/ptm/b/n/10.95 min-i-mal/off rea-son-ing con-fig-u-ra-tion \T1/ptm/m/n/10.95 (Gem-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--26
-\T1/ptm/m/n/10.95 ini thinking-off, GPT-5 \T1/pcr/l/it/10.95 rea-son-ing_-ef-
+Underfull \hbox (badness 10000) in paragraph at lines 14--24
+\T1/ptm/m/n/10.95 ini thinking-off, GPT-5 \T1/pcr/c/sc/10.95 rea-son-ing_-ef-
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 16--26
-\T1/pcr/l/it/10.95 fort=minimal\T1/ptm/m/n/10.95 , DeepSeek-V4-Pro rea-son-ing
+Underfull \hbox (badness 1533) in paragraph at lines 14--24
+\T1/pcr/c/sc/10.95 fort=minimal\T1/ptm/m/n/10.95 , DeepSeek-V4-Pro rea-son-ing
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 16--26
+Underfull \hbox (badness 1325) in paragraph at lines 14--24
 \T1/ptm/m/n/10.95 ar-ti-fact: (i) it iso-lates the scaf-fold-ing con-tri-
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 16--26
+Underfull \hbox (badness 1019) in paragraph at lines 14--24
 \T1/ptm/m/n/10.95 bu-tion --- the bench-mark's ob-ject of study is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--26
+Underfull \hbox (badness 10000) in paragraph at lines 14--24
 \T1/ptm/m/n/10.95 gents/MedAgents/AgentClinic were pub-lished
  []
 
 
-Underfull \hbox (badness 2221) in paragraph at lines 27--38
-\T1/ptm/m/n/10.95 GPT-5's de-fault \T1/pcr/l/it/10.95 rea-son-ing_-ef-fort=high
-
+Underfull \hbox (badness 2221) in paragraph at lines 25--36
+\T1/ptm/m/n/10.95 GPT-5's de-fault \T1/pcr/c/sc/10.95 rea-son-ing_-ef-fort=high
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 27--38
-\T1/pcr/l/it/10.95 tent\T1/ptm/m/n/10.95 . In our first Phase 2 GPT-5 run this
+Underfull \hbox (badness 1097) in paragraph at lines 25--36
+\T1/pcr/c/sc/10.95 tent\T1/ptm/m/n/10.95 . In our first Phase 2 GPT-5 run this
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 27--38
+Underfull \hbox (badness 4120) in paragraph at lines 25--36
 \T1/ptm/m/n/10.95 Agent-Clinic time-out, 46/50 MAI-DxO time-
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 27--38
+Underfull \hbox (badness 2717) in paragraph at lines 25--36
 \T1/ptm/m/n/10.95 for all pri-mary re-sults, prop-a-gat-ing the flag
  []
 
 
-Underfull \hbox (badness 5548) in paragraph at lines 27--38
+Underfull \hbox (badness 5548) in paragraph at lines 25--36
 \T1/ptm/m/n/10.95 through subprocess-isolated adapters via the
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 39--58
+Underfull \hbox (badness 5036) in paragraph at lines 37--56
 \T1/ptm/b/n/10.95 defensive). \T1/ptm/m/n/10.95 V4-Pro is a heavy rea-son-ing
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 39--58
-\T1/ptm/m/n/10.95 i-fied on a hard prompt (N$\OMS/cmsy/m/n/10.95 ^^U$\T1/ptm/m/
-n/10.95 3 each): \T1/pcr/l/it/10.95 rea-
+Underfull \hbox (badness 1776) in paragraph at lines 37--56
+\T1/ptm/m/n/10.95 i-fied on a hard prompt (N$\OMS/cmsy/m/n/10.95 ^^U$\T1/ptm/m/n/10.95 3 each): \T1/pcr/c/sc/10.95 rea-
  []
 
 
-Underfull \hbox (badness 7468) in paragraph at lines 39--58
-\T1/pcr/l/it/10.95 son-ing_-ef-fort=minimal \T1/ptm/m/n/10.95 and \T1/pcr/l/it/
-10.95 rea-son-
+Underfull \hbox (badness 7468) in paragraph at lines 37--56
+\T1/pcr/c/sc/10.95 son-ing_-ef-fort=minimal \T1/ptm/m/n/10.95 and \T1/pcr/c/sc/10.95 rea-son-
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 39--58
-\T1/pcr/l/it/10.95 ING_-DIS-ABLE \T1/ptm/m/n/10.95 through the same subprocess-
-
+Underfull \hbox (badness 1014) in paragraph at lines 37--56
+\T1/pcr/c/sc/10.95 ING_-DIS-ABLE \T1/ptm/m/n/10.95 through the same subprocess-
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 39--58
+Underfull \hbox (badness 1810) in paragraph at lines 37--56
 \T1/ptm/m/n/10.95 reasoning-off con-fig-u-ra-tion as GPT-5-minimal,
  []
 
-
-Underfull \hbox (badness 1721) in paragraph at lines 62--71
-\T1/ptm/m/n/10.95 a \T1/pcr/l/it/10.95 sub-pro-cess.run \T1/ptm/m/n/10.95 bound
--ary into its own
- []
-
-
-Underfull \hbox (badness 3302) in paragraph at lines 62--71
-\T1/pcr/l/it/10.95 tAdapter \T1/ptm/m/n/10.95 ab-stract base class that takes a
-
- []
-
 [6]
-Underfull \hbox (badness 2134) in paragraph at lines 72--80
+Underfull \hbox (badness 1721) in paragraph at lines 59--68
+\T1/ptm/m/n/10.95 a \T1/pcr/c/sc/10.95 sub-pro-cess.run \T1/ptm/m/n/10.95 bound-ary into its own
+ []
+
+
+Underfull \hbox (badness 3302) in paragraph at lines 59--68
+\T1/pcr/c/sc/10.95 tAdapter \T1/ptm/m/n/10.95 ab-stract base class that takes a
+ []
+
+
+Underfull \hbox (badness 2134) in paragraph at lines 69--77
 []\T1/ptm/m/n/10.95 Backbone wiring is never mod-i-fied in the
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 72--80
+Underfull \hbox (badness 1005) in paragraph at lines 69--77
 \T1/ptm/m/n/10.95 agent's core logic; we only patch the ope-nai
  []
 
 
-Underfull \hbox (badness 7238) in paragraph at lines 72--80
-\T1/pcr/l/it/10.95 base_-url \T1/ptm/m/n/10.95 and prop-a-gate \T1/pcr/l/it/10.
-95 OPEN-ROUTER_-
+Underfull \hbox (badness 7238) in paragraph at lines 69--77
+\T1/pcr/c/sc/10.95 base_-url \T1/ptm/m/n/10.95 and prop-a-gate \T1/pcr/c/sc/10.95 OPEN-ROUTER_-
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 72--80
+Underfull \hbox (badness 4846) in paragraph at lines 69--77
 \T1/ptm/m/n/10.95 through the sub-pro-cess env (the lat-ter two
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 72--80
-\T1/ptm/m/n/10.95 for-ward \T1/pcr/l/it/10.95 rea-son-ing={effort} \T1/ptm/m/n/
-10.95 and \T1/pcr/l/it/10.95 rea-
+Underfull \hbox (badness 3396) in paragraph at lines 69--77
+\T1/ptm/m/n/10.95 for-ward \T1/pcr/c/sc/10.95 rea-son-ing={effort} \T1/ptm/m/n/10.95 and \T1/pcr/c/sc/10.95 rea-
  []
 
 
-Underfull \vbox (badness 5563) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1097) in paragraph at lines 100--113
+Underfull \hbox (badness 1097) in paragraph at lines 96--109
 \T1/ptm/m/n/10.95 the staged-sampling bud-get guard, the Holm--
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 100--113
+Underfull \hbox (badness 1803) in paragraph at lines 96--109
 \T1/ptm/m/n/10.95 Claude-judge agree-ment floor), and the post-
  []
 
-
-Underfull \hbox (badness 6220) in paragraph at lines 114--122
+[7 <./figures/fig1_overview.png>]
+Underfull \hbox (badness 6220) in paragraph at lines 110--118
 []\T1/ptm/b/n/10.95 Why this mat-ters op-er-a-tionally. \T1/ptm/m/n/10.95 Pre-
  []
 
-[7 <./figures/fig1_overview.png>]) (./tex/6_main_results.tex
-Overfull \hbox (2.68747pt too wide) in paragraph at lines 32--33
-[]\T1/ptm/m/n/7 Backbone  
+) (./tex/6_main_results.tex
+Underfull \hbox (badness 1019) in paragraph at lines 61--68
+\T1/ptm/m/n/10.95 Avg is not com-pa-ra-ble to the 3-dataset LLM
  []
 
 
-Overfull \hbox (5.01132pt too wide) in paragraph at lines 36--37
-[]\T1/ptm/m/n/7 RareArena  
- []
-
-
-Overfull \hbox (5.79533pt too wide) in paragraph at lines 38--39
-[]\T1/ptm/m/n/7 RareBench  
- []
-
-
-Overfull \hbox (4.6333pt too wide) in paragraph at lines 47--47
-[]|\T1/ptm/m/n/7 medagents|  
- []
-
-
-Overfull \hbox (4.6333pt too wide) in paragraph at lines 50--50
-[]|\T1/ptm/m/n/7 medagents|  
- []
-
-
-Overfull \hbox (1.52534pt too wide) in paragraph at lines 51--51
-[]|\T1/ptm/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (4.6333pt too wide) in paragraph at lines 52--52
-[]|\T1/ptm/m/n/7 medagents|  
- []
-
-
-Overfull \hbox (1.52534pt too wide) in paragraph at lines 54--54
-[]|\T1/ptm/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (4.6333pt too wide) in paragraph at lines 57--57
-[]|\T1/ptm/m/n/7 medagents|  
- []
-
-
-Overfull \hbox (1.52534pt too wide) in paragraph at lines 58--58
-[]|\T1/ptm/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (1.52534pt too wide) in paragraph at lines 59--59
-[]|\T1/ptm/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (5.41017pt too wide) in paragraph at lines 61--61
-[]|\T1/ptm/m/n/7 agentclinic|  
- []
-
-
-Overfull \hbox (5.41017pt too wide) in paragraph at lines 62--62
-[]|\T1/ptm/m/n/7 agentclinic|  
- []
-
-
-Overfull \hbox (5.41017pt too wide) in paragraph at lines 63--63
-[]|\T1/ptm/m/n/7 agentclinic|  
- []
-
-
-Overfull \hbox (5.41017pt too wide) in paragraph at lines 64--64
-[]|\T1/ptm/m/n/7 agentclinic|  
+Underfull \hbox (badness 1270) in paragraph at lines 61--68
+\T1/ptm/m/n/10.95 rows and is marked n/a (2-ds). (2) maidxo
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 96.
+(hyperref)                removing `\times' on input line 93.
 
 
-Underfull \hbox (badness 2368) in paragraph at lines 98--101
+Underfull \hbox (badness 2368) in paragraph at lines 95--98
 \T1/ptm/m/n/10.95 and vary across {Gem-ini Flash, DS V4-Pro
  []
 
-
-Underfull \hbox (badness 1102) in paragraph at lines 152--159
+[8]
+Underfull \hbox (badness 1102) in paragraph at lines 146--153
 \T1/ptm/m/n/10.95 sample val-ues (the 500-case sam-ples
  []
 
-[8]
-Underfull \hbox (badness 3724) in paragraph at lines 161--171
+
+Underfull \hbox (badness 3724) in paragraph at lines 155--165
 []\T1/ptm/b/n/10.95 F1: Clas-si-cal / of-fline beats scaf-folded
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 161--171
+Underfull \hbox (badness 3029) in paragraph at lines 155--165
 \T1/ptm/b/n/10.95 LLMs on HPO-input datasets. \T1/ptm/m/n/10.95 LIR-I-CAL
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 161--171
+Underfull \hbox (badness 1509) in paragraph at lines 155--165
 \T1/ptm/m/n/10.95 (lir-i-cal 0.23, vc_-rda-gent 0.28) and the HPO-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-Underfull \hbox (badness 1721) in paragraph at lines 180--186
-\T1/ptm/b/n/10.95 es-pe-cially on free text. \T1/ptm/m/n/10.95 Per-prediction c
-ost
+Underfull \hbox (badness 2582) in paragraph at lines 173--178
+\T1/ptm/m/n/10.95 (Gem-ini), but V4-Flash R@1 is con-sis-tently
  []
 
 
-Underfull \hbox (badness 5970) in paragraph at lines 198--204
+Underfull \vbox (badness 1117) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1117) has occurred while \output is active []
+
+ [9]
+Underfull \hbox (badness 5970) in paragraph at lines 189--195
 \T1/ptm/m/n/10.95 codes with sibling-disambiguation chal-lenges
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
-\T1/pcr/l/it/10.95 acidemia with ho-mo-cystin-uria \T1/ptm/m/n/10.95 OR-
+Underfull \hbox (badness 10000) in paragraph at lines 189--195
+\T1/pcr/c/sc/10.95 acidemia with ho-mo-cystin-uria \T1/ptm/m/n/10.95 OR-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
-\T1/pcr/l/it/10.95 methyl-malonic acidemia \T1/ptm/m/n/10.95 OR-PHA:27
+Underfull \hbox (badness 10000) in paragraph at lines 189--195
+\T1/pcr/c/sc/10.95 methyl-malonic acidemia \T1/ptm/m/n/10.95 OR-PHA:27
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 198--204
+Underfull \hbox (badness 1990) in paragraph at lines 189--195
 \T1/ptm/m/n/10.95 share con-cept but not OMIM cross-ref); (b)
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 198--204
+Underfull \hbox (badness 4940) in paragraph at lines 189--195
 \T1/ptm/m/n/10.95 clas-si-cal/HPO agents use OMIM di-rectly +
  []
 
 
-Underfull \hbox (badness 3240) in paragraph at lines 198--204
+Underfull \hbox (badness 3240) in paragraph at lines 189--195
 \T1/ptm/m/n/10.95 Or-phanet name fuzzy match, by-pass-ing this
  []
 
-
-Underfull \vbox (badness 3861) has occurred while \output is active []
-
-<figures/figM1_llm_vs_classical.png, id=505, 461.5644pt x 268.8444pt>
+<figures/figM1_llm_vs_classical.png, id=480, 461.3235pt x 268.8444pt>
 File: figures/figM1_llm_vs_classical.png Graphic file (type png)
 <use figures/figM1_llm_vs_classical.png>
-Package pdftex.def Info: figures/figM1_llm_vs_classical.png  used on input line
- 208.
-(pdftex.def)             Requested size: 373.3035pt x 217.4346pt.
-<figures/figM2_cost_accuracy.png, id=506, 463.9734pt x 304.9794pt>
+Package pdftex.def Info: figures/figM1_llm_vs_classical.png  used on input line 199.
+(pdftex.def)             Requested size: 373.3035pt x 217.55356pt.
+<figures/figM2_cost_accuracy.png, id=481, 463.9734pt x 304.9794pt>
 File: figures/figM2_cost_accuracy.png Graphic file (type png)
 <use figures/figM2_cost_accuracy.png>
-Package pdftex.def Info: figures/figM2_cost_accuracy.png  used on input line 21
-4.
+Package pdftex.def Info: figures/figM2_cost_accuracy.png  used on input line 205.
 (pdftex.def)             Requested size: 373.3035pt x 245.37993pt.
-<figures/figM3_prevalence.png, id=507, 463.9734pt x 268.8444pt>
+<figures/figM3_prevalence.png, id=482, 463.9734pt x 268.8444pt>
 File: figures/figM3_prevalence.png Graphic file (type png)
 <use figures/figM3_prevalence.png>
-Package pdftex.def Info: figures/figM3_prevalence.png  used on input line 220.
+Package pdftex.def Info: figures/figM3_prevalence.png  used on input line 211.
 (pdftex.def)             Requested size: 373.3035pt x 216.30649pt.
-<figures/figM4_hpo_density.png, id=508, 463.9734pt x 268.8444pt>
+<figures/figM4_hpo_density.png, id=483, 463.9734pt x 268.8444pt>
 File: figures/figM4_hpo_density.png Graphic file (type png)
 <use figures/figM4_hpo_density.png>
-Package pdftex.def Info: figures/figM4_hpo_density.png  used on input line 226.
-
+Package pdftex.def Info: figures/figM4_hpo_density.png  used on input line 217.
 (pdftex.def)             Requested size: 373.3035pt x 216.30649pt.
-<figures/figM6_hypotheses.png, id=509, 478.4274pt x 247.1634pt>
+<figures/figM6_hypotheses.png, id=484, 478.4274pt x 247.1634pt>
 File: figures/figM6_hypotheses.png Graphic file (type png)
 <use figures/figM6_hypotheses.png>
-Package pdftex.def Info: figures/figM6_hypotheses.png  used on input line 232.
+Package pdftex.def Info: figures/figM6_hypotheses.png  used on input line 223.
 (pdftex.def)             Requested size: 373.3035pt x 192.86209pt.
-)
-(./tex/7_5_self_preference_bias.tex
+) (./tex/7_5_self_preference_bias.tex
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 5.
+(hyperref)                than one, level fixed on input line 3.
 
 
-Overfull \hbox (1.16132pt too wide) in paragraph at lines 26--27
-[]\T1/ptm/m/n/7 relevance  
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (23.14833pt too wide) in paragraph at lines 37--37
-\T1/pcr/m/n/7 control\T1/ptm/m/n/7 (single 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (27.74025pt too wide) in paragraph at lines 38--38
-[]|\T1/pcr/m/n/7 mdagents\T1/ptm/m/n/7 (multi- 
- []
-
-
-Overfull \hbox (4.09464pt too wide) in paragraph at lines 38--39
-\T1/pcr/b/n/7 control 
- []
-
-
-Overfull \hbox (6.3904pt too wide) in paragraph at lines 38--39
-\T1/ptm/b/n/7 depth(3.49 
- []
-
-
-Overfull \hbox (21.57352pt too wide) in paragraph at lines 39--39
-[]|\T1/pcr/m/n/7 deeprare\T1/ptm/m/n/7 (40+ 
- []
-
-
-Overfull \hbox (8.05656pt too wide) in paragraph at lines 40--40
-[]|\T1/pcr/m/n/7 maidxo\T1/ptm/m/n/7 (8- 
- []
-
-
-Underfull \hbox (badness 1360) in paragraph at lines 49--50
+Underfull \hbox (badness 1360) in paragraph at lines 46--47
 \T1/ptm/m/n/10.95 late a judge-family ef-fect. See the
  []
 
-[10]
-Underfull \hbox (badness 2261) in paragraph at lines 52--53
-\T1/ptm/b/n/10.95 the strongest scaf-folded agent (\T1/pcr/b/n/10.95 mdagents\T
-1/ptm/b/n/10.95 )
+
+Underfull \hbox (badness 2261) in paragraph at lines 49--50
+\T1/ptm/b/n/10.95 the strongest scaf-folded agent (\T1/pcr/b/n/10.95 mdagents\T1/ptm/b/n/10.95 )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
 \T1/ptm/b/n/10.95 shrank from \T1/pcr/b/n/10.95 {+0.30, +1.00, +0.40,
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 52--53
+Underfull \hbox (badness 1436) in paragraph at lines 49--50
 \T1/pcr/b/n/10.95 +0.90} \T1/ptm/b/n/10.95 un-der the Gemini-family judge to
  []
 
 
-Underfull \hbox (badness 2846) in paragraph at lines 52--53
+Underfull \hbox (badness 2846) in paragraph at lines 49--50
 \T1/ptm/b/n/10.95 the non-family judge \T1/ptm/m/n/10.95 --- depth now fa-vors
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 52--53
+Underfull \hbox (badness 1789) in paragraph at lines 49--50
 \T1/ptm/m/n/10.95 sig-nal for a multi-expert de-bate vs. a sin-gle
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 54--55
+Underfull \hbox (badness 1478) in paragraph at lines 51--52
 \T1/ptm/m/n/10.95 as-judge method-ol-ogy is now stan-dard across
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 54--55
+Underfull \hbox (badness 1189) in paragraph at lines 51--52
 \T1/ptm/m/n/10.95 based judg-ing with a panel of small mod-els,
  []
 
+[10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \hbox (badness 1406) in paragraph at lines 58--59
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 55--56
 []\T1/ptm/b/n/10.95 Practical rec-om-men-da-tion for bench-mark
  []
 
-[11 <./figures/figM1_llm_vs_classical.png>]
-Underfull \hbox (badness 1742) in paragraph at lines 60--61
+
+Underfull \hbox (badness 1742) in paragraph at lines 57--58
 \T1/ptm/b/n/10.95 a trace-capture ar-ti-fact, not self-preference
  []
 
-<figures/figM5_selfpref.png, id=528, 521.7894pt x 231.5049pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./figures/figM1_llm_vs_classical.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<figures/figM5_selfpref.png, id=502, 521.7894pt x 231.5049pt>
 File: figures/figM5_selfpref.png Graphic file (type png)
 <use figures/figM5_selfpref.png>
-Package pdftex.def Info: figures/figM5_selfpref.png  used on input line 76.
+Package pdftex.def Info: figures/figM5_selfpref.png  used on input line 72.
 (pdftex.def)             Requested size: 373.3035pt x 165.62717pt.
 ) (./tex/9_limitations.tex
-Underfull \hbox (badness 2181) in paragraph at lines 8--24
-[]\T1/ptm/b/n/10.95 (L1) MAI-DxO $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/b/n/10.95 GP
-T-5 and Deep-Rare
+Underfull \hbox (badness 2181) in paragraph at lines 7--23
+[]\T1/ptm/b/n/10.95 (L1) MAI-DxO $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/b/n/10.95 GPT-5 and Deep-Rare
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--24
-\T1/pcr/l/it/10.95 rea-son-ing_-ef-fort=minimal \T1/ptm/m/n/10.95 prop-a-gated.
-
+Underfull \hbox (badness 10000) in paragraph at lines 7--23
+\T1/pcr/c/sc/10.95 rea-son-ing_-ef-fort=minimal \T1/ptm/m/n/10.95 prop-a-gated.
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 8--24
+Underfull \hbox (badness 1270) in paragraph at lines 7--23
 \T1/ptm/m/n/10.95 (b) Deep-Rare's local-embedding pipeline calls
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--24
-\T1/pcr/l/it/10.95 eval_-to-k-enizer(diseases, max_-
+Underfull \hbox (badness 10000) in paragraph at lines 7--23
+\T1/pcr/c/sc/10.95 eval_-to-k-enizer(diseases, max_-
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 8--24
-\T1/pcr/l/it/10.95 length=36) \T1/ptm/m/n/10.95 on the agent-emitted can-di-dat
-e
+Underfull \hbox (badness 1424) in paragraph at lines 7--23
+\T1/pcr/c/sc/10.95 length=36) \T1/ptm/m/n/10.95 on the agent-emitted can-di-date
  []
 
 
-Underfull \hbox (badness 4995) in paragraph at lines 8--24
-\T1/ptm/m/n/10.95 emits an empty \T1/pcr/l/it/10.95 dis-eases \T1/ptm/m/n/10.95
- list with high
+Underfull \hbox (badness 4995) in paragraph at lines 7--23
+\T1/ptm/m/n/10.95 emits an empty \T1/pcr/c/sc/10.95 dis-eases \T1/ptm/m/n/10.95 list with high
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 8--24
-\T1/ptm/m/n/10.95 fre-quency, rais-ing \T1/pcr/l/it/10.95 In-dex-Er-ror \T1/ptm
-/m/n/10.95 in \T1/pcr/l/it/10.95 trans-
+Underfull \hbox (badness 2027) in paragraph at lines 7--23
+\T1/ptm/m/n/10.95 fre-quency, rais-ing \T1/pcr/c/sc/10.95 In-dex-Er-ror \T1/ptm/m/n/10.95 in \T1/pcr/c/sc/10.95 trans-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--24
-\T1/pcr/l/it/10.95 form-ers.tokenization_-utils_-fast
+Underfull \hbox (badness 10000) in paragraph at lines 7--23
+\T1/pcr/c/sc/10.95 form-ers.tokenization_-utils_-fast
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 8--24
-\T1/ptm/m/n/10.95 share a broader pat-tern --- \T1/ptm/b/n/10.95 fron-tier rea-
-son-
+Underfull \hbox (badness 2582) in paragraph at lines 7--23
+\T1/ptm/m/n/10.95 share a broader pat-tern --- \T1/ptm/b/n/10.95 fron-tier rea-son-
  []
 
 
-Underfull \hbox (badness 2035) in paragraph at lines 8--24
+Underfull \hbox (badness 2035) in paragraph at lines 7--23
 \T1/ptm/b/n/10.95 ing mod-els with rea-son-ing forced off may
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 8--24
-\T1/ptm/m/n/10.95 budget $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/m/n/10.95 downstream
--consumer spe-cific and
+Underfull \hbox (badness 3396) in paragraph at lines 7--23
+\T1/ptm/m/n/10.95 budget $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/m/n/10.95 downstream-consumer spe-cific and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--24
-\T1/ptm/m/n/10.95 tractable with \T1/pcr/l/it/10.95 rea-son-ing_-ef-fort=high\T
-1/ptm/m/n/10.95 ,
+Underfull \hbox (badness 10000) in paragraph at lines 7--23
+\T1/ptm/m/n/10.95 tractable with \T1/pcr/c/sc/10.95 rea-son-ing_-ef-fort=high\T1/ptm/m/n/10.95 ,
  []
 
 [12 <./figures/figM2_cost_accuracy.png>]
-Underfull \hbox (badness 1178) in paragraph at lines 25--33
+Underfull \hbox (badness 1178) in paragraph at lines 24--32
 \T1/ptm/m/n/10.95 Drive check-point is hosted un-der nested sub-
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 51--63
+Underfull \hbox (badness 1454) in paragraph at lines 50--62
 []\T1/ptm/b/n/10.95 (L4) Pil-lar 4 (family-aware) and H9 not
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 51--63
+Underfull \hbox (badness 1484) in paragraph at lines 50--62
 \T1/ptm/m/n/10.95 struc-tured fam-ily/pedigree or inheritance-mode
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 51--63
+Underfull \hbox (badness 1194) in paragraph at lines 50--62
 \T1/ptm/m/n/10.95 not con-sume pedi-grees; only RDMA ex-poses
  []
 
 [13 <./figures/figM3_prevalence.png>]
-LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 8
-6.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 85.
+ (/Users/yutianzhao/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
-Underfull \hbox (badness 2005) in paragraph at lines 81--88
+Underfull \hbox (badness 2005) in paragraph at lines 80--87
 \T1/ptm/m/n/10.95 eight adapters route through our Open-Router
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 89--107
-\T1/ptm/b/n/10.95 LLM back-bones. \T1/ptm/m/n/10.95 Our A6 TS-Guessing au-
+Underfull \hbox (badness 1389) in paragraph at lines 88--106
+\T1/ptm/m/n/10.95 and per-disease R@1 of 0.29--0.37 across all
  []
 
 [14 <./figures/figM4_hpo_density.png>]
+Underfull \hbox (badness 2073) in paragraph at lines 107--122
+[]\T1/ptm/b/n/10.95 (L8) MIMIC-IV is struc-tured and code-
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 107--122
+\T1/ptm/m/n/10.95 struc-tured snap-shot (labs, med-i-ca-tions, pro-ce-
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15 <./figures/figM6_hypotheses.png> <./figures/figM5_selfpref.png>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 109.
+(hyperref)                than one, level fixed on input line 123.
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 115--121
+Underfull \hbox (badness 1112) in paragraph at lines 129--135
 \T1/ptm/m/n/10.95 ness is backbone-agnostic and the ad-di-tion is
  []
 
-[15 <./figures/figM6_hypotheses.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+) (./tex/10_conclusion.tex
+Underfull \hbox (badness 1484) in paragraph at lines 3--30
+\T1/ptm/m/n/10.95 main com-pet-i-tive with --- and on HPO-input
+ []
 
-)
-(./tex/10_conclusion.tex [16 <./figures/figM5_selfpref.png>]
-Underfull \hbox (badness 2326) in paragraph at lines 37--41
+[16]
+Underfull \hbox (badness 2326) in paragraph at lines 36--40
 \T1/ptm/m/n/10.95 lar 1 (mit-i-gated by the in-progress 200-case
  []
 
 ) (./main.bbl
-Underfull \hbox (badness 1147) in paragraph at lines 5--9
-\T1/ptm/m/n/10 aware eval-u-a-tion frame-work for agents[][].  \T1/ptm/m/it/10 
-arXiv
+Underfull \hbox (badness 1147) in paragraph at lines 5--8
+\T1/ptm/m/n/10 aware eval-u-a-tion frame-work for agents[][].  \T1/ptm/m/it/10 arXiv
  []
 
 
-Underfull \hbox (badness 2503) in paragraph at lines 34--37
+Underfull \hbox (badness 2503) in paragraph at lines 30--33
 []\T1/ptm/m/n/10 Leonardo Chimirri et al. 2025.  Multi-language
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 34--37
+Underfull \hbox (badness 4846) in paragraph at lines 30--33
 \T1/ptm/m/n/10 phenopacket co-horts for di-ag-nos-tic eval-u-a-tion.
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 39--42
+Underfull \hbox (badness 4279) in paragraph at lines 35--38
 []\T1/ptm/m/n/10 cloudna-AI4LS. 2025.  VC-RDAgent: Variant-
  []
 
-[17]
-Underfull \hbox (badness 1931) in paragraph at lines 118--122
+
+Underfull \hbox (badness 1931) in paragraph at lines 105--108
 []\T1/ptm/m/n/10 Mike Schaek-er-mann et al. 2024.  A frame-work
  []
 
-
-Underfull \hbox (badness 1852) in paragraph at lines 165--168
-\T1/ptm/m/n/10 disease di-ag-nos-tic bench-mark.  \T1/ptm/m/it/10 Lancet Dig-i-
-tal
+[17]
+Underfull \hbox (badness 1852) in paragraph at lines 145--148
+\T1/ptm/m/n/10 disease di-ag-nos-tic bench-mark.  \T1/ptm/m/it/10 Lancet Dig-i-tal
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 170--174
+Underfull \hbox (badness 1902) in paragraph at lines 150--153
 []\T1/ptm/m/n/10 Mengge Zhao et al. 2020.  Phen2Gene: Rapid
  []
 
 ) (./tex/C_appendix_experimental_setup.tex
-Overfull \hbox (3.52814pt too wide) in paragraph at lines 21--22
-[]\T1/ptm/m/n/7 OpenRouter 
- []
-
-
-Overfull \hbox (78.51234pt too wide) in paragraph at lines 32--32
-[]|\T1/pcr/m/n/7 deepseek/deepseek-v4-flash|  
- []
-
-
-Overfull \hbox (70.11235pt too wide) in paragraph at lines 33--33
-[]|\T1/pcr/m/n/7 deepseek/deepseek-v4-pro 
- []
-
-
-Overfull \hbox (128.91231pt too wide) in paragraph at lines 34--34
-[]|\T1/pcr/m/n/7 google/gemini-3-flash-preview-20251217|  
- []
-
-
-Overfull \hbox (19.71239pt too wide) in paragraph at lines 35--35
-[]|\T1/pcr/m/n/7 openai/gpt-5 
- []
-
-
-Overfull \hbox (17.84335pt too wide) in paragraph at lines 35--35
-\T1/ptm/m/n/7 (\T1/pcr/m/n/7 reasoning_- 
- []
-
-
-Overfull \hbox (30.44334pt too wide) in paragraph at lines 35--35
-\T1/pcr/m/n/7 effort=minimal\T1/ptm/m/n/7 )|  
- []
-
-<figures/fig_design_matrix.png, id=629, 508.299pt x 371.4678pt>
+<figures/fig_design_matrix.png, id=602, 508.299pt x 371.4678pt>
 File: figures/fig_design_matrix.png Graphic file (type png)
 <use figures/fig_design_matrix.png>
-Package pdftex.def Info: figures/fig_design_matrix.png  used on input line 49.
+Package pdftex.def Info: figures/fig_design_matrix.png  used on input line 41.
 (pdftex.def)             Requested size: 373.3035pt x 272.81866pt.
-<figures/fig_schema.png, id=630, 407.6028pt x 398.4486pt>
+<figures/fig_schema.png, id=603, 407.6028pt x 398.4486pt>
 File: figures/fig_schema.png Graphic file (type png)
 <use figures/fig_schema.png>
-Package pdftex.def Info: figures/fig_schema.png  used on input line 55.
+Package pdftex.def Info: figures/fig_schema.png  used on input line 47.
 (pdftex.def)             Requested size: 373.3035pt x 364.92343pt.
 ) (./tex/7_2_7_3_7_4_analysis.tex
-Underfull \hbox (badness 1210) in paragraph at lines 14--20
-\T1/ptm/m/n/10.95 0.21 ($\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 8 pp re-gres
--sion vs con-trol) - maidxo
+Underfull \hbox (badness 1210) in paragraph at lines 12--18
+\T1/ptm/m/n/10.95 0.21 ($\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 8 pp re-gres-sion vs con-trol) - maidxo
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 21--30
+Underfull \hbox (badness 1173) in paragraph at lines 19--28
 \T1/ptm/m/n/10.95 beat a single-LLM con-trol on phenotype-only
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 31--35
+Underfull \hbox (badness 1688) in paragraph at lines 29--33
 \T1/ptm/m/n/10.95 sug-gest-ing V4-Pro pairs well with mda-gents'
  []
 
+
+Underfull \hbox (badness 1515) in paragraph at lines 62--69
+[]\T1/ptm/b/n/10.95 H2 con-firmed at full-N and FWE-robust
+ []
+
 [18]
-Underfull \hbox (badness 7081) in paragraph at lines 74--80
+Underfull \hbox (badness 7081) in paragraph at lines 70--76
 []\T1/ptm/m/n/10.95 The 28-pp gap to Deep-Rare's pub-lished
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 92--103
-\T1/ptm/b/n/10.95 au-dit)\T1/ptm/m/n/10.95 : mea-sured on iden-ti-cal re-paired
- traces
+Underfull \hbox (badness 1062) in paragraph at lines 87--98
+\T1/ptm/b/n/10.95 au-dit)\T1/ptm/m/n/10.95 : mea-sured on iden-ti-cal re-paired traces
  []
 
-[19]
-Underfull \hbox (badness 1189) in paragraph at lines 136--148
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./figures/fig_design_matrix.png>]
+Underfull \hbox (badness 1189) in paragraph at lines 126--138
 \T1/ptm/m/n/10.95 --- cu-rated cases, expert-cleaned HPO, paper-
  []
 
 
-Underfull \hbox (badness 2393) in paragraph at lines 136--148
+Underfull \hbox (badness 2393) in paragraph at lines 126--138
 \T1/ptm/m/n/10.95 faithful base-lines (lir-i-cal 0.47, repli-cat-ing its
  []
 
-[20 <./figures/fig_design_matrix.png>]
-Underfull \hbox (badness 4467) in paragraph at lines 188--194
-[]\T1/ptm/b/n/10.95 Operationalization note (for PI re-view)\T1/ptm/m/n/10.95 :
 
+Underfull \hbox (badness 1502) in paragraph at lines 126--138
+\T1/ptm/b/n/10.95 layer where clas-si-cal and LLM are clos-est
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 188--194
+Underfull \vbox (badness 3919) has occurred while \output is active []
+
+
+Underfull \vbox (badness 3919) has occurred while \output is active []
+
+ [20 <./figures/fig_schema.png>]
+Underfull \hbox (badness 4467) in paragraph at lines 176--182
+[]\T1/ptm/b/n/10.95 Operationalization note (for PI re-view)\T1/ptm/m/n/10.95 :
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 176--182
 \T1/ptm/m/n/10.95 Vi-su-alised in Fig-ure [][]4[][] --- the LLM-classical
  []
 
 
-Underfull \vbox (badness 1910) has occurred while \output is active []
-
-
-
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 196.
+(hyperref)                removing `\times' on input line 183.
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 198--202
+Underfull \hbox (badness 1546) in paragraph at lines 185--189
 \T1/ptm/m/n/10.95 oligo=2--3, multi=4+; HPO-input lay-ers, full-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--230
-[]\T1/ptm/b/n/10.95 H4 sup-ported (FWE-robust, Ap-
+Underfull \hbox (badness 10000) in paragraph at lines 205--216
+[]\T1/ptm/b/n/10.95 H4 sup-ported (FWE-robust, Sec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--230
-\T1/ptm/b/n/10.95 pendix [][]C.6[][])\T1/ptm/m/n/10.95 : the difference-of-diff
-erences
+Underfull \hbox (badness 10000) in paragraph at lines 205--216
+\T1/ptm/b/n/10.95 tion [][]C.6[][])\T1/ptm/m/n/10.95 : the difference-of-differences
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--230
-\T1/ptm/m/n/10.95 --- (mdagents$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 contr
-ol on multi) $\OMS/cmsy/m/n/10.95 ^^@$
+Underfull \hbox (badness 10000) in paragraph at lines 205--216
+\T1/ptm/m/n/10.95 --- (mdagents$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 control on multi) $\OMS/cmsy/m/n/10.95 ^^@$
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 219--230
-\T1/ptm/m/n/10.95 (mdagents$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 control o
-n sin-gle) = +0.081 --- is
+Underfull \hbox (badness 1038) in paragraph at lines 205--216
+\T1/ptm/m/n/10.95 (mdagents$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 control on sin-gle) = +0.081 --- is
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 219--230
-\T1/ptm/m/it/10.95 penalty \T1/ptm/m/n/10.95 rather than a gain: both multi-age
-nt
+Underfull \hbox (badness 1552) in paragraph at lines 205--216
+\T1/ptm/m/it/10.95 penalty \T1/ptm/m/n/10.95 rather than a gain: both multi-agent
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 219--230
-\T1/ptm/m/n/10.95 scaf-folds clearly \T1/ptm/m/it/10.95 trail \T1/ptm/m/n/10.95
- the single-LLM con-trol
+Underfull \hbox (badness 1509) in paragraph at lines 205--216
+\T1/ptm/m/n/10.95 scaf-folds clearly \T1/ptm/m/it/10.95 trail \T1/ptm/m/n/10.95 the single-LLM con-trol
  []
 
 
-Underfull \hbox (badness 5741) in paragraph at lines 219--230
+Underfull \hbox (badness 5741) in paragraph at lines 205--216
 \T1/ptm/m/n/10.95 on single-system cases (over-think-ing sim-ple
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 219--230
-\T1/ptm/m/n/10.95 pre-sen-ta-tions, $\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 
-0.08/$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 0.09) and \T1/ptm/m/it/10.95 ca
-tch up to
+Underfull \hbox (badness 2150) in paragraph at lines 205--216
+\T1/ptm/m/n/10.95 pre-sen-ta-tions, $\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 0.08/$\OMS/cmsy/m/n/10.95 ^^@$\T1/ptm/m/n/10.95 0.09) and \T1/ptm/m/it/10.95 catch up to
  []
 
 
-Underfull \hbox (badness 4060) in paragraph at lines 219--230
-\T1/ptm/m/it/10.95 par-ity \T1/ptm/m/n/10.95 (mda-gents $\OMS/cmsy/m/n/10.95 ^^
-Y$ \T1/ptm/m/n/10.95 +0.00) as organ-system
+Underfull \hbox (badness 4060) in paragraph at lines 205--216
+\T1/ptm/m/it/10.95 par-ity \T1/ptm/m/n/10.95 (mda-gents $\OMS/cmsy/m/n/10.95 ^^Y$ \T1/ptm/m/n/10.95 +0.00) as organ-system
  []
 
-[21 <./figures/fig_schema.png>]
-Underfull \hbox (badness 1635) in paragraph at lines 234--243
+
+Underfull \hbox (badness 1635) in paragraph at lines 219--228
 \T1/ptm/m/n/10.95 Anticipated ob-jec-tion #1 is that LLM agents
  []
 
 
-Underfull \hbox (badness 7595) in paragraph at lines 234--243
+Underfull \hbox (badness 7595) in paragraph at lines 219--228
 \T1/ptm/m/n/10.95 may per-form well only be-cause pre-cutoff
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 234--243
-\T1/ptm/m/n/10.95 PubMed cor-pora \T1/ptm/m/it/10.95 con-tain \T1/ptm/m/n/10.95
- the dis-eases we test
+Underfull \hbox (badness 1112) in paragraph at lines 219--228
+\T1/ptm/m/n/10.95 PubMed cor-pora \T1/ptm/m/it/10.95 con-tain \T1/ptm/m/n/10.95 the dis-eases we test
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 234--243
+Underfull \hbox (badness 1748) in paragraph at lines 219--228
 \T1/ptm/m/n/10.95 on; the agents would be ex-ploit-ing training-
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 234--243
-\T1/ptm/m/n/10.95 (top 600 by oc-cur-rence, $\OMS/cmsy/m/n/10.95 ^^U$\T1/ptm/m/
-n/10.95 5 cases each), we
+Underfull \hbox (badness 1152) in paragraph at lines 219--228
+\T1/ptm/m/n/10.95 (top 600 by oc-cur-rence, $\OMS/cmsy/m/n/10.95 ^^U$\T1/ptm/m/n/10.95 5 cases each), we
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 234--243
-\T1/ptm/m/n/10.95 query NCBI PubMed \T1/pcr/l/it/10.95 es-earch.fcgi \T1/ptm/m/
-n/10.95 with
+Underfull \hbox (badness 3557) in paragraph at lines 219--228
+\T1/ptm/m/n/10.95 query NCBI PubMed \T1/pcr/c/sc/10.95 es-earch.fcgi \T1/ptm/m/n/10.95 with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--243
-\T1/pcr/l/it/10.95 "<dis-ease name>"[All Fields] \T1/ptm/m/n/10.95 and
+Underfull \hbox (badness 10000) in paragraph at lines 219--228
+\T1/pcr/c/sc/10.95 "<dis-ease name>"[All Fields] \T1/ptm/m/n/10.95 and
  []
 
 
-Underfull \hbox (badness 1389) in paragraph at lines 234--243
-\T1/pcr/l/it/10.95 max-date=2024/06/30 \T1/ptm/m/n/10.95 (a con-ser-va-tive pre
--
+Underfull \hbox (badness 1389) in paragraph at lines 219--228
+\T1/pcr/c/sc/10.95 max-date=2024/06/30 \T1/ptm/m/n/10.95 (a con-ser-va-tive pre-
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 234--243
+Underfull \hbox (badness 1454) in paragraph at lines 219--228
 \T1/ptm/m/n/10.95 cutoff for all four back-bones), then cor-re-late
  []
 
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 340--349
+\T1/ptm/m/n/10.95 sys-tem (0.11--0.14), metabolism/homeostasis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--349
+\T1/ptm/m/n/10.95 (0.10--0.16), di-ges-tive (0.09); uni-ver-sally
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 340--349
+\T1/ptm/b/n/10.95 strong\T1/ptm/m/n/10.95 : car-dio-vas-cu-lar (0.41--0.44), in-tegu-
+ []
+
+
+Underfull \hbox (badness 2478) in paragraph at lines 340--349
+\T1/ptm/m/n/10.95 to ontology/data-level dif-fi-culty, not scaffold-
+ []
+
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 360--369
-[]\T1/ptm/b/n/10.95 H7 con-firmed and FWE-robust \T1/ptm/m/n/10.95 (Ap-
- []
-
-
-Underfull \hbox (badness 3815) in paragraph at lines 360--369
-\T1/ptm/m/n/10.95 specialty pi-lot at $\OML/cmm/m/it/10.95 ^^Z$$\OMS/cmsy/m/n/1
-0.95 ^^Y$\T1/ptm/m/n/10.95 0.73); the con-ser-va-tive
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 360--369
-\T1/ptm/m/n/10.95 metabolism/homeostasis (0.10--0.16), di-ges-
- []
-
-
-Underfull \hbox (badness 2486) in paragraph at lines 360--369
-\T1/ptm/m/n/10.95 base-lines in-vert the nervous-system weak-ness
- []
-
-
-Underfull \hbox (badness 2221) in paragraph at lines 360--369
-\T1/ptm/m/n/10.95 (LIR-I-CAL 0.35, VC-RDAgent 0.43 vs LLM
- []
-
-<figures/fig4_a6_contamination_scatter.png, id=700, 463.9734pt x 232.7094pt>
+<figures/fig4_a6_contamination_scatter.png, id=661, 463.9734pt x 232.4685pt>
 File: figures/fig4_a6_contamination_scatter.png Graphic file (type png)
 <use figures/fig4_a6_contamination_scatter.png>
-Package pdftex.def Info: figures/fig4_a6_contamination_scatter.png  used on inp
-ut line 373.
-(pdftex.def)             Requested size: 373.3035pt x 187.23302pt.
-<figures/fig7_specialty_h7.png, id=701, 463.9734pt x 247.1634pt>
+Package pdftex.def Info: figures/fig4_a6_contamination_scatter.png  used on input line 353.
+(pdftex.def)             Requested size: 373.3035pt x 187.0392pt.
+<figures/fig7_specialty_h7.png, id=662, 463.9734pt x 247.1634pt>
 File: figures/fig7_specialty_h7.png Graphic file (type png)
 <use figures/fig7_specialty_h7.png>
-Package pdftex.def Info: figures/fig7_specialty_h7.png  used on input line 379.
-
+Package pdftex.def Info: figures/fig7_specialty_h7.png  used on input line 359.
 (pdftex.def)             Requested size: 373.3035pt x 198.8624pt.
 ) (./tex/8_ablations.tex
-Underfull \hbox (badness 3209) in paragraph at lines 42--48
+Underfull \hbox (badness 3209) in paragraph at lines 39--45
 \T1/ptm/b/n/10.95 Question\T1/ptm/m/n/10.95 : When an LLM emits a generic
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 42--48
+Underfull \hbox (badness 1173) in paragraph at lines 39--45
 \T1/ptm/m/n/10.95 that fuzzy-matches mul-ti-ple OR-PHA codes at
  []
 
 
-Underfull \hbox (badness 6893) in paragraph at lines 42--48
+Underfull \hbox (badness 6893) in paragraph at lines 39--45
 \T1/ptm/m/n/10.95 unresponsive methyl-malonic acidemia'', OR-
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 52--55
-[]\T1/ptm/b/n/10.95 B. Variants-aware\T1/ptm/m/n/10.95 : adapter logs the \T1/p
-tm/m/it/10.95 tied
+Underfull \hbox (badness 2469) in paragraph at lines 49--52
+[]\T1/ptm/b/n/10.95 B. Variants-aware\T1/ptm/m/n/10.95 : adapter logs the \T1/ptm/m/it/10.95 tied
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 52--55
-\T1/ptm/m/it/10.95 top-K \T1/ptm/m/n/10.95 (score $\OMS/cmsy/m/n/10.95 ^^U$ \T1
-/ptm/m/n/10.95 top - 5) OR-PHA can-di-dates
+Underfull \hbox (badness 1603) in paragraph at lines 49--52
+\T1/ptm/m/it/10.95 top-K \T1/ptm/m/n/10.95 (score $\OMS/cmsy/m/n/10.95 ^^U$ \T1/ptm/m/n/10.95 top - 5) OR-PHA can-di-dates
  []
 
 
-Underfull \hbox (badness 1622) in paragraph at lines 52--55
-\T1/ptm/m/n/10.95 in \T1/pcr/l/it/10.95 ex-tra["ranked_-pre-dic-tions_-vari-
+Underfull \hbox (badness 1622) in paragraph at lines 49--52
+\T1/ptm/m/n/10.95 in \T1/pcr/c/sc/10.95 ex-tra["ranked_-pre-dic-tions_-vari-
  []
 
-[23]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\times' on input line 90.
+(hyperref)                removing `\times' on input line 85.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--100
+Underfull \hbox (badness 10000) in paragraph at lines 92--95
 []\T1/ptm/b/n/10.95 No-scaffold con-trol \T1/ptm/m/n/10.95 (llm_-con-trol) is
  []
 
 
-Underfull \hbox (badness 7397) in paragraph at lines 97--100
+Underfull \hbox (badness 7397) in paragraph at lines 92--95
 \T1/ptm/m/n/10.95 backbone-insensitive on PP-Store (R@1
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 97--100
+Underfull \hbox (badness 2119) in paragraph at lines 92--95
 \T1/ptm/m/n/10.95 = 0.27-0.30 across 4 back-bones, full-N;
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 103--106
+Underfull \hbox (badness 1776) in paragraph at lines 98--101
 \T1/ptm/m/n/10.95 Gem-ini (0.30), then V4-Pro-off / GPT-5
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--133
-\OMS/cmsy/m/n/10.95 ^^B$ \T1/pcr/l/it/10.95 DS V4-Flash \T1/ptm/m/n/10.95 on Ra
-reBench/MIMIC
+Underfull \hbox (badness 1603) in paragraph at lines 115--127
+\T1/ptm/m/n/10.95 content retry adding ex-tra sub-pro-cess in-vo-ca-
  []
 
-
-Underfull \hbox (badness 1838) in paragraph at lines 121--133
-\T1/ptm/m/n/10.95 to 600s and re-running re-cov-ered these cells
- []
-
-
-Underfull \hbox (badness 3189) in paragraph at lines 121--133
-\T1/ptm/m/n/10.95 es-sen-tially com-pletely (agent-clinic RareBench
- []
-
-[24]
-Underfull \hbox (badness 1199) in paragraph at lines 157--159
+[23]
+Underfull \hbox (badness 1199) in paragraph at lines 150--152
 []\T1/ptm/b/n/10.95 A10 \T1/ptm/m/n/10.95 (prevalence-stratified R@1) --- com-
  []
 
 
-Overfull \hbox (11.3682pt too wide) in paragraph at lines 204--204
-\T1/ptm/m/n/7 (<1/1,000,000)|  
- []
+Underfull \vbox (badness 2653) has occurred while \output is active []
 
 
-Overfull \hbox (10.13385pt too wide) in paragraph at lines 209--209
-\OML/cmm/m/it/7 ^^Z$\T1/ptm/m/n/7 (faithfulness, 
- []
+Underfull \vbox (badness 2653) has occurred while \output is active []
 
-
-Underfull \hbox (badness 1286) in paragraph at lines 215--233
+ [24 <./figures/fig4_a6_contamination_scatter.png>]
+Underfull \hbox (badness 1286) in paragraph at lines 205--223
 \T1/ptm/m/n/10.95 rec-tion (up from 2/6 at pi-lot N). The full-N
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 215--233
+Underfull \hbox (badness 1596) in paragraph at lines 205--223
 \T1/ptm/m/n/10.95 re-runs flipped H2, H4, and H7 from under-
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 215--233
-\T1/ptm/m/n/10.95 blind-spot cor-re-la-tion (H7: $\OML/cmm/m/it/10.95 ^^Z$\T1/p
-tm/m/n/10.95 =0.92 across 18
+Underfull \hbox (badness 1354) in paragraph at lines 205--223
+\T1/ptm/m/n/10.95 blind-spot cor-re-la-tion (H7: $\OML/cmm/m/it/10.95 ^^Z$\T1/ptm/m/n/10.95 =0.92 across 18
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 215--233
+Underfull \hbox (badness 1038) in paragraph at lines 205--223
 \T1/ptm/m/n/10.95 super-rare) and H8 (in-te-rior phenotype-density
  []
 
 
-Underfull \hbox (badness 5119) in paragraph at lines 237--244
+Underfull \hbox (badness 5119) in paragraph at lines 226--233
 \T1/ptm/m/n/10.95 We probe an-tic-i-pated ob-jec-tion #1 (``LLMs
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--244
-\T1/ptm/m/n/10.95 with \T1/pcr/l/it/10.95 "<dis-ease name>"[All Fields]
+Underfull \hbox (badness 10000) in paragraph at lines 226--233
+\T1/ptm/m/n/10.95 with \T1/pcr/c/sc/10.95 "<dis-ease name>"[All Fields]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--244
-\T1/ptm/m/n/10.95 and \T1/pcr/l/it/10.95 max-date=2024/06/30 \T1/ptm/m/n/10.95 
-(con-ser-va-tive
+Underfull \hbox (badness 10000) in paragraph at lines 226--233
+\T1/ptm/m/n/10.95 and \T1/pcr/c/sc/10.95 max-date=2024/06/30 \T1/ptm/m/n/10.95 (con-ser-va-tive
  []
 
-[25 <./figures/fig4_a6_contamination_scatter.png>]
-Underfull \hbox (badness 1043) in paragraph at lines 294--302
+[25 <./figures/fig7_specialty_h7.png>]
+Underfull \hbox (badness 1226) in paragraph at lines 270--273
+[]\T1/ptm/m/n/10.95 Reading is treated in Sec-tion [][]B.7[][] (a finer-
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 281--289
 \T1/ptm/b/n/10.95 Question (an-tic-i-pated ob-jec-tion: ``you crip-
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 333--337
+Underfull \hbox (badness 1509) in paragraph at lines 319--323
 []\T1/ptm/b/n/10.95 Finding\T1/ptm/m/n/10.95 : think-ing mode changes R@1 by
  []
 
 
-Underfull \vbox (badness 2469) has occurred while \output is active []
-
- [26 <./figures/fig7_specialty_h7.png>]
-Underfull \hbox (badness 1048) in paragraph at lines 347--354
+Underfull \hbox (badness 1048) in paragraph at lines 333--340
 \T1/ptm/m/n/10.95 (PP-Store), sin-gle con-trol agent, N=253 com-
  []
 
-) (./tex/5_1_agent_fairness_matrix.tex
-Underfull \hbox (badness 1635) in paragraph at lines 5--6
+[26]) (./tex/5_1_agent_fairness_matrix.tex
+Underfull \hbox (badness 1635) in paragraph at lines 4--5
 \T1/ptm/m/it/10.95 2025) and Deep-Rare (Na-ture 2026),
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 5--6
+Underfull \hbox (badness 1199) in paragraph at lines 4--5
 \T1/ptm/m/it/10.95 across agent com-par-isons and doc-u-
  []
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 9.
+(hyperref)                than one, level fixed on input line 7.
 
 
-Overfull \hbox (1.28601pt too wide) in paragraph at lines 29--30
-[]\T1/ptm/m/n/7 Adapter 
- []
-
-
-Overfull \hbox (15.29294pt too wide) in paragraph at lines 35--36
-[]\T1/ptm/m/n/7 Configurable 
- []
-
-
-Overfull \hbox (1.28601pt too wide) in paragraph at lines 37--38
-[]\T1/ptm/m/n/7 Adapter 
- []
-
-
-Overfull \hbox (0.50896pt too wide) in paragraph at lines 39--40
-[]\T1/ptm/m/n/7 License  
- []
-
-
-Overfull \hbox (10.76395pt too wide) in paragraph at lines 42--42
-[]|\T1/ptm/b/n/7 MDAgents|  
- []
-
-
-Overfull \hbox (13.73175pt too wide) in paragraph at lines 42--42
-[]|\T1/ptm/m/n/7 Reformulate 
- []
-
-
-Overfull \hbox (0.90797pt too wide) in paragraph at lines 42--42
-\T1/ptm/m/n/7 prompt; 
- []
-
-
-Overfull \hbox (3.61707pt too wide) in paragraph at lines 42--42
-[]|\T1/ptm/m/n/7 OpenAI- 
- []
-
-
-Overfull \hbox (9.8468pt too wide) in paragraph at lines 42--42
-\T1/ptm/m/n/7 compatible 
- []
-
-
-Overfull \hbox (3.93922pt too wide) in paragraph at lines 42--42
-\T1/pcr/m/n/7 base_- 
- []
-
-
-Overfull \hbox (0.50903pt too wide) in paragraph at lines 42--42
-\T1/ptm/m/n/7 patched 
- []
-
-
-Overfull \hbox (24.93921pt too wide) in paragraph at lines 42--42
-\T1/pcr/m/n/7 gpt-4o-mini|  
- []
-
-
-Overfull \hbox (11.39397pt too wide) in paragraph at lines 42--43
-[]|\T1/ptm/b/n/7 None\T1/ptm/m/n/7 (repo)|  
- []
-
-
-Overfull \hbox (12.95488pt too wide) in paragraph at lines 43--43
-[]|\T1/ptm/b/n/7 MedAgents|  
- []
-
-
-Overfull \hbox (2.07002pt too wide) in paragraph at lines 43--43
-\T1/ptm/m/n/7 MCQA- 
- []
-
-
-Overfull \hbox (5.88515pt too wide) in paragraph at lines 43--43
-\T1/pcr/m/n/7 run.py\T1/ptm/m/n/7 ; 
- []
-
-
-Overfull \hbox (33.3392pt too wide) in paragraph at lines 43--43
-\T1/pcr/m/n/7 handler.get_- 
- []
-
-
-Overfull \hbox (12.33922pt too wide) in paragraph at lines 43--43
-\T1/pcr/m/n/7 output_- 
- []
-
-
-Overfull \hbox (20.73921pt too wide) in paragraph at lines 43--43
-\T1/pcr/m/n/7 multiagent 
- []
-
-
-Overfull \hbox (0.79605pt too wide) in paragraph at lines 43--43
-[]|\T1/ptm/m/n/7 Patched 
- []
-
-
-Overfull \hbox (0.50201pt too wide) in paragraph at lines 43--43
-\T1/ptm/m/n/7 (Azure- 
- []
-
-
-Overfull \hbox (1.20912pt too wide) in paragraph at lines 43--43
-\T1/ptm/m/n/7 {3,5,7}, 
- []
-
-
-Overfull \hbox (14.51573pt too wide) in paragraph at lines 44--44
-[]|\T1/ptm/b/n/7 AgentClinic|  
- []
-
-
-Overfull \hbox (29.1392pt too wide) in paragraph at lines 44--44
-\T1/pcr/m/n/7 --openrouter 
- []
-
-
-Overfull \hbox (5.17816pt too wide) in paragraph at lines 44--44
-\T1/ptm/m/n/7 bounded)|  
- []
-
-
-Overfull \hbox (4.00903pt too wide) in paragraph at lines 44--44
-[]|\T1/ptm/m/n/7 language 
- []
-
-
-Overfull \hbox (4.79295pt too wide) in paragraph at lines 45--45
-[]|\T1/ptm/m/n/7 LiteLLM 
- []
-
-
-Overfull \hbox (87.93916pt too wide) in paragraph at lines 45--45
-\T1/pcr/m/n/7 MaiDxOrchestrator.create_- 
- []
-
-
-Overfull \hbox (35.28513pt too wide) in paragraph at lines 45--45
-\T1/pcr/m/n/7 variant(mode)\T1/ptm/m/n/7 ; 
- []
-
-
-Overfull \hbox (31.18922pt too wide) in paragraph at lines 45--45
-\T1/pcr/m/n/7 iterations$\OMS/cmsy/m/n/7 ^^U$\T1/pcr/m/n/7 2 
- []
-
-
-Overfull \hbox (4.79295pt too wide) in paragraph at lines 45--45
-[]|\T1/ptm/m/n/7 LiteLLM 
- []
-
-
-Overfull \hbox (12.33922pt too wide) in paragraph at lines 45--45
-\T1/pcr/m/n/7 budget_- 
- []
-
-
-Overfull \hbox (8.545pt too wide) in paragraph at lines 46--46
-[]|\T1/ptm/b/n/7 DeepRare|  
- []
-
-
-Overfull \hbox (16.76991pt too wide) in paragraph at lines 46--46
-[]|\T1/ptm/m/n/7 Phenopacket- 
- []
-
-
-Overfull \hbox (16.53922pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 patient_- 
- []
-
-
-Overfull \hbox (3.93922pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 *.json 
- []
-
-
-Overfull \hbox (20.73921pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 DEEPRARE_- 
- []
-
-
-Overfull \hbox (20.73921pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 DEEPRARE_- 
- []
-
-
-Overfull \hbox (8.13922pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 LOCAL_- 
- []
-
-
-Overfull \hbox (24.93921pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 EMBEDDING=1 
- []
-
-
-Overfull \hbox (0.79605pt too wide) in paragraph at lines 46--46
-[]|\T1/ptm/m/n/7 Patched 
- []
-
-
-Overfull \hbox (45.9392pt too wide) in paragraph at lines 46--46
-\T1/pcr/m/n/7 api/interface.py 
- []
-
-
-Overfull \hbox (3.61707pt too wide) in paragraph at lines 46--46
-\T1/ptm/m/n/7 OpenAI- 
- []
-
-
-Overfull \hbox (13.73195pt too wide) in paragraph at lines 46--46
-\T1/ptm/m/n/7 configurable 
- []
-
-
-Overfull \hbox (12.33922pt too wide) in paragraph at lines 46--46
-[]|\T1/pcr/m/n/7 --no-web 
- []
-
-
-Overfull \hbox (0.50911pt too wide) in paragraph at lines 47--47
-[]|\T1/ptm/b/n/7 RDMA|  
- []
-
-
-Overfull \hbox (10.62393pt too wide) in paragraph at lines 47--47
-[]|\T1/ptm/m/n/7 Subprocess 
- []
-
-
-Overfull \hbox (96.33916pt too wide) in paragraph at lines 47--47
-\T1/pcr/m/n/7 LLMEntityExtractor.extract_- 
- []
-
-
-Overfull \hbox (14.28514pt too wide) in paragraph at lines 47--47
-\T1/pcr/m/n/7 entities\T1/ptm/m/n/7 ; 
- []
-
-
-Overfull \hbox (92.13916pt too wide) in paragraph at lines 47--47
-[]|\T1/pcr/m/n/7 OpenRouterLLMClient(model_- 
- []
-
-
-Overfull \hbox (16.53922pt too wide) in paragraph at lines 47--47
-\T1/pcr/m/n/7 type=...) 
- []
-
-
-Overfull \hbox (3.23894pt too wide) in paragraph at lines 47--47
-\T1/ptm/m/n/7 (mining- 
- []
-
-
-Overfull \hbox (2.45488pt too wide) in paragraph at lines 47--47
-\T1/ptm/m/n/7 specific)|  
- []
-
-
-Overfull \hbox (6.48703pt too wide) in paragraph at lines 48--48
-\T1/ptm/b/n/7 RDAgent|  
- []
-
-
-Overfull \hbox (0.83089pt too wide) in paragraph at lines 48--48
-\T1/ptm/m/n/7 fault(IC 
- []
-
-
-Overfull \hbox (3.23195pt too wide) in paragraph at lines 48--48
-\T1/ptm/m/n/7 Poincaré 
- []
-
-
-Overfull \hbox (8.95107pt too wide) in paragraph at lines 48--48
-\T1/ptm/m/n/7 frequency- 
- []
-
-
-Overfull \hbox (1.2861pt too wide) in paragraph at lines 48--48
-\T1/ptm/m/n/7 Qwen3- 
- []
-
-
-Overfull \hbox (8.13922pt too wide) in paragraph at lines 48--48
-\T1/pcr/m/n/7 refine: 
- []
-
-
-Overfull \hbox (8.6849pt too wide) in paragraph at lines 49--49
-[]|\T1/ptm/b/n/7 LIRICAL|  
- []
-
-
-Overfull \hbox (2.45512pt too wide) in paragraph at lines 49--49
-[]|\T1/ptm/m/n/7 GA4GH 
- []
-
-
-Overfull \hbox (14.43895pt too wide) in paragraph at lines 49--49
-\T1/ptm/m/n/7 Phenopacket|  
- []
-
-
-Overfull \hbox (14.047pt too wide) in paragraph at lines 49--49
-\T1/ptm/m/n/7 phenopacket 
- []
-
-
-Overfull \hbox (24.93921pt too wide) in paragraph at lines 49--49
-\T1/pcr/m/n/7 lirical.jar 
- []
-
-
-Overfull \hbox (26.88513pt too wide) in paragraph at lines 49--49
-\T1/pcr/m/n/7 phenopacket\T1/ptm/m/n/7 ; 
- []
-
-
-Overfull \hbox (6.73187pt too wide) in paragraph at lines 49--49
-\T1/ptm/m/n/7 Bayesian)|  
- []
-
-
-Overfull \hbox (1.11803pt too wide) in paragraph at lines 49--50
-[]|\T1/ptm/b/n/7 Apache 
- []
-
-
-LaTeX Warning: Float too large for page by 395.60121pt on input line 53.
-
-
-Overfull \hbox (91.24515pt too wide) in paragraph at lines 79--79
-[]|\T1/pcr/m/n/7 google/gemini-3-flash-preview-20251217 
- []
-
-
-Underfull \hbox (badness 2617) in paragraph at lines 94--96
+Underfull \hbox (badness 2617) in paragraph at lines 88--90
 \T1/ptm/m/n/10.95 do not in-clude them in LLM-only ab-la-tions
  []
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
 []\T1/ptm/b/n/10.95 MDAgents/MedAgents/RDMA/VC-
  []
 
 
-Underfull \hbox (badness 1831) in paragraph at lines 103--105
+Underfull \hbox (badness 1831) in paragraph at lines 96--98
 \T1/ptm/b/n/10.95 RDAgent: no li-cense file in up-stream
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--109
-[]\T1/ptm/b/n/10.95 MAI-DxO com-mu-nity port \T1/ptm/m/n/10.95 (\T1/pcr/l/it/10
-.95 Open-
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
+[]\T1/ptm/b/n/10.95 MAI-DxO com-mu-nity port \T1/ptm/m/n/10.95 (\T1/pcr/c/sc/10.95 Open-
  []
 
 
-Underfull \hbox (badness 1831) in paragraph at lines 107--109
-\T1/pcr/l/it/10.95 MAI-Dx-Orchestrator\T1/ptm/m/n/10.95 , 58$\OML/cmm/m/it/10.9
-5 ?$ \T1/ptm/m/n/10.95 MIT) is
+Underfull \hbox (badness 1831) in paragraph at lines 100--102
+\T1/pcr/c/sc/10.95 MAI-Dx-Orchestrator\T1/ptm/m/n/10.95 , 58$\OML/cmm/m/it/10.95 ?$ \T1/ptm/m/n/10.95 MIT) is
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 107--109
+Underfull \hbox (badness 1342) in paragraph at lines 100--102
 \T1/ptm/m/n/10.95 struc-turally faith-ful to Nori et al. (arXiv
  []
 
 
-Underfull \hbox (badness 2662) in paragraph at lines 107--109
+Underfull \hbox (badness 2662) in paragraph at lines 100--102
 \T1/ptm/m/n/10.95 --- mi-nor nu-mer-i-cal de-vi-a-tion from Mi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
-[]\T1/ptm/b/n/10.95 AgentClinic \T1/ptm/m/n/10.95 in our v1 is tested
+Underfull \hbox (badness 10000) in paragraph at lines 102--106
+[]\T1/ptm/b/n/10.95 AgentClinic \T1/ptm/m/n/10.95 in our di-ag-nos-tic ma-trix
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
-\T1/ptm/m/n/10.95 on HPO-only cases (Phenopacket-
+Underfull \hbox (badness 10000) in paragraph at lines 102--106
+\T1/ptm/m/n/10.95 is tested on HPO-only Phenopacket-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
-\T1/ptm/m/n/10.95 Store/RareBench/MIMIC-IV); its OSCE
+Underfull \hbox (badness 1655) in paragraph at lines 102--106
+\T1/ptm/m/n/10.95 Store/RareBench and nar-ra-tive RareArena
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 109--111
-\T1/ptm/m/n/10.95 di-a-logue is shal-low when no free-text
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 109--111
-\T1/ptm/m/n/10.95 vi-gnette is avail-able. We re-port this as
- []
-
-
-Underfull \hbox (badness 1281) in paragraph at lines 111--112
+Underfull \hbox (badness 1281) in paragraph at lines 106--107
 []\T1/ptm/b/n/10.95 LIRICAL \T1/ptm/m/n/10.95 re-quires HPO list in-put. On
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-\T1/pcr/l/it/10.95 eval_-mode="end_-to_-end" \T1/ptm/m/n/10.95 up-stream
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+\T1/pcr/c/sc/10.95 eval_-mode="end_-to_-end" \T1/ptm/m/n/10.95 up-stream
  []
 
 
-Underfull \hbox (badness 4193) in paragraph at lines 111--112
-\T1/ptm/m/n/10.95 LLM HPO ex-trac-tion + phrase$\OMS/cmsy/m/n/10.95 !$\T1/ptm/m
-/n/10.95 HP-ID
+Underfull \hbox (badness 4193) in paragraph at lines 106--107
+\T1/ptm/m/n/10.95 LLM HPO ex-trac-tion + phrase$\OMS/cmsy/m/n/10.95 !$\T1/ptm/m/n/10.95 HP-ID
  []
 
 
-Underfull \hbox (badness 1728) in paragraph at lines 111--112
+Underfull \hbox (badness 1728) in paragraph at lines 106--107
 \T1/ptm/m/n/10.95 the same-case anal-y-sis and cor-rec-tion in
  []
 
-) (./tex/7_1_p1_p2_cascade.tex
+[27]) (./tex/7_1_p1_p2_cascade.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 2.
+(hyperref)                removing `\rightarrow' on input line 1.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 5.
+(hyperref)                than one, level fixed on input line 3.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 5.
+(hyperref)                removing `\rightarrow' on input line 3.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [28]
-Underfull \hbox (badness 2065) in paragraph at lines 12--13
+Underfull \hbox (badness 2065) in paragraph at lines 10--11
 \T1/ptm/m/n/10.95 An ear-lier draft re-ported ``LIR-I-CAL
  []
 
 
-Underfull \hbox (badness 5924) in paragraph at lines 12--13
+Underfull \hbox (badness 5924) in paragraph at lines 10--11
 \T1/ptm/m/n/10.95 two num-bers came from \T1/ptm/b/n/10.95 dif-fer-ent
  []
 
-[29]
-Underfull \hbox (badness 4108) in paragraph at lines 19--20
+[28]
+Underfull \hbox (badness 4108) in paragraph at lines 17--18
 \T1/ptm/b/n/10.95 types. \T1/ptm/m/n/10.95 Free-text-native agents (MedA-gents,
-
  []
 
 
-Underfull \hbox (badness 1490) in paragraph at lines 25--26
+Underfull \hbox (badness 1490) in paragraph at lines 23--24
 []\T1/ptm/b/n/10.95 Implications for bench-mark method-ol-ogy.
  []
 
 
-Underfull \hbox (badness 1728) in paragraph at lines 25--26
+Underfull \hbox (badness 1728) in paragraph at lines 23--24
 \T1/ptm/m/n/10.95 Two take-aways for the field: (i) prior rare-
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 25--26
+Underfull \hbox (badness 2012) in paragraph at lines 23--24
 \T1/ptm/m/n/10.95 disease LLM bench-marks that com-pare LIR-
  []
 
 
-Underfull \hbox (badness 4913) in paragraph at lines 25--26
+Underfull \hbox (badness 4913) in paragraph at lines 23--24
 \T1/ptm/m/n/10.95 I-CAL/Exomiser (Bayesian, HPO-list-only) to
  []
 
-) (./tex/A1_reproducibility_audit.tex
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
-[]\T1/pcr/l/it/10.95 data/round2/phase4a_-re-
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29]) (./tex/A1_reproducibility_audit.tex
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
+[]\T1/pcr/c/sc/10.95 data/round2/phase4a_-re-
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 31--36
+Underfull \hbox (badness 4120) in paragraph at lines 30--35
 \T1/ptm/m/n/10.95 (dataset, agent, back-bone, n_-ok, n_-err,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
 \T1/ptm/m/n/10.95 R@1_-strict, R@1_-vari-ants, R@5_-strict,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--36
+Underfull \hbox (badness 10000) in paragraph at lines 30--35
 \T1/ptm/m/n/10.95 R@5_-vari-ants, cost_-usd, mean_-lat_-ms).
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
-[]\T1/pcr/l/it/10.95 docs/baseline_-re-pro/<agent>.md
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
+[]\T1/pcr/c/sc/10.95 docs/baseline_-re-pro/<agent>.md
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 36--41
+Underfull \hbox (badness 1043) in paragraph at lines 35--40
 \T1/ptm/m/n/10.95 patches (if any), known in-com-pat-i-bil-i-ties,
  []
 
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 41--44
-[]\T1/pcr/l/it/10.95 tasks/stream_-E_-agent_-scout-
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--43
+[]\T1/pcr/c/sc/10.95 tasks/stream_-E_-agent_-scout-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--44
-\T1/pcr/l/it/10.95 ing/agents/<agent>_-RUN_-RE-
+Underfull \hbox (badness 10000) in paragraph at lines 40--43
+\T1/pcr/c/sc/10.95 ing/agents/<agent>_-RUN_-RE-
  []
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 51.
+(hyperref)                than one, level fixed on input line 49.
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 53--54
-\T1/ptm/m/n/10.95 These are n=50 pi-lot re-pro-duc-tion checks ---
+Underfull \hbox (badness 1117) in paragraph at lines 92--101
+\T1/ptm/m/n/10.95 early runs the panel be-gan emit-ting \T1/ptm/m/it/10.95 mea-sure-
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 53--54
-\T1/ptm/m/n/10.95 each asks ``can we re-pro-duce agent X's own
- []
-
-
-Underfull \hbox (badness 1057) in paragraph at lines 53--54
-\T1/ptm/m/n/10.95 paper-claimed num-ber on a small sam-ple un-
- []
-
-
-Underfull \hbox (badness 1735) in paragraph at lines 53--54
-\T1/ptm/m/n/10.95 der our har-ness'', and is de-lib-er-ately dis-tinct
- []
-
-
-Overfull \hbox (34.93332pt too wide) in paragraph at lines 77--77
-\T1/pcr/m/n/7 mode=intermediate\T1/ptm/m/n/7 .|  
- []
-
-
-Overfull \hbox (0.66782pt too wide) in paragraph at lines 79--79
-\T1/ptm/m/n/7 (AgentClinic- 
- []
-
-
-Overfull \hbox (60.54488pt too wide) in paragraph at lines 79--79
-\T1/ptm/m/n/7 tor/patient/measurement/moderator|  
- []
-
-
-Overfull \hbox (6.1143pt too wide) in paragraph at lines 82--82
-\T1/ptm/m/n/7 (\T1/pcr/m/n/7 DEEPRARE_- 
- []
-
-
-Overfull \hbox (39.32924pt too wide) in paragraph at lines 83--83
-\T1/pcr/m/n/7 LLMEntityExtractor\T1/ptm/m/n/7 ; 
- []
-
-
-Overfull \hbox (7.98334pt too wide) in paragraph at lines 85--85
-\T1/pcr/m/n/7 lirical.jar 
- []
-
-
-Overfull \hbox (9.92926pt too wide) in paragraph at lines 85--85
-\T1/pcr/m/n/7 phenopacket\T1/ptm/m/n/7 ; 
- []
-
-
-LaTeX Warning: Float too large for page by 75.60121pt on input line 91.
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 96--105
-\T1/ptm/m/n/10.95 early runs the panel be-gan emit-ting \T1/ptm/m/it/10.95 mea-
-sure-
- []
-
-
-Underfull \hbox (badness 1642) in paragraph at lines 96--105
+Underfull \hbox (badness 1642) in paragraph at lines 92--101
 \T1/ptm/m/it/10.95 ment val-ues \T1/ptm/m/n/10.95 (DLCO, LVEF, FEV1, FVC) as
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--105
-\T1/ptm/m/n/10.95 fil-ter (\T1/pcr/l/it/10.95 harness/agents/maidxo.py:_-
+Underfull \hbox (badness 10000) in paragraph at lines 92--101
+\T1/ptm/m/n/10.95 fil-ter (\T1/pcr/c/sc/10.95 harness/agents/maidxo.py:_-
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 96--105
+Underfull \hbox (badness 1924) in paragraph at lines 92--101
 \T1/ptm/m/n/10.95 num-ber in Ta-ble [][]1[][]. We sur-face the input-
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 96--105
-\T1/ptm/m/n/10.95 distribution mis-match openly (Ap-pendix [][]B[][] +
+Underfull \hbox (badness 6332) in paragraph at lines 92--101
+\T1/ptm/m/n/10.95 distribution mis-match openly (Sec-tion [][]B[][] +
  []
 
-
-Underfull \hbox (badness 2409) in paragraph at lines 130--141
+[30]
+Underfull \hbox (badness 2409) in paragraph at lines 125--136
 \T1/ptm/m/n/10.95 Or-pha-data (thresh-old 90). 17 self-tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--149
+Underfull \hbox (badness 10000) in paragraph at lines 136--144
 []\T1/ptm/m/n/10.95 DeepRare first-case state leak.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--149
-\T1/ptm/m/n/10.95 Deep-Rare writes \T1/pcr/l/it/10.95 re-sult_-
+Underfull \hbox (badness 10000) in paragraph at lines 136--144
+\T1/ptm/m/n/10.95 Deep-Rare writes \T1/pcr/c/sc/10.95 re-sult_-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--149
-\T1/pcr/l/it/10.95 <tag>/<case>/<model>/patient_-
+Underfull \hbox (badness 10000) in paragraph at lines 136--144
+\T1/pcr/c/sc/10.95 <tag>/<case>/<model>/patient_-
  []
 
 
-Underfull \hbox (badness 4492) in paragraph at lines 141--149
-\T1/pcr/l/it/10.95 0.json \T1/ptm/m/n/10.95 with a de-ter-min-is-tic \T1/pcr/l/
-it/10.95 0 \T1/ptm/m/n/10.95 in-dex.
+Underfull \hbox (badness 4492) in paragraph at lines 136--144
+\T1/pcr/c/sc/10.95 0.json \T1/ptm/m/n/10.95 with a de-ter-min-is-tic \T1/pcr/c/sc/10.95 0 \T1/ptm/m/n/10.95 in-dex.
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 141--149
-\T1/ptm/m/n/10.95 All 50 P2 cases re-turned the \T1/ptm/m/it/10.95 first \T1/pt
-m/m/n/10.95 case's
+Underfull \hbox (badness 1077) in paragraph at lines 136--144
+\T1/ptm/m/n/10.95 All 50 P2 cases re-turned the \T1/ptm/m/it/10.95 first \T1/ptm/m/n/10.95 case's
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 141--149
+Underfull \hbox (badness 1270) in paragraph at lines 136--144
 \T1/ptm/m/n/10.95 pre-dic-tion (``Meta-chon-dro-mato-sis'') on the
  []
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 141--149
-\T1/ptm/m/n/10.95 first run. Fix: per-case unique \T1/pcr/l/it/10.95 run_-
+Underfull \hbox (badness 1360) in paragraph at lines 136--144
+\T1/ptm/m/n/10.95 first run. Fix: per-case unique \T1/pcr/c/sc/10.95 run_-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--149
-\T1/pcr/l/it/10.95 tag = f"{base_-tag}_-{case_-
+Underfull \hbox (badness 10000) in paragraph at lines 136--144
+\T1/pcr/c/sc/10.95 tag = f"{base_-tag}_-{case_-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--149
-\T1/pcr/l/it/10.95 id[:40]}_-{suf-fix}" \T1/ptm/m/n/10.95 + de-fen-sive
+Underfull \hbox (badness 10000) in paragraph at lines 136--144
+\T1/pcr/c/sc/10.95 id[:40]}_-{suf-fix}" \T1/ptm/m/n/10.95 + de-fen-sive
  []
 
 [31]
-Underfull \hbox (badness 5359) in paragraph at lines 154--158
+Underfull \hbox (badness 5359) in paragraph at lines 149--153
 []\T1/ptm/m/n/10.95 Orphadata 53 MB XML re-parsed per
  []
 
 
-Underfull \hbox (badness 6252) in paragraph at lines 154--158
+Underfull \hbox (badness 6252) in paragraph at lines 149--153
 \T1/ptm/m/n/10.95 call. Af-ter fix-ing Bug #1 the NL-
  []
 
 
-Underfull \hbox (badness 3884) in paragraph at lines 154--158
+Underfull \hbox (badness 3884) in paragraph at lines 149--153
 \T1/ptm/m/n/10.95 XML on ev-ery eval-u-a-tor call, bal-loon-
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 163--166
-\T1/ptm/m/n/10.95 For any Ta-ble [][]1[][] / Sec-tion [][]6[][] cell \T1/pcr/l/
-it/10.95 (agent,
+Underfull \hbox (badness 1694) in paragraph at lines 157--160
+\T1/ptm/m/n/10.95 For any Ta-ble [][]1[][] / Sec-tion [][]6[][] cell \T1/pcr/c/sc/10.95 (agent,
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 163--166
-\T1/pcr/l/it/10.95 back-bone, dataset)\T1/ptm/m/n/10.95 , start from the per-
+Underfull \hbox (badness 1248) in paragraph at lines 157--160
+\T1/pcr/c/sc/10.95 back-bone, dataset)\T1/ptm/m/n/10.95 , start from the per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
-[]\T1/pcr/l/it/10.95 scripts/sanity_-check_-eval-u-a-
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
+\T1/ptm/m/n/10.95 er-ated sep-a-rately with \T1/pcr/c/sc/10.95 scripts/build_-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--185
-\T1/pcr/l/it/10.95 scripts/cost_-tracker.py --budget
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
+\T1/pcr/c/sc/10.95 mimic_-early_-struc-tured_-snap-
  []
 
 
-Underfull \hbox (badness 2237) in paragraph at lines 182--185
-\T1/pcr/l/it/10.95 <USD> \T1/ptm/m/n/10.95 prints the run-ning per-backbone cos
-t
+Underfull \hbox (badness 7468) in paragraph at lines 170--174
+\T1/pcr/c/sc/10.95 shots.py \T1/ptm/m/n/10.95 and \T1/pcr/c/sc/10.95 scripts/mimic_-struc-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
+\T1/pcr/c/sc/10.95 tured_-ehr_-ab-la-tion.py\T1/ptm/m/n/10.95 ; pro-tected
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
+[]\T1/pcr/c/sc/10.95 scripts/sanity_-check_-eval-u-a-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--183
+\T1/pcr/c/sc/10.95 scripts/cost_-tracker.py --budget
+ []
+
+
+Underfull \hbox (badness 2237) in paragraph at lines 180--183
+\T1/pcr/c/sc/10.95 <USD> \T1/ptm/m/n/10.95 prints the run-ning per-backbone cost
  []
 
 ) (./tex/B_appendix_baseline_repro.tex
-Underfull \hbox (badness 1043) in paragraph at lines 13--17
+Underfull \hbox (badness 1043) in paragraph at lines 11--15
 \T1/ptm/m/n/10.95 only (no al-go-rith-mic mod-i-fi-ca-tion be-yond
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 13--17
+Underfull \hbox (badness 6876) in paragraph at lines 11--15
 \T1/ptm/m/n/10.95 Open-Router base_-url + rea-son-ing_-ef-fort
  []
 
 
-Overfull \hbox (6.71936pt too wide) in paragraph at lines 57--57
-[]|\T1/ptm/b/n/7 MDAgents|  
- []
-
-
-Overfull \hbox (9.68706pt too wide) in paragraph at lines 57--57
-[]|\T1/ptm/m/n/7 intermediate 
- []
-
-
-Overfull \hbox (2.29541pt too wide) in paragraph at lines 57--57
-\T1/ptm/m/n/7 (MedQA- 
- []
-
-
-Overfull \hbox (20.89462pt too wide) in paragraph at lines 57--58
-[]|\T1/pcr/m/n/7 mdagents.md|  
- []
-
-
-Overfull \hbox (8.9103pt too wide) in paragraph at lines 58--58
-[]|\T1/ptm/b/n/7 MedAgents|  
- []
-
-
-Overfull \hbox (2.29541pt too wide) in paragraph at lines 58--58
-\T1/ptm/m/n/7 (MedQA- 
- []
-
-
-Overfull \hbox (25.09462pt too wide) in paragraph at lines 58--59
-[]|\T1/pcr/m/n/7 medagents.md|  
- []
-
-
-Overfull \hbox (10.47115pt too wide) in paragraph at lines 59--59
-[]|\T1/ptm/b/n/7 AgentClinic|  
- []
-
-
-Overfull \hbox (13.5791pt too wide) in paragraph at lines 59--59
-\T1/ptm/m/n/7 (AgentClinic- 
- []
-
-
-Overfull \hbox (33.49461pt too wide) in paragraph at lines 59--60
-[]|\T1/pcr/m/n/7 agentclinic.md|  
- []
-
-
-Overfull \hbox (12.49463pt too wide) in paragraph at lines 60--61
-[]|\T1/pcr/m/n/7 maidxo.md|  
- []
-
-
-Overfull \hbox (4.50041pt too wide) in paragraph at lines 61--61
-[]|\T1/ptm/b/n/7 DeepRare|  
- []
-
-
-Overfull \hbox (10.91927pt too wide) in paragraph at lines 61--61
-\T1/ptm/m/n/7 (HPO+VCF)|  
- []
-
-
-Overfull \hbox (12.20726pt too wide) in paragraph at lines 61--61
-\T1/ptm/m/n/7 (RareBench), 
- []
-
-
-Overfull \hbox (7.54533pt too wide) in paragraph at lines 61--61
-\T1/ptm/m/n/7 RareBench, 
- []
-
-
-Overfull \hbox (20.89462pt too wide) in paragraph at lines 61--62
-[]|\T1/pcr/m/n/7 deeprare.md|  
- []
-
-
-Overfull \hbox (4.50041pt too wide) in paragraph at lines 62--62
-[]|\T1/ptm/b/n/7 DeepRare 
- []
-
-
-Overfull \hbox (20.89462pt too wide) in paragraph at lines 62--63
-[]|\T1/pcr/m/n/7 deeprare.md|  
- []
-
-
-Overfull \hbox (32.63301pt too wide) in paragraph at lines 63--63
-[]|\T1/ptm/m/n/7 LLMEntityExtractor|  
- []
-
-
-Overfull \hbox (4.09464pt too wide) in paragraph at lines 63--64
-[]|\T1/pcr/m/n/7 rdma.md|  
- []
-
-
-Overfull \hbox (2.44244pt too wide) in paragraph at lines 64--64
-\T1/ptm/b/n/7 RDAgent|  
- []
-
-
-Overfull \hbox (16.69463pt too wide) in paragraph at lines 64--65
-\T1/pcr/m/n/7 rdagent.md|  
- []
-
-
-Overfull \hbox (4.64032pt too wide) in paragraph at lines 65--65
-[]|\T1/ptm/b/n/7 LIRICAL|  
- []
-
-
-Overfull \hbox (2.10632pt too wide) in paragraph at lines 65--65
-\T1/ptm/m/n/7 Bayesian, 
- []
-
-
-Overfull \hbox (16.69463pt too wide) in paragraph at lines 65--66
-[]|\T1/pcr/m/n/7 lirical.md|  
- []
-
-
-Overfull \hbox (16.69463pt too wide) in paragraph at lines 66--67
-\T1/pcr/m/n/7 control.md|  
- []
-
-
-Underfull \hbox (badness 7576) in paragraph at lines 83--92
+Underfull \hbox (badness 7576) in paragraph at lines 78--87
 []\T1/ptm/b/n/10.95 DeepRare -29 pp on HPO-only / -33
  []
 
 
-Underfull \hbox (badness 3954) in paragraph at lines 83--92
+Underfull \hbox (badness 3954) in paragraph at lines 78--87
 \T1/ptm/b/n/10.95 pp on HPO+variants\T1/ptm/m/n/10.95 : - Web search dis-
  []
 
-
-Underfull \hbox (badness 3861) in paragraph at lines 102--104
+[32]
+Underfull \hbox (badness 3861) in paragraph at lines 96--98
 []\T1/ptm/m/n/10.95 The fol-low-ing changes af-fect base-
  []
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 106--112
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--106
 []\T1/ptm/b/n/10.95 DeepRare \T1/ptm/m/n/10.95 ---
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--112
-\T1/pcr/l/it/10.95 r\TS1/pcr/m/n/10.95 '\T1/pcr/l/it/10.95 ^^B##\s+(.+?)\s*\(Ra
-nk\s*#\d+\TS1/pcr/m/n/10.95 '
+Underfull \hbox (badness 10000) in paragraph at lines 100--106
+\T1/pcr/c/sc/10.95 r\TS1/pcr/m/n/10.95 '\T1/pcr/c/sc/10.95 ^^B##\s+(.+?)\s*\(Rank\s*#\d+\TS1/pcr/m/n/10.95 '
  []
 
 
-Underfull \hbox (badness 2970) in paragraph at lines 106--112
+Underfull \hbox (badness 2970) in paragraph at lines 100--106
 \T1/ptm/m/n/10.95 out-put for-mat (no mark-down bold). Dual-
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 106--112
+Underfull \hbox (badness 1454) in paragraph at lines 100--106
 \T1/ptm/m/n/10.95 reported: ``strict-baseline'' mode = sys-tem-atic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--116
-[]\T1/ptm/b/n/10.95 MAI-DxO \T1/ptm/m/n/10.95 --- \T1/pcr/l/it/10.95 har-
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
+[]\T1/ptm/b/n/10.95 MAI-DxO \T1/ptm/m/n/10.95 --- \T1/pcr/c/sc/10.95 har-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--116
-\T1/pcr/l/it/10.95 ness/agents/maidxo.py:_-NOISE_-
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
+\T1/pcr/c/sc/10.95 ness/agents/maidxo.py:_-NOISE_-
  []
 
 
-Underfull \hbox (badness 2556) in paragraph at lines 113--116
-\T1/pcr/l/it/10.95 PAT-TERNS\T1/ptm/m/n/10.95 : 13-regex post-hoc fil-ter to dr
-op
+Underfull \hbox (badness 2556) in paragraph at lines 107--110
+\T1/pcr/c/sc/10.95 PAT-TERNS\T1/ptm/m/n/10.95 : 13-regex post-hoc fil-ter to drop
  []
 
 
-Underfull \hbox (badness 7451) in paragraph at lines 113--116
+Underfull \hbox (badness 7451) in paragraph at lines 107--110
 \T1/ptm/m/n/10.95 only mod-i-fi-ca-tion; MAI-DxO's panel logic
  []
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 117--122
+Underfull \hbox (badness 1028) in paragraph at lines 111--116
 []\T1/ptm/b/n/10.95 MDAgents / MedA-gents / Agent-Clinic \T1/ptm/m/n/10.95 ---
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--122
-\T1/pcr/l/it/10.95 har-ness/agents/_-adapter_-utils.py:
+Underfull \hbox (badness 10000) in paragraph at lines 111--116
+\T1/pcr/c/sc/10.95 har-ness/agents/_-adapter_-utils.py:
  []
 
 
-Underfull \hbox (badness 2142) in paragraph at lines 117--122
-\T1/pcr/l/it/10.95 parse_-ranked_-top5\T1/ptm/m/n/10.95 : section-aware regex
+Underfull \hbox (badness 2142) in paragraph at lines 111--116
+\T1/pcr/c/sc/10.95 parse_-ranked_-top5\T1/ptm/m/n/10.95 : section-aware regex
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 117--122
+Underfull \hbox (badness 3000) in paragraph at lines 111--116
 \T1/ptm/m/n/10.95 prefix fil-ter re-jects ``Lab-o-ra-tory ev-i-dence...'',
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--121
 []\T1/ptm/b/n/10.95 All ID map-ping (mda-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--127
+Underfull \hbox (badness 10000) in paragraph at lines 117--121
 \T1/ptm/b/n/10.95 gents/medagents/agentclinic/maidxo/llm_-con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
 []\T1/ptm/m/n/10.95 Per-cell re-ceipts (run-id, Open-Router
  []
 
 
-Underfull \hbox (badness 2435) in paragraph at lines 142--146
+Underfull \hbox (badness 2435) in paragraph at lines 135--139
 \T1/ptm/m/n/10.95 request-id, dol-lar cost, la-tency, per-case sta-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
-\T1/ptm/m/n/10.95 tus) are in \T1/pcr/l/it/10.95 data/round2/phase4a_-re-
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
+\T1/ptm/m/n/10.95 tus) are in \T1/pcr/c/sc/10.95 data/round2/phase4a_-re-
  []
 
 
-Underfull \hbox (badness 5504) in paragraph at lines 142--146
-\T1/pcr/l/it/10.95 ceipts.csv \T1/ptm/m/n/10.95 (7,581 rows). Ag-gre-ga-tion:
+Underfull \hbox (badness 5504) in paragraph at lines 135--139
+\T1/pcr/c/sc/10.95 ceipts.csv \T1/ptm/m/n/10.95 (7,581 rows). Ag-gre-ga-tion:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
-\T1/pcr/l/it/10.95 scripts/phase4a_-re-port_-gen.py
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
+\T1/pcr/c/sc/10.95 scripts/phase4a_-re-port_-gen.py
  []
 
 ) (./tex/J_appendix_cost.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+[]\T1/ptm/m/n/10.95 Source: diagnostic-task rows in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+\T1/pcr/c/sc/10.95 data/round2/phase4a_-re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+\T1/pcr/c/sc/10.95 ceipts.csv\T1/ptm/m/n/10.95 ; legacy MIMIC
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+\T1/ptm/m/n/10.95 ICD-title rows are ex-cluded and
+ []
+
+
+Underfull \hbox (badness 2035) in paragraph at lines 4--10
+\T1/ptm/m/n/10.95 the re-place-ment structured-EHR task
+ []
+
+
+Underfull \hbox (badness 2119) in paragraph at lines 4--10
+\T1/ptm/m/n/10.95 will re-ceive a sep-a-rate cost re-ceipt.
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 4--10
+\T1/ptm/m/n/10.95 OpenRouter- wrapped adapters; es-ti-
+ []
+
+
+Underfull \hbox (badness 1817) in paragraph at lines 4--10
+\T1/ptm/m/n/10.95 VC-RDAgent, RDMA --- marked \TS1/pcr/m/n/10.95 „
+ []
+
+[33]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\geq' on input line 51.
+(hyperref)                removing `\geq' on input line 49.
 
 
-Overfull \hbox (2.87387pt too wide) in paragraph at lines 72--73
-[]\T1/ptm/m/n/7 Dataset  
- []
-
-
-Overfull \hbox (9.87407pt too wide) in paragraph at lines 76--77
-[]\T1/ptm/m/n/7 Backbone  
- []
-
-
-Overfull \hbox (8.71178pt too wide) in paragraph at lines 82--83
-[]\T1/ptm/m/n/7 Cost/case  
- []
-
-
-Overfull \hbox (5.20485pt too wide) in paragraph at lines 86--87
-[]\T1/ptm/m/n/7 Lat/case  
- []
-
-
-Overfull \hbox (23.01997pt too wide) in paragraph at lines 89--89
-[]|\T1/ptm/m/n/7 phenopacket_- 
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 89--89
-[]|\T1/pcr/m/n/7 lirical|  
- []
-
-
-Overfull \hbox (9.48903pt too wide) in paragraph at lines 89--89
-[]|\T1/ptm/m/n/7 LIRICAL|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 89--89
-[]|\T1/ptm/m/n/7 $0.000/k|  
- []
-
-
-Overfull \hbox (23.01997pt too wide) in paragraph at lines 90--90
-[]|\T1/ptm/m/n/7 phenopacket_- 
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 90--90
-\T1/pcr/m/n/7 rdagent|  
- []
-
-
-Overfull \hbox (8.43208pt too wide) in paragraph at lines 90--90
-\T1/ptm/m/n/7 RDAgent|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 90--90
-[]|\T1/ptm/m/n/7 $0.000/k|  
- []
-
-
-Overfull \hbox (9.475pt too wide) in paragraph at lines 91--91
-[]|\T1/ptm/m/n/7 rarebench|  
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 91--91
-[]|\T1/pcr/m/n/7 lirical|  
- []
-
-
-Overfull \hbox (9.48903pt too wide) in paragraph at lines 91--91
-[]|\T1/ptm/m/n/7 LIRICAL|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 91--91
-[]|\T1/ptm/m/n/7 $0.000/k|  
- []
-
-
-Overfull \hbox (9.475pt too wide) in paragraph at lines 92--92
-[]|\T1/ptm/m/n/7 rarebench|  
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 92--92
-\T1/pcr/m/n/7 rdagent|  
- []
-
-
-Overfull \hbox (8.43208pt too wide) in paragraph at lines 92--92
-\T1/ptm/m/n/7 RDAgent|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 92--92
-[]|\T1/ptm/m/n/7 $0.000/k|  
- []
-
-
-Overfull \hbox (9.475pt too wide) in paragraph at lines 93--93
-[]|\T1/ptm/m/n/7 rarebench|  
- []
-
-
-Overfull \hbox (15.48123pt too wide) in paragraph at lines 93--93
-[]|\T1/pcr/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 93--93
-[]|\T1/ptm/m/n/7 $0.061/k|  
- []
-
-
-Overfull \hbox (5.60387pt too wide) in paragraph at lines 94--94
-[]|\T1/ptm/m/n/7 mimic_- 
- []
-
-
-Overfull \hbox (15.48123pt too wide) in paragraph at lines 94--94
-[]|\T1/pcr/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 94--94
-[]|\T1/ptm/m/n/7 $0.062/k|  
- []
-
-
-Overfull \hbox (23.01997pt too wide) in paragraph at lines 95--95
-[]|\T1/ptm/m/n/7 phenopacket_- 
- []
-
-
-Overfull \hbox (15.48123pt too wide) in paragraph at lines 95--95
-[]|\T1/pcr/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 95--95
-[]|\T1/ptm/m/n/7 $0.067/k|  
- []
-
-
-Overfull \hbox (13.74489pt too wide) in paragraph at lines 96--96
-[]|\T1/ptm/m/n/7 rarearena_- 
- []
-
-
-Overfull \hbox (15.48123pt too wide) in paragraph at lines 96--96
-[]|\T1/pcr/m/n/7 mdagents|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 96--96
-[]|\T1/ptm/m/n/7 $0.096/k|  
- []
-
-
-Overfull \hbox (5.60387pt too wide) in paragraph at lines 97--97
-[]|\T1/ptm/m/n/7 mimic_- 
- []
-
-
-Overfull \hbox (2.88124pt too wide) in paragraph at lines 97--97
-[]|\T1/pcr/m/n/7 llm_- 
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 97--97
-\T1/pcr/m/n/7 control|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 97--97
-[]|\T1/ptm/m/n/7 $0.171/k|  
- []
-
-
-Overfull \hbox (23.01997pt too wide) in paragraph at lines 98--98
-[]|\T1/ptm/m/n/7 phenopacket_- 
- []
-
-
-Overfull \hbox (28.08122pt too wide) in paragraph at lines 98--98
+Overfull \hbox (1.84425pt too wide) in paragraph at lines 94--94
 []|\T1/pcr/m/n/7 agentclinic|  
  []
 
 
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 98--98
-[]|\T1/ptm/m/n/7 $0.216/k|  
- []
-
-
-Overfull \hbox (5.60387pt too wide) in paragraph at lines 99--99
-[]|\T1/ptm/m/n/7 mimic_- 
- []
-
-
-Overfull \hbox (28.08122pt too wide) in paragraph at lines 99--99
+Overfull \hbox (1.84425pt too wide) in paragraph at lines 95--95
 []|\T1/pcr/m/n/7 agentclinic|  
  []
 
 
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 99--99
-[]|\T1/ptm/m/n/7 $0.216/k|  
- []
-
-
-Overfull \hbox (9.475pt too wide) in paragraph at lines 100--100
-[]|\T1/ptm/m/n/7 rarebench|  
- []
-
-
-Overfull \hbox (28.08122pt too wide) in paragraph at lines 100--100
+Overfull \hbox (1.84425pt too wide) in paragraph at lines 96--96
 []|\T1/pcr/m/n/7 agentclinic|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 100--100
-[]|\T1/ptm/m/n/7 $0.223/k|  
- []
-
-
-Overfull \hbox (13.74489pt too wide) in paragraph at lines 101--101
-[]|\T1/ptm/m/n/7 rarearena_- 
- []
-
-
-Overfull \hbox (28.08122pt too wide) in paragraph at lines 101--101
-[]|\T1/pcr/m/n/7 agentclinic|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 101--101
-[]|\T1/ptm/m/n/7 $0.238/k|  
- []
-
-
-Overfull \hbox (9.475pt too wide) in paragraph at lines 102--102
-[]|\T1/ptm/m/n/7 rarebench|  
- []
-
-
-Overfull \hbox (2.88124pt too wide) in paragraph at lines 102--102
-[]|\T1/pcr/m/n/7 llm_- 
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 102--102
-\T1/pcr/m/n/7 control|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 102--102
-[]|\T1/ptm/m/n/7 $0.244/k|  
- []
-
-
-Overfull \hbox (23.01997pt too wide) in paragraph at lines 103--103
-[]|\T1/ptm/m/n/7 phenopacket_- 
- []
-
-
-Overfull \hbox (2.88124pt too wide) in paragraph at lines 103--103
-[]|\T1/pcr/m/n/7 llm_- 
- []
-
-
-Overfull \hbox (11.28123pt too wide) in paragraph at lines 103--103
-\T1/pcr/m/n/7 control|  
- []
-
-
-Overfull \hbox (6.57718pt too wide) in paragraph at lines 103--103
-[]|\T1/ptm/m/n/7 $0.247/k|  
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\geq' on input line 140.
+(hyperref)                removing `\geq' on input line 134.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--181
+Underfull \hbox (badness 10000) in paragraph at lines 167--172
 []\T1/ptm/b/n/10.95 Classical / of-fline \T1/ptm/m/n/10.95 (LIR-I-CAL, VC-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
+Underfull \hbox (badness 10000) in paragraph at lines 184--190
 \T1/ptm/m/n/10.95 The re-ceipts CSV is re-gen-er-ated by
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
-\T1/pcr/l/it/10.95 scripts/regen_-re-ceipts_-and_-fig-
+Underfull \hbox (badness 10000) in paragraph at lines 184--190
+\T1/pcr/c/sc/10.95 scripts/regen_-re-ceipts_-and_-fig-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
-\T1/pcr/l/it/10.95 scripts/cost_-tracker.py --budget
+Underfull \hbox (badness 10000) in paragraph at lines 184--190
+\T1/pcr/c/sc/10.95 scripts/cost_-tracker.py --budget
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 194--200
-\T1/pcr/l/it/10.95 X\T1/ptm/m/n/10.95 . Any anony-mous re-viewer can ver-ify Ta
--ble
+Underfull \hbox (badness 1014) in paragraph at lines 184--190
+\T1/pcr/c/sc/10.95 X\T1/ptm/m/n/10.95 . Any anony-mous re-viewer can ver-ify Ta-ble
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
-\T1/pcr/l/it/10.95 data/round2/phase4a/predictions_-
+Underfull \hbox (badness 10000) in paragraph at lines 184--190
+\T1/pcr/c/sc/10.95 data/round2/phase4a/predictions_-
  []
 
-[33]
-<figures/fig_costbar.png, id=866, 438.9198pt x 263.7855pt>
+<figures/fig_costbar.png, id=789, 437.9562pt x 260.172pt>
 File: figures/fig_costbar.png Graphic file (type png)
 <use figures/fig_costbar.png>
-Package pdftex.def Info: figures/fig_costbar.png  used on input line 204.
-(pdftex.def)             Requested size: 373.3035pt x 224.35558pt.
+Package pdftex.def Info: figures/fig_costbar.png  used on input line 194.
+(pdftex.def)             Requested size: 373.3035pt x 221.7705pt.
 ) (./tex/OSF_preregistration_draft.tex
-Underfull \hbox (badness 1810) in paragraph at lines 8--13
+Underfull \hbox (badness 1810) in paragraph at lines 7--12
 []\T1/ptm/b/n/10.95 Important\T1/ptm/m/n/10.95 : this doc-u-ment must be
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 8--13
+Underfull \hbox (badness 1253) in paragraph at lines 7--12
 \T1/ptm/b/n/10.95 frozen and sub-mit-ted to OSF BE-
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 8--13
+Underfull \hbox (badness 4108) in paragraph at lines 7--12
 \T1/ptm/b/n/10.95 FORE > run-ning any post-cutoff
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 8--13
+Underfull \hbox (badness 3179) in paragraph at lines 7--12
+\T1/ptm/b/n/10.95 PMC OA hold-out eval-u-a-tion cell\T1/ptm/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 7--12
 \T1/ptm/m/n/10.95 is touched only once af-ter this pre-
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 21--24
-[]\T1/ptm/b/n/10.95 Title\T1/ptm/m/n/10.95 : Pre-registered eval-u-a-tion of LL
-M
+Underfull \hbox (badness 2020) in paragraph at lines 19--22
+[]\T1/ptm/b/n/10.95 Title\T1/ptm/m/n/10.95 : Pre-registered eval-u-a-tion of LLM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--28
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
 []\T1/ptm/b/n/10.95 Contact\T1/ptm/m/n/10.95 : kbessi-
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 30--32
+Underfull \hbox (badness 1642) in paragraph at lines 28--30
 []\T1/ptm/b/n/10.95 License\T1/ptm/m/n/10.95 : data CC-BY-NC-SA 4.0; code
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 32--35
-[]\T1/ptm/b/n/10.95 Registration type\T1/ptm/m/n/10.95 : Pre-registration (stan
--
- []
-
-
-Overfull \hbox (3.83914pt too wide) in paragraph at lines 65--65
-\T1/ptm/m/n/7 (<1/1,000,000) 
- []
-
-
-Overfull \hbox (7.98334pt too wide) in paragraph at lines 70--70
-\T1/pcr/m/n/7 reasoning_- 
- []
-
-
-Overfull \hbox (16.38333pt too wide) in paragraph at lines 70--70
-\T1/pcr/m/n/7 effort=medium 
- []
-
-
-Overfull \hbox (7.3431pt too wide) in paragraph at lines 149--149
-[]|\T1/ptm/m/n/7 Phenopacket- 
- []
-
-
-Overfull \hbox (17.39514pt too wide) in paragraph at lines 152--152
-[]|\T1/ptm/m/n/7 (UNTOUCHED)|  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--173
-[]\T1/ptm/b/n/10.95 Pre-cutoff lay-ers\T1/ptm/m/n/10.95 : small (MIMIC,
- []
-
-
-Underfull \hbox (badness 4981) in paragraph at lines 169--173
-\T1/ptm/m/n/10.95 RareBench) at full N; large (PP-Store,
- []
-
-
-Underfull \hbox (badness 7344) in paragraph at lines 169--173
-\T1/ptm/m/n/10.95 RareArena) at N=500 strat-i-fied sam-ple
- []
-
-
-Underfull \hbox (badness 6477) in paragraph at lines 169--173
-\T1/ptm/m/n/10.95 (seed=42, pro-por-tional al-lo-ca-tion across
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
-[]\T1/ptm/b/n/10.95 Evaluator\T1/ptm/m/n/10.95 : \T1/pcr/l/it/10.95 har-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
-\T1/pcr/l/it/10.95 ness/metrics/cross_-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
-\T1/pcr/l/it/10.95 map.py:gold_-hit_-with_-crossmap
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
-\T1/ptm/m/n/10.95 with \T1/pcr/l/it/10.95 gold_-hit_-with_-vari-ants \T1/ptm/m/
-n/10.95 for
- []
-
-
-Underfull \hbox (badness 4927) in paragraph at lines 205--209
-\T1/ptm/m/n/10.95 Spear-man $\OML/cmm/m/it/10.95 ^^Z$ \T1/ptm/m/n/10.95 for H7/
-H10, difference-of-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 211--213
-[]\T1/ptm/b/n/10.95 Multiple-testing cor-rec-tion\T1/ptm/m/n/10.95 : Holm--
+Underfull \hbox (badness 1107) in paragraph at lines 30--33
+[]\T1/ptm/b/n/10.95 Registration type\T1/ptm/m/n/10.95 : Pre-registration (stan-
  []
 
 [34]
-Underfull \hbox (badness 3333) in paragraph at lines 229--232
-[]\T1/ptm/m/n/10.95 Backbone $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/m/n/10.95 cost-p
-er-call anal-y-sis (Sec-
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
+[]\T1/ptm/b/n/10.95 Evaluator\T1/ptm/m/n/10.95 : \T1/pcr/c/sc/10.95 har-
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 263--266
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
+\T1/pcr/c/sc/10.95 ness/metrics/cross_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
+\T1/pcr/c/sc/10.95 map.py:gold_-hit_-with_-crossmap
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
+\T1/ptm/m/n/10.95 with \T1/pcr/c/sc/10.95 gold_-hit_-with_-vari-ants \T1/ptm/m/n/10.95 for
+ []
+
+
+Underfull \hbox (badness 4927) in paragraph at lines 194--198
+\T1/ptm/m/n/10.95 Spear-man $\OML/cmm/m/it/10.95 ^^Z$ \T1/ptm/m/n/10.95 for H7/H10, difference-of-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+[]\T1/ptm/b/n/10.95 Multiple-testing cor-rec-tion\T1/ptm/m/n/10.95 : Holm--
+ []
+
+[35]
+Underfull \hbox (badness 3333) in paragraph at lines 218--221
+[]\T1/ptm/m/n/10.95 Backbone $\OMS/cmsy/m/n/10.95 ^^B$ \T1/ptm/m/n/10.95 cost-per-call anal-y-sis (Sec-
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 249--252
 []\T1/ptm/m/n/10.95 Section 4 (bench-mark de-sign) --- dataset
  []
 
-) [35 <./figures/fig_costbar.png>] [36] [37] [38] [39] [40] [41] [42]
-(./main.aux)
+) [36] [37 <./figures/fig_costbar.png>] [38] (./main.aux)
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+ ***********
+
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 218AA0173BF741867EB30F9987A49221;23648.
+(rerunfilecheck)             Checksum: 7A2CFEB8C32C7B3A8AFE6E70743FC360;23833.
  ) 
 Here is how much of TeX's memory you used:
- 17524 strings out of 478051
- 295459 string characters out of 5840943
- 1964330 words of memory out of 5000000
- 36989 multiletter control sequences out of 15000+600000
- 576996 words of font info for 134 fonts, out of 8000000 for 9000
+ 17874 strings out of 469158
+ 304565 string characters out of 5459506
+ 801001 words of memory out of 5000000
+ 46339 multiletter control sequences out of 15000+600000
+ 692430 words of font info for 142 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,18n,90p,1743b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (42 pages, 1780484 bytes).
+ 89i,17n,93p,1743b,650s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/yutianzhao/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (38 pages, 1720154 bytes).
 PDF statistics:
- 1082 PDF objects out of 1200 (max. 8388607)
- 972 compressed objects within 10 object streams
- 326 named destinations out of 1000 (max. 500000)
+ 951 PDF objects out of 1000 (max. 8388607)
+ 846 compressed objects within 9 object streams
+ 227 named destinations out of 1000 (max. 500000)
  821 words of extra memory for PDF output out of 10000 (max. 10000000)
 

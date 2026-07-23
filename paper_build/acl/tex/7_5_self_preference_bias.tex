@@ -1,8 +1,6 @@
-\hypertarget{sec-7-5}{%
-\section{Self-Preference Bias in LLM-as-Judge}\label{sec-7-5}}
+\section{Self-Preference Bias in LLM-as-Judge}\label{sec-7-5}
 
-\hypertarget{self-preference-bias-in-llm-as-judge-a-cautionary-methodology-finding}{%
-\subsubsection{Self-Preference Bias in LLM-as-Judge --- A Cautionary Methodology Finding}\label{self-preference-bias-in-llm-as-judge-a-cautionary-methodology-finding}}
+\subsubsection{Self-Preference Bias in LLM-as-Judge --- A Cautionary Methodology Finding}\label{self-preference-bias-in-llm-as-judge-a-cautionary-methodology-finding}
 
 \textbf{Bias measurement}. We score Pillar 5 reasoning trace quality on four 1-5 axes (factual / relevance / depth / faithful) using an LLM judge. Our v1 protocol used Gemini 3 Flash Preview as the judge --- the same backbone family used by the agents under evaluation. Replacing the judge with Claude Sonnet 4.5 under identical traces (no other change) shifted scores systematically against Gemini-derived agents, exposing a self-preference bias --- LLM judges systematically favor outputs from their own model family {[}Panickssery, Bowman, and Feng, ``LLM Evaluators Recognize and Favor Their Own Generations'', arXiv:2404.13076, 2024{]} --- that would have inflated the headline ranking by an entire rank position.
 
@@ -10,13 +8,13 @@
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
 \caption{LLM-judge faithfulness scores (four axes) and the self-preference gap, by agent.}\label{tbl:selfpref}
 \begin{tabular}{@{}
->{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
+>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
 \toprule
 \begin{minipage}[b]{\linewidth}\raggedright
 Agent
@@ -39,7 +37,6 @@ trace\_len
 \texttt{deeprare}(40+ tool, reflection) & 1.70 \ensuremath{\rightarrow} 2.31 (+0.61) & 1.40 \ensuremath{\rightarrow} 1.33 & 1.90 \ensuremath{\rightarrow} 2.58 (+0.68) & 1.70 \ensuremath{\rightarrow} 2.72 (+1.02) & 18,429 \ensuremath{\rightarrow} 21,401 & All axes shift toward parity \\
 \texttt{maidxo}(8-role panel) & NaN \ensuremath{\rightarrow} 2.11 & NaN \ensuremath{\rightarrow} 1.85 & NaN \ensuremath{\rightarrow} 1.64 & NaN \ensuremath{\rightarrow} 1.88 & 0 \ensuremath{\rightarrow} \textbf{26,972} & v1 had 10/10 judge JSON-parse errors;v2 ok \\
 \bottomrule
-\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -59,8 +56,7 @@ Caution (frozen audit). The v1\ensuremath{\rightarrow}v2 shifts in this table ar
 
 \textbf{Corollary --- the judge-family gap is largely a trace-capture artifact, not self-preference (2026-07-22 frozen-audit correction).} An earlier draft reported that the Spearman \ensuremath{\rho} between the judge's \emph{faithfulness} score and the agent's \emph{actual top-1 accuracy} was 0.098 under the Gemini (family) judge vs 0.616 under the Claude (non-family) judge, and read the gap as judge self-preference. That comparison was confounded: the Gemini (v1) scores were computed on the truncated/empty traces (mdagents 337 chars, maidxo 0 chars) while the Claude (v2) scores used the repaired full traces --- the two judges never scored the same inputs. We re-ran the Gemini judge on the \emph{identical v2 repaired traces} Claude scored (n=40, same prompt, via a non-family-neutral endpoint). On matched inputs the Gemini \ensuremath{\rho} rises from 0.098 to 0.457, against Claude's 0.640; the two judges' faithfulness scores agree at \ensuremath{\rho}=0.741. So most of the apparent 0.098-vs-0.616 gap was the trace-capture fix, not judge identity. A modest residual judge-family difference remains (0.457 vs 0.640) and is consistent with genuine cross-family variation, but it does not flip the H10 verdict the way the confounded numbers suggested. We therefore report H10 as exploratory, withdraw the ``strong decoupling under the Gemini judge (\ensuremath{\rho}=0.098)'' claim as an artifact, and keep only the robust, well-supported point of this section --- that judge-family and trace-capture completeness are both first-class confounds that must be controlled (use a non-family judge \emph{and} verify every judge sees the same complete trace).
 
-\hypertarget{status}{%
-\subsection{Status}\label{status}}
+\subsection{Status}\label{status}
 
 binned {[}1--2 / 3 / 4--5{]} on the 4-axis ordinal labels across 40
 trace-axis judgements (10 cases \ensuremath{\times} 4 agents) \ensuremath{\rightarrow} \ensuremath{\kappa} = 0.62.

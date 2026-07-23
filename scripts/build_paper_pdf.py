@@ -174,7 +174,6 @@ def main():
     FIGS = [
         ("fig1_heatmap_phenopacket_store.png", "Figure 1a. R@1 heatmap — Phenopacket-Store (agent × backbone)."),
         ("fig1_heatmap_rarearena_rds.png", "Figure 1b. R@1 heatmap — RareArena RDS."),
-        ("fig1_heatmap_mimic_diverse.png", "Figure 1c. R@1 heatmap — MIMIC diverse."),
         ("fig1_heatmap_rarebench.png", "Figure 1d. R@1 heatmap — RareBench HF."),
         ("fig2_cost_vs_accuracy.png", "Figure 2. Cost vs accuracy (per-prediction USD)."),
         ("fig3_per_dataset_ranking.png", "Figure 3. Per-dataset agent ranking."),

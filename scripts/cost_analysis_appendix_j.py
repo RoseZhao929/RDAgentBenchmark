@@ -28,7 +28,8 @@ def main():
     rows = []
     with open(RECEIPTS) as f:
         for r in csv.DictReader(f):
-            rows.append(r)
+            if r["dataset"] != "mimic_diverse":
+                rows.append(r)
 
     by_bb = defaultdict(lambda: {"cells": 0, "n_ok": 0, "cost": 0.0})
     per_cell_cost = []
@@ -54,8 +55,10 @@ def main():
     lines = []
     lines.append("# Appendix J — Cost Analysis & Cost-vs-Accuracy")
     lines.append("")
-    lines.append("> Source: `data/round2/phase4a_receipts.csv` (93 cells, refreshed at")
-    lines.append("> every report-regen). All USD figures are exact for the six OpenRouter-")
+    lines.append("> Source: diagnostic-task rows in `data/round2/phase4a_receipts.csv`;")
+    lines.append("> legacy MIMIC ICD-title rows are excluded and the replacement")
+    lines.append("> structured-EHR task will receive a separate cost receipt.")
+    lines.append("> All USD figures are exact for the six OpenRouter-")
     lines.append("> wrapped adapters; estimated within ≤5% error band for the three off-")
     lines.append("> wrapper adapters (LIRICAL, VC-RDAgent, RDMA — marked `†` below).")
     lines.append("")
@@ -133,9 +136,9 @@ def main():
     lines.append("  cost-efficient cell in the entire benchmark. F1 (classical > LLM) is also a ")
     lines.append("  cost-efficiency story.")
     lines.append("- **DeepSeek V4-Flash** is the cheapest LLM at $5–10 per cell, but trades ")
-    lines.append("  off accuracy (−2 to −16 pp R@1 vs Gemini Flash). For deployment at scale ")
-    lines.append("  on free-text datasets the −16 pp is large enough to recommend Gemini over ")
-    lines.append("  V4-Flash; on HPO-list inputs the −5 pp gap may be acceptable.")
+    lines.append("  off accuracy (typically −2 to −6 pp R@1 vs Gemini Flash on the three ")
+    lines.append("  diagnostic datasets). The gap is largest on RareArena free text; on ")
+    lines.append("  HPO-list inputs the smaller gap may be acceptable.")
     lines.append("- **GPT-5 minimal** is the most expensive per-case ($0.012–0.05) without a ")
     lines.append("  consistent accuracy edge (F4 in §6). Cost-per-correct-prediction on GPT-5 ")
     lines.append("  is therefore the worst of the four backbones at any N.")

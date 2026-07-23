@@ -65,4 +65,4 @@ None — classical baseline, fully reproducible.
 | Phenopacket-Store | ✅ | ✅ |
 | RareBench HF | ✅ | ✅ |
 | RareArena RDS | ❌ free-text | ❌ skip via `phase4a_runner.NO_HPO_DATASETS` |
-| MIMIC-IV diverse | ❌ | ❌ skip |
+| Legacy MIMIC ICD-title task | ❌ no HPO | ❌ archived / skip |

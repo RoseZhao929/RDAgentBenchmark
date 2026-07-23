@@ -283,3 +283,10 @@ notes, establish independently reviewed gold labels, audit masking leakage, and
 compare note-native diagnosis with note→HPO→diagnosis. That future experiment
 would support the “real free-text EHR” claim; the current structured experiment
 does not.
+
+## Completion gate
+
+Before merging any result or paper revision, complete
+`docs/mimic_full_paper_consistency_audit.md`. It covers Markdown and generated
+TeX, tables, figures and embedded captions, references, receipts, leaderboard,
+cost analysis, release claims, and final rendered-PDF inspection.

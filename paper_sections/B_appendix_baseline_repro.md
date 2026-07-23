@@ -95,7 +95,7 @@ Any reader can reproduce a single Phase 4a cell via:
 
 ```bash
 python3 scripts/phase4a_runner.py \
-    --dataset <phenopacket_store|rarearena_rds|rarebench|mimic_diverse> \
+    --dataset <phenopacket_store|rarearena_rds|rarebench> \
     --agent <baseline_name> \
     --backbone openrouter/<provider>/<model> \
     --n 100 \

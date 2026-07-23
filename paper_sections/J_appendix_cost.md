@@ -1,7 +1,9 @@
 # Appendix J — Cost Analysis & Cost-vs-Accuracy
 
-> Source: `data/round2/phase4a_receipts.csv` (93 cells, refreshed at
-> every report-regen). All USD figures are exact for the six OpenRouter-
+> Source: diagnostic-task rows in `data/round2/phase4a_receipts.csv`;
+> legacy MIMIC ICD-title rows are excluded and the replacement
+> structured-EHR task will receive a separate cost receipt.
+> All USD figures are exact for the six OpenRouter-
 > wrapped adapters; estimated within ≤5% error band for the three off-
 > wrapper adapters (LIRICAL, VC-RDAgent, RDMA — marked `†` below).
 
@@ -9,13 +11,13 @@
 
 | Backbone | Cells | Cases (ok) | Total cost USD | Cost per 1k cases USD |
 |---|---|---|---|---|
-| GPT-5 min | 20 | 24,549 | $189.38 | $7.71 |
-| Gemini Flash | 24 | 27,783 | $94.57 | $3.40 |
-| DS V4-Pro | 24 | 24,556 | $22.99 | $0.94 |
-| DS V4-Flash | 21 | 24,294 | $8.27 | $0.34 |
+| GPT-5 min | 15 | 20,683 | $163.50 | $7.91 |
+| Gemini Flash | 18 | 23,389 | $80.48 | $3.44 |
+| DS V4-Pro | 18 | 20,666 | $19.95 | $0.97 |
+| DS V4-Flash | 16 | 20,401 | $6.80 | $0.33 |
 | LIRICAL† | 2 | 3,122 | $0.00 | $0.00 |
 | VC-RDAgent† | 2 | 1,785 | $0.00 | $0.00 |
-| **TOTAL** | 93 | 106,089 | **$315.21** | — |
+| **TOTAL** | 71 | 90,046 | **$270.74** | — |
 
 `†` = cost estimated from token counts; ≤5% band.
 
@@ -30,16 +32,16 @@ Lower = more cost-efficient. Useful when deciding which (agent × backbone) cell
 | 3 | rarebench | `lirical` | LIRICAL | 1122 | 0.23 | $0.000/k | $0.00 | 3.8s |
 | 4 | rarebench | `vc_rdagent` | VC-RDAgent | 1122 | 0.28 | $0.000/k | $0.00 | 75.4s |
 | 5 | rarebench | `mdagents` | DS V4-Flash | 1098 | 0.05 | $0.061/k | $0.07 | 58.6s |
-| 6 | mimic_diverse | `mdagents` | DS V4-Flash | 942 | 0.24 | $0.062/k | $0.06 | 55.2s |
-| 7 | phenopacket_store | `mdagents` | DS V4-Flash | 1983 | 0.25 | $0.067/k | $0.13 | 30.5s |
-| 8 | rarearena_rds | `mdagents` | DS V4-Flash | 1993 | 0.23 | $0.096/k | $0.19 | 32.0s |
-| 9 | mimic_diverse | `llm_control` | DS V4-Pro | 956 | 0.25 | $0.171/k | $0.16 | 3.0s |
-| 10 | phenopacket_store | `agentclinic` | DS V4-Flash | 1925 | 0.14 | $0.216/k | $0.42 | 111.3s |
-| 11 | mimic_diverse | `agentclinic` | DS V4-Flash | 903 | 0.25 | $0.216/k | $0.20 | 96.4s |
-| 12 | rarebench | `agentclinic` | DS V4-Flash | 860 | 0.02 | $0.223/k | $0.19 | 98.2s |
-| 13 | rarearena_rds | `agentclinic` | DS V4-Flash | 1764 | 0.11 | $0.238/k | $0.42 | 87.0s |
-| 14 | rarebench | `llm_control` | DS V4-Pro | 1121 | 0.02 | $0.244/k | $0.27 | 4.2s |
-| 15 | phenopacket_store | `llm_control` | DS V4-Flash | 1998 | 0.26 | $0.247/k | $0.49 | 19.3s |
+| 6 | phenopacket_store | `mdagents` | DS V4-Flash | 1983 | 0.25 | $0.067/k | $0.13 | 30.5s |
+| 7 | rarearena_rds | `mdagents` | DS V4-Flash | 1993 | 0.23 | $0.096/k | $0.19 | 32.0s |
+| 8 | phenopacket_store | `agentclinic` | DS V4-Flash | 1925 | 0.14 | $0.216/k | $0.42 | 111.3s |
+| 9 | rarebench | `agentclinic` | DS V4-Flash | 860 | 0.02 | $0.223/k | $0.19 | 98.2s |
+| 10 | rarearena_rds | `agentclinic` | DS V4-Flash | 1764 | 0.11 | $0.238/k | $0.42 | 87.0s |
+| 11 | rarebench | `llm_control` | DS V4-Pro | 1121 | 0.02 | $0.244/k | $0.27 | 4.2s |
+| 12 | phenopacket_store | `llm_control` | DS V4-Flash | 1998 | 0.26 | $0.247/k | $0.49 | 19.3s |
+| 13 | rarebench | `mdagents` | DS V4-Pro | 1122 | 0.04 | $0.264/k | $0.30 | 11.3s |
+| 14 | rarearena_rds | `llm_control` | DS V4-Flash | 1976 | 0.21 | $0.281/k | $0.56 | 32.5s |
+| 15 | phenopacket_store | `llm_control` | DS V4-Pro | 1999 | 0.27 | $0.292/k | $0.58 | 5.6s |
 
 (Lirical / VC-RDAgent / RDMA = $0 — no LLM calls.)
 
@@ -53,18 +55,17 @@ Lower = more cost-efficient. Useful when deciding which (agent × backbone) cell
 | rarearena_rds | `agentclinic` | GPT-5 min | 2000 | 0.10 | $16.86 |
 | rarebench | `medagents` | GPT-5 min | 1122 | 0.01 | $15.38 |
 | rarebench | `deeprare` | Gemini Flash | 953 | 0.30 | $14.41 |
-| mimic_diverse | `medagents` | GPT-5 min | 956 | 0.32 | $11.41 |
 | rarearena_rds | `medagents` | Gemini Flash | 2000 | 0.30 | $10.91 |
 | rarebench | `agentclinic` | GPT-5 min | 1122 | 0.00 | $9.92 |
 | phenopacket_store | `medagents` | Gemini Flash | 1998 | 0.30 | $9.87 |
 | phenopacket_store | `deeprare` | Gemini Flash | 609 | 0.28 | $8.51 |
-| mimic_diverse | `agentclinic` | GPT-5 min | 956 | 0.22 | $7.81 |
+| rarearena_rds | `mdagents` | GPT-5 min | 2000 | 0.23 | $6.58 |
+| phenopacket_store | `llm_control` | GPT-5 min | 1988 | 0.26 | $6.52 |
 
 ## J.4 Best R@1 per cost band (cheapest agent that hits R@1 ≥ threshold)
 
 | Dataset | R@1 ≥ 0.25 cheapest | R@1 ≥ 0.30 cheapest | R@1 ≥ 0.35 cheapest |
 |---|---|---|---|
-| mimic_diverse | `agentclinic` (DS V4-Flash) $0.22/k | `llm_control` (Gemini Flash) $0.68/k | `mdagents` (Gemini Flash) $0.87/k |
 | phenopacket_store | `lirical` (LIRICAL) $0.00/k | `lirical` (LIRICAL) $0.00/k | `lirical` (LIRICAL) $0.00/k |
 | rarearena_rds | `llm_control` (Gemini Flash) $0.89/k | `medagents` (Gemini Flash) $5.46/k | — |
 | rarebench | `vc_rdagent` (VC-RDAgent) $0.00/k | — | — |
@@ -76,9 +77,9 @@ Lower = more cost-efficient. Useful when deciding which (agent × backbone) cell
   cost-efficient cell in the entire benchmark. F1 (classical > LLM) is also a 
   cost-efficiency story.
 - **DeepSeek V4-Flash** is the cheapest LLM at $5–10 per cell, but trades 
-  off accuracy (−2 to −16 pp R@1 vs Gemini Flash). For deployment at scale 
-  on free-text datasets the −16 pp is large enough to recommend Gemini over 
-  V4-Flash; on HPO-list inputs the −5 pp gap may be acceptable.
+  off accuracy (typically −2 to −6 pp R@1 vs Gemini Flash on the three 
+  diagnostic datasets). The gap is largest on RareArena free text; on 
+  HPO-list inputs the smaller gap may be acceptable.
 - **GPT-5 minimal** is the most expensive per-case ($0.012–0.05) without a 
   consistent accuracy edge (F4 in §6). Cost-per-correct-prediction on GPT-5 
   is therefore the worst of the four backbones at any N.

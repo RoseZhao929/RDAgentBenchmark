@@ -1,6 +1,5 @@
 \begin{abstract}
-\hypertarget{sec-1}{%
-\section{Abstract}\label{sec-1}}
+\section{Abstract}\label{sec-1}
 
 Rare disease diagnostic AI agents have proliferated (8+ systems in
 2024-2026), yet no shared benchmark exists; each agent paper evaluates
@@ -8,8 +7,9 @@ on an ad-hoc subset, making cross-system claims unverifiable. We
 introduce RareAgentBench, an agent-native benchmark spanning five capability pillars (phenotype extraction, phenotype-only DDx, genotype-aware DDx,
 family-aware DDx, clinical-communication faithfulness) on a layered
 dataset (Phenopacket-Store \emph{n}=10,051; RareBench HF 1,122; RareArena RDS
-72,661; MIMIC-IV rare-disease slice \emph{n}=956; post-cutoff PMC OA holdout
-\emph{n}=200). We evaluate 8 agent systems (DeepRare, MDAgents, MedAgents,
+72,661; post-cutoff PMC OA holdout \emph{n}=200), plus a separately reported
+MIMIC-IV structured-EHR probe (956 code-supervised admissions; no clinical
+notes). We evaluate 8 agent systems (DeepRare, MDAgents, MedAgents,
 AgentClinic, MAI-DxO, RDMA, VC-RDAgent, LIRICAL) against 3 LLM no-scaffolding controls and one classical baseline, with all
 hypotheses (H1--H11) and ablations (A1--A12) pre-registered.
 

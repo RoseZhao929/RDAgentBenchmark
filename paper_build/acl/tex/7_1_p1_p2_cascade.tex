@@ -1,8 +1,6 @@
-\hypertarget{sec-7-1}{%
-\section{P1 \ensuremath{\rightarrow} P2 Cascade: HPO Extraction Quality Decides Downstream}\label{sec-7-1}}
+\section{P1 \ensuremath{\rightarrow} P2 Cascade: HPO Extraction Quality Decides Downstream}\label{sec-7-1}
 
-\hypertarget{the-p1-p2-cascade}{%
-\subsubsection{The P1 \ensuremath{\rightarrow} P2 Cascade}\label{the-p1-p2-cascade}}
+\subsubsection{The P1 \ensuremath{\rightarrow} P2 Cascade}\label{the-p1-p2-cascade}
 
 A central architectural decision in our benchmark --- separating Pillar 1 (phenotype extraction) from Pillar 2 (phenotype-only differential diagnosis) and reporting both via the dual-pass evaluation (\Cref{sec-4-4}) --- is grounded in an empirical finding we did not anticipate at design time: HPO extraction quality is not a free preprocessing step. Errors propagate, in some cases catastrophically.
 
@@ -24,8 +22,7 @@ Three observations follow:
 
 \textbf{Implications for benchmark methodology.} Two takeaways for the field: (i) prior rare-disease LLM benchmarks that compare LIRICAL/Exomiser (Bayesian, HPO-list-only) to LLMs (free-text-native) on a free-text-only dataset will systematically penalize the classical tools, conflating capability with input mismatch. (ii) The Pass A \ensuremath{-} Pass B delta is itself a reportable metric --- a small delta on the same agent signals strong end-to-end robustness, a large delta signals input-pipeline sensitivity.
 
-\hypertarget{sec-7-1-2}{%
-\subsection{H8 --- Phenotype density predicts performance (inverted-U)}\label{sec-7-1-2}}
+\subsection{H8 --- Phenotype density predicts performance (inverted-U)}\label{sec-7-1-2}
 
 Pre-registered H8: R@1 follows an inverted-U in the number of input HPO terms ---
 too few (under-specified) and too many (noise / distractors) both hurt. Tested
@@ -44,7 +41,6 @@ Bin (\#HPO terms) & n & R@1 \\
 6--15 & 2,352 & 0.276 \\
 16--30 (sweet spot) & 1,361 & \textbf{0.323} \\
 \textgreater30 (noise/distractors) & 513 & 0.253 \\
-\bottomrule
 \bottomrule
 \end{tabular}
 \end{table*}

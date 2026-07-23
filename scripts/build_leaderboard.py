@@ -25,16 +25,17 @@ BB_ORDER = ['google_gemini-3-flash-preview-2025','deepseek_deepseek-v4-pro',
             'vc_rdagent-offline-v1','lirical-2.4.0']
 AGENT_ORDER = ['llm_control','mdagents','medagents','agentclinic','maidxo',
                'deeprare','vc_rdagent','lirical']
-DS = ['phenopacket_store','rarearena_rds','rarebench','mimic_diverse']
+DS = ['phenopacket_store','rarearena_rds','rarebench']
 DS_LABEL = {'phenopacket_store':'Phenopacket-Store','rarearena_rds':'RareArena RDS',
-            'rarebench':'RareBench HF','mimic_diverse':'MIMIC-IV diverse'}
+            'rarebench':'RareBench HF'}
 
 def load():
     S = json.load(open('data/round2/phase4a_summary.json'))
     pairs = {}
     for k, v in S.items():
         ds, ag, bb = k.split('|')
-        pairs.setdefault((ds, ag, bb), v)
+        if ds in DS:
+            pairs.setdefault((ds, ag, bb), v)
     # try CI file
     try:
         CI = json.load(open('data/round2/phase4a_with_ci.json'))
@@ -145,11 +146,19 @@ def main():
     out = Path('leaderboard/index.html')
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html_doc)
-    # also copy summary json into the dir for direct download
-    import shutil
+    # Publish diagnostic-task-only JSON. The legacy source files also contain
+    # construct-mismatched MIMIC ICD-title cells, which must not leak back into
+    # the public diagnostic leaderboard through the download links.
     for src in ['data/round2/phase4a_summary.json', 'data/round2/phase4a_with_ci.json']:
         if Path(src).exists():
-            shutil.copy(src, out.parent / Path(src).name)
+            raw = json.loads(Path(src).read_text())
+            filtered = {
+                key: value for key, value in raw.items()
+                if key.split("|", 1)[0] in DS
+            }
+            (out.parent / Path(src).name).write_text(
+                json.dumps(filtered, indent=2, sort_keys=True)
+            )
     print(f"Wrote {out} ({out.stat().st_size:,} bytes)")
     print(f"  + {len(list(out.parent.iterdir()))} files in {out.parent}/")
 

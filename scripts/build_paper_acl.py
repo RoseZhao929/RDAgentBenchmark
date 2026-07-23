@@ -44,7 +44,7 @@ TEXBIN = str(_MAC_TEXBIN) if _MAC_TEXBIN.exists() else "/usr/bin"
 FIG_BY_SECTION = {
     # main body: benchmark design -> THE overview (traditional-benchmark contrast)
     "4_benchmark_design.md": [
-        ("fig1_overview.png", "\\textbf{RareAgentBench overview.} Four heterogeneous data layers ingest into a single \\texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims; every capability pillar is evaluated in two passes (Pass~A gold-HPO; Pass~B end-to-end), and the Pass~A$-$Pass~B delta is itself a reported metric. Protocol (H1--H11, A1--A12) pre-registered at OSF."),
+        ("fig1_overview.png", "\\textbf{RareAgentBench overview.} Three diagnostic layers and a separately reported structured-EHR probe ingest into a single \\texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims. Diagnostic pillars use the two-pass protocol; the MIMIC probe uses timestamped structured events and an ICD leakage audit."),
     ],
     # main body: the six result panels (five here + self-preference below)
     "6_main_results.md": [
@@ -60,7 +60,7 @@ FIG_BY_SECTION = {
     ],
     # appendix: reference detail figures (schema + coverage matrix)
     "C_appendix_experimental_setup.md": [
-        ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars (rows) evaluated across four data layers (columns). Filled = evaluated in v1; grey = deferred to v2; light = not applicable."),
+        ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Filled = evaluated in v1; grey = deferred to v2; light = not applicable."),
         ("fig_schema.png", "The \\texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it."),
     ],
     # appendix: hypothesis-analysis detail figures (contamination + specialty)
@@ -176,7 +176,7 @@ CAPTIONS = {
         ("Alias|OpenRouterID", "Backbone LLMs evaluated: dated OpenRouter aliases, pricing, context window and reasoning mode.", "tbl:backbones"),
     ],
     "6_main_results.md": [
-        ("Agent|Backbone|PP-Store", "Headline Recall@1 (variant-aware) for every agent $\\times$ backbone cell across the four data layers; bracketed values are per-cell $N$. Classical/offline baselines are listed first.", "tbl:main"),
+        ("Agent|Backbone|PP-Store", "Headline Recall@1 (variant-aware) for every agent $\\times$ backbone cell across the three diagnostic datasets; bracketed values are per-cell $N$. The distinct MIMIC structured-EHR task is reported separately.", "tbl:main"),
         ("Agent|Bestbackbone", "Per-agent backbone sensitivity: best vs.\\ worst backbone R@1.", "tbl:bbsens"),
     ],
     "7_5_self_preference_bias.md": [
