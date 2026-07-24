@@ -192,6 +192,37 @@ def spearman_faith_vs_acc(rows):
     return round(float(rho), 3), float(p), len(f)
 
 
+def binned_axis_kappa(gemini_rows, claude_scores):
+    """Unweighted Cohen's kappa over all four axes after the paper's
+    1--2 / 3 / 4--5 ordinal binning. Axis observations within a trace are not
+    independent, so this is reported only as a descriptive agreement check."""
+    def category(value):
+        value = float(value)
+        return 0 if value <= 2 else (1 if value < 4 else 2)
+
+    gmap = {(r['agent_id'], r['case_id']): r for r in gemini_rows}
+    left, right = [], []
+    for key, row in claude_scores.items():
+        scores = row.get('scores') or {}
+        if key not in gmap:
+            continue
+        for axis in AXES:
+            gv, cv = gmap[key].get(axis), scores.get(axis)
+            if gv is None or cv is None:
+                continue
+            left.append(category(gv))
+            right.append(category(cv))
+    n = len(left)
+    if not n:
+        return None, 0
+    observed = sum(a == b for a, b in zip(left, right)) / n
+    expected = sum(
+        (left.count(k) / n) * (right.count(k) / n) for k in range(3)
+    )
+    kappa = (observed - expected) / (1 - expected) if expected < 1 else None
+    return (round(float(kappa), 3) if kappa is not None else None), n
+
+
 def main():
     v2 = load_v2_traces()
     claude = load_claude_scores()
@@ -245,6 +276,7 @@ def main():
     if len(pairs) >= 3:
         cross_rho, cross_p = stats.spearmanr([x for x, _ in pairs], [y for _, y in pairs])
         cross_rho = round(float(cross_rho), 3); cross_p = float(cross_p)
+    axis_kappa, axis_n = binned_axis_kappa(gemini_rows, claude)
 
     report = {
         'setup': 'SAME v2 repaired traces scored by BOTH judges (fixes the paper confound)',
@@ -257,9 +289,15 @@ def main():
         'paper_confounded_values': {'gemini_v1': 0.098, 'claude_v2': 0.616,
                                     'note': 'v1 Gemini scored truncated/zero traces; not comparable'},
         'cross_judge_faithfulness_agreement_same_trace': {'rho': cross_rho, 'p': cross_p, 'n_pairs': len(pairs)},
+        'cross_judge_binned_four_axis_agreement': {
+            'cohen_kappa_unweighted': axis_kappa,
+            'n_axis_pairs': axis_n,
+            'bins': '1-2 / 3 / 4-5',
+            'note': 'Descriptive only; four axes within each trace are not independent.',
+        },
         'verdict': 'With both judges on identical repaired traces, the Gemini-vs-Claude faithfulness/'
-                   'accuracy decoupling can now be compared apples-to-apples; any remaining gap is a '
-                   'true judge-family effect, not the trace-capture artifact.',
+                   'accuracy association can be compared on matched inputs. The remaining difference '
+                   'is judge-protocol sensitivity; judge identity and family relation are still coupled.',
     }
     (OUT / '_p5_same_trace_report.json').write_text(json.dumps(report, indent=2, default=str))
     print(json.dumps(report, indent=2, default=str))

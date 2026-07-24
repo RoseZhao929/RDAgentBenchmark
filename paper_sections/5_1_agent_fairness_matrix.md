@@ -8,9 +8,9 @@
 
 ## Draft for paper main text
 
-> *Following MedAgentBench (NEJM AI 2025) and DeepRare (Nature 2026), we hold the central backbone constant across agent comparisons and document every adapter shim deviation in the Agent Fairness Matrix (Table 3). All adapters are released open-source under `harness/agents/`.*
+> *Following MedAgentBench (NEJM AI 2025) and DeepRare (Nature 2026), we hold the central backbone constant across agent comparisons and document every adapter shim deviation in the Agent Fairness Matrix below. All adapters are released open-source under `harness/agents/`.*
 
-### Agent Fairness Matrix
+## Agent Fairness Matrix
 
 | Agent | Native Input | Adapter Shim Strategy | LLM Backbone Wiring | Per-Case LLM Calls | Configurable Mode? | Adapter LOC | License |
 |---|---|---|---|---|---|---|---|
@@ -23,7 +23,7 @@
 | **VC-RDAgent** | HPO list | Offline Stage 1 default(IC + Poincaré + frequency-LR fusion, **0 LLM calls**); Stage 2 (LLM refine) opt-in | Stage 2 uses local Qwen3-8B or OpenRouter | 0 (Stage 1) | `use_llm_refine: bool` | 310 | **None** |
 | **LIRICAL** | GA4GH Phenopacket | Project canonical case to phenopacket JSON; subprocess `java -jar lirical.jar phenopacket`; parse TSV | **No LLM** (classical Bayesian) | 0 | n/a | 369 | **Apache 2.0** |
 
-### Constants we hold across all agents
+## Constants we hold across all agents
 
 | Setting | Value | Rationale |
 |---|---|---|
@@ -34,7 +34,7 @@
 | Retry policy | 3 attempts with exponential backoff via tenacity | Mitigate OpenRouter transient errors |
 | Backbone version (dated) | `gemini-3-flash-20251217` etc | Alias updates blocked |
 
-### Three anticipated objections — pre-empted
+## Three anticipated objections — pre-empted
 
 **Objection 1**: "Adapter quality differences confound results."
 **Response**: All 8 adapter shims are released open-source (3,485 LOC total), each accompanied by a run report documenting its exact subprocess calls, parser logic, and known caveats. Independent re-implementation invited.
@@ -45,7 +45,7 @@
 **Objection 3**: "Mixing classical (LIRICAL) and LLM agents is unfair."
 **Response**: Standard convention — see DeepRare (Nature 2026) which includes Exomiser / LIRICAL / AI-MARRVEL as classical baselines. We report them as separate "Classical Baseline" rows in Table 1 and do not include them in LLM-only ablations (A1/A2/A4/A5/A6/A7).
 
-### Per-agent **known caveats** (we surface these honestly)
+## Per-agent **known caveats** (we surface these honestly)
 
 - **MDAgents/MedAgents/RDMA/VC-RDAgent: no license file in upstream repos**. We comply with academic fair use (run + report numbers); we do not redistribute their code. Our adapter shims are released independently (Apache 2.0). Action item filed with upstream authors as future work.
 - **DeepRare CC BY-NC 4.0 prevents commercial deployment** — academic use OK; we note this in Limitations.

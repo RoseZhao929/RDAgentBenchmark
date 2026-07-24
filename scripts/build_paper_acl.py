@@ -37,40 +37,40 @@ TEXBIN = str(_MAC_TEXBIN) if _MAC_TEXBIN.exists() else "/usr/bin"
 #   figM3  H1  prevalence crossover                  (6_main_results)
 #   figM4  H8  phenotype-density inverted-U          (6_main_results)
 #   figM6  Holm hypothesis-test forest               (6_main_results)
-#   figM5  P5  self-preference / judge-family        (7_5_self_preference)
+#   figM5  P5  judge-swap / family-relation confound (7_5_self_preference)
 # The old R@1 heatmap (duplicated Table 1), the best-backbone radar and the
 # ranking lollipop are DROPPED; the contamination scatter and specialty
 # heatmap keep only their appendix (detail) placement.
 FIG_BY_SECTION = {
     # main body: benchmark design -> THE overview (traditional-benchmark contrast)
     "4_benchmark_design.md": [
-        ("fig1_overview.png", "\\textbf{RareAgentBench overview.} Three diagnostic layers and a separately reported structured-EHR probe ingest into a single \\texttt{CanonicalCase} contract; 11 agent systems project out of it through subprocess-isolated adapter shims. Diagnostic pillars use the two-pass protocol; the MIMIC probe uses timestamped structured events and an ICD leakage audit."),
+        ("fig1_overview.png", "\\textbf{RareAgentBench overview.} The three diagnostic layers use a shared \\texttt{CanonicalCase} contract; the separately reported MIMIC replacement probe preserves the same model-input/gold separation and is projected at the adapter boundary. Eight published systems plus one no-scaffold control run through subprocess-isolated shims. Diagnostic pillars use the two-pass protocol; the pending MIMIC experiment is specified to use timestamped structured events and an ICD leakage audit."),
     ],
-    # main body: the six result panels (five here + self-preference below)
+    # main body: the six result panels (five here + judge sensitivity below)
     "6_main_results.md": [
-        ("figM1_llm_vs_classical.png", "\\textbf{Classical/offline baselines beat the best scaffolded LLM on HPO input (F1).} Best variant-aware R@1 per data layer, LLM agents vs.\\ classical/offline baselines (attempted denominator, common N=2000 on PP-Store/RareArena). On curated HPO (Phenopacket-Store) LIRICAL leads the best LLM by 17~pp; on free-text RareArena no classical baseline runs (no HPO input)."),
-        ("figM2_cost_accuracy.png", "\\textbf{Cost vs.\\ accuracy (F3/F4).} Each marker is one agent~$\\times$~backbone cell on Phenopacket-Store (log cost-per-attempt axis, attempted denominator); dashed line is the Pareto frontier. GPT-5 minimal (diamonds) sits far right at $\\sim$25$\\times$ the cost of DeepSeek V4-Flash with no R@1 gain."),
-        ("figM3_prevalence.png", "\\textbf{Prevalence crossover (H1).} Pooled R@1 by Orphanet prevalence tier. LLM agents decline toward the rarest tier while classical/offline baselines rise, inverting the ranking on super-rare disease (+28~pp for classical)."),
-        ("figM4_hpo_density.png", "\\textbf{Phenotype-density inverted-U (H8).} Pooled R@1 on the HPO-input layers peaks at 16--30 HPO terms per case; both under- and over-specified inputs degrade accuracy."),
-        ("figM6_hypotheses.png", "\\textbf{Pre-registered hypothesis tests.} Forest plot of $-\\log_{10}$(Holm-adjusted $p$) for the six testable hypotheses; five survive family-wise correction at $\\alpha$=0.05. H10 (faithfulness--accuracy decoupling) is reported as exploratory and judge-dependent."),
+        ("figM1_llm_vs_classical.png", "\\textbf{Scope of the LLM--classical comparison (F1).} The benchmark has five dataset resources, but this panel covers the three datasets in the frozen headline diagnostic matrix. Phenopacket-Store and RareBench have paired LLM and classical/offline results; RareArena contributes only an LLM bar because the classical systems require HPO input. The PMC holdout has no matched classical run, and MIMIC is a distinct structured-EHR task, so neither belongs in this comparison. Values are variant-aware R@1 with the attempted denominator: Phenopacket-Store $N$=2000 per plotted bar; RareBench best LLM $N$=954 and classical $N$=1122; RareArena best LLM $N$=2000."),
+        ("figM2_cost_accuracy.png", "\\textbf{Cost vs.\\ accuracy (F3/F4).} Each marker is one agent~$\\times$~backbone cell with attempted $N\\geq100$ on Phenopacket-Store (log cost-per-attempt axis, attempted denominator); the dashed line is the empirical Pareto frontier. Individual cell costs vary with scaffold call count. Across all diagnostic receipts, GPT-5 minimal averages \\$7.91 versus \\$0.33 per 1,000 cases for DeepSeek V4-Flash (about 24$\\times$) without a consistent R@1 advantage."),
+        ("figM3_prevalence.png", "\\textbf{Prevalence-tail crossover (H1).} Pooled R@1 by Orphanet prevalence tier for Gemini-based LLM agents versus LIRICAL/VC-RDAgent (LLM tier $n$=156/690/693/1167; classical $n$=64/347/322/529 from commonest to rarest). Neither trajectory is monotonic across the two middle tiers; the supported contrast is at the super-rare tail, where classical/offline R@1 is 0.50 versus 0.22 for LLMs (+28~pp)."),
+        ("figM4_hpo_density.png", "\\textbf{Observed phenotype-density association (H8).} Pooled R@1 on the HPO-input layers is highest in the 16--30-term bin. The bars are observational case-count strata (with $n$ printed inside), not an intervention on the number of HPO terms; lower R@1 at either tail therefore indicates association, not by itself a causal degradation."),
+        ("figM6_hypotheses.png", "\\textbf{Repository-defined hypothesis family.} Forest plot of $-\\log_{10}$(Holm-adjusted $p$) for the six computable hypotheses; the dashed line marks $\\alpha$=0.05. Five conclusions are retained as family-wise robust. H10's single-judge test is nominally beyond the line ($p_{\\mathrm{adj}}$=0.037), but the threshold verdict changes under same-trace re-judging, so it is greyed and not counted as confirmed. The family was documented in the repository but not formally pre-registered."),
     ],
-    # main body: self-preference methodology finding (sixth panel)
+    # main body: judge-swap methodology finding (sixth panel)
     "7_5_self_preference_bias.md": [
-        ("figM5_selfpref.png", "\\textbf{Self-preference bias in LLM-as-judge (P5).} Swapping the judge from a same-family (Gemini) to a non-family (Claude) model on identical traces shrinks the single-LLM lead across all four axes and reverses it on depth, where the multi-expert \\texttt{mdagents} overtakes."),
+        ("figM5_selfpref.png", "\\textbf{Judge-swap sensitivity with coupled confounds (P5).} Plotted means use $N$=10 stratified cases per agent. Gemini$\\rightarrow$Claude changes both judge identity and the judge--agent family relation, so the slopes do not identify a pure family-preference effect. Solid lines (\\texttt{llm\\_control}, \\texttt{deeprare}) compare unchanged traces; the dashed \\texttt{mdagents} line additionally includes a trace-repair change and is descriptive only. A same-trace re-judge on all 40 repaired traces in \\S7.5 finds a modest residual difference, but a crossed multi-judge design is required to separate model-specific severity from family preference."),
     ],
     # appendix: reference detail figures (schema + coverage matrix)
     "C_appendix_experimental_setup.md": [
-        ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Filled = evaluated in v1; grey = deferred to v2; light = not applicable."),
-        ("fig_schema.png", "The \\texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it."),
+        ("fig_design_matrix.png", "The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Blue = evaluated in the frozen diagnostic study; amber = MIMIC replacement protocol specified but not yet scored; grey = deferred to v2; light = not applicable. Thus the probe is not represented as a completed v1 result."),
+        ("fig_schema.png", "The \\texttt{CanonicalCase} schema used directly by the diagnostic layers and projected into each agent's native input. The pending MIMIC replacement uses an analogous record with a timestamped structured-event snapshot in model input and code-derived gold held in an evaluation-only field, then maps it at the adapter boundary."),
     ],
     # appendix: hypothesis-analysis detail figures (contamination + specialty)
     "7_2_7_3_7_4_analysis.md": [
-        ("fig4_a6_contamination_scatter.png", "A6 TS-Guessing contamination audit. Spearman $\\rho$ between log pre-cutoff PubMed mentions and per-disease R@1, per backbone. Every LLM backbone clusters at $\\rho\\approx0.3$ (weak positive); both classical/offline baselines sit at $\\rho\\approx0$ (null control), confirming the pipeline adds no spurious frequency correlation."),
-        ("fig7_specialty_h7.png", "H7 cross-agent per-specialty R@1 (modal HPO organ-system axis). Bars span the R@1 range across LLM scaffolds; the shared weak specialties (digestive, metabolic, nervous) indicate ontology/data-level difficulty rather than agent-specific blind spots. Diamonds mark where the classical baselines invert the LLM weakness (nervous, head/neck)."),
+        ("fig4_a6_contamination_scatter.png", "A6 literature-frequency audit. Spearman $\\rho$ relates log pre-cutoff PubMed mentions to per-disease R@1 within each backbone; labels give the number of diseases retained. LLM backbones show a weak positive association ($\\rho$=0.29--0.37), while the two smaller classical/offline controls are near zero. This characterises a frequency association but does not by itself establish training-data memorisation or its causal share."),
+        ("fig7_specialty_h7.png", "H7 cross-agent per-specialty R@1 (modal HPO organ-system axis). Circles are midpoints and whiskers are min--max ranges across the available LLM scaffolds. Diamonds show the two specialties for which comparable classical points were reported and invert the LLM weakness (nervous, head/neck); absence of a diamond elsewhere means not reported, not zero. Shared low ranges are consistent with a common data/ontology difficulty but do not prove its cause."),
     ],
     # appendix: cost bar chart
     "J_appendix_cost.md": [
-        ("fig_costbar.png", "Cost per prediction by backbone (log axis); $>$20$\\times$ spread, classical baselines at \\$0."),
+        ("fig_costbar.png", "Receipt-weighted mean cost per prediction across the diagnostic runs (log axis). GPT-5 minimal averages \\$0.00791 versus \\$0.00033 for DeepSeek V4-Flash (about 24$\\times$); classical/offline baselines have \\$0 hosted-LLM cost and are omitted from the log axis."),
     ],
 }
 
@@ -176,11 +176,11 @@ CAPTIONS = {
         ("Alias|OpenRouterID", "Backbone LLMs evaluated: dated OpenRouter aliases, pricing, context window and reasoning mode.", "tbl:backbones"),
     ],
     "6_main_results.md": [
-        ("Agent|Backbone|PP-Store", "Headline Recall@1 (variant-aware) for every agent $\\times$ backbone cell across the three diagnostic datasets; bracketed values are per-cell $N$. The distinct MIMIC structured-EHR task is reported separately.", "tbl:main"),
-        ("Agent|Bestbackbone", "Per-agent backbone sensitivity: best vs.\\ worst backbone R@1.", "tbl:bbsens"),
+        ("Agent|Backbone|PP-Store", "Headline Recall@1 (variant-aware) for every agent $\\times$ backbone cell across the three diagnostic datasets; bracketed values are attempted $N$, which is also the R@1 denominator. The distinct MIMIC structured-EHR replacement is pending and will be reported separately.", "tbl:main"),
+        ("Agent|Bestbackbone", "Per-agent Phenopacket-Store backbone sensitivity: best vs.\\ worst R@1. Primary general-agent cells use attempted $N$=2000; DeepRare uses smaller unequal $N$, so its row is descriptive.", "tbl:bbsens"),
     ],
     "7_5_self_preference_bias.md": [
-        ("Agent|factual|relevance", "LLM-judge faithfulness scores (four axes) and the self-preference gap, by agent.", "tbl:selfpref"),
+        ("Agent|factual|relevance", "Four-axis LLM-judge scores before and after the coupled Gemini-to-Claude judge swap ($N$=10 stratified cases per agent); trace-repaired rows are not clean judge-only contrasts.", "tbl:selfpref"),
     ],
     "9_limitations.md": [
         ("Attack|Whereaddressed", "Anticipated objections and the section that pre-empts each.", "tbl:objections"),
@@ -190,15 +190,15 @@ CAPTIONS = {
         ("Layer|BestLLM", "Best LLM vs.\\ best classical/offline R@1, per layer (H1).", "tbl:h1layer"),
         ("Tier|LLM", "Prevalence-tier R@1: LLM vs.\\ classical (H1).", "tbl:h1tier"),
         ("Complexity|mdagents", "Multi-agent lift over the single-LLM control, by case complexity (H4).", "tbl:h4"),
-        ("Backbone|ndiseases|Spearman", "Contamination correlation between pre-cutoff literature frequency and R@1, by backbone (H3/A6).", "tbl:contam"),
-        ("Agent|pre-cutoffR@1", "Difficulty-matched pre- vs.\\ post-cutoff R@1 (H3).", "tbl:h3"),
-        ("Pair|Spearman", "Faithfulness-vs-accuracy rank correlation (H10).", "tbl:h10"),
+        ("Backbone|ndiseases|Spearman", "Association between pre-cutoff literature frequency and R@1, by backbone (A6); disease counts vary and correlation does not establish memorisation.", "tbl:contam"),
+        ("Agent|pre-cutoffR@1", "Matched-pipeline pre- vs.\\ post-cutoff R@1 on the clean-gold subset (H3). Case difficulty is not held fixed in these rows; a separate HPO-count/prevalence-balanced check is reported in the text. The 2024+ set is not contamination-free because exact PMCIDs overlap RareArena, so this is a temporal sensitivity analysis rather than proof against memorisation.", "tbl:h3"),
+        ("Pair|Spearman", "Cross-agent rank correlation of per-specialty R@1 (H7). High agreement identifies shared difficulty patterns but does not by itself identify their cause.", "tbl:h7"),
     ],
     "8_ablations.md": [
-        ("#|Name|Status", "Pre-registered ablations A1--A12 and their status.", "tbl:ablations"),
-        ("Dataset|Aggregate", "ORPHA-variant evaluation-channel effect (A9).", "tbl:a9"),
-        ("#|Claim|Stat", "Holm--Bonferroni family-wise correction over H1--H11.", "tbl:holm"),
-        ("Backbone|ndiseases|Spearman", "A6 TS-Guessing contamination, by backbone.", "tbl:a6"),
+        ("#|Name|Status", "Repository-defined ablations A1--A12 and their status; these were not formally pre-registered.", "tbl:ablations"),
+        ("Dataset|Aggregate", "ORPHA-variant evaluation-channel effect (A4), reported as aggregate change in R@1/R@5 over the diagnostic datasets.", "tbl:a4"),
+        ("#|Claim|Stat", "Holm--Bonferroni family-wise correction over H1--H11. H10 is nominally significant under the frozen single-judge test but is not counted as confirmed because its threshold verdict is judge-sensitive.", "tbl:holm"),
+        ("Backbone|ndiseases|Spearman", "A6 literature-frequency association by backbone; varying disease counts are printed and the correlations do not identify memorisation.", "tbl:a6"),
         ("Config|R@1", "H6 reasoning on/off ablation (paired, PP-Store).", "tbl:h6"),
     ],
     "5_1_agent_fairness_matrix.md": [
@@ -206,24 +206,24 @@ CAPTIONS = {
         ("Setting|Value|Rationale", "Fixed evaluation settings held constant across agents.", "tbl:settings"),
     ],
     "7_1_p1_p2_cascade.md": [
-        ("Bin(#HPOterms)", "R@1 by HPO-count bin (P1$\\rightarrow$P2 cascade).", "tbl:cascade"),
+        ("Bin(#HPOterms)", "R@1 by observational HPO-count bin (H8); differences are associations, not phenotype-count interventions.", "tbl:cascade"),
     ],
     "A1_reproducibility_audit.md": [
-        ("Agent|Replicated", "Reproduction audit against published paper claims.", "tbl:repro"),
+        ("Agent|Replicated", "Attempted reproduction audit against published paper claims; partial and failed matches remain explicitly marked.", "tbl:repro"),
     ],
     "B_appendix_baseline_repro.md": [
         ("Baseline|License", "Baseline reproduction: license, mode, paper vs.\\ our point estimate.", "tbl:baseline"),
     ],
     "J_appendix_cost.md": [
-        ("Backbone|Cells|Cases", "Cumulative cost by backbone.", "tbl:jcostbb"),
-        ("Rank|Dataset|Agent", "Most cost-efficient (agent, backbone, dataset) cells.", "tbl:jcosteff"),
-        ("Dataset|Agent|Backbone|n|R@1|Totalcost", "Highest-spend cells.", "tbl:jcosttop"),
-        ("Dataset|R@1", "Cheapest cell exceeding each R@1 band.", "tbl:jcostband"),
+        ("Backbone|Cells|Cases", "Cumulative diagnostic-run cost by backbone at frozen evaluation-time prices; legacy MIMIC title/code cells are excluded, and values are not current vendor quotations.", "tbl:jcostbb"),
+        ("Rank|Dataset|Agent", "Lowest hosted-LLM cost per successful case among diagnostic cells with $n_{\\mathrm{ok}}\\geq50$; $n$ is successful cases and offline zeroes exclude local compute and staffing.", "tbl:jcosteff"),
+        ("Dataset|Agent|Backbone|n|R@1|Totalcost", "Highest-spend diagnostic cells; $n$ is successful cases and legacy MIMIC cells are excluded.", "tbl:jcosttop"),
+        ("Dataset|R@1", "Cheapest diagnostic cell exceeding each R@1 band at frozen evaluation-time hosted-LLM prices; offline zeroes exclude local compute and staffing.", "tbl:jcostband"),
     ],
     "OSF_preregistration_draft.md": [
-        ("#|Statement|Teststatistic", "Pre-registered hypotheses H1--H11.", "tbl:osfh"),
-        ("#|Name|Statusatpre-reg", "Pre-registered ablations at registration time.", "tbl:osfa"),
-        ("Layer|Source|Cases|DiseaseIDs", "Data layers and development/test split.", "tbl:osfdata"),
+        ("#|Statement|Teststatistic", "Hypotheses H1--H11 in the unregistered OSF draft.", "tbl:osfh"),
+        ("#|Name|Statusindraft", "Ablations in the unregistered OSF draft.", "tbl:osfa"),
+        ("Layer|Source|Cases|DiseaseIDs", "Data layers and proposed development/test split in the unregistered draft.", "tbl:osfdata"),
     ],
 }
 
@@ -444,6 +444,10 @@ def postprocess(tex: str) -> str:
     tex = promote_caption_ids(tex)
     tex = longtable_to_tablestar(tex)
     tex = color_main_table(tex)
+    # Keep the long monospace agent identifier breakable inside narrow table
+    # cells without changing the rendered identifier.
+    tex = tex.replace(r"\texttt{agentclinic}",
+                      r"\texttt{agent\allowbreak clinic}")
     # breakable code blocks (fvextra) so long lines don't overflow the column
     tex = tex.replace("\\begin{verbatim}", "\\begin{Verbatim}")
     tex = tex.replace("\\end{verbatim}", "\\end{Verbatim}")
@@ -497,7 +501,7 @@ PREAMBLE = r"""% Compiles with the default pdfLaTeX on Overleaf (no compiler cha
 \author{Anonymous ACL submission}
 \begin{document}
 \maketitle
-\nocite{*}
+\raggedbottom
 """
 
 
@@ -506,7 +510,9 @@ def main():
     # ---- abstract ------------------------------------------------------
     abs_md = strip_section_prefix(clean((SEC / "1_abstract.md").read_text()))
     # everything after the (now header-less) 'Abstract' heading is the body
-    abs_md = re.sub(r"^#+\s*Abstract\s*$", "", abs_md, flags=re.M).strip()
+    abs_md = re.sub(
+        r"^#+\s*Abstract(?:\s*\{#[-\w]+\})?\s*$", "", abs_md, flags=re.M
+    ).strip()
     abs_md = deemphasize_bold(abs_md)
     abstract_tex = postprocess(md_to_latex(abs_md))
 
@@ -524,9 +530,21 @@ def main():
         md = fix_section_refs(fix_table_refs(fix_figure_refs(md)))
         md = deemphasize_bold(md)
         tex = postprocess(md_to_latex(md))
+        # The five full-width §6 result panels and the §7.5 wide table use
+        # separate LaTeX float queues; without a hard boundary the later table
+        # can leap ahead of Figures 3–6. Flush §6 before the judge section so
+        # reading order matches source order.
+        if fn == "7_5_self_preference_bias.md":
+            tex = "\\clearpage\n" + tex
         figs = figures_latex(fn)
         stem = re.sub(r"\.md$", "", fn)
-        (texdir / f"{stem}.tex").write_text(tex + ("\n\n" + figs if figs else "") + "\n")
+        payload = tex + ("\n\n" + figs if figs else "")
+        # Keep the judge table/figure with Section 7: otherwise two-column float
+        # deferral lets Section 8 start before the reader sees Section 7's
+        # evidence panel.
+        if fn == "7_5_self_preference_bias.md":
+            payload += "\n\\clearpage"
+        (texdir / f"{stem}.tex").write_text(payload + "\n")
         return f"\\input{{tex/{stem}}}"
 
     (texdir / "abstract.tex").write_text(
@@ -540,6 +558,9 @@ def main():
     doc = (PREAMBLE.replace("__TITLE__", TITLE)
            + "% ==== abstract (comment the next line to drop it) ====\n"
            + "\\input{tex/abstract}\n\n"
+           + "% Abstract is manuscript section 1 in the source plan; keep the\n"
+           + "% first numbered body heading aligned as Section 2.\n"
+           + "\\setcounter{section}{1}\n"
            + "% ==== main body ====\n"
            + "\n".join(main_inputs) + "\n\n"
            + "% ==== references (acl.sty already sets \\bibliographystyle) ====\n"
@@ -556,14 +577,19 @@ def main():
     # full LaTeX cycle so citations + References section resolve:
     # pdflatex -> bibtex -> pdflatex -> pdflatex
     env = dict(os.environ, PATH=TEXBIN + ":" + os.environ.get("PATH", ""))
-    subprocess.run(["pdflatex", "-interaction=nonstopmode", "main.tex"], cwd=ACL, env=env, capture_output=True, text=True, errors="replace")
-    subprocess.run(["bibtex", "main"], cwd=ACL, env=env, capture_output=True, text=True, errors="replace")
+    pdf = ACL / "main.pdf"
+    if pdf.exists():
+        pdf.unlink()  # prevent a stale PDF from being reported after TeX failure
+    first = subprocess.run(["pdflatex", "-interaction=nonstopmode", "main.tex"], cwd=ACL, env=env, capture_output=True, text=True, errors="replace")
+    bib = subprocess.run(["bibtex", "main"], cwd=ACL, env=env, capture_output=True, text=True, errors="replace")
     for _ in range(2):
         r = subprocess.run(["pdflatex", "-interaction=nonstopmode", "main.tex"], cwd=ACL, env=env, capture_output=True, text=True, errors="replace")
 
-    pdf = ACL / "main.pdf"
-    if not pdf.exists():
-        errs = [l for l in r.stdout.splitlines() if l.startswith("!")][:10]
+    if first.returncode or bib.returncode or r.returncode or not pdf.exists():
+        combined = "\n".join((first.stdout, first.stderr, bib.stdout, bib.stderr,
+                              r.stdout, r.stderr))
+        errs = [l for l in combined.splitlines()
+                if l.startswith("!") or "Error" in l][:20]
         print("PDF FAILED. errors:\n" + "\n".join(errs)); return
     print(f"PDF: {pdf} ({pdf.stat().st_size//1024} KB)")
 

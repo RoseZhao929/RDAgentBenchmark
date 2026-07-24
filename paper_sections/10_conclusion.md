@@ -6,30 +6,32 @@
 ---
 
 We introduced a multi-pillar agent-native benchmark for rare disease
-diagnosis spanning five capability pillars, three diagnostic data layers, eight agent
-systems, three LLM backbones, and one classical baseline, with all
-hypotheses and ablations pre-registered. The benchmark surfaces five
+diagnosis spanning five capability pillars, three diagnostic data layers,
+eight published systems (including two classical/offline baselines) plus one
+no-scaffold control, and four hosted backbones where compatible. H1--H11 and A1--A12
+are repository-defined rather than formally pre-registered. The benchmark surfaces five
 findings with concrete reviewer-defensible numbers. **First**,
 classical/offline approaches (LIRICAL Bayesian, VC-RDAgent IC+Poincaré)
-remain competitive with — and on HPO-input datasets *exceed* — every
-scaffolded LLM agent at R@1 (0.47 vs best-LLM 0.30, a 17 pp gap),
-despite consuming no LLM tokens. This is the most consequential single
+decisively lead on Phenopacket-Store (0.47 vs best-LLM 0.30, a 17 pp
+gap) and at the super-rare prevalence tail, while RareBench is near parity
+(0.30 vs 0.28). They consume no hosted-LLM tokens. This is the most consequential single
 result, and motivates our **classical baseline column** as a permanent
 part of any future rare-disease agent leaderboard. **Second**,
-multi-agent scaffolding helps only marginally (≈2–5 pp R@1, within
-overlapping CIs) on free-text input and regresses on phenotype-list
-input when the scaffold's design (OSCE dialogue, panel orchestration)
-is mismatched to the input modality. **Third**, frontier-cheap LLMs
-(DeepSeek V4-Flash at $0.11/$0.22 per 1M) are ~10× cheaper than Gemini
-Flash but trade off accuracy (−2 to −16 pp R@1, worst on free-text) —
+multi-agent scaffolding helps only marginally (≈0–2 pp R@1, within
+overlapping CIs) in its best cells and is often neutral or harmful when the
+scaffold's design (OSCE dialogue, panel orchestration) is mismatched to the
+input modality. **Third**, DeepSeek V4-Flash is approximately 10× cheaper
+than Gemini Flash in the frozen diagnostic receipts ($0.33 vs $3.44 per
+1,000 successful predictions) but usually trades off accuracy (−3 to −8 pp on Phenopacket-Store
+and −4 to −14 pp on RareArena; RareBench is mixed) —
 the *cost-efficient*, not quality-equivalent, choice for rare-disease
 deployment. **Fourth**, GPT-5 with `reasoning_effort=minimal` is the
-costliest backbone with no consistent accuracy edge (best on MedAgents,
-−14 pp on AgentClinic dialogue), demonstrating that frontier reasoning
+costliest backbone with no consistent accuracy edge (near-competitive on
+MedAgents, about −9 pp on AgentClinic dialogue), demonstrating that frontier reasoning
 models are brittle when their core mechanism is disabled. **Fifth**, whether
 faithfulness ranks decouple from accuracy ranks is **judge-dependent and we
 report it as exploratory** (same-trace Spearman ρ = 0.457 under a Gemini judge,
-0.640 under a Claude judge; the pre-registered ρ < 0.5 threshold is met under one
+0.640 under a Claude judge; the repository-plan ρ < 0.5 threshold is met under one
 judge but not the other) — the durable, direction-independent point is that
 accuracy-only evaluation can undersell the risk profile of rare-disease AI, since
 a correct diagnosis can still rest on an unfaithful reasoning trace.
@@ -43,12 +45,13 @@ shared evaluation standard in this rapidly-growing area.
 **Limitations** are detailed in §9; the principal three are deferred
 Pillar 4 (family-aware) reporting, single-language English evaluation,
 and the LLM-generated silver-gold reference for Pillar 1 (mitigated by
-the in-progress 200-case physician-validated holdout).
+physician annotation planned for the 198-case post-cutoff holdout).
 
-**Reproducibility**: all 7,581 Phase 4a predictions ship with per-call
-OpenRouter request-ids, exact subprocess invocation commands per
-adapter, and a Docker image hash. The OSF pre-registration document
-(frozen prior to holdout unblinding) is referenced in §5.4.
+**Reproducibility**: the frozen diagnostic cost receipt aggregates 90,046
+successful attempts; released per-cell artifacts include OpenRouter
+request IDs where available, adapter invocation metadata, and environment
+records. The repository analysis plan and its unregistered OSF draft are
+described transparently in §5.4; no formal pre-registration claim is made.
 
 ---
 

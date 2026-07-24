@@ -1,11 +1,14 @@
-"""Phase 4a paper-grade aggregate report generator.
+"""Legacy Phase 4a diagnostic aggregate report generator.
 
 Reads all data/round2/phase4a/predictions_*.jsonl, builds the per-dataset
-backbone × agent R@1 matrix (strict + variants), and writes:
+backbone × agent R@1 matrix (strict + variants) for the three diagnostic
+datasets only, and writes:
   - data/round2/phase4a_REPORT.md (paper-grade)
   - data/round2/phase4a_summary.json (machine-readable)
 
-Designed to be re-runnable as new cells finish.
+MIMIC title-task files are deliberately ignored. The replacement MIMIC
+structured-EHR task must use a separate task-versioned receipt and must never
+be merged into these diagnostic aggregates.
 """
 from __future__ import annotations
 import sys, json, os, glob
@@ -14,7 +17,6 @@ from collections import defaultdict
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 def main():
-    from harness.canonical_case import CanonicalCase
     from harness.metrics.cross_map import gold_hit_with_crossmap, gold_hit_with_variants
     from harness.ingest import ingest_phenopacket_store, ingest_rarearena, ingest_rarebench
     print("Loading gold maps...", file=sys.stderr)
@@ -23,9 +25,6 @@ def main():
     for c in ingest_rarearena('data/rarearena/benchmark_data/RDS_benchmark.jsonl', 'RDS'): case_gold_all[c.case_id] = ('rarearena_rds', c.gold_label)
     for split in ('RAMEDIS','LIRICAL','MME','HMS'):
         for c in ingest_rarebench(f'data/rarebench_hf/data_unzipped/data/{split}.jsonl', split): case_gold_all[c.case_id] = ('rarebench', c.gold_label)
-    with open('data/mimic_iv_rd_slice/cases_filtered_diverse.jsonl') as f:
-        for line in f:
-            c = CanonicalCase.model_validate_json(line); case_gold_all[c.case_id] = ('mimic_diverse', c.gold_label)
     print(f"Total gold cases: {len(case_gold_all)}", file=sys.stderr)
 
     stats = defaultdict(lambda: {"ok":0,"err":0,"h1s":0,"h1v":0,"h5s":0,"h5v":0,"sum_usd":0.0,"sum_lat_ms":0})
@@ -37,7 +36,7 @@ def main():
     for p in sorted(glob.glob('data/round2/phase4a/predictions_*.jsonl')):
         fn = os.path.basename(p).replace('predictions_','').replace('.jsonl','')
         ds = ag = None
-        for d in ('phenopacket_store','rarearena_rds','rarebench','mimic_diverse'):
+        for d in ('phenopacket_store','rarearena_rds','rarebench'):
             if fn.startswith(d+'_'): ds = d; rest = fn[len(d)+1:]; break
         if not ds: continue
         for a in ('mdagents','medagents','agentclinic','maidxo','deeprare','llm_control','vc_rdagent','lirical'):
@@ -90,14 +89,14 @@ def main():
     agents_o = ['llm_control','mdagents','medagents','agentclinic','maidxo','deeprare','vc_rdagent','lirical']
 
     md_lines = [
-        "# Phase 4a Mini-Sample Report (N=100 × 4 datasets)",
+        "# Phase 4a Diagnostic Report (3 datasets; legacy aggregator)",
         "",
         "**Generated**:", f"`{__import__('datetime').datetime.now().isoformat(timespec='seconds')}`",
         "",
         "## Per-dataset matrix (R@1 variants — strict in parentheses)",
         "",
     ]
-    for ds in ('phenopacket_store','rarearena_rds','rarebench','mimic_diverse'):
+    for ds in ('phenopacket_store','rarearena_rds','rarebench'):
         md_lines.append(f"\n### {ds}\n")
         header = "| Agent | " + " | ".join(bb_label[b] for b in bbs_o) + " |"
         md_lines.append(header)

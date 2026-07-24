@@ -1,5 +1,11 @@
 # Paper Outline — Rare Disease Agent Benchmark (EMNLP submission)
 
+> **Historical planning document.** Numerical placeholders and proposed claims
+> below are not the source of truth for the current paper. No OSF registration
+> was completed; H1--H11 and A1--A12 are repository-defined, not formally
+> pre-registered. Use `paper_sections/` and the frozen manifest for submission
+> text and results.
+
 > Target venue:**EMNLP 2026**(8 pages main + unlimited appendix)
 > Status:Round 2 实验进行中(Phase 0 done, Phase 1 done, Phase 2 启动)
 > Working title 候选(暂定):
@@ -15,7 +21,7 @@
 
 1. 不是 LLM-only 静态 input→output,而是 5 个 capability **pillar**(覆盖 agent 真正的差异化能力)
 2. 不是单 dataset,而是 4 layer(curated phenotype + 真 EHR + 大规模 free text + 防污染 holdout)
-3. 不是 fuzzy "accuracy" 一刀切,而是预注册 11 个假设 + 12 个 ablation,Holm 校正
+3. 不是 fuzzy "accuracy" 一刀切,而是 repository-defined 11 个假设 + 12 个 ablation,Holm 校正
 4. 关键发现 — preview:
    - **Multi-agent scaffolding 真有效**(MedAgents 0.36 / MDAgents 0.34 vs Gemini Flash baseline 0.26)— 反 MedAgentBoard 2025 的"多 agent 无用"结论
    - **HPO extraction quality 决定 downstream**(LIRICAL R@1 在 gold HPO 上 0.40,LLM-extracted HPO 上 0.04 — 10x 落差)
@@ -36,7 +42,7 @@
 
 ### 想说什么
 - **Hook**(2-3 sentences):rare disease agents 涌现 vs 共享 benchmark 真空
-- **What we built**(2-3 sentences):5 pillar × 4 dataset × 11 systems × 3 backbones × 11 假设 + 12 ablation 全预注册
+- **What we built**(2-3 sentences):5 pillar × dataset resources × systems/backbones × repository-defined 11 假设 + 12 ablation
 - **Key headline numbers**(2 sentences):
   - eg "Multi-agent scaffolding agents (R@1 = 0.36) beat single-LLM controls (0.26) on Pillar 2 across N=X case,but degrade by Y pp under noisy phenotype extraction (Pillar 1 cascade)"
   - eg "Faithfulness ranking is decoupled from accuracy ranking (Spearman ρ = 0.X < 0.5),supporting the claim that accuracy-only evaluation is insufficient"
@@ -54,7 +60,7 @@ clinical-communication faithfulness) on a layered dataset (Phenopacket-Store
 n=10,051; RareBench 1,122; RareArena 72,661; MIMIC-IV rare-disease slice n=956;
 post-cutoff PMC OA holdout n=200). We evaluate 7 agent systems against 3 LLM
 no-scaffolding controls and one classical baseline (LIRICAL), with all
-hypotheses (H1-H11) and ablations (A1-A12) pre-registered.
+hypotheses (H1-H11) and ablations (A1-A12) documented in the repository plan.
 
 Key findings: <NUMBER 1>. <NUMBER 2>. <NUMBER 3>. We release the harness,
 canonical case schema, per-agent adapter shims, and a static-site leaderboard
@@ -94,9 +100,9 @@ Agent benchmark 跟 LLM benchmark 的本质区别:
 
 ### 2.4 Our approach(第 4 段,5-6 sentences)
 
-5 pillar × 4 dataset layer × 双 pass(gold HPO vs end-to-end)× 三 backbone × 预注册 H1-H11 + A1-A12。其中 3 个 design decision 单独说:
+5 pillar × dataset resources × 双 pass(gold HPO vs end-to-end)× 四 backbone × repository-defined H1-H11 + A1-A12。其中 3 个 design decision 单独说:
 - 双 pass 评估(plan.md §3)— RareBench Table 6 先例
-- Pre-registered hypotheses on OSF before holdout unblinding — 在罕见病文献里**首次**
+- Repository-defined hypotheses and multiplicity control; no completed OSF registration
 - Cutoff-after PMC OA holdout(自建,200 manually verified case)— 防 contamination
 
 ### 2.5 Key findings preview(第 5 段,5 numerical claims)
@@ -113,7 +119,7 @@ Agent benchmark 跟 LLM benchmark 的本质区别:
 
 1. **Agent-native benchmark** — first shared evaluation base for rare disease agents,5 pillar × 4 dataset
 2. **Layered datasets** including self-built **post-cutoff PMC OA holdout**(200 manually verified case)
-3. **Pre-registered** H1-H11 + A1-A12 to OSF before holdout unblinding(rare disease literature 首次)
+3. **Repository-defined** H1-H11 + A1-A12; the OSF file is an unregistered draft
 4. **Open harness**:canonical_case schema(Pydantic)+ 8 agent adapter shims + 5 metric module(accuracy / phenotype / calibration / reliability / cost)+ Docker image
 5. **Empirical findings**:F1-F5 above + per-pillar / per-backbone breakdown
 
@@ -211,9 +217,9 @@ A/B/C/D 类 × Tier 1/2/3(`罕见病benchmark方案.md` 二维表)— 复制进 
 
 每个 agent 是 subprocess + venv 隔离调用 — 防 openai SDK pre-1.0 跨 agent 冲突。adapter 接受 canonical_case,projection 到 agent 原生格式,subprocess 跑,parse 输出回 PredictionLog。3,485 LOC 全开源(`harness/agents/`)。
 
-### 5.4 Pre-registration
+### 5.4 Repository analysis plan
 
-H1-H11 + A1-A12 + 统计协议 + cutoff-after holdout protocol 在 holdout unblind 之前 freeze 到 OSF。链接 in footnote。**这是罕见病文献首次**(plan.md 可防御性主张)。
+H1-H11 + A1-A12 + 统计协议记录在 repository；OSF 文件未完成注册，论文不得声称 prospective pre-registration。
 
 ---
 
@@ -299,7 +305,7 @@ A1-A12 选 6-8 个在 main text(剩 appendix)。Priority:
 4. Statistical rigor — Holm-Bonferroni + bootstrap CI documented
 5. MIMIC ICU bias — 4-layer stack
 6. English-centric — Chinese layer was deferred(v1),acknowledge
-7. Arbitrary agent selection — inclusion criteria pre-registered
+7. Arbitrary agent selection — inclusion criteria documented and disclosed
 8. Multi-agent doesn't always help — exactly what H4 reports
 9. Cost not clinically meaningful — 3 cost axes 不混淆
 10. LLM-judge unreliable — A12 + Claude judge methodology + physician validation 200 case κ
@@ -317,7 +323,7 @@ Future work:
 
 ## 10. Conclusion(~ 0.25 page)
 
-简短 wrap:gap → benchmark → headline findings F1-F5 → release。重述 thesis:"accuracy 不够,5 pillar 必须并行评估,pre-registration 是 standard"。CTA。
+简短 wrap:gap → benchmark → headline findings F1-F5 → release。重述 thesis:"accuracy 不够,5 pillar 必须并行评估,未来 confirmatory study 应 prospective registration"。CTA。
 
 ---
 
@@ -334,7 +340,7 @@ Future work:
 - I. Per-language analysis(EN / ZH if applicable)
 - J. Cost breakdown per (agent, backbone, pillar)
 - K. Latency / pass^k distribution
-- L. OSF preregistration document(verbatim or link)
+- L. Unregistered OSF analysis-plan draft (clearly labelled)
 - M. Responsible NLP checklist
 - N. Reproducibility statement + Docker image hash
 - O. License clarifications(per agent — note 4 agents lack LICENSE)
@@ -387,7 +393,7 @@ Future work:
 - 第一次出现 acronym 必须展开:`Recall@1 (R@1)`
 - 不 cherry-pick — 任何 finding 报 bootstrap 95% CI
 - 不夸大 — 论文里"agents"指 LLM-based 系统,LIRICAL 称"classical baseline"
-- "Pre-registered" 标记每个被假设检验的 finding,non-pre-registered exploratory 显式标 "post-hoc"
+- “Repository-plan”标记 H/A finding；exploratory 与 post-hoc 分析显式区分
 - 不指责 single LLM controls 是 strawman — 论文用最强 LLM control(reasoning-enabled GPT-5 + Gemini Flash + DeepSeek V3.2,三个齐上 + few-shot 选项 A7)
 - LIMITATIONS 部分 honest 列短板 — 包括 PUMCH-ADM 中文 layer 没拿到 + DDD pending + P1 silver gold 100 case 小
 
@@ -397,7 +403,7 @@ Future work:
 
 - [ ] **Working title** finalize — 3 候选投票
 - [ ] **Author order + affiliations** — 等用户定
-- [ ] **OSF preregistration URL** — 等用户提交
+- [x] **OSF status** — no registration exists; disclose the bundled draft as unregistered
 - [ ] **GitHub repo URL** — release tag v0.1.0 at submission
 - [ ] **Web leaderboard URL** — host where?(GitHub Pages 默认)
 - [ ] Phase 4a 结果定后,确认 headline findings 数字

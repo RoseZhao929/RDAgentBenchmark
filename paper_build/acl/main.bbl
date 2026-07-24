@@ -1,45 +1,35 @@
 \begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 
-\bibitem[{Anonymous(2025{\natexlab{a}})}]{clear2025}
-Anonymous. 2025{\natexlab{a}}.
-\newblock \href {https://arxiv.org/abs/2511.14136} {{CLEAR}: A cost- and latency-aware evaluation framework for agents}.
-\newblock \emph{arXiv preprint}.
+\bibitem[{Chen et~al.(2026)Chen, Zhao, Zhou, Hu, Wang et~al.}]{rarearena2025}
+Haichao Chen, Zhengyun Zhao, Songchi Zhou, Shikai Hu, Jinyuan Wang, et~al. 2026.
+\newblock \href {https://doi.org/10.1016/j.landig.2025.100953} {{RareArena}: A comprehensive benchmark dataset unveiling the potential of large language models in rare disease diagnosis}.
+\newblock \emph{Lancet Digital Health}, 8(2):100953.
 
-\bibitem[{Anonymous(2025{\natexlab{b}})}]{medagentboard2025}
-Anonymous. 2025{\natexlab{b}}.
-\newblock {MedAgentBoard}: Benchmarking multi-agent collaboration in medicine.
-\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
+\bibitem[{Chen et~al.(2024)Chen, Mao, Guo, Wang, Zhang, and Chen}]{rarebench2024}
+Xuanzhong Chen, Xiaohao Mao, Qihan Guo, Lun Wang, Shuyang Zhang, and Ting Chen. 2024.
+\newblock \href {https://doi.org/10.1145/3637528.3671576} {{RareBench}: Can {LLMs} serve as rare diseases specialists?}
+\newblock In \emph{Proceedings of KDD}, pages 4850--4861.
 
-\bibitem[{Anonymous(2026)}]{sysreview2026}
-Anonymous. 2026.
-\newblock A systematic review of {LLM} evaluation for rare disease diagnosis.
-\newblock \emph{medRxiv}.
-
-\bibitem[{Chen et~al.(2026)}]{rareagents2026}
-Chen et~al. 2026.
-\newblock \href {https://arxiv.org/abs/2412.12475} {{RareAgents}: A multi-agent framework for rare disease diagnosis}.
-\newblock In \emph{Proceedings of AAAI}.
-
-\bibitem[{Chen et~al.(2024)}]{rarebench2024}
-Xuanzhong Chen et~al. 2024.
-\newblock \href {https://arxiv.org/abs/2402.06341} {{RareBench}: Benchmarking the capability of {LLMs} as rare disease specialists}.
-\newblock In \emph{Proceedings of KDD}.
-
-\bibitem[{Chimirri et~al.(2025)}]{chimirri2025}
-Leonardo Chimirri et~al. 2025.
-\newblock Multi-language phenopacket cohorts for diagnostic evaluation.
-\newblock \emph{eBioMedicine}.
+\bibitem[{Chimirri et~al.(2025)Chimirri, Caufield, Bridges, Matentzoglu, Gargano et~al.}]{chimirri2025}
+Leonardo Chimirri, J.~Harry Caufield, Yasemin Bridges, Nicolas Matentzoglu, Michael Gargano, et~al. 2025.
+\newblock \href {https://doi.org/10.1016/j.ebiom.2025.105957} {Consistent performance of large language models in rare disease diagnosis across ten languages and 4917 cases}.
+\newblock \emph{eBioMedicine}, 121:105957.
 
 \bibitem[{{cloudna-AI4LS}(2025)}]{vcrdagent}
 {cloudna-AI4LS}. 2025.
 \newblock {VC-RDAgent}: Variant-centered rare disease agent.
 \newblock Software repository.
 
-\bibitem[{Danis et~al.(2025)}]{phenopacketstore2025}
-Daniel Danis et~al. 2025.
-\newblock {Phenopacket-Store}: A repository of {GA4GH} phenopackets.
-\newblock \emph{Human Genetics and Genomics Advances}.
+\bibitem[{Danis et~al.(2025)Danis, Bamshad, Bridges, Caballero-Oteyza, Cacheiro et~al.}]{phenopacketstore2025}
+Daniel Danis, Michael~J. Bamshad, Yasemin Bridges, Andrés Caballero-Oteyza, Pilar Cacheiro, et~al. 2025.
+\newblock \href {https://doi.org/10.1016/j.xhgg.2024.100371} {A corpus of {GA4GH} phenopackets: Case-level phenotyping for genomic diagnostics and discovery}.
+\newblock \emph{Human Genetics and Genomics Advances}, 6(1):100371.
+
+\bibitem[{Eiz~AlDin et~al.(2026)Eiz~AlDin, Wu, Fung, King, Watts, O'Neill, Cross, and Sun}]{mimicrd2026}
+Zilal Eiz~AlDin, John Wu, Jeffrey~Paul Fung, Jennifer King, Mya Watts, Lauren O'Neill, Adam~Richard Cross, and Jimeng Sun. 2026.
+\newblock \href {https://arxiv.org/abs/2601.11559} {{MIMIC-RD}: Can {LLMs} differentially diagnose rare diseases in real-world clinical settings?}
+\newblock \emph{arXiv preprint}.
 
 \bibitem[{Jiang et~al.(2025)}]{medagentbench2025}
 Jiang et~al. 2025.
@@ -50,6 +40,23 @@ Jiang et~al. 2025.
 Carlos~E. Jimenez et~al. 2024.
 \newblock {SWE-bench}: Can language models resolve real-world {GitHub} issues?
 \newblock In \emph{International Conference on Learning Representations (ICLR)}.
+
+\bibitem[{Johnson et~al.(2024)Johnson, Bulgarelli, Pollard, Gow, Moody, Horng, Celi, and Mark}]{mimiciv31}
+Alistair Johnson, Lucas Bulgarelli, Tom Pollard, Brian Gow, Benjamin Moody, Steven Horng, Leo~Anthony Celi, and Roger Mark. 2024.
+\newblock \href {https://doi.org/10.13026/kpb9-mt58} {{MIMIC-IV}}.
+\newblock \emph{PhysioNet}.
+\newblock Version 3.1.
+
+\bibitem[{Johnson et~al.(2023{\natexlab{a}})Johnson, Pollard, Horng, Celi, and Mark}]{mimicivnote22}
+Alistair Johnson, Tom Pollard, Steven Horng, Leo~Anthony Celi, and Roger Mark. 2023{\natexlab{a}}.
+\newblock \href {https://doi.org/10.13026/1n74-ne17} {{MIMIC-IV-Note}: Deidentified free-text clinical notes}.
+\newblock \emph{PhysioNet}.
+\newblock Version 2.2.
+
+\bibitem[{Johnson et~al.(2023{\natexlab{b}})Johnson, Bulgarelli, Shen, Gayles, Shammout, Horng, Pollard, Hao, Moody, Gow, Lehman, Celi, and Mark}]{mimiciv2023}
+Alistair E.~W. Johnson, Lucas Bulgarelli, Lu~Shen, Alvin Gayles, Ayad Shammout, Steven Horng, Tom~J. Pollard, Sicheng Hao, Benjamin Moody, Brian Gow, Li-Wei~H. Lehman, Leo~A. Celi, and Roger~G. Mark. 2023{\natexlab{b}}.
+\newblock \href {https://doi.org/10.1038/s41597-022-01899-x} {{MIMIC-IV}, a freely accessible electronic health record dataset}.
+\newblock \emph{Scientific Data}, 10:1.
 
 \bibitem[{Kim et~al.(2024)}]{mdagents2024}
 Yubin Kim et~al. 2024.
@@ -66,6 +73,16 @@ Chang Ma et~al. 2024.
 \newblock {AgentBoard}: An analytical evaluation board of multi-turn {LLM} agents.
 \newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}.
 
+\bibitem[{Mao et~al.(2025)Mao, Huang, Jin, Wang, Chen et~al.}]{phenobrain2025}
+Xiaohao Mao, Yu~Huang, Ye~Jin, Lun Wang, Xuanzhong Chen, et~al. 2025.
+\newblock \href {https://doi.org/10.1038/s41746-025-01452-1} {A phenotype-based {AI} pipeline outperforms human experts in differentially diagnosing rare diseases using {EHRs}}.
+\newblock \emph{npj Digital Medicine}, 8:68.
+
+\bibitem[{Nguyen et~al.(2026)Nguyen, Yang, Cassini, Ma, Hamid, Bastarache, Peterson, Xu, Li, Ma, and Shyr}]{sysreview2026}
+Minh-Ha Nguyen, Chih-Ting Yang, Thomas~A. Cassini, Fan Ma, Rizwan Hamid, Lisa Bastarache, Josh~F. Peterson, Hua Xu, Lingyao Li, Siyuan Ma, and Cathy Shyr. 2026.
+\newblock \href {https://doi.org/10.64898/2026.03.26.26349194} {Diagnostic accuracy of large language models for rare diseases: A systematic review and meta-analysis}.
+\newblock \emph{medRxiv}.
+
 \bibitem[{Nori et~al.(2025)}]{maidxo2025}
 Harsha Nori et~al. 2025.
 \newblock \href {https://arxiv.org/abs/2506.22405} {Sequential diagnosis with language models ({MAI-DxO})}.
@@ -75,6 +92,11 @@ Harsha Nori et~al. 2025.
 Jesutofunmi~A. Omiye et~al. 2023.
 \newblock Large language models propagate race-based medicine.
 \newblock \emph{npj Digital Medicine}.
+
+\bibitem[{Panickssery et~al.(2024)Panickssery, Bowman, and Feng}]{panickssery2024}
+Arjun Panickssery, Samuel~R. Bowman, and Shi Feng. 2024.
+\newblock \href {https://doi.org/10.52202/079017-2197} {{LLM} evaluators recognize and favor their own generations}.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~37.
 
 \bibitem[{Patel et~al.(2025)}]{medhelm2025}
 Patel et~al. 2025.
@@ -86,15 +108,10 @@ Stephen~R. Pfohl et~al. 2024.
 \newblock {EquityMedQA}: Evaluating health equity in medical question answering.
 \newblock \emph{Nature Medicine}.
 
-\bibitem[{Reese et~al.(2026)}]{reese2026}
-Justin Reese et~al. 2026.
-\newblock Phenopacket-driven benchmarking of diagnostic support.
-\newblock \emph{European Journal of Human Genetics}.
-
-\bibitem[{Rivera et~al.(2025)}]{rivera2025}
-Rivera et~al. 2025.
-\newblock Faithfulness of clinical reasoning in language models.
-\newblock \emph{Journal of the American Medical Informatics Association}, 32(1).
+\bibitem[{Rekerle et~al.(2026)Rekerle, Danis, Rehburg, Graefe, Bily et~al.}]{reese2026}
+Lauren Rekerle, Daniel Danis, Filip Rehburg, Adam S.~L. Graefe, Viktor Bily, et~al. 2026.
+\newblock \href {https://doi.org/10.1016/j.ajhg.2025.12.001} {{GA4GH} phenopacket-driven characterization of genotype-phenotype correlations in mendelian disorders}.
+\newblock \emph{American Journal of Human Genetics}, 113(1):57--70.
 
 \bibitem[{Robinson et~al.(2020)}]{lirical2020}
 Peter~N. Robinson et~al. 2020.
@@ -121,16 +138,6 @@ Wu et~al. 2025.
 \newblock \href {https://arxiv.org/abs/2507.15867} {{RDMA}: Rare disease {LLM} agent with phenotype extraction}.
 \newblock \emph{arXiv preprint}.
 
-\bibitem[{Wu et~al.(2026)}]{mimicrd2026}
-Wu et~al. 2026.
-\newblock {MIMIC-RD}: Rare-disease diagnosis from real {EHR} free text.
-\newblock \emph{arXiv preprint}.
-
-\bibitem[{Yao et~al.(2026)}]{deeprare2026}
-Yao et~al. 2026.
-\newblock {DeepRare}: An agentic system for rare disease diagnosis.
-\newblock \emph{Nature}.
-
 \bibitem[{Yao et~al.(2024)}]{taubench2024}
 Shunyu Yao et~al. 2024.
 \newblock {$\tau$-bench}: A benchmark for tool-agent-user interaction in real-world domains.
@@ -141,14 +148,9 @@ Travis Zack et~al. 2024.
 \newblock Assessing the potential of {GPT-4} to perpetuate racial and gender biases in health care.
 \newblock \emph{Lancet Digital Health}.
 
-\bibitem[{Zhao et~al.(2025)}]{rarearena2025}
-Zhao et~al. 2025.
-\newblock {RareArena}: A large-scale rare-disease diagnostic benchmark.
-\newblock \emph{Lancet Digital Health}.
-
-\bibitem[{Zhao et~al.(2020)}]{phen2gene2020}
-Mengge Zhao et~al. 2020.
-\newblock {Phen2Gene}: Rapid phenotype-driven gene prioritization for rare diseases.
-\newblock \emph{Nucleic Acids Research}.
+\bibitem[{Zhao et~al.(2026)Zhao, Wu, Fan et~al.}]{deeprare2026}
+Weike Zhao, Chaoyi Wu, Yanjie Fan, et~al. 2026.
+\newblock \href {https://doi.org/10.1038/s41586-025-10097-9} {An agentic system for rare disease diagnosis with traceable reasoning}.
+\newblock \emph{Nature}, 651:775--784.
 
 \end{thebibliography}

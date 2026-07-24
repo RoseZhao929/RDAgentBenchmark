@@ -5,7 +5,7 @@
 
 ---
 
-**Pre-registered ablations**:
+**Repository-defined ablations**:
 
 | # | Name | Status |
 |---|---|---|
@@ -68,7 +68,7 @@ strict variant reported in parentheses for reviewer reference.
 Detailed in §6.2 main results. Highlights:
 
 - **No-scaffold control** (llm_control) is backbone-insensitive on
-  PP-Store (R@1 = 0.27-0.30 across 4 backbones, full-N; V4-Pro reasoning-off)
+  PP-Store (R@1 = 0.25-0.29 across 4 backbones, full-N; V4-Pro reasoning-off)
 - **Single-pass multi-agent** (mdagents) has a narrow 4-pp backbone spread
   (Gemini 0.28, DS V4-Pro-off 0.27, V4-Flash 0.25, GPT-5 0.24)
 - **Multi-round debate** (medagents) tops on Gemini (0.30), then V4-Pro-off /
@@ -76,29 +76,33 @@ Detailed in §6.2 main results. Highlights:
 - **OSCE simulation** (agentclinic) collapses on GPT-5 minimal (0.13)
 - **Panel orchestration** (MAI-DxO) collapses universally on HPO input
 
-The cross-product matrix shows **no universally-best backbone**: each
-scaffolding architecture has its own preferred backbone. This refutes
-the "just use the best backbone" simplifying assumption.
+Gemini Flash is the observed PP-Store winner for every listed agent in the
+frozen manifest. The 2--5 pp margins over the nearest hosted alternatives are
+descriptive and often small; they do not establish a universal backbone effect
+outside this dataset and reasoning configuration.
 
 ## §8.3 Ablation A7 — LLM-Judge Swap (Faithfulness scoring)
 
-Detailed in §7.5. Original P5 reasoning-faithfulness pilot used Gemini
-3 Flash as judge. We swap to Claude Sonnet 4.5 as the second judge
-and find:
+Detailed in §7.5. The original P5 pilot used Gemini 3 Flash as judge;
+the second pass used Claude Sonnet 4.5. This change jointly alters judge
+identity and the judge--agent family relation, and two agent rows also
+received trace-capture repairs. It is therefore a protocol-sensitivity
+analysis, not a one-factor self-preference ablation.
 
-- Self-preference bias is real: Gemini-judge scored Gemini-agent
-  scaffolds +0.30 to +0.90 higher on average vs other backbones
-- Claude-judge shrinks the gap to {+0.20, +0.33, -0.39, +0.24} —
-  near-zero on average
-- Inter-judge agreement κ = 0.62 (Cohen's, ≥ 0.6 threshold pre-registered)
+- On the same 40 repaired traces, faithfulness--accuracy Spearman ρ is
+  0.457 for Gemini and 0.640 for Claude; judge--judge agreement is ρ=0.741.
+- The much larger earlier gap (0.098 vs 0.616) is withdrawn as a
+  trace-capture artifact.
+- The four-axis `mdagents` change is descriptive because its trace changed.
 
-**Decision**: dual-judge protocol mandatory; report Claude as primary
-judge for headline numbers; Gemini-judge as secondary diagnostic.
+**Decision**: freeze complete trace inputs and use a crossed multi-judge
+design. Claude remains the primary descriptive judge and Gemini a sensitivity
+analysis; neither alone identifies a causal family-preference effect.
 
 ## §8.4 Ablations TODO (deferred to camera-ready)
 
-The following are pre-registered but require additional infrastructure
-or holdout data. **All are listed here for transparency**; results
+The following were listed in the repository plan but require additional
+infrastructure or holdout data. **All are listed here for transparency**; results
 will be appended at camera-ready.
 
 - **A5** (silver gold vs physician gold) — pending 200-case PMC OA
@@ -148,16 +152,18 @@ agent×backbone pairings. Cap choices are logged per-cell.
 - **A10** (prevalence-stratified R@1) — ✅ computed.
 - **A11** (cross-dataset ranking stability) — ✅ computed (see §7.6).
 
-## §8.5 Pre-registration check
+## §8.5 Analysis-plan status
 
-Under our research-integrity protocol, all hypotheses (H1-H11) and
-ablations (A1-A12) were frozen at OSF prior to Phase 4a launch. The
-above results are the first pre-registered evaluation report.
-**No post-hoc hypothesis selection.**
+The repository enumerates H1--H11 and A1--A12, but the accompanying OSF
+file is an unregistered draft and the public history does not establish
+prospective registration. We therefore use the labels to define a transparent
+analysis family, disclose deferred and exploratory items, and apply the stated
+multiplicity correction without calling these results pre-registered or
+confirmatory.
 
 ## §8.8 Holm-Bonferroni family-wise correction over H1-H11 (P6.3)
 
-Per pre-registration we apply Holm-Bonferroni at α=0.05 (one-sided in the
+Following the repository analysis plan, we apply Holm-Bonferroni at α=0.05 (one-sided in the
 predicted direction) over the testable subset of H1-H11. Family size m=6
 (H3/H5/H9 excluded — data unavailable, see §9 L3/L4 and tasks #63/#64/#66; H6
 now tested descriptively in §8.10 but kept out of this z/ρ family). **2026-07-06
@@ -173,8 +179,11 @@ pilot to an **n=500 paired** design.
 | **H4** | Scaffold benefit larger on multi-system than single (DoD) | z=2.61 | 4.5e-03 | 9.0e-03 | ✅ **yes** |
 | H10 | Spearman ρ(faithfulness, accuracy) < 0.5 | ρ=0.35 | 3.7e-02 | 3.7e-02 | ⚠️ nominal but judge-dependent (see below) |
 
-**Reading**: **5 of 6 testable hypotheses now survive** the strictest
-pre-registered family-wise correction (up from 2/6 at pilot N). The full-N
+**Reading**: **five of six testable hypotheses are retained as robust
+conclusions** after family-wise correction (up from 2/6 at pilot N). H10's
+single-judge Holm-adjusted p is nominally below 0.05, but its threshold verdict
+does not replicate across the same-trace judges and is not counted as
+confirmed. The full-N
 reruns flipped H2, H4, and H7 from under-powered to significant: the
 genotype-channel lift (H2: +19.8 pp, n=500 paired, McNemar χ²=85), the
 scaffold-benefit-on-complexity difference-of-differences (H4), and the
@@ -189,7 +198,7 @@ on truncated/empty traces while the Claude scores used repaired traces. Re-runni
 the Gemini judge on the *same* repaired traces (n=40) raises its ρ from 0.098 to
 **0.457**, against Claude's **0.640** (judge agreement ρ=0.741) — a modest residual
 judge-family difference, not the near-zero "strong decoupling" originally claimed.
-The pre-registered H10 verdict (ρ<0.5) is therefore genuinely borderline and
+The repository-plan H10 verdict (ρ<0.5) is therefore genuinely borderline and
 judge-sensitive, so we keep H10 exploratory and withdraw the ρ=0.098 figure. See
 §7.5 for the de-confounded analysis.
 
@@ -212,21 +221,19 @@ Spearman ρ over log(mention + 1) vs R@1; per-disease aggregate requires
 | LIRICAL (classical Bayesian) | 26 | −0.155 | ✅ null (methodological control) |
 | VC-RDAgent (offline IC) | 26 | −0.059 | ✅ null (methodological control) |
 
-**Clean dichotomy**: 4/4 LLM backbones at ρ ≈ 0.29–0.37; 2/2 classical baselines
-at ρ ≈ 0. The classical baselines do not consume text and therefore cannot
-have been "trained on" PubMed; their null ρ confirms our pipeline introduces
-no spurious correlation. The LLM signal is real but **bounded** — ρ² ≈ 0.09
-means pre-cutoff exposure explains ≈ 9 % of R@1 variance, leaving ≈ 91 % to
-phenotype-disease reasoning + extraction + scaffold design.
+**Descriptive dichotomy**: 4/4 LLM backbones are at ρ≈0.29--0.37; the two
+smaller classical samples are near zero. Because classical systems do not
+consume PubMed text, they are useful controls, but n=26 per control is not
+enough to prove the absence of pipeline effects. The LLM association is weak;
+we do not interpret ρ² as a causal fraction of accuracy variance.
 
 Reading is treated in §7.10 (a finer-grained interpretation paired with F1);
-the L4 post-cutoff PMC OA holdout (~200 cases, doctor-annotated in progress)
-remains the bias-free reference for the residual 9 %.
+the L4 post-cutoff PMC OA set (~200 cases, physician annotation in progress)
+is a temporal sensitivity analysis, not a bias-free reference, because exact
+PMCIDs overlap RareArena.
 
-Visualised in \Cref{fig:fig4_a6_contamination_scatter}:
-one panel per backbone. The clean dichotomy is visually obvious — the
-LLM backbones show a positive slope; the classical baselines
-(LIRICAL, VC-RDAgent) show a flat cloud.
+Visualised in \Cref{fig:fig4_a6_contamination_scatter} as a per-backbone
+correlation dot plot with the retained disease count printed beside each point.
 
 ---
 

@@ -1,30 +1,35 @@
 \begin{abstract}
-\section{Abstract}\label{sec-1}
-
 Rare disease diagnostic AI agents have proliferated (8+ systems in
 2024-2026), yet no shared benchmark exists; each agent paper evaluates
 on an ad-hoc subset, making cross-system claims unverifiable. We
 introduce RareAgentBench, an agent-native benchmark spanning five capability pillars (phenotype extraction, phenotype-only DDx, genotype-aware DDx,
 family-aware DDx, clinical-communication faithfulness) on a layered
 dataset (Phenopacket-Store \emph{n}=10,051; RareBench HF 1,122; RareArena RDS
-72,661; post-cutoff PMC OA holdout \emph{n}=200), plus a separately reported
-MIMIC-IV structured-EHR probe (956 code-supervised admissions; no clinical
-notes). We evaluate 8 agent systems (DeepRare, MDAgents, MedAgents,
-AgentClinic, MAI-DxO, RDMA, VC-RDAgent, LIRICAL) against 3 LLM no-scaffolding controls and one classical baseline, with all
-hypotheses (H1--H11) and ablations (A1--A12) pre-registered.
+72,661; post-cutoff PMC OA holdout \emph{n}=200), plus a separately specified,
+exploratory MIMIC-IV structured-EHR protocol (956 code-supervised admissions;
+no clinical notes; replacement scoring pending). We implement eight published systems (five scaffolded diagnostic agents, RDMA extraction, and
+two classical/offline baselines) plus a no-scaffold LLM control, using four
+hosted backbones where compatible. H1--H11 and A1--A12 form a
+repository-defined analysis family; the OSF document remains an unregistered
+draft, so we do not claim formal pre-registration.
 
 \textbf{Key findings}: (1) classical/offline baselines (LIRICAL 0.47,
-VC-RDAgent 0.44 R@1) exceed every scaffolded LLM agent on HPO-input datasets (best LLM cell 0.30 on Phenopacket-Store, a 17 pp gap); (2)
+VC-RDAgent 0.44 R@1) decisively lead on Phenopacket-Store
+(best LLM cell 0.30, a 17 pp gap), while RareBench is near parity
+(best LLM 0.30 vs classical/offline 0.28); (2)
 multi-agent scaffolding gives only a small, dataset-dependent gain
-(\ensuremath{\approx}2--5 pp R@1 over single-LLM controls), not the uniform boost prior
+(\ensuremath{\approx}0--2 pp R@1 over single-LLM controls), not the uniform boost prior
 work implies; (3) DeepSeek V4-Flash is \textasciitilde10\ensuremath{\times} cheaper than Gemini Flash
-but trades off accuracy (\ensuremath{-}2 to \ensuremath{-}9 pp on structured input, \ensuremath{-}11 to
-\ensuremath{-}16 pp on free-text) --- cost-efficient, not quality-equivalent; (4)
-GPT-5 with \texttt{reasoning\_effort=minimal} carries the highest cost (\textasciitilde34\ensuremath{\times}
-V4-Flash) without a consistent accuracy edge --- competitive on some
-scaffolds yet collapsing on dialogue (\ensuremath{-}14 pp on AgentClinic),
-illustrating frontier-reasoning models' brittleness under reasoning-disabled regimes; (5) an ORPHA-variant evaluation channel
-adds \textasciitilde20 pp R@1 universally --- \emph{not} DeepRare-specific. We release
+but usually trades off accuracy (3--8 pp on Phenopacket-Store and
+4--14 pp on RareArena, with mixed RareBench results) --- cost-efficient,
+not quality-equivalent; (4) GPT-5 with \texttt{reasoning\_effort=minimal}
+carries the highest receipt-weighted cost (\textasciitilde24\ensuremath{\times} V4-Flash) without a
+consistent accuracy edge --- near-competitive on some scaffolds yet
+falling by \textasciitilde9 pp on AgentClinic,
+illustrating frontier-reasoning models' brittleness under reasoning-disabled regimes; (5) a structured genotype channel adds
+about 20 pp R@1 in the paired HPO-plus-variant experiment, while the
+faithfulness--accuracy threshold remains judge-sensitive and exploratory.
+We release
 the harness, canonical case schema, per-agent adapter shims, full
 per-cell receipts, and a static-site leaderboard.
 

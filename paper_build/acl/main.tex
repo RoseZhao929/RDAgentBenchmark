@@ -35,14 +35,17 @@
 \providecommand{\st}[1]{#1}
 \emergencystretch=3em
 \sloppy
-\title{RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis}
+\title{RareAgentBench: A Multi-Pillar, Contamination-Audited Benchmark of LLM Agents for Rare-Disease Diagnosis}
 \author{Anonymous ACL submission}
 \begin{document}
 \maketitle
-\nocite{*}
+\raggedbottom
 % ==== abstract (comment the next line to drop it) ====
 \input{tex/abstract}
 
+% Abstract is manuscript section 1 in the source plan; keep the
+% first numbered body heading aligned as Section 2.
+\setcounter{section}{1}
 % ==== main body ====
 \input{tex/2_introduction}
 \input{tex/3_related_work}

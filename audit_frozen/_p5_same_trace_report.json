@@ -25,5 +25,11 @@
     "p": 4.642766058278211e-08,
     "n_pairs": 40
   },
-  "verdict": "With both judges on identical repaired traces, the Gemini-vs-Claude faithfulness/accuracy decoupling can now be compared apples-to-apples; any remaining gap is a true judge-family effect, not the trace-capture artifact."
+  "cross_judge_binned_four_axis_agreement": {
+    "cohen_kappa_unweighted": 0.477,
+    "n_axis_pairs": 160,
+    "bins": "1-2 / 3 / 4-5",
+    "note": "Descriptive only; four axes within each trace are not independent."
+  },
+  "verdict": "With both judges on identical repaired traces, the Gemini-vs-Claude faithfulness/accuracy association can be compared on matched inputs. The remaining difference is judge-protocol sensitivity; judge identity and family relation are still coupled."
 }

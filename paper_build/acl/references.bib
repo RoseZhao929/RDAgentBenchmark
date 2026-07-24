@@ -1,49 +1,95 @@
-% Bibliography for RareAgentBench. Draft — bibliographic details from the
-% authors' research notes; arXiv/DOI included only where verified. To be
-% finalized (exact IDs, page numbers) at camera-ready.
+% Bibliography for RareAgentBench. Primary-source metadata is preferred; entries
+% without a stable publication DOI retain their arXiv or software identifier.
 
 @inproceedings{rarebench2024,
-  title     = {{RareBench}: Benchmarking the Capability of {LLMs} as Rare Disease Specialists},
-  author    = {Chen, Xuanzhong and others},
+  title     = {{RareBench}: Can {LLMs} Serve as Rare Diseases Specialists?},
+  author    = {Chen, Xuanzhong and Mao, Xiaohao and Guo, Qihan and Wang, Lun and Zhang, Shuyang and Chen, Ting},
   booktitle = {Proceedings of KDD},
   year      = {2024},
+  pages     = {4850--4861},
+  doi       = {10.1145/3637528.3671576},
   eprint    = {2402.06341},
   archivePrefix = {arXiv}
 }
 
 @article{rarearena2025,
-  title   = {{RareArena}: A Large-Scale Rare-Disease Diagnostic Benchmark},
-  author  = {Zhao and others},
+  title   = {{RareArena}: A Comprehensive Benchmark Dataset Unveiling the Potential of Large Language Models in Rare Disease Diagnosis},
+  author  = {Chen, Haichao and Zhao, Zhengyun and Zhou, Songchi and Hu, Shikai and Wang, Jinyuan and others},
   journal = {Lancet Digital Health},
-  year    = {2025}
+  volume  = {8},
+  number  = {2},
+  pages   = {100953},
+  year    = {2026},
+  doi     = {10.1016/j.landig.2025.100953}
 }
 
 @article{phenopacketstore2025,
-  title   = {{Phenopacket-Store}: A Repository of {GA4GH} Phenopackets},
-  author  = {Danis, Daniel and others},
+  title   = {A Corpus of {GA4GH} Phenopackets: Case-Level Phenotyping for Genomic Diagnostics and Discovery},
+  author  = {Danis, Daniel and Bamshad, Michael J. and Bridges, Yasemin and Caballero-Oteyza, Andrés and Cacheiro, Pilar and others},
   journal = {Human Genetics and Genomics Advances},
-  year    = {2025}
+  volume  = {6},
+  number  = {1},
+  pages   = {100371},
+  year    = {2025},
+  doi     = {10.1016/j.xhgg.2024.100371}
 }
 
 @article{reese2026,
-  title   = {Phenopacket-Driven Benchmarking of Diagnostic Support},
-  author  = {Reese, Justin and others},
-  journal = {European Journal of Human Genetics},
-  year    = {2026}
+  title   = {{GA4GH} Phenopacket-Driven Characterization of Genotype-Phenotype Correlations in Mendelian Disorders},
+  author  = {Rekerle, Lauren and Danis, Daniel and Rehburg, Filip and Graefe, Adam S. L. and Bily, Viktor and others},
+  journal = {American Journal of Human Genetics},
+  volume  = {113},
+  number  = {1},
+  pages   = {57--70},
+  year    = {2026},
+  doi     = {10.1016/j.ajhg.2025.12.001}
 }
 
 @article{chimirri2025,
-  title   = {Multi-Language Phenopacket Cohorts for Diagnostic Evaluation},
-  author  = {Chimirri, Leonardo and others},
+  title   = {Consistent Performance of Large Language Models in Rare Disease Diagnosis across Ten Languages and 4917 Cases},
+  author  = {Chimirri, Leonardo and Caufield, J. Harry and Bridges, Yasemin and Matentzoglu, Nicolas and Gargano, Michael and others},
   journal = {eBioMedicine},
-  year    = {2025}
+  volume  = {121},
+  pages   = {105957},
+  year    = {2025},
+  doi     = {10.1016/j.ebiom.2025.105957}
 }
 
 @article{mimicrd2026,
-  title   = {{MIMIC-RD}: Rare-Disease Diagnosis from Real {EHR} Free Text},
-  author  = {Wu and others},
+  title   = {{MIMIC-RD}: Can {LLMs} Differentially Diagnose Rare Diseases in Real-World Clinical Settings?},
+  author  = {Eiz AlDin, Zilal and Wu, John and Fung, Jeffrey Paul and King, Jennifer and Watts, Mya and O'Neill, Lauren and Cross, Adam Richard and Sun, Jimeng},
   journal = {arXiv preprint},
-  year    = {2026}
+  year    = {2026},
+  eprint  = {2601.11559},
+  archivePrefix = {arXiv}
+}
+
+@article{mimiciv2023,
+  title   = {{MIMIC-IV}, a Freely Accessible Electronic Health Record Dataset},
+  author  = {Johnson, Alistair E. W. and Bulgarelli, Lucas and Shen, Lu and Gayles, Alvin and Shammout, Ayad and Horng, Steven and Pollard, Tom J. and Hao, Sicheng and Moody, Benjamin and Gow, Brian and Lehman, Li-Wei H. and Celi, Leo A. and Mark, Roger G.},
+  journal = {Scientific Data},
+  volume  = {10},
+  pages   = {1},
+  year    = {2023},
+  doi     = {10.1038/s41597-022-01899-x}
+}
+
+@article{mimiciv31,
+  title   = {{MIMIC-IV}},
+  author  = {Johnson, Alistair and Bulgarelli, Lucas and Pollard, Tom and Gow, Brian and Moody, Benjamin and Horng, Steven and Celi, Leo Anthony and Mark, Roger},
+  journal = {PhysioNet},
+  year    = {2024},
+  note    = {Version 3.1},
+  doi     = {10.13026/kpb9-mt58}
+}
+
+@article{mimicivnote22,
+  title   = {{MIMIC-IV-Note}: Deidentified Free-Text Clinical Notes},
+  author  = {Johnson, Alistair and Pollard, Tom and Horng, Steven and Celi, Leo Anthony and Mark, Roger},
+  journal = {PhysioNet},
+  year    = {2023},
+  note    = {Version 2.2},
+  doi     = {10.13026/1n74-ne17}
 }
 
 @inproceedings{taubench2024,
@@ -91,10 +137,34 @@
 }
 
 @article{deeprare2026,
-  title   = {{DeepRare}: An Agentic System for Rare Disease Diagnosis},
-  author  = {Yao and others},
+  title   = {An Agentic System for Rare Disease Diagnosis with Traceable Reasoning},
+  author  = {Zhao, Weike and Wu, Chaoyi and Fan, Yanjie and others},
   journal = {Nature},
-  year    = {2026}
+  volume  = {651},
+  pages   = {775--784},
+  year    = {2026},
+  doi     = {10.1038/s41586-025-10097-9}
+}
+
+@article{phenobrain2025,
+  title   = {A Phenotype-Based {AI} Pipeline Outperforms Human Experts in Differentially Diagnosing Rare Diseases Using {EHRs}},
+  author  = {Mao, Xiaohao and Huang, Yu and Jin, Ye and Wang, Lun and Chen, Xuanzhong and others},
+  journal = {npj Digital Medicine},
+  volume  = {8},
+  pages   = {68},
+  year    = {2025},
+  doi     = {10.1038/s41746-025-01452-1}
+}
+
+@inproceedings{panickssery2024,
+  title     = {{LLM} Evaluators Recognize and Favor Their Own Generations},
+  author    = {Panickssery, Arjun and Bowman, Samuel R. and Feng, Shi},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {37},
+  year      = {2024},
+  doi       = {10.52202/079017-2197},
+  eprint    = {2404.13076},
+  archivePrefix = {arXiv}
 }
 
 @article{maidxo2025,
@@ -218,8 +288,9 @@
 }
 
 @article{sysreview2026,
-  title   = {A Systematic Review of {LLM} Evaluation for Rare Disease Diagnosis},
-  author  = {Anonymous},
+  title   = {Diagnostic Accuracy of Large Language Models for Rare Diseases: A Systematic Review and Meta-Analysis},
+  author  = {Nguyen, Minh-Ha and Yang, Chih-Ting and Cassini, Thomas A. and Ma, Fan and Hamid, Rizwan and Bastarache, Lisa and Peterson, Josh F. and Xu, Hua and Li, Lingyao and Ma, Siyuan and Shyr, Cathy},
   journal = {medRxiv},
-  year    = {2026}
+  year    = {2026},
+  doi     = {10.64898/2026.03.26.26349194}
 }

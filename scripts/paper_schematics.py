@@ -31,11 +31,12 @@ LAYERS = [
 # coverage[pillar_idx] = set of covered layer indices in v1 ; None-ish = v2
 COVER = {
     0: {0, 2, 3},        # P1 on L1(synthetic), L3, L4
-    1: {0, 1, 2, 3},     # P2 all four
+    1: {0, 2, 3},        # P2 diagnostic layers; MIMIC replacement pending
     2: {0},              # P3 PP-Store (structured variants) only
     3: set(),            # P4 deferred to v2
-    4: {0, 1, 2, 3},     # P5 all layers (pilot)
+    4: {0, 2, 3},        # P5 diagnostic layers; MIMIC replacement pending
 }
+PENDING = {(1, 1), (4, 1)}  # (pillar index, S-EHR layer index)
 
 
 def design_matrix():
@@ -49,7 +50,7 @@ def design_matrix():
     ax.invert_yaxis()
     ax.axis("off")
 
-    covc, v2c, emptyc = "#0072B2", "#cfcfcf", "#f3f4f6"
+    covc, pendingc, v2c, emptyc = "#0072B2", "#E69F00", "#cfcfcf", "#f3f4f6"
     # column headers (layers)
     for j, (lid, name, src, n) in enumerate(LAYERS):
         ax.text(j + 0.5, -0.02, lid, ha="center", va="bottom",
@@ -67,7 +68,9 @@ def design_matrix():
         deferred = (len(COVER[i]) == 0)
         for j in range(nL):
             covered = j in COVER[i]
-            fc = covc if covered else (v2c if deferred else emptyc)
+            pending = (i, j) in PENDING
+            fc = covc if covered else (pendingc if pending else
+                                       (v2c if deferred else emptyc))
             box = FancyBboxPatch((j + 0.08, y + 0.12), 0.84, 0.76,
                                  boxstyle="round,pad=0.0,rounding_size=0.06",
                                  linewidth=0.6, edgecolor="white", facecolor=fc)
@@ -78,6 +81,9 @@ def design_matrix():
                         [cy, cy + 0.14, cy - 0.15],
                         color="white", lw=2.4, solid_capstyle="round",
                         solid_joinstyle="round", zorder=5)
+            elif pending:
+                ax.text(j + 0.5, y + 0.5, "pending", ha="center", va="center",
+                        fontsize=6.8, color="white", fontweight="bold")
             elif deferred:
                 ax.text(j + 0.5, y + 0.5, "v2", ha="center", va="center",
                         fontsize=8, color="#888", style="italic")
@@ -86,11 +92,13 @@ def design_matrix():
             fontsize=8, fontweight="bold", color="#333")
     # legend
     import matplotlib.patches as mp
-    handles = [mp.Patch(facecolor=covc, edgecolor="white", label="evaluated in v1"),
+    handles = [mp.Patch(facecolor=covc, edgecolor="white", label="frozen result"),
+               mp.Patch(facecolor=pendingc, edgecolor="white",
+                        label="replacement protocol pending"),
                mp.Patch(facecolor=v2c, edgecolor="white", label="deferred to v2"),
                mp.Patch(facecolor=emptyc, edgecolor="white", label="not applicable")]
     ax.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, -0.06),
-              ncol=3, fontsize=7, frameon=False)
+              ncol=4, fontsize=6.5, frameon=False)
     fig.suptitle("Benchmark surface: three diagnostic layers + one structured-EHR probe",
                  fontsize=10, fontweight="bold", y=0.98)
     fig.savefig(FIG / "fig_design_matrix.png")
@@ -105,6 +113,7 @@ SCHEMA_GROUPS = [
     ("Inputs", "#009E73", [
         "demographics : age, sex, ancestry", "free_text_vignette : Optional[str]",
         "synthetic_vignette : Optional[str]", "gold_hpo_terms : List[HpoTerm]",
+        "structured_event_snapshot : Optional[str]",
         "variants : List[Variant]", "vcf_path : Optional[str]  (local, DUA)",
         "family : Optional[FamilyHistory]"]),
     ("Gold label", "#D55E00", [
@@ -125,8 +134,8 @@ def schema_card():
                  linewidth=1.2, edgecolor="#333", facecolor="#fbfbfb"))
     ax.text(5.0, 12.0, "CanonicalCase", ha="center", va="top",
             fontsize=12, fontweight="bold", color="#111")
-    ax.text(5.0, 11.5, "single Pydantic-v2 schema; every dataset ingests into it,"
-            " every agent adapter projects out of it",
+    ax.text(5.0, 11.5, "diagnostic layers ingest directly; the structured-EHR "
+            "snapshot maps at the adapter boundary",
             ha="center", va="top", fontsize=6.6, style="italic", color="#666")
 
     y = 11.0

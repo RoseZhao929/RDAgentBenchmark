@@ -1,7 +1,8 @@
 # MIMIC full-paper consistency audit
 
-Status: paper-wide legacy-claim cleanup completed on this branch; reopen when
-replacement model receipts are added.
+Status: protocol-only paper cleanup and full caption/integrity review completed
+on this branch. Score-, receipt-, and leaderboard-dependent gates remain open
+until replacement MIMIC model runs exist.
 
 This file is the completion gate for any MIMIC-related paper change. A MIMIC
 task is not finished when its code or result table is finished; it is finished
@@ -56,40 +57,43 @@ After the replacement experiment:
 
 ## Text surfaces
 
-- [ ] `paper_sections/1_abstract.md`: describe MIMIC as secondary,
+- [x] `paper_sections/1_abstract.md`: describe MIMIC as secondary,
   code-supervised structured EHR; make no free-text claim.
-- [ ] `paper_sections/2_introduction.md`: update contribution and layer list.
-- [ ] `paper_sections/3_related_work.md`: preserve the distinction between
+- [x] `paper_sections/2_introduction.md`: update contribution and layer list.
+- [x] `paper_sections/3_related_work.md`: preserve the distinction between
   MIMIC-RD, which uses notes, and this work's structured MIMIC cohort.
-- [ ] `paper_sections/4_benchmark_design.md`: replace “Real EHR Noise” with the
+- [x] `paper_sections/4_benchmark_design.md`: replace “Real EHR Noise” with the
   final task name; specify tables, time window, exclusions, label source, and
   leakage audit.
-- [ ] `paper_sections/5_1_agent_fairness_matrix.md`: remove the incorrect claim
+- [x] `paper_sections/5_1_agent_fairness_matrix.md`: remove the incorrect claim
   that MIMIC is HPO-only.
-- [ ] `paper_sections/5_2_5_4_setup.md`: separate the diagnostic matrix from
+- [x] `paper_sections/5_2_5_4_setup.md`: separate the diagnostic matrix from
   the MIMIC structured-EHR matrix.
-- [ ] `paper_sections/6_main_results.md`: replace old MIMIC cells; remove MIMIC
-  from diagnostic averages; report attempted denominators and paired arms.
-- [ ] `paper_sections/7_2_7_3_7_4_analysis.md`: remove “structured note” and
+- [x] `paper_sections/6_main_results.md`: old MIMIC cells are removed from
+  diagnostic averages and attempted denominators are explicit; paired-arm
+  results remain pending because replacement scores do not yet exist.
+- [x] `paper_sections/7_2_7_3_7_4_analysis.md`: remove “structured note” and
   interpret the masking contrasts rather than old absolute R@1.
-- [ ] `paper_sections/8_ablations.md`: replace or delete legacy MIMIC deltas.
-- [ ] `paper_sections/9_limitations.md`: add code-derived gold, absence of
+- [x] `paper_sections/8_ablations.md`: legacy MIMIC deltas are deleted; the
+  replacement ablation is labelled pending.
+- [x] `paper_sections/9_limitations.md`: add code-derived gold, absence of
   notes, event-timing, patient leakage, and DUA limitations; “ICU bias” alone is
   insufficient.
-- [ ] `paper_sections/10_conclusion.md`: ensure no free-text EHR generalization
+- [x] `paper_sections/10_conclusion.md`: ensure no free-text EHR generalization
   is attributed to MIMIC.
-- [ ] `paper_sections/A1_reproducibility_audit.md`: distinguish public frozen
+- [x] `paper_sections/A1_reproducibility_audit.md`: distinguish public frozen
   receipts from credentialed MIMIC regeneration.
-- [ ] `paper_sections/B_appendix_baseline_repro.md`: give the new task command
-  and remove claims that old cells reproduce the new task.
-- [ ] `paper_sections/J_appendix_cost.md`: regenerate from the new receipt or
+- [x] `paper_sections/B_appendix_baseline_repro.md`: diagnostic reproduction
+  excludes MIMIC and states that the replacement task requires its own
+  task-versioned receipt; full scoring commands are in the dedicated protocol.
+- [x] `paper_sections/J_appendix_cost.md`: regenerate from the new receipt or
   remove legacy MIMIC rows.
-- [ ] `paper_sections/OSF_preregistration_draft.md`: label the replacement
+- [x] `paper_sections/OSF_preregistration_draft.md`: label the replacement
   analysis as amended/exploratory if it was not genuinely preregistered.
 
 ## Tables
 
-- [ ] Main Table 1 contains no stale MIMIC values or MIMIC-inclusive averages.
+- [x] Main Table 1 contains no stale MIMIC values or MIMIC-inclusive averages.
 - [ ] A separate MIMIC table reports 24-hour structured input results.
 - [ ] An appendix table reports title-selection, code-selection, and
   context-only paired results.
@@ -103,60 +107,61 @@ After the replacement experiment:
 
 ## Figures and captions
 
-- [ ] `scripts/paper_schematics.py`: replace `Real EHR Noise`.
-- [ ] `scripts/paper_new_figures.py`: replace MIMIC labels and remove stale
+- [x] `scripts/paper_schematics.py`: replace `Real EHR Noise`.
+- [x] `scripts/paper_new_figures.py`: replace MIMIC labels and remove stale
   summary ingestion.
-- [ ] `scripts/paper_figures.py`: do not plot old MIMIC diagnosis cells.
-- [ ] `scripts/build_paper_pdf.py`: remove legacy MIMIC heatmap reference.
-- [ ] `paper_figures_tables.md`: update the design diagram and result-table
+- [x] `scripts/paper_figures.py`: do not plot old MIMIC diagnosis cells.
+- [x] `scripts/build_paper_pdf.py`: remove legacy MIMIC heatmap reference.
+- [x] `paper_figures_tables.md`: update the design diagram and result-table
   specification.
-- [ ] Captions state “structured EHR” or “ICD leakage audit,” never “note” or
+- [x] Captions state “structured EHR” or “ICD leakage audit,” never “note” or
   “free text.”
-- [ ] Axes and legends do not place the MIMIC mapping task on the same numeric
+- [x] Axes and legends do not place the MIMIC mapping task on the same numeric
   scale as differential diagnosis without an explicit task boundary.
-- [ ] Rebuild all figures and inspect final raster/vector output for stale
+- [x] Rebuild all figures and inspect final raster/vector output for stale
   labels embedded in images.
 
 ## Leaderboard, scripts, and receipts
 
 - [ ] Archive or version `phase4a_summary.json` and
   `phase4a_with_ci.json`; never overwrite ambiguity in place.
-- [ ] `scripts/build_leaderboard.py` labels MIMIC as a distinct task and reads
-  the new receipt only.
-- [ ] `scripts/phase4a_report_gen.py` cannot silently merge old and new MIMIC
-  runs.
-- [ ] Ranking-stability, prevalence, contamination, and metric-ablation scripts
+- [x] `scripts/build_leaderboard.py` reads the frozen diagnostic manifest,
+  excludes MIMIC and links a diagnostic-only downloadable manifest.
+- [x] `scripts/phase4a_report_gen.py` cannot silently merge old and new MIMIC
+  runs; it now loads only the three diagnostic datasets.
+- [x] Ranking-stability, prevalence, contamination, and metric-ablation scripts
   either use the new task correctly or exclude MIMIC.
 - [ ] Receipt schema includes task version, arm, input-window hours, attempted
   N, error N, mapping snapshot, cohort hash, and prompt hash.
-- [ ] One manifest drives Markdown tables, TeX, figures, leaderboard, and cost
-  analysis.
-- [ ] Protected row-level data remains ignored and absent from Git history.
+- [x] The frozen diagnostic manifest drives the current paper table/figures,
+  leaderboard and cost reporting; a future MIMIC receipt will remain separate.
+- [x] Protected row-level data remains ignored and absent from this branch.
 
 ## References and claims
 
-- [ ] Verify the MIMIC-IV and MIMIC-IV-Note citations are distinct and correct.
-- [ ] Verify that MIMIC-RD's note-based design is not attributed to this cohort.
+- [x] Verify the MIMIC-IV and MIMIC-IV-Note citations are distinct and correct.
+- [x] Verify that MIMIC-RD's note-based design is not attributed to this cohort.
 - [ ] Cite the ontology snapshot and ICD-to-Orphanet mapping source/version.
 - [ ] Cite/report the PhysioNet credential and DUA requirements accurately.
-- [ ] Do not claim independent clinical gold: labels are code-derived.
-- [ ] Do not call the task prospective diagnosis unless the input cutoff and
+- [x] Do not claim independent clinical gold: labels are code-derived.
+- [x] Do not call the task prospective diagnosis unless the input cutoff and
   timestamp audit justify that term.
-- [ ] Do not claim clinical-note or HPO extraction performance.
+- [x] Do not claim clinical-note or HPO extraction performance.
 
 ## Final build gate
 
-- [ ] Run unit and data-integrity tests.
+- [x] Run unit and data-integrity tests (4 MIMIC unit tests and 17 evaluator
+  sanity checks pass).
 - [ ] Regenerate receipts from row-level outputs.
-- [ ] Regenerate all Markdown-derived TeX and all figures.
-- [ ] Build the complete PDF from a clean checkout plus permitted local data.
-- [ ] Search source and generated files for:
+- [x] Regenerate all Markdown-derived TeX and all figures.
+- [x] Build the complete 41-page PDF and Overleaf bundle from the branch.
+- [x] Search source and generated files for:
   `MIMIC`, `free-text`, `structured note`, `Real EHR`, `956`, old point
   estimates, and legacy receipt names.
-- [ ] Inspect every page containing a MIMIC mention, table, figure, or caption.
-- [ ] Check cross-references, table/figure numbering, bibliography resolution,
+- [x] Inspect every page containing a MIMIC mention, table, figure, or caption.
+- [x] Check cross-references, table/figure numbering, bibliography resolution,
   page overflow, clipped legends, and stale auxiliary files.
-- [ ] Confirm the abstract, main table, results narrative, limitations,
+- [x] Confirm the abstract, main table, results narrative, limitations,
   conclusion, appendix, leaderboard, and release statement all describe the
   same task and evidence version.
 

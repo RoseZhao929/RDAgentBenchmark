@@ -1,4 +1,4 @@
-\section{5.2-5.4 Experimental Setup --- Backbones / Adapter Methodology / Pre-registration}\label{experimental-setup-backbones-adapter-methodology-pre-registration}
+\section{5.2-5.4 Experimental Setup --- Backbones / Adapter Methodology / Analysis Plan}\label{experimental-setup-backbones-adapter-methodology-analysis-plan}
 
 \subsection{Backbones}\label{sec-5-2}
 
@@ -73,7 +73,7 @@ patch the openai client construction sites to accept an OpenRouter
 subprocess env (the latter two forward \texttt{reasoning=\{effort\}} and
 \texttt{reasoning=\{enabled:false\}} respectively; see Methods notes 1--2). Patches range
 from 3 LOC in DeepRare's API interface to \textasciitilde30 LOC for AgentClinic's \texttt{-\/-openrouter}
-CLI flag, and are enumerated in the Agent Fairness Matrix (\Cref{tbl:fairness} / \Cref{sec-5-1}).
+CLI flag, and are enumerated in the Agent Fairness Matrix (\Cref{sec-5-1}).
 
 \textbf{What this gives us.} (i) Per-agent reproducibility --- every run report
 contains the verbatim subprocess invocation. (ii) Compositional cost
@@ -84,35 +84,35 @@ RAG / panel / parser bug cannot poison another agent's evaluation.
 
 \textbf{Caveats we surface.} (a) Subprocess isolation costs \textasciitilde0.5--2 s wall-clock
 overhead per case, dominated by interpreter startup; we report adapter
-overhead alongside agent latency in Table 6. (b) Cost reporting is exact for
+overhead alongside agent latency in the experimental-settings table. (b) Cost reporting is exact for
 adapters using our wrapper (mdagents, medagents, agentclinic, deeprare,
 maidxo, llm\_control) and estimated from tokens for adapters whose
 upstream code bypasses the wrapper (rdma, lirical, vc\_rdagent). (c) Three adapters required
 defensive output-dir purging to prevent first-case state leak --- DeepRare's
 deterministic output filename was the most severe. All such patches are documented per-agent.
 
-\subsection{Pre-registration}\label{sec-5-4}
+\subsection{Repository Analysis Plan and Multiplicity Control}\label{sec-5-4}
 
-All hypotheses (H1--H11), ablations (A1--A12), the staged-sampling
-budget guard, the Holm--Bonferroni multiple-testing correction, the
-LLM-judge self-preference protocol (Gemini-judge + Claude-judge agreement
-floor), and the post-cutoff holdout-unblinding procedure were frozen at
-OSF prior to running any holdout case.\footnote{OSF registration (OSF ID assigned upon registration) (frozen 2026-MM-DD, prior to
-  holdout unblinding). Full pre-registration document committed to the repository on
-  the freeze date; the OSF copy is byte-identical at that revision.
-  Reviewer-accessible read-only OSF link supplied in supplementary upon
-  acceptance.} To our knowledge this is
-the first pre-registered rare-disease diagnostic-AI evaluation; recent
-systematic reviews (Garrett et al., \emph{npj Digital Medicine} 2026) flag the
-absence of pre-registration as a primary contamination risk across the
-19 LLM rare-disease studies they audited.
+The repository enumerates hypotheses (H1--H11), ablations
+(A1--A12), the staged-sampling budget guard, Holm--Bonferroni
+multiple-testing correction, an LLM-judge sensitivity protocol, and a
+post-cutoff holdout procedure. These labels define the analysis family used
+throughout this paper and make additions and deviations auditable.
 
-\textbf{Why this matters operationally.} Pre-registration means the 200-case
-PMC OA post-cutoff holdout is evaluated once, with the metric and
-agent set declared in advance --- there is no opportunity to retry on a
-better-looking subset. The three pre-cutoff diagnostic layers
-(Phenopacket-Store, RareBench, RareArena)
-remain open for development, but every cell published in \Cref{tbl:main} / \Cref{sec-6}
-is locked to the pre-registered protocol and ships with a per-cell
-reproducibility receipt (run-id, OpenRouter request-id, cost).
+This is not a formal pre-registration claim. The bundled OSF document is
+an unregistered draft with a placeholder ID and date, and the public
+repository history does not independently establish that the plan preceded
+all reported analyses. We therefore describe H1--H11 and A1--A12 as
+repository-defined tests and ablations, not as prospectively registered
+confirmatory hypotheses. The Holm correction controls multiplicity within
+the six tests computable from the frozen receipts, but it does not convert a
+retrospective analysis into a pre-registered one.
+
+\textbf{Operational integrity.} The PMC OA post-cutoff set is treated as a
+temporal sensitivity analysis, with exact source overlap disclosed in \Cref{sec-7-10}
+rather than described as an untouched or contamination-free holdout. Every
+diagnostic cell in \Cref{tbl:main} ships with a per-cell reproducibility receipt
+(run ID, OpenRouter request ID where available, and cost). Future
+confirmatory evaluation should register the protocol before collecting or
+unblinding a new, independently curated holdout.
 

@@ -28,8 +28,8 @@ reasoning-budget × downstream-consumer specific and tractable with
 `reasoning_effort=high`, but that re-introduces the silent
 `max_tokens` consumption we documented in §5.2.
 
-**(L2) PhenoBrain dropped from agent lineup.**  PhenoBrain (Sun et al.,
-*Nat. Commun.* 2025) was on our original scout list.  Its 14 GB Google
+**(L2) PhenoBrain dropped from agent lineup.** PhenoBrain
+\citep{phenobrain2025} was on our original scout list. Its 14 GB Google
 Drive checkpoint is hosted under nested sub-folders whose permission
 chain blocks programmatic `gdown` listing; we obtained 7.6 GB of the
 checkpoint by manual download before deciding the partial state was
@@ -61,11 +61,11 @@ corpus.**  We verified (2026-05-29) that our ingested data carries **no**
 structured family/pedigree or inheritance-mode signal: the
 Phenopacket-Store cohort export we use has 0/200 files with a pedigree
 block, and the family-structure and inheritance-mode fields are
-unpopulated across all four layers.
+unpopulated across the ingested diagnostic resources.
 Independently, no agent in our lineup performs *family-aware diagnosis*
 (DeepRare and MAI-DxO explicitly do not consume pedigrees; only RDMA
 exposes a family-history toggle, and it is a phenotype-extraction, not a
-diagnosis, component).  Pre-registered **H9** ("family-aware gains accrue
+diagnosis, component). Repository-plan **H9** ("family-aware gains accrue
 only on AR/XL cases") therefore cannot be evaluated without a new
 pedigree-bearing corpus (e.g. MyGene2 / DDD) and a Pillar-4 diagnosis
 path; both are deferred to v2.  v1 reports four pillars (P1–P3 + P5).
@@ -88,56 +88,60 @@ with a recall gap (687 salient phenotypes it judged missed). At
 camera-ready we recompute A5 with the physician gold and report
 Opus-vs-physician Cohen's κ.
 
-**(L6) Cost reporting heterogeneity.**  Six of eight adapters route
-through our OpenRouter wrapper and report exact USD per call.  Three adapters (RDMA, LIRICAL,
-VC-RDAgent) call backbones outside the wrapper; we estimate their cost
-from logged token counts and the OpenRouter price table.  The
-estimation introduces a ≤5 % error band on the cost-vs-accuracy
-scatter (Figure 2) and we annotate estimated cells with `†` in
-Appendix J. Full per-cell cost analysis is in Appendix J.
+**(L6) Cost reporting heterogeneity.** Six of the nine implementations
+(including the no-scaffold control) route hosted calls through our OpenRouter
+wrapper and report exact USD per call. RDMA uses an off-wrapper hosted path,
+so its hosted-model cost is estimated from logged tokens and the frozen price
+table (≤5% band). LIRICAL and VC-RDAgent are offline and incur zero hosted-LLM
+cost; that zero is not an estimate of compute or staffing cost. Appendix J
+reports only diagnostic cells and labels this accounting boundary explicitly.
 
-**(L7) Bounded data-contamination signal on LLM backbones.** Our A6
+**(L7) Literature-frequency association on LLM backbones.** Our A6
 TS-Guessing audit (§7.10 / §8.9) finds Spearman ρ between log
 pre-cutoff PubMed mention count and per-disease R@1 of **0.29–0.37**
 across all four LLM backbones (Gemini 3 Flash, GPT-5-minimal, DeepSeek
 V4-Flash, V4-Pro), versus **ρ ≈ 0** on classical/offline baselines
-(LIRICAL, VC-RDAgent — methodological control). This means LLM R@1 is
-*weakly* but consistently elevated on diseases that were better
-represented in pre-cutoff literature: a real but bounded
-training-frequency effect explaining ≈ 9 % of R@1 variance (ρ² ≈ 0.09).
-The pre-cutoff layers (L1–L3) headline numbers therefore carry a
-≤10 % residual contamination band. A second, independent test (**H3,
-§7.10.1**) directly compares a **difficulty-matched pre- vs post-cutoff
-PMC set** built with the identical pipeline (same source, query,
-extractor, gold): pooled Gemini R@1 is **0.57 pre-cutoff vs 0.62
-post-cutoff** — performance does *not* drop on genuinely unseen 2024+
-cases (if anything rises), so memorisation is not the driver. We make the
-correlation transparent rather than dropping the pre-cutoff layers,
-because (a) classical baseline ρ ≈ 0 supplies a tight upper bound on
-how much memorisation could explain (b) F1 (classical > LLM on the
-rarest tier) is in the *opposite* direction of training exposure and
-therefore not driven by it.
+(LIRICAL, VC-RDAgent — methodological control). Thus LLM R@1 has a weak
+literature-frequency association. It is compatible with training exposure,
+but Spearman ρ cannot be squared and interpreted as a causal fraction of R@1
+variance, nor does this audit yield a numeric “contamination band.” A second
+sensitivity test (**H3,
+§7.10.1**) compares pre- and post-cutoff PMC sets built with the identical
+pipeline (same source, query, extractor, and gold verification): pooled
+Gemini R@1 is **0.57 pre-cutoff vs 0.62 post-cutoff** on the clean-gold
+subset. A separate HPO-count/prevalence-matched check retains the same
+direction (**0.479 vs 0.541**, 728 attempted predictions per era), but
+unknown prevalence limits that matched subset. Performance does not drop,
+but the sets are not contamination
+free: 17/198 post-cutoff and 13/220 pre-cutoff cases share exact PMCIDs and
+gold ORPHA identifiers with RareArena. We therefore do not infer that
+memorisation is absent. We make the association and overlap transparent
+rather than dropping the pre-cutoff layers; the classical near-zero controls
+and F1's opposite-direction rarest-tier contrast provide useful context, not
+a causal upper bound.
 
 **(L8) MIMIC-IV is structured and code-supervised, not a clinical-note
-diagnosis benchmark.** Our local MIMIC-IV 3.1 installation contains the
-`hosp` and `icu` modules but not MIMIC-IV-Note. The 956-admission cohort was
+diagnosis benchmark.** Our local MIMIC-IV 3.1 installation
+\citep{mimiciv2023,mimiciv31} contains the `hosp` and `icu` modules but not
+the separately distributed MIMIC-IV-Note resource
+\citep{mimicivnote22}. The 956-admission cohort was
 selected and labelled by exact ICD-10→Orphanet mapping; its earlier synthetic
 vignettes deterministically rendered ICD long titles and sometimes exposed the
 target disease lexically. We therefore remove those legacy point estimates from
 the diagnostic matrix and its cross-dataset averages. The replacement
-experiment is reported separately: its primary input is a timestamped 24-hour
+protocol will be reported separately after scoring: its primary input is a timestamped 24-hour
 structured snapshot (labs, medications, procedures and services) with
 target-bearing codes/titles and post-window events excluded; a paired
 title/code/context audit quantifies leakage. Because gold remains code-derived,
 this evaluates retrospective code-supervised prediction and ontology
 normalisation, not independently adjudicated diagnosis, free-text reasoning or
 HPO extraction. Row-level inputs remain access-controlled under the PhysioNet
-DUA; public reproducibility consists of code, hashes, aggregate receipts and
-credentialed regeneration instructions.
+DUA; before scoring, public reproducibility consists of code, hashes and
+credentialed regeneration instructions, with aggregate receipts to follow.
 
 ---
 
-### Deliberate scope exclusions (these are *not* defects — they are scope choices)
+## 9.1 Deliberate scope exclusions (these are *not* defects — they are scope choices)
 
 **(S1) Retrospective, not prospective.**  We frame the benchmark as
 **retrospective decision support** evaluation, not autonomous
@@ -157,7 +161,7 @@ pillar (Future Work item 4).
 
 ---
 
-### Future work (in order of expected impact)
+## 9.2 Future work (in order of expected impact)
 
 1. **Pillar 4 (family-aware)** — once Phenopacket-Store pedigree fields
    are normalised + MyGene2 / DDD access converges, ~1 month effort.
@@ -174,7 +178,7 @@ pillar (Future Work item 4).
 
 ---
 
-### Cross-references to pre-empted anticipated objections
+## 9.3 Cross-references to pre-empted anticipated objections
 
 | Attack | Where addressed |
 |---|---|
@@ -182,7 +186,7 @@ pillar (Future Work item 4).
 | #2 Heterogeneous-agent fairness | §5.1 Agent Fairness Matrix |
 | #4 Statistical rigor | §6 footnote (Holm–Bonferroni + bootstrap CI) |
 | #5 MIMIC construct validity / ICU bias | §4.2 structured-EHR probe + §9 L8 |
-| #7 Arbitrary agent selection | §5.4 pre-registration of inclusion criteria |
+| #7 Arbitrary agent selection | §5.1 inclusion matrix and §5.4 analysis-plan disclosure |
 | #8 Multi-agent doesn't always help | §7.2 + headline finding F2 |
 | #9 Cost not clinically meaningful | §6.3 three-axis cost reporting |
 | #10 LLM-judge unreliable | §7.5 + Ablation A12 |

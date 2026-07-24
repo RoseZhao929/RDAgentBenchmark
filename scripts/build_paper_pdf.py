@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SEC = ROOT / "paper_sections"
 BUILD = ROOT / "paper_build"; BUILD.mkdir(exist_ok=True)
 
-TITLE = "RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis"
+TITLE = "RareAgentBench: A Multi-Pillar, Contamination-Audited Benchmark of LLM Agents for Rare-Disease Diagnosis"
 
 # MAIN BODY — the core narrative (target ~15-18 pp)
 MAIN_ORDER = [

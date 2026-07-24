@@ -8,9 +8,10 @@
 
 ---
 
-For each of the eight evaluated systems we replicated, with the agent's
-published evaluation setup, **at least one** point estimate from the
-agent's primary publication. We treat a setup as *successfully
+For each of the eight evaluated published systems, we attempted to reproduce
+at least one point estimate from the agent's primary publication under a
+comparable setup; the table explicitly marks partial or failed matches rather
+than treating all attempts as successful. We treat a setup as *successfully
 re-instantiated* when our point estimate falls within ±5 absolute
 percentage points of the paper-claimed number on a comparable input
 distribution (HPO-only vs free-text, top-1 vs top-5, EN vs zh). We
@@ -25,10 +26,14 @@ audit each agent on three axes:
 
 **Three documentation surfaces** for an independent re-runner:
 
-- `data/round2/phase4a_receipts.csv` — **93-cell per-cell receipt**:
+- `data/round2/phase4a_receipts.csv` — **93-row legacy per-cell receipt**:
   (dataset, agent, backbone, n_ok, n_err, R@1_strict, R@1_variants,
   R@5_strict, R@5_variants, cost_usd, mean_lat_ms). Refreshed at every
-  report-regen. This is the single source of truth for Table 1.
+  report regeneration. Its 22 legacy MIMIC rows are excluded from current
+  claims. The committed `audit_frozen/frozen_main_manifest.csv` is the
+  evidence index for the 71 diagnostic cells used in the headline matrix plus
+  12 temporally stratified PMC cells; the replacement MIMIC task will use a
+  separate versioned receipt.
 - `docs/baseline_repro/<agent>.md` — **per-baseline reproduction
   doc**: upstream code source, license, paper-claimed numbers, our
   observed numbers, behaviour-changing patches (if any), known
@@ -42,7 +47,7 @@ The pilot numbers in the audit table below are from the N=50 scouting
 pass that originally locked our agent lineup; the full-N point
 estimates that headline the paper are in §6 Main Results.
 
-### Per-agent audit table
+## Per-agent audit table
 
 These are **n=50 pilot reproduction checks** — each asks "can we reproduce agent X's own paper-claimed number on a small sample under our harness", and is deliberately distinct from the N=2000 frozen main matrix (§6) and the N=500 variant-channel paired test (§7.3). Where a small-sample pilot value differs from the frozen-matrix value (e.g. LIRICAL 0.40 pilot vs 0.47 frozen), the frozen-matrix number in §6 is authoritative; the pilot value is retained here only as the original reproduction record.
 
@@ -60,7 +65,7 @@ These are **n=50 pilot reproduction checks** — each asks "can we reproduce age
 | **LLM control (Gemini 3 Flash, no scaffolding)** | n/a (this *is* the baseline) | R@1 = 0.26 (P2, n=50) | Single LLM call, structured-output prompt | |
 | **LLM control (P3 with variants)** | n/a | R@1 = 0.46 (P3 with structured variants, n=50) vs P2 0.26 = **+20 pp** | Variants block appended to prompt (§7.3) | Strong evidence H2 |
 
-### Two agents underperform their paper claim — both explained as input-distribution mismatch
+## Two agents underperform their paper claim — both explained as input-distribution mismatch
 
 **MAI-DxO** is designed for narrative-rich NEJM-style case reports. Our
 input is the CanonicalCase HPO-list + brief vignette. The panel's "ask
@@ -91,7 +96,7 @@ genotype-aware reasoning" — collapsing both into "DDx accuracy"
 would still miss the +20 pp lift, but the agent-specificity claim
 does not survive contact with the LLM-control baseline.
 
-### Bugs caught during audit (and the fix)
+## Bugs caught during audit (and the fix)
 
 We list four representative bugs we caught and fixed during the
 reproducibility audit; our worklog retrospectives record the full set.
@@ -125,7 +130,7 @@ reproducibility audit; our worklog retrospectives record the full set.
    evaluator call, ballooning aggregation from <30 s to >30 min. Fix:
    `@lru_cache(maxsize=1)` on `_orphadata_tables()`.
 
-### How a reader can independently re-run any cell
+## How a reader can independently re-run any cell
 
 For any Table 1 / §6 cell `(agent, backbone, dataset)`, start from the
 per-baseline reproduction doc, which sets expectations for the rerun,
@@ -148,13 +153,13 @@ part of the public frozen diagnostic receipt.
 `scripts/sanity_check_evaluator.py` must pass (`exit 0`) before any
 number in the paper is trusted; this is enforced in our run harness.
 
-### Cost transparency
+## Cost transparency
 
 `scripts/cost_tracker.py --budget <USD>` prints the running per-backbone
 cost from the prediction logs. The submission-time snapshot is in
-Appendix J and Figure 2.
+Appendix J and the main-text cost-vs-accuracy figure.
 
-### Per-cell coverage matrix
+## Per-cell coverage matrix
 
 Not every (agent × backbone × dataset) cell exists. Known gaps and
 their cause:

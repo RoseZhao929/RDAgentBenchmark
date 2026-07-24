@@ -32,10 +32,11 @@ N=2000 the direction is clear: for P2 the scaffold is a net-neutral-to-negative
 choice on this backbone. (The +2 pp "medagents best" reading in earlier drafts was
 a small-sample N=500 artifact; see §A1.)
 
-**Backbone interaction**: on DS V4-Pro mdagents reaches 0.35 (best of its
-backbones, N=100), suggesting V4-Pro pairs well with mdagents' moderator-vote
-architecture. On GPT-5-minimal mdagents drops to 0.28 — the moderator's "weigh
-expert opinions" prompt benefits from GPT-5's reasoning, which we forced off.
+**Backbone sensitivity**: on the frozen full-N PP-Store matrix, mdagents
+scores 0.28 with Gemini, 0.27 with V4-Pro reasoning-off, 0.25 with V4-Flash,
+and 0.24 with GPT-5 minimal. The earlier 0.35 V4-Pro value came from an N=100
+pilot and is not used. These small differences do not identify a
+scaffold-specific backbone interaction.
 
 **MAI-DxO catastrophic failure (R@1 ≤ 0.07 across all backbones)**:
 MAI-DxO is designed for NEJM clinicopathologic case-reports (≥2000-word
@@ -88,7 +89,7 @@ faithfulness scoring; see §7.5 for the judge-family analysis):
 **Finding (de-confounded, 2026-07-22 frozen audit)**: measured on identical
 repaired traces (n=40), the Spearman ρ between the judge's faithfulness score
 and the agent's actual top-1 accuracy is **0.457 (Gemini judge)** and **0.640
-(Claude judge)**. The pre-registered H10 threshold for "decoupled" was ρ < 0.5,
+(Claude judge)**. The repository-plan H10 threshold for "decoupled" was ρ < 0.5,
 so H10 is **borderline and judge-dependent** — met under one judge, not the
 other — and we report it as **exploratory, not confirmed**. (An earlier draft
 reported ρ = 0.098 under the Gemini judge and read this as strong decoupling;
@@ -105,17 +106,17 @@ quantitative decoupling.
 
 The three diagnostic datasets deliberately span difficulty:
 
-| Layer | Best LLM R@1 (N=2000) | Best Classical/Offline R@1 |
+| Layer | Best LLM R@1 (attempted N) | Best Classical/Offline R@1 |
 |---|---|---|
 | Phenopacket-Store (HPO+demographic, curated rare diseases) | 0.30 (medagents Gemini) | **0.47** (lirical) |
 | RareArena RDS (free-text vignette, narrative) | 0.30 (medagents Gemini) | n/a (no HPO) |
-| RareBench HF (HPO-only, sparse, expert curated) | 0.30 (deeprare Gemini) | 0.28 (vc_rdagent offline) |
+| RareBench HF (HPO-only, sparse, expert curated) | 0.30 (deeprare Gemini, n=954) | 0.28 (vc_rdagent offline, n=1122) |
 
 **Reading**:
 - **PP-Store is the "easiest" layer** — curated cases, expert-cleaned HPO,
   paper-faithful baselines (lirical 0.47, replicating its paper-claimed range).
-- **RareBench HF is the layer where classical and LLM are closest** — at
-  N=2000 the best LLM (deeprare Gemini 0.30) slightly edges the best classical
+- **RareBench HF is the layer where classical and LLM are closest** — the
+  best LLM (deeprare Gemini 0.30, n=954) slightly edges the best classical
   (vc_rdagent 0.28), and both sit well below their PP-Store levels; the sparse,
   expert-curated HPO and ID-mapping cross-ref make it the hardest HPO layer for
   *both* families. We report strict R@1 with the variant-aware channel (§7.3);
@@ -129,7 +130,7 @@ The three diagnostic datasets deliberately span difficulty:
 ## Cross-references
 
 - §6 Main Results — full matrix
-- §7.5 Self-Preference Bias — judge model methodology
+- §7.5 Judge-Swap Sensitivity — judge model methodology
 - the reproducibility audit Reproducibility — per-baseline replication audit
 - §9 Limitations — MAI-DxO×GPT-5 incompatibility and MIMIC construct validity
 
@@ -137,7 +138,7 @@ The three diagnostic datasets deliberately span difficulty:
 
 ## §7.7 H1 — Prevalence stratification (real Orphanet prevalence)
 
-Pre-registered H1: R@1 declines monotonically from common-rare to super-rare.
+Repository-plan H1: R@1 declines monotonically from common-rare to super-rare.
 Tested with **real Orphadata prevalence** (5,108 ORPHA
 codes; point-prevalence preferred, rarest validated class per disease), gold
 mapped via direct ORPHA or OMIM→ORPHA cross-map. Pooled R@1 by tier
@@ -174,7 +175,7 @@ LLM-classical crossover at super-rare is the headline F1 evidence.
 
 ## §7.8 H4 — Scaffolding × case complexity (organ-system count) ✅
 
-Pre-registered H4: multi-agent scaffolding *helps on complex cases but hurts on
+Repository-plan H4: multi-agent scaffolding *helps on complex cases but hurts on
 simple ones* (overthinking). Complexity = # distinct HPO organ systems the gold
 phenotype touches (single=1, oligo=2–3, multi=4+; HPO-input layers, full-N
 2026-07-06). Scaffold − no-scaffold-control (llm_control) R@1 delta, Gemini Flash:
@@ -218,33 +219,32 @@ R@1, per backbone, via Spearman ρ.
 | `lirical` (classical Bayesian) | 26 | −0.155 | ✅ null (control) |
 | `vc_rdagent` (offline IC) | 26 | −0.059 | ✅ null (control) |
 
-**Dichotomy** is the clean finding: every LLM backbone clusters at
-ρ ≈ 0.29–0.37, every classical / offline baseline at ρ ≈ 0. The
+**Dichotomy** is the descriptive finding: every LLM backbone clusters at
+ρ ≈ 0.29–0.37, while the smaller classical / offline samples are near zero. The
 classical baselines do not consume text — they cannot have been
-"trained on" PubMed — so their null ρ acts as a **methodological
-control**, confirming our pipeline introduces no spurious correlation.
+"trained on" PubMed — so they provide a useful methodological control, but
+their n=26 disease samples are too small to prove the absence of pipeline
+effects.
 
 **Reading**.
-1. There IS a measurable training-frequency bias in LLM agents; the
-   simplest contamination critique is *partially* supported.
-2. But ρ ≈ 0.3 means pre-cutoff exposure explains ≈ 9 % of R@1 variance
-   (ρ² ≈ 0.09), leaving ≈ 91 % to phenotype reasoning + extraction
-   quality + scaffold design. The contamination signal is real but
-   **bounded**.
-3. The L4 post-cutoff PMC-OA holdout (2024-01-01+, after every backbone's
-   training cutoff) provides the bias-free reference. **We now report the
-   difficulty-matched cutoff experiment (H3, §7.10.1)**: performance does
-   *not* drop across the training cutoff, bounding contamination from a
-   second, independent angle.
+1. There is a measurable literature-frequency association in LLM-agent
+   performance, compatible with training exposure but not specific to it.
+2. Spearman ρ≈0.3 is a weak rank association. We do not square it or interpret
+   it as a causal fraction of R@1 variance.
+3. The 2024+ PMC analysis below provides a second temporal sensitivity check,
+   not a bias-free reference: 17/198 post-cutoff and 13/220 pre-cutoff cases
+   share an exact PMCID and gold ORPHA identifier with RareArena.
 
-### §7.10.1 H3 — Difficulty-matched pre- vs post-cutoff (contamination, controlled)
+### §7.10.1 H3 — Pre/post-cutoff sensitivity with a difficulty-balanced check
 
-A naive "post-cutoff R@1" is confounded by dataset difficulty. We remove that
-confound by building a **pre-cutoff PMC set with the identical pipeline** —
+A naive "post-cutoff R@1" is confounded by dataset difficulty. We first reduce
+pipeline confounding by building a **pre-cutoff PMC set with the identical pipeline** —
 same source (PMC-OA rare-disease case reports), same MeSH query, same
 Gemini-3-Flash extraction, same Orphanet mapping, same Opus-4.8 gold
-verification — changing only the publication window (**2016–2020, inside every
-backbone's training window** vs **2024+, after all cutoffs**). On the
+verification — with publication windows **2016–2020** versus **2024+**. The
+pipeline is held constant, but case difficulty, content, and overlap with
+RareArena are not.
+On the
 Opus-diagnosis-agreed clean-gold subset (pre 195/220, post 198/198), Gemini-Flash:
 
 | Agent | pre-cutoff R@1 | post-cutoff R@1 | Δ (post−pre) |
@@ -254,21 +254,23 @@ Opus-diagnosis-agreed clean-gold subset (pre 195/220, post 198/198), Gemini-Flas
 | medagents | 0.564 | 0.626 | +0.062 |
 | **pooled (single-pass)** | **0.568** | **0.618** | **+0.049** (z=1.72) |
 
-**Post-cutoff R@1 is at least as high as pre-cutoff for every agent.** If
-memorisation inflated LLM rare-disease performance, memorisable (pre-cutoff)
-cases would score *higher* than unmemorisable (post-cutoff) ones — the opposite
-of what we observe. Strong performance transfers to genuinely unseen 2024+ cases,
-so **memorisation is not the driver**. The small post-cutoff *advantage* is most
-plausibly newer case reports being marginally clearer (more routine genetic
-confirmation), not contamination. Together A6 (weak within-dataset frequency
-ρ≈0.3) and H3 (no drop across the cutoff) bound contamination to a small effect.
+As a separate balance check, exact matching on HPO-count bin and known
+prevalence tier yields 728 attempted predictions per era and the same
+direction (pre 0.479 vs post 0.541; +6.2 pp, \(p=0.018\)). About 35% of cases
+have unknown prevalence tier, so this matched subset is a sensitivity
+analysis rather than a replacement estimand.
 
-**Strengthens F1, does not weaken it**. The LLMs' small ρ-explained
-advantage is concentrated on diseases LLMs have seen more often; the
-classical baselines deliver consistent reasoning across the entire
-prevalence spectrum. This is the same direction as F1 (classical >
-LLM on the rarest tier, §7.7 H1, +28 pp on super-rare) viewed from a
-different axis.
+**Post-cutoff R@1 is not lower in this sample.** That result is inconsistent
+with a simple prediction that all pre-cutoff cases should be easier, but it
+does not show that the 2024+ cases are unseen or that memorisation is absent.
+Publication-era case mix, clearer modern genetic confirmation, and exact
+RareArena overlaps remain alternative explanations. Together A6 and H3 bound
+what is observed under these two probes; they do not estimate a causal
+contamination effect.
+
+**Relation to F1.** The positive LLM frequency association and the classical
+advantage on the super-rare tier point in compatible directions, but neither
+analysis identifies training exposure as the mechanism.
 
 Visualised in \Cref{fig:fig4_a6_contamination_scatter}.
 
@@ -276,7 +278,7 @@ Visualised in \Cref{fig:fig4_a6_contamination_scatter}.
 
 ## §7.9 H7 — Failures cluster by specialty (shared blind spots) ✅
 
-Pre-registered H7: agents' weakest specialties *correlate across agents*
+Repository-plan H7: agents' weakest specialties *correlate across agents*
 (Spearman ρ≥0.6), implying dataset/ontology gaps rather than agent-specific
 weaknesses. Specialty = modal HPO organ system per case (23-category HPO axis).
 Cross-agent rank correlation of per-specialty R@1 (full-N 2026-07-06, **18
@@ -293,7 +295,8 @@ n=13-specialty pilot at ρ≈0.73); the conservative ρ=0.92 gives Holm-adj
 p=0.0016. Universally **weak** specialties: nervous system
 (0.11–0.14), metabolism/homeostasis (0.10–0.16), digestive (0.09); universally
 **strong**: cardiovascular (0.41–0.44), integument (0.44–0.56). The shared
-ordering points to ontology/data-level difficulty, not scaffold-specific gaps.
+ordering is consistent with shared dataset/ontology difficulty rather than a
+single scaffold-specific gap, but does not prove that cause.
 Notably the **classical baselines invert the nervous-system weakness** (LIRICAL
 0.35, VC-RDAgent 0.43 vs LLM ~0.12) and lead on head/neck (0.52–0.54) — another
 facet of F1's classical advantage. Visualised in \Cref{fig:fig7_specialty_h7}.

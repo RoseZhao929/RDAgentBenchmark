@@ -1,26 +1,29 @@
-"""Static leaderboard site (P6.4).
+"""Static diagnostic-task leaderboard site (P6.4).
 
-Reads phase4a_summary.json + phase4a_with_ci.json + cost summary, emits a
+Reads audit_frozen/frozen_main_manifest.csv, emits a
 single self-contained index.html under leaderboard/ with:
-  - per-dataset matrix (R@1 variants + strict + 95% CI + N)
+  - per-dataset matrix (attempted-denominator R@1 variants + strict + 95% CI)
   - cost summary
-  - downloadable JSON
+  - downloadable diagnostic-only manifest
 
 No JS framework; minimal CSS for legibility. Suitable for GitHub Pages.
 """
 from __future__ import annotations
-import json, html
+import ast
+import csv
+import html
+import json
 from pathlib import Path
 
 BBL = {
-    'google_gemini-3-flash-preview-2025': 'Gemini Flash',
+    'google_gemini-3-flash-preview-': 'Gemini Flash',
     'deepseek_deepseek-v4-pro': 'DS V4-Pro',
     'deepseek_deepseek-v4-flash': 'DS V4-Flash',
     'openai_gpt-5': 'GPT-5 min',
     'vc_rdagent-offline-v1': 'offline',
     'lirical-2.4.0': 'classical',
 }
-BB_ORDER = ['google_gemini-3-flash-preview-2025','deepseek_deepseek-v4-pro',
+BB_ORDER = ['google_gemini-3-flash-preview-','deepseek_deepseek-v4-pro',
             'deepseek_deepseek-v4-flash','openai_gpt-5',
             'vc_rdagent-offline-v1','lirical-2.4.0']
 AGENT_ORDER = ['llm_control','mdagents','medagents','agentclinic','maidxo',
@@ -30,18 +33,19 @@ DS_LABEL = {'phenopacket_store':'Phenopacket-Store','rarearena_rds':'RareArena R
             'rarebench':'RareBench HF'}
 
 def load():
-    S = json.load(open('data/round2/phase4a_summary.json'))
     pairs = {}
-    for k, v in S.items():
-        ds, ag, bb = k.split('|')
-        if ds in DS:
-            pairs.setdefault((ds, ag, bb), v)
-    # try CI file
-    try:
-        CI = json.load(open('data/round2/phase4a_with_ci.json'))
-    except Exception:
-        CI = {}
-    return pairs, CI
+    with open('audit_frozen/frozen_main_manifest.csv', newline='') as handle:
+        for row in csv.DictReader(handle):
+            if row['dataset'] not in DS or row['capability'] != 'P2_phenotype_ddx':
+                continue
+            row['n_attempted'] = int(row['n_attempted'])
+            row['n_successful'] = int(row['n_successful'])
+            row['R@1_variant_aware'] = float(row['R@1_variant_aware'])
+            row['R@1_strict'] = float(row['R@1_strict'])
+            row['total_cost_usd'] = float(row['total_cost_usd'] or 0)
+            row['bootstrap_95CI'] = ast.literal_eval(row['bootstrap_95CI'])
+            pairs[(row['dataset'], row['system'], row['backbone'])] = row
+    return pairs
 
 def colorbar(r1):
     """Return a hex shade for R@1 in [0, 0.6]."""
@@ -51,7 +55,7 @@ def colorbar(r1):
     r = int(255); g = int(255 - 100*x); b = int(220 - 200*x)
     return f'#{r:02x}{g:02x}{b:02x}'
 
-def render_matrix(ds, pairs, CI):
+def render_matrix(ds, pairs):
     rows = ['<table class="grid">']
     head = ['<th></th>'] + [f'<th>{BBL.get(b,b)}</th>' for b in BB_ORDER]
     rows.append('<tr>' + ''.join(head) + '</tr>')
@@ -59,14 +63,14 @@ def render_matrix(ds, pairs, CI):
         cells = [f'<th class="ag">{ag}</th>']
         for bb in BB_ORDER:
             s = pairs.get((ds, ag, bb))
-            if not s or s.get('ok', 0) == 0:
+            if not s or s['n_attempted'] == 0:
                 cells.append('<td class="na">—</td>'); continue
-            r1v = s['h1v']/s['ok']; r1s = s['h1s']/s['ok']; n = s['ok']
-            ci = CI.get(f"{ds}|{ag}|{bb[:30]}", {})
-            ci_str = ''
-            if ci and 'r1v_lo' in ci:
-                ci_str = f' <span class="ci">[{ci["r1v_lo"]:.2f}–{ci["r1v_hi"]:.2f}]</span>'
-            tip = f'strict {r1s:.2f}, N={n}'
+            r1v = s['R@1_variant_aware']
+            r1s = s['R@1_strict']
+            n = s['n_attempted']
+            lo, hi = s['bootstrap_95CI']
+            ci_str = f' <span class="ci">[{lo:.2f}–{hi:.2f}]</span>'
+            tip = f'strict {r1s:.2f}, attempted N={n}, successful={s["n_successful"]}'
             cells.append(f'<td title="{html.escape(tip)}" style="background:{colorbar(r1v)}">'
                          f'<b>{r1v:.2f}</b>{ci_str}<br><span class="n">N={n}</span></td>')
         rows.append('<tr>' + ''.join(cells) + '</tr>')
@@ -74,13 +78,13 @@ def render_matrix(ds, pairs, CI):
     return '\n'.join(rows)
 
 def main():
-    pairs, CI = load()
+    pairs = load()
     # cost summary
     by_bb = {}
     for (_, _, bb), s in pairs.items():
         by_bb.setdefault(bb, {'n':0,'usd':0.0})
-        by_bb[bb]['n'] += s.get('ok',0)
-        by_bb[bb]['usd'] += s.get('sum_usd',0.0) or 0.0
+        by_bb[bb]['n'] += s['n_successful']
+        by_bb[bb]['usd'] += s['total_cost_usd']
     cost_rows = ''.join(
         f'<tr><td>{BBL.get(b,b)}</td><td>{d["n"]:,}</td><td>${d["usd"]:.2f}</td>'
         f'<td>${(d["usd"]/d["n"]) if d["n"] else 0:.5f}</td></tr>'
@@ -89,7 +93,7 @@ def main():
     total_usd = sum(d['usd'] for d in by_bb.values())
 
     matrices = '\n'.join(
-        f'<h2 id="{ds}">{DS_LABEL[ds]}</h2>\n{render_matrix(ds, pairs, CI)}'
+        f'<h2 id="{ds}">{DS_LABEL[ds]}</h2>\n{render_matrix(ds, pairs)}'
         for ds in DS)
 
     css = """
@@ -118,17 +122,17 @@ def main():
 <style>{css}</style>
 <h1>Rare-Disease Agent Benchmark — Leaderboard</h1>
 <div class="meta">
-  Generated from <code>phase4a_summary.json</code> +
-  <code>phase4a_with_ci.json</code>. Per cell: <b>R@1 (variants)</b> with 95% bootstrap
-  CI; strict shown in tooltip. Gemini Flash & DS V4-Flash N≈500; DS V4-Pro & GPT-5 min
-  N=100 (reference columns). RareBench cap N=378. See
+  Generated from <code>audit_frozen/frozen_main_manifest.csv</code>.
+  Per cell: attempted-denominator <b>R@1 (variant-aware)</b> with 95% bootstrap
+  CI; strict R@1 and successful N are shown in the tooltip. MIMIC is excluded
+  because its replacement structured-EHR task has not yet been scored. See
   <code>paper_sections/A1_reproducibility_audit.md</code> and
   <code>docs/baseline_repro/</code>.
 </div>
 <div class="nav">
   {' '.join(f'<a href="#{d}">{DS_LABEL[d]}</a>' for d in DS)}
   <a href="#cost">Cost</a>
-  <a href="phase4a_summary.json">summary.json</a>
+  <a href="frozen_diagnostic_manifest.json">diagnostic manifest</a>
 </div>
 {matrices}
 <h2 id="cost">Cost summary</h2>
@@ -146,19 +150,12 @@ def main():
     out = Path('leaderboard/index.html')
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html_doc)
-    # Publish diagnostic-task-only JSON. The legacy source files also contain
-    # construct-mismatched MIMIC ICD-title cells, which must not leak back into
-    # the public diagnostic leaderboard through the download links.
-    for src in ['data/round2/phase4a_summary.json', 'data/round2/phase4a_with_ci.json']:
-        if Path(src).exists():
-            raw = json.loads(Path(src).read_text())
-            filtered = {
-                key: value for key, value in raw.items()
-                if key.split("|", 1)[0] in DS
-            }
-            (out.parent / Path(src).name).write_text(
-                json.dumps(filtered, indent=2, sort_keys=True)
-            )
+    manifest = [
+        value for (_, _, _), value in sorted(pairs.items())
+    ]
+    (out.parent / 'frozen_diagnostic_manifest.json').write_text(
+        json.dumps(manifest, indent=2, sort_keys=True)
+    )
     print(f"Wrote {out} ({out.stat().st_size:,} bytes)")
     print(f"  + {len(list(out.parent.iterdir()))} files in {out.parent}/")
 

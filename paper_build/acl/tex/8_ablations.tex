@@ -1,10 +1,10 @@
 \section{Ablations}\label{sec-8}
 
-\textbf{Pre-registered ablations}:
+\textbf{Repository-defined ablations}:
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
-\caption{Pre-registered ablations A1--A12 and their status.}\label{tbl:ablations}
+\caption{Repository-defined ablations A1--A12 and their status; these were not formally pre-registered.}\label{tbl:ablations}
 \begin{tabular}{@{}
 >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
@@ -55,7 +55,7 @@ backbones; the table below reports only the three diagnostic datasets):
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
-\caption{ORPHA-variant evaluation-channel effect (A9).}\label{tbl:a9}
+\caption{ORPHA-variant evaluation-channel effect (A4), reported as aggregate change in R@1/R@5 over the diagnostic datasets.}\label{tbl:a4}
 \begin{tabular}{@{}
 lll@{}}
 \toprule
@@ -90,7 +90,7 @@ Detailed in \Cref{sec-6-2} main results. Highlights:
 \tightlist
 \item
   \textbf{No-scaffold control} (llm\_control) is backbone-insensitive on
-  PP-Store (R@1 = 0.27-0.30 across 4 backbones, full-N; V4-Pro reasoning-off)
+  PP-Store (R@1 = 0.25-0.29 across 4 backbones, full-N; V4-Pro reasoning-off)
 \item
   \textbf{Single-pass multi-agent} (mdagents) has a narrow 4-pp backbone spread
   (Gemini 0.28, DS V4-Pro-off 0.27, V4-Flash 0.25, GPT-5 0.24)
@@ -103,9 +103,10 @@ Detailed in \Cref{sec-6-2} main results. Highlights:
   \textbf{Panel orchestration} (MAI-DxO) collapses universally on HPO input
 \end{itemize}
 
-The cross-product matrix shows no universally-best backbone: each
-scaffolding architecture has its own preferred backbone. This refutes
-the ``just use the best backbone'' simplifying assumption.
+Gemini Flash is the observed PP-Store winner for every listed agent in the
+frozen manifest. The 2--5 pp margins over the nearest hosted alternatives are
+descriptive and often small; they do not establish a universal backbone effect
+outside this dataset and reasoning configuration.
 
 \subsection{Ablation A9 --- Subprocess Timeout Cap (300s vs 600s vs 1200s)}\label{sec-8-6}
 
@@ -152,16 +153,18 @@ agent\ensuremath{\times}backbone pairings. Cap choices are logged per-cell.
   \textbf{A11} (cross-dataset ranking stability) --- computed (see \Cref{sec-7-6}).
 \end{itemize}
 
-\subsection{Pre-registration check}\label{sec-8-5}
+\subsection{Analysis-plan status}\label{sec-8-5}
 
-Under our research-integrity protocol, all hypotheses (H1-H11) and
-ablations (A1-A12) were frozen at OSF prior to Phase 4a launch. The
-above results are the first pre-registered evaluation report.
-\textbf{No post-hoc hypothesis selection.}
+The repository enumerates H1--H11 and A1--A12, but the accompanying OSF
+file is an unregistered draft and the public history does not establish
+prospective registration. We therefore use the labels to define a transparent
+analysis family, disclose deferred and exploratory items, and apply the stated
+multiplicity correction without calling these results pre-registered or
+confirmatory.
 
 \subsection{Holm-Bonferroni family-wise correction over H1-H11}\label{sec-8-8}
 
-Per pre-registration we apply Holm-Bonferroni at \ensuremath{\alpha}=0.05 (one-sided in the
+Following the repository analysis plan, we apply Holm-Bonferroni at \ensuremath{\alpha}=0.05 (one-sided in the
 predicted direction) over the testable subset of H1-H11. Family size m=6
 (H3/H5/H9 excluded --- data unavailable, see \Cref{sec-9} L3/L4 and tasks \#63/\#64/\#66; H6
 now tested descriptively in \Cref{sec-8-10} but kept out of this z/\ensuremath{\rho} family). 2026-07-06 full-N refresh: all inputs recomputed on full-N; H2 upgraded from an n=50
@@ -169,7 +172,7 @@ pilot to an n=500 paired design.
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
-\caption{Holm--Bonferroni family-wise correction over H1--H11.}\label{tbl:holm}
+\caption{Holm--Bonferroni family-wise correction over H1--H11. H10 is nominally significant under the frozen single-judge test but is not counted as confirmed because its threshold verdict is judge-sensitive.}\label{tbl:holm}
 \begin{tabular}{@{}
 >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
@@ -202,8 +205,10 @@ H10 & Spearman \ensuremath{\rho}(faithfulness, accuracy) \textless{} 0.5 & \ensu
 \end{tabular}
 \end{table*}
 
-\textbf{Reading}: 5 of 6 testable hypotheses now survive the strictest
-pre-registered family-wise correction (up from 2/6 at pilot N). The full-N
+\textbf{Reading}: five of six testable hypotheses are retained as robust conclusions after family-wise correction (up from 2/6 at pilot N). H10's
+single-judge Holm-adjusted p is nominally below 0.05, but its threshold verdict
+does not replicate across the same-trace judges and is not counted as
+confirmed. The full-N
 reruns flipped H2, H4, and H7 from under-powered to significant: the
 genotype-channel lift (H2: +19.8 pp, n=500 paired, McNemar \ensuremath{\chi}\textsuperscript{2}=85), the
 scaffold-benefit-on-complexity difference-of-differences (H4), and the
@@ -217,7 +222,7 @@ on truncated/empty traces while the Claude scores used repaired traces. Re-runni
 the Gemini judge on the \emph{same} repaired traces (n=40) raises its \ensuremath{\rho} from 0.098 to
 \textbf{0.457}, against Claude's 0.640 (judge agreement \ensuremath{\rho}=0.741) --- a modest residual
 judge-family difference, not the near-zero ``strong decoupling'' originally claimed.
-The pre-registered H10 verdict (\ensuremath{\rho}\textless0.5) is therefore genuinely borderline and
+The repository-plan H10 verdict (\ensuremath{\rho}\textless0.5) is therefore genuinely borderline and
 judge-sensitive, so we keep H10 exploratory and withdraw the \ensuremath{\rho}=0.098 figure. See
 \Cref{sec-7-5} for the de-confounded analysis.
 
@@ -233,7 +238,7 @@ Spearman \ensuremath{\rho} over log(mention + 1) vs R@1; per-disease aggregate r
 
 \begin{table*}[t]
 \centering\scriptsize\setlength{\tabcolsep}{3.5pt}
-\caption{A6 TS-Guessing contamination, by backbone.}\label{tbl:a6}
+\caption{A6 literature-frequency association by backbone; varying disease counts are printed and the correlations do not identify memorisation.}\label{tbl:a6}
 \begin{tabular}{@{}
 >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
@@ -260,21 +265,19 @@ VC-RDAgent (offline IC) & 26 & \ensuremath{-}0.059 & null (methodological contro
 \end{tabular}
 \end{table*}
 
-\textbf{Clean dichotomy}: 4/4 LLM backbones at \ensuremath{\rho} \ensuremath{\approx} 0.29--0.37; 2/2 classical baselines
-at \ensuremath{\rho} \ensuremath{\approx} 0. The classical baselines do not consume text and therefore cannot
-have been ``trained on'' PubMed; their null \ensuremath{\rho} confirms our pipeline introduces
-no spurious correlation. The LLM signal is real but bounded --- \ensuremath{\rho}\textsuperscript{2} \ensuremath{\approx} 0.09
-means pre-cutoff exposure explains \ensuremath{\approx} 9 \% of R@1 variance, leaving \ensuremath{\approx} 91 \% to
-phenotype-disease reasoning + extraction + scaffold design.
+\textbf{Descriptive dichotomy}: 4/4 LLM backbones are at \ensuremath{\rho}\ensuremath{\approx}0.29--0.37; the two
+smaller classical samples are near zero. Because classical systems do not
+consume PubMed text, they are useful controls, but n=26 per control is not
+enough to prove the absence of pipeline effects. The LLM association is weak;
+we do not interpret \ensuremath{\rho}\textsuperscript{2} as a causal fraction of accuracy variance.
 
 Reading is treated in \Cref{sec-7-10} (a finer-grained interpretation paired with F1);
-the L4 post-cutoff PMC OA holdout (\textasciitilde200 cases, doctor-annotated in progress)
-remains the bias-free reference for the residual 9 \%.
+the L4 post-cutoff PMC OA set (\textasciitilde200 cases, physician annotation in progress)
+is a temporal sensitivity analysis, not a bias-free reference, because exact
+PMCIDs overlap RareArena.
 
-Visualised in \Cref{fig:fig4_a6_contamination_scatter}:
-one panel per backbone. The clean dichotomy is visually obvious --- the
-LLM backbones show a positive slope; the classical baselines
-(LIRICAL, VC-RDAgent) show a flat cloud.
+Visualised in \Cref{fig:fig4_a6_contamination_scatter} as a per-backbone
+correlation dot plot with the retained disease count printed beside each point.
 
 \subsection{Ablation A8 / H6 --- Thinking-mode (reasoning on vs off)}\label{sec-8-10}
 

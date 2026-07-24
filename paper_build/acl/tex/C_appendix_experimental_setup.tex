@@ -39,12 +39,12 @@ left at each adapter's published default (2K--6K).
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig_design_matrix.png}
-\caption{The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Filled = evaluated in v1; grey = deferred to v2; light = not applicable.}\label{fig:fig_design_matrix}
+\caption{The benchmark evaluation surface: five capability pillars across three diagnostic layers and one separately reported structured-EHR probe. Blue = evaluated in the frozen diagnostic study; amber = MIMIC replacement protocol specified but not yet scored; grey = deferred to v2; light = not applicable. Thus the probe is not represented as a completed v1 result.}\label{fig:fig_design_matrix}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig_schema.png}
-\caption{The \texttt{CanonicalCase} schema. Every dataset ingests into this single Pydantic-v2 record and every agent adapter projects out of it.}\label{fig:fig_schema}
+\caption{The \texttt{CanonicalCase} schema used directly by the diagnostic layers and projected into each agent's native input. The pending MIMIC replacement uses an analogous record with a timestamped structured-event snapshot in model input and code-derived gold held in an evaluation-only field, then maps it at the adapter boundary.}\label{fig:fig_schema}
 \end{figure*}
 

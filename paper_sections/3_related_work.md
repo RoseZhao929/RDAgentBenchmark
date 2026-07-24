@@ -8,17 +8,48 @@
 
 ## Draft for paper main text
 
-### 3.1 Rare Disease LLM Benchmarks
+## 3.1 Rare Disease LLM Benchmarks
 
-**Existing benchmarks are LLM-centric, not agent-native.** Among nine specialized rare-disease diagnostic benchmarks published 2023-2026, eight evaluate base LLMs under prompting / few-shot / RAG, and one is hybrid . RareBench [Chen et al., KDD 2024] establishes the modern protocol with 2,764 patients across five subsets (RAMEDIS, MME, HMS, LIRICAL, PUMCH-ADM) and reports Recall@1/3/10 plus median rank. RareArena [Zhao et al., Lancet Digital Health 2025] scales to 49,760 free-text case reports across 4,597 Orphanet disorders. Phenopacket-Store [Danis et al., HGG Adv 2025] curates 7,552 GA4GH Phenopackets covering 481 OMIM diseases. Reese et al. [Eur J Hum Genet 2026] and Chimirri et al. [eBioMedicine 2025] add 5,213 and 4,917 multi-language Phenopackets respectively. MIMIC-RD [Wu et al., arXiv 2026] introduces real EHR free-text via 145 admissions mined from MIMIC-IV. All evaluate static input→output LLM prompting; none expose interactive tool APIs, cost/latency dimensions, reasoning-trace evaluation, or pass^k reliability — the dimensions that characterize agent systems. A 2026 systematic review independently flags this gap, observing that all 19 LLM rare-disease evaluations it surveys carry high data-contamination risk, no prevalence stratification, and no agent-process metrics.
+**Existing benchmarks are LLM-centric, not agent-native.** RareBench
+\citep{rarebench2024} establishes a multi-subset rare-disease diagnostic
+protocol with rank-based metrics. RareArena \citep{rarearena2025} scales to
+free-text case reports, while Phenopacket-Store and subsequent Phenopacket
+studies provide structured HPO-based evaluation
+\citep{phenopacketstore2025,reese2026,chimirri2025}. MIMIC-RD
+\citep{mimicrd2026} introduces a note-based MIMIC-IV rare-disease task; unlike
+that resource, our local MIMIC probe has no notes. These benchmarks primarily
+evaluate static input-to-output diagnosis and do not jointly expose interactive
+tool use, cost/latency, reasoning-trace evaluation, and pass-$k$ reliability.
+A systematic review of 15 studies (19 system--dataset entries) found all 19 at
+high risk of bias and highlighted substantial benchmark-dependent
+heterogeneity \citep{sysreview2026}.
 
-### 3.2 Agent Benchmarks in Other Domains
+## 3.2 Agent Benchmarks in Other Domains
 
-**Agent benchmarks elsewhere have matured well past static evaluation; rare-disease benchmarks have not.** τ-bench [Yao et al., 2024] formalized `pass^k` reliability for tool-using agents, finding GPT-4o below 25% under k=8 i.i.d. retries on retail scenarios. AgentBoard [Ma et al., NeurIPS 2024] introduces Progress Rate as a partial-credit metric with Pearson r > 0.95 against human judgment across nine task domains. SWE-bench [Jimenez et al., ICLR 2024] sets the precedent for issue-resolution as the headline metric in agent benchmarks. In medicine, MedAgentBench [Jiang et al., NEJM AI 2025] introduces 100 tool-augmented FHIR query tasks but does not cover rare-disease diagnosis. MedHELM [Patel et al., 2025] extends HELM's scenario × metric matrix to 35 medical scenarios, with bias/fairness as cross-cutting evaluation lenses rather than separate pillars. We adopt three design patterns from these: (i) bias as a cross-cutting lens rather than a pillar (per HELM/MedHELM), (ii) `pass^k` reliability and Cost-Normalized Accuracy from the τ-bench / CLEAR lineage, and (iii) Progress-Rate-style partial credit for multi-stage agents.
+**Agent benchmarks elsewhere have matured beyond static evaluation;
+rare-disease benchmarks have not.** $\tau$-bench formalizes repeated-trial
+reliability for tool-using agents \citep{taubench2024}; AgentBoard introduces
+partial-credit progress metrics \citep{agentboard2024}; and SWE-bench makes
+end-to-end issue resolution the unit of evaluation \citep{swebench2024}. In
+medicine, MedAgentBench covers tool-augmented FHIR tasks
+\citep{medagentbench2025}, while MedHELM extends scenario-by-metric evaluation
+\citep{medhelm2025}. We adopt three corresponding patterns: process-aware
+evaluation, pass-$k$ reliability, and explicit cost/latency accounting.
 
-### 3.3 Rare-Disease and Medical Agent Systems
+## 3.3 Rare-Disease and Medical Agent Systems
 
-**Eight agent systems exist for rare disease or transferable to it; none share a benchmark.** DeepRare [Yao et al., Nature 2026] is the current SOTA, integrating 40+ tools (HPO, Orphanet, OMIM, PubMed, web search, variant analyzers) under a central-host architecture with reflection; the authors evaluate on nine ad-hoc datasets totaling 6,401 patients. MAI-DxO [Nori et al., arXiv 2506.22405] (Microsoft Diagnostic Orchestrator) coordinates an eight-role panel with sequential test-ordering and a `budgeted` mode that caps per-case spend. RareAgents [Chen et al., AAAI 2026] applies multi-disciplinary team (MDT) reasoning with a specialty memory; RDMA [Wu et al., arXiv 2507.15867] specializes in EHR mining and HPO extraction; VC-RDAgent uses offline Poincaré-embedded HPO knowledge graphs to avoid paid APIs. From general medicine, MDAgents [Kim et al., NeurIPS 2024 oral] adapts solo↔group reasoning with a moderator agent, and MedAgents [Tang et al., ACL 2024 Findings] orchestrates domain experts in role-playing debates. AgentClinic [Schmidgall et al., MIT 2024] introduces patient simulation in seven languages. Critically, every one of these agent papers builds its own evaluation set — DeepRare uses partly self-curated splits, RareAgents introduces MIMIC-IV-Ext-Rare ad hoc, MDAgents tests on ten unrelated medical benchmarks. **No shared agent benchmark exists**, leaving cross-system claims (DeepRare's 95.4% reference accuracy, MAI-DxO's 85.5% on NEJM CPC, RareAgents' superiority over GPT-4o) unverifiable on common ground.
+**Eight systems are relevant to rare-disease diagnosis or transferable to
+it, but they do not share an evaluation matrix.** DeepRare integrates more
+than 40 tools and evaluates heterogeneous text, HPO, and genetic inputs
+\citep{deeprare2026}. MAI-DxO coordinates a multi-role diagnostic panel
+\citep{maidxo2025}; RDMA specializes in phenotype extraction
+\citep{rdma2025}; and VC-RDAgent provides an offline ontology-based path
+\citep{vcrdagent}. From general medicine, MDAgents adapts collaboration mode
+\citep{mdagents2024}, MedAgents orchestrates role-playing experts
+\citep{medagents2024}, and AgentClinic evaluates simulated clinical dialogue
+\citep{agentclinic2024}. LIRICAL supplies a classical likelihood baseline
+\citep{lirical2020}. Each was originally evaluated under a different input,
+dataset, or metric, leaving cross-system claims unverifiable on common ground.
 
 We position this work as filling that exact gap.
 

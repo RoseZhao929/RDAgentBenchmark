@@ -8,9 +8,9 @@
 
 ## Draft for paper main text
 
-### 4.1 Five Capability Pillars
+## 4.1 Five Capability Pillars
 
-We decompose rare-disease diagnosis into **five orthogonal capability pillars**, each individually testable, jointly forming the evaluation surface. The pillar choice is grounded in three considerations: (i) clinical workflow steps (phenotype recognition → DDx generation → genetic confirmation → family interpretation → communication), (ii) the dimensions on which existing rare-disease agents claim differentiation (DeepRare's reference accuracy, MAI-DxO's budgeted reasoning), and (iii) reviewer-anticipated criticism that accuracy alone is insufficient (Pfohl et al., Nature Medicine 2024; Pillar 5 directly addresses this).
+We decompose rare-disease diagnosis into **five distinct capability pillars**, each individually testable, jointly forming the evaluation surface. The pillar choice is grounded in three considerations: (i) clinical workflow steps (phenotype recognition → DDx generation → genetic confirmation → family interpretation → communication), (ii) the dimensions on which existing rare-disease agents claim differentiation (DeepRare's reference accuracy, MAI-DxO's budgeted reasoning), and (iii) reviewer-anticipated criticism that accuracy alone is insufficient \citep{equitymedqa2024}; Pillar 5 directly addresses this.
 
 The five pillars, and which data layer carries each, are summarised in the
 benchmark-surface figure. Briefly: **P1** Phenotype Extraction (free-text EHR
@@ -20,13 +20,20 @@ structured variants → disease + causative gene; Gene Top-k, cross-mapped R@1);
 **P4** Family-aware DDx (HPO + trio/pedigree → disease + mode of inheritance;
 deferred to v2 pending pedigree-bearing data); and **P5** Reasoning
 Faithfulness (agent trace + prediction → a four-axis factual / relevance /
-depth / faithfulness score, LLM-judge with 200-case physician-κ validation).
+depth / faithfulness score; the current 40-trace LLM-judge sensitivity study
+is exploratory, and physician validation remains future work).
 
-**Why five and not three.** P1 and P5 in particular face the objection "isn't this just preprocessing or just a stylistic axis?". Both are load-bearing for our central claim. P1 is independent because §7.1 shows, in a same-case paired test, that downstream P2 R@1 is measurably sensitive to HPO-extraction quality — extraction is not a free preprocessing step (and the dual-pass design is what lets this be measured without confounding it with dataset difficulty). P5 is independent because §7.4/§7.5 examine whether faithfulness ranking decouples from accuracy ranking (pre-registered Hypothesis 10); we report H10 as exploratory (the judge-family effect is real but modest once trace-capture is controlled), and the durable point is that accuracy-only evaluation can miss hallucinated citations and unfaithful reasoning chains — a Type-1 error category the DeepRare authors flagged in their own work.
+**Why five and not three.** P1 and P5 in particular face the objection "isn't this just preprocessing or just a stylistic axis?". Both are load-bearing for our central claim. P1 is independent because §7.1 shows, in a same-case paired test, that downstream P2 R@1 is measurably sensitive to HPO-extraction quality — extraction is not a free preprocessing step (and the dual-pass design is what lets this be measured without confounding it with dataset difficulty). P5 is independent because §7.4/§7.5 examine whether faithfulness ranking decouples from accuracy ranking (repository-plan Hypothesis 10); we report H10 as exploratory (a modest same-trace judge difference remains, but the current Gemini-to-Claude comparison cannot identify a pure family effect), and the durable point is that accuracy-only evaluation can miss hallucinated citations and unfaithful reasoning chains — a Type-1 error category discussed by DeepRare \citep{deeprare2026}.
 
-**Bias as cross-cutting lens, not pillar.** Following HELM and MedHELM precedent, we apply bias evaluation (genetic ancestry, prevalence tier, sex / X-linked, pediatric/adult, language, HPO density) as a **stratification of every pillar's metric**, not as a separate axis. This was an explicit design revision; an earlier sketch listed Bias as a sixth pillar, which we abandoned because (a) no general-purpose AI benchmark elevates bias to a pillar — those that do (EquityMedQA, HEAL, Omiye et al., Zack et al.) are dedicated fairness probes, not holistic benchmarks; (b) treating bias as a pillar reduces its measurement coverage by isolating it from accuracy evaluation.
+**Bias as cross-cutting lens, not pillar.** Following HELM and MedHELM
+precedent \citep{helm2022,medhelm2025}, we apply available stratifications
+(prevalence tier, specialty, age group, sex, and HPO density) across relevant
+pillar metrics rather than treating bias as a separate axis. Dedicated
+fairness evaluations \citep{equitymedqa2024,heal2024,omiye2023,zack2024}
+remain complementary: ancestry and language analyses cannot be claimed in v1
+because the current frozen resources do not support them.
 
-### 4.2 Datasets — Three Diagnostic Layers + One Structured-EHR Probe
+## 4.2 Datasets — Three Diagnostic Layers + One Structured-EHR Probe
 
 We assemble three diagnostic layers and one secondary structured-EHR probe; their
 sources and sizes appear as the columns of the benchmark-surface figure, and
@@ -35,46 +42,55 @@ the full per-layer breakdown (disease counts, ID anchors, free-text / gold-HPO
 Phenotype Backbone (Phenopacket-Store + RareBench HF; 11,173 cases; HPO-only,
 gold HPO, variants on PP-Store), **L2** Scale + Free Text (RareArena RDS/RDC;
 72,661 verbatim case reports), and **L4** Cutoff-After Holdout (self-built PMC
-OA, publication date ≥ 2024-01-01; 200 manually-verified cases). Separately,
-**S-EHR** is a credentialed MIMIC-IV-3.1 probe (956 admissions, 239 exact-mapped
+OA, publication date ≥ 2024-01-01; 198 model-verified cases with physician
+annotation in progress). Separately,
+**S-EHR** is a credentialed MIMIC-IV-3.1 probe \citep{mimiciv31}
+(956 admissions, 239 exact-mapped
 ORPHA labels) for early structured-event prediction and ICD leakage auditing.
-It is not pooled with differential-diagnosis results.
+The replacement protocol is specified but not yet scored; it is not pooled
+with differential-diagnosis results.
 
 **Rationale per layer.**
 
 * **L1** establishes apples-to-apples comparison with RareBench's KDD'24 numbers — required by reviewers ("why not just compare to RareBench").
-* **S-EHR** addresses whether agents can use real structured hospital events rather than curated case reports. The 24-hour primary snapshot uses timestamped labs, medications, procedures and services; it excludes target-bearing diagnosis codes/titles, post-window events and free text. Gold is derived from exact ICD-10→Orphanet mapping, so this is code-supervised retrospective prediction, not independently adjudicated diagnosis. A paired audit compares ICD titles, ICD codes only, and context after removing target-bearing entries.
+* **S-EHR** is designed to test whether agents can use real structured hospital events rather than curated case reports. The 24-hour primary snapshot uses timestamped labs, medications, procedures and services; it excludes target-bearing diagnosis codes/titles, post-window events and free text. Gold is derived from exact ICD-10→Orphanet mapping, so this is code-supervised retrospective prediction, not independently adjudicated diagnosis. A paired audit will compare ICD titles, ICD codes only, and context after removing target-bearing entries.
 * **L2** addresses scale; RareArena's 72,661 cases span 45.6% of Orphanet. Released CC-BY-NC-SA, so we use it for academic evaluation only and acknowledge license bounds.
-* **L4** directly answers the data-contamination criticism from the 2026 systematic review. We extract 2,401 PMC OA case reports published after 2024-01-01 via E-utilities filtering on `"Rare Diseases"[MeSH] ∪ "Genetic Diseases, Inborn"[MeSH]` plus `"case reports"[Publication Type]` plus `"pubmed pmc open access"[sb]`, then LLM-extract diagnosis + HPO with Gemini 3 Flash, fuzzy-map to Orphanet, and **manually verify** ~200 cases against four checks (definitive diagnosis, accurate phenotypes, post-cutoff verified, truly rare). Verification protocol and reviewer agreement (Cohen's κ) are detailed in §5 and Appendix D.
+* **L4** responds to the leakage and benchmark-composition concerns in the
+  2026 systematic review \citep{sysreview2026}. We extract PMC OA case reports
+  published after 2024-01-01 via E-utilities and map diagnoses to Orphanet.
+  The 198-case post-cutoff set has model-based verification but physician
+  annotation is still in progress. Exact PMCIDs overlap RareArena, so L4 is a
+  temporal sensitivity analysis, not an independently clean holdout.
 
-**Total v1 evaluation pool: ~85,000 cases / >12,000 diseases**, with stratification on prevalence tier (super-rare < 1/1M, rare 1/2K-1/1M, common-rare ≥ 1/2K), specialty (14 body systems, DeepRare taxonomy), and language (English / Chinese where applicable).
+**Total resource pool: ~85,000 cases**, with v1 analyses stratified where
+supported by prevalence tier, specialty, age group, sex, and HPO density. The
+current scored diagnostic study is English-language; a Chinese diagnostic
+layer is deferred (§9).
 
 **Evaluation N per dataset — honest disclosure.** We deliberately separate
 "pool size" (the released benchmark) from "evaluation N" (what we run for the
 v1 paper).
-- **RareBench-HF** (1,122 cases) is evaluated at full N. The MIMIC structured
-  probe has its own attempted-admission denominator and is reported separately.
-- **Large layers** (Phenopacket-Store 10,051; RareArena RDS 72,661): evaluated on
-  a **prevalence-stratified random sample of N=500 per agent × backbone cell**
-  for primary backbones (seed=42, proportional allocation across prevalence tiers;
-  reproducibility receipts released with the benchmark). We do **not** report
-  full-N results on these two layers in v1 — extrapolation to 72k cases per cell
-  is cost-prohibitive given our 8-agent × 4-backbone matrix (see §9.6 cost
-  transparency).
-- **DeepSeek V4-Pro and GPT-5** are reported at partial N=100–500 depending on
-  cell, with confidence intervals correspondingly wider; cells with fewer than
-  N=100 are marked in §6.2 / Table 1 with explicit denominators.
+- **RareBench-HF** has 1,122 cases. Primary general-agent cells use the full
+  attempted N; DeepRare and MAI-DxO have explicitly smaller adapter-specific N.
+- **Large layers** (Phenopacket-Store 10,051; RareArena RDS 72,661): the primary
+  `llm_control`/MDAgents/MedAgents matrix uses a shared, prevalence-stratified
+  cap of N=2,000 case IDs (seed=42). DeepRare, MAI-DxO, and a small number of
+  failed-to-launch adapter cells have smaller attempted N shown in Table 1.
+- **MIMIC** will use its own attempted-admission denominator and separate
+  receipts after the replacement experiment is run.
 
 This is a **prevalence-stratified evaluation, not a power-stratified extrapolation
 to full pool**; bootstrap CIs in §6 quantify the resulting uncertainty per cell.
-We confirmed via our sampling-validation check that the N=500 stratified sample reproduces the full-N
+We confirmed via our sampling-validation check that the N=2,000 stratified sample reproduces the full-N
 prevalence band and HPO-organ-system distribution within ±2 pp.
 
-### 4.3 Canonical Case Representation
+## 4.3 Canonical Case Representation
 
-Every dataset ingests into a single Pydantic v2 schema, `CanonicalCase`
-(illustrated in the canonical-case figure), and every agent adapter projects
-from this representation to the agent's native input. The record groups an
+The three diagnostic layers ingest into a single Pydantic v2 schema,
+`CanonicalCase` (illustrated in the canonical-case figure), and every agent
+adapter projects from this representation to the agent's native input. The
+pending MIMIC protocol uses an analogous model-input/evaluation-only record and
+maps the structured snapshot at the adapter boundary. The record groups an
 identity block (`case_id`, `source_dataset`, `source_split`, `language`), an
 input block (demographics; `free_text_vignette` / `synthetic_vignette`;
 `gold_hpo_terms`; `variants`; local `vcf_path`; `family`), a parallel-ID gold
@@ -82,7 +98,7 @@ label, and free-form metadata.
 
 Three design decisions deserve note: (a) gold labels are **parallel IDs** (OMIM/ORPHA/CCRD), reflecting genuine ontology disagreement across datasets — Phenopacket-Store uses OMIM, RareArena uses ORPHA, CCRD anchors the Chinese-listed 207 diseases. Evaluator must accept cross-mapped matches via Orphadata (§4.5). (b) `synthetic_vignette` is distinguished from `free_text_vignette` so we can audit any evaluation that relies on LLM-synthesized prose (§7 disclosure). (c) `vcf_path` carries a local-only file pointer; PhysioNet DUA prohibits transmission of identifiable EHR data to external LLM APIs, so adapter shims projecting Pillar 3 inputs convert structured variant info to abstracted strings before any cloud-LLM call.
 
-### 4.4 Dual-pass evaluation
+## 4.4 Dual-pass evaluation
 
 Every pillar is evaluated in two modes. In **Pass A** (gold-HPO, primary) the
 case's curated HPO terms are fed directly to the agent's downstream pillar,
@@ -91,18 +107,19 @@ apples-to-apples comparison on identical inputs. In **Pass B** (end-to-end) the
 raw free-text vignette is fed in and the agent extracts HPO itself before
 reasoning, measuring real deployment performance. The **Pass A − Pass B delta**
 is itself a reported metric (following RareBench's phenotype-vs-EHR-text
-comparison [Chen et al., 2024]); we show it is non-uniform across agents
+comparison \citep{rarebench2024}); we show it is non-uniform across agents
 (§7.1), which turns the input heterogeneity of a mixed-agent lineup into a
 measured axis rather than a confound (§5.1).
 
-### 4.5 Metrics and matching
+## 4.5 Metrics and matching
 
 We report Recall@1/3/5/10, median rank and MRR for the DDx pillars, P/R/F1 for
 phenotype extraction, and task-success rate; a recommended tier (pass\^k,
 cost-normalised accuracy, calibration, reference accuracy) and an exploratory
 tier (step-level and reasoning-faithfulness scores) are defined in Appendix C.
-Every accuracy metric is additionally stratified by six bias axes (genetic
-ancestry, prevalence tier, sex, age, language, HPO density). A predicted
+Every accuracy metric is stratified where metadata and sample size permit;
+v1 reports prevalence tier, specialty, age group, sex, and HPO-density
+analyses, while ancestry and language remain deferred. A predicted
 disease ID counts as a hit if it is prefix-equal on the same ontology,
 cross-mapped via Orphadata (OMIM ↔ ORPHA), or fuzzy-matches an Orphanet name or
 synonym at rapidfuzz score ≥ 90 — a threshold calibrated against 217 audited
@@ -120,7 +137,7 @@ is released for reproducibility (Appendix N).
 - HEAL (Schaekermann et al., eClinicalMedicine 2024) | §4.1
 - Omiye et al., npj Digital Medicine 2023 | §4.1
 - Zack et al., Lancet Digital Health 2024 | §4.1
-- Wu et al., MIMIC-RD arXiv 2026 | §4.2
+- Eiz AlDin et al., MIMIC-RD arXiv:2601.11559 (2026) | §4.2
 - Rivera et al., JAMIA 32(1) 2025 | §4.5
 - CLEAR framework (arXiv 2511.14136) | §4.5
 - FaithCoT-Bench | §4.5
@@ -135,8 +152,8 @@ is released for reproducibility (Appendix N).
 
 ### Still missing(等数据)
 
-- 实际 Figure 1(canonical_case schema 架构图)需要画(mermaid 或 TikZ)
-- Figure 2(dual-pass evaluation 流程图)需要画
+- CanonicalCase schema and benchmark-surface figures are rendered by
+  `scripts/paper_schematics.py`.
 - Table A1 / A2 / A3 完整版去 appendix(本节 main text 只放精简表)
 - §4.2 L4 holdout 200 case 数字会在 final 阶段更新
 

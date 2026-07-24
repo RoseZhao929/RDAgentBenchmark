@@ -102,7 +102,10 @@ python3 scripts/phase4a_runner.py \
     --out predictions_test.jsonl
 ```
 
-Per-cell receipts (run-id, OpenRouter request-id, dollar cost,
-latency, per-case status) are in `data/round2/phase4a_receipts.csv`
-(7,581 rows). Aggregation: `scripts/phase4a_report_gen.py` regenerates
-the matrix from raw JSONL.
+The legacy aggregate receipt has 93 cell rows, including 22 obsolete MIMIC
+title-task rows that are excluded from the current paper. The frozen evidence
+manifest indexes 71 diagnostic cells and 12 PMC temporal-sensitivity cells.
+Per-case JSONL artifacts carry request ID where available, dollar cost,
+latency, and status; `scripts/phase4a_report_gen.py` regenerates aggregate
+diagnostic summaries from those raw files. The replacement structured-EHR
+task requires a separate task-versioned receipt.
