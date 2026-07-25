@@ -30,3 +30,14 @@ and model weights are intentionally excluded.
 
 Everything under `data/` is gitignored by default; tracked files were added with
 `git add -f`. To add more, force-add explicitly and keep MIMIC-derived data out.
+
+### Orphadata phenotype mapping snapshot
+
+`orphadata/en_product4.xml` is the official ORPHA-to-HPO phenotype association
+file from the Orphadata **December 2025** release (XML date
+`2025-12-09 07:09:56`). It is version-aligned with the tracked product 1 and
+product 9 XML files. Source:
+[`Orphanet/Orphadata_aggregated`](https://github.com/Orphanet/Orphadata_aggregated),
+commit `27e0b4b4bd552a15dd63afe72fff3edc6676cf5a`. SHA-256:
+`82079cfb9e6fdce0280001338618ecc8f4a5ae76d66f8e7c22e39fcdaebdebb7`.
+Orphadata is distributed under CC BY 4.0.
