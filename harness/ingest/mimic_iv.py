@@ -30,8 +30,8 @@ from harness.canonical_case import (
     GoldLabel,
 )
 
-DEFAULT_MIMIC_ROOT = "/Users/yutianzhao/Desktop/RDAgentBenchmark/data/mimic-iv-3.1"
-DEFAULT_ORPHA_XML = "/Users/yutianzhao/Desktop/RDAgentBenchmark/data/orphadata/en_product1.xml"
+DEFAULT_MIMIC_ROOT = "data/mimic-iv-3.1"
+DEFAULT_ORPHA_XML = "data/orphadata/en_product1.xml"
 
 
 def build_icd_to_orpha_map(
@@ -237,7 +237,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--out",
-        default="/Users/yutianzhao/Desktop/RDAgentBenchmark/data/mimic_iv_rd_slice/cases.jsonl",
+        default="data/mimic_iv_rd_slice/cases.jsonl",
+    )
+    parser.add_argument(
+        "--mimic-root",
+        default=DEFAULT_MIMIC_ROOT,
+        help="MIMIC-IV root containing hosp/ (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--orpha-xml",
+        default=DEFAULT_ORPHA_XML,
+        help="Orphadata product 1 ICD-10 cross-reference XML (default: %(default)s)",
     )
     parser.add_argument(
         "--relations",
@@ -249,6 +259,12 @@ if __name__ == "__main__":
 
     rels = tuple(s.strip() for s in args.relations.split(","))
     print(f"Building MIMIC-IV rare-disease slice with relation filter: {rels}")
-    stats = write_canonical_jsonl(args.out, relation_filter=rels, limit=args.limit)
+    stats = write_canonical_jsonl(
+        args.out,
+        mimic_root=args.mimic_root,
+        orpha_xml=args.orpha_xml,
+        relation_filter=rels,
+        limit=args.limit,
+    )
     print(f"DONE: {stats}")
     print(f"Output: {args.out}")
