@@ -31,7 +31,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from _figstyle import apply_nature_style, PALETTE, despine  # noqa: E402
+from _figstyle import (apply_nature_style, EMNLP_PALETTE as PALETTE, BAR_EDGE,  # noqa: E402
+                       PANEL_FIGSIZE, despine)
 
 FIG = ROOT / "data/round2/figures"
 MANIFEST = ROOT / "audit_frozen/frozen_main_manifest.csv"
@@ -40,10 +41,10 @@ P5 = ROOT / "audit_frozen/_p5_same_trace_report.json"
 
 CLASSICAL = {"lirical", "vc_rdagent"}
 
-# Consistent colours for the two agent families across every figure.
+# Consistent colours for the two agent families across every figure (EMNLP palette).
 C_LLM = PALETTE[0]        # blue  = LLM-scaffolded agents
-C_CLASSICAL = PALETTE[3]  # vermilion = classical / offline baselines
-C_ACCENT = PALETTE[1]     # orange accent (peaks / highlights)
+C_CLASSICAL = PALETTE[2]  # gold  = classical / offline baselines
+C_ACCENT = PALETTE[1]     # green accent (peaks / highlights)
 
 
 # ------------------------------------------------------------------ load frozen
@@ -78,68 +79,225 @@ def figM1_llm_vs_classical(rows):
     import matplotlib.pyplot as plt
     import numpy as np
 
-    layers = [("phenopacket_store", "Phenopacket-Store\n(curated HPO)"),
-              ("rarebench", "RareBench HF\n(sparse HPO)"),
-              ("rarearena_rds", "RareArena RDS\n(free-text)")]
+    # This is a LLM-vs-classical comparison, so it shows ONLY the two HPO-input
+    # layers where a classical/offline baseline can actually run (both bars
+    # present). The three layers with no classical run — RareArena (free-text),
+    # MIMIC (structured EHR) and the PMC temporal holdout — are explained in the
+    # caption rather than shown as half-empty groups.
+    layers = [("phenopacket_store", "Phenopacket-Store"),
+              ("rarebench", "RareBench HF")]
     best = best_per_family(rows, {l[0] for l in layers})
 
     llm = [best.get((l[0], "llm"), (0,))[0] for l in layers]
     cls = [best.get((l[0], "classical"), (None,))[0] for l in layers]
 
-    fig, ax = plt.subplots(figsize=(6.6, 4.15))
-    x = np.arange(len(layers))
-    w = 0.38
-    b1 = ax.bar(x - w / 2, llm, w, label="Best LLM agent", color=C_LLM, zorder=3)
-    # classical bar only where a classical baseline runs (HPO layers)
+    # squeezed: narrower canvas + tighter bar spacing so the two groups don't
+    # float in whitespace.
+    fig, ax = plt.subplots(figsize=(5.6, 4.6))
+    x = np.arange(len(layers)) * 0.78
+    w = 0.32
+    b1 = ax.bar(x - w / 2, llm, w, label="Best LLM", color=C_LLM,
+                edgecolor=BAR_EDGE, linewidth=0.7, zorder=3)
     cls_x, cls_v = [], []
     for i, c in enumerate(cls):
         if c is not None:
-            cls_x.append(x[i] - (-w / 2))
+            cls_x.append(x[i] + w / 2)
             cls_v.append(c)
-    b2 = ax.bar(np.array(cls_x), cls_v, w, label="Best classical / offline",
-                color=C_CLASSICAL, zorder=3)
+    b2 = ax.bar(np.array(cls_x), cls_v, w, label="Best classical",
+                color=C_CLASSICAL, edgecolor=BAR_EDGE, linewidth=0.7, zorder=3)
 
     def label(bars):
         for b in bars:
             h = b.get_height()
             ax.text(b.get_x() + b.get_width() / 2, h + 0.008, f"{h:.2f}",
-                    ha="center", va="bottom", fontsize=7.5)
+                    ha="center", va="bottom", fontsize=15)
     label(b1)
     label(b2)
 
-    # gap annotation on PP-Store (the headline F1 gap)
+    # gap annotation on PP-Store: sits in the gap to the RIGHT of the 0.30 label,
+    # between the blue and gold bars.
     if cls[0] is not None:
         gap = (cls[0] - llm[0]) * 100
-        ax.annotate("", xy=(0 + w / 2, cls[0]), xytext=(0 + w / 2, llm[0]),
-                    arrowprops=dict(arrowstyle="<->", color="#444", lw=1.0))
-        ax.text(0 + w / 2 + 0.06, (cls[0] + llm[0]) / 2,
-                f"+{gap:.0f} pp", fontsize=8, color="#444", va="center")
+        gx = x[0] + w / 2 - 0.015        # right edge of blue bar / left of gold
+        ax.annotate("", xy=(gx, cls[0]), xytext=(gx, llm[0]),
+                    arrowprops=dict(arrowstyle="<->", color="#333", lw=1.4))
+        ax.text(gx + 0.03, (cls[0] + llm[0]) / 2 + 0.03, f"+{gap:.0f} pp",
+                fontsize=15, color="#333", va="center", ha="left")
 
     ax.set_xticks(x)
-    ax.set_xticklabels([l[1] for l in layers], fontsize=8)
-    ax.set_ylabel("R@1 (variant-aware)")
+    ax.set_xticklabels([l[1] for l in layers])
+    ax.set_ylabel("R@1")
+    ax.set_xlim(x[0] - 0.42, x[-1] + 0.42)
     ax.set_ylim(0, 0.56)
-    ax.set_title("LLM–classical comparison scope: 3 of 5 benchmark datasets",
-                 fontsize=8.6)
-    ax.legend(loc="upper right", fontsize=7.5)
-    ax.grid(axis="y", alpha=0.4, zorder=0)
+    ax.legend(loc="upper right", frameon=False, handlelength=1.1,
+              handletextpad=0.5, labelspacing=0.3, borderaxespad=0.2)
+    ax.grid(axis="y", zorder=0)
     despine(ax)
-    # note that free-text has no classical bar (no HPO input)
-    ax.text(2, 0.02, "no HPO input\n(classical n/a)", ha="center", va="bottom",
-            fontsize=6.5, style="italic", color="#888")
-    fig.text(0.5, 0.012,
-             "PMC holdout: no matched classical run  ·  "
-             "MIMIC: separate structured-EHR task",
-             ha="center", va="bottom", fontsize=6.6, color="#666")
-    fig.tight_layout(rect=(0, 0.045, 1, 1))
+    fig.tight_layout()
     fig.savefig(FIG / "figM1_llm_vs_classical.png")
     plt.close(fig)
-    print("wrote figM1_llm_vs_classical.png",
+    print("wrote figM1_llm_vs_classical.png (V1)",
           f"[PP {llm[0]:.3f}v{cls[0]:.3f}, RB {llm[1]:.3f}v{cls[1]:.3f}]")
 
 
+def _best_r1_with_r5(rows, ds, fam, min_n=100):
+    """The R@1-best system for (dataset, family), plus that same system's R@5.
+    Returns (r1, r5, system). Stacking R@5 above R@1 for the SAME system keeps
+    the two layers honest (not a max over different systems)."""
+    b1 = None
+    for r in rows:
+        if r["dataset"] != ds or r["n_attempted"] < min_n:
+            continue
+        f = "classical" if r["system"] in CLASSICAL else "llm"
+        if f != fam:
+            continue
+        if b1 is None or r["R@1_variant_aware"] > b1["R@1_variant_aware"]:
+            b1 = r
+    if b1 is None:
+        return None
+    r5 = float(b1["R@5_variant_aware"])
+    return (b1["R@1_variant_aware"], r5, b1["system"])
+
+
+# =============================== M1 Version 2a: R@1 + R@5 layered (stacked) =====
+def figM1_v2a_layered(rows):
+    apply_nature_style()
+    import matplotlib.pyplot as plt
+    import numpy as np
+    BIG = 15   # in-bar value labels; matches the shared base font
+
+    layers = [("phenopacket_store", "Phenopacket-Store"),
+              ("rarebench", "RareBench HF")]
+    fams = [("llm", "LLM", C_LLM), ("classical", "classical", C_CLASSICAL)]
+
+    # slightly smaller canvas than the other panels: this figure has little
+    # content, so a smaller box keeps the (shared-size) fonts looking large
+    # rather than lost in whitespace when scaled into the 2x3 composite.
+    fig, ax = plt.subplots(figsize=(5.8, 5.0))
+    x = np.arange(len(layers)) * 1.1          # datasets a bit closer together
+    w = 0.19                                  # narrow bars (near M6 width)
+    gap = 0.06                                # small gap between blue/gold pair
+    offs = {"llm": -(w / 2 + gap / 2), "classical": (w / 2 + gap / 2)}
+    # lighter shade for the R@1->R@5 increment
+    def lighten(hexc, f=0.5):
+        c = hexc.lstrip("#"); r, g, b = (int(c[i:i+2], 16) for i in (0, 2, 4))
+        return "#%02x%02x%02x" % tuple(int(v + (255 - v) * f) for v in (r, g, b))
+
+    for fam, flabel, fcolor in fams:
+        r1s, lifts = [], []
+        for ds, _ in layers:
+            got = _best_r1_with_r5(rows, ds, fam)
+            r1s.append(got[0]); lifts.append(got[1] - got[0])
+        xb = x + offs[fam]
+        ax.bar(xb, r1s, w, color=fcolor, edgecolor=BAR_EDGE, linewidth=0.7,
+               zorder=3, label=f"{flabel} R@1")
+        # the light upper segment is the R@1->R@5 increment (its top = R@5); the
+        # caption explains the stacking. Legend reads "R@5 gain".
+        ax.bar(xb, lifts, w, bottom=r1s, color=lighten(fcolor), edgecolor=BAR_EDGE,
+               linewidth=0.7, zorder=3, label=f"{flabel} R@5 gain")
+        for xi, r1, lift in zip(xb, r1s, lifts):
+            ax.text(xi, r1 / 2, f"{r1:.2f}", ha="center", va="center",
+                    fontsize=BIG, color="white")
+            ax.text(xi, r1 + lift + 0.01, f"{r1+lift:.2f}", ha="center",
+                    va="bottom", fontsize=BIG)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([l[1] for l in layers])
+    ax.set_xlabel("Dataset")
+    ax.set_ylabel("Recall@$k$")
+    # headroom just above the tallest bar (0.62) for a 2-row legend strip that
+    # sits close to the bars, not floating far above them.
+    # extra headroom inside the axes so the 2-row legend sits just above the
+    # tallest bar's 0.62 label, not floating far above it.
+    # headroom for the legend above the bars, but the y-axis SPINE is truncated
+    # at 0.65 so it doesn't stick up empty above the data.
+    # more top headroom so the legend sits fully ABOVE the 0.62 bar label
+    ax.set_ylim(0, 0.88)
+    ax.set_yticks([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6])
+    ax.set_xlim(x[0] - 0.4, x[-1] + 0.4)
+    ax.legend(loc="upper center", frameon=False, ncol=2,
+              bbox_to_anchor=(0.5, 1.0), handlelength=1.1, handletextpad=0.5,
+              columnspacing=1.4, labelspacing=0.25)
+    ax.grid(axis="y", zorder=0)
+    despine(ax)
+    ax.spines["left"].set_bounds(0, 0.65)   # cut the empty upper spine stub
+    fig.tight_layout()
+    fig.savefig(FIG / "figM1_v2a_layered.png")
+    plt.close(fig)
+    print("wrote figM1_v2a_layered.png")
+
+
+# =============================== M1 Version 2b: R@1 | R@5 four-group dual bar ===
+def figM1_v2b_dual(rows):
+    apply_nature_style()
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    layers = [("phenopacket_store", "Phenopacket-Store"),
+              ("rarebench", "RareBench HF")]
+    # two metric blocks side by side per dataset: R@1 block, R@5 block
+    metrics = [("R@1_variant_aware", "R@1"), ("R@5_variant_aware", "R@5")]
+
+    def bestval(ds, fam, metric):
+        b = None
+        for r in rows:
+            if r["dataset"] != ds or r["n_attempted"] < 100:
+                continue
+            f = "classical" if r["system"] in CLASSICAL else "llm"
+            if f != fam:
+                continue
+            v = float(r[metric])
+            if b is None or v > b:
+                b = v
+        return b
+
+    fig, ax = plt.subplots(figsize=(7.6, 4.8))
+    group_w = 1.0
+    x = np.arange(len(layers)) * 2.2
+    w = 0.42
+    # within a dataset: [LLM R@1, cls R@1]  gap  [LLM R@5, cls R@5]
+    positions = {"llm": {"R@1_variant_aware": -1.5 * w, "R@5_variant_aware": 0.6 * w},
+                 "classical": {"R@1_variant_aware": -0.5 * w, "R@5_variant_aware": 1.6 * w}}
+    fam_color = {"llm": C_LLM, "classical": C_CLASSICAL}
+    seen = set()
+    for fam in ("llm", "classical"):
+        for metric, mlab in metrics:
+            xs, vs = [], []
+            for i, (ds, _) in enumerate(layers):
+                v = bestval(ds, fam, metric)
+                xs.append(x[i] + positions[fam][metric]); vs.append(v)
+            lab = {"llm": "Best LLM", "classical": "Best classical"}[fam]
+            ax.bar(xs, vs, w, color=fam_color[fam], edgecolor=BAR_EDGE,
+                   linewidth=0.7, zorder=3,
+                   label=lab if lab not in seen else None)
+            seen.add(lab)
+            for xi, v in zip(xs, vs):
+                ax.text(xi, v + 0.008, f"{v:.2f}", ha="center", va="bottom",
+                        fontsize=15)
+    # metric-block labels under each block
+    for i, (ds, dslab) in enumerate(layers):
+        ax.text(x[i] - w, -0.055, "R@1", ha="center", va="top", fontsize=15,
+                color="#555", transform=ax.transData)
+        ax.text(x[i] + 1.1 * w, -0.055, "R@5", ha="center", va="top", fontsize=15,
+                color="#555", transform=ax.transData)
+    ax.set_xticks(x + 0.05 * w)
+    ax.set_xticklabels([l[1] for l in layers])
+    ax.tick_params(axis="x", pad=22)
+    ax.set_ylabel("Recall@$k$")
+    ax.set_ylim(0, 0.68)
+    ax.set_xlim(x[0] - 2.2 * w, x[-1] + 2.4 * w)
+    ax.legend(loc="upper right", frameon=False, handlelength=1.1,
+              handletextpad=0.5, labelspacing=0.3)
+    ax.grid(axis="y", zorder=0)
+    despine(ax)
+    fig.tight_layout()
+    fig.savefig(FIG / "figM1_v2b_dual.png")
+    plt.close(fig)
+    print("wrote figM1_v2b_dual.png")
+
+
 # =========================================================== M2: cost-accuracy
-def figM2_cost_accuracy(rows):
+def figM2_cost_accuracy(rows, variant="A", outfile="figM2_cost_accuracy.png"):
     apply_nature_style()
     import matplotlib.pyplot as plt
     from matplotlib.lines import Line2D
@@ -159,7 +317,9 @@ def figM2_cost_accuracy(rows):
               "maidxo", "deeprare"]
     ag_color = {a: PALETTE[i % len(PALETTE)] for i, a in enumerate(agents)}
 
-    fig, ax = plt.subplots(figsize=(6.6, 4.4))
+    # slightly wider canvas so the single-column Agent legend fits in the empty
+    # lower-right corner without touching any point.
+    fig, ax = plt.subplots(figsize=(6.8, 5.0))
     pts = []
     for r in rows:
         if r["dataset"] != "phenopacket_store" or r["n_attempted"] < 100:
@@ -173,8 +333,8 @@ def figM2_cost_accuracy(rows):
         acc = r["R@1_variant_aware"]
         pts.append((cost, acc))
         ax.scatter(cost, acc, c=ag_color.get(r["system"], "#999"),
-                   marker=bb_short[k][1], s=48, alpha=0.9,
-                   edgecolors="white", linewidths=0.5, zorder=3)
+                   marker=bb_short[k][1], s=170, alpha=0.92,
+                   edgecolors=BAR_EDGE, linewidths=0.8, zorder=3)
 
     # Pareto frontier (max acc at or below each cost)
     front, best = [], -1
@@ -184,29 +344,33 @@ def figM2_cost_accuracy(rows):
             front.append((cost, acc))
     if front:
         ax.step([p[0] for p in front], [p[1] for p in front], where="post",
-                color="#333", lw=1.1, ls="--", zorder=2)
+                color="#333", lw=1.6, ls="--", zorder=2)
 
     ax.set_xscale("log")
-    ax.set_xlabel("Cost per attempt (USD, log scale)")
-    ax.set_ylabel("R@1 (variant-aware), Phenopacket-Store")
-    ax.set_title("GPT-5 costs substantially more with no consistent R@1 gain",
-                 fontsize=8.6)
-    ax.grid(True, which="major", alpha=0.4, zorder=0)
+    ax.set_xlabel("Cost per attempt")
+    ax.set_ylabel("R@1, Phenopacket-Store")
+    ax.grid(True, which="major", zorder=0)
     ag_h = [Line2D([0], [0], marker="o", color="w", markerfacecolor=ag_color[a],
-                   markersize=6.5, label=a) for a in agents]
-    bb_h = [Line2D([0], [0], marker=m, color="#555", ls="", markersize=6.5,
+                   markersize=12, label=a, linestyle="") for a in agents]
+    bb_h = [Line2D([0], [0], marker=m, color="#555", ls="", markersize=12,
                    label=lab) for lab, m in bb_short.values()]
-    l1 = ax.legend(handles=ag_h, title="agent", loc="lower right", fontsize=6.5,
-                   title_fontsize=7, ncol=2)
-    ax.add_artist(l1)
-    ax.legend(handles=bb_h + [Line2D([0], [0], color="#333", ls="--",
-              label="Pareto frontier")], title="backbone", loc="upper left",
-              fontsize=6.5, title_fontsize=7)
+    bb_h.append(Line2D([0], [0], color="#333", ls="--", label="Pareto frontier"))
+
+    ax.set_ylim(0, 0.31)
+    # Only the Agent (colour) legend is drawn, compactly in the bottom-left
+    # corner. The Backbone (marker-shape) key -- circle=Gemini Flash,
+    # square=DS V4-Pro, triangle=DS V4-Flash, diamond=GPT-5 minimal -- is given
+    # in the caption instead, since two legends do not fit this narrow panel.
+    # Agent legend as a narrow 2-col x 3-row block in the bottom-left corner;
+    # only two columns wide, so it does not reach the mid-plot maidxo point.
+    ax.legend(handles=ag_h, title="Agent", loc="lower left", ncol=2,
+              frameon=False, handletextpad=0.0, columnspacing=0.1,
+              labelspacing=0.12, borderaxespad=0.1, bbox_to_anchor=(-0.05, -0.02))
     despine(ax)
     fig.tight_layout()
-    fig.savefig(FIG / "figM2_cost_accuracy.png")
+    fig.savefig(FIG / outfile)
     plt.close(fig)
-    print("wrote figM2_cost_accuracy.png")
+    print(f"wrote {outfile} (variant {variant})")
 
 
 # =========================================================== M3: prevalence H1
@@ -214,33 +378,57 @@ def figM3_prevalence():
     # frozen H1 tier values (paper_sections/7_2_7_3_7_4_analysis.md §7.7)
     apply_nature_style()
     import matplotlib.pyplot as plt
+    # scale fonts up to match panel (a) in the composite
+    plt.rcParams.update({
+        "font.size": 20, "axes.titlesize": 20, "axes.labelsize": 20,
+        "xtick.labelsize": 20, "ytick.labelsize": 20, "legend.fontsize": 20,
+    })
 
     tiers = ["common-rare", "moderate", "ultra-rare", "super-rare"]
     llm = [0.37, 0.26, 0.39, 0.22]
     cls = [0.30, 0.23, 0.33, 0.50]
 
-    fig, ax = plt.subplots(figsize=(6.6, 3.9))
-    ax.plot(tiers, llm, "o-", color=C_LLM, lw=1.8, ms=7,
-            label="LLM agents (Gemini Flash)")
-    ax.plot(tiers, cls, "s--", color=C_CLASSICAL, lw=1.8, ms=7,
-            label="Classical / offline (LIRICAL + VC-RDAgent)")
-    for xs, ys in ((tiers, llm), (tiers, cls)):
-        for xi, yi in zip(xs, ys):
-            ax.text(xi, yi + 0.015, f"{yi:.2f}", ha="center", fontsize=6.8,
-                    color="#333")
-    # crossover gap on rarest tier
+    fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
+    ax.plot(tiers, llm, "o-", color=C_LLM, lw=2.4, ms=11, label="LLM agents")
+    ax.plot(tiers, cls, "s--", color=C_CLASSICAL, lw=2.4, ms=11,
+            label="Classical / offline")
+    # value labels: generically LLM-above / classical-below (they separate at
+    # every tier except the super-rare crossover, where the order flips, so the
+    # rightmost tier is special-cased: classical 0.50 above, LLM 0.22 below —
+    # keeping the gap arrow between them clear of both numbers).
+    n = len(tiers)
+    # nudge the leftmost tier's labels rightward so they clear the y-axis
+    dx0 = 0.12
+    for i, (xi, yi) in enumerate(zip(tiers, llm)):
+        below = (i == n - 1)
+        off = dx0 if i == 0 else 0.0
+        ax.text(i + off, yi + (-0.022 if below else 0.022), f"{yi:.2f}",
+                ha="center", va="top" if below else "bottom",
+                fontsize=18, color=C_LLM)
+    for i, (xi, yi) in enumerate(zip(tiers, cls)):
+        above = (i == n - 1)
+        off = dx0 if i == 0 else 0.0
+        ax.text(i + off, yi + (0.022 if above else -0.024), f"{yi:.2f}",
+                ha="center", va="bottom" if above else "top",
+                fontsize=18, color="#9a7016")
+    # crossover gap on the rarest tier, label hugging the (right-edge) line
     gap = (cls[-1] - llm[-1]) * 100
-    ax.annotate("", xy=(3, cls[-1]), xytext=(3, llm[-1]),
-                arrowprops=dict(arrowstyle="<->", color="#444", lw=1.0))
-    ax.text(2.78, (cls[-1] + llm[-1]) / 2, f"+{gap:.0f} pp",
-            fontsize=8, color="#444", ha="right", va="center")
-    ax.set_xlabel("Prevalence tier (commonest → rarest)")
+    ax.annotate("", xy=(n - 1, cls[-1]), xytext=(n - 1, llm[-1]),
+                arrowprops=dict(arrowstyle="<->", color="#333", lw=1.4))
+    ax.text(n - 1 - 0.06, (cls[-1] + llm[-1]) / 2, f"+{gap:.0f} pp",
+            fontsize=18, color="#333", ha="right", va="center")
+    ax.set_xlabel("Prevalence tier")
     ax.set_ylabel("Pooled R@1")
-    ax.set_ylim(0, 0.58)
-    ax.set_title("At the super-rare tail, the classical/LLM ranking inverts (H1)",
-                 fontsize=8.6)
-    ax.legend(loc="upper left", fontsize=7.5)
-    ax.grid(True, alpha=0.4)
+    # gently rotate the long tier names (kept centered on each tick) so they
+    # don't overlap in the narrow panel
+    ax.set_xticks(range(len(tiers)))
+    ax.set_xticklabels(tiers, rotation=10, ha="center")
+    ax.set_ylim(0.15, 0.56)
+    # legend inside the upper-left empty band (below 0.50), clear of both curves
+    # which sit at <=0.39 on the left half.
+    ax.legend(loc="upper left", frameon=False, ncol=1, handlelength=1.8,
+              handletextpad=0.5, labelspacing=0.35, bbox_to_anchor=(0.02, 0.99))
+    ax.grid(True, zorder=0)
     despine(ax)
     fig.tight_layout()
     fig.savefig(FIG / "figM3_prevalence.png")
@@ -259,29 +447,140 @@ def figM4_hpo_density():
     ns = [528, 2352, 1361, 513]
     r1 = [0.218, 0.276, 0.323, 0.253]
 
-    fig, ax = plt.subplots(figsize=(6.6, 3.9))
+    # Four bars, peak highlighted. Axis parentheticals and per-bin n live in the
+    # caption, not on the figure.
+    fig, ax = plt.subplots(figsize=(7.0, 4.7))
     x = np.arange(len(bins))
-    colors = [C_ACCENT if i == int(np.argmax(r1)) else C_LLM
-              for i in range(len(bins))]
-    bars = ax.bar(x, r1, 0.6, color=colors, zorder=3)
-    for b, v, n in zip(bars, r1, ns):
-        ax.text(b.get_x() + b.get_width() / 2, v + 0.006, f"{v:.2f}",
-                ha="center", va="bottom", fontsize=7.5)
-        ax.text(b.get_x() + b.get_width() / 2, 0.012, f"n={n:,}",
-                ha="center", va="bottom", fontsize=6.3, color="white")
+    peak = int(np.argmax(r1))
+    colors = [C_ACCENT if i == peak else C_LLM for i in range(len(bins))]
+    bars = ax.bar(x, r1, 0.62, color=colors, edgecolor=BAR_EDGE, linewidth=0.8,
+                  zorder=3)
+    for b, v, i in zip(bars, r1, range(len(bins))):
+        ax.text(b.get_x() + b.get_width() / 2, v + 0.008, f"{v:.2f}",
+                ha="center", va="bottom", fontsize=15,
+                fontweight="bold" if i == peak else "normal",
+                color=C_ACCENT if i == peak else "#333")
     ax.set_xticks(x)
     ax.set_xticklabels(bins)
-    ax.set_xlabel("HPO terms per case (binned)")
-    ax.set_ylabel("Pooled R@1 (HPO-input layers)")
+    ax.set_xlabel("HPO terms per case")
+    ax.set_ylabel("Pooled R@1")
     ax.set_ylim(0, 0.38)
-    ax.set_title("Observed phenotype-density peak at 16–30 HPO terms "
-                 "(H8)", fontsize=8.6)
-    ax.grid(axis="y", alpha=0.4, zorder=0)
+    ax.grid(axis="y", zorder=0)
     despine(ax)
     fig.tight_layout()
     fig.savefig(FIG / "figM4_hpo_density.png")
     plt.close(fig)
     print("wrote figM4_hpo_density.png")
+
+
+# =============================== candidate: F2 scaffolding ladder ==============
+def figF2_scaffolding(rows):
+    """Scaffolding ladder on PP-Store, Gemini Flash: single-LLM control vs the
+    multi-agent scaffolds. Shows F2 — deepening the scaffold does not reliably
+    beat the no-scaffold control (mdagents sits BELOW it; agentclinic/maidxo
+    collapse). Bars coloured by whether they clear the control line."""
+    apply_nature_style()
+    import matplotlib.pyplot as plt
+    import numpy as np
+    # scale fonts up to match panel (a) in the composite
+    plt.rcParams.update({
+        "font.size": 20, "axes.titlesize": 20, "axes.labelsize": 20,
+        "xtick.labelsize": 20, "ytick.labelsize": 20,
+    })
+    BIG = 20
+
+    ladder = ["llm_control", "mdagents", "medagents", "agentclinic", "maidxo"]
+    disp = {"llm_control": "LLM control\n(no scaffold)", "mdagents": "MDAgents",
+            "medagents": "MedAgents", "agentclinic": "AgentClinic",
+            "maidxo": "MAI-DxO"}
+    val = {}
+    for ag in ladder:
+        for r in rows:
+            if (r["dataset"] == "phenopacket_store" and r["system"] == ag
+                    and r["backbone"].startswith("google_gemini")):
+                val[ag] = r["R@1_variant_aware"]
+    ctrl = val["llm_control"]
+    # dumbbell / lollipop of the scaffold's DELTA vs the no-scaffold control:
+    # zero line = control; positive (green, right) beats it, negative (gold,
+    # left) trails it. Far more legible than five near-equal bars.
+    scaffolds = ladder[1:]                      # exclude the control itself
+    deltas = [(val[a] - ctrl) * 100 for a in scaffolds]   # in pp
+    # order worst-to-best so the collapse is visually anchored at the bottom
+    order = sorted(range(len(scaffolds)), key=lambda i: deltas[i])
+    scaffolds = [scaffolds[i] for i in order]
+    deltas = [deltas[i] for i in order]
+
+    fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
+    y = np.arange(len(scaffolds))
+    for yi, d in zip(y, deltas):
+        col = C_ACCENT if d >= 0 else C_CLASSICAL
+        ax.plot([0, d], [yi, yi], color=col, lw=3.0, zorder=2,
+                solid_capstyle="round")
+        ax.scatter([d], [yi], s=280, color=col, edgecolors=BAR_EDGE,
+                   linewidths=1.0, zorder=3)
+        # Small near-zero deltas (top two rows) label to the LEFT of the marker
+        # (above would collide with the control-line text); the two large
+        # negative deltas keep their label above the marker.
+        if abs(d) < 4:
+            ax.text(d - 1.2, yi, f"{d:+.1f} pp", va="center", ha="right",
+                    fontsize=BIG, color="#333")
+        else:
+            ax.text(d, yi + 0.18, f"{d:+.1f} pp", va="bottom", ha="center",
+                    fontsize=BIG, color="#333")
+    ax.axvline(0, color=C_LLM, lw=2.2, zorder=1)
+    # label the control line as a single horizontal row above the top marker,
+    # right-aligned to the zero line so it stays inside the frame.
+    ax.text(-0.5, len(scaffolds) - 0.35, "no-scaffold control", ha="right",
+            va="bottom", fontsize=BIG, color=C_LLM)
+    ax.set_yticks(y)
+    ax.set_yticklabels([disp[a].replace("\n", " ") for a in scaffolds],
+                       fontsize=BIG)
+    ax.set_xlabel("R@1 change vs. single-LLM control")
+    ax.set_xlim(min(deltas) - 9, 8)
+    ax.set_ylim(-0.6, len(scaffolds) - 0.1)
+    ax.grid(axis="x", zorder=0)
+    despine(ax)
+    fig.tight_layout()
+    fig.savefig(FIG / "figF2_scaffolding.png")
+    plt.close(fig)
+    print("wrote figF2_scaffolding.png",
+          f"[ctrl {ctrl:.3f}; deltas {[round(d,1) for d in deltas]}]")
+
+
+# =============================== candidate: H2 genotype channel lift ===========
+def figH2_genotype(rows=None):
+    """H2 — adding a structured-variant (genotype) block lifts R@1 by ~20 pp for
+    ANY agent that ingests it, not just DeepRare. Slopegraph P2 (HPO-only) -> P3
+    (HPO + variants), frozen §7.3 (llm_control n=500 paired; deeprare n=50)."""
+    apply_nature_style()
+    import matplotlib.pyplot as plt
+
+    data = [  # (agent, P2, P3, color)
+        ("LLM control", 0.296, 0.494, C_LLM),
+        ("DeepRare", 0.22, 0.38, C_ACCENT),
+    ]
+    fig, ax = plt.subplots(figsize=(6.4, 4.8))
+    for name, p2, p3, col in data:
+        ax.plot([0, 1], [p2, p3], "-", color=col, lw=3.0, marker="o", ms=13,
+                zorder=3)
+        ax.text(-0.05, p2, f"{p2:.2f}", ha="right", va="center", fontsize=15,
+                color=col)
+        ax.text(1.05, p3, f"{p3:.2f}", ha="left", va="center", fontsize=15,
+                color=col)
+        # agent name + lift near the right end
+        ax.text(1.05, p3 - 0.028, f"{name}  (+{(p3-p2)*100:.0f} pp)", ha="left",
+                va="top", fontsize=15, color=col)
+    ax.set_xlim(-0.35, 1.75)
+    ax.set_ylim(0.15, 0.56)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["HPO only\n(P2)", "HPO + variants\n(P3)"], fontsize=15)
+    ax.set_ylabel("R@1")
+    ax.grid(axis="y", zorder=0)
+    despine(ax)
+    fig.tight_layout()
+    fig.savefig(FIG / "figH2_genotype.png")
+    plt.close(fig)
+    print("wrote figH2_genotype.png")
 
 
 # =========================================================== M5: judge-swap sensitivity
@@ -292,38 +591,47 @@ def figM5_selfpref():
     # mdagents additionally changes trace completeness and is drawn dashed.
     apply_nature_style()
     import matplotlib.pyplot as plt
+    # four narrow sub-panels shrink text in the composite; scale fonts up ~1.5x
+    # so this panel matches panel (a).
+    plt.rcParams.update({
+        "font.size": 22, "axes.titlesize": 22, "axes.labelsize": 22,
+        "xtick.labelsize": 22, "ytick.labelsize": 22, "legend.fontsize": 22,
+    })
 
     axes_names = ["factual", "relevance", "depth", "faithful"]
     data = {
         "llm_control": ([4.70, 4.50, 3.60, 4.90], [4.30, 4.50, 3.10, 4.50], C_LLM),
-        "mdagents":    ([5.00, 5.00, 4.00, 5.00], [4.10, 4.17, 3.49, 4.26], PALETTE[2]),
-        "deeprare":    ([1.70, 1.40, 1.90, 1.70], [2.31, 1.33, 2.58, 2.72], PALETTE[4]),
+        "mdagents":    ([5.00, 5.00, 4.00, 5.00], [4.10, 4.17, 3.49, 4.26], PALETTE[3]),
+        "deeprare":    ([1.70, 1.40, 1.90, 1.70], [2.31, 1.33, 2.58, 2.72], PALETTE[1]),
     }
-    fig, axs = plt.subplots(1, 4, figsize=(7.4, 3.2), sharey=True)
+    # 2x2 layout -> near-square canvas that fills the composite cell (no
+    # letterbox), so this panel is as tall as the D/F panels.
+    fig, axs = plt.subplots(2, 2, figsize=(7.4, 5.6), sharey=True, sharex=True)
+    axs = axs.flatten()
     for j, (axname, ax) in enumerate(zip(axes_names, axs)):
         for agn, (v1, v2, color) in data.items():
             trace_repaired = agn == "mdagents"
-            label = f"{agn} (trace repaired)" if trace_repaired else agn
+            label = f"{agn}*" if trace_repaired else agn
             ax.plot([0, 1], [v1[j], v2[j]], color=color,
-                    marker="s" if trace_repaired else "o", ms=5,
-                    lw=1.6, ls="--" if trace_repaired else "-",
+                    marker="s" if trace_repaired else "o", ms=10,
+                    lw=2.6, ls="--" if trace_repaired else "-",
                     label=label if j == 0 else None, zorder=3)
-        ax.set_xlim(-0.35, 1.35)
+        ax.set_xlim(-0.45, 1.45)
         ax.set_xticks([0, 1])
-        ax.set_xticklabels(["Gemini judge\n(same-family)",
-                            "Claude judge\n(cross-family)"], fontsize=6.2)
-        ax.set_title(axname, fontsize=8.4)
-        ax.set_ylim(1, 5.3)
+        ax.set_xticklabels(["SF", "CF"])
+        ax.set_title(axname)
+        ax.set_ylim(1, 5.4)
         despine(ax)
-        ax.grid(axis="y", alpha=0.4)
-    axs[0].set_ylabel("LLM-judge score (1–5)")
-    axs[0].legend(loc="lower left", fontsize=6.6)
-    fig.suptitle("Judge-swap sensitivity (judge identity and family relation "
-                 "change together)", fontsize=8.6, y=1.02)
-    fig.text(0.5, 0.01,
-             "Solid: trace unchanged  ·  Dashed: judge swap + trace repair",
-             ha="center", va="bottom", fontsize=6.6, color="#666")
-    fig.tight_layout(rect=(0, 0.045, 1, 1))
+        ax.grid(axis="y", zorder=0)
+    # one shared, vertically-centered y-axis label for the whole 2x2 block
+    fig.supylabel("LLM-judge score", fontsize=22)
+    # legend as one narrow horizontal strip across the top (tight handle/column
+    # gaps so it stays within the panel width).
+    handles, labels = axs[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False,
+               bbox_to_anchor=(0.5, 1.03), handlelength=0.8, handletextpad=0.2,
+               columnspacing=0.5)
+    fig.tight_layout(rect=(0.02, 0, 1, 0.94))
     fig.savefig(FIG / "figM5_selfpref.png")
     plt.close(fig)
     print("wrote figM5_selfpref.png")
@@ -337,47 +645,52 @@ def figM6_hypotheses():
     apply_nature_style()
     import matplotlib.pyplot as plt
     import numpy as np
+    # scale fonts up to match panel (a) in the composite
+    plt.rcParams.update({
+        "font.size": 20, "axes.titlesize": 20, "axes.labelsize": 20,
+        "xtick.labelsize": 20, "ytick.labelsize": 20,
+    })
 
-    # (label, statistic string, Holm-adj p, survives)
+    # Vertical bars, hypotheses on the x-axis (rotated labels). The raw
+    # -log10(p) spans 1.4 to 68, which leaves a huge empty mid-band; we CAP the
+    # y-axis (broken-axis style) so bar heights stay comparable, and print the
+    # true statistic on top of each bar. Full wording of each Hn is in caption.
+    # (code, statistic value as bare number, Holm-adj p, survives). Whether each
+    # number is a z or a Spearman rho is stated in the caption (H1/H8/H2/H4 are
+    # z; H7/H10 are rho).
     H = [
-        ("H1  classical > LLM on super-rare tier", "z=17.5", 2.2e-68, True),
-        ("H8  R@1 peaks at 16–30 HPO terms",     "z=12.6", 7.8e-36, True),
-        ("H2  genotype channel lift (P3 > P2)",   "z=6.4",  3.0e-10, True),
-        ("H7  cross-agent specialty rank ρ>0.6",  "ρ=0.92", 1.6e-03, True),
-        ("H4  scaffold helps more on complex",    "z=2.6",  9.0e-03, True),
-        ("H10 faithfulness–accuracy decoupling", "single-judge ρ=0.35", 3.7e-02, False),
+        ("H1", "17.5", 2.2e-68, True),
+        ("H8", "12.6", 7.8e-36, True),
+        ("H2", "6.4", 3.0e-10, True),
+        ("H7", "0.92", 1.6e-03, True),
+        ("H4", "2.6", 9.0e-03, True),
+        ("H10", "0.35", 3.7e-02, False),
     ]
-    H = sorted(H, key=lambda h: h[2], reverse=True)  # least to most significant
-    labels = [h[0] for h in H]
+    H = sorted(H, key=lambda h: h[2])                 # most to least significant
+    codes = [h[0] for h in H]
     neglogp = [-np.log10(h[2]) for h in H]
-    y = np.arange(len(H))
+    CAP = 14.0                                        # broken-axis cap
+    shown = [min(v, CAP) for v in neglogp]
+    x = np.arange(len(H))
 
-    fig, ax = plt.subplots(figsize=(6.8, 3.6))
-    colors = [C_LLM if h[3] else "#BBBBBB" for h in H]
-    ax.hlines(y, 0, neglogp, color="#cccccc", lw=1.2, zorder=1)
-    ax.scatter(neglogp, y, s=70, color=colors, zorder=3, edgecolors="white",
-               linewidths=0.6)
-    # alpha=0.05 threshold after Holm (=-log10(0.05))
-    thr = -np.log10(0.05)
-    ax.axvline(thr, color=C_CLASSICAL, ls="--", lw=1.0, zorder=2)
-    ax.text(thr + 0.3, -0.6, r"$\alpha$=0.05", color=C_CLASSICAL, fontsize=7,
-            va="center")
-    for yi, h in zip(y, H):
-        ax.text(neglogp[yi] + 1.2, yi, h[1], va="center", fontsize=6.8,
+    fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
+    colors = [C_ACCENT if h[3] else C_CLASSICAL for h in H]
+    bars = ax.bar(x, shown, 0.5, color=colors, edgecolor=BAR_EDGE,
+                  linewidth=0.8, zorder=3)
+    # True statistic printed on top of each bar. Bars taller than CAP are
+    # truncated (their true value is printed, so no info is lost); the
+    # significance threshold and the meaning of z/rho live in the caption.
+    for xi, (v, sv, h) in enumerate(zip(neglogp, shown, H)):
+        ax.text(xi, sv + 0.3, h[1], ha="center", va="bottom", fontsize=20,
                 color="#333")
-    ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=7.2)
-    ax.set_xlabel(r"$-\log_{10}$(Holm-adjusted $p$)")
-    ax.set_xlim(0, max(neglogp) * 1.15)
-    ax.set_title("Five robust conclusions; H10 is nominally significant "
-                 "but judge-sensitive", fontsize=8.6)
-    ax.grid(axis="x", alpha=0.4, zorder=0)
+    ax.set_xticks(x)
+    ax.set_xticklabels(codes, rotation=0, fontsize=20)
+    ax.set_xlabel("Pre-registered hypothesis")
+    ax.set_ylabel(r"$-\log_{10}$(Holm-adj. $p$)")
+    ax.set_ylim(0, CAP + 1.5)
+    ax.set_xlim(-0.6, len(H) - 0.4)
+    ax.grid(axis="y", zorder=0)
     despine(ax)
-    # H10 caveat, placed next to the H10 row (y=0, the least-significant / grey point)
-    ax.annotate("H10 exploratory\n(judge-dependent)", xy=(neglogp[0], 0),
-                xytext=(max(neglogp) * 0.32, 0.55), fontsize=6.2, style="italic",
-                color="#888", va="center",
-                arrowprops=dict(arrowstyle="->", color="#bbb", lw=0.7))
     fig.tight_layout()
     fig.savefig(FIG / "figM6_hypotheses.png")
     plt.close(fig)
@@ -415,13 +728,13 @@ def figA_contamination():
     for yi, r in zip(y, rows):
         ax.text(r[1] + (0.012 if r[1] >= 0 else -0.012), yi,
                 f"{r[1]:.3f} (n={r[2]})", va="center",
-                ha="left" if r[1] >= 0 else "right", fontsize=6.6, color="#333")
+                ha="left" if r[1] >= 0 else "right", fontsize=15, color="#333")
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=7.4)
+    ax.set_yticklabels(labels, fontsize=15)
     ax.set_xlabel("Spearman ρ (log pre-cutoff PubMed mentions vs. per-disease R@1)")
     ax.set_xlim(-0.32, 0.55)
     ax.set_title("Literature-frequency audit: LLM ρ≈0.3; classical controls "
-                 "near zero", fontsize=8.4)
+                 "near zero", fontsize=15)
     ax.grid(axis="x", alpha=0.4, zorder=0)
     despine(ax)
     fig.tight_layout()
@@ -465,12 +778,12 @@ def figA_specialty():
     ax.scatter([], [], marker="D", s=46, color=C_CLASSICAL,
                label="classical baseline (where it inverts)")
     ax.set_yticks(y)
-    ax.set_yticklabels([s[0] for s in specs], fontsize=7.4)
+    ax.set_yticklabels([s[0] for s in specs], fontsize=15)
     ax.set_xlabel("R@1 by modal HPO organ system")
     ax.set_xlim(0, 0.62)
     ax.set_title("Shared cross-agent specialty blind spots (H7); classical "
-                 "inverts on nervous/head-neck", fontsize=8.2)
-    ax.legend(loc="lower right", fontsize=6.8)
+                 "inverts on nervous/head-neck", fontsize=15)
+    ax.legend(loc="lower right", fontsize=15)
     ax.grid(axis="x", alpha=0.4, zorder=0)
     despine(ax)
     fig.tight_layout()
