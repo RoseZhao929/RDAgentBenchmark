@@ -25,7 +25,7 @@ def main() -> int:
         keep: list[int] = []
         seen: set[str] = set()
         for index, prediction in enumerate(predictions):
-            normalized = str(prediction).strip().casefold()
+            normalized = " ".join(str(prediction).split()).casefold()
             if normalized in seen:
                 changed += 1
                 continue
