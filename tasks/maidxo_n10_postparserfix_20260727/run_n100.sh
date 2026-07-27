@@ -124,6 +124,9 @@ for spec in "${CELLS[@]}"; do
   fi
   log="$LOG_DIR/${id}.log"
   echo "[$(date -u +%FT%TZ)] launching $id N=100" | tee -a "$log"
+  # Parser errors are held terminal until the monitor classifies them.
+  # Infrastructure/parser bugs are removed explicitly before a bounded
+  # retry; genuine model abstentions must never be automatically resampled.
   MAIDXO_MODEL_OVERRIDE="$gateway_model" \
     python3 scripts/phase4a_runner.py \
       --dataset "$dataset" \
@@ -132,7 +135,7 @@ for spec in "${CELLS[@]}"; do
       --n 100 \
       --out "$OUT_DIR/$filename" \
       --concurrency "${CELL_CONCURRENCY:-2}" \
-      --resume-statuses "ok,skipped" \
+      --resume-statuses "ok,skipped,parser_error" \
       --max-attempts-per-case 2 \
       --timeout_s 900 \
       >>"$log" 2>&1 &
