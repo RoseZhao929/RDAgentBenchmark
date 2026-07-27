@@ -55,15 +55,31 @@ def load_rarearena_rds(n=100, seed=42):
     return cases[:n]
 
 
-def load_rarebench_stratified(n_per_split=25, seed=42):
+def load_rarebench_stratified(n=100, seed=42, n_per_split=None):
+    """Load an exact-size, prefix-stable stratified RareBench cohort.
+
+    The legacy N=100 cohort shuffled each of the four splits with seed 42 and
+    took 25 from each. Preserve that exact case set, but interleave the split
+    buckets so N=2 and N=10 are balanced prefixes of the same N=100 cohort.
+    ``n_per_split`` remains for audit callers that need the legacy grouped
+    ordering.
+    """
     from harness.ingest import ingest_rarebench
-    out = []
+    buckets = []
+    width = n_per_split if n_per_split is not None else max(25, (n + 3) // 4)
     for split in ("RAMEDIS", "LIRICAL", "MME", "HMS"):
         cases = list(ingest_rarebench(f"data/rarebench_hf/data_unzipped/data/{split}.jsonl", split))
         rng = random.Random(seed)
         rng.shuffle(cases)
-        out.extend(cases[:n_per_split])
-    return out
+        buckets.append(cases[:width])
+    if n_per_split is not None:
+        return [case for bucket in buckets for case in bucket]
+    interleaved = []
+    for index in range(width):
+        for bucket in buckets:
+            if index < len(bucket):
+                interleaved.append(bucket[index])
+    return interleaved[:n]
 
 
 def load_mimic_diverse(n=100):
@@ -253,7 +269,18 @@ NO_HPO_DATASETS = {"rarearena_rds", "mimic_diverse", "mimic_note", "mimic_note_l
 HPO_ONLY_AGENTS = {"vc_rdagent", "lirical"}
 
 
-def run(dataset, agent, backbone, n, out_path, timeout_s=None, reasoning_on=False, concurrency=1):
+def run(
+    dataset,
+    agent,
+    backbone,
+    n,
+    out_path,
+    timeout_s=None,
+    reasoning_on=False,
+    concurrency=1,
+    resume_statuses=("ok", "skipped"),
+    max_attempts_per_case=None,
+):
     load_env()
     print(f"[p4a] dataset={dataset} agent={agent} backbone={backbone} n={n}"
           f"{' reasoning_ON' if reasoning_on else ''} concurrency={concurrency}", flush=True)
@@ -264,7 +291,7 @@ def run(dataset, agent, backbone, n, out_path, timeout_s=None, reasoning_on=Fals
     if agent in HPO_ONLY_AGENTS and dataset in NO_HPO_DATASETS:
         print(f"  → {agent} requires HPO input; {dataset} has none, skip", flush=True)
         return
-    cases = DATASETS[dataset](n=n) if dataset != "rarebench" else load_rarebench_stratified(n_per_split=n//4)
+    cases = DATASETS[dataset](n=n)
     print(f"  loaded {len(cases)} cases", flush=True)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -275,15 +302,25 @@ def run(dataset, agent, backbone, n, out_path, timeout_s=None, reasoning_on=Fals
     # that are already in it. Enables N=100 → N=500 scaling without
     # re-running cases 0-99.
     already_done = set()
+    attempt_counts = {}
     if out_path.exists():
         with out_path.open() as f:
             for line in f:
                 try:
                     r = json.loads(line)
-                    if r.get("status") in ("ok", "skipped"):
-                        already_done.add(r.get("case_id"))
+                    case_id = r.get("case_id")
+                    if case_id is not None:
+                        attempt_counts[case_id] = attempt_counts.get(case_id, 0) + 1
+                    if r.get("status") in resume_statuses:
+                        already_done.add(case_id)
                 except Exception:
                     continue
+        if max_attempts_per_case is not None:
+            already_done.update(
+                case_id
+                for case_id, attempts in attempt_counts.items()
+                if attempts >= max_attempts_per_case
+            )
         print(f"  RESUME: {len(already_done)} cases already done in {out_path.name}", flush=True)
 
     logger = JsonlPredictionLogger(out_path)
@@ -304,7 +341,23 @@ def run(dataset, agent, backbone, n, out_path, timeout_s=None, reasoning_on=Fals
         try:
             log = adapter.predict(case, pillar="P2_phenotype_ddx", eval_mode="gold_hpo", run_id=run_id)
         except Exception as e:
+            # Never let a top-level adapter exception disappear from the
+            # attempted-denominator audit trail.  A missing row is ambiguous
+            # (not launched vs. crashed) and prevents the supervisor from
+            # applying a bounded retry policy.
+            failure_log = adapter._new_log(
+                case, "P2_phenotype_ddx", "gold_hpo", run_id
+            )
+            failure_log = adapter._finalize_log(
+                failure_log,
+                ranked_predictions=[],
+                status="agent_error",
+                error_message=(
+                    f"phase4a runner caught {type(e).__name__}: {str(e)[:1000]}"
+                ),
+            )
             with lock:
+                logger.write(failure_log)
                 st["total"] += 1
                 if st["total"] % 10 == 0:
                     print(f"  [{st['total']}/{ntodo}] EXC: {type(e).__name__}: {str(e)[:80]}", flush=True)
@@ -343,7 +396,26 @@ if __name__ == "__main__":
     p.add_argument("--concurrency", type=int, default=1,
                    help="process N cases in parallel via a thread pool (cases are "
                         "independent; I/O-bound on LLM/subprocess). Default 1 = serial.")
+    p.add_argument(
+        "--resume-statuses",
+        default="ok,skipped",
+        help=(
+            "comma-separated receipt statuses treated as terminal on resume "
+            "(default: ok,skipped). For attempted-denominator pilots, include "
+            "parser_error to avoid repeating a completed but unparseable call."
+        ),
+    )
+    p.add_argument(
+        "--max-attempts-per-case",
+        type=int,
+        default=None,
+        help="optional retry ceiling across resumed receipts for each case_id",
+    )
     args = p.parse_args()
+    resume_statuses = tuple(
+        status.strip() for status in args.resume_statuses.split(",") if status.strip()
+    )
     run(args.dataset, args.agent, args.backbone, args.n, Path(args.out),
         timeout_s=args.timeout_s, reasoning_on=args.reasoning_on,
-        concurrency=args.concurrency)
+        concurrency=args.concurrency, resume_statuses=resume_statuses,
+        max_attempts_per_case=args.max_attempts_per_case)

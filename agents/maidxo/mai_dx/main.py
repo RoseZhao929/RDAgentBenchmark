@@ -94,6 +94,76 @@ class AgentRole(Enum):
     JUDGE = "Judge"
 
 
+def _tool_aware_parse_llm_output(response: Any) -> Any:
+    """Preserve assistant tool calls discarded by current Swarms.
+
+    Swarms' bundled ``Agent.parse_llm_output`` returns only
+    ``choices[0].message.content`` for dictionary responses. OpenAI-compatible
+    tool calls legitimately have empty content and carry their payload in
+    ``message.tool_calls``. Returning that list keeps the function arguments
+    available to MAI-DxO's schema-aware decoder.
+    """
+    if isinstance(response, BaseModel):
+        response = response.model_dump()
+    if isinstance(response, dict):
+        if "choices" not in response:
+            return json.dumps(response)
+        choices = response.get("choices") or []
+        if not choices:
+            return ""
+        choice = choices[0]
+        if isinstance(choice, BaseModel):
+            choice = choice.model_dump()
+        message = choice.get("message") or {}
+        if isinstance(message, BaseModel):
+            message = message.model_dump()
+        tool_calls = message.get("tool_calls") or []
+        if tool_calls:
+            return [
+                item.model_dump() if isinstance(item, BaseModel) else item
+                for item in tool_calls
+            ]
+        return message.get("content") or ""
+    if (
+        isinstance(response, list)
+        and response
+        and isinstance(response[0], BaseModel)
+    ):
+        return [item.model_dump() for item in response]
+    return response
+
+
+def _preserve_reasoning_tool_calls(agent: Any) -> None:
+    """Fix Swarms' tool-output loss paths for one structured agent."""
+    llm = agent.llm
+    original_reasoning_output = llm.output_for_reasoning
+    original_tools_output = llm.output_for_tools
+
+    def tool_aware_tools_output(response: Any) -> Any:
+        choices = getattr(response, "choices", None) or []
+        message = getattr(choices[0], "message", None) if choices else None
+        if message is not None and (
+            getattr(message, "tool_calls", None) or []
+        ):
+            return original_tools_output(response)
+        # Some providers ignore tool_choice=auto and return JSON/text content.
+        # Swarms' stock output_for_tools returns None in that case.
+        return getattr(message, "content", None) or ""
+
+    def tool_aware_reasoning_output(response: Any) -> Any:
+        choices = getattr(response, "choices", None) or []
+        message = getattr(choices[0], "message", None) if choices else None
+        if message is not None and (
+            getattr(message, "tool_calls", None) or []
+        ):
+            return llm.output_for_tools(response)
+        return original_reasoning_output(response)
+
+    llm.output_for_tools = tool_aware_tools_output
+    llm.output_for_reasoning = tool_aware_reasoning_output
+    llm.tool_choice = "required"
+
+
 @dataclass
 class CaseState:
     """Structured state management for diagnostic process - addresses Category 2.1"""
@@ -105,6 +175,9 @@ class CaseState:
     cumulative_cost: int = 0
     iteration: int = 0
     last_actions: List['Action'] = field(default_factory=list)  # For stagnation detection
+    # Audit/debug evidence for structured-output compatibility. This is kept
+    # per case and returned by the harness adapter, never shared across cases.
+    hypothesis_response_debug: List[Dict[str, str]] = field(default_factory=list)
     
     def add_evidence(self, evidence: str):
         """Add new evidence to the case"""
@@ -293,6 +366,7 @@ class MaiDxOrchestrator:
         enable_budget_tracking: bool = False,
         request_delay: float = 8.0,  # seconds to wait between model calls to mitigate rate-limits
         reasoning_effort: "str | None" = None,  # 2026-05-19: minimal for GPT-5
+        llm_route_model_name: "str | None" = None,
     ):
         """
         Initializes the MAI-DxO system with improved architecture.
@@ -307,6 +381,7 @@ class MaiDxOrchestrator:
             request_delay (float): Seconds to wait between model calls to mitigate rate-limits.
         """
         self.model_name = model_name
+        self.llm_route_model_name = llm_route_model_name or model_name
         self.max_iterations = max_iterations
         self.initial_budget = initial_budget
         self.mode = mode
@@ -375,6 +450,12 @@ class MaiDxOrchestrator:
         }
 
         self._init_agents()
+        # Capability checks must use the canonical benchmark/LiteLLM model ID,
+        # while an OpenAI-compatible gateway may require a different public
+        # route ID. Swap only the low-level client's route after Agent setup.
+        if self.llm_route_model_name != self.model_name:
+            for agent in self.agents.values():
+                agent.llm.model_name = self.llm_route_model_name
         logger.info(
             f"🏥 MAI Diagnostic Orchestrator initialized successfully in '{mode}' mode with budget ${initial_budget:,}"
         )
@@ -527,12 +608,25 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    # MAI-DxO already supplies the complete case context and
+                    # runs one loop per specialist. Swarms' implicit context
+                    # compressor adds an unrelated model call and, for routed
+                    # gateway models, can bypass the configured endpoint.
+                    context_compression=False,
                     tools_list_dictionary=[consensus_tool],  # swarms expects tools_list_dictionary
-                    tool_choice="auto",  # Let the model choose to use the tool
+                    tool_choice="required",
+                    # Preserve the message/tool-call envelopes. ``final``
+                    # returns only message.content, which is empty for a valid
+                    # assistant tool call in current Swarms.
+                    output_type="dict",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
                 )
+                self.agents[role].parse_llm_output = (
+                    _tool_aware_parse_llm_output
+                )
+                _preserve_reasoning_tool_calls(self.agents[role])
             elif role == AgentRole.HYPOTHESIS:
                 # Use function calling for hypothesis agent to ensure structured differential
                 self.agents[role] = Agent(
@@ -540,12 +634,18 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    context_compression=False,
                     tools_list_dictionary=[hypothesis_tool],
-                    tool_choice="auto",
+                    tool_choice="required",
+                    output_type="dict",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
                 )
+                self.agents[role].parse_llm_output = (
+                    _tool_aware_parse_llm_output
+                )
+                _preserve_reasoning_tool_calls(self.agents[role])
             else:
                 # Regular agents without function calling
                 self.agents[role] = Agent(
@@ -553,6 +653,7 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    context_compression=False,
                     output_type="str",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
@@ -1397,6 +1498,8 @@ CURRENT STATE:
 
         except Exception as e:
             logger.error(f"Error during panel deliberation: {e}")
+            if "FATAL_LLM_CALL:" in str(e):
+                raise
             # Fallback action
             return Action(
                 action_type="ask",
@@ -1435,10 +1538,18 @@ CURRENT STATE:
     
     def _update_differential_from_hypothesis(self, case_state: CaseState, hypothesis_response):
         """Extract and update differential diagnosis from Dr. Hypothesis analysis - now supports both function calls and text"""
+        case_state.hypothesis_response_debug.append(
+            {
+                "type": f"{type(hypothesis_response).__module__}.{type(hypothesis_response).__name__}",
+                "content": str(hypothesis_response)[:20000],
+            }
+        )
         try:
             # Try to extract structured data from function call first
-            if hasattr(hypothesis_response, '__dict__') or isinstance(hypothesis_response, dict):
-                structured_data = self._extract_function_call_output(hypothesis_response)
+            if hypothesis_response is not None:
+                structured_data = self._extract_function_call_output(
+                    hypothesis_response, expected_schema="hypothesis"
+                )
                 
                 # Validate the structured data using the HypothesisArguments schema
                 try:
@@ -2008,6 +2119,7 @@ CURRENT STATE:
                 system_prompt=aggregator_prompt,
                 model_name=self.model_name,
                 max_loops=1,
+                context_compression=False,
                 print_on=True,  # Enable printing for aggregator agent
                 **_agg_kwargs,
             )
@@ -2129,7 +2241,20 @@ CURRENT STATE:
             time.sleep(current_delay)
 
             try:
-                return agent.run(enhanced_prompt)
+                response = agent.run(enhanced_prompt)
+                response_text = str(response or "").strip()
+                # Current Swarms catches provider/auth failures internally and
+                # can return the last user prompt rather than raising. That is
+                # not a model response and must abort the case.
+                if (
+                    not response_text
+                    or response_text == enhanced_prompt.strip()
+                ):
+                    raise RuntimeError(
+                        "FATAL_LLM_CALL: Agent.run returned no assistant/tool "
+                        "response (empty or prompt echo)"
+                    )
+                return response
             except Exception as e:
                 err_msg = str(e).lower()
                 if "rate_limit" in err_msg or "ratelimiterror" in err_msg or "429" in str(e):
@@ -2190,7 +2315,7 @@ CURRENT STATE:
             "reasoning": "Fallback generated due to JSON parsing failure.",
         }
 
-    def _extract_function_call_output(self, agent_response) -> Dict[str, Any]:
+    def _extract_function_call_output_legacy(self, agent_response) -> Dict[str, Any]:
         """Extract structured output from agent function call response.
         
         This method handles the swarms Agent response format when using function calling.
@@ -2290,6 +2415,111 @@ CURRENT STATE:
             "action_type": "ask",
             "content": "Could you please provide more information to help guide the next diagnostic step?",
             "reasoning": "Fallback action due to function call parsing error."
+        }
+
+    def _extract_function_call_output(
+        self, agent_response, expected_schema: str = "consensus"
+    ) -> Dict[str, Any]:
+        """Decode Hypothesis or Consensus tool output across Swarms formats.
+
+        Swarms may return a dict/object, raw JSON arguments, a tool-call
+        envelope, or a transcript containing nested JSON. The former
+        implementation's string branch recognized only the Consensus schema,
+        which discarded every string-form Hypothesis differential.
+        """
+        import json
+
+        def is_expected(value: Any) -> bool:
+            if not isinstance(value, dict):
+                return False
+            if expected_schema == "hypothesis":
+                return isinstance(value.get("differential_diagnoses"), list)
+            return all(
+                key in value for key in ("action_type", "content", "reasoning")
+            )
+
+        def decode(value: Any) -> Optional[Dict[str, Any]]:
+            if is_expected(value):
+                return value
+            if isinstance(value, str):
+                text = value.strip()
+                try:
+                    parsed = json.loads(text)
+                except Exception:
+                    parsed = None
+                if parsed is not None:
+                    found = decode(parsed)
+                    if found:
+                        return found
+
+                # Parse balanced nested JSON from transcripts. A lazy regex
+                # truncates at the first inner "}" and corrupts differential
+                # arrays, so use JSONDecoder.raw_decode at each object start.
+                decoder = json.JSONDecoder()
+                for offset, char in enumerate(text):
+                    if char != "{":
+                        continue
+                    try:
+                        parsed, _ = decoder.raw_decode(text[offset:])
+                    except json.JSONDecodeError:
+                        continue
+                    found = decode(parsed)
+                    if found:
+                        return found
+                return None
+            if isinstance(value, dict):
+                for key in ("arguments", "content", "function_call", "function"):
+                    if key in value:
+                        found = decode(value[key])
+                        if found:
+                            return found
+                for tool_call in value.get("tool_calls") or []:
+                    found = decode(tool_call)
+                    if found:
+                        return found
+                return None
+            if isinstance(value, (list, tuple)):
+                for item in value:
+                    found = decode(item)
+                    if found:
+                        return found
+                return None
+            if value is not None and hasattr(value, "__dict__"):
+                found = decode(vars(value))
+                if found:
+                    return found
+                for attr in ("tool_calls", "function_call", "content", "arguments"):
+                    if hasattr(value, attr):
+                        found = decode(getattr(value, attr))
+                        if found:
+                            return found
+            return None
+
+        try:
+            decoded = decode(agent_response)
+            if decoded:
+                return decoded
+            logger.warning(
+                "Could not extract %s function output from response type: %s",
+                expected_schema,
+                type(agent_response),
+            )
+            logger.debug(f"Response content: {str(agent_response)[:500]}...")
+        except Exception as e:
+            logger.error(
+                f"Error extracting {expected_schema} function call output: {e}"
+            )
+            logger.debug(f"Response: {str(agent_response)[:500]}...")
+
+        if expected_schema == "hypothesis":
+            return {}
+        return {
+            "action_type": "ask",
+            "content": (
+                "Could you please provide more information to help guide the "
+                "next diagnostic step?"
+            ),
+            "reasoning": "Fallback action due to function call parsing error.",
         }
 
     def _get_consensus_with_retry(self, consensus_prompt: str, max_retries: int = 2) -> Dict[str, Any]:
