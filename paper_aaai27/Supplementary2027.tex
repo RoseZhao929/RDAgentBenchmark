@@ -1,0 +1,487 @@
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{newfloat}
+\usepackage{listings}
+\usepackage[htt]{hyphenat}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{booktabs}
+
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off}
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,
+	aboveskip=0pt,belowskip=0pt,
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+\setcounter{secnumdepth}{2}
+
+% Appendix-style section labels (A, B, C, ...)
+\renewcommand{\thesection}{\Alph{section}}
+
+\title{Supplementary Material\\
+RareAgentBench: A Multi-Pillar, Contamination-Aware Benchmark for Rare-Disease Diagnostic Agents}
+\author{}
+\affiliations{}
+
+\begin{document}
+\maketitle
+
+\noindent
+This document is the supplementary material for \emph{RareAgentBench}. It is
+self-contained: each appendix restates the setup it needs, so it can be read
+without the main paper. It documents (A)~the data layers and their construction,
+(B)~the backbone configurations, (C)~the agent fairness matrix and adapter
+patches, (D)~per-baseline reproduction against published claims,
+(E)~the temporal-holdout protocol, (F)~the pre-registered hypotheses and their
+family-wise test results, (G)~the full cost accounting, (H)~a de-leaked
+MIMIC-IV note probe with a 24-cell agent matrix, and (I)~bootstrap and
+reproducibility notes. Unless stated otherwise, the primary metric is
+variant-aware Recall@1 (R@1) with an \emph{attempted} denominator: every empty
+output, parser error, and timeout is counted as a miss, never dropped. Disease
+predictions are matched by exact identifier, then accepted OMIM--ORPHA mappings,
+then Orphanet name/synonym match with a RapidFuzz threshold of 90.
+
+% ======================================================================
+\section{Data Layers and Construction}
+\label{app:data}
+
+RareAgentBench draws 84,990 case instances from five sources, organized into
+four layers that vary evidence structure, clinical realism, scale, and
+contamination risk. Table~\ref{tab:datalayers} summarizes the layers as
+evaluated in this version.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\caption{Data layers. ``Input'' is the evidence an agent receives; ``Gold'' is
+the reference label source. Counts are released-pool sizes; per-experiment
+evaluated $N$ is reported per cell in the main paper.}
+\label{tab:datalayers}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Layer & Source (count) & Input & Gold \\
+\midrule
+L1 & Phenopacket Store (10,051) & curated HPO $+$ variants & OMIM/ORPHA \\
+L1 & RareBench-HF (1,122) & sparse HPO list & ORPHA \\
+L2 & MIMIC-IV slice (956) & structured EHR / ICD-derived & ICD$\rightarrow$ORPHA \\
+L3 & RareArena RDS (72,661) & free-text vignette & ORPHA \\
+L4 & PMC-OA holdout (200) & post-cutoff case text & ORPHA (adjudicated) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{L1 Phenotype backbone.}
+Phenopacket Store contributes standardized cases with curated HPO terms and,
+where available, structured variants; RareBench-HF contributes 1,122 cases for
+comparability with established rare-disease LLM evaluation. These are the
+HPO-input layers on which classical/offline baselines (LIRICAL, VC-RDAgent) can
+run, since those systems require a structured phenotype list.
+
+\paragraph{L2 Real-EHR noise.}
+A rare-disease slice of MIMIC-IV v3.1. Candidate admissions are identified
+through ICD-10--ORPHA mappings, excluding Orphadata categories marked non-rare
+in Europe. Because MIMIC-IV is credentialed PhysioNet data under a Data Use
+Agreement, no row-level text or identifiers are redistributed; only aggregate
+metrics and hashes leave the authorized machine. A de-leaked note-based probe
+built from this source is documented in Appendix~\ref{app:mimicnote}.
+
+\paragraph{L3 Free-text scale.}
+RareArena contributes 49,760 screening and 22,901 confirmation task instances
+derived from PubMed Central case reports. We count them as task instances (not
+unique patients) because the two tasks expose different evidence views.
+
+\paragraph{L4 Temporal holdout.}
+See Appendix~\ref{app:holdout} for the full post-cutoff extraction and
+adjudication protocol.
+
+% ======================================================================
+\section{Backbone Configurations}
+\label{app:backbones}
+
+Every LLM-based system is evaluated, where technically applicable, with four
+backbones spanning the observed cost--capability range. Requests are routed
+through a common OpenAI-compatible gateway to give a single API surface,
+billing record, and generation log. We use dated model identifiers, not moving
+``latest'' aliases. Table~\ref{tab:backbones} lists the configurations.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\caption{Backbones evaluated, with pricing and reasoning configuration. Primary
+comparisons use the lowest reasoning setting each endpoint reliably supports, to
+reduce backbone-side test-time compute as a confound when measuring scaffold
+effects and to keep multi-call evaluation tractable.}
+\label{tab:backbones}
+\begin{tabular}{@{}lllr@{}}
+\toprule
+Role & Model & Price (\$/M in\,/\,out) & Reasoning \\
+\midrule
+Open-cheap & DeepSeek V4-Flash & 0.28 / 0.42 & default light \\
+Open-frontier & DeepSeek V4-Pro & 0.55 / 2.19 & disabled \\
+Mid (primary) & Gemini 3 Flash & 0.50 / 3.00 & thinking off \\
+Frontier & GPT-5 & 1.25 / 10.00 & \texttt{effort=minimal} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Settings held constant across all (agent, backbone) cells: temperature 0.0;
+seed 42 where the SDK exposes one; per-call timeout 600--1200\,s; a
+retry policy with exponential backoff capped at three attempts; and
+\texttt{max\_tokens} at each adapter's published default (2K--6K).
+
+\paragraph{Constrained-reasoning regime.}
+Pilot compatibility tests showed that hidden reasoning could exhaust the output
+budget of short-turn adapters, producing empty content, parser errors, or
+timeouts. For the frozen primary runs, GPT-5 uses
+\texttt{reasoning\_effort=minimal} and V4-Pro uses reasoning disabled---the only
+tested configurations that consistently returned final-answer content within
+adapter limits. All conclusions about GPT-5 and V4-Pro apply specifically to
+this constrained-reasoning regime; a reasoning-enabled single-LLM control is
+examined in Appendix~\ref{app:hypotheses} (H6). Failure handling is fixed before
+aggregation: empty outputs, parser errors, and timeouts count as unsuccessful
+attempts and remain in the denominator; a cell is marked unavailable only when
+the adapter--backbone pair cannot execute the required interaction protocol.
+
+% ======================================================================
+\section{Agent Fairness Matrix and Adapters}
+\label{app:fairness}
+
+The eight diagnostic systems have mutually incompatible dependencies. Each runs
+in an isolated runtime behind a common adapter interface that receives a
+canonical case, exposes only the evidence permitted by the current capability
+and pass, converts it to the system's native input, invokes the isolated
+process, and returns a prediction log with ranked diagnoses, extracted HPO
+terms, traces, token usage, cost, latency, and a status code. Adapter
+modifications are restricted to transport, input projection, output parsing, and
+instrumentation---never to prompts, tool-selection policies, stopping rules,
+retrieval corpora, or orchestration logic. Table~\ref{tab:fairness} records each
+system's native input, adapter strategy, per-case LLM calls, and license.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Agent fairness matrix. ``Calls/case'' is the number of backbone
+invocations per case. Any deviation forced by an unavailable endpoint is
+declared here; no prompts or orchestration logic were altered.}
+\label{tab:fairness}
+\begin{tabular}{@{}lllcl@{}}
+\toprule
+System & Native input & Adapter strategy & Calls/case & License \\
+\midrule
+MDAgents & MCQA prompt & rank-top-5 reformulation; regex-parse moderator; remove hard-coded model & 7--47 & None \\
+MedAgents & MCQA prompt & bypass MCQA runner; 3 experts + Chief synthesis & $\sim$10 & None \\
+AgentClinic & OSCE dialogue & synthetic OSCE loop; 2nd call for ranks 2--5 & $\sim$45 & MIT \\
+MAI-DxO & Panel orchestration & router + variant factory; $\geq$2 iterations & 10--50 & MIT port \\
+DeepRare & Phenopacket + text & local-embedding, no-web environment & 20--40 & CC BY-NC 4.0 \\
+RDMA & EHR free-text & entity extraction; Pillar 1 only & 1--3 & None \\
+VC-RDAgent & HPO list & offline Stage 1 (IC + Poincar\'e + freq-LR); Stage 2 opt-in & 0 (Stage 1) & None \\
+LIRICAL & GA4GH phenopacket & subprocess \texttt{lirical phenopacket}; parse TSV & 0 & Apache 2.0 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Audit properties and state isolation.}
+Every run receipt records the canonical case identifier, adapter version, model
+identifier, configuration hash, subprocess command, random seed, and
+termination status. A common logging layer aggregates per-call token usage,
+latency, and billed cost into a case-level receipt; API costs are exact when
+returned by the gateway and are otherwise estimated from token counts and
+versioned prices (labeled accordingly, $\leq$5\% band). Process isolation
+contains dependency, parser, retrieval, and state failures within the affected
+system. Interpreter startup adds roughly 0.5--2\,s per case, measured separately
+from end-to-end latency; system-specific output directories are cleared between
+cases to prevent cross-case state leakage.
+
+\paragraph{Root-caused failure modes.}
+Two instrumentation issues were found and fixed. (1)~MAI-DxO's panel
+conversation history was not surfaced to the LLM-judge in the first pass,
+producing parse failures; the corrected pipeline captures the full transcript.
+(2)~MAI-DxO's diagnosis extractor used a greedy regex that could read a
+discharge-summary vitals line (e.g.\ ``87/35, 97\% on RA'') as a
+confidence-0.97 diagnosis and trigger an early-stop short circuit; a vitals
+filter restores normal multi-round debate. Both fixes and their replay receipts
+are versioned with the release.
+
+% ======================================================================
+\section{Per-Baseline Reproduction}
+\label{app:repro}
+
+Before integrating each system we reproduced its published headline against a
+small pilot, to confirm the adapter preserves native behavior.
+Table~\ref{tab:repro} reports the outcome. Six of nine systems reproduce within
+$\pm$5 points; the two that underperform (MAI-DxO, DeepRare-P2) do so for a
+documented input-distribution reason---both were built for narrative-rich or
+VCF-bearing inputs and are here given HPO lists or brief vignettes---rather than
+an implementation error.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Per-baseline reproduction on an $n{=}50$ pilot. ``Ours'' is our pilot
+point estimate; ``Paper'' is the originally reported figure on that system's own
+evaluation set. Discrepancies are attributed to input-distribution mismatch,
+documented per row.}
+\label{tab:repro}
+\begin{tabular}{@{}llll@{}}
+\toprule
+System & Ours (pilot) & Paper & Note \\
+\midrule
+MDAgents & R@1 0.34 & 0.31--0.39 & rank-top-5 reformulation; $\pm$5 pt \\
+MedAgents & R@1 0.36 & 0.32 & 3 experts + Chief; $\pm$5 pt \\
+AgentClinic & R@1 0.30 & 0.28 & synthetic OSCE; $\pm$5 pt \\
+MAI-DxO & R@1 0.22 & 0.45 & paper input = NEJM narratives; ours = HPO list \\
+DeepRare (P2) & R@1 0.22 & 0.71 & paper input includes VCF; P2 excludes variants \\
+DeepRare (P3) & R@1 0.42 & 0.71 & structured-variant block, web disabled \\
+RDMA & F1 0.39 & 0.42 & Pillar-1 extraction only \\
+VC-RDAgent & R@1 0.28 & 0.27 & Stage-1 offline, 0 LLM calls \\
+LIRICAL & R@1 0.40 & $\sim$0.42 & pilot; 0.47 on the full frozen matrix \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The DeepRare P2$\rightarrow$P3 lift ($+20$ points from adding a structured
+variant block) matches the same lift obtained by a plain single-LLM control
+given the same variants, which is why we report the genotype-channel benefit as
+general rather than DeepRare-specific.
+
+% ======================================================================
+\section{Temporal-Holdout Protocol}
+\label{app:holdout}
+
+The L4 holdout targets contamination by drawing cases published after the
+backbones' training cutoff. From 2,401 post-cutoff PubMed Central Open Access
+candidates we extract candidate diagnoses and phenotypes with a fixed pipeline,
+map them to Orphanet, and manually retain 200 cases satisfying four criteria:
+a definitive diagnosis; faithful phenotype extraction; verified publication
+after the prespecified cutoff; and confirmation that the target condition is
+rare. The holdout is evaluated once, under the frozen agent set, matching rules,
+and analysis plan; no holdout result is used to revise prompts, adapters,
+thresholds, or sampling.
+
+\paragraph{Difficulty-matched pre/post comparison.}
+A naive post-cutoff score is confounded by difficulty, so we build a pre-cutoff
+set with the identical pipeline (same source, query, extraction, mapping, and
+gold-verification), changing only the publication window. On the clean-gold
+subset, pooled single-pass R@1 does not drop across the cutoff; if anything it is
+marginally higher on post-cutoff cases, consistent with newer reports being
+slightly clearer. We therefore report ``no detectable post-cutoff degradation''
+after difficulty matching, rather than a claim of contamination-freeness: the
+holdout is not guaranteed disjoint from every development source, so it bounds
+contamination from a second angle rather than eliminating it.
+
+% ======================================================================
+\section{Pre-Registered Hypotheses and Family-Wise Tests}
+\label{app:hypotheses}
+
+Before temporal-holdout unblinding we froze hypotheses H1--H11, the ablation
+set, the staged sampling budget, cell-level stopping rules, primary metrics, the
+Holm--Bonferroni correction, and the LLM-judge agreement protocol. The frozen
+protocol, a timestamped repository commit, and an anonymized read-only
+registration accompany the release. Table~\ref{tab:hyp} lists the hypotheses;
+Table~\ref{tab:holm} reports the family-wise test over the testable subset.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Pre-registered hypotheses. H3/H5/H6/H9/H11 are not part of the
+confirmatory family-wise test reported in Table~\ref{tab:holm}: H3 is a
+bounded-difference (equivalence-style) check, H5/H9 require data layers deferred
+in this version (Chinese PUMCH corpus; pedigree-bearing family cases), H6 is a
+descriptive reasoning-mode ablation, and H11 was retired.}
+\label{tab:hyp}
+\begin{tabular}{@{}cll@{}}
+\toprule
+\# & Statement & Test \\
+\midrule
+H1 & classical $>$ scaffolded LLM on super-rare ($<$1/$10^6$) & 2-prop $z$ \\
+H2 & genotype channel (P3) $\geq +10$ pp over P2 & paired $z$ \\
+H3 & post- vs pre-cutoff R@1 differ by $\leq$5 pp & diff of props \\
+H4 & scaffolding helps more on $\geq$4-organ vs $\leq$1-organ cases & diff-in-diff \\
+H5 & Chinese (PUMCH) R@1 $\geq$5 pp below English (deferred) & paired $z$ \\
+H6 & GPT-5 \texttt{medium} better calibrated than \texttt{minimal} & paired ECE \\
+H7 & cross-agent specialty rank $\rho \geq 0.6$ & Spearman $\rho$ \\
+H8 & inverted-U: R@1 at 16--30 HPO terms $>$ at $\leq$5 & 2-prop $z$ \\
+H9 & family-aware $\geq +10$ pp on AR/XL cases (deferred) & paired $z$ \\
+H10 & faithfulness-- and accuracy-rank decouple ($\rho<0.5$) & Spearman $\rho$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Holm--Bonferroni family-wise correction ($\alpha{=}.05$, one-sided in
+the predicted direction) over the six testable hypotheses. Statistic is a
+$z$-value for H1/H8/H2/H4 and a Spearman $\rho$ for H7/H10.}
+\label{tab:holm}
+\begin{tabular}{@{}clrc@{}}
+\toprule
+\# & Statistic & Holm-adj.\ $p$ & Survives \\
+\midrule
+H1 & $z=17.5$ & 2.2e$-$68 & yes \\
+H8 & $z=12.6$ & 7.8e$-$36 & yes \\
+H2 & $z=6.4$ & 3.0e$-$10 & yes \\
+H7 & $\rho=0.92$ & 1.6e$-$03 & yes \\
+H4 & $z=2.6$ & 9.0e$-$03 & yes \\
+H10 & $\rho=0.35$ & 3.7e$-$02 & no (exploratory) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Five of the six testable hypotheses survive the correction. H10
+(faithfulness--accuracy decoupling) is reported as exploratory and
+judge-dependent: on identical repaired traces the faithfulness$\leftrightarrow$
+accuracy Spearman correlation is $\rho=0.457$ under a same-family (Gemini) judge
+and $\rho=0.640$ under a cross-family (Claude) judge, straddling the
+pre-registered $\rho<0.5$ boundary. An earlier $\rho=0.098$ vs.\ $0.616$ contrast
+was a trace-capture artifact (the same-family judge had scored truncated traces)
+and is withdrawn.
+
+% ======================================================================
+\section{Cost Accounting}
+\label{app:cost}
+
+The full V1 evaluation comprises 90,046 successfully scored predictions at a
+total API cost of \$270.74 (offline baselines at \$0). Table~\ref{tab:cost}
+gives per-backbone spend. GPT-5 minimal dominates cost (60\% of total) without a
+consistent accuracy advantage; V4-Flash is more than an order of magnitude
+cheaper per case.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Cumulative cost by backbone. ``$\dagger$'' = cost estimated from token
+counts ($\leq$5\% band). Offline/classical baselines incur no API cost.}
+\label{tab:cost}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Backbone & Cells & Cases (ok) & Total \$ \\
+\midrule
+GPT-5 minimal & 15 & 20,683 & 163.50 \\
+Gemini Flash & 18 & 23,389 & 80.48 \\
+DS V4-Pro & 18 & 20,666 & 19.95 \\
+DS V4-Flash & 16 & 20,401 & 6.80 \\
+LIRICAL$^\dagger$ & 2 & 3,122 & 0.00 \\
+VC-RDAgent$^\dagger$ & 2 & 1,785 & 0.00 \\
+\midrule
+Total & 71 & 90,046 & 270.74 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ======================================================================
+\section{De-Leaked MIMIC-IV Note Probe}
+\label{app:mimicnote}
+
+The MIMIC-IV layer in its original form fed ICD-derived synthetic vignettes in
+which the ICD long-title effectively named the answer. To remove this leakage we
+built a note-based probe: the input is the \emph{presentation} portion of a
+discharge summary (chief complaint, history, exam, labs, imaging), truncated
+before any diagnosis-revealing section, with the gold disease name masked. The
+gold label remains code-derived (ICD$\rightarrow$Orphanet exact mapping), so we
+report this as a separate code-supervised probe, not part of the main
+diagnostic matrix.
+
+\paragraph{Subset construction.}
+Filtering 150,033 rare-disease admissions down to evaluable cases
+(exact-mapped gold; genuinely rare; principal diagnosis of the admission; a
+discharge summary present; prior-known disease types removed) leaves 1,255
+cases; capping at 10 per disease yields balanced evaluation subsets. The funnel
+is itself a finding: only $\sim$1,255 admissions have ``a true rare disease as
+the principal diagnosis with a usable note,'' quantifying the validity limit of
+ICD-derived gold.
+
+\paragraph{Leakage quantification (before/after).}
+Running an unscaffolded LLM on the same 416 cases twice---once on the full,
+un-truncated, un-masked note (BEFORE) and once on the de-leaked presentation
+(AFTER)---isolates the leakage. R@1 drops on all four backbones:
+V4-Pro $0.500\!\rightarrow\!0.365$ ($-27\%$), V4-Flash
+$0.553\!\rightarrow\!0.353$ ($-36\%$), GPT-5 $0.425\!\rightarrow\!0.363$
+($-15\%$), Gemini $0.452\!\rightarrow\!0.373$ ($-18\%$); confidence intervals do
+not overlap. Weaker models lose more, so leakage not only inflates absolute
+scores but compresses and reorders the model ranking---in the leaked version
+V4-Flash spuriously ``beats'' GPT-5.
+
+\paragraph{24-cell agent matrix (de-leaked).}
+On the de-leaked 416-case probe we ran six agent families across four backbones
+(Table~\ref{tab:mimicmatrix}, mean micro-R@1 over backbones). The scaffolding
+picture from the main HPO datasets replicates: the unscaffolded control ties the
+best light-coordination scaffolds (MedAgents, MDAgents) within overlapping
+intervals and far exceeds the heavier-orchestration systems, which collapse.
+This is the second dataset behind the main-paper scaffolding figure.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{5pt}
+\caption{De-leaked MIMIC-IV note probe: mean micro-R@1 over four backbones
+(denominator 416; all failures counted as misses). The MAI-DxO row uses the
+regex-fixed rerun; final scoring is unified across all cells.}
+\label{tab:mimicmatrix}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Agent & Mean R@1 \\
+\midrule
+LLM control (no scaffold) & 0.364 \\
+MDAgents & 0.367 \\
+MedAgents & 0.350 \\
+AgentClinic & 0.140 \\
+DeepRare & 0.011 \\
+MAI-DxO & 0.003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Honest boundaries.}
+Gold is code-derived, not independent clinical adjudication; note coverage is
+partial, so a selection bias between admissions with and without a discharge
+summary cannot be excluded; and an organ-system stratification here is
+disease-level (from the gold disease's Orphanet phenotype list), not
+case-level, so it aligns structurally but not identically with the other
+datasets. These are why the probe is reported separately from the main matrix.
+
+% ======================================================================
+\section{Bootstrap and Reproducibility Notes}
+\label{app:repro-notes}
+
+All reported point estimates ship with bootstrap 95\% confidence intervals
+(case-level resampling; percentile method). Several small per-agent and
+per-backbone gaps fall within overlapping intervals and are not treated as
+definitive rankings. Every confirmatory cell ships a reproducibility receipt
+containing the run identifier, request identifiers when available, configuration
+hash, denominator, failure breakdown, and cost. For LLM-judge evaluation of
+free-text traces, we replay identical frozen traces across judges from different
+model families, report judge-conditioned results rather than merged scores, and
+chunk traces longer than 5,000 characters into overlapping 3,000-character
+windows with 500-character overlap to prevent silent truncation. Deterministic
+scoring is primary wherever a verifiable target exists; subjective trace scores
+are reported as exploratory and, for consequential claims, audited against a
+human-rated subset.
+
+\end{document}
