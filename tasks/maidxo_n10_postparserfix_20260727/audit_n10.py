@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the complete five-cell MAI-DxO N=10 smoke run."""
+"""Audit the complete five-cell MAI-DxO run (N=10 by default)."""
 
 from __future__ import annotations
 
@@ -71,18 +71,18 @@ def read_jsonl(path: Path) -> tuple[list[dict], list[str]]:
     return rows, errors
 
 
-def expected_ids(loader) -> list[str]:
-    return [str(case.case_id) for case in loader(n=10)]
+def expected_ids(loader, expected_n: int) -> list[str]:
+    return [str(case.case_id) for case in loader(n=expected_n)]
 
 
-def audit_cell(path: Path, loader) -> dict:
+def audit_cell(path: Path, loader, expected_n: int) -> dict:
     rows, errors = read_jsonl(path)
-    expected = expected_ids(loader)
+    expected = expected_ids(loader, expected_n)
     ids = [str(row.get("case_id")) for row in rows]
     counts = Counter(ids)
     duplicate_ids = sorted(case_id for case_id, n in counts.items() if n > 1)
-    if len(rows) != 10:
-        errors.append(f"rows={len(rows)}, expected=10")
+    if len(rows) != expected_n:
+        errors.append(f"rows={len(rows)}, expected={expected_n}")
     if duplicate_ids:
         errors.append(f"duplicate case_ids={duplicate_ids}")
     missing = sorted(set(expected) - set(ids))
@@ -93,8 +93,10 @@ def audit_cell(path: Path, loader) -> dict:
         errors.append(f"unexpected case_ids={unexpected}")
 
     statuses = Counter(str(row.get("status")) for row in rows)
-    if statuses != Counter({"ok": 10}):
-        errors.append(f"statuses={dict(statuses)}, expected={{'ok': 10}}")
+    if statuses != Counter({"ok": expected_n}):
+        errors.append(
+            f"statuses={dict(statuses)}, expected={{'ok': {expected_n}}}"
+        )
 
     row_issues: dict[str, list[str]] = {}
     for row in rows:
@@ -186,6 +188,7 @@ def main() -> int:
         ),
     )
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--expected-n", type=int, default=10)
     args = parser.parse_args()
 
     cells = {}
@@ -195,9 +198,11 @@ def main() -> int:
             if args.phase4a_dir
             else args.receipts_dir / f"{cell_id}.jsonl"
         )
-        cells[cell_id] = audit_cell(path, loader)
+        cells[cell_id] = audit_cell(path, loader, args.expected_n)
     report = {
-        "scope": "5 MAI-DxO cells x deterministic N=10",
+        "scope": (
+            f"5 MAI-DxO cells x deterministic N={args.expected_n}"
+        ),
         "cells": cells,
         "total_rows": sum(cell["rows"] for cell in cells.values()),
         "passed": all(cell["passed"] for cell in cells.values()),
