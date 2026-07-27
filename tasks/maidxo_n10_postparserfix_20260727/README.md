@@ -47,18 +47,37 @@ co-authors can verify that checkout directly:
 
 ```bash
 python3 tasks/maidxo_n10_postparserfix_20260727/audit_n10.py \
-  --phase4a-dir data/round2/phase4a
+  --phase4a-dir data/round2/phase4a \
+  --expected-n 100 \
+  --allow-model-abstentions
 ```
 
-This verifies the exact deterministic case sets, 10 unique `ok` receipts per
-cell, nonempty disease-like predictions, aligned confidence arrays, positive
-latencies, preserved raw final/differential evidence, and absence of recorded
-fatal gateway/runtime failures. The receipt `cost_usd` field is only the
-harness token-price estimate; it must not be reported as an AIHubMix billing
-receipt.
+The standard Phase 4a files now contain the completed N=100 run. This verifies
+the exact deterministic case sets, 100 unique terminal receipts per cell,
+nonempty disease-like predictions or explicit method-level abstentions,
+aligned confidence arrays, positive latencies, preserved raw evidence, and
+absence of fatal gateway/runtime failures. The receipt `cost_usd` field is
+only the harness token-price estimate; it must not be reported as an AIHubMix
+billing receipt.
 
 Known invalid attempts are kept outside `receipts/`, under
 `failed_attempts/`. They include the direct-OpenRouter 403 run, the
 pre-context-compression-routing fix V4-Flash run, and the pre-postmapping noise
 filter run. They are audit evidence only and must never be concatenated into
 benchmark results.
+
+## N=100 continuation
+
+After the N=10 gate, resume all five standard Phase 4a files with:
+
+```bash
+CELL_CONCURRENCY=4 \
+  bash tasks/maidxo_n10_postparserfix_20260727/run_n100.sh
+```
+
+`run_n100.sh` performs the two-model gateway preflight and skips existing
+`ok`, `skipped`, and held `parser_error` receipts. The monitor must classify a
+non-`ok` row before any retry: explicit model abstentions remain terminal
+misses, while infrastructure failures can be removed and retried within the
+bounded attempt policy. Use `monitor_n100.py` during the run and
+`compact_terminal_receipts.py` after interrupted supervisor restarts.
