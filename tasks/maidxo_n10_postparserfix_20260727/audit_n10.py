@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the complete five-cell MAI-DxO N=10 smoke run."""
+"""Audit the complete five-cell MAI-DxO run (N=10 by default)."""
 
 from __future__ import annotations
 
@@ -51,6 +51,24 @@ FATAL_MARKERS = (
 )
 
 
+def is_model_abstention(row: dict) -> bool:
+    if row.get("status") != "parser_error" or row.get("ranked_predictions"):
+        return False
+    extra = row.get("extra") or {}
+    if extra.get("maidxo_fatal_runtime_hits"):
+        return False
+    raw = str(extra.get("maidxo_raw_final_diagnosis") or "").strip().casefold()
+    return raw.startswith(
+        (
+            "unable to establish",
+            "unable to determine",
+            "unable to identify",
+            "cannot establish",
+            "no diagnosis",
+        )
+    )
+
+
 def read_jsonl(path: Path) -> tuple[list[dict], list[str]]:
     rows: list[dict] = []
     errors: list[str] = []
@@ -71,18 +89,23 @@ def read_jsonl(path: Path) -> tuple[list[dict], list[str]]:
     return rows, errors
 
 
-def expected_ids(loader) -> list[str]:
-    return [str(case.case_id) for case in loader(n=10)]
+def expected_ids(loader, expected_n: int) -> list[str]:
+    return [str(case.case_id) for case in loader(n=expected_n)]
 
 
-def audit_cell(path: Path, loader) -> dict:
+def audit_cell(
+    path: Path,
+    loader,
+    expected_n: int,
+    allow_model_abstentions: bool,
+) -> dict:
     rows, errors = read_jsonl(path)
-    expected = expected_ids(loader)
+    expected = expected_ids(loader, expected_n)
     ids = [str(row.get("case_id")) for row in rows]
     counts = Counter(ids)
     duplicate_ids = sorted(case_id for case_id, n in counts.items() if n > 1)
-    if len(rows) != 10:
-        errors.append(f"rows={len(rows)}, expected=10")
+    if len(rows) != expected_n:
+        errors.append(f"rows={len(rows)}, expected={expected_n}")
     if duplicate_ids:
         errors.append(f"duplicate case_ids={duplicate_ids}")
     missing = sorted(set(expected) - set(ids))
@@ -93,19 +116,42 @@ def audit_cell(path: Path, loader) -> dict:
         errors.append(f"unexpected case_ids={unexpected}")
 
     statuses = Counter(str(row.get("status")) for row in rows)
-    if statuses != Counter({"ok": 10}):
-        errors.append(f"statuses={dict(statuses)}, expected={{'ok': 10}}")
+    abstentions = {
+        str(row.get("case_id")): str(
+            (row.get("extra") or {}).get("maidxo_raw_final_diagnosis")
+        )
+        for row in rows
+        if is_model_abstention(row)
+    }
+    expected_statuses = Counter({"ok": expected_n - len(abstentions)})
+    if abstentions:
+        expected_statuses["parser_error"] = len(abstentions)
+    if (
+        statuses != expected_statuses
+        or (abstentions and not allow_model_abstentions)
+    ):
+        errors.append(
+            f"statuses={dict(statuses)}, expected={dict(expected_statuses)}, "
+            f"allow_model_abstentions={allow_model_abstentions}"
+        )
 
     row_issues: dict[str, list[str]] = {}
     for row in rows:
         case_id = str(row.get("case_id"))
         issues: list[str] = []
+        abstention = is_model_abstention(row)
         predictions = [
             str(value).strip()
             for value in (row.get("ranked_predictions") or [])
             if str(value).strip()
         ]
-        if not predictions:
+        if row.get("status") != "ok" and not (
+            allow_model_abstentions and abstention
+        ):
+            issues.append(f"status={row.get('status')}")
+        if not predictions and not (
+            allow_model_abstentions and abstention
+        ):
             issues.append("empty ranked_predictions")
         noise = [value for value in predictions if _is_noise_candidate(value)]
         if noise:
@@ -130,7 +176,9 @@ def audit_cell(path: Path, loader) -> dict:
             )
         if not extra.get("maidxo_raw_final_diagnosis"):
             issues.append("missing raw final diagnosis")
-        if not extra.get("maidxo_raw_differential"):
+        if not extra.get("maidxo_raw_differential") and not (
+            allow_model_abstentions and abstention
+        ):
             issues.append("missing raw differential")
         searchable = json.dumps(
             {
@@ -160,6 +208,7 @@ def audit_cell(path: Path, loader) -> dict:
         "expected_case_ids": expected,
         "n2_prefix_case_ids": expected[:2],
         "row_issues": row_issues,
+        "terminal_model_abstentions": abstentions,
         "total_latency_seconds": round(total_latency_ms / 1000, 3),
         "receipt_side_cost_estimate_usd": round(receipt_cost_estimate, 6),
         "passed": not errors,
@@ -186,6 +235,15 @@ def main() -> int:
         ),
     )
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--expected-n", type=int, default=10)
+    parser.add_argument(
+        "--allow-model-abstentions",
+        action="store_true",
+        help=(
+            "Accept explicit completed MAI-DxO abstentions as terminal misses. "
+            "Other parser/runtime failures still fail the audit."
+        ),
+    )
     args = parser.parse_args()
 
     cells = {}
@@ -195,9 +253,16 @@ def main() -> int:
             if args.phase4a_dir
             else args.receipts_dir / f"{cell_id}.jsonl"
         )
-        cells[cell_id] = audit_cell(path, loader)
+        cells[cell_id] = audit_cell(
+            path,
+            loader,
+            args.expected_n,
+            args.allow_model_abstentions,
+        )
     report = {
-        "scope": "5 MAI-DxO cells x deterministic N=10",
+        "scope": (
+            f"5 MAI-DxO cells x deterministic N={args.expected_n}"
+        ),
         "cells": cells,
         "total_rows": sum(cell["rows"] for cell in cells.values()),
         "passed": all(cell["passed"] for cell in cells.values()),
