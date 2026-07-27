@@ -174,6 +174,33 @@ def resolve_llm_gateway() -> tuple[str, str]:
     return sdk_base, api_key
 
 
+# 2026-07-27 — canonical backbone ids carry OpenRouter's *dated* aliases (which
+# OpenRouter itself resolved from the bare preview id and echoed back in
+# response.model, see harness/logging/openrouter_wrapper.py). The litellm
+# gateway we now route through only publishes the *undated* id, so passing the
+# dated form on the wire gets a hard 400 "Invalid model name passed in".
+# Subprocess agents that swallow API errors (DeepRare's api/interface.py returns
+# None) then fail as opaque AttributeErrors, so normalize before dispatch.
+# The dated id stays the canonical id for logging/pricing/filenames.
+_WIRE_MODEL_ALIASES = {
+    "google/gemini-3-flash-preview-20251217": "google/gemini-3-flash-preview",
+    "anthropic/claude-4.5-sonnet-20250929": "anthropic/claude-sonnet-4.5",
+}
+
+
+def wire_model_id(backbone_id: str) -> str:
+    """Map a canonical backbone id to the id the gateway actually accepts.
+
+    Preserves any ``openrouter/`` prefix so callers that need it (MAI-DxO's
+    LiteLLM routing) keep their form; identity for ids with no known alias.
+    """
+    prefix = ""
+    bare = backbone_id
+    if bare.startswith("openrouter/"):
+        prefix, bare = "openrouter/", bare[len("openrouter/") :]
+    return prefix + _WIRE_MODEL_ALIASES.get(bare, bare)
+
+
 def hpo_terms_to_text(terms: List[HpoTerm]) -> str:
     """Render a list of HpoTerm into a human-readable phenotype string.
 

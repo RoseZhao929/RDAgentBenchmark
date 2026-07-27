@@ -1,4 +1,23 @@
 
+def _require_output(output, agent_name):
+    """Raise a legible error when the LLM handler returned None.
+
+    2026-07-27 (harness patch): api/interface.py's get_completion catches every
+    exception and returns None, so a provider-side failure (e.g. HTTP 400 for an
+    unknown model id) previously surfaced as `AttributeError: 'NoneType' object
+    has no attribute 'lower'` from whichever agent happened to touch it next.
+    Fail loudly with the real cause instead of guessing a Yes/No branch, which
+    would silently bias the diagnosis.
+    """
+    if output is None:
+        raise RuntimeError(
+            f"{agent_name}: LLM handler returned None (upstream API error was "
+            "swallowed by api/interface.py get_completion; check model id, key, "
+            "and gateway reachability)"
+        )
+    return output
+
+
 def Summarize_Agent(text, handler):
     """
     Use OpenAI's GPT-4 to summarize the text.
@@ -13,6 +32,7 @@ def Summarize_Agent(text, handler):
     # try:
     output = handler("Assume you are a doctor, please summarize these medical article into a paragraph, only keep key message, mainly focus on the phenotype and related disease.", 
                      text)
+    output = _require_output(output, 'Summarize_Agent')
     if 'not a medical-related page' in output.lower():
         return ""
     else:
@@ -77,6 +97,7 @@ DIAGNOSIS ASSESSMENT: [Correct/Incorrect]
 **Diagnosis to judge**
 {diagnosis_to_judge}
 """)
+    output = _require_output(output, 'Check_Diagnosis_Agent')
     if 'incorrect' in output.lower():
         return False, output
     else:
@@ -102,6 +123,7 @@ def Check_Patient_Agent(patient_info, retrieved_patient_case, handler):
                                         "Patient 1 phenotype: " + patient_info + '\n' +
                                         "Patient 2 phenotype: " + retrieved_patient_case
                                         )
+    output = _require_output(output, 'Check_Patient_Agent')
     if 'yes' in output.lower():
         return True
     else:

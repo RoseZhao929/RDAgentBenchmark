@@ -58,6 +58,7 @@ from harness.agents._adapter_utils import (
     fill_cost_from_tokens,
     reasoning_effort_for_backbone,
     resolve_llm_gateway,
+    wire_model_id,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -246,7 +247,11 @@ class DeepRareAdapter(AgentAdapter):
         for prefix in ("openrouter/", "openai/"):
             if bb.startswith(prefix):
                 bb = bb[len(prefix):]
-        self._openai_model_id = bb
+        # 2026-07-27 — the litellm gateway rejects the dated Gemini alias with a
+        # 400; DeepRare's get_completion swallows that into `return None`, which
+        # then crashes as NoneType.lower() in tools/llm_agent.py. Send the id the
+        # gateway publishes. self.backbone_id stays canonical for cost/logging.
+        self._openai_model_id = wire_model_id(bb)
 
     # -------- pillar support --------
 

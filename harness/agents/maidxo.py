@@ -52,6 +52,7 @@ from harness.agents._adapter_utils import (
     map_names_to_ids,
     reasoning_effort_for_backbone,
     resolve_llm_gateway,
+    wire_model_id,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -353,7 +354,10 @@ class MaiDxOAdapter(AgentAdapter):
 
         # Backbone id may carry the "openrouter/" prefix already; LiteLLM
         # expects exactly that for OpenRouter routing.
-        model_name = self.backbone_id
+        # 2026-07-27 — normalize dated OpenRouter aliases to the ids the current
+        # gateway publishes (see wire_model_id); self.backbone_id stays canonical
+        # for cost accounting and output filenames.
+        model_name = wire_model_id(self.backbone_id)
         if not model_name.startswith(("openrouter/", "openai/", "gemini/", "anthropic/")):
             # Default to OpenRouter prefix if user passed a bare id.
             model_name = f"openrouter/{model_name}"
