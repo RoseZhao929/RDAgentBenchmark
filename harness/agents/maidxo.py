@@ -43,6 +43,7 @@ import re
 import subprocess
 import sys
 import time
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -91,6 +92,25 @@ _NOISE_PATTERNS = [
     re.compile(r"\b(DLCO|LVEF|FEV1?|FVC|TLC)\b"),       # pulmonary / cardiac functions
     re.compile(r"^\s*(restrictive|obstructive) pattern", re.I),  # PFT patterns
     re.compile(r"^\s*ejection fraction", re.I),
+    # 2026-07-27 N=100 audit — the upstream prefix parser can also return
+    # continuations copied from the vignette rather than a diagnosis.
+    re.compile(r"^\s*(and|was|were|the patient|patient\b)", re.I),
+    re.compile(r"^\s*a\s+(?:\d+[- ]year|patient\b)", re.I),
+    re.compile(
+        r"\b(presented with|on physical examination|laboratory results|"
+        r"treatment included|was added|heart rate|oxygen saturation|"
+        r"white blood cell count|lymphocyte ratio|primary role|"
+        r"driver mutations|bone marrow examination|retrieved|"
+        r"max confidence|variant allele frequency|VAF\))\b",
+        re.I,
+    ),
+    re.compile(
+        r"^\s*(?:neutrophils?|lymphocytes?|mononuclear cells?|bands?|"
+        r"globulin|normal range)\b",
+        re.I,
+    ),
+    re.compile(r"^\s*[A-Z0-9-]{2,10}\)\s", re.I),
+    re.compile(r"\b(?:from|of|with|at|in|and|or|the|a)\s*$", re.I),
 ]
 
 
@@ -98,7 +118,17 @@ def _is_noise_candidate(s: str) -> bool:
     """Return True if `s` is clearly not a disease name (vitals / fragments)."""
     if not s or len(s.strip()) < 3:
         return True
-    return any(p.search(s) for p in _NOISE_PATTERNS)
+    value = s.strip()
+    # Explicit ontology identifiers are valid even when no human-readable
+    # disease name accompanies them.
+    if re.fullmatch(r"(?:ORPHA|OMIM|CCRD):\d+", value, re.I):
+        return False
+    # Genuine disease labels can be multi-word, but full vignette sentences
+    # are not ranked diagnoses. This deliberately generous ceiling preserves
+    # long Orphanet labels while rejecting copied case paragraphs.
+    if len(value) > 140 or len(value.split()) > 14:
+        return True
+    return any(p.search(value) for p in _NOISE_PATTERNS)
 
 
 def _hpo_to_vignette(case: CanonicalCase) -> str:
@@ -141,13 +171,24 @@ def _hpo_to_vignette(case: CanonicalCase) -> str:
 _RUNNER_SOURCE = r"""
 import json
 import os
+import atexit
+import shutil
 import sys
+import tempfile
 import time
 
 # Read configuration from stdin
 config = json.loads(sys.stdin.read())
 
-os.chdir(config["maidxo_dir"])
+# Swarms persists per-agent workspace/state relative to the current directory.
+# Running multiple cases from the shared source tree lets identically named
+# agents (Dr. Hypothesis, Gatekeeper, etc.) contaminate one another across
+# subprocesses.  Import the source explicitly, but give every case an isolated
+# working directory.
+sys.path.insert(0, config["maidxo_dir"])
+case_workdir = tempfile.mkdtemp(prefix="maidxo_case_")
+atexit.register(shutil.rmtree, case_workdir, ignore_errors=True)
+os.chdir(case_workdir)
 
 # Honour API key for LiteLLM
 if config.get("openrouter_api_key"):
@@ -188,6 +229,11 @@ try:
     differential = {}
     if cs is not None and getattr(cs, "differential_diagnosis", None):
         differential = dict(cs.differential_diagnosis)
+    hypothesis_response_debug = (
+        list(getattr(cs, "hypothesis_response_debug", []) or [])
+        if cs is not None
+        else []
+    )
 
     out = {
         "ok": True,
@@ -199,6 +245,7 @@ try:
         "iterations": result.iterations,
         "conversation_history": result.conversation_history,
         "differential_diagnosis": differential,
+        "hypothesis_response_debug": hypothesis_response_debug,
         "elapsed_seconds": elapsed,
     }
 except Exception as e:  # noqa: BLE001
@@ -248,6 +295,32 @@ def _clean_for_fuzzy(name: str) -> str:
             n = n[:idx].strip()
             low = n.lower()
     return n.strip()
+
+
+def _normalized_disease_text(value: str) -> str:
+    """Normalize a disease label for a conservative whole-string comparison."""
+    return " ".join(re.findall(r"[a-z0-9]+", str(value).casefold()))
+
+
+def _accept_orpha_mapping(query: str, mapped: dict, threshold: float = 0.88) -> bool:
+    """Reject WRatio partial matches that are not whole disease-name matches.
+
+    ``rapidfuzz.fuzz.WRatio`` deliberately rewards partial substrings. That is
+    useful for search, but unsafe for benchmark labels: e.g. ``neutrophils``
+    scored 90 against an unrelated Orphanet disease. Exact table lookups remain
+    valid; fuzzy matches must also be close over the complete normalized text.
+    """
+    if not mapped.get("orpha_id"):
+        return False
+    if mapped.get("match_type") in {"exact_name", "exact_synonym"}:
+        return True
+    if mapped.get("match_type") != "fuzzy":
+        return False
+    source = _normalized_disease_text(query)
+    target = _normalized_disease_text(mapped.get("matched_name") or "")
+    if len(source) < 8 or len(target) < 8:
+        return False
+    return SequenceMatcher(None, source, target).ratio() >= threshold
 
 
 class MaiDxOAdapter(AgentAdapter):
@@ -447,6 +520,111 @@ class MaiDxOAdapter(AgentAdapter):
                 error_message=result.get("error", "unknown MAI-DxO failure"),
             )
 
+        # Persist the complete audit envelope before attempting to interpret
+        # the diagnosis. Parser/noise failures consumed real model calls too;
+        # returning before this block used to erase their cost and evidence.
+        subprocess_diagnostics = proc.stdout[:idx][-50000:]
+        log.extra.update(
+            {
+                "maidxo_mode": self.mode,
+                "max_iterations": self.max_iterations,
+                "iterations_used": result.get("iterations"),
+                "judge_score": result.get("accuracy_score"),
+                "judge_reasoning": result.get("accuracy_reasoning"),
+                # This is MAI-DxO's simulated *clinical* resource cost
+                # (physician visit + ordered tests), not LLM/API spend.
+                "maidxo_simulated_clinical_cost_usd": result.get(
+                    "total_cost_simulated_usd"
+                ),
+                "maidxo_raw_final_diagnosis": result.get("final_diagnosis"),
+                "maidxo_raw_differential": result.get("differential_diagnosis"),
+                "maidxo_hypothesis_response_debug": result.get(
+                    "hypothesis_response_debug"
+                ),
+                # Keep the subprocess logger tail while validating this
+                # community port against the installed Swarms/LiteLLM stack.
+                # It contains swallowed tool-call exceptions that are not
+                # otherwise represented in DiagnosisResult.
+                "maidxo_subprocess_diagnostics_tail": subprocess_diagnostics,
+            }
+        )
+        # MAI-DxO does not surface LiteLLM token totals. Estimate them from the
+        # captured conversation and final outputs for every terminal status.
+        conv_text = result.get("conversation_history") or ""
+        if isinstance(conv_text, list):
+            parts: List[str] = []
+            for turn in conv_text:
+                if isinstance(turn, dict):
+                    parts.append(str(turn.get("content") or turn.get("text") or ""))
+                else:
+                    parts.append(str(turn))
+            conv_text = "\n".join(parts)
+        completion_chars = sum(
+            len(txt or "")
+            for txt in (
+                result.get("final_diagnosis", ""),
+                result.get("accuracy_reasoning") or "",
+            )
+        )
+        log.cost.prompt_tokens = max(log.cost.prompt_tokens, len(conv_text) // 4)
+        log.cost.completion_tokens = max(
+            log.cost.completion_tokens, completion_chars // 4
+        )
+        log.cost.provider = "openrouter"
+        fill_cost_from_tokens(log.cost, self.backbone_id)
+
+        reasoning_chunks: List[str] = []
+        if conv_text:
+            reasoning_chunks.append("=== MAI-DxO Panel Debate ===\n" + conv_text)
+        if result.get("differential_diagnosis"):
+            diff_lines = [
+                f"  - {name}: {prob}"
+                for name, prob in sorted(
+                    result["differential_diagnosis"].items(),
+                    key=lambda kv: kv[1],
+                    reverse=True,
+                )
+            ]
+            reasoning_chunks.append(
+                "=== Dr. Hypothesis differential ===\n" + "\n".join(diff_lines)
+            )
+        if result.get("final_diagnosis"):
+            reasoning_chunks.append(
+                "=== Final Diagnosis ===\n" + str(result["final_diagnosis"])
+            )
+        if result.get("accuracy_reasoning"):
+            reasoning_chunks.append(
+                "=== Judge Reasoning ===\n" + str(result["accuracy_reasoning"])
+            )
+        reasoning_trace = "\n\n".join(reasoning_chunks) if reasoning_chunks else None
+
+        fatal_runtime_patterns = (
+            "Key limit exceeded",
+            "403 Forbidden",
+            "AuthenticationError",
+            "Maximum retries exceeded",
+            "Failed to generate a valid response after retry attempts",
+        )
+        fatal_runtime_hits = [
+            pattern
+            for pattern in fatal_runtime_patterns
+            if pattern.lower() in subprocess_diagnostics.lower()
+        ]
+        if fatal_runtime_hits:
+            log.extra["maidxo_fatal_runtime_hits"] = fatal_runtime_hits
+            return self._finalize_log(
+                log,
+                ranked_predictions=[],
+                reasoning_trace=reasoning_trace,
+                raw_response_excerpt=str(result.get("final_diagnosis") or "")[:2000],
+                latency_ms=latency_ms,
+                status="agent_error",
+                error_message=(
+                    "MAI-DxO subprocess swallowed fatal LLM/runtime failures: "
+                    + ", ".join(fatal_runtime_hits)
+                ),
+            )
+
         # Build ranked predictions
         differential = result.get("differential_diagnosis") or {}
         ranked: List[str] = []
@@ -491,7 +669,8 @@ class MaiDxOAdapter(AgentAdapter):
             return self._finalize_log(
                 log,
                 ranked_predictions=[],
-                reasoning_trace=None,
+                reasoning_trace=reasoning_trace,
+                raw_response_excerpt=str(result.get("final_diagnosis") or "")[:2000],
                 latency_ms=latency_ms,
                 status="parser_error",
                 error_message=(
@@ -521,6 +700,12 @@ class MaiDxOAdapter(AgentAdapter):
             ranked_variants: List[List[str]] = []  # 2026-05-19 fuzzy-tie fix
             fuzzy_audit: List[dict] = []
             for i, name in enumerate(ranked[:5]):
+                if re.fullmatch(r"(?:ORPHA|OMIM|CCRD):\d+", name.strip(), re.I):
+                    ontology_id = name.strip().upper()
+                    new_ranked.append(ontology_id)
+                    new_conf.append(confidences[i] if i < len(confidences) else 0.0)
+                    ranked_variants.append([ontology_id])
+                    continue
                 # Skip junk fragments that obviously aren't disease names.
                 unhelpful = name.strip().lower().startswith(
                     ("unable to establish", "no diagnosis", "unknown", "indeterminate")
@@ -532,22 +717,32 @@ class MaiDxOAdapter(AgentAdapter):
                     or sum(c.isdigit() for c in name) > len(name) * 0.3
                     or name.lower() in {"dlco", "femg"}
                 ):
-                    new_ranked.append(name)
-                    new_conf.append(confidences[i] if i < len(confidences) else 0.0)
-                    ranked_variants.append([name])
+                    fuzzy_audit.append({
+                        "rank": i + 1,
+                        "input": name[:80],
+                        "orpha": None,
+                        "type": "rejected_fragment",
+                        "score": 0.0,
+                        "strict_accepted": False,
+                    })
                     continue
                 cleaned = _clean_for_fuzzy(name)
-                mapped = map_diagnosis(cleaned or name, tables, return_top_k=5)
+                query = cleaned or name
+                mapped = map_diagnosis(query, tables, return_top_k=5)
                 if not mapped.get("orpha_id") and cleaned != name:
+                    query = name
                     mapped = map_diagnosis(name, tables, return_top_k=5)
+                accepted = _accept_orpha_mapping(query, mapped)
                 fuzzy_audit.append({
                     "rank": i + 1,
                     "input": name[:80],
                     "orpha": mapped.get("orpha_id"),
                     "type": mapped.get("match_type"),
                     "score": mapped.get("score"),
+                    "matched_name": mapped.get("matched_name"),
+                    "strict_accepted": accepted,
                 })
-                orpha = mapped.get("orpha_id")
+                orpha = mapped.get("orpha_id") if accepted else None
                 if orpha:
                     # ORPHA at rank-i (prose dropped — evaluator only credits IDs).
                     new_ranked.append(orpha)
@@ -556,19 +751,28 @@ class MaiDxOAdapter(AgentAdapter):
                         float(mapped.get("score", 100.0)) / 100.0
                     )
                     # 2026-05-19 fuzzy-tie variants: collect ORPHAs scoring
-                    # within 5 pts of top, plus the original prose
+                    # within 5 pts of top, provided they independently pass
+                    # the same whole-string safety check.
                     cands = mapped.get("top_candidates", []) or []
                     top_sc = max((c.get("score", 0.0) for c in cands), default=0.0)
-                    tied = [c["orpha_id"] for c in cands
-                            if c.get("orpha_id") and c.get("score", 0.0) >= max(88.0, top_sc - 5.0)]
+                    tied = []
+                    for candidate in cands:
+                        candidate_map = {
+                            "orpha_id": candidate.get("orpha_id"),
+                            "matched_name": candidate.get("name"),
+                            "match_type": (
+                                "exact_name"
+                                if candidate.get("score") == 100.0
+                                else "fuzzy"
+                            ),
+                        }
+                        if (
+                            candidate.get("score", 0.0) >= max(88.0, top_sc - 5.0)
+                            and _accept_orpha_mapping(query, candidate_map)
+                        ):
+                            tied.append(candidate["orpha_id"])
                     if orpha not in tied: tied.insert(0, orpha)
-                    if name not in tied: tied.append(name)
                     ranked_variants.append(tied)
-                else:
-                    # No mapping: keep prose as-is; metrics likely miss.
-                    new_ranked.append(name)
-                    new_conf.append(confidences[i] if i < len(confidences) else 0.0)
-                    ranked_variants.append([name])
             ranked = new_ranked
             confidences = new_conf
             if ranked_variants:
@@ -576,73 +780,19 @@ class MaiDxOAdapter(AgentAdapter):
             if fuzzy_audit:
                 log.extra["maidxo_fuzzy_fallback"] = fuzzy_audit
 
-        # Persist judge / cost / iterations as extras
-        log.extra.update(
-            {
-                "maidxo_mode": self.mode,
-                "max_iterations": self.max_iterations,
-                "iterations_used": result.get("iterations"),
-                "judge_score": result.get("accuracy_score"),
-                "judge_reasoning": result.get("accuracy_reasoning"),
-                "simulated_cost_usd": result.get("total_cost_simulated_usd"),
-            }
-        )
-        # FIX D2 (2026-05-15): MAI-DxO doesn't surface LiteLLM token totals.
-        # Estimate prompt+completion from the conversation_history string and
-        # the final diagnosis, then convert to USD via the price table.
-        # conversation_history is a single string (Conversation.get_str()), so
-        # iterating it would yield characters — count length directly.
-        conv_text = result.get("conversation_history") or ""
-        if isinstance(conv_text, list):
-            # Defensive — older versions sometimes returned a list of dicts.
-            parts: List[str] = []
-            for turn in conv_text:
-                if isinstance(turn, dict):
-                    parts.append(str(turn.get("content") or turn.get("text") or ""))
-                else:
-                    parts.append(str(turn))
-            conv_text = "\n".join(parts)
-        conv_chars = len(conv_text)
-        completion_chars = 0
-        for txt in (result.get("final_diagnosis", ""), result.get("accuracy_reasoning") or ""):
-            completion_chars += len(txt or "")
-        log.cost.prompt_tokens = max(log.cost.prompt_tokens, conv_chars // 4)
-        log.cost.completion_tokens = max(
-            log.cost.completion_tokens, completion_chars // 4
-        )
-        log.cost.provider = "openrouter"
-        fill_cost_from_tokens(log.cost, self.backbone_id)
-
-        # FIX P5-1 (2026-05-15): build a richer reasoning_trace for the LLM
-        # judge — the panel's conversation_history (Hypothesis / Test-Chooser /
-        # Challenger / Stewardship / Checklist + Gatekeeper exchanges) plus the
-        # final diagnosis and Judge's accuracy_reasoning. Previously we only
-        # surfaced `accuracy_reasoning`, which is the Judge's verdict (often
-        # empty / very short), giving the LLM judge nothing to grade.
-        reasoning_chunks: List[str] = []
-        if conv_text:
-            reasoning_chunks.append("=== MAI-DxO Panel Debate ===\n" + conv_text)
-        if result.get("differential_diagnosis"):
-            diff_lines = [
-                f"  - {name}: {prob}"
-                for name, prob in sorted(
-                    result["differential_diagnosis"].items(),
-                    key=lambda kv: kv[1],
-                    reverse=True,
-                )
-            ]
-            reasoning_chunks.append(
-                "=== Dr. Hypothesis differential ===\n" + "\n".join(diff_lines)
+        if not ranked:
+            return self._finalize_log(
+                log,
+                ranked_predictions=[],
+                reasoning_trace=reasoning_trace,
+                raw_response_excerpt=str(result.get("final_diagnosis") or "")[:2000],
+                latency_ms=latency_ms,
+                status="parser_error",
+                error_message=(
+                    "MAI-DxO produced no explicit ontology ID or conservatively "
+                    "validated Orphanet disease-name mapping."
+                ),
             )
-        if result.get("final_diagnosis"):
-            reasoning_chunks.append(
-                "=== Final Diagnosis ===\n" + str(result["final_diagnosis"])
-            )
-        if result.get("accuracy_reasoning"):
-            reasoning_chunks.append(
-                "=== Judge Reasoning ===\n" + str(result["accuracy_reasoning"])
-            )
-        reasoning_trace = "\n\n".join(reasoning_chunks) if reasoning_chunks else None
 
         return self._finalize_log(
             log,

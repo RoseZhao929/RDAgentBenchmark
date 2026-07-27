@@ -105,6 +105,9 @@ class CaseState:
     cumulative_cost: int = 0
     iteration: int = 0
     last_actions: List['Action'] = field(default_factory=list)  # For stagnation detection
+    # Audit/debug evidence for structured-output compatibility. This is kept
+    # per case and returned by the harness adapter, never shared across cases.
+    hypothesis_response_debug: List[Dict[str, str]] = field(default_factory=list)
     
     def add_evidence(self, evidence: str):
         """Add new evidence to the case"""
@@ -529,6 +532,10 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     max_loops=1,
                     tools_list_dictionary=[consensus_tool],  # swarms expects tools_list_dictionary
                     tool_choice="auto",  # Let the model choose to use the tool
+                    # Swarms now defaults to "str-all-except-first", which
+                    # returns the entire prompt/history transcript and hides
+                    # the structured final tool output from this orchestrator.
+                    output_type="final",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
@@ -542,6 +549,7 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     max_loops=1,
                     tools_list_dictionary=[hypothesis_tool],
                     tool_choice="auto",
+                    output_type="final",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
@@ -1397,6 +1405,8 @@ CURRENT STATE:
 
         except Exception as e:
             logger.error(f"Error during panel deliberation: {e}")
+            if "FATAL_LLM_CALL:" in str(e):
+                raise
             # Fallback action
             return Action(
                 action_type="ask",
@@ -1435,10 +1445,18 @@ CURRENT STATE:
     
     def _update_differential_from_hypothesis(self, case_state: CaseState, hypothesis_response):
         """Extract and update differential diagnosis from Dr. Hypothesis analysis - now supports both function calls and text"""
+        case_state.hypothesis_response_debug.append(
+            {
+                "type": f"{type(hypothesis_response).__module__}.{type(hypothesis_response).__name__}",
+                "content": str(hypothesis_response)[:20000],
+            }
+        )
         try:
             # Try to extract structured data from function call first
-            if hasattr(hypothesis_response, '__dict__') or isinstance(hypothesis_response, dict):
-                structured_data = self._extract_function_call_output(hypothesis_response)
+            if hypothesis_response is not None:
+                structured_data = self._extract_function_call_output(
+                    hypothesis_response, expected_schema="hypothesis"
+                )
                 
                 # Validate the structured data using the HypothesisArguments schema
                 try:
@@ -2129,7 +2147,20 @@ CURRENT STATE:
             time.sleep(current_delay)
 
             try:
-                return agent.run(enhanced_prompt)
+                response = agent.run(enhanced_prompt)
+                response_text = str(response or "").strip()
+                # Current Swarms catches provider/auth failures internally and
+                # can return the last user prompt rather than raising. That is
+                # not a model response and must abort the case.
+                if (
+                    not response_text
+                    or response_text == enhanced_prompt.strip()
+                ):
+                    raise RuntimeError(
+                        "FATAL_LLM_CALL: Agent.run returned no assistant/tool "
+                        "response (empty or prompt echo)"
+                    )
+                return response
             except Exception as e:
                 err_msg = str(e).lower()
                 if "rate_limit" in err_msg or "ratelimiterror" in err_msg or "429" in str(e):
@@ -2190,7 +2221,7 @@ CURRENT STATE:
             "reasoning": "Fallback generated due to JSON parsing failure.",
         }
 
-    def _extract_function_call_output(self, agent_response) -> Dict[str, Any]:
+    def _extract_function_call_output_legacy(self, agent_response) -> Dict[str, Any]:
         """Extract structured output from agent function call response.
         
         This method handles the swarms Agent response format when using function calling.
@@ -2290,6 +2321,111 @@ CURRENT STATE:
             "action_type": "ask",
             "content": "Could you please provide more information to help guide the next diagnostic step?",
             "reasoning": "Fallback action due to function call parsing error."
+        }
+
+    def _extract_function_call_output(
+        self, agent_response, expected_schema: str = "consensus"
+    ) -> Dict[str, Any]:
+        """Decode Hypothesis or Consensus tool output across Swarms formats.
+
+        Swarms may return a dict/object, raw JSON arguments, a tool-call
+        envelope, or a transcript containing nested JSON. The former
+        implementation's string branch recognized only the Consensus schema,
+        which discarded every string-form Hypothesis differential.
+        """
+        import json
+
+        def is_expected(value: Any) -> bool:
+            if not isinstance(value, dict):
+                return False
+            if expected_schema == "hypothesis":
+                return isinstance(value.get("differential_diagnoses"), list)
+            return all(
+                key in value for key in ("action_type", "content", "reasoning")
+            )
+
+        def decode(value: Any) -> Optional[Dict[str, Any]]:
+            if is_expected(value):
+                return value
+            if isinstance(value, str):
+                text = value.strip()
+                try:
+                    parsed = json.loads(text)
+                except Exception:
+                    parsed = None
+                if parsed is not None:
+                    found = decode(parsed)
+                    if found:
+                        return found
+
+                # Parse balanced nested JSON from transcripts. A lazy regex
+                # truncates at the first inner "}" and corrupts differential
+                # arrays, so use JSONDecoder.raw_decode at each object start.
+                decoder = json.JSONDecoder()
+                for offset, char in enumerate(text):
+                    if char != "{":
+                        continue
+                    try:
+                        parsed, _ = decoder.raw_decode(text[offset:])
+                    except json.JSONDecodeError:
+                        continue
+                    found = decode(parsed)
+                    if found:
+                        return found
+                return None
+            if isinstance(value, dict):
+                for key in ("arguments", "content", "function_call", "function"):
+                    if key in value:
+                        found = decode(value[key])
+                        if found:
+                            return found
+                for tool_call in value.get("tool_calls") or []:
+                    found = decode(tool_call)
+                    if found:
+                        return found
+                return None
+            if isinstance(value, (list, tuple)):
+                for item in value:
+                    found = decode(item)
+                    if found:
+                        return found
+                return None
+            if value is not None and hasattr(value, "__dict__"):
+                found = decode(vars(value))
+                if found:
+                    return found
+                for attr in ("tool_calls", "function_call", "content", "arguments"):
+                    if hasattr(value, attr):
+                        found = decode(getattr(value, attr))
+                        if found:
+                            return found
+            return None
+
+        try:
+            decoded = decode(agent_response)
+            if decoded:
+                return decoded
+            logger.warning(
+                "Could not extract %s function output from response type: %s",
+                expected_schema,
+                type(agent_response),
+            )
+            logger.debug(f"Response content: {str(agent_response)[:500]}...")
+        except Exception as e:
+            logger.error(
+                f"Error extracting {expected_schema} function call output: {e}"
+            )
+            logger.debug(f"Response: {str(agent_response)[:500]}...")
+
+        if expected_schema == "hypothesis":
+            return {}
+        return {
+            "action_type": "ask",
+            "content": (
+                "Could you please provide more information to help guide the "
+                "next diagnostic step?"
+            ),
+            "reasoning": "Fallback action due to function call parsing error.",
         }
 
     def _get_consensus_with_retry(self, consensus_prompt: str, max_retries: int = 2) -> Dict[str, Any]:
