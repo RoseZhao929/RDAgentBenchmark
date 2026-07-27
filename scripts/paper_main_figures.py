@@ -473,78 +473,86 @@ def figM4_hpo_density():
     print("wrote figM4_hpo_density.png")
 
 
-# =============================== candidate: F2 scaffolding ladder ==============
+def _mimic_note_agent_means():
+    """Per-agent mean micro-R@1 across the 4 backbones on the de-leaked MIMIC-IV
+    note 24-cell matrix (huimin's frozen agent_matrix_scores.json). Returns {}
+    if the file is absent so figF2 falls back to PP-Store only."""
+    p = ROOT / "audit_frozen/mimic_note_experiment/agent_matrix_scores.json"
+    if not p.exists():
+        return {}
+    import json
+    from collections import defaultdict
+    cells = json.loads(p.read_text())["cells"]
+    agg = defaultdict(list)
+    for k, v in cells.items():
+        ag = k.split("|")[0]
+        if v.get("n"):
+            agg[ag].append(v["hits_r1"] / v["n"])
+    return {ag: sum(vs) / len(vs) for ag, vs in agg.items() if vs}
+
+
+# =============================== F2 scaffolding: two datasets ==================
 def figF2_scaffolding(rows):
-    """Scaffolding ladder on PP-Store, Gemini Flash: single-LLM control vs the
-    multi-agent scaffolds. Shows F2 — deepening the scaffold does not reliably
-    beat the no-scaffold control (mdagents sits BELOW it; agentclinic/maidxo
-    collapse). Bars coloured by whether they clear the control line."""
+    """Scaffolding effect on TWO datasets: each multi-agent scaffold's R@1 change
+    (pp) vs the no-scaffold single-LLM control, on PP-Store (Gemini Flash,
+    variant-aware) and on the de-leaked MIMIC-IV note 24-cell matrix (mean over
+    4 backbones). The same story replicates: light scaffolds barely match the
+    control, heavy-orchestration scaffolds collapse well below it."""
     apply_nature_style()
     import matplotlib.pyplot as plt
     import numpy as np
-    # scale fonts up to match panel (a) in the composite
     plt.rcParams.update({
         "font.size": 20, "axes.titlesize": 20, "axes.labelsize": 20,
-        "xtick.labelsize": 20, "ytick.labelsize": 20,
+        "xtick.labelsize": 20, "ytick.labelsize": 20, "legend.fontsize": 20,
     })
-    BIG = 20
 
     ladder = ["llm_control", "mdagents", "medagents", "agentclinic", "maidxo"]
-    disp = {"llm_control": "LLM control\n(no scaffold)", "mdagents": "MDAgents",
-            "medagents": "MedAgents", "agentclinic": "AgentClinic",
-            "maidxo": "MAI-DxO"}
-    val = {}
+    disp = {"mdagents": "MDAgents", "medagents": "MedAgents",
+            "agentclinic": "AgentClinic", "maidxo": "MAI-DxO"}
+    # PP-Store deltas (Gemini Flash, variant-aware) vs its control
+    pp = {}
     for ag in ladder:
         for r in rows:
             if (r["dataset"] == "phenopacket_store" and r["system"] == ag
                     and r["backbone"].startswith("google_gemini")):
-                val[ag] = r["R@1_variant_aware"]
-    ctrl = val["llm_control"]
-    # dumbbell / lollipop of the scaffold's DELTA vs the no-scaffold control:
-    # zero line = control; positive (green, right) beats it, negative (gold,
-    # left) trails it. Far more legible than five near-equal bars.
-    scaffolds = ladder[1:]                      # exclude the control itself
-    deltas = [(val[a] - ctrl) * 100 for a in scaffolds]   # in pp
-    # order worst-to-best so the collapse is visually anchored at the bottom
-    order = sorted(range(len(scaffolds)), key=lambda i: deltas[i])
-    scaffolds = [scaffolds[i] for i in order]
-    deltas = [deltas[i] for i in order]
+                pp[ag] = r["R@1_variant_aware"]
+    pp_d = {a: (pp[a] - pp["llm_control"]) * 100 for a in ladder if a in pp}
+    # MIMIC-note deltas (mean over 4 backbones) vs its control
+    mm = _mimic_note_agent_means()
+    mm_d = {a: (mm[a] - mm["llm_control"]) * 100 for a in ladder
+            if a in mm and "llm_control" in mm}
 
-    fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
+    scaffolds = ladder[1:]
+    # order worst-to-best by PP-Store delta (anchor collapse at the bottom)
+    scaffolds = sorted(scaffolds, key=lambda a: pp_d.get(a, 0))
     y = np.arange(len(scaffolds))
-    for yi, d in zip(y, deltas):
-        col = C_ACCENT if d >= 0 else C_CLASSICAL
-        ax.plot([0, d], [yi, yi], color=col, lw=3.0, zorder=2,
-                solid_capstyle="round")
-        ax.scatter([d], [yi], s=280, color=col, edgecolors=BAR_EDGE,
-                   linewidths=1.0, zorder=3)
-        # Small near-zero deltas (top two rows) label to the LEFT of the marker
-        # (above would collide with the control-line text); the two large
-        # negative deltas keep their label above the marker.
-        if abs(d) < 4:
-            ax.text(d - 1.2, yi, f"{d:+.1f} pp", va="center", ha="right",
-                    fontsize=BIG, color="#333")
-        else:
-            ax.text(d, yi + 0.18, f"{d:+.1f} pp", va="bottom", ha="center",
-                    fontsize=BIG, color="#333")
-    ax.axvline(0, color=C_LLM, lw=2.2, zorder=1)
-    # label the control line as a single horizontal row above the top marker,
-    # right-aligned to the zero line so it stays inside the frame.
-    ax.text(-0.5, len(scaffolds) - 0.35, "no-scaffold control", ha="right",
-            va="bottom", fontsize=BIG, color=C_LLM)
+    h = 0.38
+    fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
+    ax.barh(y + h / 2, [pp_d.get(a, 0) for a in scaffolds], h, color=C_LLM,
+            edgecolor=BAR_EDGE, linewidth=0.7, zorder=3, label="Phenopacket-Store")
+    if mm_d:
+        ax.barh(y - h / 2, [mm_d.get(a, 0) for a in scaffolds], h,
+                color=C_CLASSICAL, edgecolor=BAR_EDGE, linewidth=0.7, zorder=3,
+                label="MIMIC-IV note")
+    ax.axvline(0, color="#333", lw=2.0, zorder=2)
     ax.set_yticks(y)
-    ax.set_yticklabels([disp[a].replace("\n", " ") for a in scaffolds],
-                       fontsize=BIG)
-    ax.set_xlabel("R@1 change vs. single-LLM control")
-    ax.set_xlim(min(deltas) - 9, 8)
-    ax.set_ylim(-0.6, len(scaffolds) - 0.1)
+    ax.set_yticklabels([disp[a] for a in scaffolds])
+    ax.set_xlabel("R@1 change vs. no-scaffold control (pp)")
+    lo = min([pp_d.get(a, 0) for a in scaffolds]
+             + [mm_d.get(a, 0) for a in scaffolds]) - 4
+    ax.set_xlim(lo, 6)
+    # legend top-left in the empty far-negative upper region (MedAgents/MDAgents
+    # bars are ~0, so the upper-left quadrant is clear)
+    ax.legend(loc="upper left", frameon=False, handlelength=1.0,
+              handletextpad=0.4, labelspacing=0.3, borderaxespad=0.4)
     ax.grid(axis="x", zorder=0)
     despine(ax)
     fig.tight_layout()
     fig.savefig(FIG / "figF2_scaffolding.png")
     plt.close(fig)
     print("wrote figF2_scaffolding.png",
-          f"[ctrl {ctrl:.3f}; deltas {[round(d,1) for d in deltas]}]")
+          f"[PP {({a: round(pp_d.get(a),1) for a in scaffolds})}]",
+          f"[MIMIC {({a: round(mm_d.get(a,0),1) for a in scaffolds})}]")
 
 
 # =============================== candidate: H2 genotype channel lift ===========
