@@ -1,0 +1,399 @@
+{
+  "generated_at_utc": "2026-07-23T03:16:42Z",
+  "commit": "9babd833618936b6b29942baba130638e212921d",
+  "data_version": "slim recompute set (MIMIC & weights stripped); frozen commit 9babd8336189",
+  "generator": "audit_frozen/temporal_v2/build_temporal_v2.py",
+  "backbone": "gemini-3-flash-preview",
+  "shared_systems": [
+    "agentclinic",
+    "llm_control",
+    "mdagents",
+    "medagents"
+  ],
+  "identity_model": {
+    "keys_used": [
+      "PMCID",
+      "PMID",
+      "source_case_id"
+    ],
+    "keys_unavailable_in_frozen_data": [
+      "DOI",
+      "normalized_title"
+    ],
+    "note": "DOI/title absent from every frozen artifact; exact-ID intersection rests on PMCID (RareArena) + PMID (Phenopacket)."
+  },
+  "development_layers_intersected": {
+    "rarearena_rds": "PMCID (exact)",
+    "phenopacket_store": "PMID (exact)",
+    "rarebench": "NO publication id in shipped data -> NOT intersectable; coverage gap, not asserted disjoint",
+    "other_pmc_dev_cases": "none present as case-report corpora in this checkout"
+  },
+  "overlap": {
+    "pre_cutoff": {
+      "n_total": 220,
+      "overlap_by_source": {
+        "rarearena_rds": 13,
+        "phenopacket_store": 1
+      },
+      "n_overlap_union": 14,
+      "n_clean": 206,
+      "overlap_case_ids_union": [
+        "pmc_7458886",
+        "pmc_7460740",
+        "pmc_7497286",
+        "pmc_7507264",
+        "pmc_7509919",
+        "pmc_7516301",
+        "pmc_7530177",
+        "pmc_7552884",
+        "pmc_7579785",
+        "pmc_7581024",
+        "pmc_7598809",
+        "pmc_7644386",
+        "pmc_7653328",
+        "pmc_7662532"
+      ]
+    },
+    "post_cutoff": {
+      "n_total": 198,
+      "overlap_by_source": {
+        "rarearena_rds": 17,
+        "phenopacket_store": 1
+      },
+      "n_overlap_union": 18,
+      "n_clean": 180,
+      "overlap_case_ids_union": [
+        "pmc_10759324",
+        "pmc_10783329",
+        "pmc_10799342",
+        "pmc_10859398",
+        "pmc_10860924",
+        "pmc_10865686",
+        "pmc_10921960",
+        "pmc_10965776",
+        "pmc_10976829",
+        "pmc_11018201",
+        "pmc_11036728",
+        "pmc_11049754",
+        "pmc_11075229",
+        "pmc_11088039",
+        "pmc_11097304",
+        "pmc_11110280",
+        "pmc_11149197",
+        "pmc_11160389"
+      ]
+    }
+  },
+  "clean_N": {
+    "pre_cutoff": 206,
+    "post_cutoff": 180
+  },
+  "per_system_results": [
+    {
+      "system": "agentclinic",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 53,
+      "post_top1_correct_variant": 51,
+      "pre_R@1_variant": 0.2573,
+      "post_R@1_variant": 0.2833,
+      "pre_R@1_strict": 0.2233,
+      "post_R@1_strict": 0.2667,
+      "pre_95CI": "[0.199, 0.3204]",
+      "post_95CI": "[0.2167, 0.35]",
+      "delta_R@1_pp": 2.6,
+      "two_prop_z": 0.576,
+      "p_raw": 0.5649403209290769,
+      "p_holm": 0.5649403209290769
+    },
+    {
+      "system": "llm_control",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 111,
+      "post_top1_correct_variant": 113,
+      "pre_R@1_variant": 0.5388,
+      "post_R@1_variant": 0.6278,
+      "pre_R@1_strict": 0.5243,
+      "post_R@1_strict": 0.6278,
+      "pre_95CI": "[0.4709, 0.6068]",
+      "post_95CI": "[0.5556, 0.6944]",
+      "delta_R@1_pp": 8.9,
+      "two_prop_z": 1.766,
+      "p_raw": 0.07732612732911812,
+      "p_holm": 0.22351989303422617
+    },
+    {
+      "system": "mdagents",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 205,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{\"parser_error\": 1}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 112,
+      "post_top1_correct_variant": 114,
+      "pre_R@1_variant": 0.5437,
+      "post_R@1_variant": 0.6333,
+      "pre_R@1_strict": 0.5388,
+      "post_R@1_strict": 0.6222,
+      "pre_95CI": "[0.4757, 0.6117]",
+      "post_95CI": "[0.5611, 0.7]",
+      "delta_R@1_pp": 9.0,
+      "two_prop_z": 1.783,
+      "p_raw": 0.07450663101140872,
+      "p_holm": 0.22351989303422617
+    },
+    {
+      "system": "medagents",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 109,
+      "post_top1_correct_variant": 115,
+      "pre_R@1_variant": 0.5291,
+      "post_R@1_variant": 0.6389,
+      "pre_R@1_strict": 0.5146,
+      "post_R@1_strict": 0.6333,
+      "pre_95CI": "[0.4612, 0.5971]",
+      "post_95CI": "[0.5667, 0.7056]",
+      "delta_R@1_pp": 11.0,
+      "two_prop_z": 2.18,
+      "p_raw": 0.02926483363206725,
+      "p_holm": 0.117059334528269
+    }
+  ],
+  "holm_correction": {
+    "family_size": 4,
+    "systems": [
+      "agentclinic",
+      "llm_control",
+      "mdagents",
+      "medagents"
+    ],
+    "p_holm": {
+      "agentclinic": 0.5649403209290769,
+      "llm_control": 0.22351989303422617,
+      "mdagents": 0.22351989303422617,
+      "medagents": 0.117059334528269
+    }
+  },
+  "case_level_macro_clean": {
+    "pre_n_cases": 206,
+    "post_n_cases": 180,
+    "pre_macro_R@1": 0.4672,
+    "post_macro_R@1": 0.5458,
+    "delta_pp": 7.9,
+    "delta_95CI_pp": [
+      0.1,
+      15.6
+    ],
+    "cluster_bootstrap_n": 10000,
+    "permutation_p": 0.0506,
+    "permutation_n": 10000
+  },
+  "difficulty_matched": {
+    "balance_before": {
+      "pheno_bucket": {
+        "pre": {
+          "6-15": 129,
+          "<=5": 30,
+          "16-30": 41,
+          ">30": 6
+        },
+        "post": {
+          "6-15": 124,
+          "16-30": 38,
+          "<=5": 18
+        }
+      },
+      "prev_tier": {
+        "pre": {
+          "unknown": 26,
+          "Unknown": 45,
+          "1-5 / 10 000": 27,
+          "<1 / 1 000 000": 28,
+          "1-9 / 1 000 000": 34,
+          "6-9 / 10 000": 6,
+          "1-9 / 100 000": 40
+        },
+        "post": {
+          "1-9 / 100 000": 36,
+          "<1 / 1 000 000": 30,
+          "Unknown": 41,
+          "1-5 / 10 000": 23,
+          "1-9 / 1 000 000": 32,
+          "6-9 / 10 000": 4,
+          "unknown": 14
+        }
+      }
+    },
+    "balance_after": {
+      "pheno_bucket": {
+        "pre": {
+          "6-15": 116,
+          "16-30": 33,
+          "<=5": 16
+        },
+        "post": {
+          "6-15": 116,
+          "16-30": 33,
+          "<=5": 16
+        }
+      },
+      "prev_tier": {
+        "pre": {
+          "Unknown": 39,
+          "1-9 / 100 000": 34,
+          "<1 / 1 000 000": 22,
+          "1-5 / 10 000": 23,
+          "unknown": 14,
+          "1-9 / 1 000 000": 29,
+          "6-9 / 10 000": 4
+        },
+        "post": {
+          "1-9 / 1 000 000": 29,
+          "1-5 / 10 000": 23,
+          "Unknown": 39,
+          "<1 / 1 000 000": 22,
+          "unknown": 14,
+          "1-9 / 100 000": 34,
+          "6-9 / 10 000": 4
+        }
+      }
+    },
+    "unknown_prevalence_fraction": {
+      "pre": 0.345,
+      "post": 0.306
+    },
+    "retained_cases": {
+      "pre": 165,
+      "post": 165
+    },
+    "per_system": [
+      {
+        "system": "agentclinic",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 165,
+        "n_post_attempted": 165,
+        "n_pre_successful": 165,
+        "n_post_successful": 165,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 47,
+        "post_top1_correct_variant": 45,
+        "pre_R@1_variant": 0.2848,
+        "post_R@1_variant": 0.2727,
+        "pre_R@1_strict": 0.2424,
+        "post_R@1_strict": 0.2545,
+        "pre_95CI": "[0.2182, 0.3576]",
+        "post_95CI": "[0.2061, 0.3394]",
+        "delta_R@1_pp": -1.2,
+        "two_prop_z": -0.246,
+        "p_raw": 0.8060460780994243
+      },
+      {
+        "system": "llm_control",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 165,
+        "n_post_attempted": 165,
+        "n_pre_successful": 165,
+        "n_post_successful": 165,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 90,
+        "post_top1_correct_variant": 106,
+        "pre_R@1_variant": 0.5455,
+        "post_R@1_variant": 0.6424,
+        "pre_R@1_strict": 0.5273,
+        "post_R@1_strict": 0.6424,
+        "pre_95CI": "[0.4667, 0.6182]",
+        "post_95CI": "[0.5697, 0.7152]",
+        "delta_R@1_pp": 9.7,
+        "two_prop_z": 1.793,
+        "p_raw": 0.07289621917098268
+      },
+      {
+        "system": "mdagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 165,
+        "n_post_attempted": 165,
+        "n_pre_successful": 165,
+        "n_post_successful": 165,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 92,
+        "post_top1_correct_variant": 105,
+        "pre_R@1_variant": 0.5576,
+        "post_R@1_variant": 0.6364,
+        "pre_R@1_strict": 0.5515,
+        "post_R@1_strict": 0.6303,
+        "pre_95CI": "[0.4788, 0.6303]",
+        "post_95CI": "[0.5636, 0.7091]",
+        "delta_R@1_pp": 7.9,
+        "two_prop_z": 1.459,
+        "p_raw": 0.14457796342282395
+      },
+      {
+        "system": "medagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 165,
+        "n_post_attempted": 165,
+        "n_pre_successful": 165,
+        "n_post_successful": 165,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 91,
+        "post_top1_correct_variant": 106,
+        "pre_R@1_variant": 0.5515,
+        "post_R@1_variant": 0.6424,
+        "pre_R@1_strict": 0.5333,
+        "post_R@1_strict": 0.6364,
+        "pre_95CI": "[0.4727, 0.6242]",
+        "post_95CI": "[0.5697, 0.7152]",
+        "delta_R@1_pp": 9.1,
+        "two_prop_z": 1.683,
+        "p_raw": 0.09229620410070155
+      }
+    ],
+    "case_level_macro": {
+      "pre_n_cases": 165,
+      "post_n_cases": 165,
+      "pre_macro_R@1": 0.4848,
+      "post_macro_R@1": 0.5485,
+      "delta_pp": 6.4,
+      "delta_95CI_pp": [
+        -2.1,
+        14.7
+      ],
+      "cluster_bootstrap_n": 10000,
+      "permutation_p": 0.1534,
+      "permutation_n": 10000
+    },
+    "role": "sensitivity analysis; does NOT replace the full clean set"
+  },
+  "direction_all_systems_nonnegative": true,
+  "allowed_conclusion": "After removing cases overlapping with development data, none of the four evaluated systems showed detectable post-cutoff degradation.",
+  "forbidden_claims": [
+    "the holdout is contamination-free",
+    "memorization is not the driver",
+    "post-cutoff performance is significantly better (unless case-clustered analysis supports it)",
+    "after every model training cutoff (no official cutoff evidence)"
+  ],
+  "cutoff_language": "published after the prespecified cutoff (NOT \"guaranteed unseen by the models\")"
+}

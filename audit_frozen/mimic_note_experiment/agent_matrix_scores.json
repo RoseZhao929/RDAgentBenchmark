@@ -1,0 +1,515 @@
+{
+  "n_gold": 416,
+  "gold_path": "data/mimic_iv_rd_slice/note_eval_hpo_line_v1.jsonl",
+  "cells": {
+    "llm_control|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 397,
+      "empty_ok": 0,
+      "hits_r1": 152,
+      "hits_r5": 190,
+      "micro_R1": 0.3654,
+      "micro_R5": 0.4567,
+      "macro_R1": 0.3183,
+      "R1_success_denom": 0.3829,
+      "R1_ci95": [
+        0.3197,
+        0.4111
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 397,
+        "agent_error": 19
+      }
+    },
+    "llm_control|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 396,
+      "empty_ok": 0,
+      "hits_r1": 147,
+      "hits_r5": 188,
+      "micro_R1": 0.3534,
+      "micro_R5": 0.4519,
+      "macro_R1": 0.2846,
+      "R1_success_denom": 0.3712,
+      "R1_ci95": [
+        0.3077,
+        0.399
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 396,
+        "parser_error": 20
+      }
+    },
+    "llm_control|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 415,
+      "empty_ok": 0,
+      "hits_r1": 151,
+      "hits_r5": 180,
+      "micro_R1": 0.363,
+      "micro_R5": 0.4327,
+      "macro_R1": 0.3454,
+      "R1_success_denom": 0.3639,
+      "R1_ci95": [
+        0.3173,
+        0.4087
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 415,
+        "parser_error": 1
+      }
+    },
+    "llm_control|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 370,
+      "empty_ok": 0,
+      "hits_r1": 155,
+      "hits_r5": 184,
+      "micro_R1": 0.3726,
+      "micro_R5": 0.4423,
+      "macro_R1": 0.3455,
+      "R1_success_denom": 0.4189,
+      "R1_ci95": [
+        0.3269,
+        0.4183
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 370,
+        "parser_error": 9,
+        "agent_error": 37
+      }
+    },
+    "medagents|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 414,
+      "empty_ok": 0,
+      "hits_r1": 145,
+      "hits_r5": 191,
+      "micro_R1": 0.3486,
+      "micro_R5": 0.4591,
+      "macro_R1": 0.2625,
+      "R1_success_denom": 0.3502,
+      "R1_ci95": [
+        0.3029,
+        0.3942
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 414,
+        "parser_error": 2
+      }
+    },
+    "medagents|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 336,
+      "empty_ok": 0,
+      "hits_r1": 140,
+      "hits_r5": 168,
+      "micro_R1": 0.3365,
+      "micro_R5": 0.4038,
+      "macro_R1": 0.2754,
+      "R1_success_denom": 0.4167,
+      "R1_ci95": [
+        0.2909,
+        0.3799
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 336,
+        "parser_error": 80
+      }
+    },
+    "medagents|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 321,
+      "empty_ok": 0,
+      "hits_r1": 131,
+      "hits_r5": 155,
+      "micro_R1": 0.3149,
+      "micro_R5": 0.3726,
+      "macro_R1": 0.2835,
+      "R1_success_denom": 0.4081,
+      "R1_ci95": [
+        0.2716,
+        0.3582
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 321,
+        "parser_error": 95
+      }
+    },
+    "medagents|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 384,
+      "empty_ok": 0,
+      "hits_r1": 167,
+      "hits_r5": 187,
+      "micro_R1": 0.4014,
+      "micro_R5": 0.4495,
+      "macro_R1": 0.3538,
+      "R1_success_denom": 0.4349,
+      "R1_ci95": [
+        0.3558,
+        0.4471
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 384,
+        "parser_error": 32
+      }
+    },
+    "mdagents|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 367,
+      "empty_ok": 0,
+      "hits_r1": 144,
+      "hits_r5": 176,
+      "micro_R1": 0.3462,
+      "micro_R5": 0.4231,
+      "macro_R1": 0.2554,
+      "R1_success_denom": 0.3924,
+      "R1_ci95": [
+        0.3005,
+        0.3918
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 367,
+        "agent_error": 48,
+        "parser_error": 1
+      }
+    },
+    "mdagents|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 416,
+      "empty_ok": 0,
+      "hits_r1": 153,
+      "hits_r5": 201,
+      "micro_R1": 0.3678,
+      "micro_R5": 0.4832,
+      "macro_R1": 0.2943,
+      "R1_success_denom": 0.3678,
+      "R1_ci95": [
+        0.3221,
+        0.4135
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 416
+      }
+    },
+    "mdagents|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 414,
+      "empty_ok": 0,
+      "hits_r1": 181,
+      "hits_r5": 205,
+      "micro_R1": 0.4351,
+      "micro_R5": 0.4928,
+      "macro_R1": 0.3863,
+      "R1_success_denom": 0.4372,
+      "R1_ci95": [
+        0.3894,
+        0.4808
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 414,
+        "parser_error": 2
+      }
+    },
+    "mdagents|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 264,
+      "empty_ok": 0,
+      "hits_r1": 132,
+      "hits_r5": 160,
+      "micro_R1": 0.3173,
+      "micro_R5": 0.3846,
+      "macro_R1": 0.2669,
+      "R1_success_denom": 0.5,
+      "R1_ci95": [
+        0.274,
+        0.3606
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 264,
+        "timeout": 151,
+        "agent_error": 1
+      }
+    },
+    "agentclinic|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 416,
+      "empty_ok": 0,
+      "hits_r1": 90,
+      "hits_r5": 210,
+      "micro_R1": 0.2163,
+      "micro_R5": 0.5048,
+      "macro_R1": 0.1235,
+      "R1_success_denom": 0.2163,
+      "R1_ci95": [
+        0.1779,
+        0.2548
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 416
+      }
+    },
+    "agentclinic|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 405,
+      "empty_ok": 0,
+      "hits_r1": 69,
+      "hits_r5": 162,
+      "micro_R1": 0.1659,
+      "micro_R5": 0.3894,
+      "macro_R1": 0.0809,
+      "R1_success_denom": 0.1704,
+      "R1_ci95": [
+        0.1298,
+        0.2019
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 405,
+        "timeout": 10,
+        "parser_error": 1
+      }
+    },
+    "agentclinic|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 416,
+      "empty_ok": 0,
+      "hits_r1": 20,
+      "hits_r5": 153,
+      "micro_R1": 0.0481,
+      "micro_R5": 0.3678,
+      "macro_R1": 0.0458,
+      "R1_success_denom": 0.0481,
+      "R1_ci95": [
+        0.0288,
+        0.0697
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 416
+      }
+    },
+    "agentclinic|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 379,
+      "empty_ok": 0,
+      "hits_r1": 54,
+      "hits_r5": 54,
+      "micro_R1": 0.1298,
+      "micro_R5": 0.1298,
+      "macro_R1": 0.0946,
+      "R1_success_denom": 0.1425,
+      "R1_ci95": [
+        0.0986,
+        0.1635
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 379,
+        "parser_error": 37
+      }
+    },
+    "deeprare|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 413,
+      "empty_ok": 4,
+      "hits_r1": 5,
+      "hits_r5": 11,
+      "micro_R1": 0.012,
+      "micro_R5": 0.0264,
+      "macro_R1": 0.0116,
+      "R1_success_denom": 0.0121,
+      "R1_ci95": [
+        0.0024,
+        0.024
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 413,
+        "agent_error": 2,
+        "timeout": 1
+      }
+    },
+    "deeprare|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 406,
+      "empty_ok": 11,
+      "hits_r1": 7,
+      "hits_r5": 11,
+      "micro_R1": 0.0168,
+      "micro_R5": 0.0264,
+      "macro_R1": 0.0307,
+      "R1_success_denom": 0.0172,
+      "R1_ci95": [
+        0.0048,
+        0.0312
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 406,
+        "agent_error": 9,
+        "timeout": 1
+      }
+    },
+    "deeprare|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 397,
+      "empty_ok": 6,
+      "hits_r1": 1,
+      "hits_r5": 1,
+      "micro_R1": 0.0024,
+      "micro_R5": 0.0024,
+      "macro_R1": 0.0025,
+      "R1_success_denom": 0.0025,
+      "R1_ci95": [
+        0.0,
+        0.0072
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 397,
+        "agent_error": 19
+      }
+    },
+    "deeprare|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 415,
+      "empty_ok": 1,
+      "hits_r1": 5,
+      "hits_r5": 20,
+      "micro_R1": 0.012,
+      "micro_R5": 0.0481,
+      "macro_R1": 0.0083,
+      "R1_success_denom": 0.012,
+      "R1_ci95": [
+        0.0024,
+        0.024
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 415,
+        "agent_error": 1
+      }
+    },
+    "maidxo|deepseek-v4-pro": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 272,
+      "empty_ok": 0,
+      "hits_r1": 1,
+      "hits_r5": 1,
+      "micro_R1": 0.0024,
+      "micro_R5": 0.0024,
+      "macro_R1": 0.0018,
+      "R1_success_denom": 0.0037,
+      "R1_ci95": [
+        0.0,
+        0.0072
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 272,
+        "parser_error": 66,
+        "timeout": 78
+      }
+    },
+    "maidxo|deepseek-v4-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 256,
+      "empty_ok": 0,
+      "hits_r1": 2,
+      "hits_r5": 2,
+      "micro_R1": 0.0048,
+      "micro_R5": 0.0048,
+      "macro_R1": 0.001,
+      "R1_success_denom": 0.0078,
+      "R1_ci95": [
+        0.0,
+        0.012
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 256,
+        "parser_error": 39,
+        "timeout": 121
+      }
+    },
+    "maidxo|gpt-5": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 357,
+      "empty_ok": 0,
+      "hits_r1": 0,
+      "hits_r5": 0,
+      "micro_R1": 0.0,
+      "micro_R5": 0.0,
+      "macro_R1": 0.0,
+      "R1_success_denom": 0.0,
+      "R1_ci95": [
+        0.0,
+        0.0
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 357,
+        "parser_error": 59
+      }
+    },
+    "maidxo|gemini-3-flash": {
+      "n": 416,
+      "n_present": 416,
+      "n_ok": 262,
+      "empty_ok": 0,
+      "hits_r1": 2,
+      "hits_r5": 2,
+      "micro_R1": 0.0048,
+      "micro_R5": 0.0048,
+      "macro_R1": 0.0006,
+      "R1_success_denom": 0.0076,
+      "R1_ci95": [
+        0.0,
+        0.012
+      ],
+      "n_diseases": 68,
+      "status": {
+        "ok": 262,
+        "parser_error": 154
+      }
+    }
+  }
+}

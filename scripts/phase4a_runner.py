@@ -12,9 +12,12 @@ RDMA is P1-only.
 
 Backbones: configurable (default 3: Gemini Flash, DeepSeek V4-Pro, GPT-5 minimal).
 
-Known incompatibilities (skipped automatically):
-- MAI-DxO × GPT-5 (panel timeout)
-- DeepRare × GPT-5 (parser fallback partial)
+Known agent×backbone failure modes (scored honestly, NOT skipped):
+- MAI-DxO × GPT-5: structured-output protocol collapse under GPT-5-minimal
+  (prompt-placeholder echo → vitals-fragment scraping). No timeout on the
+  mimic_note probe (416/416, median ~78s). Scored as very-low R@1.
+- DeepRare × GPT-5: parser fallback partial (empty diseases → relaxed parse).
+See the INCOMPAT set below (now empty; matcher compares the full backbone id).
 
 Output: data/round2/phase4a/predictions_<dataset>_<adapter>_<backbone>.jsonl
 """
@@ -76,6 +79,86 @@ def load_mimic_diverse(n=100):
     return out
 
 
+def load_mimic_note_hpo_line(n=416):
+    """De-leaked MIMIC-IV-Note strict-A HPO line (416 cases / 68 diseases).
+
+    Distinct from the old `mimic_diverse` (leaked ICD-title input, now removed).
+    Input = discharge-summary presentation span (gold name + synonyms masked);
+    gold = code-derived ORPHA (evaluation_only). See
+    audit_frozen/mimic_note_experiment/. Free-text only (no case-level HPO), so
+    the HPO-only agents (vc_rdagent / lirical) are auto-skipped by the runner.
+
+    model_input      -> free_text_vignette  (agents read this via case_to_question)
+    evaluation_only  -> gold_label {orphanet_id, disease_name}
+    demographics.sex -> sex  (age is ADMISSION age, not onset -> deliberately dropped)
+    """
+    from harness.canonical_case import CanonicalCase
+    path = "data/mimic_iv_rd_slice/note_eval_hpo_line_v1.jsonl"
+    out = []
+    with open(path) as f:
+        for line in f:
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            ev = r["evaluation_only"]
+            sex = (r.get("demographics") or {}).get("sex")
+            if sex not in ("male", "female", "unknown"):
+                sex = None
+            case = CanonicalCase(
+                case_id=r["case_id"],
+                source_dataset="mimic_iv_rd",
+                source_split="note_strict_A_hpo_line",
+                free_text_vignette=r["model_input"],
+                demographics={"sex": sex} if sex else {},
+                gold_label={
+                    "orphanet_id": ev["gold_orpha"],
+                    "disease_name": ev["gold_disease"],
+                },
+            )
+            out.append(case)
+            if len(out) >= n:
+                break
+    return out
+
+
+def load_mimic_note_leaked_416(n=416):
+    """BEFORE-de-leak baseline: same 416 case_ids as the de-leaked probe, but
+    the FULL note (no truncation, no gold-name masking) as input.
+
+    Pairs 1:1 with load_mimic_note_hpo_line so before/after is a true same-case
+    comparison. Built by `build_mimic_note_deleaked.py --leaked --restrict-to
+    note_eval_hpo_line_v1.jsonl` → note_leaked_v1_416.jsonl. Same record schema
+    as the de-leaked file, so the mapping below is identical.
+    """
+    from harness.canonical_case import CanonicalCase
+    path = "data/mimic_iv_rd_slice/note_leaked_v1_416.jsonl"
+    out = []
+    with open(path) as f:
+        for line in f:
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            ev = r["evaluation_only"]
+            sex = (r.get("demographics") or {}).get("sex")
+            if sex not in ("male", "female", "unknown"):
+                sex = None
+            case = CanonicalCase(
+                case_id=r["case_id"],
+                source_dataset="mimic_iv_rd",
+                source_split="note_leaked_v1_416",
+                free_text_vignette=r["model_input"],
+                demographics={"sex": sex} if sex else {},
+                gold_label={
+                    "orphanet_id": ev["gold_orpha"],
+                    "disease_name": ev["gold_disease"],
+                },
+            )
+            out.append(case)
+            if len(out) >= n:
+                break
+    return out
+
+
 def load_pmc_holdout(n=1000):
     # Post-cutoff (2024+) PMC-OA holdout; gold from Opus-4.8 agent annotation
     # (stand-in physician gold, §9 L5 / A5). Bias-free reference for H3.
@@ -111,6 +194,8 @@ DATASETS = {
     "rarearena_rds":     load_rarearena_rds,
     "rarebench":         load_rarebench_stratified,
     "mimic_diverse":     load_mimic_diverse,
+    "mimic_note":        load_mimic_note_hpo_line,
+    "mimic_note_leaked": load_mimic_note_leaked_416,
     "pmc_oa_holdout":    load_pmc_holdout,
     "pmc_precutoff":     load_pmc_precutoff,
 }
@@ -145,13 +230,26 @@ def get_adapter(name: str, backbone_id: str, timeout_s: int | None = None,
     raise ValueError(name)
 
 
-# DeepRare × GPT-5: dual-report (adapter-relaxed parser fallback) — NOT skipped
-# MAI-DxO × GPT-5: documented incompat (panel timeout regardless of mode)
-INCOMPAT = {("maidxo", "openai/gpt-5")}
+# Known agent×backbone incompatibilities to auto-skip. Keys are (agent,
+# "provider/model") — the FULL canonical backbone id, matched exactly.
+#
+# 2026-07-26: emptied. The earlier ("maidxo", "openai/gpt-5") entry was BOTH
+#   (a) never actually firing — the matcher below only ever compared split
+#       fragments ("gpt-5" / "openai"), never the full "openai/gpt-5" string,
+#       so the entry silently no-op'd; and
+#   (b) mis-motivated — on the mimic_note probe via the litellm gateway,
+#       maidxo×gpt-5 does NOT time out (416/416 complete, median 78s, 0 over
+#       600s). Its real failure mode is structured-output PROTOCOL COLLAPSE
+#       (GPT-5-minimal echoes the "[detailed reasoning...]" prompt placeholder
+#       ~380/416 and the panel scrapes vitals fragments as the "diagnosis").
+#       That is a genuine framework×backbone finding, so it is now scored
+#       honestly (very low R@1) rather than hidden as N/A.
+# The matcher is fixed to compare the full id, so future TRUE incompats work.
+INCOMPAT: set[tuple[str, str]] = set()
 
 # vc_rdagent Stage 1 is HPO-input-only (no NLP extraction step). Skip datasets
 # that don't supply structured HPO terms in CanonicalCase.gold_hpo_terms.
-NO_HPO_DATASETS = {"rarearena_rds", "mimic_diverse"}
+NO_HPO_DATASETS = {"rarearena_rds", "mimic_diverse", "mimic_note", "mimic_note_leaked"}
 HPO_ONLY_AGENTS = {"vc_rdagent", "lirical"}
 
 
@@ -159,8 +257,7 @@ def run(dataset, agent, backbone, n, out_path, timeout_s=None, reasoning_on=Fals
     load_env()
     print(f"[p4a] dataset={dataset} agent={agent} backbone={backbone} n={n}"
           f"{' reasoning_ON' if reasoning_on else ''} concurrency={concurrency}", flush=True)
-    if (agent, backbone.split("/")[-1] if "/" in backbone else backbone) in INCOMPAT or \
-       any((agent, k) in INCOMPAT for k in backbone.split("/")):
+    if (agent, backbone) in INCOMPAT:
         print(f"  → known incompat,skip", flush=True)
         return
     # vc_rdagent / lirical require HPO input — skip on free-text datasets

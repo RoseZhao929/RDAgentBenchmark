@@ -38,6 +38,7 @@ from harness.agents._adapter_utils import (
     parse_ranked_top5,
     reasoning_disabled_for_backbone,
     reasoning_effort_for_backbone,
+    resolve_llm_gateway,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -196,9 +197,9 @@ class MedAgentsAdapter(AgentAdapter):
             raise FileNotFoundError(
                 f"MedAgents venv python missing: {MEDAGENTS_PY}"
             )
-        api_key = os.environ.get("OPENROUTER_API_KEY", "")
+        sdk_base, api_key = resolve_llm_gateway()
         env = os.environ.copy()
-        env["OPENAI_API_BASE"] = "https://openrouter.ai/api/v1"
+        env["OPENAI_API_BASE"] = sdk_base
         env["OPENROUTER_API_KEY"] = api_key
         env["OPENAI_API_KEY"] = api_key
         env["CANARY_BACKBONE_MODEL"] = self._model_id

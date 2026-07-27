@@ -50,6 +50,7 @@ from harness.agents._adapter_utils import (
     parse_ranked_top5,
     reasoning_disabled_for_backbone,
     reasoning_effort_for_backbone,
+    resolve_llm_gateway,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -286,10 +287,10 @@ class AgentClinicAdapter(AgentAdapter):
                 f"AgentClinic venv python missing: {AGENTCLINIC_PY}"
             )
 
-        api_key = os.environ.get("OPENROUTER_API_KEY", "")
+        sdk_base, api_key = resolve_llm_gateway()
         env = os.environ.copy()
         env["OPENROUTER_API_KEY"] = api_key
-        env["OPENROUTER_BASE_URL"] = "https://openrouter.ai/api/v1"
+        env["OPENROUTER_BASE_URL"] = sdk_base
         env["OPENAI_API_KEY"] = api_key
         env["CANARY_BACKBONE_MODEL"] = self._model_id
         env["PYTHONUNBUFFERED"] = "1"
@@ -359,10 +360,10 @@ class AgentClinicAdapter(AgentAdapter):
     def _run_followup(
         self, dialogue: str, final_dx: Optional[str], case_question: str
     ) -> str:
-        api_key = os.environ.get("OPENROUTER_API_KEY", "")
+        sdk_base, api_key = resolve_llm_gateway()
         env = os.environ.copy()
         env["OPENROUTER_API_KEY"] = api_key
-        env["OPENROUTER_BASE_URL"] = "https://openrouter.ai/api/v1"
+        env["OPENROUTER_BASE_URL"] = sdk_base
         env["OPENAI_API_KEY"] = api_key
         env["CANARY_BACKBONE_MODEL"] = self._model_id
         env["PYTHONUNBUFFERED"] = "1"

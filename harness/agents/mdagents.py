@@ -40,6 +40,7 @@ from harness.agents._adapter_utils import (
     parse_ranked_top5,
     reasoning_disabled_for_backbone,
     reasoning_effort_for_backbone,
+    resolve_llm_gateway,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -112,8 +113,8 @@ class MDAgentsAdapter(AgentAdapter):
 
             env = os.environ.copy()
             # Wire backbone via env (MDAgents reads lowercase `openai_api_key`).
-            api_key = os.environ.get("OPENROUTER_API_KEY", "")
-            env["OPENAI_BASE_URL"] = "https://openrouter.ai/api/v1"
+            sdk_base, api_key = resolve_llm_gateway()
+            env["OPENAI_BASE_URL"] = sdk_base
             env["openai_api_key"] = api_key
             env["OPENAI_API_KEY"] = api_key
             env["MDAGENTS_MODEL"] = self._model_cli

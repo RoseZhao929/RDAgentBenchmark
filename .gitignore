@@ -52,3 +52,19 @@ agent_workspace/
 .venv_audit/
 audit_frozen/__pycache__/
 audit_frozen/_fuzzy_name_map.json
+
+# PhysioNet DUA: row-level MIMIC-IV prediction receipts carry note-derived
+# reasoning traces / case ids — aggregate scores + manifests are shareable, but
+# the per-case receipt jsonls must NEVER be committed.
+audit_frozen/mimic_note_experiment/**/predictions_*.jsonl
+**/predictions_mimic*.jsonl
+
+# editor/pipeline backups + LaTeX build artifacts
+*.bak
+*.aux
+*.log
+*.blg
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls

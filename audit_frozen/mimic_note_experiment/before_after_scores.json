@@ -1,0 +1,185 @@
+{
+  "n_gold": 416,
+  "gold_path": "data/mimic_iv_rd_slice/note_eval_hpo_line_v1.jsonl",
+  "case_set": "note_eval_hpo_line_v1 (416)",
+  "before": {
+    "desc": "leaked: full note, no truncation/mask",
+    "dir": "data/round2/phase4a_mimic_note_leaked",
+    "cells": {
+      "deepseek-v4-pro": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 416,
+        "empty_ok": 0,
+        "hits_r1": 208,
+        "hits_r5": 241,
+        "micro_R1": 0.5,
+        "micro_R5": 0.5793,
+        "macro_R1": 0.4917,
+        "R1_success_denom": 0.5,
+        "R1_ci95": [
+          0.4519,
+          0.5457
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 416
+        }
+      },
+      "deepseek-v4-flash": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 416,
+        "empty_ok": 0,
+        "hits_r1": 230,
+        "hits_r5": 259,
+        "micro_R1": 0.5529,
+        "micro_R5": 0.6226,
+        "macro_R1": 0.5248,
+        "R1_success_denom": 0.5529,
+        "R1_ci95": [
+          0.5072,
+          0.5986
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 416
+        }
+      },
+      "gpt-5": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 415,
+        "empty_ok": 0,
+        "hits_r1": 177,
+        "hits_r5": 201,
+        "micro_R1": 0.4255,
+        "micro_R5": 0.4832,
+        "macro_R1": 0.4359,
+        "R1_success_denom": 0.4265,
+        "R1_ci95": [
+          0.3798,
+          0.4712
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 415,
+          "parser_error": 1
+        }
+      },
+      "gemini-3-flash": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 405,
+        "empty_ok": 0,
+        "hits_r1": 188,
+        "hits_r5": 219,
+        "micro_R1": 0.4519,
+        "micro_R5": 0.5264,
+        "macro_R1": 0.4675,
+        "R1_success_denom": 0.4642,
+        "R1_ci95": [
+          0.4062,
+          0.4976
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 405,
+          "agent_error": 2,
+          "parser_error": 9
+        }
+      }
+    }
+  },
+  "after": {
+    "desc": "de-leaked: presentation-span + gold-name mask",
+    "dir": "data/round2/phase4a_mimic_note",
+    "cells": {
+      "deepseek-v4-pro": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 397,
+        "empty_ok": 0,
+        "hits_r1": 152,
+        "hits_r5": 190,
+        "micro_R1": 0.3654,
+        "micro_R5": 0.4567,
+        "macro_R1": 0.3183,
+        "R1_success_denom": 0.3829,
+        "R1_ci95": [
+          0.3197,
+          0.4111
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 397,
+          "agent_error": 19
+        }
+      },
+      "deepseek-v4-flash": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 396,
+        "empty_ok": 0,
+        "hits_r1": 147,
+        "hits_r5": 188,
+        "micro_R1": 0.3534,
+        "micro_R5": 0.4519,
+        "macro_R1": 0.2846,
+        "R1_success_denom": 0.3712,
+        "R1_ci95": [
+          0.3077,
+          0.399
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 396,
+          "parser_error": 20
+        }
+      },
+      "gpt-5": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 415,
+        "empty_ok": 0,
+        "hits_r1": 151,
+        "hits_r5": 180,
+        "micro_R1": 0.363,
+        "micro_R5": 0.4327,
+        "macro_R1": 0.3454,
+        "R1_success_denom": 0.3639,
+        "R1_ci95": [
+          0.3173,
+          0.4087
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 415,
+          "parser_error": 1
+        }
+      },
+      "gemini-3-flash": {
+        "n": 416,
+        "n_present": 416,
+        "n_ok": 370,
+        "empty_ok": 0,
+        "hits_r1": 155,
+        "hits_r5": 184,
+        "micro_R1": 0.3726,
+        "micro_R5": 0.4423,
+        "macro_R1": 0.3455,
+        "R1_success_denom": 0.4189,
+        "R1_ci95": [
+          0.3269,
+          0.4183
+        ],
+        "n_diseases": 68,
+        "status": {
+          "ok": 370,
+          "parser_error": 9,
+          "agent_error": 37
+        }
+      }
+    }
+  }
+}

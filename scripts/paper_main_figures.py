@@ -530,7 +530,7 @@ def figF2_scaffolding(rows):
     from matplotlib.lines import Line2D
     fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
     for yi, a in zip(y, scaffolds):
-        # PP-Store lollipop (blue, upper)
+        # PP-Store lollipop (blue, upper); value label to the LEFT of its marker
         d = pp_d.get(a)
         if d is not None:
             ax.plot([0, d], [yi + off, yi + off], color=C_LLM, lw=2.6, zorder=2,
@@ -539,32 +539,38 @@ def figF2_scaffolding(rows):
                        linewidths=0.8, zorder=3)
             ax.text(d - 1.2, yi + off, f"{d:+.1f}", va="center", ha="right",
                     fontsize=15, color=C_LLM)
-        # MIMIC-IV lollipop (gold, lower)
+        # MIMIC-IV lollipop (gold, lower); value label to the LEFT of its marker,
+        # EXCEPT the leftmost MAI-DxO point (-36.1) which is dropped BELOW its
+        # marker so it no longer collides with the y-axis / MAI-DxO tick label.
         d2 = mm_d.get(a)
         if d2 is not None:
             ax.plot([0, d2], [yi - off, yi - off], color=C_CLASSICAL, lw=2.6,
                     zorder=2, solid_capstyle="round")
             ax.scatter([d2], [yi - off], s=150, color=C_CLASSICAL,
                        edgecolors=BAR_EDGE, linewidths=0.8, zorder=3)
-            ax.text(d2 - 1.2, yi - off, f"{d2:+.1f}", va="center", ha="right",
-                    fontsize=15, color="#9a7016")
+            if a == "maidxo":
+                ax.text(d2, yi - off - 0.19, f"{d2:+.1f}", va="top", ha="center",
+                        fontsize=15, color="#9a7016")
+            else:
+                ax.text(d2 - 1.2, yi - off, f"{d2:+.1f}", va="center", ha="right",
+                        fontsize=15, color="#9a7016")
     ax.axvline(0, color="#333", lw=2.0, zorder=1)
     ax.set_yticks(y)
     ax.set_yticklabels([disp[a] for a in scaffolds])
     ax.set_xlabel("R@1 change vs. no-scaffold control (pp)")
     lo = min([pp_d.get(a, 0) for a in scaffolds]
-             + [mm_d.get(a, 0) for a in scaffolds]) - 4
+             + [mm_d.get(a, 0) for a in scaffolds]) - 7
     ax.set_xlim(lo, 6)
-    ax.set_ylim(-0.6, len(scaffolds) - 0.4)
+    ax.set_ylim(-0.85, len(scaffolds) - 0.4)
     handles = [Line2D([0], [0], color=C_LLM, marker="o", lw=2.6, ms=9,
                       label="Phenopacket-Store"),
                Line2D([0], [0], color=C_CLASSICAL, marker="o", lw=2.6, ms=9,
                       label="MIMIC-IV note")]
-    # legend in the mid-left empty band (below the ~0 MedAgents/MDAgents rows,
-    # left of the AgentClinic bars) so it clears both the value labels and bars
-    ax.legend(handles=handles, loc="center left", frameon=False,
+    # legend in the upper-left empty band (the collapsed-agent rows sit at the
+    # bottom, so the top-left quadrant is clear of both value labels and lines)
+    ax.legend(handles=handles, loc="upper left", frameon=False,
               handlelength=1.4, handletextpad=0.4, labelspacing=0.3,
-              bbox_to_anchor=(0.02, 0.52))
+              bbox_to_anchor=(-0.02, 0.98))
     ax.grid(axis="x", zorder=0)
     despine(ax)
     fig.tight_layout()

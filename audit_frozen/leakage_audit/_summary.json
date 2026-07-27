@@ -1,0 +1,71 @@
+{
+  "summary": {
+    "phenopacket_store": {
+      "n": 10051,
+      "exact_rate": 0.006765495970550194,
+      "syn_rate": 0.00331720801658604,
+      "syn_denom": 7235,
+      "syn_na": 2816,
+      "syn_short": 97,
+      "fuzzy_rate": 0.002902557014512785,
+      "ident_rate": 0.0,
+      "title_rate": null,
+      "title_na": 10051,
+      "title_hits": 0
+    },
+    "rarebench": {
+      "n": 1122,
+      "exact_rate": 0.0,
+      "syn_rate": 0.0,
+      "syn_denom": 1114,
+      "syn_na": 8,
+      "syn_short": 1,
+      "fuzzy_rate": 0.0,
+      "ident_rate": 0.00089126559714795,
+      "title_rate": null,
+      "title_na": 1122,
+      "title_hits": 0
+    },
+    "rarearena_rds": {
+      "n": 2000,
+      "exact_rate": 0.0,
+      "syn_rate": 0.0,
+      "syn_denom": 2000,
+      "syn_na": 0,
+      "syn_short": 17,
+      "fuzzy_rate": 0.001,
+      "ident_rate": 0.0,
+      "title_rate": 0.0,
+      "title_na": 0,
+      "title_hits": 0
+    },
+    "pmc_oa_holdout": {
+      "n": 198,
+      "exact_rate": 0.020202020202020204,
+      "syn_rate": 0.0,
+      "syn_denom": 198,
+      "syn_na": 0,
+      "syn_short": 0,
+      "fuzzy_rate": 0.015151515151515152,
+      "ident_rate": 0.0,
+      "title_rate": null,
+      "title_na": 198,
+      "title_hits": 0
+    },
+    "pmc_precutoff": {
+      "n": 220,
+      "exact_rate": 0.05454545454545454,
+      "syn_rate": 0.00909090909090909,
+      "syn_denom": 220,
+      "syn_na": 0,
+      "syn_short": 5,
+      "fuzzy_rate": 0.004545454545454545,
+      "ident_rate": 0.0,
+      "title_rate": null,
+      "title_na": 220,
+      "title_hits": 0
+    }
+  },
+  "rarearena_total": 8562,
+  "rarearena_sample": 2000
+}

@@ -1,0 +1,53 @@
+{
+  "artifact": "mimic_results_summary.json",
+  "generated_utc": "2026-07-24T07:53:13Z",
+  "frozen_commit": "e8c2d19f8c7f1dbfa89fe7df1b6ad8a1ab876fe1",
+  "status": "NOT_REPRODUCIBLE / RE-SPECIFIED-PENDING",
+  "one_line": "No scorable MIMIC results exist in this repo. Legacy aggregates are mutually inconsistent and are retained only as provenance; the re-specified structured-EHR probe has not been scored.",
+  "evidence_counts": {
+    "prediction_receipts_on_disk": 0,
+    "cohort_files_on_disk": 0,
+    "gold_labels_on_disk": 0,
+    "rows_in_frozen_main_manifest": 0,
+    "scorable_case_level_rows": 0,
+    "legacy_aggregate_cells": 22,
+    "legacy_cells_in_explicit_conflict": 13
+  },
+  "why_not_reproducible": [
+    "predictions_mimic_*.jsonl: absent everywhere on host (find / -> 0)",
+    "data/mimic_iv_rd_slice/cases_filtered_diverse.jsonl: absent (gitignored, credentialed, not on host)",
+    "gold: recompute_engine.load_gold() hardcodes mimic_diverse n_gold_cases=0 (stripped)",
+    "cannot score cases without receipts x gold; both are zero"
+  ],
+  "legacy_aggregate_conflict_example": {
+    "cell": "llm_control | deepseek-v4-pro",
+    "round2_receipts_csv": {
+      "attempted": 956,
+      "R@1_variants": 0.248
+    },
+    "new_version_headline_csv": {
+      "attempted": 402,
+      "R@1_variants": 0.264
+    },
+    "verdict": "irreconcilable without receipts"
+  },
+  "post_merge_state": {
+    "branch_merged": "experiment/mimic-structured-ehr-best-design (== origin/main e8c2d19f)",
+    "diagnostic_matrix_contains_mimic": false,
+    "mimic_role_now": "separately-reported exploratory structured-EHR (S-EHR) probe; scoring pending",
+    "stale_point_estimates_in_paper": 0,
+    "replacement_scores_exist": false
+  },
+  "what_is_needed_to_produce_real_results": [
+    "data/mimic_iv_rd_slice/cases_filtered_diverse.jsonl (956 cohort + gold) from author yutianzhao (credentialed)",
+    "OR run scripts/mimic_structured_ehr_ablation.py + build_mimic_early_structured_snapshots.py on that cohort, then paid model calls, then a task-versioned receipt",
+    "then score with audit_frozen/recompute_engine.py under the same R@1 (failures-in-denominator) rule"
+  ],
+  "provenance": {
+    "round2_receipts_mimic_block_sha256": "fe3257e4123f84e916ff6583da12e9904927066208544f77506f8104ff8cf656",
+    "sources_transcribed": [
+      "data/round2/phase4a_receipts.csv",
+      "new_version_paper/headline_results.csv (other checkout)"
+    ]
+  }
+}

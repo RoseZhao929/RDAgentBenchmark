@@ -1,0 +1,1545 @@
+split,case_id,system,attempted,successful,correct_variant,matched_flag,phenotype_bucket,prevalence_tier
+pre_cutoff,pmc_10309196,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_10528691,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_11896375,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_12286545,agentclinic,1,1,0,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_12289168,agentclinic,1,1,0,1,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7034128,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7054909,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7243430,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7364750,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7369505,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7449875,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7450227,agentclinic,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7450555,agentclinic,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7451004,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7453031,agentclinic,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7453607,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7454064,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7456551,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7457485,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7457761,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460749,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460763,agentclinic,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7460769,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460776,agentclinic,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7460788,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7463213,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7466787,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7469264,agentclinic,1,1,0,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7471047,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7472970,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476405,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476416,agentclinic,1,1,0,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7476748,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7477966,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7478430,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7480904,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7481148,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7483274,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7483499,agentclinic,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7483516,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7487677,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7487698,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7488248,agentclinic,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7488555,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7488564,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7488652,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7489624,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7489629,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7489697,agentclinic,1,1,0,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_7490621,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7490943,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7491942,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7491954,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7492686,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7498628,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7499129,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7499969,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7503024,agentclinic,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7505336,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7506983,agentclinic,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7507009,agentclinic,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7507105,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507238,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507300,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507304,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507323,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507324,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507424,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507428,agentclinic,1,1,0,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7507429,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507455,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7507471,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507566,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507568,agentclinic,1,1,0,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7507693,agentclinic,1,1,0,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7507702,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7507809,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7508306,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7509858,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7510307,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7510730,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513245,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7513492,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513568,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7515574,agentclinic,1,1,1,1,<=5,6-9 / 10 000
+pre_cutoff,pmc_7516319,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7517646,agentclinic,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7521222,agentclinic,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7521231,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7521235,agentclinic,1,1,0,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7521304,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7522064,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7523753,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7524121,agentclinic,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7524123,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7525942,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7526154,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7526353,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7526371,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7527107,agentclinic,1,1,0,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7528384,agentclinic,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7528461,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7532525,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7532568,agentclinic,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7534191,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7535637,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7537964,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7537991,agentclinic,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7538394,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7539423,agentclinic,1,1,1,0,>30,Unknown
+pre_cutoff,pmc_7539460,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7541300,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7542762,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7544169,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7544278,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7545085,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7545356,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7545562,agentclinic,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7545601,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7546111,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7546934,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549549,agentclinic,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549553,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7549556,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7549559,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7549565,agentclinic,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549567,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7549585,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549590,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549591,agentclinic,1,1,0,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7549592,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549601,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7549606,agentclinic,1,1,0,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7549610,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7551200,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552380,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7552534,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552932,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7553298,agentclinic,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7553719,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7556219,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7556554,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7556576,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7557705,agentclinic,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7559414,agentclinic,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7560064,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7563002,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565518,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565931,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7566064,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7571931,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7577528,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7578612,agentclinic,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7579786,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7580532,agentclinic,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7581097,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7583196,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7583210,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7583703,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7584028,agentclinic,1,1,0,0,>30,<1 / 1 000 000
+pre_cutoff,pmc_7585456,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7588587,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7590603,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7590664,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7591671,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7592193,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7592250,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7592389,agentclinic,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7593105,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7594264,agentclinic,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7596645,agentclinic,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7596986,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7596990,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7597510,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7599977,agentclinic,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7600251,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603712,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7603716,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603801,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7608362,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7609319,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7610051,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7610057,agentclinic,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7640410,agentclinic,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7641885,agentclinic,1,1,0,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7641887,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7647596,agentclinic,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648302,agentclinic,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648400,agentclinic,1,1,1,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7649975,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7650176,agentclinic,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7650518,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7650627,agentclinic,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7653323,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7654135,agentclinic,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7654168,agentclinic,1,1,1,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656068,agentclinic,1,1,0,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656075,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7659086,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7659096,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7661169,agentclinic,1,1,0,0,6-15,1-9 / 100 000
+pre_cutoff,pmc_7662043,agentclinic,1,1,0,0,16-30,Unknown
+pre_cutoff,pmc_7662046,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7662643,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7664105,agentclinic,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7664249,agentclinic,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_10309196,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_10528691,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_11896375,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_12286545,llm_control,1,1,1,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_12289168,llm_control,1,1,0,1,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7034128,llm_control,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7054909,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7243430,llm_control,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7364750,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7369505,llm_control,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7449875,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7450227,llm_control,1,1,1,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7450555,llm_control,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7451004,llm_control,1,1,1,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7453031,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7453607,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7454064,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7456551,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7457485,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7457761,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460749,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460763,llm_control,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7460769,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460776,llm_control,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7460788,llm_control,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7463213,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7466787,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7469264,llm_control,1,1,0,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7471047,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7472970,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476405,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476416,llm_control,1,1,0,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7476748,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7477966,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7478430,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7480904,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7481148,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7483274,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7483499,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7483516,llm_control,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7487677,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7487698,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7488248,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7488555,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7488564,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7488652,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7489624,llm_control,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7489629,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7489697,llm_control,1,1,0,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_7490621,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7490943,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7491942,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7491954,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7492686,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7498628,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7499129,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7499969,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7503024,llm_control,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7505336,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7506983,llm_control,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7507009,llm_control,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7507105,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507238,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507300,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507304,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507323,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507324,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507424,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507428,llm_control,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7507429,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507455,llm_control,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7507471,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507566,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507568,llm_control,1,1,0,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7507693,llm_control,1,1,0,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7507702,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7507809,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7508306,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7509858,llm_control,1,1,1,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7510307,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7510730,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513245,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7513492,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513568,llm_control,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7515574,llm_control,1,1,1,1,<=5,6-9 / 10 000
+pre_cutoff,pmc_7516319,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7517646,llm_control,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7521222,llm_control,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7521231,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7521235,llm_control,1,1,1,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7521304,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7522064,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7523753,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7524121,llm_control,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7524123,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7525942,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7526154,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7526353,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7526371,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7527107,llm_control,1,1,1,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7528384,llm_control,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7528461,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7532525,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7532568,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7534191,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7535637,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7537964,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7537991,llm_control,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7538394,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7539423,llm_control,1,1,1,0,>30,Unknown
+pre_cutoff,pmc_7539460,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7541300,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7542762,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7544169,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7544278,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7545085,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7545356,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7545562,llm_control,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7545601,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7546111,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7546934,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549549,llm_control,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549553,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7549556,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7549559,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7549565,llm_control,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549567,llm_control,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7549585,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549590,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549591,llm_control,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7549592,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549601,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7549606,llm_control,1,1,1,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7549610,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7551200,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552380,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7552534,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552932,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7553298,llm_control,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7553719,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7556219,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7556554,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7556576,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7557705,llm_control,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7559414,llm_control,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7560064,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7563002,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565518,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565931,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7566064,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7571931,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7577528,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7578612,llm_control,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7579786,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7580532,llm_control,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7581097,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7583196,llm_control,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7583210,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7583703,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7584028,llm_control,1,1,1,0,>30,<1 / 1 000 000
+pre_cutoff,pmc_7585456,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7588587,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7590603,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7590664,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7591671,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7592193,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7592250,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7592389,llm_control,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7593105,llm_control,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7594264,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7596645,llm_control,1,1,1,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7596986,llm_control,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7596990,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7597510,llm_control,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7599977,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7600251,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603712,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7603716,llm_control,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603801,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7608362,llm_control,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7609319,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7610051,llm_control,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7610057,llm_control,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7640410,llm_control,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7641885,llm_control,1,1,0,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7641887,llm_control,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7647596,llm_control,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648302,llm_control,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648400,llm_control,1,1,1,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7649975,llm_control,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7650176,llm_control,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7650518,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7650627,llm_control,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7653323,llm_control,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7654135,llm_control,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7654168,llm_control,1,1,1,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656068,llm_control,1,1,0,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656075,llm_control,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7659086,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7659096,llm_control,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7661169,llm_control,1,1,1,0,6-15,1-9 / 100 000
+pre_cutoff,pmc_7662043,llm_control,1,1,1,0,16-30,Unknown
+pre_cutoff,pmc_7662046,llm_control,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7662643,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7664105,llm_control,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7664249,llm_control,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_10309196,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_10528691,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_11896375,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_12286545,mdagents,1,1,1,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_12289168,mdagents,1,1,0,1,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7034128,mdagents,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7054909,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7243430,mdagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7364750,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7369505,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7449875,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7450227,mdagents,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7450555,mdagents,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7451004,mdagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7453031,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7453607,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7454064,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7456551,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7457485,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7457761,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460749,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460763,mdagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7460769,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460776,mdagents,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7460788,mdagents,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7463213,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7466787,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7469264,mdagents,1,1,0,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7471047,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7472970,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476405,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476416,mdagents,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7476748,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7477966,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7478430,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7480904,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7481148,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7483274,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7483499,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7483516,mdagents,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7487677,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7487698,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7488248,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7488555,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7488564,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7488652,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7489624,mdagents,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7489629,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7489697,mdagents,1,1,1,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_7490621,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7490943,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7491942,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7491954,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7492686,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7498628,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7499129,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7499969,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7503024,mdagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7505336,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7506983,mdagents,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7507009,mdagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7507105,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507238,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507300,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507304,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507323,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507324,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507424,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507428,mdagents,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7507429,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507455,mdagents,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7507471,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507566,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507568,mdagents,1,1,0,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7507693,mdagents,1,1,0,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7507702,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7507809,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7508306,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7509858,mdagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7510307,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7510730,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513245,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7513492,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513568,mdagents,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7515574,mdagents,1,1,1,1,<=5,6-9 / 10 000
+pre_cutoff,pmc_7516319,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7517646,mdagents,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7521222,mdagents,1,0,0,1,<=5,Unknown
+pre_cutoff,pmc_7521231,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7521235,mdagents,1,1,1,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7521304,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7522064,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7523753,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7524121,mdagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7524123,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7525942,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7526154,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7526353,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7526371,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7527107,mdagents,1,1,1,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7528384,mdagents,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7528461,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7532525,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7532568,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7534191,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7535637,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7537964,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7537991,mdagents,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7538394,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7539423,mdagents,1,1,1,0,>30,Unknown
+pre_cutoff,pmc_7539460,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7541300,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7542762,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7544169,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7544278,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7545085,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7545356,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7545562,mdagents,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7545601,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7546111,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7546934,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549549,mdagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549553,mdagents,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7549556,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7549559,mdagents,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7549565,mdagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549567,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7549585,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549590,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549591,mdagents,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7549592,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549601,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7549606,mdagents,1,1,1,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7549610,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7551200,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552380,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7552534,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552932,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7553298,mdagents,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7553719,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7556219,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7556554,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7556576,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7557705,mdagents,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7559414,mdagents,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7560064,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7563002,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565518,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565931,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7566064,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7571931,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7577528,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7578612,mdagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7579786,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7580532,mdagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7581097,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7583196,mdagents,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7583210,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7583703,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7584028,mdagents,1,1,1,0,>30,<1 / 1 000 000
+pre_cutoff,pmc_7585456,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7588587,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7590603,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7590664,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7591671,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7592193,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7592250,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7592389,mdagents,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7593105,mdagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7594264,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7596645,mdagents,1,1,1,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7596986,mdagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7596990,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7597510,mdagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7599977,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7600251,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603712,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7603716,mdagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603801,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7608362,mdagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7609319,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7610051,mdagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7610057,mdagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7640410,mdagents,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7641885,mdagents,1,1,0,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7641887,mdagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7647596,mdagents,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648302,mdagents,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648400,mdagents,1,1,1,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7649975,mdagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7650176,mdagents,1,1,1,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7650518,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7650627,mdagents,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7653323,mdagents,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7654135,mdagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7654168,mdagents,1,1,1,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656068,mdagents,1,1,0,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656075,mdagents,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7659086,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7659096,mdagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7661169,mdagents,1,1,1,0,6-15,1-9 / 100 000
+pre_cutoff,pmc_7662043,mdagents,1,1,1,0,16-30,Unknown
+pre_cutoff,pmc_7662046,mdagents,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7662643,mdagents,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7664105,mdagents,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7664249,mdagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_10309196,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_10528691,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_11896375,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_12286545,medagents,1,1,1,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_12289168,medagents,1,1,0,1,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7034128,medagents,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7054909,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7243430,medagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7364750,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7369505,medagents,1,1,0,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7449875,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7450227,medagents,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7450555,medagents,1,1,0,0,16-30,6-9 / 10 000
+pre_cutoff,pmc_7451004,medagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7453031,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7453607,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7454064,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7456551,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7457485,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7457761,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460749,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460763,medagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7460769,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7460776,medagents,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7460788,medagents,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7463213,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7466787,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7469264,medagents,1,1,0,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7471047,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7472970,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476405,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7476416,medagents,1,1,0,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7476748,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7477966,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7478430,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7480904,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7481148,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7483274,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7483499,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7483516,medagents,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7487677,medagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7487698,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7488248,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7488555,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7488564,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7488652,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7489624,medagents,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7489629,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7489697,medagents,1,1,1,1,<=5,1-5 / 10 000
+pre_cutoff,pmc_7490621,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7490943,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7491942,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7491954,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7492686,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7498628,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7499129,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7499969,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7503024,medagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7505336,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7506983,medagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7507009,medagents,1,1,1,1,<=5,Unknown
+pre_cutoff,pmc_7507105,medagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507238,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507300,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507304,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507323,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7507324,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7507424,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507428,medagents,1,1,1,1,<=5,1-9 / 100 000
+pre_cutoff,pmc_7507429,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507455,medagents,1,1,0,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7507471,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7507566,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7507568,medagents,1,1,0,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7507693,medagents,1,1,0,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7507702,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7507809,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7508306,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7509858,medagents,1,1,0,1,6-15,6-9 / 10 000
+pre_cutoff,pmc_7510307,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7510730,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513245,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7513492,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7513568,medagents,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7515574,medagents,1,1,1,1,<=5,6-9 / 10 000
+pre_cutoff,pmc_7516319,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7517646,medagents,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7521222,medagents,1,1,0,1,<=5,Unknown
+pre_cutoff,pmc_7521231,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7521235,medagents,1,1,1,0,<=5,<1 / 1 000 000
+pre_cutoff,pmc_7521304,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7522064,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7523753,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7524121,medagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7524123,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7525942,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7526154,medagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7526353,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7526371,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7527107,medagents,1,1,1,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7528384,medagents,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7528461,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7532525,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7532568,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7534191,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7535637,medagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7537964,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7537991,medagents,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7538394,medagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7539423,medagents,1,1,1,0,>30,Unknown
+pre_cutoff,pmc_7539460,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7541300,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7542762,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7544169,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7544278,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7545085,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7545356,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7545562,medagents,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7545601,medagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7546111,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7546934,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549549,medagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549553,medagents,1,1,1,1,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7549556,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7549559,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7549565,medagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7549567,medagents,1,1,0,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7549585,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549590,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7549591,medagents,1,1,1,1,16-30,1-9 / 100 000
+pre_cutoff,pmc_7549592,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7549601,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7549606,medagents,1,1,1,0,>30,1-9 / 1 000 000
+pre_cutoff,pmc_7549610,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7551200,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552380,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+pre_cutoff,pmc_7552534,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7552932,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7553298,medagents,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7553719,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7556219,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7556554,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7556576,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7557705,medagents,1,1,0,0,>30,Unknown
+pre_cutoff,pmc_7559414,medagents,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7560064,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7563002,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565518,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7565931,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7566064,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7571931,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7577528,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7578612,medagents,1,1,0,1,6-15,Unknown
+pre_cutoff,pmc_7579786,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7580532,medagents,1,1,1,1,6-15,Unknown
+pre_cutoff,pmc_7581097,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7583196,medagents,1,1,1,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7583210,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7583703,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7584028,medagents,1,1,1,0,>30,<1 / 1 000 000
+pre_cutoff,pmc_7585456,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7588587,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7590603,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7590664,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7591671,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7592193,medagents,1,1,0,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7592250,medagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7592389,medagents,1,1,1,0,<=5,Unknown
+pre_cutoff,pmc_7593105,medagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7594264,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7596645,medagents,1,1,1,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7596986,medagents,1,1,0,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7596990,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7597510,medagents,1,1,1,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7599977,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7600251,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603712,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7603716,medagents,1,1,1,1,6-15,1-9 / 100 000
+pre_cutoff,pmc_7603801,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7608362,medagents,1,1,1,1,16-30,Unknown
+pre_cutoff,pmc_7609319,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7610051,medagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7610057,medagents,1,1,1,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7640410,medagents,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7641885,medagents,1,1,0,0,<=5,1-5 / 10 000
+pre_cutoff,pmc_7641887,medagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7647596,medagents,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648302,medagents,1,1,0,0,16-30,<1 / 1 000 000
+pre_cutoff,pmc_7648400,medagents,1,1,1,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7649975,medagents,1,1,0,1,6-15,1-5 / 10 000
+pre_cutoff,pmc_7650176,medagents,1,1,0,0,6-15,1-9 / 1 000 000
+pre_cutoff,pmc_7650518,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7650627,medagents,1,1,0,0,<=5,1-9 / 100 000
+pre_cutoff,pmc_7653323,medagents,1,1,0,1,16-30,1-5 / 10 000
+pre_cutoff,pmc_7654135,medagents,1,1,0,1,16-30,Unknown
+pre_cutoff,pmc_7654168,medagents,1,1,1,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656068,medagents,1,1,0,0,6-15,1-5 / 10 000
+pre_cutoff,pmc_7656075,medagents,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7659086,medagents,1,1,1,1,6-15,<1 / 1 000 000
+pre_cutoff,pmc_7659096,medagents,1,1,0,0,6-15,Unknown
+pre_cutoff,pmc_7661169,medagents,1,1,1,0,6-15,1-9 / 100 000
+pre_cutoff,pmc_7662043,medagents,1,1,1,0,16-30,Unknown
+pre_cutoff,pmc_7662046,medagents,1,1,1,0,6-15,Unknown
+pre_cutoff,pmc_7662643,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+pre_cutoff,pmc_7664105,medagents,1,1,0,0,<=5,Unknown
+pre_cutoff,pmc_7664249,medagents,1,1,0,0,6-15,Unknown
+post_cutoff,pmc_10759414,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10766305,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10768362,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10784498,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10785502,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10787472,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10788076,agentclinic,1,1,0,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10788978,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10797712,agentclinic,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10798782,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10799942,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10802946,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10806374,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10817086,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10821070,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10826013,agentclinic,1,1,0,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10826480,agentclinic,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10836127,agentclinic,1,1,0,1,<=5,6-9 / 10 000
+post_cutoff,pmc_10850558,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10855567,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10856706,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10860963,agentclinic,1,1,0,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10865650,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10870593,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10875816,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10876619,agentclinic,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10882756,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10882785,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10888313,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10888672,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10900260,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10906587,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10906754,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10912791,agentclinic,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10912837,agentclinic,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10919518,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10921798,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_10924519,agentclinic,1,1,0,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10931735,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10932951,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938514,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938529,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_10945221,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948032,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948039,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_10951126,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10958957,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10962175,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10964954,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10967001,agentclinic,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10970303,agentclinic,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10970670,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10983683,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10984288,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10994426,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10996216,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10996244,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10997844,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11000129,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002242,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002998,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11005255,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11006754,agentclinic,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11007090,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11007553,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11011354,agentclinic,1,1,0,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11015556,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11017581,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11017661,agentclinic,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11019143,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11021622,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11032079,agentclinic,1,1,0,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11040501,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11044326,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11049394,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11049871,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11055791,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11056325,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11059674,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11069050,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11070630,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11074605,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11075503,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11077747,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11077790,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11081592,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11081609,agentclinic,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11082537,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11083902,agentclinic,1,1,0,1,<=5,<1 / 1 000 000
+post_cutoff,pmc_11088769,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11089783,agentclinic,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_11099762,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11106848,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11110268,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11112606,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11121103,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11121183,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11121323,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11121527,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11122089,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11122195,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11123195,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11125292,agentclinic,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11129476,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11130347,agentclinic,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11131292,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11134137,agentclinic,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11135902,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11149238,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11153699,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11155060,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156175,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156176,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11163733,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11164125,agentclinic,1,1,0,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11165897,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11172263,agentclinic,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11178600,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11179463,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11181541,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11181628,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11181917,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11182986,agentclinic,1,1,0,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11184573,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11186240,agentclinic,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11186878,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11186889,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11188498,agentclinic,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11191977,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11193346,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11194961,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11196359,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197252,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197267,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11202368,agentclinic,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11202505,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11202757,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11203072,agentclinic,1,1,0,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11203140,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11203189,agentclinic,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11204092,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11204232,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11205281,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11205385,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11208167,agentclinic,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11208178,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11212407,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11213808,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11218101,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11221131,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11221149,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11224691,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11234637,agentclinic,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11235722,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11237271,agentclinic,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11238493,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11238859,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11251026,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11252829,agentclinic,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_11253478,agentclinic,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11256122,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11265161,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11265170,agentclinic,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11265456,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11269488,agentclinic,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11275647,agentclinic,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11276485,agentclinic,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11276803,agentclinic,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11276957,agentclinic,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11281985,agentclinic,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11284186,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11286406,agentclinic,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11287402,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11288117,agentclinic,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11290577,agentclinic,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11291644,agentclinic,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11295688,agentclinic,1,1,1,0,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11296240,agentclinic,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_13074162,agentclinic,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_13076136,agentclinic,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10759414,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10766305,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10768362,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10784498,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10785502,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10787472,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10788076,llm_control,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10788978,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10797712,llm_control,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_10798782,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10799942,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10802946,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10806374,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10817086,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10821070,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10826013,llm_control,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10826480,llm_control,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10836127,llm_control,1,1,1,1,<=5,6-9 / 10 000
+post_cutoff,pmc_10850558,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10855567,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10856706,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10860963,llm_control,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10865650,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10870593,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10875816,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10876619,llm_control,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10882756,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10882785,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10888313,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10888672,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10900260,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10906587,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10906754,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10912791,llm_control,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10912837,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10919518,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10921798,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_10924519,llm_control,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10931735,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10932951,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938514,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938529,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_10945221,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948032,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948039,llm_control,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_10951126,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10958957,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10962175,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10964954,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10967001,llm_control,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_10970303,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10970670,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10983683,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10984288,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10994426,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10996216,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10996244,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10997844,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11000129,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002242,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002998,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11005255,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11006754,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11007090,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11007553,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11011354,llm_control,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11015556,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11017581,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11017661,llm_control,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11019143,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11021622,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11032079,llm_control,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11040501,llm_control,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11044326,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11049394,llm_control,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11049871,llm_control,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11055791,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11056325,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11059674,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11069050,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11070630,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11074605,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11075503,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11077747,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11077790,llm_control,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11081592,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11081609,llm_control,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11082537,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11083902,llm_control,1,1,0,1,<=5,<1 / 1 000 000
+post_cutoff,pmc_11088769,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11089783,llm_control,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_11099762,llm_control,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11106848,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11110268,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11112606,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11121103,llm_control,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11121183,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11121323,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11121527,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11122089,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11122195,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11123195,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11125292,llm_control,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11129476,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11130347,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11131292,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11134137,llm_control,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11135902,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11149238,llm_control,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11153699,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11155060,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156175,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156176,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11163733,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11164125,llm_control,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11165897,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11172263,llm_control,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11178600,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11179463,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181541,llm_control,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11181628,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181917,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11182986,llm_control,1,1,0,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11184573,llm_control,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11186240,llm_control,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11186878,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11186889,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11188498,llm_control,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11191977,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11193346,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11194961,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11196359,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197252,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197267,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11202368,llm_control,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11202505,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11202757,llm_control,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11203072,llm_control,1,1,1,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11203140,llm_control,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11203189,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11204092,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11204232,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11205281,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11205385,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11208167,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11208178,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11212407,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11213808,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11218101,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11221131,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11221149,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11224691,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11234637,llm_control,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11235722,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11237271,llm_control,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11238493,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11238859,llm_control,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11251026,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11252829,llm_control,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_11253478,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11256122,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11265161,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11265170,llm_control,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11265456,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11269488,llm_control,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11275647,llm_control,1,1,1,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11276485,llm_control,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11276803,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11276957,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11281985,llm_control,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11284186,llm_control,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11286406,llm_control,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11287402,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11288117,llm_control,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11290577,llm_control,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11291644,llm_control,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11295688,llm_control,1,1,1,0,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11296240,llm_control,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_13074162,llm_control,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_13076136,llm_control,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10759414,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10766305,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10768362,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10784498,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10785502,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10787472,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10788076,mdagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10788978,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10797712,mdagents,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_10798782,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10799942,mdagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10802946,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10806374,mdagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10817086,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10821070,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10826013,mdagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10826480,mdagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10836127,mdagents,1,1,1,1,<=5,6-9 / 10 000
+post_cutoff,pmc_10850558,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10855567,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10856706,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10860963,mdagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10865650,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10870593,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10875816,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10876619,mdagents,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10882756,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10882785,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10888313,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10888672,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10900260,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10906587,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10906754,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10912791,mdagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10912837,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10919518,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10921798,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_10924519,mdagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10931735,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10932951,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938514,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938529,mdagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_10945221,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948032,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948039,mdagents,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_10951126,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10958957,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10962175,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10964954,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10967001,mdagents,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_10970303,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10970670,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10983683,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10984288,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10994426,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10996216,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10996244,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10997844,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11000129,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002242,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002998,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11005255,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11006754,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11007090,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11007553,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11011354,mdagents,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11015556,mdagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11017581,mdagents,1,1,0,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11017661,mdagents,1,1,1,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11019143,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11021622,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11032079,mdagents,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11040501,mdagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11044326,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11049394,mdagents,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11049871,mdagents,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11055791,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11056325,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11059674,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11069050,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11070630,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11074605,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11075503,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11077747,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11077790,mdagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11081592,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11081609,mdagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11082537,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11083902,mdagents,1,1,0,1,<=5,<1 / 1 000 000
+post_cutoff,pmc_11088769,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11089783,mdagents,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_11099762,mdagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11106848,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11110268,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11112606,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11121103,mdagents,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11121183,mdagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11121323,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11121527,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11122089,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11122195,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11123195,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11125292,mdagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11129476,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11130347,mdagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11131292,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11134137,mdagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11135902,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11149238,mdagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11153699,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11155060,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156175,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156176,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11163733,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11164125,mdagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11165897,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11172263,mdagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11178600,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11179463,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181541,mdagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11181628,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181917,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11182986,mdagents,1,1,0,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11184573,mdagents,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11186240,mdagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11186878,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11186889,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11188498,mdagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11191977,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11193346,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11194961,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11196359,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197252,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197267,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11202368,mdagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11202505,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11202757,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11203072,mdagents,1,1,1,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11203140,mdagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11203189,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11204092,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11204232,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11205281,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11205385,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11208167,mdagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11208178,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11212407,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11213808,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11218101,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11221131,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11221149,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11224691,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11234637,mdagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11235722,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11237271,mdagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11238493,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11238859,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11251026,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11252829,mdagents,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_11253478,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11256122,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11265161,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11265170,mdagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11265456,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11269488,mdagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11275647,mdagents,1,1,1,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11276485,mdagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11276803,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11276957,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11281985,mdagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11284186,mdagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11286406,mdagents,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11287402,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11288117,mdagents,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11290577,mdagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11291644,mdagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11295688,mdagents,1,1,1,0,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11296240,mdagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_13074162,mdagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_13076136,mdagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10759414,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10766305,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10768362,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10784498,medagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10785502,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10787472,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10788076,medagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10788978,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10797712,medagents,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10798782,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10799942,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10802946,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10806374,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10817086,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10821070,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10826013,medagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10826480,medagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10836127,medagents,1,1,1,1,<=5,6-9 / 10 000
+post_cutoff,pmc_10850558,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10855567,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10856706,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10860963,medagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10865650,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10870593,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10875816,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10876619,medagents,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_10882756,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10882785,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10888313,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10888672,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10900260,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10906587,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10906754,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10912791,medagents,1,1,1,1,<=5,1-9 / 100 000
+post_cutoff,pmc_10912837,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10919518,medagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10921798,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_10924519,medagents,1,1,1,1,16-30,1-9 / 100 000
+post_cutoff,pmc_10931735,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_10932951,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938514,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10938529,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_10945221,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948032,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10948039,medagents,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_10951126,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10958957,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_10962175,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10964954,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10967001,medagents,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_10970303,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_10970670,medagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_10983683,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_10984288,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_10994426,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_10996216,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_10996244,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_10997844,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11000129,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002242,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11002998,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11005255,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11006754,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11007090,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11007553,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11011354,medagents,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11015556,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11017581,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11017661,medagents,1,1,1,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11019143,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11021622,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11032079,medagents,1,1,1,1,<=5,1-5 / 10 000
+post_cutoff,pmc_11040501,medagents,1,1,0,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11044326,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11049394,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11049871,medagents,1,1,0,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11055791,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11056325,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11059674,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11069050,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11070630,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11074605,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11075503,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11077747,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11077790,medagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11081592,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11081609,medagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11082537,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11083902,medagents,1,1,0,1,<=5,<1 / 1 000 000
+post_cutoff,pmc_11088769,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11089783,medagents,1,1,0,1,<=5,Unknown
+post_cutoff,pmc_11099762,medagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11106848,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11110268,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11112606,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11121103,medagents,1,1,0,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11121183,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11121323,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11121527,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11122089,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11122195,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11123195,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11125292,medagents,1,1,1,1,16-30,1-5 / 10 000
+post_cutoff,pmc_11129476,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11130347,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11131292,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11134137,medagents,1,1,1,1,6-15,<1 / 1 000 000
+post_cutoff,pmc_11135902,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11149238,medagents,1,1,1,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11153699,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11155060,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156175,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11156176,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11163733,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11164125,medagents,1,1,1,1,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11165897,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11172263,medagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11178600,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11179463,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181541,medagents,1,1,0,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11181628,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11181917,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11182986,medagents,1,1,0,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11184573,medagents,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11186240,medagents,1,1,0,1,16-30,Unknown
+post_cutoff,pmc_11186878,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11186889,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11188498,medagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11191977,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11193346,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11194961,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11196359,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197252,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11197267,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11202368,medagents,1,1,1,1,16-30,Unknown
+post_cutoff,pmc_11202505,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11202757,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11203072,medagents,1,1,1,0,<=5,1-9 / 1 000 000
+post_cutoff,pmc_11203140,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11203189,medagents,1,1,1,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11204092,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11204232,medagents,1,1,0,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11205281,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11205385,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11208167,medagents,1,1,0,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11208178,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11212407,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11213808,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11218101,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11221131,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11221149,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11224691,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11234637,medagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11235722,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11237271,medagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11238493,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11238859,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11251026,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11252829,medagents,1,1,1,1,<=5,Unknown
+post_cutoff,pmc_11253478,medagents,1,1,1,1,6-15,1-9 / 1 000 000
+post_cutoff,pmc_11256122,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11265161,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11265170,medagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11265456,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11269488,medagents,1,1,0,1,16-30,<1 / 1 000 000
+post_cutoff,pmc_11275647,medagents,1,1,1,1,6-15,6-9 / 10 000
+post_cutoff,pmc_11276485,medagents,1,1,1,1,6-15,1-5 / 10 000
+post_cutoff,pmc_11276803,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11276957,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11281985,medagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11284186,medagents,1,1,1,1,6-15,Unknown
+post_cutoff,pmc_11286406,medagents,1,1,0,1,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11287402,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_11288117,medagents,1,1,0,0,16-30,1-9 / 100 000
+post_cutoff,pmc_11290577,medagents,1,1,0,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_11291644,medagents,1,1,0,1,6-15,Unknown
+post_cutoff,pmc_11295688,medagents,1,1,1,0,16-30,1-9 / 1 000 000
+post_cutoff,pmc_11296240,medagents,1,1,1,0,6-15,<1 / 1 000 000
+post_cutoff,pmc_13074162,medagents,1,1,1,1,6-15,1-9 / 100 000
+post_cutoff,pmc_13076136,medagents,1,1,1,1,6-15,1-9 / 1 000 000

@@ -23,7 +23,15 @@ import requests
 
 from harness.logging.schema import CostBreakdown
 
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Default gateway is OpenRouter. Both the endpoint and the key env var can be
+# overridden so the same adapters can run against an OpenAI-compatible gateway
+# (e.g. an authorized LiteLLM proxy) without touching adapter code:
+#   LLM_GATEWAY_URL      -> full chat-completions URL (default OpenRouter)
+#   LLM_GATEWAY_KEY_ENV  -> name of the env var holding the key (default OPENROUTER_API_KEY)
+# Left unset, behaviour is byte-identical to before (pure OpenRouter).
+OPENROUTER_URL = os.environ.get(
+    "LLM_GATEWAY_URL", "https://openrouter.ai/api/v1/chat/completions"
+)
 
 
 # Price table per 1M tokens (USD).
@@ -161,9 +169,10 @@ def openrouter_chat(
             leaving `content=null` with `finish_reason="length"`. With
             "minimal" it emits 0 reasoning tokens and full content in ~2s.
     """
-    key = api_key or os.environ.get("OPENROUTER_API_KEY")
+    key_env = os.environ.get("LLM_GATEWAY_KEY_ENV", "OPENROUTER_API_KEY")
+    key = api_key or os.environ.get(key_env)
     if not key:
-        raise RuntimeError("OPENROUTER_API_KEY missing")
+        raise RuntimeError(f"{key_env} missing")
 
     body: dict[str, Any] = {
         "model": model,

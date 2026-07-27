@@ -1,0 +1,395 @@
+{
+  "generated_at_utc": "2026-07-23T09:33:07Z",
+  "commit": "9babd833618936b6b29942baba130638e212921d",
+  "data_version": "slim recompute set (MIMIC & weights stripped); frozen commit 9babd8336189",
+  "generator": "audit_frozen/temporal_v2_final/build_temporal_v2_final.py",
+  "backbone": "gemini-3-flash-preview",
+  "shared_systems": [
+    "agentclinic",
+    "llm_control",
+    "mdagents",
+    "medagents"
+  ],
+  "label_unification": {
+    "field": "prevalence_tier",
+    "rule": "strip whitespace; '' / 'unknown' / 'Unknown' -> single 'Unknown'",
+    "applied_before_matching": true
+  },
+  "identity_model": {
+    "keys_used": [
+      "PMCID",
+      "PMID",
+      "source_case_id"
+    ],
+    "keys_unavailable_in_frozen_data": [
+      "DOI",
+      "normalized_title"
+    ],
+    "note": "DOI/title absent from every frozen artifact; exact-ID intersection rests on PMCID (RareArena) + PMID (Phenopacket)."
+  },
+  "development_layers_intersected": {
+    "rarearena_rds": "PMCID (exact)",
+    "phenopacket_store": "PMID (exact)",
+    "rarebench": "NO publication id in shipped data -> NOT intersectable; coverage gap",
+    "other_pmc_dev_cases": "none present as case-report corpora in this checkout"
+  },
+  "overlap": {
+    "pre_cutoff": {
+      "n_total": 220,
+      "overlap_by_source": {
+        "rarearena_rds": 13,
+        "phenopacket_store": 1
+      },
+      "n_overlap_union": 14,
+      "n_clean": 206,
+      "overlap_case_ids_union": [
+        "pmc_7458886",
+        "pmc_7460740",
+        "pmc_7497286",
+        "pmc_7507264",
+        "pmc_7509919",
+        "pmc_7516301",
+        "pmc_7530177",
+        "pmc_7552884",
+        "pmc_7579785",
+        "pmc_7581024",
+        "pmc_7598809",
+        "pmc_7644386",
+        "pmc_7653328",
+        "pmc_7662532"
+      ]
+    },
+    "post_cutoff": {
+      "n_total": 198,
+      "overlap_by_source": {
+        "rarearena_rds": 17,
+        "phenopacket_store": 1
+      },
+      "n_overlap_union": 18,
+      "n_clean": 180,
+      "overlap_case_ids_union": [
+        "pmc_10759324",
+        "pmc_10783329",
+        "pmc_10799342",
+        "pmc_10859398",
+        "pmc_10860924",
+        "pmc_10865686",
+        "pmc_10921960",
+        "pmc_10965776",
+        "pmc_10976829",
+        "pmc_11018201",
+        "pmc_11036728",
+        "pmc_11049754",
+        "pmc_11075229",
+        "pmc_11088039",
+        "pmc_11097304",
+        "pmc_11110280",
+        "pmc_11149197",
+        "pmc_11160389"
+      ]
+    }
+  },
+  "clean_N": {
+    "pre_cutoff": 206,
+    "post_cutoff": 180
+  },
+  "per_system_results": [
+    {
+      "system": "agentclinic",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 53,
+      "post_top1_correct_variant": 51,
+      "pre_R@1_variant": 0.2573,
+      "post_R@1_variant": 0.2833,
+      "pre_R@1_strict": 0.2233,
+      "post_R@1_strict": 0.2667,
+      "pre_95CI": "[0.199, 0.3204]",
+      "post_95CI": "[0.2167, 0.35]",
+      "delta_R@1_pp": 2.6,
+      "two_prop_z": 0.576,
+      "p_raw": 0.5649403209290769,
+      "p_holm": 0.5649403209290769
+    },
+    {
+      "system": "llm_control",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 111,
+      "post_top1_correct_variant": 113,
+      "pre_R@1_variant": 0.5388,
+      "post_R@1_variant": 0.6278,
+      "pre_R@1_strict": 0.5243,
+      "post_R@1_strict": 0.6278,
+      "pre_95CI": "[0.4709, 0.6068]",
+      "post_95CI": "[0.5556, 0.6944]",
+      "delta_R@1_pp": 8.9,
+      "two_prop_z": 1.766,
+      "p_raw": 0.07732612732911812,
+      "p_holm": 0.22351989303422617
+    },
+    {
+      "system": "mdagents",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 205,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{\"parser_error\": 1}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 112,
+      "post_top1_correct_variant": 114,
+      "pre_R@1_variant": 0.5437,
+      "post_R@1_variant": 0.6333,
+      "pre_R@1_strict": 0.5388,
+      "post_R@1_strict": 0.6222,
+      "pre_95CI": "[0.4757, 0.6117]",
+      "post_95CI": "[0.5611, 0.7]",
+      "delta_R@1_pp": 9.0,
+      "two_prop_z": 1.783,
+      "p_raw": 0.07450663101140872,
+      "p_holm": 0.22351989303422617
+    },
+    {
+      "system": "medagents",
+      "backbone": "gemini-3-flash-preview",
+      "n_pre_attempted": 206,
+      "n_post_attempted": 180,
+      "n_pre_successful": 206,
+      "n_post_successful": 180,
+      "pre_failures_by_type": "{}",
+      "post_failures_by_type": "{}",
+      "pre_top1_correct_variant": 109,
+      "post_top1_correct_variant": 115,
+      "pre_R@1_variant": 0.5291,
+      "post_R@1_variant": 0.6389,
+      "pre_R@1_strict": 0.5146,
+      "post_R@1_strict": 0.6333,
+      "pre_95CI": "[0.4612, 0.5971]",
+      "post_95CI": "[0.5667, 0.7056]",
+      "delta_R@1_pp": 11.0,
+      "two_prop_z": 2.18,
+      "p_raw": 0.02926483363206725,
+      "p_holm": 0.117059334528269
+    }
+  ],
+  "holm_correction": {
+    "family_size": 4,
+    "p_holm": {
+      "agentclinic": 0.5649403209290769,
+      "llm_control": 0.22351989303422617,
+      "mdagents": 0.22351989303422617,
+      "medagents": 0.117059334528269
+    }
+  },
+  "case_level_macro_clean": {
+    "pre_n_cases": 206,
+    "post_n_cases": 180,
+    "pre_macro_R@1": 0.4672,
+    "post_macro_R@1": 0.5458,
+    "delta_pp": 7.9,
+    "delta_95CI_pp": [
+      -0.2,
+      15.6
+    ],
+    "cluster_bootstrap_n": 10000,
+    "permutation_p": 0.0506,
+    "permutation_n": 10000
+  },
+  "difficulty_matched": {
+    "labels": "prevalence_tier unified (Unknown merged) BEFORE matching",
+    "match_keys": "(pheno_bucket x prevalence_tier incl. Unknown stratum), min-count per stratum",
+    "balance_before": {
+      "pheno_bkt": {
+        "pre": {
+          "6-15": 129,
+          "<=5": 30,
+          "16-30": 41,
+          ">30": 6
+        },
+        "post": {
+          "6-15": 124,
+          "16-30": 38,
+          "<=5": 18
+        }
+      },
+      "prev_tier": {
+        "pre": {
+          "Unknown": 71,
+          "1-5 / 10 000": 27,
+          "<1 / 1 000 000": 28,
+          "1-9 / 1 000 000": 34,
+          "6-9 / 10 000": 6,
+          "1-9 / 100 000": 40
+        },
+        "post": {
+          "1-9 / 100 000": 36,
+          "<1 / 1 000 000": 30,
+          "Unknown": 55,
+          "1-5 / 10 000": 23,
+          "1-9 / 1 000 000": 32,
+          "6-9 / 10 000": 4
+        }
+      }
+    },
+    "balance_after": {
+      "pheno_bkt": {
+        "pre": {
+          "6-15": 116,
+          "16-30": 35,
+          "<=5": 16
+        },
+        "post": {
+          "6-15": 116,
+          "16-30": 35,
+          "<=5": 16
+        }
+      },
+      "prev_tier": {
+        "pre": {
+          "Unknown": 55,
+          "1-9 / 100 000": 34,
+          "1-5 / 10 000": 23,
+          "1-9 / 1 000 000": 29,
+          "<1 / 1 000 000": 22,
+          "6-9 / 10 000": 4
+        },
+        "post": {
+          "1-9 / 1 000 000": 29,
+          "<1 / 1 000 000": 22,
+          "Unknown": 55,
+          "1-5 / 10 000": 23,
+          "6-9 / 10 000": 4,
+          "1-9 / 100 000": 34
+        }
+      }
+    },
+    "unknown_prevalence_fraction": {
+      "pre": 0.345,
+      "post": 0.306
+    },
+    "retained_cases": {
+      "pre": 167,
+      "post": 167
+    },
+    "per_system": [
+      {
+        "system": "agentclinic",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 167,
+        "n_post_attempted": 167,
+        "n_pre_successful": 167,
+        "n_post_successful": 167,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 48,
+        "post_top1_correct_variant": 46,
+        "pre_R@1_variant": 0.2874,
+        "post_R@1_variant": 0.2754,
+        "pre_R@1_strict": 0.2455,
+        "post_R@1_strict": 0.2575,
+        "pre_95CI": "[0.2216, 0.3593]",
+        "post_95CI": "[0.2096, 0.3473]",
+        "delta_R@1_pp": -1.2,
+        "two_prop_z": -0.243,
+        "p_raw": 0.8077332621910517
+      },
+      {
+        "system": "llm_control",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 167,
+        "n_post_attempted": 167,
+        "n_pre_successful": 167,
+        "n_post_successful": 167,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 90,
+        "post_top1_correct_variant": 107,
+        "pre_R@1_variant": 0.5389,
+        "post_R@1_variant": 0.6407,
+        "pre_R@1_strict": 0.521,
+        "post_R@1_strict": 0.6407,
+        "pre_95CI": "[0.4611, 0.6108]",
+        "post_95CI": "[0.5689, 0.7126]",
+        "delta_R@1_pp": 10.2,
+        "two_prop_z": 1.891,
+        "p_raw": 0.05860270751622845
+      },
+      {
+        "system": "mdagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 167,
+        "n_post_attempted": 167,
+        "n_pre_successful": 166,
+        "n_post_successful": 167,
+        "pre_failures_by_type": "{\"parser_error\": 1}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 92,
+        "post_top1_correct_variant": 106,
+        "pre_R@1_variant": 0.5509,
+        "post_R@1_variant": 0.6347,
+        "pre_R@1_strict": 0.5449,
+        "post_R@1_strict": 0.6287,
+        "pre_95CI": "[0.4731, 0.6228]",
+        "post_95CI": "[0.5629, 0.7066]",
+        "delta_R@1_pp": 8.4,
+        "two_prop_z": 1.559,
+        "p_raw": 0.1189512648866929
+      },
+      {
+        "system": "medagents",
+        "backbone": "gemini-3-flash-preview",
+        "n_pre_attempted": 167,
+        "n_post_attempted": 167,
+        "n_pre_successful": 167,
+        "n_post_successful": 167,
+        "pre_failures_by_type": "{}",
+        "post_failures_by_type": "{}",
+        "pre_top1_correct_variant": 91,
+        "post_top1_correct_variant": 107,
+        "pre_R@1_variant": 0.5449,
+        "post_R@1_variant": 0.6407,
+        "pre_R@1_strict": 0.5269,
+        "post_R@1_strict": 0.6347,
+        "pre_95CI": "[0.4671, 0.6168]",
+        "post_95CI": "[0.5689, 0.7126]",
+        "delta_R@1_pp": 9.6,
+        "two_prop_z": 1.782,
+        "p_raw": 0.07476029480324407
+      }
+    ],
+    "case_level_macro": {
+      "pre_n_cases": 167,
+      "post_n_cases": 167,
+      "pre_macro_R@1": 0.4805,
+      "post_macro_R@1": 0.5479,
+      "delta_pp": 6.7,
+      "delta_95CI_pp": [
+        -1.8,
+        15.1
+      ],
+      "cluster_bootstrap_n": 10000,
+      "permutation_p": 0.1247,
+      "permutation_n": 10000
+    },
+    "all_system_deltas_nonnegative": false,
+    "role": "sensitivity analysis; does NOT replace the full clean set"
+  },
+  "allowed_conclusion": "After removing exact-identifier overlaps with identifier-bearing development sources, we found no statistically detectable post-cutoff degradation across the four evaluated systems.",
+  "forbidden_claims": [
+    "contamination-free",
+    "guaranteed unseen by the models",
+    "memorization is not the driver"
+  ],
+  "cutoff_language": "published after the prespecified cutoff"
+}

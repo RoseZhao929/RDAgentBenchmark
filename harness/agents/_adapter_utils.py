@@ -20,7 +20,13 @@ from harness.logging.openrouter_wrapper import get_price
 from harness.logging.schema import CostBreakdown
 from harness.pmc_oa.orphanet import map_diagnosis, parse_orphadata
 
-PROJECT_ROOT = Path("/Users/yutianzhao/Desktop/RDAgentBenchmark")
+# Repo root resolved from this file's location
+# (harness/agents/_adapter_utils.py -> parents[2] = repo root), overridable via
+# RDBENCH_PROJECT_ROOT. Was hard-coded to the original author's Mac Desktop path,
+# which broke every subprocess agent's venv/.env/data lookup on other machines.
+PROJECT_ROOT = Path(
+    os.environ.get("RDBENCH_PROJECT_ROOT", str(Path(__file__).resolve().parents[2]))
+)
 ENV_PATH = PROJECT_ROOT / ".env"
 
 
@@ -145,6 +151,27 @@ def load_dotenv(path: Path = ENV_PATH) -> dict[str, str]:
         # don't clobber if already set (allow shell-level overrides)
         os.environ.setdefault(key, val)
     return out
+
+
+def resolve_llm_gateway() -> tuple[str, str]:
+    """Return (sdk_base_url, api_key) for the subprocess agents' OpenAI SDK.
+
+    Honors the same override knobs as harness/logging/openrouter_wrapper.py so
+    all adapters — in-process and subprocess — hit the same gateway:
+      LLM_GATEWAY_URL      -> full chat-completions URL (default OpenRouter)
+      LLM_GATEWAY_KEY_ENV  -> name of env var holding the key (default OPENROUTER_API_KEY)
+    The subprocess agents use the OpenAI SDK, whose `base_url` must be the
+    API ROOT (…/v1), not the …/v1/chat/completions endpoint — so we strip a
+    trailing "/chat/completions" if present. Unset -> OpenRouter, byte-identical
+    to prior behaviour.
+    """
+    url = os.environ.get(
+        "LLM_GATEWAY_URL", "https://openrouter.ai/api/v1/chat/completions"
+    )
+    sdk_base = url[: -len("/chat/completions")] if url.endswith("/chat/completions") else url
+    key_env = os.environ.get("LLM_GATEWAY_KEY_ENV", "OPENROUTER_API_KEY")
+    api_key = os.environ.get(key_env, "") or os.environ.get("OPENROUTER_API_KEY", "")
+    return sdk_base, api_key
 
 
 def hpo_terms_to_text(terms: List[HpoTerm]) -> str:

@@ -1,0 +1,646 @@
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+% The serif, sans-serif, and monospaced fonts are loaded automatically by
+% aaai2027.sty (newtxtext, helvet, courier). DO NOT add \usepackage{times},
+% \usepackage{helvet}, \usepackage{courier}, or any other font package.
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+
+\usepackage[capitalize]{cleveref}   % \Cref{tab:main} -> "Table 1", "Section 3"
+% Blue heat ramp for R@1 (5 buckets) + green ramp for the variant-lift row,
+% matching the reference paper's palette.
+\usepackage[htt]{hyphenat}  % allow line breaks inside \texttt paths/code
+
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}  
+\definecolor{heatE}{HTML}{F6F9FC}
+\definecolor{heatA}{HTML}{E2EAF3}
+\definecolor{heatB}{HTML}{C7D5E4}
+\definecolor{heatC}{HTML}{AABCD3}
+\definecolor{heatD}{HTML}{8AA4C3}
+
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+
+%
+% Recommended for better-looking tables
+\usepackage{booktabs}
+
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \usepackage{indentfirst} -- This package is specifically forbidden
+% \usepackage{layout} -- This package is specifically forbidden
+% \usepackage{multicol} -- This package is specifically forbidden
+% \usepackage{nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paper
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2027.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{
+%RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis
+RareAgentBench: A Multi-Pillar, Contamination-Aware Benchmark for Rare-Disease Diagnostic Agents}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Written by AAAI Press Staff\textsuperscript{\rm 1}\thanks{With help from the AAAI Publications Committee.}\\
+    AAAI Style Contributions by Peter Patel Schneider,
+    Sunil Issar,\\
+    J. Scott Penberthy,
+    George Ferguson,
+    Hans Guesgen,
+    Francisco Cruz\equalcontrib\corresponding,
+    Marc Pujol-Gonzalez\equalcontrib\corresponding
+}
+\affiliations{
+    %Afiliations
+    \textsuperscript{\rm 1}Association for the Advancement of Artificial Intelligence\\
+    % If you have multiple authors and multiple affiliations
+    % use superscripts in text and roman font to identify them.
+    % For example,
+
+    % Sunil Issar\textsuperscript{\rm 2},
+    % J. Scott Penberthy\textsuperscript{\rm 3},
+    % George Ferguson\textsuperscript{\rm 4}\corresponding,
+    % Hans Guesgen\textsuperscript{\rm 5}
+    % Note that the comma should be placed after the superscript
+
+    1101 Pennsylvania Ave, NW Suite 300\\
+    Washington, DC 20004 USA\\
+    % email address must be in roman text type, not monospace or sans serif
+    proceedings-questions@aaai.org
+%
+% See more examples next
+}
+
+%Example, Single Author, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\iffalse
+\title{My Publication Title --- Single Author}
+\author {
+    Author Name
+}
+\affiliations{
+    Affiliation\\
+    Affiliation Line 2\\
+    name@example.com
+}
+\fi
+
+\iffalse
+%Example, Multiple Authors, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\title{RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis}
+\author {
+    % Authors
+    Yutian Zhao\textsuperscript{\rm 1,\rm 2}, %\equalcontrib,
+    Xiaohong Liu\textsuperscript{\rm 2},
+    %\equalcontrib,
+    Huimin Wang\textsuperscript{\rm 1}\corresponding
+}
+\affiliations {
+    % Affiliations
+    \textsuperscript{\rm 1}Affiliation 1\\
+    \textsuperscript{\rm 2}Affiliation 2\\
+    firstAuthor@affiliation1.com, secondAuthor@affilation2.com, thirdAuthor@affiliation1.com
+}
+\fi
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+AI agents for rare-disease diagnosis increasingly combine large language models (LLMs) with multi-agent orchestration, retrieval, structured phenotype reasoning, and simulated clinical interaction. Yet published systems are evaluated on incompatible datasets and protocols, making cross-system claims difficult to verify and obscuring whether gains arise from agent scaffolding, model choice, or case selection. We introduce RareAgentBench, an agent-native benchmark that standardizes four capabilities---phenotype extraction, phenotype-only and genotype-aware differential diagnosis, and clinical-communication faithfulness---through a canonical case schema and system-specific adapters for structured HPO and free-text inputs. The benchmark draws on 84,450 cases from five sources, including a time-based PMC holdout, and preregisters 11 hypotheses and 12 ablations. We compare eight diagnostic systems, including classical and offline methods, with three unscaffolded LLM controls. Our evaluation on RareAgentBench yields four key findings: (1) on HPO-input datasets, classical and offline methods outperform all scaffolded LLM agents (best R@1: 0.47 vs. 0.30, a 17-point gap); (2) multi-agent scaffolding does not reliably beat a single-LLM control, changing R@1 by roughly $-27$ to $+1$ points depending on the scaffold; (3) higher cost does not guarantee higher accuracy---DeepSeek V4-Flash is about $8\times$ cheaper than Gemini Flash but 3--7 points less accurate on HPO inputs, whereas GPT-5 with minimal reasoning costs about $20\times$ more than V4-Flash without a consistent advantage; and (4) structured variant information improves R@1 by about 20 points across systems. We release the benchmark, adapters, execution receipts, and leaderboard to support reproducible and cost-aware evaluation of rare-disease diagnostic agents.
+\end{abstract}
+
+% Uncomment the following to link to your code, datasets, an extended version or similar.
+% You must keep this block between (not within) the abstract and the main body of the paper.
+% Make sure that you do not de-anonymize yourself with these links.
+% \begin{links}
+%     \link{Code}{https://aaai.org/example/code}
+%     \link{Datasets}{https://aaai.org/example/datasets}
+%     \link{Extended version}{https://aaai.org/example/extended-version}
+% \end{links}
+
+\section{Introduction}
+
+Rare-disease diagnosis requires reasoning over heterogeneous evidence, including symptoms, standardized phenotypes, genetic variants, family histories, and free-text clinical narratives. Recent diagnostic systems accordingly extend LLMs with different forms of scaffolding: multi-agent deliberation (MDAgents, MedAgents, and MAI-DxO), simulated clinical interaction (AgentClinic), retrieval and domain-specific reasoning (DeepRare), structured phenotype--genotype fusion (VC-RDAgent), and phrase mining (RDMA), alongside classical probabilistic approaches such as LIRICAL~[1--8]. This rapidly growing design space raises a basic empirical question: which improvements come from the agent architecture, and which come from the underlying model, available evidence, or evaluation set?
+
+Existing results cannot answer this question reliably because the systems are evaluated on different case collections, input representations, and protocols. For example, prior work uses sources ranging from MedQA-Rare and NEJM clinicopathological cases to proprietary multi-source collections and small HPO subsets. Reported top-1 recall therefore compares neither the same patients nor the same diagnostic task. A recent systematic review of 19 LLM-based rare-disease studies further identified limited preregistration, substantial contamination risk, and a strong association between disease prevalence and reported performance ($R^2=0.55$), suggesting that case selection can materially shape apparent gains~[9]. Without a shared evaluation infrastructure, claims that one diagnostic agent outperforms another remain difficult to verify.
+
+\begin{figure*}[t]
+  \centering
+  \fbox{%
+    \parbox[c][1.75in][c]{0.96\textwidth}{%
+      \centering\small
+      \textbf{Planned Figure 1: From fragmented evaluation to RareAgentBench}\\[0.6em]
+      \begin{minipage}[t]{0.45\linewidth}
+        \centering
+        \textbf{Left: Current practice}\\
+        Agent A $\rightarrow$ Dataset A $\rightarrow$ Metric A\\
+        Agent B $\rightarrow$ Dataset B $\rightarrow$ Metric B\\
+        Agent C $\rightarrow$ Dataset C $\rightarrow$ Metric C\\[0.3em]
+        \emph{Result: reported scores are not directly comparable.}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \textbf{Right: RareAgentBench}\\
+        Layered sources $\rightarrow$ CanonicalCase schema\\
+        $\rightarrow$ system adapters $\rightarrow$ agents + controls\\
+        $\rightarrow$ accuracy, faithfulness, reliability, and cost\\[0.3em]
+        \emph{Result: scaffold, backbone, and input effects are isolated.}
+      \end{minipage}
+      \par\vspace{0.65em}
+      \textbf{Bottom takeaway strip:} classical/offline $>$ scaffolded LLMs on HPO inputs
+      $\mid$ multi-agent gain: none reliable $\mid$ cost $\not\Rightarrow$ accuracy
+    }%
+  }
+  \caption{RareAgentBench converts a fragmented evaluation landscape into a controlled comparison. Cases from heterogeneous sources are normalized into a canonical schema and passed through system-specific adapters, allowing diagnostic systems and controls to be evaluated under shared inputs, metrics, and statistical protocols. The figure should emphasize both the source of incomparability in prior work and the benchmark's main empirical message: scaffold complexity and model cost do not reliably translate into diagnostic accuracy.}
+  \label{fig:rareagentbench-overview}
+\end{figure*}
+
+Benchmarking only the underlying LLM is insufficient. First, the systems differ along non-LLM dimensions---retrieval pipelines, panel orchestration, dialogue policies, and phenotype--genotype fusion---whose effects must be separated from backbone choice. Second, diagnostic accuracy alone omits clinically relevant behavior such as communication faithfulness, run-to-run reliability, and inference cost. Third, classical and offline methods remain strong on structured HPO inputs, but prior agent studies rarely evaluate them alongside LLM-based systems. A useful benchmark must therefore treat the complete diagnostic pipeline, rather than the LLM alone, as the unit of evaluation.
+
+We introduce \textbf{RareAgentBench}, an agent-native benchmark designed around this requirement. RareAgentBench evaluates four capabilities in the present study: phenotype extraction, phenotype-only differential diagnosis, genotype-aware differential diagnosis, and faithful clinical communication. It normalizes cases into a shared \texttt{CanonicalCase} representation and uses isolated adapters to run heterogeneous systems under a common protocol. Its layered data sources comprise Phenopacket Store (10,051 cases), RareBench (1,122), RareArena RDS (72,661), a de-leaked MIMIC-IV discharge-note probe (416), and a 200-case time-based PMC Open Access holdout. Together, these layers vary input modality, case prevalence, difficulty, and exposure risk; the PMC layer is drawn after February 2026 to reduce the risk of benchmark contamination. We preregister 11 hypotheses and 12 ablations before holdout unblinding and evaluate accuracy, faithfulness, reliability, and cost rather than collapsing performance into a single score.
+
+We use RareAgentBench to compare eight diagnostic systems, including classical and offline approaches, with three unscaffolded LLM controls. The results challenge several common assumptions. On structured HPO inputs, LIRICAL and offline VC-RDAgent achieve R@1 values of 0.47 and 0.44, respectively, compared with 0.30 for the best scaffolded LLM configuration---a 17-point gap. Multi-agent scaffolding does not reliably improve over single-LLM controls: relative to the no-scaffold control on Phenopacket-Store, the scaffolds range from $+0.3$ points (MedAgents) down to $-27.3$ points (MAI-DxO). Backbone trade-offs are similarly non-uniform: DeepSeek V4-Flash is substantially cheaper than Gemini Flash but less accurate, while GPT-5 with minimal reasoning is the most expensive evaluated backbone without a consistent accuracy advantage and degrades sharply in dialogue settings. Finally, adding structured variant information improves R@1 by approximately 20 points across systems, indicating that the gain arises from the information channel rather than a DeepRare-specific mechanism.
+
+Our contributions are fourfold:
+\begin{itemize}
+  \item \textbf{An agent-native rare-disease benchmark.} RareAgentBench provides layered structured and free-text cases, four evaluated diagnostic capabilities, a canonical case schema, and adapters for eleven methods under a shared protocol.
+  \item \textbf{A controlled, preregistered evaluation.} Eleven hypotheses and twelve ablations separate the effects of agent scaffold, LLM backbone, input evidence, and dataset, with bootstrap confidence intervals and multiplicity correction.
+  \item \textbf{Cross-system empirical findings.} We show that classical and offline methods can outperform scaffolded LLM agents on structured inputs, that multi-agent gains are modest and dataset dependent, and that model cost does not reliably predict diagnostic accuracy.
+  \item \textbf{Reproducible evaluation infrastructure.} We release the benchmark harness, system adapters, 7,581 predictions, per-cell execution and cost receipts, and a static leaderboard to support auditable comparison and future extensions.
+\end{itemize}
+
+
+
+\section{Related Work}
+\label{sec:related-work}
+
+RareAgentBench lies at the intersection of rare-disease diagnostic AI, LLM-agent evaluation, and agentic systems for medical diagnosis.
+
+\subsection{Rare-Disease Diagnostic AI and Benchmarks}
+
+Rare-disease diagnosis has been studied through both conventional decision-support systems and LLM-oriented benchmarks. LIRICAL ranks phenotype- and genotype-informed hypotheses using interpretable likelihood ratios, while PhenoBrain couples phenotype extraction from electronic health records (EHRs) with disease ranking~\cite{robinson2020lirical,mao2025phenobrain}. RareBench evaluates four rare-disease capabilities of LLMs and investigates knowledge-graph-augmented prompting~\cite{chen2024rarebench}; RareArena scales free-text evaluation to screening and confirmation tasks derived from PubMed Central case reports (49,760 screening and 22,901 confirmation cases)~\cite{chen2026rarearena}. Phenopacket Store provides standardized case-level phenotype and genotype records, enabling controlled comparisons with conventional diagnostic software and cross-lingual evaluation~\cite{danis2025phenopackets,reese2026systematic,chimirri2025consistent}. On 5,213 phenopacket cases, Exomiser outperformed all seven evaluated LLMs, showing that classical decision support remains an essential baseline rather than a legacy comparator~\cite{reese2026systematic}. More recent resources extend coverage to real EHR notes in MIMIC-RD and to 1,756 multimodal question--answer pairs linked to 7,958 images in MMRareBench~\cite{eizaldin2026mimicrd,ning2026mmrarebench}. Despite broader coverage, these evaluations remain predominantly model-centric: they score static predictions without standardizing agent execution, tool access, interaction, repeated-run reliability, or cost. Nor do they expose an executable interface for applying identical cases and evidence budgets across systems.
+
+\subsection{Benchmarks for LLM Agents}
+
+Agent benchmarks increasingly evaluate interaction trajectories and verifiable outcomes rather than response quality alone. SWE-bench uses tests to verify issue resolution~\cite{jimenez2024swebench}; AgentBoard introduces progress rate for partial credit over multi-step trajectories~\cite{ma2024agentboard}; and $\tau$-bench verifies database end states while using $\mathrm{pass}^k$ to quantify consistency across repeated trials~\cite{yao2025taubench}. Medical benchmarks adapt these principles to clinical settings. MedAgentBench provides a FHIR-compliant virtual EHR with 300 clinician-authored tasks over 100 patient profiles~\cite{jiang2025medagentbench}, whereas AgentClinic evaluates tool-using diagnostic interaction with simulated patients across specialties and languages~\cite{schmidgall2026agentclinic}. MedHELM broadens medical evaluation across task families while considering computational cost~\cite{bedi2026medhelm}. These benchmarks motivate trajectory-level, reliability, and efficiency metrics, but none is designed around rare-disease phenotype--genotype reasoning or family-aware diagnosis.
+
+\subsection{Rare-Disease and Medical Diagnostic Agents}
+
+Rare-disease agents employ heterogeneous scaffolds. RareAgents coordinates an LLM-based multidisciplinary team with memory and medical tools~\cite{chen2026rareagents}; DeepRare combines a central host, specialized servers, reflection, and more than 40 tools~\cite{zhao2026deeprare}. RDMA focuses on locally mining explicit and implicit rare-disease evidence from EHR notes~\cite{wu2025rdma}, while VC-RDAgent constructs virtual reference cases from structured knowledge bases for offline diagnosis~\cite{liu2026vcrdagent}. Broader medical systems provide complementary designs: MedAgents uses role-based expert discussion~\cite{tang2024medagents}, MDAgents adaptively selects solo or group collaboration~\cite{kim2024mdagents}, and MAI-DxO performs sequential, cost-aware diagnosis~\cite{nori2025sequential}. Notably, RDMA targets evidence discovery rather than end-to-end diagnosis, whereas MAI-DxO explicitly models information acquisition and testing cost.
+
+These systems are evaluated on bespoke datasets and protocols that vary in case source, input modality, backbone model, tool access, label normalization, and metrics, precluding controlled comparison. Prior work therefore leaves a three-way gap: rare-disease benchmarks are largely model-centric, agent benchmarks are not rare-disease-specific, and diagnostic agents lack a shared evaluation protocol. RareAgentBench addresses this gap by evaluating complete diagnostic systems through common cases, adapters, and measures of accuracy, faithfulness, reliability, and cost.
+
+
+\section{Benchmark Design}
+\label{sec-4}
+
+RareAgentBench treats the complete diagnostic system as the unit of evaluation. Its design combines a clinically motivated capability model, a layered data stack, a canonical case representation, and a controlled protocol that separates downstream reasoning from end-to-end performance.
+
+\subsection{Evaluation Capabilities}
+\label{sec-4-1}
+
+We define five distinct but complementary capability pillars following the diagnostic workflow from phenotype recognition to evidence-grounded communication. The present study evaluates four pillars; family-aware diagnosis is retained in the schema and design matrix but deferred until sufficiently large pedigree-bearing datasets are available.
+
+\textbf{P1: Phenotype extraction} maps free-text clinical narratives to ranked Human Phenotype Ontology (HPO) terms and is evaluated using precision, recall, and F1. \textbf{P2: Phenotype-only differential diagnosis} maps curated HPO terms to a ranked disease list and is evaluated using Recall@1/3/5/10, mean reciprocal rank (MRR), and median rank. \textbf{P3: Genotype-aware differential diagnosis} adds structured variants and requires both a disease prediction and a causative-gene hypothesis; metrics include disease Recall@$k$ and gene Top-$k$ accuracy. \textbf{P4: Family-aware differential diagnosis} adds pedigree or trio information and predicts the disease and mode of inheritance; it is deferred in v1. \textbf{P5: Clinical-communication faithfulness} evaluates whether the final answer is factual, relevant, supported by the available evidence, and consistent with the system trace. Automated P5 scores are calibrated against physician ratings on a 200-case subset, with inter-rater agreement reported using Cohen's $\kappa$.
+
+P1 and P5 are evaluated separately because neither is reducible to final diagnostic accuracy. Extraction errors alter the evidence available to downstream reasoning, while a correct diagnosis can still be supported by fabricated citations or an inconsistent rationale. Bias is therefore treated as a cross-cutting analysis rather than a separate pillar: every applicable metric is stratified by ancestry, disease prevalence, sex, age, language, and HPO density, following the multi-metric evaluation approach of HELM and MedHELM~\cite{liang2023helm,bedi2026medhelm}.
+
+\subsection{Four-Layer Data Stack}
+\label{sec-4-2}
+
+The benchmark contains 84,450 instances from five sources, organized into four layers that vary evidence structure, clinical realism, scale, and contamination risk. Figure~\ref{fig:fig_design_matrix} summarizes the resulting capability--dataset evaluation surface; detailed disease counts, identifiers, modalities, and availability masks appear in Appendix~A.
+
+\begin{itemize}
+  \item \textbf{L1: Phenotype backbone (11,173 instances).} Phenopacket Store contributes 10,051 standardized cases with curated HPO terms and, when available, structured variants; RareBench-HF contributes 1,122 cases for comparison with established rare-disease LLM evaluation~\cite{danis2025phenopackets,chen2024rarebench}.
+  \item \textbf{L2: Real-EHR noise (416 instances).} We construct a rare-disease probe from MIMIC-IV v3.1 discharge summaries~\cite{johnson2024mimiciv31}. Candidate admissions are identified through ICD-10--ORPHA mappings, with Orphadata categories marked as non-rare in Europe excluded~\cite{orphadata2026nomenclature}, and are then passed through a de-leaking funnel that keeps only exact ICD--ORPHA maps, genuinely rare principal diagnoses, and cases whose narrative does not disclose the answer (``De-Leaking the EHR Layer''\ below). The agent sees the \emph{presentation} segment only, truncated before the first diagnosis-revealing section with the gold disease name masked verbatim. This layer tests phenotype extraction and diagnosis under abbreviations, missingness, and longitudinal clinical documentation.
+  \item \textbf{L3: Free-text scale (72,661 task instances).} RareArena contributes 49,760 screening instances and 22,901 confirmation instances derived from PubMed Central case reports~\cite{chen2026rarearena}. We treat them as task instances rather than unique patients because the two tasks expose different evidence views.
+  \item \textbf{L4: Temporal holdout.} From 2,401 post-cutoff PubMed Central Open Access candidates, we extract diagnoses and phenotypes, map them to Orphanet, and manually retain 200 cases satisfying four criteria: a definitive diagnosis, faithful phenotype extraction, verified publication after the prespecified cutoff, and confirmation that the target condition is rare. The extraction and adjudication protocol, including reviewer agreement, is provided in Section~\ref{sec-5-2} and Appendix~D.
+\end{itemize}
+
+All layers are stratified where metadata permit by prevalence, clinical specialty, language, age, sex, ancestry, and HPO density. Dataset-specific licenses and access restrictions are documented in the released data cards; credentialed MIMIC-IV data are not redistributed.
+
+\paragraph{Evaluation sample sizes.}
+We distinguish the released benchmark pool from the cases executed in each experiment. RareBench-HF is evaluated in full for the primary LLM backbones and all applicable classical or offline baselines; the de-leaked MIMIC-IV note probe is evaluated on its full frozen 416-case set in all 24 agent--backbone cells. For Phenopacket Store and RareArena, each primary agent--backbone cell is evaluated on a prevalence-stratified random sample of 500 instances (seed 42), with proportional allocation across prevalence bands. DeepSeek V4-Pro and GPT-5 cells use 100--500 instances according to the preregistered compute budget; every result reports its denominator, and cells with fewer than 100 observations are explicitly marked. We do not extrapolate sampled results to the full pool. Instead, we report bootstrap confidence intervals per cell and verify that each 500-case sample reproduces the pool's prevalence and HPO-organ-system distributions within two percentage points.
+
+\subsection{Canonical Case Representation}
+\label{sec-4-3}
+
+Every source is normalized into a single Pydantic-v2 record, \texttt{CanonicalCase}, from which each system adapter constructs the agent's native input (Figure~\ref{fig:fig_schema}). The schema contains source identity and language; demographics; raw or synthetic free text; observed and excluded HPO terms; structured variants and local VCF pointers; family information; parallel gold identifiers; and provenance metadata. Explicit availability masks prevent adapters from accessing evidence not assigned to the current capability or evaluation pass.
+
+Three choices support auditable cross-dataset evaluation. First, gold diagnoses retain parallel OMIM, ORPHA, and source-specific identifiers, allowing ontology-aware matching without discarding the source label. Second, \path{free_text_vignette} and \path{synthetic_vignette} are distinct fields, so results based on generated prose remain identifiable. Third, \path{vcf_path} is a local-only pointer. Raw credentialed EHR text and local genomic files are never transmitted to external APIs; cloud adapters receive only the approved, de-identified abstraction required by the evaluated pillar.
+
+\subsection{Dual-Pass Evaluation}
+\label{sec-4-4}
+
+Where both curated HPO terms and source text are available, we evaluate two input conditions. \textbf{Pass A (gold HPO)} supplies the same curated phenotype set directly to each downstream diagnostic system, isolating reasoning and enabling controlled cross-system comparison. \textbf{Pass B (end to end)} supplies the raw clinical narrative and requires the system to extract phenotypes before diagnosis, approximating deployment. The Pass-A--Pass-B difference quantifies the downstream cost of phenotype extraction and turns input heterogeneity into a measured factor rather than an uncontrolled confound. This design extends RareBench's comparison of structured phenotype and narrative inputs~\cite{chen2024rarebench}.
+
+\subsection{Metrics and Diagnostic Matching}
+\label{sec-4-5}
+
+Primary metrics follow the capability definitions above: precision, recall, and F1 for P1; Recall@1/3/5/10, MRR, and median rank for P2 and the disease component of P3; gene Top-$k$ for P3; and the physician-calibrated four-axis score for P5. Across applicable tasks, we additionally report task success, $\mathrm{pass}^k$ reliability, calibration, latency, total cost, and cost-normalized accuracy~\cite{yao2025taubench}. Results are accompanied by bootstrap confidence intervals and the multiplicity correction specified in the preregistration.
+
+Disease predictions are matched hierarchically. We first test exact equality after identifier normalization, then accepted OMIM--ORPHA mappings from Orphadata, and finally canonical Orphanet names or synonyms. Fuzzy name matching is used only when no valid identifier is returned and requires a RapidFuzz score of at least 90. This threshold was selected from 217 manually audited borderline predictions; more than 85\% of candidates scoring 70--89 were false positives. We release the mapping version, normalization rules, and complete audit trail.
+
+\begin{figure}[hbpt!]
+  \centering
+  \includegraphics[width=0.52\textwidth]{Figures/fig_design_matrix.png}
+  \caption{RareAgentBench evaluation surface. Rows denote five conceptual capability pillars and columns denote four data layers. Filled cells are evaluated in v1; grey cells, including family-aware diagnosis (P4), are reserved for future releases; light cells are not applicable.}
+  \label{fig:fig_design_matrix}
+\end{figure}
+
+\begin{figure}[hbpt!]
+  \centering
+  \includegraphics[width=0.52\textwidth]{Figures/fig_schema.png}
+  \caption{The \texttt{CanonicalCase} representation. Each dataset is normalized into a shared record, and isolated adapters project only the evidence permitted by the current capability and evaluation pass into each system's native input.}
+  \label{fig:fig_schema}
+\end{figure}
+
+\section{Experimental Setup}
+\label{sec-5}
+
+The experimental setup is designed to separate backbone, scaffold, and implementation effects while preserving each system's native workflow. We standardize model access and logging, isolate system dependencies through adapters, and freeze all confirmatory analyses before evaluating the temporal holdout.
+
+\subsection{Backbones}
+\label{sec-5-2}
+
+We evaluate each LLM-based system, where technically applicable, with four backbones spanning the observed cost--capability range: DeepSeek V4-Flash, DeepSeek V4-Pro, Gemini 3 Flash, and GPT-5. Gemini 3 Flash is the primary backbone; DeepSeek V4-Flash represents the low-cost setting, while V4-Pro and GPT-5 probe higher-capability regimes. Requests are routed through OpenRouter to provide a common API, billing surface, and generation record~\cite{openrouter2026api}. The supplementary material (Appendix~B) reports the immutable model identifier, provider route, access date, context window, token prices, and complete generation configuration for every evaluated cell. We do not use moving ``latest'' aliases.
+
+Primary comparisons use the lowest reasoning setting reliably supported by each endpoint. This constrained regime serves three purposes: it reduces backbone-side test-time compute as a confound when measuring scaffold effects; approximates the operating conditions of systems originally developed before dedicated reasoning models~\cite{tang2024medagents,kim2024mdagents,schmidgall2026agentclinic}; and makes multi-call evaluation computationally tractable. OpenRouter normalizes reasoning controls across providers but does not guarantee equivalent latent computation across models~\cite{openrouter2026reasoning}. We therefore report the exact request parameters and observed reasoning-token usage rather than describing the configurations as computationally identical. Conclusions concerning GPT-5 and V4-Pro apply specifically to this constrained-reasoning regime. A reasoning-enabled single-LLM control is evaluated separately as preregistered ablation A8.
+
+Pilot compatibility tests showed that hidden reasoning could exhaust the output budget of short-turn adapters, producing empty content, parser errors, or timeouts. For the frozen primary runs, GPT-5 uses \path{reasoning_effort=minimal}, and V4-Pro uses \path{reasoning.enabled=false}, the only tested configuration that consistently returned final-answer content within the adapter limits. These settings are passed unchanged into isolated subprocesses and verified from request and token-usage receipts. Root-cause experiments, including attempted token caps and latency measurements, are reported in Appendix~B rather than treated as benchmark results.
+
+Failure handling is fixed before aggregation. Empty outputs, parser errors, and timeouts count as unsuccessful attempts and remain in the denominator. A cell is marked unavailable only when the adapter--backbone combination cannot execute the system's required interaction protocol after the documented compatibility procedure. MAI-DxO with GPT-5 is the sole such cell in the current matrix and is reported as missing, not silently removed. Every table reports the attempted and successful sample counts.
+
+\subsection{System Adapters}
+\label{sec-5-3}
+
+The eight diagnostic systems have mutually incompatible dependencies and, in several cases, different language-model SDK generations. We therefore execute each system in an isolated runtime behind a common \texttt{AgentAdapter} interface. An adapter receives a \texttt{CanonicalCase} (Section~\ref{sec-4-3}), exposes only the evidence permitted by the current capability and evaluation pass, converts it to the system's native input, invokes the isolated process, and returns a \texttt{PredictionLog}. The log records ranked diagnoses, extracted HPO terms, reasoning or communication traces when available, token usage, cost, latency, and a normalized status code.
+
+Adapter modifications are restricted to transport, input projection, output parsing, and instrumentation. We do not alter prompts, tool-selection policies, stopping rules, retrieval corpora, or orchestration logic unless a change is required to replace an unavailable endpoint; any such deviation is declared in the agent fairness matrix (supplementary material, Appendix~C). For OpenRouter-compatible systems, the patch changes only client construction and forwards the model and reasoning configuration through the subprocess environment. Per-system patches and immutable environment specifications are released with the benchmark.
+
+This design provides three audit properties. First, every run receipt records the canonical case identifier, adapter version, model identifier, configuration hash, subprocess command, random seed, and termination status. Second, a common logging layer aggregates per-call token usage, latency, and billed cost into a case-level receipt. API costs are exact when returned by the gateway; calls that bypass the wrapper are estimated from recorded token counts and versioned prices and are labeled accordingly. Offline methods have zero API cost, with compute time reported separately. Third, process isolation contains dependency, parser, retrieval, and state failures within the affected system.
+
+Adapter overhead is measured independently and reported alongside end-to-end latency; interpreter startup adds approximately 0.5--2 seconds per case. We also clear system-specific output directories between cases to prevent cross-case state leakage. These safeguards, including the three upstream systems that required explicit state cleanup, are documented in Appendix~B.
+
+\subsection{Preregistration and Holdout Governance}
+\label{sec-5-4}
+
+% Editorial requirement: retain ``preregistered'' only if the immutable OSF
+% timestamp predates the first temporal-holdout run; otherwise use
+% ``prespecified'' throughout the paper and rename this subsection accordingly.
+
+Before temporal-holdout unblinding, we freeze H1--H11, ablations A1--A12, the staged sampling budget, cell-level stopping rules, primary metrics, the Holm--Bonferroni correction, and the LLM-judge agreement protocol. The frozen protocol, timestamped repository commit, and anonymized read-only OSF registration are supplied with the supplementary material. This design responds to documented contamination and reproducibility risks in rare-disease LLM evaluation~\cite{nguyen2026diagnostic}.
+
+The 200-case PMC Open Access temporal holdout is evaluated once under the frozen agent set, matching rules, and analysis plan. Phenopacket Store, RareBench, RareArena, and the de-leaked MIMIC-IV note probe remain development layers, but no holdout result is used to revise prompts, adapters, thresholds, or sampling decisions. Confirmatory cells ship with a reproducibility receipt containing the run identifier, request identifiers when available, configuration hash, denominator, failures, and cost. Exploratory analyses are labeled explicitly and are not included in confirmatory hypothesis testing.
+
+\section{Main Results}
+\label{sec-6}
+
+We report variant-aware Recall@1 (R@1) across agents, backbones, and datasets, followed by backbone sensitivity and cost--accuracy analysis. Complete hypothesis tests, confidence intervals, and execution receipts appear in the supplement.
+
+\subsection{Headline R@1 Matrix}
+\label{sec-6-1}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\caption{Variant-aware R@1 for each reported agent--backbone configuration across the four evaluation layers. Parentheses give per-cell sample counts. Classical and offline systems are listed first; their free-text cells are not applicable because they require structured HPO input. \textbf{MIMIC-N} is the de-leaked discharge-note probe (``De-Leaking the EHR Layer''\ below): all 24 agent--backbone cells are complete on the same frozen 416-case set, with the denominator fixed at 416 so that every failure, timeout, parser error, and empty-but-successful response counts as a miss. $^{\dagger}$ marks cells with $n<500$, whose Avg.\ is dominated by small samples. Cell shading encodes R@1: \colorbox{heatE}{$<$.10}~\colorbox{heatA}{.10--.20}~\colorbox{heatB}{.20--.30}~\colorbox{heatC}{.30--.40}~\colorbox{heatD}{$\geq$.40}.}
+\label{tbl:main}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Agent & Backbone & PP-Store & RareArena & RareBench & MIMIC-N & Avg. \\
+\midrule
+\textbf{LIRICAL} & --- & \cellcolor{heatD}\textbf{0.47} (2000) & n/a & \cellcolor{heatB}0.23 (1122) & n/a & n/a \\
+\textbf{VC-RDAgent} & --- & \cellcolor{heatD}0.44 (663) & n/a & \cellcolor{heatB}0.28 (1122) & n/a & n/a \\
+\midrule
+MedAgents  &  Gemini Flash  &  \cellcolor{heatC}0.30 (1998) & \cellcolor{heatC}0.30 (2000) & \cellcolor{heatE}0.05 (1122) & \cellcolor{heatD}\textbf{0.40} (416) & \cellcolor{heatB}0.26  \\
+LLM control  &  Gemini Flash  &  \cellcolor{heatB}0.29 (2000) & \cellcolor{heatB}0.28 (2000) & \cellcolor{heatE}0.02 (1122) & \cellcolor{heatC}0.37 (416) & \cellcolor{heatB}0.24  \\
+DeepRare  &  Gemini Flash  &  \cellcolor{heatB}0.28 (609) & \cellcolor{heatE}0.00 (500) & \cellcolor{heatC}\textbf{0.30} (953) & \cellcolor{heatE}0.01 (416) & \cellcolor{heatA}0.15  \\
+MedAgents  &  DS V4-Pro  &  \cellcolor{heatB}0.28 (2000) & \cellcolor{heatB}0.23 (2000) & \cellcolor{heatE}0.01 (1122) & \cellcolor{heatC}0.35 (416) & \cellcolor{heatB}0.22  \\
+MDAgents  &  Gemini Flash  &  \cellcolor{heatB}0.28 (2000) & \cellcolor{heatB}0.28 (2000) & \cellcolor{heatA}\textbf{0.10} (1122) & \cellcolor{heatC}0.32 (416) & \cellcolor{heatB}0.24  \\
+MedAgents  &  GPT-5 min  &  \cellcolor{heatB}0.28 (2000) & \cellcolor{heatB}0.26 (2000) & \cellcolor{heatE}0.01 (1122) & \cellcolor{heatC}0.31 (416) & \cellcolor{heatB}0.22  \\
+LLM control  &  DS V4-Pro  &  \cellcolor{heatB}0.27 (1999) & \cellcolor{heatA}0.19 (2000) & \cellcolor{heatE}0.02 (1121) & \cellcolor{heatC}0.37 (416) & \cellcolor{heatB}0.21  \\
+MDAgents  &  DS V4-Pro  &  \cellcolor{heatB}0.27 (2000) & \cellcolor{heatB}0.22 (2000) & \cellcolor{heatE}0.04 (1122) & \cellcolor{heatC}0.35 (416) & \cellcolor{heatB}0.22  \\
+LLM control  &  DS V4-Flash  &  \cellcolor{heatB}0.26 (1998) & \cellcolor{heatB}0.21 (1976) & \cellcolor{heatE}0.05 (1021) & \cellcolor{heatC}0.35 (416) & \cellcolor{heatB}0.22  \\
+LLM control  &  GPT-5 min  &  \cellcolor{heatB}0.26 (1988) & \cellcolor{heatB}0.22 (1974) & \cellcolor{heatE}0.01 (1098) & \cellcolor{heatC}0.36 (416) & \cellcolor{heatB}0.21  \\
+MedAgents  &  DS V4-Flash  &  \cellcolor{heatB}0.26 (1942) & \cellcolor{heatB}0.24 (1292) & \cellcolor{heatE}0.05 (783) & \cellcolor{heatC}0.34 (416) & \cellcolor{heatB}0.22  \\
+MDAgents  &  DS V4-Flash  &  \cellcolor{heatB}0.25 (1983) & \cellcolor{heatB}0.23 (1993) & \cellcolor{heatE}0.05 (1098) & \cellcolor{heatC}0.37 (416) & \cellcolor{heatB}0.22  \\
+DeepRare  &  DS V4-Pro  &  \cellcolor{heatB}0.25 (89)$^{\dagger}$ & \cellcolor{heatE}0.00 (33)$^{\dagger}$ & \cellcolor{heatD}0.44 (36)$^{\dagger}$ & \cellcolor{heatE}0.01 (416) & \cellcolor{heatA}0.18  \\
+MDAgents  &  GPT-5 min  &  \cellcolor{heatB}0.24 (2000) & \cellcolor{heatB}0.23 (2000) & \cellcolor{heatE}0.01 (1122) & \cellcolor{heatD}\textbf{0.44} (416) & \cellcolor{heatB}0.23  \\
+DeepRare  &  DS V4-Flash  &  \cellcolor{heatB}0.22 (494)$^{\dagger}$ & \cellcolor{heatE}0.00 (479)$^{\dagger}$ & \cellcolor{heatB}\textbf{0.29} (778) & \cellcolor{heatE}0.02 (416) & \cellcolor{heatA}0.13  \\
+DeepRare  &  GPT-5 min  &  \cellcolor{heatB}0.22 (96)$^{\dagger}$ & \cellcolor{heatE}0.00 (63)$^{\dagger}$ & \cellcolor{heatB}0.21 (98)$^{\dagger}$ & \cellcolor{heatE}0.00 (416) & \cellcolor{heatA}0.11  \\
+AgentClinic  &  Gemini Flash  &  \cellcolor{heatB}0.21 (1995) & \cellcolor{heatA}0.14 (1974) & \cellcolor{heatE}0.01 (1122) & \cellcolor{heatA}0.13 (416) & \cellcolor{heatA}0.12  \\
+AgentClinic  &  DS V4-Pro  &  \cellcolor{heatA}0.18 (2000) & \cellcolor{heatA}0.12 (2000) & \cellcolor{heatE}0.01 (1122) & \cellcolor{heatB}0.22 (416) & \cellcolor{heatA}0.13  \\
+AgentClinic  &  DS V4-Flash  &  \cellcolor{heatA}0.14 (1925) & \cellcolor{heatA}0.11 (1764) & \cellcolor{heatE}0.02 (860) & \cellcolor{heatA}0.17 (416) & \cellcolor{heatA}0.11  \\
+AgentClinic  &  GPT-5 min  &  \cellcolor{heatA}0.13 (2000) & \cellcolor{heatA}0.10 (2000) & \cellcolor{heatE}0.00 (1122) & \cellcolor{heatE}0.05 (416) & \cellcolor{heatE}0.07  \\
+MAI-DxO  &  Gemini Flash  &  \cellcolor{heatE}0.03 (81)$^{\dagger}$ & \cellcolor{heatE}0.07 (88)$^{\dagger}$ & \cellcolor{heatE}0.01 (703) & \cellcolor{heatE}0.00 (416) & \cellcolor{heatE}0.03  \\
+MAI-DxO  &  DS V4-Pro  &  \cellcolor{heatE}0.00 (11)$^{\dagger}$ & \cellcolor{heatE}0.00 (1)$^{\dagger}$ & \cellcolor{heatE}0.00 (10)$^{\dagger}$ & \cellcolor{heatE}0.00 (416) & \cellcolor{heatE}0.00  \\
+MAI-DxO  &  DS V4-Flash  &  \cellcolor{heatE}0.00 (15)$^{\dagger}$ & --- & --- & \cellcolor{heatE}0.00 (416) & n/a (2-ds)  \\
+MAI-DxO  &  GPT-5 min  &  --- & --- & --- & \cellcolor{heatE}0.00 (416) & n/a (1-ds)  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The average is reported only for LLM configurations covering all four datasets and is not comparable to the two-dataset coverage of LIRICAL and VC-RDAgent. DeepRare with V4-Pro reaches .44 on 36 RareBench P3 cases through the HPO-plus-variant channel, but the sample is too small for the primary ranking. All V4-Pro cells use the reasoning-disabled setting in Section~\ref{sec-5-2}. MAI-DxO with GPT-5 is unavailable on the HPO-input layers under the frozen adapter protocol, but all four MAI-DxO backbones do complete the note probe; the failure analysis is in the supplement. The MIMIC-N column supersedes the leaked MIMIC-IV numbers of the earlier draft, which were computed on notes whose concatenated ICD-10 titles contained the gold answer verbatim; the two are not cell-by-cell comparable because the case set changed as well (``De-Leaking the EHR Layer''\ below).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figM1_llm_vs_classical.png}
+\caption{Best variant-aware Recall@$k$ for the strongest LLM agent versus the strongest classical/offline baseline, on the two HPO-input datasets where a classical run is possible (attempted denominator). Each bar is stacked: the solid lower segment is R@1 and the light upper segment is the R@1$\rightarrow$R@5 gain, so the bar top equals R@5 (printed above each bar; the R@1 value is printed inside). On curated-HPO Phenopacket-Store the classical baseline (LIRICAL, R@1 .47) leads the best LLM (.30) by 17 points and its lead widens at R@5 (.62 vs.\ .40); on sparser-HPO RareBench the R@1 ordering is close (classical .28 vs.\ LLM .30) and the LLM edges ahead only at R@5 (.50 vs.\ .45). The benchmark's other three layers are omitted here because they admit no classical baseline: RareArena is free-text, the MIMIC-IV note probe is a masked free-text discharge summary, and the PMC holdout is a temporal-contamination probe, none of which provides the structured HPO term list the classical systems require.}
+\label{fig:figM1_llm_vs_classical}
+\end{figure}
+
+\subsection{De-Leaking the EHR Layer}
+\label{sec-6-deleak}
+
+The MIMIC-N column required a dedicated construct-validity audit, because a
+rare-disease cohort assembled from billing codes leaks its own answer. Each
+filter in the funnel removes a distinct threat: 150,033 admissions with any
+ICD--ORPHA mapping $\rightarrow$ 107,144 under \emph{exact} mappings only (dropping
+narrower-to-broader and broader-to-narrower approximate maps) $\rightarrow$ 18,392
+whose gold code is a genuinely rare disease $\rightarrow$ 2,325 where that disease is
+the admission's \emph{principal} diagnosis rather than comorbidity or past history
+$\rightarrow$ 1,255 carrying a usable discharge summary (117 diseases) $\rightarrow$
+1,083 after dropping cases whose narrative states the diagnosis as already known
+$\rightarrow$ 855 in which the gold disease name never appears verbatim
+$\rightarrow$ 687 after a strict synonym screen (105 diseases) $\rightarrow$ 416 on the
+HPO-annotated subset (68 diseases), which is the frozen scored set.
+
+Two of these steps are anti-leakage rather than cohort definition. First, a
+$\pm45$-character window around each masked diagnosis detects history cues
+(``h/o'', ``s/p'', ``known''), removing 172 cases in which the note frames the
+target as an established diagnosis. Second, masking the gold disease \emph{name}
+is insufficient: screening against the full Orphanet synonym and abbreviation
+list shows that 19.6\% of the nominally clean cases still spelled the answer out
+under an alternative label (eponyms and all-capitals abbreviations such as ADPKD or
+GBS, which the crossmap-aware scorer credits as hits), and removing them costs a
+further 168 cases.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Leakage magnitude on \emph{identical} cases: unscaffolded LLM-control R@1 before and after de-leaking, same 416 admissions. Leakage both inflates accuracy by 9--20 points and reorders the backbones---V4-Flash looks best when leaked but is mid-field once the answer is removed.}
+\label{tbl:deleak}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Backbone & Leaked & De-leaked & $\Delta$ \\
+\midrule
+DS V4-Flash & \textbf{.553} & .353 & $-$.200 \\
+DS V4-Pro & .500 & .365 & $-$.135 \\
+Gemini Flash & .452 & \textbf{.373} & $-$.079 \\
+GPT-5 minimal & .425 & .363 & $-$.062 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tbl:deleak} quantifies what this buys, holding the case set fixed:
+the leaked variant inflates R@1 by 6--20 points and, more damagingly, changes the
+ranking. Under leakage V4-Flash appears to be the strongest backbone by 5 points;
+on the same cases with the answer removed, all four backbones collapse into a
+.353--.373 band that is within bootstrap noise. A backbone recommendation read
+off the leaked slice would therefore have been an artifact of which model is best
+at copying a diagnosis string out of its own input. We report the de-leaked
+column only, and treat the leaked one as a measurement of the leak.
+
+Two caveats remain. The 416-case set is restricted to the 68 diseases with HPO
+annotations available in our mapping, dropping 271 otherwise-valid cases across
+37 diseases; the loss is an annotation-coverage artifact and not related to
+difficulty, but it does narrow disease diversity. And the screen operates at the
+case level: a disease may still be inferable from a characteristic treatment or
+laboratory pattern that no name-based filter can catch.
+
+\subsection{Backbone--Scaffold Interaction}
+\label{sec-6-2}
+
+Table~\ref{tbl:bbsens} summarizes PP-Store sensitivity to backbone choice using the cells in Table~\ref{tbl:main}.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{6pt}
+\caption{Per-agent backbone sensitivity on PP-Store. The range is the difference between the best and worst reported backbone for that system.}
+\label{tbl:bbsens}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Agent & Best backbone & Worst backbone & R@1 range \\
+\midrule
+LLM control & Gemini Flash (.29) & DS V4-Flash / GPT-5 minimal (.26) & .03 \\
+MDAgents & Gemini Flash (.28) & GPT-5 minimal (.24) & .04 \\
+MedAgents & Gemini Flash (.30) & DS V4-Flash (.26) & .04 \\
+AgentClinic & Gemini Flash (.21) & GPT-5 minimal (.13) & .08 \\
+DeepRare & Gemini Flash (.28) & DS V4-Flash (.22) & .06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gemini is strongest on PP-Store for every system family, with narrow spreads for the LLM control, MDAgents, and MedAgents (.03--.04) but larger effects for AgentClinic (.08) and DeepRare (.06). The ordering changes elsewhere: on the de-leaked MIMIC-IV note probe the four backbones are statistically indistinguishable for the unscaffolded control (.353--.373, a .02 spread), GPT-5 minimal is by far the strongest for MDAgents (.435 vs.\ .317--.368), and V4-Pro is strongest for AgentClinic (.216, against .048 for GPT-5 minimal). Backbone effects are therefore scaffold- and dataset-dependent. Because several bootstrap intervals overlap, we do not treat small gaps as definitive rankings.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figF2_scaffolding.png}
+\caption{Effect of multi-agent scaffolding on two datasets, measured as each scaffold's R@1 change (percentage points) relative to the no-scaffold single-LLM control on the same dataset. Blue: Phenopacket-Store (Gemini Flash, variant-aware R@1). Gold: the de-leaked MIMIC-IV note probe (mean over four backbones on the 416-case matrix). The vertical line at zero is the control. The same pattern replicates across both datasets: the light-coordination scaffolds MedAgents and MDAgents sit essentially at the control ($|\Delta|\!\le\!1.4$~pp on both), while the heavier-orchestration scaffolds fall well below it---AgentClinic $-7.8$~pp (PP-Store) / $-22.4$~pp (MIMIC) and MAI-DxO $-27.3$ / $-36.1$~pp. Deepening the scaffold thus does not reliably improve over a single well-prompted LLM call, and heavy orchestration consistently hurts. (MIMIC MAI-DxO uses the regex-fixed rerun; final scoring is unified with the other cells.)}
+\label{fig:figF2_scaffolding}
+\end{figure}
+
+\subsection{Cost--Accuracy Trade-offs}
+\label{sec-6-3}
+
+The evaluation comprises 68,668 predictions at a total API cost of \$191.76, or \$0.0028 per prediction including offline runs. Per-prediction cost spans more than an order of magnitude: DeepSeek V4-Flash is cheapest (\$0.00040), then V4-Pro reasoning-off (\$0.00088), Gemini Flash (\$0.00321), and GPT-5 minimal the most expensive (\$0.00793); the classical/offline baselines incur no API cost. Relative to V4-Flash, V4-Pro costs $2.2\times$ more, Gemini $8\times$ more, and GPT-5 minimal $19.8\times$ more; GPT-5 is also $9\times$ more expensive than V4-Pro. As Figure~\ref{fig:figM2_cost_accuracy} shows, this cost ordering does not induce a matching accuracy ordering. The evaluation used 53\% of the preregistered \$360 budget; per-backbone spend and per-cell accounting are in Appendix~J.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figM2_cost_accuracy.png}
+\caption{Cost versus accuracy for every executable agent--backbone cell on Phenopacket-Store: variant-aware R@1 (attempted denominator) against cost per attempt in USD on a logarithmic axis. Marker \emph{colour} encodes the agent (legend); marker \emph{shape} encodes the backbone: circle = Gemini~3~Flash, square = DeepSeek~V4-Pro (reasoning off), triangle = DeepSeek~V4-Flash, diamond = GPT-5 minimal. The dashed step line is the empirical Pareto frontier (best accuracy attainable at or below each cost). GPT-5-minimal cells (diamonds) sit far to the right without a corresponding accuracy gain, and the cheapest V4-Flash cells (triangles) are already near the frontier, so higher spend does not buy higher accuracy.}
+\label{fig:figM2_cost_accuracy}
+\end{figure}
+
+\subsection{Headline Findings}
+\label{sec-6-4}
+
+The final matrix incorporates two corrections: V4-Pro was rerun with reasoning disabled after hidden-reasoning output starvation, and PP-Store/RareArena runs were harmonized to a shared 2,000-case sampling frame where technically feasible. R@1 decreased by approximately 2--4 points relative to earlier 500-case estimates, strengthening the structured-baseline result and removing the earlier claim that GPT-5 is the best MedAgents backbone.
+
+\paragraph{F1: Classical and offline methods outperform scaffolded LLMs on HPO input.}
+On PP-Store, LIRICAL reaches .47 R@1 and VC-RDAgent .44, compared with .30 for the best scaffolded LLM cell (Figure~\ref{fig:figM1_llm_vs_classical}). The resulting 17-point gap between LIRICAL and MedAgents persists on the larger harmonized sample. RareBench shows a related pattern: DeepRare (.29--.30), VC-RDAgent (.28), and LIRICAL (.23) lead, while all other LLM scaffolds remain at or below .10. The magnitude of the RareBench gap is partly attributable to ontology alignment, as examined under F5.
+
+\paragraph{F2: Multi-agent scaffolding does not reliably beat a single-LLM control.}
+The same pattern holds on two independent datasets (Figure~\ref{fig:figF2_scaffolding}): Phenopacket-Store (Gemini Flash) and the de-leaked MIMIC-IV note probe (mean over four backbones). No scaffold clears the no-scaffold control by a meaningful margin---MedAgents and MDAgents stay within $1.4$ points of the control on both datasets---while the heavier-orchestration scaffolds fall well below it: AgentClinic $-7.8$ (PP-Store) and $-22.4$ (MIMIC), MAI-DxO $-27.3$ and $-36.1$. On the de-leaked MIMIC matrix the unscaffolded control (mean R@1 .364) is statistically tied with the best light scaffolds (MedAgents .350, MDAgents .367, overlapping CIs) and far above the heavy ones (AgentClinic .140, DeepRare .011, MAI-DxO). The evidence thus supports a conditional, often negative scaffold effect---heavy orchestration consistently hurts---rather than a general multi-agent advantage.
+
+\paragraph{F3: V4-Flash is cost efficient but not quality equivalent to Gemini.}
+V4-Flash costs \$0.00040 per prediction, compared with \$0.00321 for Gemini. On PP-Store, it trails Gemini by 3 points for the LLM control and MDAgents, 4 for MedAgents, and 7 for AgentClinic. On the de-leaked MIMIC-IV note probe the sign flips for the light-coordination scaffolds---V4-Flash is 2 points \emph{below} Gemini for the LLM control and 6 below for MedAgents, but 5 points \emph{above} it for MDAgents and 4 above for AgentClinic. V4-Flash also exhibits more transient empty-content responses on free-text and HPO-list inputs, mitigated by the frozen wrapper-level retry policy. The appropriate conclusion is therefore lower cost with an agent- and modality-dependent accuracy trade-off, not quality parity.
+
+\paragraph{F4: GPT-5 minimal reasoning carries the highest cost without a consistent accuracy advantage.}
+GPT-5 minimal is competitive in selected cells---it holds the single best de-leaked MIMIC-IV cell in the whole matrix (MDAgents, .435)---but it is not the sole best backbone for any scaffold on PP-Store, and it is the \emph{worst} of the four backbones for AgentClinic on both PP-Store (.13) and the note probe (.048). At $19.8\times$ the per-prediction cost of V4-Flash, these isolated gains do not establish a favorable overall trade-off. The preregistered H6 ablation isolates the reasoning channel: enabling reasoning for the V4-Pro single-LLM control changes R@1 by only +.008, while yielding no parseable answer in 40\% of cases and increasing latency by $10$--$40\times$. These findings apply to the evaluated adapters and token limits rather than to unconstrained GPT-5 quality in general.
+
+\paragraph{F5: RareBench exposes an evaluator--ontology interaction.}
+RareBench is uniquely difficult for general LLM scaffolds but remains tractable for systems operating directly over HPO and disease ontologies. Error analysis identifies sibling-level ORPHA distinctions and incomplete OMIM--Orphanet mappings as recurrent failure modes. For example, \texttt{Methylmalonic acidemia with homocystinuria} (ORPHA:26) and \texttt{Vitamin B12-unresponsive methylmalonic acidemia} (ORPHA:27) are clinically related but receive different exact identifiers. Classical and HPO-centered pipelines can bypass part of this mismatch through OMIM identifiers and Orphanet name matching. Variant-aware fuzzy matching recovers 1--8 R@1 points across affected cells but does not close the performance gap. We therefore report both exact and variant-aware scores and treat the result as an interaction among model behavior, cross-ontology mapping, and evaluator policy rather than as a pure model failure.
+
+\paragraph{Prevalence and pre-registered tests.}
+Stratifying by Orphanet prevalence tier sharpens F1 (Figure~\ref{fig:figM3_prevalence}). LLM agents peak on common and ultra-rare tiers but fall to R@1 .22 on super-rare disease, whereas the classical/offline baselines \emph{rise} to .50 there---a 28-point reversal on exactly the rarest cases. Across the pre-registered family (Figure~\ref{fig:figM6_hypotheses}), five of the six testable hypotheses survive Holm--Bonferroni correction, including the classical-over-LLM super-rare gap (H1) and the genotype-channel lift (H2); only the faithfulness--accuracy decoupling (H10) fails and is reported as exploratory (Section~\ref{sec-7-5}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figM3_prevalence.png}
+\caption{Pooled variant-aware R@1 by Orphanet prevalence tier (commonest to rarest), for LLM agents (Gemini Flash) versus classical/offline baselines. Toward the rarest tier the two families cross: LLM accuracy declines to .22 on super-rare disease while the classical/offline baselines rise to .50, a 28-point gap in their favor on exactly the cases where training-frequency priors are weakest.}
+\label{fig:figM3_prevalence}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figM6_hypotheses.png}
+\caption{Pre-registered hypothesis tests under Holm--Bonferroni correction, shown as $-\log_{10}$ of the Holm-adjusted $p$-value per hypothesis (bars are truncated at the axis top; the printed number is the underlying test statistic). Green bars survive the family-wise correction at $\alpha{=}.05$; the gold bar (H10) does not and is reported as exploratory. The printed statistic is a $z$-value for H1, H8, H2, and H4, and a Spearman $\rho$ for H7 and H10. H1: classical $>$ LLM on the super-rare tier; H8: R@1 peaks at 16--30 HPO terms; H2: genotype-channel lift; H7: cross-agent specialty-difficulty correlation; H4: scaffolding helps more on complex cases; H10: faithfulness--accuracy decoupling.}
+\label{fig:figM6_hypotheses}
+\end{figure}
+
+\subsection{Self-Preference Bias in LLM-as-Judge}
+\label{sec-7-5}
+
+\paragraph{Protocol.}
+We evaluate Pillar~5 reasoning traces on four five-point axes: factuality, relevance, depth, and faithfulness. The initial protocol used Gemini 3 Flash Preview as the judge while evaluating agents instantiated with the same backbone family. We then rescored the traces with Claude Sonnet 4.5 using the same rubric and judge prompt (Figure~\ref{fig:figM5_selfpref}). Prior work shows that LLM evaluators can favor generations from their own model family, motivating an explicit judge-family sensitivity analysis~\cite{panickssery2024selfpreference}. Because several v2 runs also repair trace-capture failures, however, the complete v1--v2 difference is not a clean causal estimate of self-preference. We therefore distinguish fixed-trace judge sensitivity from changes induced by improved trace coverage.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\caption{Reasoning-trace scores under the Gemini-family judge (v1) and Claude judge (v2), reported as v1 $\rightarrow$ v2. Each agent uses 10 stratified Phenopacket-Store cases (seed 42). The rubric and judge prompt are unchanged, but trace-capture fixes affect MDAgents and MAI-DxO and slightly change the captured DeepRare trace length; their score differences therefore combine judge and instrumentation effects.}
+\label{tbl:selfpref}
+\begin{tabular}{@{}p{0.17\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.13\textwidth}p{0.18\textwidth}@{}}
+\toprule
+Agent & Factuality & Relevance & Depth & Faithfulness & Trace length & Main change \\
+\midrule
+\texttt{llm\_control}
+& $4.70 \rightarrow 4.30$ ($-.40$)
+& $4.50 \rightarrow 4.50$
+& $3.60 \rightarrow 3.10$ ($-.50$)
+& $4.90 \rightarrow 4.50$ ($-.40$)
+& 986 characters
+& Three axes decrease; relevance is unchanged \\
+
+\texttt{mdagents}
+& $5.00 \rightarrow 4.10$
+& $5.00 \rightarrow 4.17$
+& $4.00 \rightarrow 3.49$
+& $5.00 \rightarrow 4.26$
+& $337 \rightarrow 20{,}034$
+& Under Claude, depth exceeds \texttt{llm\_control} ($3.49>3.10$) \\
+
+\texttt{deeprare}
+& $1.70 \rightarrow 2.31$ ($+.61$)
+& $1.40 \rightarrow 1.33$ ($-.07$)
+& $1.90 \rightarrow 2.58$ ($+.68$)
+& $1.70 \rightarrow 2.72$ ($+1.02$)
+& $18{,}429 \rightarrow 21{,}401$
+& Three axes improve; relevance is nearly unchanged \\
+
+\texttt{maidxo}
+& n/a $\rightarrow 2.11$
+& n/a $\rightarrow 1.85$
+& n/a $\rightarrow 1.64$
+& n/a $\rightarrow 1.88$
+& $0 \rightarrow 26{,}972$
+& v1: 10/10 parse failures; v2: 0/10 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.46\textwidth]{Figures/figM5_selfpref.png}
+\caption{Reasoning-trace scores on the four Pillar-5 axes (factuality, relevance, depth, faithfulness; 1--5 scale) as the judge is swapped on identical traces. Each panel plots the score under the same-family judge (SF: Gemini 3 Flash, the agents' own backbone family) versus the cross-family judge (CF: Claude Sonnet 4.5). \texttt{mdagents}$^{*}$ is marked because its v2 trace was also repaired, so its SF$\rightarrow$CF change combines the judge swap with improved trace coverage; \texttt{llm\_control} and \texttt{deeprare} traces were already complete and isolate the judge-family effect. Moving to the non-family judge lowers the single-LLM control on factuality, depth, and faithfulness (leaving relevance unchanged) and lets the multi-expert \texttt{mdagents} overtake it on depth.}
+\label{fig:figM5_selfpref}
+\end{figure}
+
+\paragraph{Judge-family sensitivity.}
+For the fixed \texttt{llm\_control} traces, replacing Gemini with Claude reduces factuality, depth, and faithfulness by .40--.50 points while leaving relevance unchanged. This directional shift is consistent with same-family preference, but a two-judge comparison cannot separate self-preference from judge-specific calibration without human labels or a reciprocal design. The cross-agent comparisons are additionally affected by trace coverage. Under Claude, the \texttt{llm\_control} margins over MDAgents are $\{+.20,+.33,-.39,+.24\}$ across factuality, relevance, depth, and faithfulness: MDAgents leads on depth, whereas the control remains slightly ahead on the other axes. The remaining margins lie within the bootstrap intervals reported in Appendix~E.
+
+After collapsing scores into $\{1$--$2,3,4$--$5\}$, inter-judge agreement is $\kappa=.62$. Given the 10-case-per-agent pilot sample, we treat the per-axis deltas and ranking changes as exploratory. The principal result is that judge choice materially affects the interpretation of trace quality, not a precise estimate of a universal self-preference effect.
+
+\paragraph{Trace-capture failures.}
+The v2 pipeline also fixes two independent instrumentation errors. MAI-DxO's panel \texttt{conversation\_history} was not passed to the judge in v1, producing 10/10 JSON-parse failures; the corrected pipeline captures 26,972 characters and eliminates these failures. MDAgents previously exposed only the 337-character moderator verdict rather than the full deliberation. Capturing the complete 20,034-character multi-expert trace reduces judge errors from 8/10 to 0. These fixes are necessary for valid process evaluation, but they also mean that the affected v1--v2 score differences cannot be attributed solely to judge family. The patches and replay receipts are documented in Appendix~B.
+
+\paragraph{Effect on H10.}
+Judge choice also bears on the preregistered H10 verdict, but only once trace capture is controlled. An earlier analysis compared $\rho=.098$ (Gemini) against $\rho=.616$ (Claude) between judged faithfulness and top-1 accuracy and read this as a large judge-family gap; that split was a trace-capture artifact, because the Gemini scores had been computed on truncated or empty traces while the Claude scores used the repaired traces. Re-running the Gemini judge on the \emph{same} repaired traces (n=40) raises its correlation from .098 to $\rho=.457$, against Claude's $\rho=.640$, and the two judges' faithfulness scores themselves agree at $\rho=.741$. The residual judge-family difference is therefore modest, and both estimates sit near the preregistered $\rho<.5$ decision boundary---one just below, one just above---so we report H10 as judge-dependent and exploratory rather than as a headline confirmation and withdraw the earlier .098-vs-.616 contrast. The durable point is that judge family and trace-capture completeness are both first-order evaluation factors that must be controlled together.
+
+\paragraph{Implications for benchmark design.}
+LLM-based evaluation is increasingly used for open-ended medical and agent outputs, including MedHELM's multi-model jury and MedR-Bench's automated reasoning evaluator~\cite{bedi2026medhelm,qiu2025medrbench}. Our results reinforce prior evidence that a heterogeneous judge panel can reduce intra-model bias relative to a single judge~\cite{verga2024juries}. Ablation A12 therefore evaluates the same predictions using exact OMIM/ORPHA matching, BioLORD-assisted synonym matching, a GPT-5 judge, and physician adjudication on 200 cases.
+
+For benchmark builders, deterministic scoring should remain primary whenever a verifiable target exists. Subjective trace evaluation should replay identical frozen traces across judges from different model families, report judge-conditioned results or panel consensus, and include a human-audited subset for consequential claims. We also record the effect of every judge substitution rather than merging scores across judge versions. For traces exceeding 5,000 characters, our implementation uses overlapping 3,000-character windows with a 500-character overlap and averages per-axis scores, preventing silent truncation of traces such as DeepRare's 21,401-character output. The complete unchunked trace remains available for audit.
+
+\bibliography{aaai2027}
+
+\end{document}

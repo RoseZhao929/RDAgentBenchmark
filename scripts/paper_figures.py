@@ -17,7 +17,41 @@ from _figstyle import (apply_nature_style, AGENT_COLOR, heatmap_cmap,
 
 FIG = Path("data/round2/figures")
 DS_TITLE = {'phenopacket_store': 'Phenopacket-Store', 'rarearena_rds': 'RareArena RDS',
-            'rarebench': 'RareBench HF'}
+            'rarebench': 'RareBench HF', 'mimic_diverse': 'MIMIC-N (de-leaked)'}
+
+# The EHR layer is reported from the de-leaked discharge-summary probe (416
+# frozen cases, fixed denominator) rather than the leaked ICD-title slice.
+# Keyed (agent, backbone-suffix) -> micro R@1, loaded from the score manifest.
+MIMIC_MANIFEST = Path(
+    "audit_frozen/mimic_note_experiment/agent_matrix_scores.json")
+_MIMIC_BB = {'deepseek-v4-pro': 'deepseek_deepseek-v4-pro',
+             'deepseek-v4-flash': 'deepseek_deepseek-v4-flash',
+             'gpt-5': 'openai_gpt-5',
+             'gemini-3-flash': 'google_gemini-3-flash-preview-20251217'}
+
+
+def _full_bb(bb: str) -> str:
+    """phase4a_summary keys truncate the backbone to 30 chars; undo that so the
+    de-leaked manifest (which uses full names) can be looked up."""
+    for full in _MIMIC_BB.values():
+        if full.startswith(bb):
+            return full
+    return bb
+
+
+def load_deleaked_mimic() -> dict:
+    """(agent, backbone) -> micro R@1 on the de-leaked 416-case probe."""
+    if not MIMIC_MANIFEST.exists():
+        print(f"WARNING: {MIMIC_MANIFEST} missing; MIMIC panel will be empty",
+              file=sys.stderr)
+        return {}
+    with open(MIMIC_MANIFEST) as f:
+        cells = json.load(f)['cells']
+    out = {}
+    for key, cell in cells.items():
+        agent, bb = key.split('|')
+        out[(agent, _MIMIC_BB[bb])] = cell['micro_R1']
+    return out
 
 
 def main():
@@ -44,9 +78,14 @@ def main():
                 'deepseek_deepseek-v4-flash': 'DS\nV4-Flash',
                 'openai_gpt-5': 'GPT-5\nmin', 'vc_rdagent-offline-v1': 'offline',
                 'lirical-2.4.0': 'classical'}
-    datasets = ['phenopacket_store', 'rarearena_rds', 'rarebench']
+    datasets = ['phenopacket_store', 'rarearena_rds', 'rarebench', 'mimic_diverse']
+
+    deleaked = load_deleaked_mimic()
 
     def r1(ds, ag, bb):
+        if ds == 'mimic_diverse':
+            # de-leaked probe: fixed 416 denominator, failures count as misses
+            return deleaked.get((ag, bb))
         s = stats.get(f"{ds}|{ag}|{bb[:30]}")
         return s['h1v'] / s['ok'] if s and s['ok'] > 0 else None
 
@@ -98,7 +137,15 @@ def main():
             continue
         ds, ag, bb = key.split('|')
         cost = s['sum_usd'] / s['ok']
-        acc = s['h1v'] / s['ok']
+        if ds == 'mimic_diverse':
+            # accuracy must come from the de-leaked probe; the leaked cells are
+            # not reported anywhere in the paper. Cost per prediction is
+            # unchanged (same model, same prompt scale).
+            acc = deleaked.get((ag, _full_bb(bb)))
+            if acc is None:
+                continue
+        else:
+            acc = s['h1v'] / s['ok']
         pts.append((cost, acc, ag, bb))
         ax.scatter(cost, acc, c=AGENT_COLOR.get(ag, '#999999'),
                    marker=bb_marker.get(bb, 'x'), s=42, alpha=0.85,

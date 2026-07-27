@@ -1,0 +1,5 @@
+system,backbone,n_pre_attempted,n_post_attempted,n_pre_successful,n_post_successful,pre_failures_by_type,post_failures_by_type,pre_top1_correct_variant,post_top1_correct_variant,pre_R@1_variant,post_R@1_variant,pre_R@1_strict,post_R@1_strict,pre_95CI,post_95CI,delta_R@1_pp,two_prop_z,p_raw,p_holm
+agentclinic,gemini-3-flash-preview,206,180,206,180,{},{},53,51,0.2573,0.2833,0.2233,0.2667,"[0.199, 0.3204]","[0.2167, 0.35]",2.6,0.576,0.5649403209290769,0.5649403209290769
+llm_control,gemini-3-flash-preview,206,180,206,180,{},{},111,113,0.5388,0.6278,0.5243,0.6278,"[0.4709, 0.6068]","[0.5556, 0.6944]",8.9,1.766,0.07732612732911812,0.22351989303422617
+mdagents,gemini-3-flash-preview,206,180,205,180,"{""parser_error"": 1}",{},112,114,0.5437,0.6333,0.5388,0.6222,"[0.4757, 0.6117]","[0.5611, 0.7]",9.0,1.783,0.07450663101140872,0.22351989303422617
+medagents,gemini-3-flash-preview,206,180,206,180,{},{},109,115,0.5291,0.6389,0.5146,0.6333,"[0.4612, 0.5971]","[0.5667, 0.7056]",11.0,2.18,0.02926483363206725,0.117059334528269

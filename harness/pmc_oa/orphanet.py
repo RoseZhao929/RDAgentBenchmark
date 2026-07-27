@@ -18,6 +18,7 @@ Output: JSONL with {pmc_id, extracted_diagnosis, orpha_id, omim_id, score,
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 from typing import Optional
@@ -29,7 +30,17 @@ try:
 except ImportError:
     HAS_RAPIDFUZZ = False
 
-DEFAULT_ORPHA_XML = "/Users/yutianzhao/Desktop/RDAgentBenchmark/data/orphadata/en_product1.xml"
+# Resolve the Orphadata product1 XML portably:
+#   1. ORPHA_PRODUCT1_XML env var if set;
+#   2. else <repo-root>/data/orphadata/en_product1.xml (repo root = 3 parents up
+#      from this file: harness/pmc_oa/orphanet.py -> repo root).
+# Was previously hard-coded to the original author's Mac Desktop path, which
+# broke every agent's name->ORPHA mapping step on any other machine.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_ORPHA_XML = os.environ.get(
+    "ORPHA_PRODUCT1_XML",
+    str(_REPO_ROOT / "data" / "orphadata" / "en_product1.xml"),
+)
 
 
 def _normalize(s: str) -> str:

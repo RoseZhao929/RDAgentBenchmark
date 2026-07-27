@@ -57,6 +57,7 @@ from harness.agents._adapter_utils import (
     estimate_tokens,
     fill_cost_from_tokens,
     reasoning_effort_for_backbone,
+    resolve_llm_gateway,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -111,11 +112,64 @@ def _dedupe_keep_order(items: List[str]) -> List[str]:
     return out
 
 
-def _build_case_csv_row(case: CanonicalCase, include_genotype_text: bool) -> Dict[str, str]:
+def _extract_hpo_from_free_text(case: CanonicalCase) -> tuple[List[str], Dict[str, Any]]:
+    """end_to_end fallback: derive HP-IDs from a free-text vignette.
+
+    DeepRare is an HPO-input pipeline; on NO_HPO free-text datasets (e.g. the
+    MIMIC-note probe) `case.gold_hpo_terms` is empty, which starves the pipeline
+    (PubCaseFinder returns nothing → zero-shot guessing → ~0 R@1). This mirrors
+    VC-RDAgent's `_extract_hpo_for_end_to_end`: an LLM Pillar-1 extraction over
+    the vignette + phrase→HP-ID normalization. Reuses the SAME components so the
+    two agents' end_to_end inputs are comparable. Returns (hp_ids, debug).
+    """
+    from harness.agents.llm_control import LLMControlAdapter
+    from harness.metrics.hpo_phrase_to_id import phrase_to_hp_id
+
+    extractor = LLMControlAdapter(
+        backbone_id="openrouter/google/gemini-3-flash-preview",
+        backbone_temperature=0.0,
+    )
+    try:
+        phrase_terms = extractor.extract_phenotypes(case)
+    except Exception as e:  # noqa: BLE001
+        return [], {"hpo_extraction_error": f"{type(e).__name__}: {e}"}
+    phrases = [t.label for t in phrase_terms if t.label]
+    resolved: List[str] = []
+    seen: set[str] = set()
+    misses: List[str] = []
+    for ph in phrases:
+        hp_id = phrase_to_hp_id(ph)
+        if hp_id is None:
+            misses.append(ph)
+            continue
+        if hp_id in seen:
+            continue
+        seen.add(hp_id)
+        resolved.append(hp_id)
+    debug = {
+        "deeprare_end_to_end_hpo_extraction": True,
+        "hpo_extraction_phrases_total": len(phrases),
+        "hpo_extraction_phrases_resolved": len(resolved),
+        "hpo_extraction_misses_sample": misses[:5],
+    }
+    return resolved, debug
+
+
+def _build_case_csv_row(
+    case: CanonicalCase,
+    include_genotype_text: bool,
+    override_hpo_ids: Optional[List[str]] = None,
+) -> Dict[str, str]:
     """Project a CanonicalCase into the single-row `cases.csv` schema:
     `hpo` (pipe-separated HP IDs) + optional `disease` (string).
+
+    `override_hpo_ids` (from the free-text end_to_end fallback) takes precedence
+    over `case.gold_hpo_terms` when the latter is empty.
     """
-    hpo_ids = [t.id for t in case.gold_hpo_terms if not t.negated]
+    if override_hpo_ids is not None:
+        hpo_ids = list(override_hpo_ids)
+    else:
+        hpo_ids = [t.id for t in case.gold_hpo_terms if not t.negated]
     disease = case.gold_label.disease_name or ""
 
     # For Pillar 3 we tack variant context onto the disease label field
@@ -221,12 +275,13 @@ class DeepRareAdapter(AgentAdapter):
                 error_message=f"DeepRare does not support pillar {pillar}.",
             )
 
-        if not os.environ.get("OPENROUTER_API_KEY"):
+        _gw_base, _gw_key = resolve_llm_gateway()
+        if not _gw_key:
             return self._finalize_log(
                 log,
                 ranked_predictions=[],
                 status="agent_error",
-                error_message="OPENROUTER_API_KEY env var not set.",
+                error_message="LLM gateway API key not set (LLM_GATEWAY_KEY_ENV / OPENROUTER_API_KEY).",
             )
 
         # Use a private results dir per call to avoid the cache-skip behaviour
@@ -266,10 +321,22 @@ class DeepRareAdapter(AgentAdapter):
             )
             shutil.copy2(_DEEPRARE_DATASET_CSV, backup_path)
 
+        # end_to_end fallback: if the case carries no structured HPO (free-text
+        # NO_HPO datasets like the MIMIC-note probe) but does have a vignette,
+        # extract HP-IDs from the text so DeepRare's HPO pipeline has real input
+        # instead of starving to zero-shot guessing. Gated on empty gold HPO.
+        override_hpo_ids: Optional[List[str]] = None
+        gold_hpo_ids = [t.id for t in case.gold_hpo_terms if not t.negated]
+        if not gold_hpo_ids and (case.free_text_vignette or case.synthetic_vignette):
+            override_hpo_ids, _hpo_dbg = _extract_hpo_from_free_text(case)
+            log.extra.update(_hpo_dbg)
+            log.extra["deeprare_input_hpo_ids"] = override_hpo_ids
+
         try:
             row = _build_case_csv_row(
                 case,
                 include_genotype_text=(pillar == "P3_genotype_aware"),
+                override_hpo_ids=override_hpo_ids,
             )
             _DEEPRARE_DATASET_CSV.parent.mkdir(parents=True, exist_ok=True)
             with _DEEPRARE_DATASET_CSV.open("w", newline="", encoding="utf-8") as f:
@@ -279,9 +346,10 @@ class DeepRareAdapter(AgentAdapter):
 
             env = {
                 **os.environ,
-                "OPENAI_BASE_URL": os.environ.get(
-                    "OPENAI_BASE_URL", "https://openrouter.ai/api/v1"
-                ),
+                "OPENAI_BASE_URL": _gw_base,
+                "OPENAI_API_BASE": _gw_base,
+                "OPENAI_API_KEY": _gw_key,
+                "OPENROUTER_API_KEY": _gw_key,
                 "DEEPRARE_MINI_MODEL": os.environ.get(
                     "DEEPRARE_MINI_MODEL", self._openai_model_id
                 ),
@@ -299,7 +367,7 @@ class DeepRareAdapter(AgentAdapter):
                 str(self._deeprare_python),
                 str(_DEEPRARE_MAIN),
                 "--model", "openai",
-                "--openai_apikey", os.environ["OPENROUTER_API_KEY"],
+                "--openai_apikey", _gw_key,
                 "--openai_model", self._openai_model_id,
                 "--dataset_name", "case",
                 "--results_folder", str(results_root) + os.sep,

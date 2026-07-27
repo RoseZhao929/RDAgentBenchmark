@@ -1,0 +1,9 @@
+split,system,backbone,n_full_before_dedup_removal,n_overlap_removed_union,n_clean_cases,n_attempted,n_successful,fail_timeout,fail_parser,fail_agent,fail_empty_ok,no_gold,top1_correct_strict,top1_correct_variant,R@1_strict,R@1_variant_aware,bootstrap_95CI_variant
+pre_cutoff,agentclinic,gemini-3-flash-preview,220,14,206,206,206,0,0,0,0,0,46,53,0.2233,0.2573,"[0.199, 0.3204]"
+pre_cutoff,llm_control,gemini-3-flash-preview,220,14,206,206,206,0,0,0,0,0,108,111,0.5243,0.5388,"[0.4709, 0.6068]"
+pre_cutoff,mdagents,gemini-3-flash-preview,220,14,206,206,205,0,1,0,0,0,111,112,0.5388,0.5437,"[0.4757, 0.6117]"
+pre_cutoff,medagents,gemini-3-flash-preview,220,14,206,206,206,0,0,0,0,0,106,109,0.5146,0.5291,"[0.4612, 0.5971]"
+post_cutoff,agentclinic,gemini-3-flash-preview,198,18,180,180,180,0,0,0,0,0,48,51,0.2667,0.2833,"[0.2167, 0.35]"
+post_cutoff,llm_control,gemini-3-flash-preview,198,18,180,180,180,0,0,0,0,0,113,113,0.6278,0.6278,"[0.5556, 0.6944]"
+post_cutoff,mdagents,gemini-3-flash-preview,198,18,180,180,180,0,0,0,0,0,112,114,0.6222,0.6333,"[0.5611, 0.7]"
+post_cutoff,medagents,gemini-3-flash-preview,198,18,180,180,180,0,0,0,0,0,114,115,0.6333,0.6389,"[0.5667, 0.7056]"

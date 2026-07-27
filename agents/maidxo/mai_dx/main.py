@@ -1490,7 +1490,18 @@ CURRENT STATE:
             for match in matches:
                 diagnosis = match[0].strip().rstrip(':-()').strip()
                 probability = float(match[1]) / 100.0
-                if 0 <= probability <= 1.0 and len(diagnosis) > 3:  # Basic validation
+                # FIX 2026-07-26: the greedy pattern above happily grabs a run
+                # of vital-signs ending in "... 97% on RA" and treats the whole
+                # string as a diagnosis at p=0.97, which then trips the >0.90
+                # auto-diagnose short-circuit on round 1. Reject candidates that
+                # are clearly vitals/lab fragments (vital-sign tokens, ratios
+                # like "90/40", or digit-heavy) before accepting them.
+                looks_like_vitals = (
+                    re.search(r'\b(Tm|BP|HR|RR|SpO2|Sat|Temp|P \d|min \d)\b', diagnosis)
+                    or '/' in diagnosis
+                    or sum(c.isdigit() for c in diagnosis) > len(diagnosis) * 0.15
+                )
+                if 0 <= probability <= 1.0 and len(diagnosis) > 3 and not looks_like_vitals:
                     new_differential[diagnosis] = probability
             
             if new_differential:

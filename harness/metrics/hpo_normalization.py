@@ -25,6 +25,7 @@ API:
 
 from __future__ import annotations
 
+import os
 import re
 from functools import lru_cache
 from pathlib import Path
@@ -38,7 +39,13 @@ except ImportError:  # pragma: no cover
     _HAS_RAPIDFUZZ = False
 
 
-DEFAULT_OBO = "/Users/yutianzhao/Desktop/RDAgentBenchmark/data/hpo/hp.obo"
+# Repo-relative default with env override (portable across machines; the
+# hardcoded Mac path was a non-portable landmine, same class as orphanet.py's
+# DEFAULT_ORPHA_XML). Override with HP_OBO_PATH.
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OBO = os.environ.get(
+    "HP_OBO_PATH", str(_PROJECT_ROOT / "data" / "hpo" / "hp.obo")
+)
 
 _PUNCT_RE = re.compile(r"[^\w\s-]")
 _WS_RE = re.compile(r"\s+")

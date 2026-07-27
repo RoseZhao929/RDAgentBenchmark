@@ -1,0 +1,6 @@
+analysis,system,backbone,n_pre_attempted,n_post_attempted,pre_R@1_variant,post_R@1_variant,delta_R@1_pp,two_prop_z,p_raw
+difficulty_matched,agentclinic,gemini-3-flash-preview,167,167,0.2874,0.2754,-1.2,-0.243,0.8077332621910517
+difficulty_matched,llm_control,gemini-3-flash-preview,167,167,0.5389,0.6407,10.2,1.891,0.05860270751622845
+difficulty_matched,mdagents,gemini-3-flash-preview,167,167,0.5509,0.6347,8.4,1.559,0.1189512648866929
+difficulty_matched,medagents,gemini-3-flash-preview,167,167,0.5449,0.6407,9.6,1.782,0.07476029480324407
+difficulty_matched_MACRO,ALL_4_case_level,gemini-3-flash-preview,167,167,0.4805,0.5479,6.7,,0.1247

@@ -51,6 +51,7 @@ from harness.agents._adapter_utils import (
     fill_cost_from_tokens,
     map_names_to_ids,
     reasoning_effort_for_backbone,
+    resolve_llm_gateway,
 )
 from harness.agents.base import AgentAdapter
 from harness.canonical_case import CanonicalCase
@@ -151,6 +152,13 @@ os.chdir(config["maidxo_dir"])
 # Honour API key for LiteLLM
 if config.get("openrouter_api_key"):
     os.environ["OPENROUTER_API_KEY"] = config["openrouter_api_key"]
+# Route LiteLLM's openrouter/* calls at the authorized gateway. LiteLLM reads
+# OPENROUTER_API_BASE for the openrouter provider; also set OPENAI_* as a
+# fallback for any openai/* routing inside swarms.
+if config.get("openrouter_api_base"):
+    os.environ["OPENROUTER_API_BASE"] = config["openrouter_api_base"]
+    os.environ["OPENAI_API_BASE"] = config["openrouter_api_base"]
+    os.environ["OPENAI_BASE_URL"] = config["openrouter_api_base"]
 
 from mai_dx import MaiDxOrchestrator  # noqa: E402
 
@@ -355,9 +363,11 @@ class MaiDxOAdapter(AgentAdapter):
         # via env var so the in-line runner script picks it up.
         re_effort = reasoning_effort_for_backbone(self.backbone_id)
 
+        _gw_base, _gw_key = resolve_llm_gateway()
         config = {
             "maidxo_dir": str(_MAIDXO_DIR),
-            "openrouter_api_key": os.environ.get("OPENROUTER_API_KEY", ""),
+            "openrouter_api_key": _gw_key or os.environ.get("OPENROUTER_API_KEY", ""),
+            "openrouter_api_base": _gw_base,
             "model_name": model_name,
             "mode": self.mode,
             "max_iterations": self.max_iterations,

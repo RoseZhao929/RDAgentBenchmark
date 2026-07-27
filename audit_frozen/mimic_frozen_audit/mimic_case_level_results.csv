@@ -1,0 +1,2 @@
+case_id,agent,backbone,gold_orpha,prediction,hit_at_1,status
+__NO_DATA__,,,,,,EMPTY: 0 prediction receipts and 0 gold labels on host; case-level scoring impossible. See mimic_final_audit.md
