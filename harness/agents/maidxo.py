@@ -816,18 +816,38 @@ class MaiDxOAdapter(AgentAdapter):
                     if index < len(ranked_variants)
                     else [ontology_id]
                 )
-                if ontology_id in positions:
-                    target = positions[ontology_id]
+                prediction_key = " ".join(
+                    str(ontology_id).split()
+                ).casefold()
+                if prediction_key in positions:
+                    target = positions[prediction_key]
+                    existing_variant_keys = {
+                        " ".join(str(value).split()).casefold()
+                        for value in dedup_variants[target]
+                    }
                     for variant in variants:
-                        if variant not in dedup_variants[target]:
+                        variant_key = " ".join(
+                            str(variant).split()
+                        ).casefold()
+                        if variant_key not in existing_variant_keys:
                             dedup_variants[target].append(variant)
+                            existing_variant_keys.add(variant_key)
                     continue
-                positions[ontology_id] = len(dedup_ranked)
+                positions[prediction_key] = len(dedup_ranked)
                 dedup_ranked.append(ontology_id)
                 dedup_conf.append(
                     new_conf[index] if index < len(new_conf) else 0.0
                 )
-                dedup_variants.append(list(dict.fromkeys(variants)))
+                unique_variants: List[str] = []
+                variant_keys: set[str] = set()
+                for variant in variants:
+                    variant_key = " ".join(
+                        str(variant).split()
+                    ).casefold()
+                    if variant_key not in variant_keys:
+                        unique_variants.append(variant)
+                        variant_keys.add(variant_key)
+                dedup_variants.append(unique_variants)
             ranked = dedup_ranked
             confidences = dedup_conf
             ranked_variants = dedup_variants
