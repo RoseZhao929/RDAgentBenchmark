@@ -95,6 +95,8 @@ _NOISE_PATTERNS = [
     # 2026-07-27 N=100 audit — the upstream prefix parser can also return
     # continuations copied from the vignette rather than a diagnosis.
     re.compile(r"^\s*(and|was|were|the patient|patient\b)", re.I),
+    re.compile(r"^\s*no\s*[,;:]\s*(?:let me|first|i\b)", re.I),
+    re.compile(r"\blet me (?:decode|analy[sz]e|review|think)\b", re.I),
     re.compile(r"^\s*a\s+(?:\d+[- ]year|patient\b)", re.I),
     re.compile(
         r"\b(presented with|on physical examination|laboratory results|"
@@ -193,6 +195,10 @@ os.chdir(case_workdir)
 # Honour API key for LiteLLM
 if config.get("openrouter_api_key"):
     os.environ["OPENROUTER_API_KEY"] = config["openrouter_api_key"]
+    # A unified OpenAI-compatible gateway may use canonical ``openai/*``
+    # LiteLLM routing for GPT backbones.  That provider reads OPENAI_API_KEY
+    # even when OPENAI_BASE_URL points at the same non-OpenAI gateway.
+    os.environ["OPENAI_API_KEY"] = config["openrouter_api_key"]
 # Route LiteLLM's openrouter/* calls at the authorized gateway. LiteLLM reads
 # OPENROUTER_API_BASE for the openrouter provider; also set OPENAI_* as a
 # fallback for any openai/* routing inside swarms.
@@ -205,6 +211,7 @@ from mai_dx import MaiDxOrchestrator  # noqa: E402
 
 variant_kwargs = {
     "model_name": config["model_name"],
+    "llm_route_model_name": config.get("llm_route_model_name"),
     "max_iterations": config["max_iterations"],
     "request_delay": config["request_delay"],
 }
@@ -424,12 +431,16 @@ class MaiDxOAdapter(AgentAdapter):
             or "Unknown"
         )
 
-        # Backbone id may carry the "openrouter/" prefix already; LiteLLM
-        # expects exactly that for OpenRouter routing.
+        # Keep the canonical model ID for Swarms capability checks and the
+        # benchmark receipt, while allowing the low-level gateway route to
+        # use a different public ID.
         model_name = self.backbone_id
         if not model_name.startswith(("openrouter/", "openai/", "gemini/", "anthropic/")):
             # Default to OpenRouter prefix if user passed a bare id.
             model_name = f"openrouter/{model_name}"
+        llm_route_model_name = os.environ.get(
+            "MAIDXO_MODEL_OVERRIDE", ""
+        ).strip() or model_name
 
         # 2026-05-19 — propagate reasoning_effort=minimal for GPT-5 / o-series.
         # MAI-DxO uses swarms.Agent (LiteLLM under the hood); we wire this in
@@ -442,6 +453,7 @@ class MaiDxOAdapter(AgentAdapter):
             "openrouter_api_key": _gw_key or os.environ.get("OPENROUTER_API_KEY", ""),
             "openrouter_api_base": _gw_base,
             "model_name": model_name,
+            "llm_route_model_name": llm_route_model_name,
             "mode": self.mode,
             "max_iterations": self.max_iterations,
             "request_delay": self.request_delay,
@@ -773,8 +785,52 @@ class MaiDxOAdapter(AgentAdapter):
                             tied.append(candidate["orpha_id"])
                     if orpha not in tied: tied.insert(0, orpha)
                     ranked_variants.append(tied)
-            ranked = new_ranked
-            confidences = new_conf
+                else:
+                    # An explicit but wrong/non-rare diagnosis is still a
+                    # valid baseline prediction. Keep its concise natural
+                    # language name so it scores zero honestly; reserve
+                    # parser_error for outputs that contain no diagnosis.
+                    # ``query`` may be a deliberately shortened fuzzy-search
+                    # head (for example text before a comma). Never expose
+                    # that lossy intermediate as the model prediction.
+                    preserved_name = name.strip()
+                    if preserved_name and not _is_noise_candidate(
+                        preserved_name
+                    ):
+                        new_ranked.append(preserved_name)
+                        new_conf.append(
+                            confidences[i] if i < len(confidences) else 0.0
+                        )
+                        ranked_variants.append([preserved_name])
+                        fuzzy_audit[-1]["fallback_preserved_name"] = True
+            # The final diagnosis and one differential entry can normalize to
+            # the same ontology ID. Keep the earliest rank once and merge its
+            # accepted fuzzy variants instead of emitting duplicate ranks.
+            dedup_ranked: List[str] = []
+            dedup_conf: List[float] = []
+            dedup_variants: List[List[str]] = []
+            positions: dict[str, int] = {}
+            for index, ontology_id in enumerate(new_ranked):
+                variants = (
+                    ranked_variants[index]
+                    if index < len(ranked_variants)
+                    else [ontology_id]
+                )
+                if ontology_id in positions:
+                    target = positions[ontology_id]
+                    for variant in variants:
+                        if variant not in dedup_variants[target]:
+                            dedup_variants[target].append(variant)
+                    continue
+                positions[ontology_id] = len(dedup_ranked)
+                dedup_ranked.append(ontology_id)
+                dedup_conf.append(
+                    new_conf[index] if index < len(new_conf) else 0.0
+                )
+                dedup_variants.append(list(dict.fromkeys(variants)))
+            ranked = dedup_ranked
+            confidences = dedup_conf
+            ranked_variants = dedup_variants
             if ranked_variants:
                 log.extra["ranked_predictions_variants"] = ranked_variants
             if fuzzy_audit:

@@ -94,6 +94,76 @@ class AgentRole(Enum):
     JUDGE = "Judge"
 
 
+def _tool_aware_parse_llm_output(response: Any) -> Any:
+    """Preserve assistant tool calls discarded by current Swarms.
+
+    Swarms' bundled ``Agent.parse_llm_output`` returns only
+    ``choices[0].message.content`` for dictionary responses. OpenAI-compatible
+    tool calls legitimately have empty content and carry their payload in
+    ``message.tool_calls``. Returning that list keeps the function arguments
+    available to MAI-DxO's schema-aware decoder.
+    """
+    if isinstance(response, BaseModel):
+        response = response.model_dump()
+    if isinstance(response, dict):
+        if "choices" not in response:
+            return json.dumps(response)
+        choices = response.get("choices") or []
+        if not choices:
+            return ""
+        choice = choices[0]
+        if isinstance(choice, BaseModel):
+            choice = choice.model_dump()
+        message = choice.get("message") or {}
+        if isinstance(message, BaseModel):
+            message = message.model_dump()
+        tool_calls = message.get("tool_calls") or []
+        if tool_calls:
+            return [
+                item.model_dump() if isinstance(item, BaseModel) else item
+                for item in tool_calls
+            ]
+        return message.get("content") or ""
+    if (
+        isinstance(response, list)
+        and response
+        and isinstance(response[0], BaseModel)
+    ):
+        return [item.model_dump() for item in response]
+    return response
+
+
+def _preserve_reasoning_tool_calls(agent: Any) -> None:
+    """Fix Swarms' tool-output loss paths for one structured agent."""
+    llm = agent.llm
+    original_reasoning_output = llm.output_for_reasoning
+    original_tools_output = llm.output_for_tools
+
+    def tool_aware_tools_output(response: Any) -> Any:
+        choices = getattr(response, "choices", None) or []
+        message = getattr(choices[0], "message", None) if choices else None
+        if message is not None and (
+            getattr(message, "tool_calls", None) or []
+        ):
+            return original_tools_output(response)
+        # Some providers ignore tool_choice=auto and return JSON/text content.
+        # Swarms' stock output_for_tools returns None in that case.
+        return getattr(message, "content", None) or ""
+
+    def tool_aware_reasoning_output(response: Any) -> Any:
+        choices = getattr(response, "choices", None) or []
+        message = getattr(choices[0], "message", None) if choices else None
+        if message is not None and (
+            getattr(message, "tool_calls", None) or []
+        ):
+            return llm.output_for_tools(response)
+        return original_reasoning_output(response)
+
+    llm.output_for_tools = tool_aware_tools_output
+    llm.output_for_reasoning = tool_aware_reasoning_output
+    llm.tool_choice = "required"
+
+
 @dataclass
 class CaseState:
     """Structured state management for diagnostic process - addresses Category 2.1"""
@@ -296,6 +366,7 @@ class MaiDxOrchestrator:
         enable_budget_tracking: bool = False,
         request_delay: float = 8.0,  # seconds to wait between model calls to mitigate rate-limits
         reasoning_effort: "str | None" = None,  # 2026-05-19: minimal for GPT-5
+        llm_route_model_name: "str | None" = None,
     ):
         """
         Initializes the MAI-DxO system with improved architecture.
@@ -310,6 +381,7 @@ class MaiDxOrchestrator:
             request_delay (float): Seconds to wait between model calls to mitigate rate-limits.
         """
         self.model_name = model_name
+        self.llm_route_model_name = llm_route_model_name or model_name
         self.max_iterations = max_iterations
         self.initial_budget = initial_budget
         self.mode = mode
@@ -378,6 +450,12 @@ class MaiDxOrchestrator:
         }
 
         self._init_agents()
+        # Capability checks must use the canonical benchmark/LiteLLM model ID,
+        # while an OpenAI-compatible gateway may require a different public
+        # route ID. Swap only the low-level client's route after Agent setup.
+        if self.llm_route_model_name != self.model_name:
+            for agent in self.agents.values():
+                agent.llm.model_name = self.llm_route_model_name
         logger.info(
             f"🏥 MAI Diagnostic Orchestrator initialized successfully in '{mode}' mode with budget ${initial_budget:,}"
         )
@@ -530,16 +608,25 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    # MAI-DxO already supplies the complete case context and
+                    # runs one loop per specialist. Swarms' implicit context
+                    # compressor adds an unrelated model call and, for routed
+                    # gateway models, can bypass the configured endpoint.
+                    context_compression=False,
                     tools_list_dictionary=[consensus_tool],  # swarms expects tools_list_dictionary
-                    tool_choice="auto",  # Let the model choose to use the tool
-                    # Swarms now defaults to "str-all-except-first", which
-                    # returns the entire prompt/history transcript and hides
-                    # the structured final tool output from this orchestrator.
-                    output_type="final",
+                    tool_choice="required",
+                    # Preserve the message/tool-call envelopes. ``final``
+                    # returns only message.content, which is empty for a valid
+                    # assistant tool call in current Swarms.
+                    output_type="dict",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
                 )
+                self.agents[role].parse_llm_output = (
+                    _tool_aware_parse_llm_output
+                )
+                _preserve_reasoning_tool_calls(self.agents[role])
             elif role == AgentRole.HYPOTHESIS:
                 # Use function calling for hypothesis agent to ensure structured differential
                 self.agents[role] = Agent(
@@ -547,13 +634,18 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    context_compression=False,
                     tools_list_dictionary=[hypothesis_tool],
-                    tool_choice="auto",
-                    output_type="final",
+                    tool_choice="required",
+                    output_type="dict",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
                     **_reasoning_kwargs,
                 )
+                self.agents[role].parse_llm_output = (
+                    _tool_aware_parse_llm_output
+                )
+                _preserve_reasoning_tool_calls(self.agents[role])
             else:
                 # Regular agents without function calling
                 self.agents[role] = Agent(
@@ -561,6 +653,7 @@ IMPORTANT: Adjust your response length and detail level based on this guidance. 
                     system_prompt=self._get_prompt_for_role(role),
                     model_name=self.model_name,
                     max_loops=1,
+                    context_compression=False,
                     output_type="str",
                     print_on=True,
                     max_tokens=self._get_agent_max_tokens(role),
@@ -2026,6 +2119,7 @@ CURRENT STATE:
                 system_prompt=aggregator_prompt,
                 model_name=self.model_name,
                 max_loops=1,
+                context_compression=False,
                 print_on=True,  # Enable printing for aggregator agent
                 **_agg_kwargs,
             )

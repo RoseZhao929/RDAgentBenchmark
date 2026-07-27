@@ -55,15 +55,31 @@ def load_rarearena_rds(n=100, seed=42):
     return cases[:n]
 
 
-def load_rarebench_stratified(n_per_split=25, seed=42):
+def load_rarebench_stratified(n=100, seed=42, n_per_split=None):
+    """Load an exact-size, prefix-stable stratified RareBench cohort.
+
+    The legacy N=100 cohort shuffled each of the four splits with seed 42 and
+    took 25 from each. Preserve that exact case set, but interleave the split
+    buckets so N=2 and N=10 are balanced prefixes of the same N=100 cohort.
+    ``n_per_split`` remains for audit callers that need the legacy grouped
+    ordering.
+    """
     from harness.ingest import ingest_rarebench
-    out = []
+    buckets = []
+    width = n_per_split if n_per_split is not None else max(25, (n + 3) // 4)
     for split in ("RAMEDIS", "LIRICAL", "MME", "HMS"):
         cases = list(ingest_rarebench(f"data/rarebench_hf/data_unzipped/data/{split}.jsonl", split))
         rng = random.Random(seed)
         rng.shuffle(cases)
-        out.extend(cases[:n_per_split])
-    return out
+        buckets.append(cases[:width])
+    if n_per_split is not None:
+        return [case for bucket in buckets for case in bucket]
+    interleaved = []
+    for index in range(width):
+        for bucket in buckets:
+            if index < len(bucket):
+                interleaved.append(bucket[index])
+    return interleaved[:n]
 
 
 def load_mimic_diverse(n=100):
@@ -275,7 +291,7 @@ def run(
     if agent in HPO_ONLY_AGENTS and dataset in NO_HPO_DATASETS:
         print(f"  → {agent} requires HPO input; {dataset} has none, skip", flush=True)
         return
-    cases = DATASETS[dataset](n=n) if dataset != "rarebench" else load_rarebench_stratified(n_per_split=n//4)
+    cases = DATASETS[dataset](n=n)
     print(f"  loaded {len(cases)} cases", flush=True)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)

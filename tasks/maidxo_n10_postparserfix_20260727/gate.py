@@ -5,8 +5,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import Counter
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from harness.agents.maidxo import _is_noise_candidate  # noqa: E402
 
 
 def main() -> int:
@@ -32,11 +38,28 @@ def main() -> int:
     }
     statuses = Counter(str(row.get("status")) for row in latest.values())
     valid_ok = 0
+    semantic_errors = []
     for row in latest.values():
         if row.get("status") != "ok":
             continue
-        predictions = [str(x) for x in row.get("ranked_predictions") or []]
-        if predictions:
+        predictions = [
+            str(x).strip()
+            for x in row.get("ranked_predictions") or []
+            if str(x).strip()
+        ]
+        normalized = [value.casefold() for value in predictions]
+        noise = [value for value in predictions if _is_noise_candidate(value)]
+        if not predictions:
+            semantic_errors.append(f"{row.get('case_id')}: empty predictions")
+        elif noise:
+            semantic_errors.append(
+                f"{row.get('case_id')}: noise predictions={noise}"
+            )
+        elif len(normalized) != len(set(normalized)):
+            semantic_errors.append(
+                f"{row.get('case_id')}: duplicate predictions"
+            )
+        else:
             valid_ok += 1
 
     errors = []
@@ -52,6 +75,8 @@ def main() -> int:
         errors.append(f"timeout={statuses['timeout']}")
     if valid_ok < args.min_ok:
         errors.append(f"valid_ok={valid_ok}, required>={args.min_ok}")
+    if semantic_errors:
+        errors.extend(semantic_errors)
 
     payload = {
         "receipt": str(args.receipt),
