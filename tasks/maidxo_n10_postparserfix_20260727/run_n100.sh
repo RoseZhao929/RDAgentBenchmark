@@ -154,4 +154,5 @@ fi
 python3 "$TASK_DIR/audit_n10.py" \
   --phase4a-dir "$OUT_DIR" \
   --expected-n 100 \
+  --allow-model-abstentions \
   --report "$STATE_DIR/audit_n100.json"

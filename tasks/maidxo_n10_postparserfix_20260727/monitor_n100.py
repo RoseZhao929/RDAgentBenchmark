@@ -51,6 +51,27 @@ FATAL_MARKERS = (
 )
 
 
+def is_model_abstention(row: dict) -> bool:
+    """Return true for a completed MAI-DxO run that explicitly abstained."""
+    if row.get("status") != "parser_error":
+        return False
+    if row.get("ranked_predictions"):
+        return False
+    extra = row.get("extra") or {}
+    if extra.get("maidxo_fatal_runtime_hits"):
+        return False
+    raw = str(extra.get("maidxo_raw_final_diagnosis") or "").strip().casefold()
+    return raw.startswith(
+        (
+            "unable to establish",
+            "unable to determine",
+            "unable to identify",
+            "cannot establish",
+            "no diagnosis",
+        )
+    )
+
+
 def inspect(path: Path, expected_ids: set[str]) -> dict:
     rows: list[dict] = []
     malformed = 0
@@ -67,16 +88,34 @@ def inspect(path: Path, expected_ids: set[str]) -> dict:
         for row in rows
         if row.get("case_id") is not None
     }
+    attempt_counts = Counter(
+        str(row.get("case_id"))
+        for row in rows
+        if row.get("case_id") is not None
+    )
+    duplicate_attempts = {
+        case_id: count
+        for case_id, count in attempt_counts.items()
+        if count > 1
+    }
     issues: dict[str, list[str]] = {}
+    terminal_abstentions: dict[str, str] = {}
     for case_id, row in latest.items():
         row_issues: list[str] = []
         status = str(row.get("status"))
+        abstention = is_model_abstention(row)
         predictions = [
             str(value).strip()
             for value in row.get("ranked_predictions") or []
             if str(value).strip()
         ]
-        if status != "ok":
+        if abstention:
+            terminal_abstentions[case_id] = str(
+                (row.get("extra") or {}).get(
+                    "maidxo_raw_final_diagnosis"
+                )
+            )
+        elif status != "ok":
             row_issues.append(f"status={status}")
         if status == "ok" and not predictions:
             row_issues.append("empty predictions")
@@ -86,7 +125,21 @@ def inspect(path: Path, expected_ids: set[str]) -> dict:
         normalized = [value.casefold() for value in predictions]
         if len(normalized) != len(set(normalized)):
             row_issues.append("duplicate predictions")
+        confidences = row.get("confidence_scores") or []
+        if confidences and len(confidences) != len(predictions):
+            row_issues.append(
+                f"confidence count={len(confidences)}, "
+                f"prediction count={len(predictions)}"
+            )
+        if not isinstance(row.get("total_latency_ms"), (int, float)) or (
+            row.get("total_latency_ms") or 0
+        ) <= 0:
+            row_issues.append("missing/non-positive latency")
         extra = row.get("extra") or {}
+        if status == "ok" and not extra.get("maidxo_raw_final_diagnosis"):
+            row_issues.append("missing raw final diagnosis")
+        if status == "ok" and not extra.get("maidxo_raw_differential"):
+            row_issues.append("missing raw differential")
         if extra.get("maidxo_fatal_runtime_hits"):
             row_issues.append(
                 f"fatal={extra['maidxo_fatal_runtime_hits']}"
@@ -111,7 +164,9 @@ def inspect(path: Path, expected_ids: set[str]) -> dict:
         "remaining": len(expected_ids - set(latest)),
         "statuses": dict(statuses),
         "malformed": malformed,
+        "duplicate_attempts": duplicate_attempts,
         "unexpected_case_ids": unexpected,
+        "terminal_abstentions": terminal_abstentions,
         "issues": issues,
         "mtime": (
             datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat()
@@ -143,6 +198,7 @@ def main() -> int:
         "total_remaining": sum(cell["remaining"] for cell in cells.values()),
         "has_issues": any(
             cell["malformed"]
+            or cell["duplicate_attempts"]
             or cell["unexpected_case_ids"]
             or cell["issues"]
             for cell in cells.values()
