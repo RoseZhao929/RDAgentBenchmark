@@ -1,10 +1,10 @@
 """Stitch the six main-body figures into one 2x3 composite, in the order they
 are referenced in the paper:
 
-  row 1:  (a) figM1  F1 classical vs LLM     (b) figM2  cost-vs-accuracy
-          (c) figM3  prevalence crossover
-  row 2:  (d) figF2  scaffolding ladder      (e) figM5  self-preference
-          (f) figM6  hypothesis tests
+  row 1 (bar/scatter):  (a) figM1  F1 classical vs LLM   (b) figM2 cost-vs-accuracy
+                        (c) figM6  hypothesis tests
+  row 2 (line):         (d) figF2  scaffolding           (e) figM5 self-preference
+                        (f) figM3  prevalence crossover
 
 The six individual figure scripts (paper_main_figures.py) are UNCHANGED and
 remain the source of truth — this script only reads their rendered PNGs and
@@ -24,13 +24,15 @@ from _figstyle import apply_nature_style  # noqa: E402
 FIG = ROOT / "data/round2/figures"
 
 # (filename, panel letter) in paper reference order, row-major over a 2x3 grid.
+# Layout groups by mark type: top row = bar/scatter panels, bottom row = the
+# three line/lollipop panels (M3 prevalence, F2 scaffolding, M5 judge-swap).
 PANELS = [
-    ("figM1_v2a_layered.png", "a"),
-    ("figM2_cost_accuracy.png", "b"),
-    ("figM3_prevalence.png", "c"),
-    ("figF2_scaffolding.png", "d"),
-    ("figM5_selfpref.png", "e"),
-    ("figM6_hypotheses.png", "f"),
+    ("figM1_v2a_layered.png", "a"),   # bar
+    ("figM2_cost_accuracy.png", "b"),  # scatter
+    ("figM6_hypotheses.png", "c"),     # bar
+    ("figF2_scaffolding.png", "d"),    # line
+    ("figM5_selfpref.png", "e"),       # line
+    ("figM3_prevalence.png", "f"),     # line
 ]
 
 

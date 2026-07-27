@@ -526,25 +526,45 @@ def figF2_scaffolding(rows):
     # order worst-to-best by PP-Store delta (anchor collapse at the bottom)
     scaffolds = sorted(scaffolds, key=lambda a: pp_d.get(a, 0))
     y = np.arange(len(scaffolds))
-    h = 0.38
+    off = 0.16                       # vertical offset between the two datasets
+    from matplotlib.lines import Line2D
     fig, ax = plt.subplots(figsize=PANEL_FIGSIZE)
-    ax.barh(y + h / 2, [pp_d.get(a, 0) for a in scaffolds], h, color=C_LLM,
-            edgecolor=BAR_EDGE, linewidth=0.7, zorder=3, label="Phenopacket-Store")
-    if mm_d:
-        ax.barh(y - h / 2, [mm_d.get(a, 0) for a in scaffolds], h,
-                color=C_CLASSICAL, edgecolor=BAR_EDGE, linewidth=0.7, zorder=3,
-                label="MIMIC-IV note")
-    ax.axvline(0, color="#333", lw=2.0, zorder=2)
+    for yi, a in zip(y, scaffolds):
+        # PP-Store lollipop (blue, upper)
+        d = pp_d.get(a)
+        if d is not None:
+            ax.plot([0, d], [yi + off, yi + off], color=C_LLM, lw=2.6, zorder=2,
+                    solid_capstyle="round")
+            ax.scatter([d], [yi + off], s=150, color=C_LLM, edgecolors=BAR_EDGE,
+                       linewidths=0.8, zorder=3)
+            ax.text(d - 1.2, yi + off, f"{d:+.1f}", va="center", ha="right",
+                    fontsize=15, color=C_LLM)
+        # MIMIC-IV lollipop (gold, lower)
+        d2 = mm_d.get(a)
+        if d2 is not None:
+            ax.plot([0, d2], [yi - off, yi - off], color=C_CLASSICAL, lw=2.6,
+                    zorder=2, solid_capstyle="round")
+            ax.scatter([d2], [yi - off], s=150, color=C_CLASSICAL,
+                       edgecolors=BAR_EDGE, linewidths=0.8, zorder=3)
+            ax.text(d2 - 1.2, yi - off, f"{d2:+.1f}", va="center", ha="right",
+                    fontsize=15, color="#9a7016")
+    ax.axvline(0, color="#333", lw=2.0, zorder=1)
     ax.set_yticks(y)
     ax.set_yticklabels([disp[a] for a in scaffolds])
     ax.set_xlabel("R@1 change vs. no-scaffold control (pp)")
     lo = min([pp_d.get(a, 0) for a in scaffolds]
              + [mm_d.get(a, 0) for a in scaffolds]) - 4
     ax.set_xlim(lo, 6)
-    # legend top-left in the empty far-negative upper region (MedAgents/MDAgents
-    # bars are ~0, so the upper-left quadrant is clear)
-    ax.legend(loc="upper left", frameon=False, handlelength=1.0,
-              handletextpad=0.4, labelspacing=0.3, borderaxespad=0.4)
+    ax.set_ylim(-0.6, len(scaffolds) - 0.4)
+    handles = [Line2D([0], [0], color=C_LLM, marker="o", lw=2.6, ms=9,
+                      label="Phenopacket-Store"),
+               Line2D([0], [0], color=C_CLASSICAL, marker="o", lw=2.6, ms=9,
+                      label="MIMIC-IV note")]
+    # legend in the mid-left empty band (below the ~0 MedAgents/MDAgents rows,
+    # left of the AgentClinic bars) so it clears both the value labels and bars
+    ax.legend(handles=handles, loc="center left", frameon=False,
+              handlelength=1.4, handletextpad=0.4, labelspacing=0.3,
+              bbox_to_anchor=(0.02, 0.52))
     ax.grid(axis="x", zorder=0)
     despine(ax)
     fig.tight_layout()
