@@ -44,7 +44,7 @@ class RareDataset():
         elif self.dataset_name == 'DDD':
             self.data = pd.read_csv('dataset/ddd_test.csv')
         elif self.dataset_name == 'case':
-            self.data = pd.read_csv('dataset/cases.csv')
+            self.data = pd.read_csv(args.case_csv)
         elif self.dataset_name == 'hunan':
             self.data = pd.read_csv('dataset/hunan_cases.csv')
 
@@ -136,7 +136,5 @@ class RareDataset():
                     patient.append((phenotype, disease, phenotype_list_, phenotype_id, vcf_path))
                 else:
                     patient.append((phenotype, disease, phenotype_list_, phenotype_id))
-                
+
         return patient
-            
-            

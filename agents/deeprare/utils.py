@@ -32,6 +32,12 @@ def set_up_args():
     parser.add_argument('--retrieval_model', type=str, default='ncbi/MedCPT-Cross-Encoder')
     parser.add_argument('--similar_case_path', type=str, default='./database/RDS_embeddings.csv')
     parser.add_argument('--dataset_name', type=str, default="HMS", choices=["RAMEDIS", "MME", "HMS", "LIRICAL", "Xinhua", "MIMIC", "mygene", "DDD", "case"])
+    parser.add_argument(
+        '--case_csv',
+        type=str,
+        default='dataset/cases.csv',
+        help='per-invocation CSV used when --dataset_name=case',
+    )
     parser.add_argument('--dataset_path', default='chenxz/RareBench')
     parser.add_argument('--results_folder', default='./result_simcase1/')
     parser.add_argument('--exomiser_jar', type=str, default='./exomiser-cli-14.1.0/exomiser-cli-14.1.0.jar')  # Path to Exomiser JAR file

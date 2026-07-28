@@ -1,4 +1,5 @@
 import os
+import sys
 from openai import OpenAI
 import anthropic
 import google.generativeai as genai
@@ -13,6 +14,7 @@ class Openai_api:
         kwargs = {"api_key": api_key or os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY")}
         if base_url:
             kwargs["base_url"] = base_url
+        self.base_url = base_url or ""
         self.client = OpenAI(**kwargs)
         self.model = model
         # Per-class fallback for the "mini" summariser model id. Defaults to gpt-4o-mini,
@@ -33,7 +35,15 @@ class Openai_api:
             _kwargs = {}
             _reasoning = os.environ.get("OPENROUTER_REASONING_EFFORT")
             if _reasoning:
-                _kwargs["extra_body"] = {"reasoning": {"effort": _reasoning}}
+                if "openrouter.ai" in self.base_url:
+                    _kwargs["extra_body"] = {
+                        "reasoning": {"effort": _reasoning}
+                    }
+                else:
+                    # OpenAI-compatible gateways such as AIHubMix expose the
+                    # standard reasoning_effort field and reject OpenRouter's
+                    # nested `reasoning` extension with HTTP 400.
+                    _kwargs["reasoning_effort"] = _reasoning
             completion = self.client.chat.completions.create(
                 model=self.model,
                 seed=seed,
@@ -46,7 +56,7 @@ class Openai_api:
 
             return str(completion.choices[0].message.content)
         except Exception as e:
-            print(e)
+            print(e, file=sys.stderr)
             return None
 
     def openai_summarize(self, text: str):
@@ -67,7 +77,12 @@ class Openai_api:
             _kwargs = {}
             _reasoning = os.environ.get("OPENROUTER_REASONING_EFFORT")
             if _reasoning:
-                _kwargs["extra_body"] = {"reasoning": {"effort": _reasoning}}
+                if "openrouter.ai" in self.base_url:
+                    _kwargs["extra_body"] = {
+                        "reasoning": {"effort": _reasoning}
+                    }
+                else:
+                    _kwargs["reasoning_effort"] = _reasoning
             completion = self.client.chat.completions.create(
                 model=self.mini_model,
                 seed=seed,
@@ -80,7 +95,7 @@ class Openai_api:
 
             return str(completion.choices[0].message.content)
         except Exception as e:
-            print(e)
+            print(e, file=sys.stderr)
             return None
 
     def get_embedding(self, text: str, model="text-embedding-3-small") -> list[float]:
