@@ -68,3 +68,4 @@ audit_frozen/mimic_note_experiment/**/predictions_*.jsonl
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+_archive_local/
