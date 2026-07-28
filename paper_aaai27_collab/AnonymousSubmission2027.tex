@@ -1,0 +1,377 @@
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+% The serif, sans-serif, and monospaced fonts are loaded automatically by
+% aaai2027.sty (newtxtext, helvet, courier). DO NOT add \usepackage{times},
+% \usepackage{helvet}, \usepackage{courier}, or any other font package.
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+
+\usepackage[capitalize]{cleveref}   % \Cref{tab:main} -> "Table 1", "Section 3"
+% Blue heat ramp for R@1 (5 buckets) + green ramp for the variant-lift row,
+% matching the reference paper's palette.
+\usepackage[htt]{hyphenat}  % allow line breaks inside \texttt paths/code
+
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}  
+\usepackage{graphicx}
+\usepackage{subfigure}
+\definecolor{heatE}{HTML}{F6F9FC}
+\definecolor{heatA}{HTML}{E2EAF3}
+\definecolor{heatB}{HTML}{C7D5E4}
+\definecolor{heatC}{HTML}{AABCD3}
+\definecolor{heatD}{HTML}{8AA4C3}
+
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+
+%
+% Recommended for better-looking tables
+\usepackage{booktabs}
+
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \usepackage{indentfirst} -- This package is specifically forbidden
+% \usepackage{layout} -- This package is specifically forbidden
+% \usepackage{multicol} -- This package is specifically forbidden
+% \usepackage{nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paper
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2027.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{
+%RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis
+RareAgentBench: A Multi-Pillar, Contamination-Aware Benchmark for Rare-Disease Diagnostic Agents}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Written by AAAI Press Staff\textsuperscript{\rm 1}\thanks{With help from the AAAI Publications Committee.}\\
+    AAAI Style Contributions by Peter Patel Schneider,
+    Sunil Issar,\\
+    J. Scott Penberthy,
+    George Ferguson,
+    Hans Guesgen,
+    Francisco Cruz\equalcontrib\corresponding,
+    Marc Pujol-Gonzalez\equalcontrib\corresponding
+}
+\affiliations{
+    %Afiliations
+    \textsuperscript{\rm 1}Association for the Advancement of Artificial Intelligence\\
+    % If you have multiple authors and multiple affiliations
+    % use superscripts in text and roman font to identify them.
+    % For example,
+
+    % Sunil Issar\textsuperscript{\rm 2},
+    % J. Scott Penberthy\textsuperscript{\rm 3},
+    % George Ferguson\textsuperscript{\rm 4}\corresponding,
+    % Hans Guesgen\textsuperscript{\rm 5}
+    % Note that the comma should be placed after the superscript
+
+    1101 Pennsylvania Ave, NW Suite 300\\
+    Washington, DC 20004 USA\\
+    % email address must be in roman text type, not monospace or sans serif
+    proceedings-questions@aaai.org
+%
+% See more examples next
+}
+
+%Example, Single Author, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\iffalse
+\title{My Publication Title --- Single Author}
+\author {
+    Author Name
+}
+\affiliations{
+    Affiliation\\
+    Affiliation Line 2\\
+    name@example.com
+}
+\fi
+
+\iffalse
+%Example, Multiple Authors, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\title{RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis}
+\author {
+    % Authors
+    Yutian Zhao\textsuperscript{\rm 1,\rm 2}, %\equalcontrib,
+    Xiaohong Liu\textsuperscript{\rm 2},
+    %\equalcontrib,
+    Huimin Wang\textsuperscript{\rm 1}\corresponding
+}
+\affiliations {
+    % Affiliations
+    \textsuperscript{\rm 1}Affiliation 1\\
+    \textsuperscript{\rm 2}Affiliation 2\\
+    firstAuthor@affiliation1.com, secondAuthor@affilation2.com, thirdAuthor@affiliation1.com
+}
+\fi
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+AI agents for rare-disease diagnosis increasingly combine large language models (LLMs) with multi-agent orchestration, retrieval, structured phenotype reasoning, and simulated clinical interaction. Yet published systems are evaluated on incompatible datasets and protocols, making cross-system claims difficult to verify and obscuring whether gains arise from agent scaffolding, model choice, or case selection. We introduce RareAgentBench, an agent-native benchmark that standardizes four capabilities---phenotype extraction, phenotype-only and genotype-aware differential diagnosis, and clinical-communication faithfulness---through a canonical case schema and system-specific adapters for structured HPO and free-text inputs. The benchmark draws on 84,450 cases from five sources, including a time-based PMC holdout, and preregisters 11 hypotheses and 12 ablations. We compare eight diagnostic systems, including classical and offline methods, with three unscaffolded LLM controls. Our evaluation on RareAgentBench yields four key findings: (1) on HPO-input datasets, classical and offline methods outperform all scaffolded LLM agents (best R@1: 0.47 vs. 0.30, a 17-point gap); (2) multi-agent scaffolding does not reliably beat a single-LLM control, changing R@1 by roughly $-27$ to $+1$ points depending on the scaffold; (3) higher cost does not guarantee higher accuracy---DeepSeek V4-Flash is about $8\times$ cheaper than Gemini Flash but 3--7 points less accurate on HPO inputs, whereas GPT-5 with minimal reasoning costs about $20\times$ more than V4-Flash without a consistent advantage; and (4) structured variant information improves R@1 by about 20 points across systems. We release the benchmark, adapters, execution receipts, and leaderboard to support reproducible and cost-aware evaluation of rare-disease diagnostic agents.
+\end{abstract}
+
+% Uncomment the following to link to your code, datasets, an extended version or similar.
+% You must keep this block between (not within) the abstract and the main body of the paper.
+% Make sure that you do not de-anonymize yourself with these links.
+% \begin{links}
+%     \link{Code}{https://aaai.org/example/code}
+%     \link{Datasets}{https://aaai.org/example/datasets}
+%     \link{Extended version}{https://aaai.org/example/extended-version}
+% \end{links}
+
+\section{Introduction}
+
+Rare-disease diagnosis requires reasoning over heterogeneous evidence, including symptoms, standardized phenotypes, genetic variants, family histories, and free-text clinical narratives. Recent diagnostic systems accordingly extend LLMs with different forms of scaffolding: multi-agent deliberation (MDAgents, MedAgents, and MAI-DxO), simulated clinical interaction (AgentClinic), retrieval and domain-specific reasoning (DeepRare), structured phenotype--genotype fusion (VC-RDAgent), and phrase mining (RDMA), alongside classical probabilistic approaches such as LIRICAL~[1--8]. This rapidly growing design space raises a basic empirical question: which improvements come from the agent architecture, and which come from the underlying model, available evidence, or evaluation set?
+
+Existing results cannot answer this question reliably because the systems are evaluated on different case collections, input representations, and protocols. For example, prior work uses sources ranging from MedQA-Rare and NEJM clinicopathological cases to proprietary multi-source collections and small HPO subsets. Reported top-1 recall therefore compares neither the same patients nor the same diagnostic task. A recent systematic review of 19 LLM-based rare-disease studies further identified limited preregistration, substantial contamination risk, and a strong association between disease prevalence and reported performance ($R^2=0.55$), suggesting that case selection can materially shape apparent gains~[9]. Without a shared evaluation infrastructure, claims that one diagnostic agent outperforms another remain difficult to verify.
+
+\begin{figure*}[t]
+  \centering
+  \fbox{%
+    \parbox[c][1.75in][c]{0.96\textwidth}{%
+      \centering\small
+      \textbf{Planned Figure 1: From fragmented evaluation to RareAgentBench}\\[0.6em]
+      \begin{minipage}[t]{0.45\linewidth}
+        \centering
+        \textbf{Left: Current practice}\\
+        Agent A $\rightarrow$ Dataset A $\rightarrow$ Metric A\\
+        Agent B $\rightarrow$ Dataset B $\rightarrow$ Metric B\\
+        Agent C $\rightarrow$ Dataset C $\rightarrow$ Metric C\\[0.3em]
+        \emph{Result: reported scores are not directly comparable.}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \textbf{Right: RareAgentBench}\\
+        Layered sources $\rightarrow$ CanonicalCase schema\\
+        $\rightarrow$ system adapters $\rightarrow$ agents + controls\\
+        $\rightarrow$ accuracy, faithfulness, reliability, and cost\\[0.3em]
+        \emph{Result: scaffold, backbone, and input effects are isolated.}
+      \end{minipage}
+      \par\vspace{0.65em}
+      \textbf{Bottom takeaway strip:} classical/offline $>$ scaffolded LLMs on HPO inputs
+      $\mid$ multi-agent gain: none reliable $\mid$ cost $\not\Rightarrow$ accuracy
+    }%
+  }
+  \caption{RareAgentBench converts a fragmented evaluation landscape into a controlled comparison. Cases from heterogeneous sources are normalized into a canonical schema and passed through system-specific adapters, allowing diagnostic systems and controls to be evaluated under shared inputs, metrics, and statistical protocols. The figure should emphasize both the source of incomparability in prior work and the benchmark's main empirical message: scaffold complexity and model cost do not reliably translate into diagnostic accuracy.}
+  \label{fig:rareagentbench-overview}
+\end{figure*}
+
+Benchmarking only the underlying LLM is insufficient. First, the systems differ along non-LLM dimensions---retrieval pipelines, panel orchestration, dialogue policies, and phenotype--genotype fusion---whose effects must be separated from backbone choice. Second, diagnostic accuracy alone omits clinically relevant behavior such as communication faithfulness, run-to-run reliability, and inference cost. Third, classical and offline methods remain strong on structured HPO inputs, but prior agent studies rarely evaluate them alongside LLM-based systems. A useful benchmark must therefore treat the complete diagnostic pipeline, rather than the LLM alone, as the unit of evaluation.
+
+We introduce \textbf{RareAgentBench}, an agent-native benchmark designed around this requirement. RareAgentBench evaluates four capabilities in the present study: phenotype extraction, phenotype-only differential diagnosis, genotype-aware differential diagnosis, and faithful clinical communication. It normalizes cases into a shared \texttt{CanonicalCase} representation and uses isolated adapters to run heterogeneous systems under a common protocol. Its layered data sources comprise Phenopacket Store (10,051 cases), RareBench (1,122), RareArena RDS (72,661), a de-leaked MIMIC-IV discharge-note probe (416), and a 200-case time-based PMC Open Access holdout. Together, these layers vary input modality, case prevalence, difficulty, and exposure risk; the PMC layer is drawn after February 2026 to reduce the risk of benchmark contamination. We preregister 11 hypotheses and 12 ablations before holdout unblinding and evaluate accuracy, faithfulness, reliability, and cost rather than collapsing performance into a single score.
+
+We use RareAgentBench to compare eight diagnostic systems, including classical and offline approaches, with three unscaffolded LLM controls. The results challenge several common assumptions. On structured HPO inputs, LIRICAL and offline VC-RDAgent achieve R@1 values of 0.47 and 0.44, respectively, compared with 0.30 for the best scaffolded LLM configuration---a 17-point gap. Multi-agent scaffolding does not reliably improve over single-LLM controls: relative to the no-scaffold control on Phenopacket-Store, the scaffolds range from $+0.3$ points (MedAgents) down to $-27.3$ points (MAI-DxO). Backbone trade-offs are similarly non-uniform: DeepSeek V4-Flash is substantially cheaper than Gemini Flash but less accurate, while GPT-5 with minimal reasoning is the most expensive evaluated backbone without a consistent accuracy advantage and degrades sharply in dialogue settings. Finally, adding structured variant information improves R@1 by approximately 20 points across systems, indicating that the gain arises from the information channel rather than a DeepRare-specific mechanism.
+
+Our contributions are fourfold:
+\begin{itemize}
+  \item \textbf{An agent-native rare-disease benchmark.} RareAgentBench provides layered structured and free-text cases, four evaluated diagnostic capabilities, a canonical case schema, and adapters for eleven methods under a shared protocol.
+  \item \textbf{A controlled, preregistered evaluation.} Eleven hypotheses and twelve ablations separate the effects of agent scaffold, LLM backbone, input evidence, and dataset, with bootstrap confidence intervals and multiplicity correction.
+  \item \textbf{Cross-system empirical findings.} We show that classical and offline methods can outperform scaffolded LLM agents on structured inputs, that multi-agent gains are modest and dataset dependent, and that model cost does not reliably predict diagnostic accuracy.
+  \item \textbf{Reproducible evaluation infrastructure.} We release the benchmark harness, system adapters, 7,581 predictions, per-cell execution and cost receipts, and a static leaderboard to support auditable comparison and future extensions.
+\end{itemize}
+
+
+
+\section{Related Work}
+\label{sec:related-work}
+
+RareAgentBench lies at the intersection of rare-disease diagnostic AI, LLM-agent evaluation, and agentic systems for medical diagnosis.
+
+\subsection{Rare-Disease Diagnostic AI and Benchmarks}
+
+Rare-disease diagnosis has been studied through both conventional decision-support systems and LLM-oriented benchmarks. LIRICAL ranks phenotype- and genotype-informed hypotheses using interpretable likelihood ratios, while PhenoBrain couples phenotype extraction from electronic health records (EHRs) with disease ranking~\cite{robinson2020lirical,mao2025phenobrain}. RareBench evaluates four rare-disease capabilities of LLMs and investigates knowledge-graph-augmented prompting~\cite{chen2024rarebench}; RareArena scales free-text evaluation to screening and confirmation tasks derived from PubMed Central case reports (49,760 screening and 22,901 confirmation cases)~\cite{chen2026rarearena}. Phenopacket Store provides standardized case-level phenotype and genotype records, enabling controlled comparisons with conventional diagnostic software and cross-lingual evaluation~\cite{danis2025phenopackets,reese2026systematic,chimirri2025consistent}. On 5,213 phenopacket cases, Exomiser outperformed all seven evaluated LLMs, showing that classical decision support remains an essential baseline rather than a legacy comparator~\cite{reese2026systematic}. More recent resources extend coverage to real EHR notes in MIMIC-RD and to 1,756 multimodal question--answer pairs linked to 7,958 images in MMRareBench~\cite{eizaldin2026mimicrd,ning2026mmrarebench}. Despite broader coverage, these evaluations remain predominantly model-centric: they score static predictions without standardizing agent execution, tool access, interaction, repeated-run reliability, or cost. Nor do they expose an executable interface for applying identical cases and evidence budgets across systems.
+
+\subsection{Benchmarks for LLM Agents}
+
+Agent benchmarks increasingly evaluate interaction trajectories and verifiable outcomes rather than response quality alone. SWE-bench uses tests to verify issue resolution~\cite{jimenez2024swebench}; AgentBoard introduces progress rate for partial credit over multi-step trajectories~\cite{ma2024agentboard}; and $\tau$-bench verifies database end states while using $\mathrm{pass}^k$ to quantify consistency across repeated trials~\cite{yao2025taubench}. Medical benchmarks adapt these principles to clinical settings. MedAgentBench provides a FHIR-compliant virtual EHR with 300 clinician-authored tasks over 100 patient profiles~\cite{jiang2025medagentbench}, whereas AgentClinic evaluates tool-using diagnostic interaction with simulated patients across specialties and languages~\cite{schmidgall2026agentclinic}. MedHELM broadens medical evaluation across task families while considering computational cost~\cite{bedi2026medhelm}. These benchmarks motivate trajectory-level, reliability, and efficiency metrics, but none is designed around rare-disease phenotype--genotype reasoning or family-aware diagnosis.
+
+\subsection{Rare-Disease and Medical Diagnostic Agents}
+
+Rare-disease agents employ heterogeneous scaffolds. RareAgents coordinates an LLM-based multidisciplinary team with memory and medical tools~\cite{chen2026rareagents}; DeepRare combines a central host, specialized servers, reflection, and more than 40 tools~\cite{zhao2026deeprare}. RDMA focuses on locally mining explicit and implicit rare-disease evidence from EHR notes~\cite{wu2025rdma}, while VC-RDAgent constructs virtual reference cases from structured knowledge bases for offline diagnosis~\cite{liu2026vcrdagent}. Broader medical systems provide complementary designs: MedAgents uses role-based expert discussion~\cite{tang2024medagents}, MDAgents adaptively selects solo or group collaboration~\cite{kim2024mdagents}, and MAI-DxO performs sequential, cost-aware diagnosis~\cite{nori2025sequential}. Notably, RDMA targets evidence discovery rather than end-to-end diagnosis, whereas MAI-DxO explicitly models information acquisition and testing cost.
+
+These systems are evaluated on bespoke datasets and protocols that vary in case source, input modality, backbone model, tool access, label normalization, and metrics, precluding controlled comparison. Prior work therefore leaves a three-way gap: rare-disease benchmarks are largely model-centric, agent benchmarks are not rare-disease-specific, and diagnostic agents lack a shared evaluation protocol. RareAgentBench addresses this gap by evaluating complete diagnostic systems through common cases, adapters, and measures of accuracy, faithfulness, reliability, and cost.
+
+
+\section{Benchmark Design}
+\label{sec-4}
+
+RareAgentBench treats the complete diagnostic system as the unit of evaluation. Its design combines a clinically motivated capability model, a layered data stack, a canonical case representation, and a controlled protocol that separates downstream reasoning from end-to-end performance.
+
+\subsection{Evaluation Capabilities}
+\label{sec-4-1}
+
+We define five distinct but complementary capability pillars following the diagnostic workflow from phenotype recognition to evidence-grounded communication. The present study evaluates four pillars; family-aware diagnosis is retained in the schema and design matrix but deferred until sufficiently large pedigree-bearing datasets are available.
+
+\textbf{P1: Phenotype extraction} maps free-text clinical narratives to ranked Human Phenotype Ontology (HPO) terms and is evaluated using precision, recall, and F1. \textbf{P2: Phenotype-only differential diagnosis} maps curated HPO terms to a ranked disease list and is evaluated using Recall@1/3/5/10, mean reciprocal rank (MRR), and median rank. \textbf{P3: Genotype-aware differential diagnosis} adds structured variants and requires both a disease prediction and a causative-gene hypothesis; metrics include disease Recall@$k$ and gene Top-$k$ accuracy. \textbf{P4: Family-aware differential diagnosis} adds pedigree or trio information and predicts the disease and mode of inheritance; it is deferred in v1. \textbf{P5: Clinical-communication faithfulness} evaluates whether the final answer is factual, relevant, supported by the available evidence, and consistent with the system trace. Automated P5 scores are calibrated against physician ratings on a 200-case subset, with inter-rater agreement reported using Cohen's $\kappa$.
+
+P1 and P5 are evaluated separately because neither is reducible to final diagnostic accuracy. Extraction errors alter the evidence available to downstream reasoning, while a correct diagnosis can still be supported by fabricated citations or an inconsistent rationale. Bias is therefore treated as a cross-cutting analysis rather than a separate pillar: every applicable metric is stratified by ancestry, disease prevalence, sex, age, language, and HPO density, following the multi-metric evaluation approach of HELM and MedHELM~\cite{liang2023helm,bedi2026medhelm}.
+
+\subsection{Four-Layer Data Stack}
+\label{sec-4-2}
+
+The benchmark contains 84,450 instances from five sources, organized into four layers that vary evidence structure, clinical realism, scale, and contamination risk. Figure~\ref{fig:fig_design_matrix} summarizes the resulting capability--dataset evaluation surface; detailed disease counts, identifiers, modalities, and availability masks appear in Appendix~A.
+
+\begin{itemize}
+  \item \textbf{L1: Phenotype backbone (11,173 instances).} Phenopacket Store contributes 10,051 standardized cases with curated HPO terms and, when available, structured variants; RareBench-HF contributes 1,122 cases for comparison with established rare-disease LLM evaluation~\cite{danis2025phenopackets,chen2024rarebench}.
+  \item \textbf{L2: Real-EHR noise (416 instances).} We construct a rare-disease probe from MIMIC-IV v3.1 discharge summaries~\cite{johnson2024mimiciv31}. Candidate admissions are identified through ICD-10--ORPHA mappings, with Orphadata categories marked as non-rare in Europe excluded~\cite{orphadata2026nomenclature}, and are then passed through a de-leaking funnel that keeps only exact ICD--ORPHA maps, genuinely rare principal diagnoses, and cases whose narrative does not disclose the answer (``De-Leaking the EHR Layer''\ below). The agent sees the \emph{presentation} segment only, truncated before the first diagnosis-revealing section with the gold disease name masked verbatim. This layer tests phenotype extraction and diagnosis under abbreviations, missingness, and longitudinal clinical documentation.
+  \item \textbf{L3: Free-text scale (72,661 task instances).} RareArena contributes 49,760 screening instances and 22,901 confirmation instances derived from PubMed Central case reports~\cite{chen2026rarearena}. We treat them as task instances rather than unique patients because the two tasks expose different evidence views.
+  \item \textbf{L4: Temporal holdout.} From 2,401 post-cutoff PubMed Central Open Access candidates, we extract diagnoses and phenotypes, map them to Orphanet, and manually retain 200 cases satisfying four criteria: a definitive diagnosis, faithful phenotype extraction, verified publication after the prespecified cutoff, and confirmation that the target condition is rare. The extraction and adjudication protocol, including reviewer agreement, is provided in Section~\ref{sec-5-2} and Appendix~D.
+\end{itemize}
+
+All layers are stratified where metadata permit by prevalence, clinical specialty, language, age, sex, ancestry, and HPO density. Dataset-specific licenses and access restrictions are documented in the released data cards; credentialed MIMIC-IV data are not redistributed.
+
+\paragraph{Evaluation sample sizes.}
+We distinguish the released benchmark pool from the cases executed in each experiment. RareBench-HF is evaluated in full for the primary LLM backbones and all applicable classical or offline baselines; the de-leaked MIMIC-IV note probe is evaluated on its full frozen 416-case set in all 24 agent--backbone cells. For Phenopacket Store and RareArena, each primary agent--backbone cell is evaluated on a prevalence-stratified random sample of 500 instances (seed 42), with proportional allocation across prevalence bands. DeepSeek V4-Pro and GPT-5 cells use 100--500 instances according to the preregistered compute budget; every result reports its denominator, and cells with fewer than 100 observations are explicitly marked. We do not extrapolate sampled results to the full pool. Instead, we report bootstrap confidence intervals per cell and verify that each 500-case sample reproduces the pool's prevalence and HPO-organ-system distributions within two percentage points.
+
+\subsection{Canonical Case Representation}
+\label{sec-4-3}
+
+Every source is normalized into a single Pydantic-v2 record, \texttt{CanonicalCase}, from which each system adapter constructs the agent's native input (Figure~\ref{fig:fig_schema}). The schema contains source identity and language; demographics; raw or synthetic free text; observed and excluded HPO terms; structured variants and local VCF pointers; family information; parallel gold identifiers; and provenance metadata. Explicit availability masks prevent adapters from accessing evidence not assigned to the current capability or evaluation pass.
+
+Three choices support auditable cross-dataset evaluation. First, gold diagnoses retain parallel OMIM, ORPHA, and source-specific identifiers, allowing ontology-aware matching without discarding the source label. Second, \path{free_text_vignette} and \path{synthetic_vignette} are distinct fields, so results based on generated prose remain identifiable. Third, \path{vcf_path} is a local-only pointer. Raw credentialed EHR text and local genomic files are never transmitted to external APIs; cloud adapters receive only the approved, de-identified abstraction required by the evaluated pillar.
+
+\subsection{Dual-Pass Evaluation}
+\label{sec-4-4}
+
+Where both curated HPO terms and source text are available, we evaluate two input conditions. \textbf{Pass A (gold HPO)} supplies the same curated phenotype set directly to each downstream diagnostic system, isolating reasoning and enabling controlled cross-system comparison. \textbf{Pass B (end to end)} supplies the raw clinical narrative and requires the system to extract phenotypes before diagnosis, approximating deployment. The Pass-A--Pass-B difference quantifies the downstream cost of phenotype extraction and turns input heterogeneity into a measured factor rather than an uncontrolled confound. This design extends RareBench's comparison of structured phenotype and narrative inputs~\cite{chen2024rarebench}.
+
+\subsection{Metrics and Diagnostic Matching}
+\label{sec-4-5}
+
+Primary metrics follow the capability definitions above: precision, recall, and F1 for P1; Recall@1/3/5/10, MRR, and median rank for P2 and the disease component of P3; gene Top-$k$ for P3; and the physician-calibrated four-axis score for P5. Across applicable tasks, we additionally report task success, $\mathrm{pass}^k$ reliability, calibration, latency, total cost, and cost-normalized accuracy~\cite{yao2025taubench}. Results are accompanied by bootstrap confidence intervals and the multiplicity correction specified in the preregistration.
+
+Disease predictions are matched hierarchically. We first test exact equality after identifier normalization, then accepted OMIM--ORPHA mappings from Orphadata, and finally canonical Orphanet names or synonyms. Fuzzy name matching is used only when no valid identifier is returned and requires a RapidFuzz score of at least 90. This threshold was selected from 217 manually audited borderline predictions; more than 85\% of candidates scoring 70--89 were false positives. We release the mapping version, normalization rules, and complete audit trail.
+
+\begin{figure}[hbpt!]
+  \centering
+  \includegraphics[width=0.52\textwidth]{Figures/fig_design_matrix.png}
+  \caption{RareAgentBench evaluation surface. Rows denote five conceptual capability pillars and columns denote four data layers. Filled cells are evaluated in v1; grey cells, including family-aware diagnosis (P4), are reserved for future releases; light cells are not applicable.}
+  \label{fig:fig_design_matrix}
+\end{figure}
+
+\begin{figure}[hbpt!]
+  \centering
+  \includegraphics[width=0.52\textwidth]{Figures/fig_schema.png}
+  \caption{The \texttt{CanonicalCase} representation. Each dataset is normalized into a shared record, and isolated adapters project only the evidence permitted by the current capability and evaluation pass into each system's native input.}
+  \label{fig:fig_schema}
+\end{figure}
+
+\section{Experimental Setup}
+\label{sec-5}
+
+The experimental setup is designed to separate backbone, scaffold, and implementation effects while preserving each system's native workflow. We standardize model access and logging, isolate system dependencies through adapters, and freeze all confirmatory analyses before evaluating the temporal holdout.
+
+\subsection{Backbones}
+\label{sec-5-2}
+
+We evaluate each LLM-based system, where technically applicable, with four backbones spanning the observed cost--capability range: DeepSeek V4-Flash, DeepSeek V4-Pro, Gemini 3 Flash, and GPT-5. Gemini 3 Flash is the primary backbone; DeepSeek V4-Flash represents the low-cost setting, while V4-Pro and GPT-5 probe higher-capability regimes. Requests are routed through OpenRouter to provide a common API, billing surface, and generation record~\cite{openrouter2026api}. The supplementary material (Appendix~B) reports the immutable model identifier, provider route, access date, context window, token prices, and complete generation configuration for every evaluated cell. We do not use moving ``latest'' aliases.
+
+Primary comparisons use the lowest reasoning setting reliably supported by each endpoint. This constrained regime serves three purposes: it reduces backbone-side test-time compute as a confound when measuring scaffold effects; approximates the operating conditions of systems originally developed before dedicated reasoning models~\cite{tang2024medagents,kim2024mdagents,schmidgall2026agentclinic}; and makes multi-call evaluation computationally tractable. OpenRouter normalizes reasoning controls across providers but does not guarantee equivalent latent computation across models~\cite{openrouter2026reasoning}. We therefore report the exact request parameters and observed reasoning-token usage rather than describing the configurations as computationally identical. Conclusions concerning GPT-5 and V4-Pro apply specifically to this constrained-reasoning regime. A reasoning-enabled single-LLM control is evaluated separately as preregistered ablation A8.
+
+Pilot compatibility tests showed that hidden reasoning could exhaust the output budget of short-turn adapters, producing empty content, parser errors, or timeouts. For the frozen primary runs, GPT-5 uses \path{reasoning_effort=minimal}, and V4-Pro uses \path{reasoning.enabled=false}, the only tested configuration that consistently returned final-answer content within the adapter limits. These settings are passed unchanged into isolated subprocesses and verified from request and token-usage receipts. Root-cause experiments, including attempted token caps and latency measurements, are reported in Appendix~B rather than treated as benchmark results.
+
+Failure handling is fixed before aggregation. Empty outputs, parser errors, and timeouts count as unsuccessful attempts and remain in the denominator. A cell is marked unavailable only when the adapter--backbone combination cannot execute the system's required interaction protocol after the documented compatibility procedure. MAI-DxO with GPT-5 is the sole such cell in the current matrix and is reported as missing, not silently removed. Every table reports the attempted and successful sample counts.
+
+\subsection{System Adapters}
+\label{sec-5-3}
+
+The eight diagnostic systems have mutually incompatible dependencies and, in several cases, different language-model SDK generations. We therefore execute each system in an isolated runtime behind a common \texttt{AgentAdapter} interface. An adapter receives a \texttt{CanonicalCase} (Section~\ref{sec-4-3}), exposes only the evidence permitted by the current capability and evaluation pass, converts it to the system's native input, invokes the isolated process, and returns a \texttt{PredictionLog}. The log records ranked diagnoses, extracted HPO terms, reasoning or communication traces when available, token usage, cost, latency, and a normalized status code.
+
+Adapter modifications are restricted to transport, input projection, output parsing, and instrumentation. We do not alter prompts, tool-selection policies, stopping rules, retrieval corpora, or orchestration logic unless a change is required to replace an unavailable endpoint; any such deviation is declared in the agent fairness matrix (supplementary material, Appendix~C). For OpenRouter-compatible systems, the patch changes only client construction and forwards the model and reasoning configuration through the subprocess environment. Per-system patches and immutable environment specifications are released with the benchmark.
+
+This design provides three audit properties. First, every run receipt records the canonical case identifier, adapter version, model identifier, configuration hash, subprocess command, random seed, and termination status. Second, a common logging layer aggregates per-call token usage, latency, and billed cost into a case-level receipt. API costs are exact when returned by the gateway; calls that bypass the wrapper are estimated from recorded token counts and versioned prices and are labeled accordingly. Offline methods have zero API cost, with compute time reported separately. Third, process isolation contains dependency, parser, retrieval, and state failures within the affected system.
+
+Adapter overhead is measured independently and reported alongside end-to-end latency; interpreter startup adds approximately 0.5--2 seconds per case. We also clear system-specific output directories between cases to prevent cross-case state leakage. These safeguards, including the three upstream systems that required explicit state cleanup, are documented in Appendix~B.
+
+\subsection{Preregistration and Holdout Governance}
+\label{sec-5-4}
+
+% Editorial requirement: retain ``preregistered'' only if the immutable OSF
+% timestamp predates the first temporal-holdout run; otherwise use
+% ``prespecified'' throughout the paper and rename this subsection accordingly.
+
+Before temporal-holdout unblinding, we freeze H1--H11, ablations A1--A12, the staged sampling budget, cell-level stopping rules, primary metrics, the Holm--Bonferroni correction, and the LLM-judge agreement protocol. The frozen protocol, timestamped repository commit, and anonymized read-only OSF registration are supplied with the supplementary material. This design responds to documented contamination and reproducibility risks in rare-disease LLM evaluation~\cite{nguyen2026diagnostic}.
+
+The 200-case PMC Open Access temporal holdout is evaluated once under the frozen agent set, matching rules, and analysis plan. Phenopacket Store, RareBench, RareArena, and the de-leaked MIMIC-IV note probe remain development layers, but no holdout result is used to revise prompts, adapters, thresholds, or sampling decisions. Confirmatory cells ship with a reproducibility receipt containing the run identifier, request identifiers when available, configuration hash, denominator, failures, and cost. Exploratory analyses are labeled explicitly and are not included in confirmatory hypothesis testing.
+
+% ---- Results & analysis live in a separate file for parallel editing ----
+\input{MainResults}
+
+\bibliography{aaai2027}
+
+\end{document}

@@ -1,0 +1,293 @@
+% =====================================================================
+% MainResults.tex — Results & analysis (Sections: Main Results ... Self-
+% Preference Bias). Split out from AnonymousSubmission2027.tex so it can
+% be edited independently. It is pulled in via \input{MainResults} right
+% before \bibliography. Do NOT add a preamble or \begin{document} here —
+% this file is \input into the main document and shares its preamble,
+% packages, labels, and bibliography.
+% =====================================================================
+\section{Main Results}
+\label{sec-6}
+
+We report variant-aware Recall@1 (R@1) across agents, backbones, and datasets, followed by backbone sensitivity and cost--accuracy analysis. Complete hypothesis tests, confidence intervals, and execution receipts appear in the supplement.
+
+\subsection{Headline R@1 Matrix}
+\label{sec-6-1}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{0.5pt}
+\caption{Variant-aware R@1 for each reported agent--backbone configuration across all five data sources. Rows are grouped by backbone, with the same six agents in the same order inside every block, so a column read down one block is a scaffold comparison at fixed backbone and the same row position across blocks is a backbone comparison at fixed scaffold. Classical and offline systems are listed first; their free-text cells are not applicable because they require structured HPO input. \textbf{MIMIC-N} is the de-leaked discharge-note probe (``De-Leaking the EHR Layer''\ below): all 24 agent--backbone cells are complete on the same frozen 416-case set, with the denominator fixed at 416 so that every failure, timeout, parser error, and empty-but-successful response counts as a miss. \textbf{PMC-OA} is the L4 temporal holdout, evaluated on the same 198-case frozen set for all 24 agent--backbone cells; because the holdout is unblinded once, it is read as a within-layer pre-\ versus post-cutoff comparison (supplement, ``Temporal-Holdout Protocol'') rather than as a cross-agent ranking. Per-cell attempted counts for every cell in this table are listed in the supplement (``Per-Cell Sample Counts''). Published case reports are written to be diagnostically legible, so the absolute PMC-OA level is not comparable to the other layers and is excluded from Avg.; the load-bearing holdout analysis is the difficulty-matched pre-\ versus post-cutoff contrast in the supplement, not this column. \textbf{Avg.}\ is the mean over the four development layers. Cell shading encodes R@1: \colorbox{heatE}{$<$.10}~\colorbox{heatA}{.10--.20}~\colorbox{heatB}{.20--.30}~\colorbox{heatC}{.30--.40}~\colorbox{heatD}{$\geq$.40}.}
+\label{tbl:main}
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+Backbone & Agent & PP-Store & RareArena & RareBench & MIMIC-N & PMC-OA & Avg. \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{Classical / offline (structured HPO input only)}} \\
+--- & LIRICAL & \cellcolor{heatD}\textbf{0.470} & n/a & \cellcolor{heatB}0.230 & n/a & n/a & n/a \\
+--- & VC-RDAgent & \cellcolor{heatD}0.440 & n/a & \cellcolor{heatB}0.280 & n/a & n/a & n/a \\
+\midrule
+\multirow{6}{*}{Gemini 3 Flash} & LLM control & \cellcolor{heatB}0.293 & \cellcolor{heatB}0.281 & \cellcolor{heatE}0.023 & \cellcolor{heatC}0.373 & \cellcolor{heatD}0.616 & \cellcolor{heatB}0.242 \\
+ & MDAgents & \cellcolor{heatB}0.279 & \cellcolor{heatB}0.280 & \cellcolor{heatA}0.102 & \cellcolor{heatC}0.317 & \cellcolor{heatD}0.621 & \cellcolor{heatB}0.245 \\
+ & MedAgents & \cellcolor{heatB}\textbf{0.296} & \cellcolor{heatC}\textbf{0.300} & \cellcolor{heatE}0.053 & \cellcolor{heatD}\textbf{0.401} & \cellcolor{heatD}0.631 & \cellcolor{heatB}0.263 \\
+ & AgentClinic & \cellcolor{heatB}0.214 & \cellcolor{heatA}0.134 & \cellcolor{heatE}0.013 & \cellcolor{heatA}0.130 & \cellcolor{heatB}0.283 & \cellcolor{heatA}0.123 \\
+ & DeepRare & \cellcolor{heatB}0.280 & \cellcolor{heatE}0.000 & \cellcolor{heatB}\textbf{0.297} & \cellcolor{heatE}0.012 & \cellcolor{heatA}0.157 & \cellcolor{heatA}0.147 \\
+ & MAI-DxO & \cellcolor{heatE}0.020 & \cellcolor{heatE}0.060 & \cellcolor{heatE}0.005 & \cellcolor{heatE}0.005 & \cellcolor{heatE}0.040 & \cellcolor{heatE}0.022 \\
+\midrule
+\multirow{6}{*}{DeepSeek V4-Pro} & LLM control & \cellcolor{heatB}0.274 & \cellcolor{heatA}0.193 & \cellcolor{heatE}0.021 & \cellcolor{heatC}\textbf{0.365} & \cellcolor{heatD}0.581 & \cellcolor{heatB}0.213 \\
+ & MDAgents & \cellcolor{heatB}0.267 & \cellcolor{heatB}0.221 & \cellcolor{heatE}0.037 & \cellcolor{heatC}0.346 & \cellcolor{heatD}0.550 & \cellcolor{heatB}0.218 \\
+ & MedAgents & \cellcolor{heatB}\textbf{0.280} & \cellcolor{heatB}0.226 & \cellcolor{heatE}0.011 & \cellcolor{heatC}0.349 & \cellcolor{heatD}0.530 & \cellcolor{heatB}0.216 \\
+ & AgentClinic & \cellcolor{heatA}0.185 & \cellcolor{heatA}0.117 & \cellcolor{heatE}0.006 & \cellcolor{heatB}0.216 & \cellcolor{heatC}0.364 & \cellcolor{heatA}0.131 \\
+ & DeepRare & \cellcolor{heatA}0.198 & \cellcolor{heatE}0.000 & \cellcolor{heatB}\textbf{0.205} & \cellcolor{heatE}0.012 & \cellcolor{heatA}0.146 & \cellcolor{heatA}0.104 \\
+ & MAI-DxO & \cellcolor{heatA}0.169 & \cellcolor{heatB}\textbf{0.226} & \cellcolor{heatE}0.008 & \cellcolor{heatE}0.002 & \cellcolor{heatE}0.081 & \cellcolor{heatA}0.101 \\
+\midrule
+\multirow{6}{*}{DeepSeek V4-Flash} & LLM control & \cellcolor{heatB}\textbf{0.263} & \cellcolor{heatB}0.207 & \cellcolor{heatE}0.049 & \cellcolor{heatC}0.353 & \cellcolor{heatD}0.485 & \cellcolor{heatB}0.218 \\
+ & MDAgents & \cellcolor{heatB}0.247 & \cellcolor{heatB}\textbf{0.226} & \cellcolor{heatE}0.049 & \cellcolor{heatC}\textbf{0.368} & \cellcolor{heatD}0.525 & \cellcolor{heatB}0.223 \\
+ & MedAgents & \cellcolor{heatB}0.248 & \cellcolor{heatA}0.159 & \cellcolor{heatE}0.035 & \cellcolor{heatC}0.337 & \cellcolor{heatC}0.359 & \cellcolor{heatA}0.194 \\
+ & AgentClinic & \cellcolor{heatA}0.135 & \cellcolor{heatE}0.098 & \cellcolor{heatE}0.016 & \cellcolor{heatA}0.166 & \cellcolor{heatB}0.283 & \cellcolor{heatA}0.104 \\
+ & DeepRare & \cellcolor{heatB}0.220 & \cellcolor{heatE}0.000 & \cellcolor{heatB}\textbf{0.285} & \cellcolor{heatE}0.017 & \cellcolor{heatA}0.131 & \cellcolor{heatA}0.131 \\
+ & MAI-DxO & \cellcolor{heatE}0.000 & \cellcolor{heatA}0.127 & \cellcolor{heatE}0.000 & \cellcolor{heatE}0.005 & \cellcolor{heatE}0.096 & \cellcolor{heatE}0.033 \\
+\midrule
+\multirow{6}{*}{GPT-5 minimal} & LLM control & \cellcolor{heatB}0.254 & \cellcolor{heatB}0.216 & \cellcolor{heatE}0.005 & \cellcolor{heatC}0.363 & \cellcolor{heatD}0.525 & \cellcolor{heatB}0.209 \\
+ & MDAgents & \cellcolor{heatB}0.243 & \cellcolor{heatB}0.225 & \cellcolor{heatE}0.012 & \cellcolor{heatD}\textbf{0.435} & \cellcolor{heatD}0.535 & \cellcolor{heatB}0.229 \\
+ & MedAgents & \cellcolor{heatB}\textbf{0.276} & \cellcolor{heatB}\textbf{0.260} & \cellcolor{heatE}0.010 & \cellcolor{heatC}0.315 & \cellcolor{heatD}0.566 & \cellcolor{heatB}0.215 \\
+ & AgentClinic & \cellcolor{heatA}0.130 & \cellcolor{heatA}0.105 & \cellcolor{heatE}0.004 & \cellcolor{heatE}0.048 & \cellcolor{heatC}0.313 & \cellcolor{heatE}0.072 \\
+ & DeepRare & \cellcolor{heatB}0.210 & \cellcolor{heatE}0.000 & \cellcolor{heatB}\textbf{0.210} & \cellcolor{heatE}0.002 & \cellcolor{heatE}0.061 & \cellcolor{heatA}0.106 \\
+ & MAI-DxO & \cellcolor{heatA}0.133 & \cellcolor{heatA}0.133 & \cellcolor{heatE}0.000 & \cellcolor{heatE}0.000 & \cellcolor{heatE}0.000 & \cellcolor{heatE}0.067 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The average is reported only for LLM configurations covering all four development datasets and is not comparable to the two-dataset coverage of LIRICAL and VC-RDAgent. On RareBench, DeepRare leads the LLM systems at every backbone (.210--.297), through the HPO-plus-variant channel that the general scaffolds lack. All V4-Pro cells use the reasoning-disabled setting in Section~\ref{sec-5-2}. All four MAI-DxO backbones complete every layer, but the system is the weakest scaffold throughout, at or near zero on the note layer and on most HPO-input cells; the failure analysis is in the supplement. The MIMIC-N column supersedes the leaked MIMIC-IV numbers of the earlier draft, which were computed on notes whose concatenated ICD-10 titles contained the gold answer verbatim; the two are not cell-by-cell comparable because the case set changed as well (``De-Leaking the EHR Layer''\ below). The PMC-OA column is complete at all 24 cells; because the holdout is unblinded once and cannot be extended without spending it, it is read as a within-layer pre- versus post-cutoff comparison (supplement, ``Temporal-Holdout Protocol'') rather than as a cross-agent ranking, and its higher absolute level reflects the diagnostic legibility of published case reports rather than easier diseases.
+
+\begin{figure*}[t]
+\centering
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figM1_llm_vs_classical.png}%
+}
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figF2_scaffolding.png}%
+}
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figM2_cost_accuracy.png}%
+}
+
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figM3_prevalence.png}%
+}
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figM6_hypotheses.png}%
+}
+\subfigure[]{%
+  \includegraphics[width=0.3\textwidth]{Figures/figM5_selfpref.png}%
+}
+
+\caption{Main results and analysis. Recall is variant-aware, over the attempted denominator.
+  \textbf{(a)}~Best LLM agent vs.\ best classical/offline baseline on the two HPO-input datasets where a classical run is possible.
+  \textbf{(b)}~Each scaffold's R@1 change (pp) vs.\ the no-scaffold single-LLM control; the MIMIC series is the de-leaked note probe (mean over four backbones, 416 cases).
+  \textbf{(c)}~Cost per attempt (USD, log) vs.\ R@1 for every executable agent--backbone cell on Phenopacket-Store; shape = backbone (circle Gemini~3~Flash, square V4-Pro reasoning-off, triangle V4-Flash, diamond GPT-5 minimal), dashed step = Pareto
+  frontier.
+  \textbf{(d)}~Pooled R@1 by Orphanet prevalence tier; the families cross on the rarest tier, where training-frequency priors are weakest.
+  \textbf{(e)}~Pre-registered tests under Holm--Bonferroni, as $-\log_{10}$ of the Holm-adjusted $p$ (bars truncated at the axis top; printed number = test statistic, $z$ for H1/H8/H2/H4, Spearman $\rho$ for H7/H10). Green survives at $\alpha{=}.05$, gold
+  does not. H1: classical $>$ LLM, super-rare; H8: R@1 peaks at 16--30 HPO terms; H2: genotype-channel lift; H7: specialty-difficulty correlation; H4: scaffolding helps complex cases; H10: faithfulness--accuracy decoupling.
+  \textbf{(f)}~Pillar-5 trace scores under a judge swap on identical traces: same-family (SF: Gemini 3 Flash) vs.\ cross-family (CF: Claude Sonnet 4.5). \texttt{mdagents}$^{*}$ also had its v2 trace repaired, so its SF$\rightarrow$CF change mixes
+  judge swap with better coverage; \texttt{llm\_control}/\texttt{deeprare} traces were complete and isolate the judge effect.}
+\label{fig:main6}
+\end{figure*}
+
+\subsection{De-Leaking the EHR Layer}
+\label{sec-6-deleak}
+
+The MIMIC-N column required a dedicated construct-validity audit, because a
+rare-disease cohort assembled from billing codes leaks its own answer. Each
+filter in the funnel removes a distinct threat: 150,033 admissions with any
+ICD--ORPHA mapping $\rightarrow$ 107,144 under \emph{exact} mappings only (dropping
+narrower-to-broader and broader-to-narrower approximate maps) $\rightarrow$ 18,392
+whose gold code is a genuinely rare disease $\rightarrow$ 2,325 where that disease is
+the admission's \emph{principal} diagnosis rather than comorbidity or past history
+$\rightarrow$ 1,255 carrying a usable discharge summary (117 diseases) $\rightarrow$
+1,083 after dropping cases whose narrative states the diagnosis as already known
+$\rightarrow$ 855 in which the gold disease name never appears verbatim
+$\rightarrow$ 687 after a strict synonym screen (105 diseases) $\rightarrow$ 416 on the
+HPO-annotated subset (68 diseases), which is the frozen scored set.
+
+Two of these steps are anti-leakage rather than cohort definition. First, a
+$\pm45$-character window around each masked diagnosis detects history cues
+(``h/o'', ``s/p'', ``known''), removing 172 cases in which the note frames the
+target as an established diagnosis. Second, masking the gold disease \emph{name}
+is insufficient: screening against the full Orphanet synonym and abbreviation
+list shows that 19.6\% of the nominally clean cases still spelled the answer out
+under an alternative label (eponyms and all-capitals abbreviations such as ADPKD or
+GBS, which the crossmap-aware scorer credits as hits), and removing them costs a
+further 168 cases.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Leakage magnitude on \emph{identical} cases: unscaffolded LLM-control R@1 before and after de-leaking, same 416 admissions. Leakage both inflates accuracy by 9--20 points and reorders the backbones---V4-Flash looks best when leaked but is mid-field once the answer is removed.}
+\label{tbl:deleak}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Backbone & Leaked & De-leaked & $\Delta$ \\
+\midrule
+DS V4-Flash & \textbf{.553} & .353 & $-$.200 \\
+DS V4-Pro & .500 & .365 & $-$.135 \\
+Gemini Flash & .452 & \textbf{.373} & $-$.079 \\
+GPT-5 minimal & .425 & .363 & $-$.062 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tbl:deleak} quantifies what this buys, holding the case set fixed:
+the leaked variant inflates R@1 by 6--20 points and, more damagingly, changes the
+ranking. Under leakage V4-Flash appears to be the strongest backbone by 5 points;
+on the same cases with the answer removed, all four backbones collapse into a
+.353--.373 band that is within bootstrap noise. A backbone recommendation read
+off the leaked slice would therefore have been an artifact of which model is best
+at copying a diagnosis string out of its own input. We report the de-leaked
+column only, and treat the leaked one as a measurement of the leak.
+
+Two caveats remain. The 416-case set is restricted to the 68 diseases with HPO
+annotations available in our mapping, dropping 271 otherwise-valid cases across
+37 diseases; the loss is an annotation-coverage artifact and not related to
+difficulty, but it does narrow disease diversity. And the screen operates at the
+case level: a disease may still be inferable from a characteristic treatment or
+laboratory pattern that no name-based filter can catch.
+
+\subsection{Backbone--Scaffold Interaction}
+\label{sec-6-2}
+
+Table~\ref{tbl:bbsens} summarizes PP-Store sensitivity to backbone choice using the cells in Table~\ref{tbl:main}.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{6pt}
+\caption{Per-agent backbone sensitivity on PP-Store. The range is the difference between the best and worst reported backbone for that system.}
+\label{tbl:bbsens}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Agent & Best backbone & Worst backbone & R@1 range \\
+\midrule
+LLM control & Gemini Flash (.29) & GPT-5 minimal (.25) & .04 \\
+MDAgents & Gemini Flash (.28) & GPT-5 minimal (.24) & .04 \\
+MedAgents & Gemini Flash (.30) & DS V4-Flash (.25) & .05 \\
+AgentClinic & Gemini Flash (.21) & GPT-5 minimal (.13) & .09 \\
+DeepRare & Gemini Flash (.28) & DS V4-Pro (.20) & .08 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gemini is strongest on PP-Store for every system family, with narrow spreads for the LLM control, MDAgents, and MedAgents (.04--.05) but larger effects for AgentClinic (.09) and DeepRare (.08). The ordering changes elsewhere: on the de-leaked MIMIC-IV note probe the four backbones are statistically indistinguishable for the unscaffolded control (.353--.373, a .02 spread), GPT-5 minimal is by far the strongest for MDAgents (.435 vs.\ .317--.368), and V4-Pro is strongest for AgentClinic (.216, against .048 for GPT-5 minimal). Backbone effects are therefore scaffold- and dataset-dependent. Because several bootstrap intervals overlap, we do not treat small gaps as definitive rankings.
+
+
+\subsection{Cost--Accuracy Trade-offs}
+\label{sec-6-3}
+
+The evaluation comprises 97,985 predictions at a total API cost of \$297.89, or \$0.0030 per prediction including offline runs. Per-prediction cost spans more than an order of magnitude: DeepSeek V4-Flash is cheapest (\$0.00032), then V4-Pro reasoning-off (\$0.00098), Gemini Flash (\$0.00341), and GPT-5 minimal the most expensive (\$0.00825); the classical/offline baselines incur no API cost. Relative to V4-Flash, V4-Pro costs $3.1\times$ more, Gemini $10.7\times$ more, and GPT-5 minimal $25.8\times$ more; GPT-5 is also $8.4\times$ more expensive than V4-Pro. As Figure~\ref{fig:main6}\subref{sfig:cost} shows, this cost ordering does not induce a matching accuracy ordering. The evaluation used 83\% of the preregistered \$360 budget; per-backbone spend and per-cell accounting are in Appendix~G.
+
+The same mismatch holds for wall-clock cost (Figure~\ref{fig:latency}): median per-case latency spans two orders of magnitude, from $3$\,s for the single-LLM control to $244$\,s for MAI-DxO ($\sim$$80\times$), yet the heavy scaffolds match or trail the control on R@1.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.86\linewidth]{Figures/figM7_latency_accuracy.png}
+\caption{Orchestration cost buys no accuracy. Median per-case latency (successful cases only, log scale) versus variant-aware R@1 on Phenopacket-Store with the Gemini~3~Flash backbone. The dotted line marks the single-LLM control's R@1. Heavier scaffolds sit far to the right at equal or lower accuracy: DeepRare and MAI-DxO run $40$--$80\times$ slower than the control while MAI-DxO also collapses in accuracy. Latency is the median over successful cases, so the harness timeout ceiling does not enter the estimate.}
+\label{fig:latency}
+\end{figure}
+
+
+\subsection{Headline Findings}
+\label{sec-6-4}
+
+The final matrix incorporates two corrections: V4-Pro was rerun with reasoning disabled after hidden-reasoning output starvation, and PP-Store/RareArena runs were harmonized to a shared 2,000-case sampling frame where technically feasible. R@1 decreased by approximately 2--4 points relative to earlier 500-case estimates, strengthening the structured-baseline result and removing the earlier claim that GPT-5 is the best MedAgents backbone.
+
+\paragraph{F1: Classical and offline methods outperform scaffolded LLMs on HPO input.}
+On PP-Store, LIRICAL reaches .47 R@1 and VC-RDAgent .44, compared with .30 for the best scaffolded LLM cell (Figure~\ref{fig:main6}\subref{sfig:classical}). The resulting 17-point gap between LIRICAL and MedAgents persists on the larger harmonized sample. RareBench shows a related pattern: DeepRare (.21--.30), VC-RDAgent (.28), and LIRICAL (.23) lead, while all other LLM scaffolds remain at or below .10. The magnitude of the RareBench gap is partly attributable to ontology alignment, as examined under F5.
+
+\paragraph{F2: Multi-agent scaffolding does not reliably beat a single-LLM control.}
+The same pattern holds on two independent datasets (Figure~\ref{fig:main6}\subref{sfig:scaffold}): Phenopacket-Store (Gemini Flash) and the de-leaked MIMIC-IV note probe (mean over four backbones). No scaffold clears the no-scaffold control by a meaningful margin---MedAgents and MDAgents stay within $1.4$ points of the control on both datasets---while the heavier-orchestration scaffolds fall well below it: AgentClinic $-7.8$ (PP-Store) and $-22.4$ (MIMIC), MAI-DxO $-27.3$ and $-36.1$. On the de-leaked MIMIC matrix the unscaffolded control (mean R@1 .364) is statistically tied with the best light scaffolds (MedAgents .350, MDAgents .367, overlapping CIs) and far above the heavy ones (AgentClinic .140, DeepRare .011, MAI-DxO). The evidence thus supports a conditional, often negative scaffold effect---heavy orchestration consistently hurts---rather than a general multi-agent advantage.
+
+\paragraph{F3: V4-Flash is cost efficient but not quality equivalent to Gemini.}
+V4-Flash costs \$0.00032 per prediction, compared with \$0.00341 for Gemini. On PP-Store, it trails Gemini by 3 points for the LLM control and MDAgents, 5 for MedAgents, and 8 for AgentClinic. On the de-leaked MIMIC-IV note probe the sign flips for the light-coordination scaffolds---V4-Flash is 2 points \emph{below} Gemini for the LLM control and 6 below for MedAgents, but 5 points \emph{above} it for MDAgents and 4 above for AgentClinic. V4-Flash also exhibits more transient empty-content responses on free-text and HPO-list inputs, mitigated by the frozen wrapper-level retry policy. The appropriate conclusion is therefore lower cost with an agent- and modality-dependent accuracy trade-off, not quality parity.
+
+\paragraph{F4: GPT-5 minimal reasoning carries the highest cost without a consistent accuracy advantage.}
+GPT-5 minimal is competitive in selected cells---it holds the single best de-leaked MIMIC-IV cell in the whole matrix (MDAgents, .435)---but it is not the best backbone for any of the functioning scaffolds on PP-Store, where Gemini leads every system, and it is the \emph{worst} of the four backbones for AgentClinic on both PP-Store (.13) and the note probe (.048). At $25.8\times$ the per-prediction cost of V4-Flash, these isolated gains do not establish a favorable overall trade-off. The preregistered H6 ablation isolates the reasoning channel: enabling reasoning for the V4-Pro single-LLM control changes R@1 by only +.008, while yielding no parseable answer in 40\% of cases and increasing latency by $10$--$40\times$. These findings apply to the evaluated adapters and token limits rather than to unconstrained GPT-5 quality in general.
+
+\paragraph{F5: RareBench exposes an evaluator--ontology interaction.}
+RareBench is uniquely difficult for general LLM scaffolds but remains tractable for systems operating directly over HPO and disease ontologies. Error analysis identifies sibling-level ORPHA distinctions and incomplete OMIM--Orphanet mappings as recurrent failure modes. For example, \texttt{Methylmalonic acidemia with homocystinuria} (ORPHA:26) and \texttt{Vitamin B12-unresponsive methylmalonic acidemia} (ORPHA:27) are clinically related but receive different exact identifiers. Classical and HPO-centered pipelines can bypass part of this mismatch through OMIM identifiers and Orphanet name matching. Variant-aware fuzzy matching recovers 1--8 R@1 points across affected cells but does not close the performance gap. We therefore report both exact and variant-aware scores and treat the result as an interaction among model behavior, cross-ontology mapping, and evaluator policy rather than as a pure model failure.
+
+\paragraph{Prevalence and pre-registered tests.}
+Stratifying by Orphanet prevalence tier sharpens F1 (Figure~\ref{fig:main6}\subref{sfig:prevalence}). LLM agents peak on common and ultra-rare tiers but fall to R@1 .22 on super-rare disease, whereas the classical/offline baselines \emph{rise} to .50 there---a 28-point reversal on exactly the rarest cases. Across the pre-registered family (Figure~\ref{fig:main6}\subref{sfig:hypotheses}), five of the six testable hypotheses survive Holm--Bonferroni correction, including the classical-over-LLM super-rare gap (H1) and the genotype-channel lift (H2); only the faithfulness--accuracy decoupling (H10) fails and is reported as exploratory (Section~\ref{sec-7-5}).
+
+
+
+\subsection{Self-Preference Bias in LLM-as-Judge}
+\label{sec-7-5}
+
+\paragraph{Protocol.}
+We evaluate Pillar~5 reasoning traces on four five-point axes: factuality, relevance, depth, and faithfulness. The initial protocol used Gemini 3 Flash Preview as the judge while evaluating agents instantiated with the same backbone family. We then rescored the traces with Claude Sonnet 4.5 using the same rubric and judge prompt (Figure~\ref{fig:main6}\subref{sfig:selfpref}). Prior work shows that LLM evaluators can favor generations from their own model family, motivating an explicit judge-family sensitivity analysis~\cite{panickssery2024selfpreference}. Because several v2 runs also repair trace-capture failures, however, the complete v1--v2 difference is not a clean causal estimate of self-preference. We therefore distinguish fixed-trace judge sensitivity from changes induced by improved trace coverage.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\caption{Reasoning-trace scores under the Gemini-family judge (v1) and Claude judge (v2), reported as v1 $\rightarrow$ v2. Each agent uses 10 stratified Phenopacket-Store cases (seed 42). The rubric and judge prompt are unchanged, but trace-capture fixes affect MDAgents and MAI-DxO and slightly change the captured DeepRare trace length; their score differences therefore combine judge and instrumentation effects.}
+\label{tbl:selfpref}
+\begin{tabular}{@{}p{0.17\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.105\textwidth}p{0.13\textwidth}p{0.18\textwidth}@{}}
+\toprule
+Agent & Factuality & Relevance & Depth & Faithfulness & Trace length & Main change \\
+\midrule
+\texttt{llm\_control}
+& $4.70 \rightarrow 4.30$ ($-.40$)
+& $4.50 \rightarrow 4.50$
+& $3.60 \rightarrow 3.10$ ($-.50$)
+& $4.90 \rightarrow 4.50$ ($-.40$)
+& 986 characters
+& Three axes decrease; relevance is unchanged \\
+
+\texttt{mdagents}
+& $5.00 \rightarrow 4.10$
+& $5.00 \rightarrow 4.17$
+& $4.00 \rightarrow 3.49$
+& $5.00 \rightarrow 4.26$
+& $337 \rightarrow 20{,}034$
+& Under Claude, depth exceeds \texttt{llm\_control} ($3.49>3.10$) \\
+
+\texttt{deeprare}
+& $1.70 \rightarrow 2.31$ ($+.61$)
+& $1.40 \rightarrow 1.33$ ($-.07$)
+& $1.90 \rightarrow 2.58$ ($+.68$)
+& $1.70 \rightarrow 2.72$ ($+1.02$)
+& $18{,}429 \rightarrow 21{,}401$
+& Three axes improve; relevance is nearly unchanged \\
+
+\texttt{maidxo}
+& n/a $\rightarrow 2.11$
+& n/a $\rightarrow 1.85$
+& n/a $\rightarrow 1.64$
+& n/a $\rightarrow 1.88$
+& $0 \rightarrow 26{,}972$
+& v1: 10/10 parse failures; v2: 0/10 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+\paragraph{Judge-family sensitivity.}
+For the fixed \texttt{llm\_control} traces, replacing Gemini with Claude reduces factuality, depth, and faithfulness by .40--.50 points while leaving relevance unchanged. This directional shift is consistent with same-family preference, but a two-judge comparison cannot separate self-preference from judge-specific calibration without human labels or a reciprocal design. The cross-agent comparisons are additionally affected by trace coverage. Under Claude, the \texttt{llm\_control} margins over MDAgents are $\{+.20,+.33,-.39,+.24\}$ across factuality, relevance, depth, and faithfulness: MDAgents leads on depth, whereas the control remains slightly ahead on the other axes. The remaining margins lie within the bootstrap intervals reported in Appendix~I.
+
+After collapsing scores into $\{1$--$2,3,4$--$5\}$, inter-judge agreement is $\kappa=.62$. Given the 10-case-per-agent pilot sample, we treat the per-axis deltas and ranking changes as exploratory. The principal result is that judge choice materially affects the interpretation of trace quality, not a precise estimate of a universal self-preference effect.
+
+\paragraph{Trace-capture failures.}
+The v2 pipeline also fixes two independent instrumentation errors. MAI-DxO's panel \texttt{conversation\_history} was not passed to the judge in v1, producing 10/10 JSON-parse failures; the corrected pipeline captures 26,972 characters and eliminates these failures. MDAgents previously exposed only the 337-character moderator verdict rather than the full deliberation. Capturing the complete 20,034-character multi-expert trace reduces judge errors from 8/10 to 0. These fixes are necessary for valid process evaluation, but they also mean that the affected v1--v2 score differences cannot be attributed solely to judge family. The patches and replay receipts are documented in Appendix~C.
+
+\paragraph{Effect on H10.}
+Judge choice also bears on the preregistered H10 verdict, but only once trace capture is controlled. An earlier analysis compared $\rho=.098$ (Gemini) against $\rho=.616$ (Claude) between judged faithfulness and top-1 accuracy and read this as a large judge-family gap; that split was a trace-capture artifact, because the Gemini scores had been computed on truncated or empty traces while the Claude scores used the repaired traces. Re-running the Gemini judge on the \emph{same} repaired traces (n=40) raises its correlation from .098 to $\rho=.457$, against Claude's $\rho=.640$, and the two judges' faithfulness scores themselves agree at $\rho=.741$. The residual judge-family difference is therefore modest, and both estimates sit near the preregistered $\rho<.5$ decision boundary---one just below, one just above---so we report H10 as judge-dependent and exploratory rather than as a headline confirmation and withdraw the earlier .098-vs-.616 contrast. The durable point is that judge family and trace-capture completeness are both first-order evaluation factors that must be controlled together.
+
+\paragraph{Implications for benchmark design.}
+LLM-based evaluation is increasingly used for open-ended medical and agent outputs, including MedHELM's multi-model jury and MedR-Bench's automated reasoning evaluator~\cite{bedi2026medhelm,qiu2025medrbench}. Our results reinforce prior evidence that a heterogeneous judge panel can reduce intra-model bias relative to a single judge~\cite{verga2024juries}. Ablation A12 therefore evaluates the same predictions using exact OMIM/ORPHA matching, BioLORD-assisted synonym matching, a GPT-5 judge, and physician adjudication on 200 cases.
+
+For benchmark builders, deterministic scoring should remain primary whenever a verifiable target exists. Subjective trace evaluation should replay identical frozen traces across judges from different model families, report judge-conditioned results or panel consensus, and include a human-audited subset for consequential claims. We also record the effect of every judge substitution rather than merging scores across judge versions. For traces exceeding 5,000 characters, our implementation uses overlapping 3,000-character windows with a 500-character overlap and averages per-axis scores, preventing silent truncation of traces such as DeepRare's 21,401-character output. The complete unchunked trace remains available for audit.
+
