@@ -280,6 +280,7 @@ def run(
     concurrency=1,
     resume_statuses=("ok", "skipped"),
     max_attempts_per_case=None,
+    cohort_n=None,
 ):
     load_env()
     print(f"[p4a] dataset={dataset} agent={agent} backbone={backbone} n={n}"
@@ -291,7 +292,14 @@ def run(
     if agent in HPO_ONLY_AGENTS and dataset in NO_HPO_DATASETS:
         print(f"  → {agent} requires HPO input; {dataset} has none, skip", flush=True)
         return
-    cases = DATASETS[dataset](n=n)
+    if cohort_n is not None:
+        # 2026-07-28: split a fixed cohort front/back so two operators can fill
+        # the same N=cohort_n cell without overlapping. The loaders are
+        # seed-stable prefixes, so cohort[cohort_n-n:cohort_n] is disjoint from
+        # the cohort[:cohort_n-n] prefix another run is already covering.
+        cases = DATASETS[dataset](n=cohort_n)[-n:]
+    else:
+        cases = DATASETS[dataset](n=n)
     print(f"  loaded {len(cases)} cases", flush=True)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -411,6 +419,16 @@ if __name__ == "__main__":
         default=None,
         help="optional retry ceiling across resumed receipts for each case_id",
     )
+    p.add_argument(
+        "--cohort-n",
+        type=int,
+        default=None,
+        help=(
+            "take the LAST --n cases of the seed-stable --cohort-n cohort "
+            "instead of the first --n. Lets a second operator fill the tail of "
+            "a cell while the head is being run elsewhere."
+        ),
+    )
     args = p.parse_args()
     resume_statuses = tuple(
         status.strip() for status in args.resume_statuses.split(",") if status.strip()
@@ -418,4 +436,5 @@ if __name__ == "__main__":
     run(args.dataset, args.agent, args.backbone, args.n, Path(args.out),
         timeout_s=args.timeout_s, reasoning_on=args.reasoning_on,
         concurrency=args.concurrency, resume_statuses=resume_statuses,
-        max_attempts_per_case=args.max_attempts_per_case)
+        max_attempts_per_case=args.max_attempts_per_case,
+        cohort_n=args.cohort_n)
