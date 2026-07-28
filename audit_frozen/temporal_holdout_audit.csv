@@ -3,7 +3,7 @@ pre_cutoff,agentclinic,google_gemini-3-flash-preview-,220,220,220,56,0.2545,"[0.
 pre_cutoff,llm_control,google_gemini-3-flash-preview-,220,220,220,116,0.5273,"[0.4636, 0.5909]"
 pre_cutoff,mdagents,google_gemini-3-flash-preview-,220,220,219,118,0.5364,"[0.4727, 0.6]"
 pre_cutoff,medagents,google_gemini-3-flash-preview-,220,220,220,116,0.5273,"[0.4636, 0.5909]"
-post_cutoff,agentclinic,deepseek_deepseek-v4-flash,198,182,153,45,0.2473,"[0.1868, 0.3132]"
+post_cutoff,agentclinic,deepseek_deepseek-v4-flash,198,198,195,56,0.2828,"[0.2172, 0.3485]"
 post_cutoff,agentclinic,google_gemini-3-flash-preview-,198,198,198,56,0.2828,"[0.2172, 0.3485]"
 post_cutoff,llm_control,deepseek_deepseek-v4-flash,198,198,184,96,0.4848,"[0.4141, 0.5556]"
 post_cutoff,llm_control,google_gemini-3-flash-preview-,198,198,198,122,0.6162,"[0.5455, 0.6818]"

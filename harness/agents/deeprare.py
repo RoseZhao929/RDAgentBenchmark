@@ -17,11 +17,10 @@ Design notes
     / HPOSearchTool all return empty stubs.
   - `DEEPRARE_LOCAL_EMBEDDING=1` → use bge-small-en-v1.5 (CPU) for
     `get_embedding`, padded to 1536-dim. (OpenRouter has no embeddings API.)
-- **Input projection**: each `predict()` call writes a transient one-row
-  `dataset/cases.csv` (the `case` dataset branch added in `data.py`) with the
-  `hpo` column as a pipe-separated HP-ID list. We back up & restore any
-  existing `cases.csv` so concurrent calls do not stomp each other; in batch
-  mode the caller should serialise.
+- **Input projection**: each `predict()` call writes a private transient
+  one-row CSV (the `case` dataset branch added in `data.py`) with the `hpo`
+  column as a pipe-separated HP-ID list. The private path is passed with
+  `--case_csv`, so concurrent calls cannot read another case's input.
 - **Output**: DeepRare emits a JSON per patient at
   `<results_folder>/<dataset_name>/<openai_model>/patient_<i>.json`. We:
     1. Read `final_diagnois` (note typo preserved in upstream) markdown.
@@ -45,7 +44,6 @@ import csv
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 import time
@@ -68,7 +66,6 @@ from harness.logging.schema import EvalMode, Pillar, PredictionLog
 _PROJECT_ROOT = Path(__file__).resolve().parents[2]
 _DEEPRARE_DIR = _PROJECT_ROOT / "agents" / "deeprare"
 _DEEPRARE_PYTHON = _DEEPRARE_DIR / ".venv" / "bin" / "python"
-_DEEPRARE_DATASET_CSV = _DEEPRARE_DIR / "dataset" / "cases.csv"
 _DEEPRARE_MAIN = _DEEPRARE_DIR / "main.py"
 
 
@@ -97,7 +94,16 @@ def parse_deeprare_final_diagnois(markdown: str) -> List[str]:
         SKIP = {"references", "reference", "diagnostic reasoning",
                 "summary", "discussion", "conclusion"}
         loose = [d.strip() for d in loose if d.strip().lower() not in SKIP]
-        return _dedupe_keep_order(loose)[:5]
+        if loose:
+            return _dedupe_keep_order(loose)[:5]
+        # GPT-5 also emits plain numbered differentials such as
+        # ``1) KBG syndrome (ANKRD11)`` without Markdown headers.
+        numbered = re.findall(
+            r"^\s*\d{1,2}[.)]\s+\*{0,2}(.+?)\*{0,2}\s*$",
+            markdown,
+            re.MULTILINE,
+        )
+        return _dedupe_keep_order([d.strip() for d in numbered])[:5]
     ranked = sorted(matches, key=lambda m: int(m.group("rank")))
     return _dedupe_keep_order([m.group("disease").strip() for m in ranked])
 
@@ -127,7 +133,10 @@ def _extract_hpo_from_free_text(case: CanonicalCase) -> tuple[List[str], Dict[st
     from harness.metrics.hpo_phrase_to_id import phrase_to_hp_id
 
     extractor = LLMControlAdapter(
-        backbone_id="openrouter/google/gemini-3-flash-preview",
+        # This internal extraction call goes directly through
+        # openrouter_wrapper, so use the gateway's wire ID (AIHub rejects the
+        # canonical provider-prefixed alias with HTTP 400).
+        backbone_id="gemini-3-flash-preview",
         backbone_temperature=0.0,
     )
     try:
@@ -318,13 +327,10 @@ class DeepRareAdapter(AgentAdapter):
             except OSError:
                 pass
 
-        # Back up the canonical cases.csv (smoke fixture) and write our row.
-        backup_path: Optional[Path] = None
-        if _DEEPRARE_DATASET_CSV.exists():
-            backup_path = _DEEPRARE_DATASET_CSV.with_suffix(
-                f".csv.harness_backup.{run_tag}"
-            )
-            shutil.copy2(_DEEPRARE_DATASET_CSV, backup_path)
+        # Give every invocation a private one-row CSV. The previous shared
+        # dataset/cases.csv implementation raced under --concurrency > 1 and
+        # could make one case consume another case's HPO input.
+        case_csv_path = results_root / "cases.csv"
 
         # end_to_end fallback: if the case carries no structured HPO (free-text
         # NO_HPO datasets like the MIMIC-note probe) but does have a vignette,
@@ -336,6 +342,16 @@ class DeepRareAdapter(AgentAdapter):
             override_hpo_ids, _hpo_dbg = _extract_hpo_from_free_text(case)
             log.extra.update(_hpo_dbg)
             log.extra["deeprare_input_hpo_ids"] = override_hpo_ids
+            if not override_hpo_ids:
+                return self._finalize_log(
+                    log,
+                    ranked_predictions=[],
+                    status="parser_error",
+                    error_message=(
+                        "Free-text phenotype extraction produced no HPO IDs; "
+                        "DeepRare was not run with an empty input."
+                    ),
+                )
 
         try:
             row = _build_case_csv_row(
@@ -343,8 +359,8 @@ class DeepRareAdapter(AgentAdapter):
                 include_genotype_text=(pillar == "P3_genotype_aware"),
                 override_hpo_ids=override_hpo_ids,
             )
-            _DEEPRARE_DATASET_CSV.parent.mkdir(parents=True, exist_ok=True)
-            with _DEEPRARE_DATASET_CSV.open("w", newline="", encoding="utf-8") as f:
+            case_csv_path.parent.mkdir(parents=True, exist_ok=True)
+            with case_csv_path.open("w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=["hpo", "disease"])
                 writer.writeheader()
                 writer.writerow(row)
@@ -375,6 +391,7 @@ class DeepRareAdapter(AgentAdapter):
                 "--openai_apikey", _gw_key,
                 "--openai_model", self._openai_model_id,
                 "--dataset_name", "case",
+                "--case_csv", str(case_csv_path),
                 "--results_folder", str(results_root) + os.sep,
             ]
 
@@ -483,13 +500,19 @@ class DeepRareAdapter(AgentAdapter):
                 reasoning_trace=reasoning_trace,
                 raw_response_excerpt=final_md[:2000],
                 latency_ms=latency_ms,
-                status="ok",
+                status="ok" if ranked else "parser_error",
+                error_message=(
+                    None
+                    if ranked
+                    else "DeepRare final response contained no parseable ranked diagnoses."
+                ),
             )
 
         finally:
-            # Restore the original cases.csv if we had backed one up.
-            if backup_path and backup_path.exists():
-                shutil.move(str(backup_path), str(_DEEPRARE_DATASET_CSV))
+            try:
+                case_csv_path.unlink()
+            except FileNotFoundError:
+                pass
             # Drop the per-run results dir (keep patient JSON path in log.extra
             # only if you copied it out — by default we throw it away to keep
             # disk clean. Comment out the next 3 lines to retain.)

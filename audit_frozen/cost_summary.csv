@@ -1,16 +1,16 @@
 inclusion_set,backbone,cells,attempted_predictions,successful_predictions,top1_correct_variant,api_calls,total_cost_usd,cost_per_attempt,cost_per_success
-MAIN_MATRIX_frozen,deepseek_deepseek-v4-flash,18,22385,20669,3675,68368,7.0063,0.000313,0.001906
-MAIN_MATRIX_frozen,deepseek_deepseek-v4-pro,18,21516,21338,3736,77578,21.5095,0.001,0.005757
-MAIN_MATRIX_frozen,google_gemini-3-flash-preview-,18,23583,23386,4836,76628,80.4822,0.003413,0.016642
+MAIN_MATRIX_frozen,deepseek_deepseek-v4-flash,23,26819,24758,3729,81980,8.6482,0.000322,0.002319
+MAIN_MATRIX_frozen,deepseek_deepseek-v4-pro,24,24947,24536,3645,91241,22.991,0.000922,0.006308
+MAIN_MATRIX_frozen,google_gemini-3-flash-preview-,24,28207,27647,4832,91651,94.5572,0.003352,0.019569
 MAIN_MATRIX_frozen,lirical-2.4.0,2,3122,3122,1200,0,0.0,0.0,0.0
-MAIN_MATRIX_frozen,openai_gpt-5,18,21238,21104,3531,76632,166.1858,0.007825,0.047065
+MAIN_MATRIX_frozen,openai_gpt-5,23,25475,25301,3588,91293,203.2667,0.007979,0.056652
 MAIN_MATRIX_frozen,vc_rdagent-offline-v1,2,1785,1785,599,0,0.0,0.0,0.0
-MAIN_MATRIX_frozen,TOTAL,76,93629,91404,17577,299206,275.18,0.002939,0.015656
+MAIN_MATRIX_frozen,TOTAL,98,110355,107149,17593,356165,329.46,0.002985,0.018727
 
 # cost-per-attempt multiples (relative to cheapest backbone)
 MULTIPLE,lirical-2.4.0,,,,,,0.0,0x (free classical),
 MULTIPLE,vc_rdagent-offline-v1,,,,,,0.0,0x (free classical),
-MULTIPLE,deepseek_deepseek-v4-flash,,,,,,0.000313,1.0x,
-MULTIPLE,deepseek_deepseek-v4-pro,,,,,,0.001,3.2x,
-MULTIPLE,google_gemini-3-flash-preview-,,,,,,0.003413,10.9x,
-MULTIPLE,openai_gpt-5,,,,,,0.007825,25.0x,
+MULTIPLE,deepseek_deepseek-v4-flash,,,,,,0.000322,1.0x,
+MULTIPLE,deepseek_deepseek-v4-pro,,,,,,0.000922,2.9x,
+MULTIPLE,google_gemini-3-flash-preview-,,,,,,0.003352,10.4x,
+MULTIPLE,openai_gpt-5,,,,,,0.007979,24.7x,

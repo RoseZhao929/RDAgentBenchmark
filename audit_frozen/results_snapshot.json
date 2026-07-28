@@ -1,6 +1,6 @@
 {
   "generated_by": "audit_frozen/build_deliverables.py (frozen-results audit)",
-  "generated_at": "2026-07-22T14:57:55Z",
+  "generated_at": "__STAMP__",
   "frozen_commit": "43efa1e516fffeac22786251656891109e40309a",
   "data_version": "slim recompute set (MIMIC & model weights stripped from git history)",
   "preregistered_primary_metric": {
@@ -9,9 +9,9 @@
   },
   "receipt_counts": {
     "raw_lines_phase4a": 101060,
-    "attempted_after_dedupe_and_cap": 94751,
-    "successful": 92319,
-    "failed": 2432,
+    "attempted_after_dedupe_and_cap": 112819,
+    "successful": 109534,
+    "failed": 3285,
     "status_breakdown": {
       "ok": 97217,
       "parser_error": 2691,
@@ -19,7 +19,7 @@
       "timeout": 945,
       "ok_but_empty": 70
     },
-    "cells": 83
+    "cells": 110
   },
   "exclusion_rules": [
     "Dedupe by case_id, prefer status==ok (RESUME re-attempts collapsed).",
@@ -62,15 +62,15 @@
   },
   "cost_inclusion_sets": {
     "frozen_main_matrix_recomputed": {
-      "attempted": 92303,
-      "successful": 89976,
-      "usd": 271.02,
-      "cells": 71
+      "attempted": 110355,
+      "successful": 107149,
+      "usd": 329.46,
+      "cells": 98
     },
     "paper_106089_$315.21": "J appendix TOTAL, 93 cells INCLUDING now-stripped mimic_diverse + all GPT-5; ok-level count; NOT reproducible from this slim commit (mimic removed).",
     "paper_68668_$191.76": "main_results.md \"all cells\" 2026-07-06 snapshot; partial completion state.",
     "paper_48728_$109.41": "leaderboard/index.html earlier/partial snapshot.",
-    "brief_50479_$109.41_note": "brief cited 50,479 for the $109.41 set; leaderboard shows 48,728 — mismatch flagged (likely a transcription/rounding drift)."
+    "brief_50479_$109.41_note": "brief cited 50,479 for the $109.41 set; leaderboard shows 48,728 \u2014 mismatch flagged (likely a transcription/rounding drift)."
   },
   "paired_effects": {
     "variant_channel": {
@@ -83,10 +83,10 @@
         "b_only": 7,
         "c_only": 106,
         "chi2_cc": 84.991,
-        "p": 2.997034554659337e-20
+        "p": 2.997034554659336e-20
       },
       "two_prop_z": 6.404,
-      "two_prop_p": 1.5124646055508619e-10,
+      "two_prop_p": 1.5124646055508616e-10,
       "p3_win": 106,
       "p2_win": 7
     },
@@ -100,7 +100,7 @@
         "scaffolded_R@1": 0.279,
         "delta_pp": -1.4,
         "mcnemar_chi2_cc": 6.75,
-        "mcnemar_p": 0.0093747684594349,
+        "mcnemar_p": 0.00937476845943489,
         "scaffold_win": 40,
         "control_win": 68
       },
@@ -126,7 +126,7 @@
         "scaffolded_R@1": 0.2145,
         "delta_pp": -7.8,
         "mcnemar_chi2_cc": 100.979,
-        "mcnemar_p": 9.295196244033086e-24,
+        "mcnemar_p": 9.295196244033083e-24,
         "scaffold_win": 42,
         "control_win": 199
       },
@@ -134,14 +134,14 @@
         "dataset": "phenopacket_store",
         "scaffolded_system": "maidxo",
         "backbone": "gemini-3-flash-preview",
-        "n_common_cases": 100,
-        "control_R@1": 0.33,
+        "n_common_cases": 200,
+        "control_R@1": 0.315,
         "scaffolded_R@1": 0.02,
-        "delta_pp": -31.0,
-        "mcnemar_chi2_cc": 29.032,
-        "mcnemar_p": 7.118304164714049e-08,
-        "scaffold_win": 0,
-        "control_win": 31
+        "delta_pp": -29.5,
+        "mcnemar_chi2_cc": 55.148,
+        "mcnemar_p": 1.1181346561214534e-13,
+        "scaffold_win": 1,
+        "control_win": 60
       },
       {
         "dataset": "phenopacket_store",
@@ -152,7 +152,7 @@
         "scaffolded_R@1": 0.2803,
         "delta_pp": -3.0,
         "mcnemar_chi2_cc": 3.01,
-        "mcnemar_p": 0.08273102231510286,
+        "mcnemar_p": 0.08273102231510261,
         "scaffold_win": 39,
         "control_win": 57
       },
@@ -178,7 +178,7 @@
         "scaffolded_R@1": 0.3005,
         "delta_pp": 1.9,
         "mcnemar_chi2_cc": 9.197,
-        "mcnemar_p": 0.0024235220376220695,
+        "mcnemar_p": 0.0024235220376220713,
         "scaffold_win": 98,
         "control_win": 59
       },
@@ -191,7 +191,7 @@
         "scaffolded_R@1": 0.1335,
         "delta_pp": -14.8,
         "mcnemar_chi2_cc": 215.551,
-        "mcnemar_p": 8.449703882418486e-49,
+        "mcnemar_p": 8.449703882418488e-49,
         "scaffold_win": 53,
         "control_win": 348
       },
@@ -199,14 +199,14 @@
         "dataset": "rarearena_rds",
         "scaffolded_system": "maidxo",
         "backbone": "gemini-3-flash-preview",
-        "n_common_cases": 100,
-        "control_R@1": 0.3,
-        "scaffolded_R@1": 0.06,
-        "delta_pp": -24.0,
-        "mcnemar_chi2_cc": 20.346,
-        "mcnemar_p": 6.462284982453697e-06,
-        "scaffold_win": 1,
-        "control_win": 25
+        "n_common_cases": 200,
+        "control_R@1": 0.305,
+        "scaffolded_R@1": 0.0,
+        "delta_pp": -30.5,
+        "mcnemar_chi2_cc": 59.016,
+        "mcnemar_p": 1.5636381457841558e-14,
+        "scaffold_win": 0,
+        "control_win": 61
       },
       {
         "dataset": "rarearena_rds",
@@ -223,6 +223,14 @@
       }
     ]
   },
+  "temporal_holdout": {
+    "n_pre_gold": 220,
+    "n_post_gold": 198,
+    "pooled_pre": 0.4614,
+    "pooled_post": 0.5379,
+    "pooled_delta_pp": 7.7,
+    "pooled_p": 0.0017816122806526757
+  },
   "p1_p2_cascade": {
     "note": "p1_metric_rows.jsonl measures HPO-EXTRACTION phrase P/R/F1, not diagnosis R@1",
     "n_rows": 150,
@@ -236,7 +244,7 @@
       "gold_HPO_0.40": "25 Phenopacket-Store cases (native gold_hpo_terms input)",
       "extracted_HPO_0.04": "25 RareArena RDS cases (LLM-extracted HPO)",
       "same_case_paired": false,
-      "verdict": "DIFFERENT DATASETS / different case halves — NOT a same-case paired phenotype-extraction penalty. Confounds dataset difficulty with input condition."
+      "verdict": "DIFFERENT DATASETS / different case halves \u2014 NOT a same-case paired phenotype-extraction penalty. Confounds dataset difficulty with input condition."
     }
   },
   "p5_self_preference": {
@@ -319,204 +327,5 @@
     "rho_gemini_reported": 0.098,
     "rho_claude_reported": 0.616,
     "verdict": "INVALID for self-preference estimation: the two judges did NOT score identical frozen traces (trace_len differs on 30/40 pairs; Gemini(v1) saw truncated/zero traces for maidxo & mdagents, Claude(v2) saw repaired traces). The rho=0.098 vs rho=0.616 contrast conflates the trace-capture fix with judge identity. Mark P5 as EXPLORATORY / physician-validation-in-progress."
-  },
-  "followup_2026_07_22": {
-    "contamination_scan": {
-      "finding": "temporal holdout CONTAMINATED by RareArena development layer",
-      "post_cutoff_pmcid_overlap_with_rarearena": 17,
-      "pre_cutoff_pmcid_overlap_with_rarearena": 13,
-      "orpha_label_match_on_overlap": "17/17 identical ORPHA ids (verified same-case, not coincidence)",
-      "text_neardup_J>=0.4": 0,
-      "neardup_zero_reason": "holdout vignette is phenotype-list format vs RareArena narrative report; word-shingles do not align, but PMCID proves same source",
-      "implication": "holdout is NOT disjoint from development layer; no-degradation may reflect seen cases",
-      "superseded_by": "temporal_holdout_v2 (union overlap: pre 14 / post 18; gold agreement 23/32)"
-    },
-    "difficulty_matching": {
-      "superseded_by": "temporal_holdout_v2",
-      "note": "old pooled analysis expanded case x system (pseudo-replication) and did not remove dev overlaps; removed. See temporal_holdout_v2."
-    },
-    "p1_paired_status": "FEASIBLE-PENDING-SPEND: no existing same-case (free_text + gold_HPO) data; needs HPO annotation on holdout pmc cases + LIRICAL reruns (jar present, java17)",
-    "p5_same_trace_status": "FEASIBLE-CHEAP-PENDING-SPEND: v2 reasoning_results carry repaired full traces already scored by Claude; re-run Gemini judge on same 40 traces for clean rho (<$1)",
-    "p5_same_trace_rejudge": {
-      "status": "DONE (LiteLLM gemini-3-flash-preview, $1.30, 40 traces)",
-      "metric": "faithfulness score vs actual Pillar-2 top1 correctness (Spearman), BOTH judges on identical v2 repaired traces",
-      "gemini_same_trace_rho": 0.457,
-      "claude_same_trace_rho": 0.64,
-      "cross_judge_faithfulness_agreement_rho": 0.741,
-      "paper_confounded": {
-        "gemini_v1": 0.098,
-        "claude_v2": 0.616
-      },
-      "verdict": "OVERTURNS paper P5 story: on identical repaired traces Gemini rho 0.098->0.457, so most of the 0.098-vs-0.616 gap was the trace-capture artifact, NOT judge self-preference. Modest real judge-family gap remains (0.457 vs 0.640); judges agree well (rho=0.741). Paper headline strong-decoupling-under-Gemini(0.098) is an artifact."
-    },
-    "p1_paired_same_case": {
-      "status": "DONE (LiteLLM gemini-3-flash-preview, 50 cases, same diagnoser)",
-      "design": "SAME-CASE paired: gold-HPO vs LLM-re-extracted-HPO -> same llm_control diagnoser",
-      "gold_hpo_R@1": 0.42,
-      "extracted_hpo_R@1": 0.4,
-      "delta_pp": 2.0,
-      "mcnemar_p": 1.0,
-      "mean_hpo_gold_vs_extracted": [
-        7.9,
-        7.9
-      ],
-      "paper_claim": "0.40 vs 0.04 (10x collapse), read as phenotype-extraction penalty",
-      "verdict": "DEMOLISHES paper P1 interpretation: same-case extraction penalty is only ~2pp (0.42->0.40, McNemar p=1.0, NOT significant); extractor recovered same phenotype count (7.9 vs 7.9). Paper 0.04 was a dataset/condition confound (RareArena harder set under extracted condition), not an extraction penalty. CAVEAT: uses LLM-control diagnoser not LIRICAL (2GB DB absent); LIRICAL is more brittle to HPO-list quality so its same-case penalty could be larger, but the paper 0.04 still cannot stand as it was never measured same-case."
-    }
-  },
-  "temporal_holdout_v2": {
-    "generated_at_utc": "2026-07-23T09:33:07Z",
-    "commit": "9babd833618936b6b29942baba130638e212921d",
-    "data_version": "slim recompute set (MIMIC & weights stripped); frozen commit 9babd8336189",
-    "note": "Supersedes v1 temporal_holdout. v1 used a pooled z-test treating each case x system as independent (pseudo-replication) and did not remove development overlaps. This is the clean, case-clustered, Holm-corrected analysis.",
-    "identity_keys_used": [
-      "PMCID",
-      "PMID"
-    ],
-    "identity_keys_absent": [
-      "DOI",
-      "title"
-    ],
-    "overlap_union": {
-      "pre_cutoff": 14,
-      "post_cutoff": 18
-    },
-    "overlap_by_source": {
-      "pre_cutoff": {
-        "rarearena_rds": 13,
-        "phenopacket_store": 1
-      },
-      "post_cutoff": {
-        "rarearena_rds": 17,
-        "phenopacket_store": 1
-      }
-    },
-    "clean_N": {
-      "pre_cutoff": 206,
-      "post_cutoff": 180
-    },
-    "per_system_holm": {
-      "agentclinic": {
-        "pre_R@1": 0.2573,
-        "post_R@1": 0.2833,
-        "delta_pp": 2.6,
-        "p_raw": 0.5649403209290769,
-        "p_holm": 0.5649403209290769,
-        "n_pre": 206,
-        "n_post": 180
-      },
-      "llm_control": {
-        "pre_R@1": 0.5388,
-        "post_R@1": 0.6278,
-        "delta_pp": 8.9,
-        "p_raw": 0.07732612732911812,
-        "p_holm": 0.22351989303422617,
-        "n_pre": 206,
-        "n_post": 180
-      },
-      "mdagents": {
-        "pre_R@1": 0.5437,
-        "post_R@1": 0.6333,
-        "delta_pp": 9.0,
-        "p_raw": 0.07450663101140872,
-        "p_holm": 0.22351989303422617,
-        "n_pre": 206,
-        "n_post": 180
-      },
-      "medagents": {
-        "pre_R@1": 0.5291,
-        "post_R@1": 0.6389,
-        "delta_pp": 11.0,
-        "p_raw": 0.02926483363206725,
-        "p_holm": 0.117059334528269,
-        "n_pre": 206,
-        "n_post": 180
-      }
-    },
-    "case_level_macro": {
-      "pre_n_cases": 206,
-      "post_n_cases": 180,
-      "pre_macro_R@1": 0.4672,
-      "post_macro_R@1": 0.5458,
-      "delta_pp": 7.9,
-      "delta_95CI_pp": [
-        -0.2,
-        15.6
-      ],
-      "cluster_bootstrap_n": 10000,
-      "permutation_p": 0.0506,
-      "permutation_n": 10000
-    },
-    "difficulty_matched_sensitivity": {
-      "retained": {
-        "pre": 167,
-        "post": 167
-      },
-      "unknown_prevalence_fraction": {
-        "pre": 0.345,
-        "post": 0.306
-      },
-      "per_system_delta_pp": {
-        "agentclinic": -1.2,
-        "llm_control": 10.2,
-        "mdagents": 8.4,
-        "medagents": 9.6
-      },
-      "case_level_macro": {
-        "pre_n_cases": 167,
-        "post_n_cases": 167,
-        "pre_macro_R@1": 0.4805,
-        "post_macro_R@1": 0.5479,
-        "delta_pp": 6.7,
-        "delta_95CI_pp": [
-          -1.8,
-          15.1
-        ],
-        "cluster_bootstrap_n": 10000,
-        "permutation_p": 0.1247,
-        "permutation_n": 10000
-      },
-      "all_system_deltas_nonnegative": false
-    },
-    "development_overlaps_found_and_removed": true,
-    "frozen_commit": "9babd833618936b6b29942baba130638e212921d",
-    "allowed_conclusion": "After removing exact-identifier overlaps with identifier-bearing development sources, we found no statistically detectable post-cutoff degradation across the four evaluated systems.",
-    "source_files": [
-      "audit_frozen/temporal_v2_final/"
-    ]
-  },
-  "mimic_slice_audit": {
-    "status": "NOT_REPRODUCIBLE / RE-SPECIFIED-PENDING",
-    "audit_commit": "e8c2d19f8c7f1dbfa89fe7df1b6ad8a1ab876fe1",
-    "audit_generated_at": "2026-07-24T07:53:13Z",
-    "summary": "No scorable MIMIC results exist in this repo. 0 prediction receipts, 0 cohort files, 0 gold (all confirmed via host-wide find). The 22 legacy aggregate cells are mutually inconsistent (13/22 conflict between round2 receipts.csv and new_version headline_results.csv) and are provenance-only, not valid evidence.",
-    "evidence_counts": {
-      "prediction_receipts_on_disk": 0,
-      "cohort_files_on_disk": 0,
-      "gold_labels_on_disk": 0,
-      "rows_in_frozen_main_manifest": 0,
-      "scorable_case_level_rows": 0,
-      "legacy_aggregate_cells": 22,
-      "legacy_cells_in_explicit_conflict": 13
-    },
-    "legacy_conflict_example": {
-      "cell": "llm_control|deepseek-v4-pro",
-      "round2_receipts_csv": {
-        "attempted": 956,
-        "R@1_variants": 0.248
-      },
-      "new_version_headline_csv": {
-        "attempted": 402,
-        "R@1_variants": 0.264
-      }
-    },
-    "excluded_from_diagnostic_matrix": true,
-    "role_after_merge": "separately-reported exploratory structured-EHR (S-EHR) probe; scoring pending",
-    "n_956_meaning": "deduped cap-5/disease cohort-size intent per build log; UNVERIFIABLE from frozen evidence",
-    "construct_validity_note": "gold is code-derived (ICD-10 -> Orphanet mechanical map), not independent clinical adjudication; input is synthetic vignette from ICD titles, no clinical notes",
-    "not_recomputable_reason": "cannot score without receipts x gold; both are zero on host",
-    "to_reproduce": "obtain data/mimic_iv_rd_slice/cases_filtered_diverse.jsonl (cohort+gold) from author; run docs/mimic_structured_ehr_experiment.md matrix; score via recompute_engine.py (failures in denominator)",
-    "artifacts": "audit_frozen/mimic_frozen_audit/ (mimic_final_audit.md, mimic_frozen_manifest.csv, mimic_results_summary.json, mimic_evidence_inventory.csv, mimic_paper_patch.md)",
-    "provenance_round2_mimic_block_sha256": "fe3257e4123f84e916ff6583da12e9904927066208544f77506f8104ff8cf656"
   }
 }

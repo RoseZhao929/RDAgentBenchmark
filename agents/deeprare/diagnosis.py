@@ -94,6 +94,13 @@ def get_orphanet_id_from_disease(args, result, embeds_disease, concept2id, orpha
             
     diseases_new = [disease.strip() for disease in diseases_new]
     diseases = diseases_new
+
+    # A model may occasionally return prose or an abstention that contains
+    # neither of the supported ranked-diagnosis formats.  Treat that as an
+    # empty candidate set so the caller can take its normal fallback path;
+    # passing an empty batch into the tokenizer raises IndexError instead.
+    if not diseases:
+        return [], "", tmp_save
     
     # use similarity matching agent to find ORPHANET ID
     with torch.no_grad():
