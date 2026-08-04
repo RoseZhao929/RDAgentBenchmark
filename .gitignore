@@ -69,3 +69,16 @@ audit_frozen/mimic_note_experiment/**/predictions_*.jsonl
 *.fdb_latexmk
 *.fls
 _archive_local/
+
+# --- housekeeping 2026-07-30 ---
+# 同事恢复目录 / 补跑任务中间产物 / 被 v3 取代的旧冻结 / 更早的一版 paper
+recovery_hmmm_*/
+tasks/
+frozen_v2_20260728/
+paper_aaai27_0727/
+# tex 编辑基点(只读参照, 非产物) + 中间态备份
+**/*_overleaf.tex
+**/mainresults_overleaf.tex
+**/overleaf_mainresults/
+**/*.bak_pre_*
+# note: data/ 与 *.zip 已在上方忽略; frozen_v3 与 paper_final 需强制加入(见 commit)

@@ -9,9 +9,9 @@
   },
   "receipt_counts": {
     "raw_lines_phase4a": 101060,
-    "attempted_after_dedupe_and_cap": 112819,
-    "successful": 109534,
-    "failed": 3285,
+    "attempted_after_dedupe_and_cap": 100019,
+    "successful": 97463,
+    "failed": 2556,
     "status_breakdown": {
       "ok": 97217,
       "parser_error": 2691,
@@ -19,7 +19,7 @@
       "timeout": 945,
       "ok_but_empty": 70
     },
-    "cells": 110
+    "cells": 104
   },
   "exclusion_rules": [
     "Dedupe by case_id, prefer status==ok (RESUME re-attempts collapsed).",
@@ -62,10 +62,10 @@
   },
   "cost_inclusion_sets": {
     "frozen_main_matrix_recomputed": {
-      "attempted": 110355,
-      "successful": 107149,
-      "usd": 329.46,
-      "cells": 98
+      "attempted": 94387,
+      "successful": 92320,
+      "usd": 287.15,
+      "cells": 76
     },
     "paper_106089_$315.21": "J appendix TOTAL, 93 cells INCLUDING now-stripped mimic_diverse + all GPT-5; ok-level count; NOT reproducible from this slim commit (mimic removed).",
     "paper_68668_$191.76": "main_results.md \"all cells\" 2026-07-06 snapshot; partial completion state.",
@@ -83,10 +83,10 @@
         "b_only": 7,
         "c_only": 106,
         "chi2_cc": 84.991,
-        "p": 2.997034554659336e-20
+        "p": 2.997034554659337e-20
       },
       "two_prop_z": 6.404,
-      "two_prop_p": 1.5124646055508616e-10,
+      "two_prop_p": 1.5124646055508619e-10,
       "p3_win": 106,
       "p2_win": 7
     },
@@ -100,7 +100,7 @@
         "scaffolded_R@1": 0.279,
         "delta_pp": -1.4,
         "mcnemar_chi2_cc": 6.75,
-        "mcnemar_p": 0.00937476845943489,
+        "mcnemar_p": 0.0093747684594349,
         "scaffold_win": 40,
         "control_win": 68
       },
@@ -126,7 +126,7 @@
         "scaffolded_R@1": 0.2145,
         "delta_pp": -7.8,
         "mcnemar_chi2_cc": 100.979,
-        "mcnemar_p": 9.295196244033083e-24,
+        "mcnemar_p": 9.295196244033086e-24,
         "scaffold_win": 42,
         "control_win": 199
       },
@@ -136,12 +136,12 @@
         "backbone": "gemini-3-flash-preview",
         "n_common_cases": 200,
         "control_R@1": 0.315,
-        "scaffolded_R@1": 0.02,
-        "delta_pp": -29.5,
-        "mcnemar_chi2_cc": 55.148,
-        "mcnemar_p": 1.1181346561214534e-13,
-        "scaffold_win": 1,
-        "control_win": 60
+        "scaffolded_R@1": 0.145,
+        "delta_pp": -17.0,
+        "mcnemar_chi2_cc": 25.929,
+        "mcnemar_p": 3.5428638720888023e-07,
+        "scaffold_win": 4,
+        "control_win": 38
       },
       {
         "dataset": "phenopacket_store",
@@ -152,7 +152,7 @@
         "scaffolded_R@1": 0.2803,
         "delta_pp": -3.0,
         "mcnemar_chi2_cc": 3.01,
-        "mcnemar_p": 0.08273102231510261,
+        "mcnemar_p": 0.08273102231510286,
         "scaffold_win": 39,
         "control_win": 57
       },
@@ -178,7 +178,7 @@
         "scaffolded_R@1": 0.3005,
         "delta_pp": 1.9,
         "mcnemar_chi2_cc": 9.197,
-        "mcnemar_p": 0.0024235220376220713,
+        "mcnemar_p": 0.0024235220376220695,
         "scaffold_win": 98,
         "control_win": 59
       },
@@ -191,7 +191,7 @@
         "scaffolded_R@1": 0.1335,
         "delta_pp": -14.8,
         "mcnemar_chi2_cc": 215.551,
-        "mcnemar_p": 8.449703882418488e-49,
+        "mcnemar_p": 8.449703882418486e-49,
         "scaffold_win": 53,
         "control_win": 348
       },
@@ -201,12 +201,12 @@
         "backbone": "gemini-3-flash-preview",
         "n_common_cases": 200,
         "control_R@1": 0.305,
-        "scaffolded_R@1": 0.0,
-        "delta_pp": -30.5,
-        "mcnemar_chi2_cc": 59.016,
-        "mcnemar_p": 1.5636381457841558e-14,
-        "scaffold_win": 0,
-        "control_win": 61
+        "scaffolded_R@1": 0.17,
+        "delta_pp": -13.5,
+        "mcnemar_chi2_cc": 15.721,
+        "mcnemar_p": 7.340738534732005e-05,
+        "scaffold_win": 8,
+        "control_win": 35
       },
       {
         "dataset": "rarearena_rds",
@@ -229,7 +229,7 @@
     "pooled_pre": 0.4614,
     "pooled_post": 0.5379,
     "pooled_delta_pp": 7.7,
-    "pooled_p": 0.0017816122806526757
+    "pooled_p": 0.001781612280652676
   },
   "p1_p2_cascade": {
     "note": "p1_metric_rows.jsonl measures HPO-EXTRACTION phrase P/R/F1, not diagnosis R@1",

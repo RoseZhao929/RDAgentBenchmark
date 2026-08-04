@@ -1,0 +1,725 @@
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+% The serif, sans-serif, and monospaced fonts are loaded automatically by
+% aaai2027.sty (newtxtext, helvet, courier). DO NOT add \usepackage{times},
+% \usepackage{helvet}, \usepackage{courier}, or any other font package.
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+
+\usepackage[capitalize]{cleveref}   % \Cref{tab:main} -> "Table 1", "Section 3"
+% Blue heat ramp for R@1 (5 buckets) + green ramp for the variant-lift row,
+% matching the reference paper's palette.
+\usepackage[htt]{hyphenat}  % allow line breaks inside \texttt paths/code
+
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}  
+\usepackage{graphicx}
+\usepackage{subfigure}
+\definecolor{heatE}{HTML}{F6F9FC}
+\definecolor{heatA}{HTML}{E2EAF3}
+\definecolor{heatB}{HTML}{C7D5E4}
+\definecolor{heatC}{HTML}{AABCD3}
+\definecolor{heatD}{HTML}{8AA4C3}
+
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+
+%
+% Recommended for better-looking tables
+\usepackage{booktabs}
+
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \usepackage{indentfirst} -- This package is specifically forbidden
+% \usepackage{layout} -- This package is specifically forbidden
+% \usepackage{multicol} -- This package is specifically forbidden
+% \usepackage{nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paper
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2027.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{
+%RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis
+%RareAgentBench: A Multi-Pillar, Contamination-Aware Benchmark for Rare-Disease Diagnostic Agents
+RareAgentBench: An Agent-Native Benchmark for Rare-Disease Diagnosis}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Written by AAAI Press Staff\textsuperscript{\rm 1}\thanks{With help from the AAAI Publications Committee.}\\
+    AAAI Style Contributions by Peter Patel Schneider,
+    Sunil Issar,\\
+    J. Scott Penberthy,
+    George Ferguson,
+    Hans Guesgen,
+    Francisco Cruz\equalcontrib\corresponding,
+    Marc Pujol-Gonzalez\equalcontrib\corresponding
+}
+\affiliations{
+    %Afiliations
+    \textsuperscript{\rm 1}Association for the Advancement of Artificial Intelligence\\
+    % If you have multiple authors and multiple affiliations
+    % use superscripts in text and roman font to identify them.
+    % For example,
+
+    % Sunil Issar\textsuperscript{\rm 2},
+    % J. Scott Penberthy\textsuperscript{\rm 3},
+    % George Ferguson\textsuperscript{\rm 4}\corresponding,
+    % Hans Guesgen\textsuperscript{\rm 5}
+    % Note that the comma should be placed after the superscript
+
+    1101 Pennsylvania Ave, NW Suite 300\\
+    Washington, DC 20004 USA\\
+    % email address must be in roman text type, not monospace or sans serif
+    proceedings-questions@aaai.org
+%
+% See more examples next
+}
+
+%Example, Single Author, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\iffalse
+\title{My Publication Title --- Single Author}
+\author {
+    Author Name
+}
+\affiliations{
+    Affiliation\\
+    Affiliation Line 2\\
+    name@example.com
+}
+\fi
+
+\iffalse
+%Example, Multiple Authors, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\title{
+%RareAgentBench: A Multi-Pillar, Contamination-Controlled Benchmark of LLM Agents for Rare-Disease Diagnosis
+RareAgentBench: An Agent-Native Benchmark for Rare-Disease Diagnosis
+}
+\author {
+    % Authors
+    Yutian Zhao\textsuperscript{\rm 1,\rm 2}, %\equalcontrib,
+    Xiaohong Liu\textsuperscript{\rm 2},
+    %\equalcontrib,
+    Huimin Wang\textsuperscript{\rm 1}\corresponding
+}
+\affiliations {
+    % Affiliations
+    \textsuperscript{\rm 1}Affiliation 1\\
+    \textsuperscript{\rm 2}Affiliation 2\\
+    firstAuthor@affiliation1.com, secondAuthor@affilation2.com, thirdAuthor@affiliation1.com
+}
+\fi
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% AI agents for rare-disease diagnosis increasingly combine large language models (LLMs) with multi-agent orchestration, retrieval, structured phenotype reasoning, and simulated clinical interaction. Yet published systems are evaluated on incompatible datasets and protocols, making cross-system claims difficult to verify and obscuring whether gains arise from agent scaffolding, model choice, or case selection. We introduce RareAgentBench, an agent-native benchmark that standardizes four capabilities---phenotype extraction, phenotype-only and genotype-aware differential diagnosis, and clinical-communication faithfulness---through a canonical case schema and system-specific adapters for structured HPO and free-text inputs. The benchmark draws on 84,450 cases from five sources, including a time-based PMC holdout, and preregisters 11 hypotheses and 12 ablations. We compare eight diagnostic systems, including classical and offline methods, with three unscaffolded LLM controls. Our evaluation on RareAgentBench yields four key findings: (1) on HPO-input datasets, classical and offline methods outperform all scaffolded LLM agents (best R@1: 0.47 vs. 0.30, a 17-point gap); (2) multi-agent scaffolding does not reliably beat a single-LLM control: light scaffolds change R@1 by at most 1.4 points, whereas heavier scaffolds reduce it by 8 to 36 points; (3) higher cost does not guarantee higher accuracy---DeepSeek V4-Flash is about $11\times$ cheaper than Gemini Flash but 3--8 points less accurate on HPO inputs, whereas GPT-5 with minimal reasoning costs about $26\times$ more than V4-Flash without a consistent advantage; and (4) structured variant information improves R@1 by about 20 points across systems. We release the benchmark, adapters, execution receipts, and leaderboard to support reproducible and cost-aware evaluation of rare-disease diagnostic agents.
+
+% Rare-disease diagnosis is a high-impact setting in which AI systems must reason over sparse phenotypes, genomic evidence, and noisy clinical narratives. Yet existing diagnostic agents are evaluated on incompatible datasets and protocols, making it difficult to separate the effects of agent scaffolding, model choice, input evidence, and case selection. We introduce RareAgentBench, an agent-native, contamination-aware evaluation framework that normalizes a source pool of 84,450 candidate instances from five sources into a canonical case schema. It evaluates phenotype extraction, phenotype-only and genotype-aware differential diagnosis, and communication faithfulness under shared evidence budgets, metrics, and failure accounting, including a 198-case post-cutoff PMC holdout. Using preregistered hypotheses and ablations, we compare five scaffolded agent architectures across four LLM backbones with matched single-LLM and classical or offline baselines. On structured HPO inputs, LIRICAL and VC-RDAgent achieve Recall@1 of 0.47 and 0.44, respectively, versus 0.30 for the best scaffolded LLM agent. Relative to matched single-LLM controls, light scaffolds change Recall@1 by at most 1.4 percentage points, whereas heavier scaffolds reduce it by 8–36 points across two datasets. Structured variant information provides the most consistent gain, a genotype-channel lift of approximately 20 points. Meanwhile, API cost and latency vary by up to 26× and 80× without a consistent accuracy advantage. These results show that evidence channels and evaluation design matter more than orchestration complexity in the evaluated settings. We release the benchmark, adapters, execution receipts, and leaderboard to support reproducible, cost-aware evaluation of rare-disease diagnostic agents.
+Rare-disease diagnosis is a high-impact setting in which AI systems must reason over sparse phenotypes, genomic evidence, and noisy clinical narratives. Yet existing diagnostic agents are evaluated on incompatible datasets and protocols, making it difficult to separate the effects of agent scaffolding, model choice, input evidence, and case selection. We introduce
+RareAgentBench, an agent-native, contamination-aware evaluation framework that normalizes a source pool of 84,450 candidate instances from five sources into a canonical case schema. It evaluates phenotype extraction, phenotype-based and variant-aware differential diagnosis, and communication faithfulness under shared evidence budgets, metrics, and failure accounting, including a 198-case post-cutoff PMC holdout. Using preregistered hypotheses and ablations, we compare five scaffolded agent architectures across four LLM backbones with one matched no-scaffold single-LLM control and two classical or offline baselines. On structured HPO inputs, LIRICAL and VC-RDAgent achieve Recall@1 of 0.47 and 0.44, respectively, versus 0.30 for the best scaffolded LLM agent. Relative to the backbone matched single-LLM control, light scaffolds change Recall@1 by at most 1.4 percentage points, whereas heavier scaffolds reduce it by 8--36 points across two datasets. Structured variant information provides the most consistent gain, a genotype-channel lift of approximately 20 points. Meanwhile, API cost and latency vary by up to 26$\times$ and 80$\times$ without a consistent accuracy advantage. These results show that evidence channels and evaluation design matter more than orchestration complexity in the evaluated settings. We release the benchmark, adapters, execution receipts, and leaderboard to support reproducible, cost-aware evaluation of rare-disease diagnostic agents.
+\end{abstract}
+
+% Uncomment the following to link to your code, datasets, an extended version or similar.
+% You must keep this block between (not within) the abstract and the main body of the paper.
+% Make sure that you do not de-anonymize yourself with these links.
+% \begin{links}
+%     \link{Code}{https://aaai.org/example/code}
+%     \link{Datasets}{https://aaai.org/example/datasets}
+%     \link{Extended version}{https://aaai.org/example/extended-version}
+% \end{links}
+
+% \section{Introduction}
+% \label{sec:introduction}
+
+% Rare diseases are individually uncommon but collectively affect an estimated
+% 3.5--5.9\% of the global population
+% \citep{NguengangWakap2020Prevalence}. For patients and families, diagnosis can
+% require years of referrals, repeated testing, and misdiagnosis. A 41-country
+% survey of 6,507 people living with rare diseases by
+% \citet{Faye2024DiagnosisDelay} reported an average time to diagnosis of 4.7
+% years. Computational decision support could help shorten this diagnostic
+% odyssey, but it must reason over sparse and heterogeneous evidence, including
+% clinical narratives, Human Phenotype Ontology (HPO) terms, genetic variants,
+% and inheritance patterns. A plausible but unsupported suggestion may also
+% redirect testing or delay specialist referral. Rare-disease AI must therefore
+% be evaluated for reliability, evidence use, and resource cost as well as
+% diagnostic accuracy.
+
+% Recent systems combine large language models (LLMs) with role-based
+% deliberation, adaptive multi-agent collaboration, sequential information
+% acquisition, simulated clinical interaction, retrieval, and
+% phenotype--genotype reasoning
+% \citep{tang2024medagents,kim2024mdagents,nori2025sequential,
+% schmidgall2026agentclinic,zhao2026deeprare,liu2026vcrdagent}. Yet their
+% reported results are not directly comparable. Studies differ in case
+% collections, input representations, disease ontologies, backbone models, tool
+% permissions, failure policies, and matching rules. A higher reported Recall@1
+% may therefore reflect an easier case mix, more informative evidence, or a more
+% permissive evaluator rather than a better agent architecture. Indeed, the same single-LLM baseline swings by up to two orders of magnitude in Recall@1 across datasets alone(Figure~\ref{fig:teaser}). 
+% \citet{nguyen2026diagnostic} likewise identified limited
+% preregistration, substantial contamination risk, and a strong association
+% between disease prevalence and reported performance.
+
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=\linewidth]{Figures/figINTRO_B_p1_emnlp_annot.pdf}
+%   \caption{The same measurement, four datasets, wildly different scores.
+%   Recall@1 of an identical no-scaffold single-LLM baseline, evaluated with four
+%   backbones,
+%   swings by up to two orders of magnitude across four rare-disease datasets---from
+%   near zero on RareBench to above 0.5 on the PMC-OA holdout---while the four
+%   backbones track each other closely within every dataset. A headline Recall@1 is
+%   therefore governed far more by the evaluation dataset than by the model or
+%   system, which is exactly why cross-paper comparison is unreliable.}
+%   \label{fig:teaser}
+%   \end{figure}
+  
+
+% This fragmentation obscures three practical questions: does scaffolding help
+% when the model, cases, evidence, and scoring protocol are held fixed; how much
+% performance comes from structured phenotype or genotype information; and does
+% higher inference cost buy better diagnosis? Benchmarking only the backbone LLM
+% cannot answer these questions because retrieval, orchestration, parsing, and
+% failure handling belong to the complete system. Classical phenotype- and
+% genotype-based methods also remain clinically relevant and can outperform
+% general-purpose LLMs on structured inputs
+% \citep{robinson2020lirical,reese2026systematic}. We therefore treat the
+% complete diagnostic pipeline as the unit of evaluation.
+
+% We introduce \textbf{RareAgentBench}, an agent-native, contamination-aware
+% framework for controlled evaluation of rare-disease diagnostic systems. It
+% normalizes a pool of 84,450 benchmark instances from five sources into a shared
+% \texttt{CanonicalCase} schema while preserving provenance, evidence
+% availability, and parallel disease identifiers
+% \citep{danis2025phenopackets,chen2024rarebench,chen2026rarearena}. The
+% framework supports phenotype extraction, phenotype-only and genotype-aware
+% differential diagnosis, and communication faithfulness; the latter is treated
+% as exploratory in the present study. System-specific adapters expose only the
+% evidence permitted by each condition and return standardized predictions,
+% traces, failures, latency, token use, and cost. A dual-pass protocol separates
+% downstream reasoning on curated HPO terms from end-to-end diagnosis from
+% narratives. A 200-case post-cutoff PubMed Central holdout reduces, but does not
+% eliminate, benchmark-exposure risk.
+
+% We evaluate five scaffolded architectures across four LLM backbones, together
+% with matched single-LLM controls and two classical or offline baselines. On
+% structured HPO inputs, LIRICAL and VC-RDAgent achieve Recall@1 of 0.47 and
+% 0.44, respectively, compared with 0.30 for the best scaffolded LLM agent.
+% Relative to matched controls, light scaffolds change Recall@1 by at most 1.4
+% percentage points, whereas heavier scaffolds reduce it by 8--36 points across
+% two datasets. Structured variant information instead provides a consistent
+% gain of approximately 20 points. API cost and median latency vary by as much as
+% 26$\times$ and 80$\times$ without a consistent accuracy advantage.
+% Cross-ontology matching and judge choice also change apparent performance,
+% showing that evaluator design is a first-order component of agent assessment.
+
+% Our contributions are fourfold:
+% \begin{itemize}
+%     \item \textbf{An agent-native rare-disease benchmark} with a canonical
+%     case representation, layered structured and free-text data, controlled
+%     evidence views, and a post-cutoff holdout.
+%     \item \textbf{A controlled and auditable protocol} with isolated adapters,
+%     matched controls, explicit failure denominators, and per-case execution
+%     receipts.
+%     \item \textbf{Cross-system empirical evidence} separating the effects of
+%     scaffolding, backbone, structured variants, dataset, and evaluator.
+%     \item \textbf{Infrastructure for follow-up work}, including the benchmark
+%     harness, adapters, predictions, receipts, and a static leaderboard.
+% \end{itemize}
+
+% RareAgentBench is an evaluation resource, not a clinical deployment study or
+% an autonomous diagnostic system. Its intended social impact is to make claims
+% about rare-disease AI more comparable and auditable, identify when added
+% complexity does not justify its cost, and direct future clinical validation
+% toward systems that use patient evidence reliably.
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+Rare diseases are individually uncommon but collectively affect an estimated
+3.5--5.9\% of the global population
+\citep{NguengangWakap2020Prevalence}. For patients and families, reaching a
+diagnosis can require years of referrals, repeated testing, and
+misdiagnosis. In a 41-country survey of 6,507 people living with rare
+diseases, \citet{Faye2024DiagnosisDelay} reported a mean diagnostic delay of
+4.7 years. An unsupported differential can redirect testing, postpone
+specialist referral, and prolong this diagnostic odyssey. Computational
+decision support must therefore be evaluated for reliability, evidence use,
+and resource cost as well as accuracy.
+
+Rare-disease diagnosis is a natural target for medical agents because it is a
+multi-step evidence-integration problem. A system may need to extract and
+normalize phenotypes, retrieve disease knowledge, reconcile phenotype and
+genotype evidence, and revise a differential as new information arrives.
+Recent systems accordingly augment large language models (LLMs) with
+deliberation, adaptive collaboration, sequential interaction, retrieval, and
+phenotype--genotype reasoning
+\citep{tang2024medagents,kim2024mdagents,nori2025sequential,
+schmidgall2026agentclinic,zhao2026deeprare,liu2026vcrdagent}. These designs
+are promising, but additional scaffolds and tools also introduce failure
+modes and inference cost. Their benefit can be established only by comparing
+the complete pipeline with an appropriate matched control.
+
+Existing studies vary in case mix, evidence representation, disease ontology,
+backbone, tools, failure policy, and matching rule. A higher Recall@1 may
+therefore reflect an easier dataset or more informative input rather than a
+stronger agent. Figure~\ref{fig:teaser} shows this fragmentation before
+scaffolding is even introduced: the same no-scaffold single-LLM control protocol scores near zero
+on RareBench but reaches 0.48--0.61 on the PMC-OA holdout across four
+backbones. This dataset-dependent shift makes isolated headline scores
+unsuitable for cross-paper comparison and motivates a unified benchmark with
+matched cases, evidence, backbones, and scoring. Contamination and
+reproducibility risks further strengthen this need
+\citep{nguyen2026diagnostic}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{Figures/figINTRO_B_p1_emnlp_annot.pdf}
+  \caption{\textbf{Same control protocol, different datasets.} Recall@1 of the no-scaffold single-LLM control ranges from near zero on RareBench to
+  0.48--0.61 on PMC-OA across four backbones. This dataset-dependent shift
+  motivates a unified rare-disease agent benchmark with matched cases,
+  evidence, backbones, and scoring.}
+  \label{fig:teaser}
+\end{figure}
+
+A useful benchmark must therefore satisfy three requirements: compare each scaffolded agent with the no-scaffold single-LLM control under the same backbone; standardize cases
+and permitted evidence to separate information gains from orchestration
+gains; and retain failures while measuring latency and cost alongside
+accuracy. Because retrieval, orchestration, parsing, and failure handling all
+affect the prediction, the complete pipeline---not the backbone alone---must
+be the unit of evaluation. Classical phenotype-based methods must also remain
+in scope because they are clinically relevant comparators and can outperform
+general-purpose LLMs on structured inputs
+\citep{robinson2020lirical,reese2026systematic}.
+
+We introduce \textbf{RareAgentBench}, an agent-native framework for controlled
+evaluation of rare-disease diagnostic systems. A source pool of 84,450 candidate instances from five collections is
+normalized into four evidence layers spanning curated phenotypes,
+de-identified electronic health record notes, case-report text, and a
+198-case post-cutoff holdout
+\citep{danis2025phenopackets,chen2024rarebench,chen2026rarearena}. A shared
+\texttt{CanonicalCase} schema preserves provenance, parallel disease
+identifiers, and task-specific availability masks. System-specific adapters
+expose only permitted evidence and standardize predictions; per-case receipts
+record status, failures, token use, price-table-derived cost, and latency.
+Empty outputs, parser errors, and timeouts remain in the denominator. Across four LLM backbones, we compare five scaffolded agents with one matched
+no-scaffold single-LLM control and two classical or offline baselines. Our diagnostic evaluation covers phenotype-based and variant-aware differential diagnosis, with phenotype extraction and communication faithfulness treated as exploratory analyses.
+
+In the primary matched diagnostic evaluation, established systems remain
+strong: on structured HPO inputs, LIRICAL and VC-RDAgent achieve Recall@1 of
+0.47 and 0.44, respectively, compared with 0.30 for the best scaffolded LLM
+agent. Relative to the backbone-matched single-LLM control, lightweight scaffolds change
+Recall@1 by at most 1.4 percentage points, whereas heavier scaffolds reduce
+it by 8--36 points across two datasets. API cost and median latency vary by
+as much as 26$\times$ and 80$\times$ without a consistent accuracy
+advantage. Agent complexity alone is therefore not a reliable proxy for
+diagnostic quality.
+
+Our contributions are fourfold:
+\begin{itemize}
+  \item \textbf{An agent-native benchmark design} that represents complete
+  pipelines through layered evidence, controlled views, and a post-cutoff
+  holdout.
+  \item \textbf{A matched and auditable protocol} with a backbone-matched
+no-scaffold single-LLM control, explicit failure denominators, and per-case
+receipts.
+  \item \textbf{Cross-system evidence under a common diagnostic setting}
+  separating scaffold effects from dataset, backbone, and evaluator choices.
+  \item \textbf{Reproducible infrastructure for follow-up evaluation},
+  including the harness, adapters, predictions, and task interfaces.
+\end{itemize}
+
+RareAgentBench is an evaluation resource, not an autonomous diagnostic
+system. Its intended social benefit is to make rare-disease AI claims more
+comparable and auditable and to direct prospective validation toward systems
+that use patient evidence reliably.
+\section{Related Work}
+\label{sec:related-work}
+
+\subsection{Rare-Disease Diagnostic Models and Benchmarks}
+
+Rare-disease decision support predates LLMs and commonly ranks candidate
+diseases by combining phenotypic similarity, inheritance, and genomic
+evidence. For example, \citet{robinson2020lirical} introduced an interpretable
+likelihood-ratio framework, while \citet{mao2025phenobrain} developed a
+phenotype-based pipeline for differential diagnosis from electronic health
+records. These systems remain important comparators: in a systematic
+benchmark, \citet{reese2026systematic} found that established rare-disease
+decision-support tools still outperformed general-purpose LLMs on structured
+case representations.
+
+Recent datasets have expanded evaluation of LLM-based diagnosis.
+RareBench and RareArena assess rare-disease knowledge and differential
+diagnosis across curated clinical cases
+\citep{chen2024rarebench,chen2026rarearena}. The GA4GH Phenopacket corpus
+provides standardized, case-level phenotype and genomic representations
+\citep{danis2025phenopackets}, while other work studies multilingual
+robustness, reasoning, realistic electronic health records, and multimodal
+evidence
+\citep{chimirri2025consistent,qiu2025medrbench,eizaldin2026mimicrd,
+ning2026mmrarebench}. Collectively, these resources have advanced
+model-centric evaluation, but they use different case distributions, evidence
+formats, disease vocabularies, and matching rules. They therefore do not by
+themselves support controlled comparisons of complete agent pipelines.
+
+\subsection{Benchmarks for LLM and Medical Agents}
+
+Agent benchmarks evaluate capabilities that are not captured by static
+question answering. SWE-bench measures whether agents can resolve real-world
+software issues, AgentBoard analyzes multi-turn behavior, and
+$\tau$-bench tests interactions among an agent, tools, and a simulated user
+\citep{jimenez2024swebench,ma2024agentboard,yao2025taubench}. In medicine,
+MedAgentBench provides a virtual electronic health record environment, and
+AgentClinic evaluates tool-using agents in simulated multimodal clinical
+encounters \citep{jiang2025medagentbench,schmidgall2026agentclinic}.
+
+Evaluation frameworks also argue against reducing system quality to a single
+accuracy number. HELM evaluates models across multiple scenarios and
+desiderata \citep{liang2023helm}, and MedHELM extends holistic
+evaluation to medical tasks \citep{bedi2026medhelm}. This principle is
+particularly important for diagnostic agents, whose practical value depends
+on failure rate, latency, resource use, and evidence fidelity in addition to
+ranking accuracy. Moreover, automated evaluation can itself introduce bias:
+\citet{panickssery2024selfpreference} showed that LLM evaluators may favor
+their own generations, whereas \citet{verga2024juries} studied panels of
+diverse models as an alternative to a single judge. These benchmarks and
+evaluation methods motivate our multi-metric protocol, but none is designed
+to control the distinctive phenotype, genotype, and ontology choices in
+rare-disease diagnosis.
+
+\subsection{Rare-Disease Diagnostic Agents}
+
+Medical agent systems use collaboration or sequential interaction to extend
+the capabilities of a backbone model. MedAgents assigns clinical roles to
+multiple LLMs, MDAgents adapts the collaboration structure to problem
+complexity, and sequential-diagnosis systems request additional information
+over multiple turns
+\citep{tang2024medagents,kim2024mdagents,nori2025sequential}. Rare-disease
+systems further incorporate specialist teams, retrieval, structured clinical
+records, phenotype--genotype reasoning, or virtual case construction
+\citep{chen2026rareagents,zhao2026deeprare,wu2025rdma,
+liu2026vcrdagent}.
+
+These studies demonstrate promising agent designs, but their reported results
+combine the effects of scaffolding with changes in backbone model, cases,
+available evidence, tools, and scoring. Consequently, it remains unclear when
+an agent architecture improves on the same LLM under matched conditions, when
+gains instead come from structured phenotype or variant inputs, and whether
+additional inference cost is justified. RareAgentBench addresses this gap by
+treating the full pipeline as the unit of evaluation while holding the case
+view and evaluator fixed, logging failures and resource use, and comparing
+each scaffold with a matched single-LLM control.
+
+
+
+\section{Benchmark Design}
+\label{sec-4}
+
+RareAgentBench treats the complete diagnostic pipeline, rather than the
+backbone alone, as the unit of evaluation. Its central design is a matched
+comparison: wherever protocols are compatible, each scaffolded agent is
+compared with the no-scaffold single-LLM control under the same backbone,
+case set, permitted evidence, and evaluator. Per-case logging separates
+scaffold effects from evidence modality and resource use, while retaining
+failed attempts in every reported denominator.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{%
+    Figures/figure1-1.png}
+  \caption{\textbf{RareAgentBench overview.}
+  (a) Source-specific filtering constructs four evidence layers from five
+  sources. (b) \texttt{CanonicalCase} availability masks expose only eligible
+  task views; P2 and P3 evaluate phenotype-based and variant-aware diagnosis,
+  respectively, while P1 and P4 provide targeted exploratory analyses.
+  (c) Two offline baselines, one no-scaffold single-LLM control instantiated
+  across four backbones, and five scaffolded agents run through
+  system-specific adapters. Per-case \texttt{PredictionLog} receipts support
+  auditable evaluation of diagnostic accuracy, execution reliability,
+  efficiency, and communication faithfulness.}
+  \label{fig:rareagentbench-overview}
+\end{figure*}
+
+\paragraph{Data construction and leakage control
+(Figure~\ref{fig:rareagentbench-overview}(a)).}
+The five sources provide a pool of 84,450 candidate instances before
+task-specific eligibility masks are applied. Each layer is defined by its
+selection procedure, not only by its source.
+\textbf{L1} ingests 10,051 Phenopacket Store (PP-Store) files but excludes
+packets without a usable source-native OMIM or ORPHA diagnosis; RareBench-HF
+adds 1,122 cases across four splits
+\citep{danis2025phenopackets,chen2024rarebench}. No cross-source
+deduplication is currently applied.
+
+\textbf{L2} is a de-leaked MIMIC-IV-Note funnel rather than a direct cohort
+slice \citep{johnson2024mimiciv31}. Starting from 150,033 admissions carrying
+a rare-disease code, we retain exact ICD-10--Orphanet mappings (107,144),
+active rare disorders (18,392), rare principal diagnoses (2,325), and
+admissions with a discharge summary (1,255). We then exclude 172 notes whose
+masked mention occurs in a prior-history context and apply an
+Orphanet-synonym screen, leaving 687 admissions. The reported 416-case probe
+is the subset whose gold disease has an Orphanet phenotype annotation
+\citep{orphadata2026nomenclature}; these HPO terms are disease-level rather
+than case-level evidence. Notes are truncated before the first
+diagnosis-revealing header, and gold names and recognized synonyms are
+masked. A full-corpus assertion verifies that the verbatim gold name is absent
+from the model input, although paraphrased prior history cannot be ruled out.
+
+\textbf{L3} retains 8,562 RareArena RDS records in the current release,
+representing task instances rather than unique patients; the RDC confirmation
+view is not included in the current release \citep{chen2026rarearena}.
+\textbf{L4} is a 198-case temporal holdout: 2,401 PubMed candidates yield
+1,433 mapped records, from which the top-ranked 250 are screened and 52
+non-post-cutoff reports are removed. Its labels were produced through
+model-assisted extraction and adjudication. The untruncated MIMIC notes,
+evaluation-only gold fields, and local VCF files remain on the authorized
+machine; cloud services receive only the task-approved de-leaked
+representation.
+
+\paragraph{Canonical cases, eligibility, and task views
+(Figure~\ref{fig:rareagentbench-overview}(b)).}
+Every retained record is normalized into a Pydantic-v2
+\texttt{CanonicalCase} containing source, clinical text, observed and
+excluded HPO terms, structured variants, parallel disease and gene
+identifiers, demographics, provenance, and availability masks. These masks
+make eligibility an evidence property: adapters cannot expose fields not
+assigned to the current capability. Parallel OMIM, ORPHA, and source
+identifiers support ontology-aware scoring, while original and generated
+narratives remain distinguishable.
+
+The interface defines four capabilities. \textbf{P1} extracts ranked HPO
+terms from text; \textbf{P2} ranks diseases from the available phenotype
+view; \textbf{P3} augments that view with structured variants; and
+\textbf{P4} assesses whether the final answer is factual, relevant,
+evidence-supported, and consistent with the trace. The reported diagnostic
+evaluation includes P2 and P3 across eligible layer--system cells. P1 is
+evaluated on a 50-case L1 subset, while P4 is evaluated on L1 with ten cases
+per agent; these targeted analyses are exploratory. The schema supports
+paired gold-HPO and end-to-end text views, but the current receipts do not
+provide a complete same-case dual-pass evaluation. We therefore report the
+evidence modality supplied by each layer and do not estimate a
+benchmark-wide phenotype-extraction penalty.
+
+\paragraph{Matched execution, receipts, and scoring
+(Figure~\ref{fig:rareagentbench-overview}(c)).}
+The evaluation includes two offline baselines, one no-scaffold single-LLM
+control instantiated across four backbones, and five scaffolded agents.
+Matched cells share the backbone, case set, evidence mask, and evaluator.
+Adapters are restricted to transport, evidence projection, output parsing,
+and instrumentation; native prompts, retrieval, tools, orchestration, and
+stopping rules are preserved except for documented compatibility changes.
+
+Each \texttt{PredictionLog} records run and case identity, system versions,
+ranked outputs, status, tokens, price-table-derived cost, latency, and
+available traces. An attempt succeeds only when its status is \texttt{ok} and
+its ranked output is nonempty. Empty outputs, agent errors, parser errors, and
+timeouts therefore remain in the denominator; protocol-level unavailability
+is reported separately.
+
+Disease scoring proceeds through exact identifier matching, OMIM--ORPHA
+cross-mapping, direct disease-name matching, and finally fuzzy
+name-to-Orphanet mapping at a threshold of 90. We do not claim a completed
+manual threshold audit. In addition to disease Recall@$k$ and MRR, we report
+failure rate, latency, and cost; supported subgroup analyses are limited to
+prevalence, HPO density, sex, and partially covered organ-system strata.
+\section{Experimental Setup}
+\label{sec-5}
+
+\paragraph{Systems and backbones.}
+\label{sec-5-2}
+We compare six diagnostic systems---specifically five scaffolded agents and
+one matched no-scaffold single-LLM control---together with two classical or
+offline baselines. Each LLM-based system is evaluated, where its interaction
+protocol permits, with DeepSeek V4-Flash, DeepSeek V4-Pro, Gemini 3 Flash, and
+GPT-5. Requests use version-pinned OpenRouter endpoints to provide a common
+API, billing surface, and generation record
+\citep{openrouter2026api}. Primary runs use the lowest reasoning setting
+reliably supported by each endpoint: GPT-5 uses
+\path{reasoning_effort=minimal}, and V4-Pro uses
+\path{reasoning.enabled=false}; a reasoning-enabled ablation of the same
+single-LLM control is reported separately. Temperature is 0 and the seed is
+42 where exposed. Model identifiers, access dates, generation parameters,
+prices, software versions, and hardware for offline methods are recorded with
+each run.
+
+\paragraph{Adapters and execution.}
+\label{sec-5-3}
+Each system runs in an isolated environment behind a common
+\texttt{AgentAdapter}. The adapter receives a \texttt{CanonicalCase}, exposes
+only the evidence permitted by the current capability and evaluation pass,
+projects it into the system's native input, and returns a standardized
+\texttt{PredictionLog}. Modifications are restricted to transport, input
+projection, output parsing, and instrumentation; native prompts, retrieval,
+tool policies, orchestration, and stopping rules are preserved. Per-case
+receipts record the case, adapter and model versions, configuration hash,
+ranked prediction, status, token use, cost, latency, and available traces.
+Empty outputs, parser errors, and timeouts remain failures in the denominator;
+protocol-incompatible cells are marked unavailable rather than dropped.
+Gateway-reported costs are used when available, and token-based estimates are
+labeled explicitly. All system-specific deviations are recorded per case.
+
+\paragraph{Metrics and statistical analysis.}
+Primary metrics follow the definitions in Benchmark Design: F1 for phenotype
+extraction, disease Recall@1 for phenotype-based and variant-aware diagnosis,
+gene Top-$k$ accuracy for variant-aware diagnosis, and the four-axis
+faithfulness score for P4. Secondary outcomes include Recall@3/5/10, MRR,
+failure rate, latency, and cost. Matched systems are compared on the same cases
+using case-level paired analyses. We report bootstrap confidence intervals
+and apply Holm--Bonferroni correction to the prespecified confirmatory
+hypothesis family. Each result cell reports its actual case denominator.
+
+\paragraph{Human annotation and holdout governance.}
+\label{sec-5-4}
+Human review serves two purposes. First, the 198 temporal-holdout cases are
+adjudicated for definitive diagnosis, phenotype fidelity, post-cutoff
+publication date, and rare-disease status. Second, physicians rate P4 outputs
+for factuality, relevance, evidential support, and consistency with the
+recorded trace. We report inter-rater agreement using Cohen's $\kappa$ and
+compare automated scores from Gemini- and Claude-family judges with physician
+ratings to quantify judge-family sensitivity. The confirmatory metrics,
+multiplicity correction, agent set, and one-time holdout evaluation were
+frozen before holdout unblinding; exploratory analyses are labeled and
+excluded from confirmatory hypothesis testing.
+
+% ---- Results & analysis live in a separate file for parallel editing ----
+\input{MainResults}
+
+
+\section{Limitations and Social Impact}
+\label{sec-9}
+
+\paragraph{Limitations.}
+RareAgentBench is a retrospective evaluation and does not measure prospective
+diagnostic decisions, patient outcomes, or integration into clinical
+workflows. Its cases are predominantly English-language and combine curated
+repositories, published case reports, and an intensive-care EHR resource;
+these sources may overrepresent distinctive presentations and provide
+incomplete demographic metadata. Consequently, subgroup results do not
+establish clinical fairness. The post-cutoff holdout reduces benchmark
+exposure but cannot exclude contamination because backbone training corpora
+are undisclosed. Phenotype extraction and P4 faithfulness also depend partly
+on model-assisted labels and LLM judges. Physician adjudication covers the
+198-case temporal holdout, but the observed judge-family sensitivity makes P4
+exploratory. Finally, minimal or disabled reasoning improves cross-system
+comparability but may understate the capabilities of some frontier backbones.
+Adapter incompatibilities, estimated costs for calls outside the common
+gateway, and ontology-dependent matching further limit direct generalization
+beyond the evaluated configurations. Prospective, multilingual, and
+multimodal validation remains necessary.
+
+\paragraph{Social impact.}
+Rare diseases impose long diagnostic delays, yet unreliable AI suggestions
+can redirect testing, amplify disparities, or create false reassurance. The
+intended benefit of RareAgentBench is therefore not automated diagnosis, but
+more accountable evidence about when diagnostic AI is accurate, robust, and
+worth its resource cost. Matched comparisons with the no-scaffold single-LLM
+control, explicit failure denominators, subgroup reporting, and per-case
+receipts are intended to discourage selective reporting and unsupported
+claims of agent benefit. Credentialed EHR text and local genomic files remain
+local; external services receive only the approved de-identified
+representation. Because public benchmarks can encourage leaderboard
+optimization and underrepresent populations with less digitized evidence,
+benchmark performance must not determine patient care or access to specialist
+services. Any deployment requires independent prospective evaluation, local
+governance, privacy review, clinician oversight, and monitoring for unequal
+failure rates.
+
+\section{Conclusion}
+\label{sec-10}
+
+RareAgentBench provides a controlled, agent-native evaluation of rare-disease
+diagnostic pipelines across structured phenotypes, clinical narratives,
+genetic variants, and a temporal holdout. Under matched inputs and scoring,
+LIRICAL and VC-RDAgent reach Recall@1 of 0.47 and 0.44 on structured HPO
+inputs, versus 0.30 for the best scaffolded LLM agent. Relative to the
+backbone-matched no-scaffold control, light scaffolds change Recall@1 by at
+most 1.4 percentage points, heavier scaffolds reduce it by 8--36 points, and
+structured variants provide an approximately 20-point lift. Cost and latency
+vary by up to 26$\times$ and 80$\times$ without a consistent accuracy gain;
+ontology matching and judge choice also alter apparent performance.
+
+These results support backbone-matched control comparisons and treating
+failures, evidence fidelity, and resource use as first-order outcomes.
+RareAgentBench is not a clinical deployment study, but an auditable foundation
+for prospective validation and reproducible comparison of rare-disease
+diagnostic AI.
+
+\clearpage
+
+% \bibliography{aaai2027}
+\bibliography{recovered}
+\end{document}

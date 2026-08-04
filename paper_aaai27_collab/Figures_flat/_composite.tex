@@ -1,0 +1,19 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{mathptmx}   % Times New Roman text + math
+\usepackage{graphicx}
+\newcommand{\panel}[2]{%
+  \begin{minipage}[t]{0.32\linewidth}\centering
+    \includegraphics[width=\linewidth]{#1}\\[-4pt]
+    {\fontsize{6}{7}\selectfont (#2)}
+  \end{minipage}}
+\begin{document}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}ccc@{}}
+\panel{figM1_v2a_layered.pdf}{a} &
+\panel{figM2_cost_accuracy.pdf}{b} &
+\panel{figM6_hypotheses.pdf}{c} \\[2pt]
+\panel{figF2_scaffolding.pdf}{d} &
+\panel{figM3_prevalence.pdf}{e} &
+\panel{figM5_selfpref.pdf}{f} \\
+\end{tabular}
+\end{document}
